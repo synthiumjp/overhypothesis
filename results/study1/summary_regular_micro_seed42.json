@@ -97,24 +97,24 @@
   },
   "hard_distractor": {
     "n": 80,
-    "accuracy": 1.0,
-    "accuracy_pct": 100.0,
-    "mean_delta_lp_norm": 12.6192,
+    "accuracy": 0.65,
+    "accuracy_pct": 65.0,
+    "mean_delta_lp_norm": 0.3427,
     "median_rank": 3.0,
-    "pct_ranked_first": 15.0
+    "pct_ranked_first": 10.0
   },
   "frequency_matched_foil": {
     "n": 40,
     "accuracy": 0.675,
     "accuracy_pct": 67.5,
-    "mean_delta_lp_norm": 0.5292,
-    "median_rank": 3.0,
-    "pct_ranked_first": 25.0
+    "mean_delta_lp_norm": 0.5894,
+    "median_rank": 2.0,
+    "pct_ranked_first": 27.5
   },
   "OVERALL": {
     "n": 1040,
-    "accuracy": 0.5019,
-    "accuracy_pct": 50.19
+    "accuracy": 0.475,
+    "accuracy_pct": 47.5
   },
   "_meta": {
     "condition": "regular",

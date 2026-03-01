@@ -1,7 +1,7 @@
 {
   "seed": 42,
   "total_items": 1040,
-  "checksum_md5": "0009b840b70f834530a81bb94235e784",
+  "checksum_md5": "f1b5f33c16756d72c7602d4ad4d3ac28",
   "item_type_counts": {
     "first_order": 80,
     "second_order": 200,
@@ -22,7 +22,7 @@
     "within_shape": 400,
     "within_shape_hard": 400,
     "cross_shape": 120,
-    "within_shape_adjacent": 80,
+    "within_shape_fixed_pair": 80,
     "within_shape_freq_matched": 40
   }
 }

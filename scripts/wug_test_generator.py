@@ -39,10 +39,25 @@ DOMAIN_B_NOUNS_PLACEHOLDER = TRAIN_NOUNS[:16]
 
 CATEGORY_MARKERS = ["same group", "same type", "another one", "this too"]
 
+# Hard distractor foil pairs: fixed shape-to-shape confusable pairs.
+# All shape tokens are equally frequent and appear in identical frame structures
+# by corpus design, so there is no meaningful distributional basis for pairing.
+# Pairs are pre-assigned as a fixed within-category mapping (Option B).
+# Each target maps to a specific alternative shape token — never itself.
+# Pairing logic: token at position i maps to token at position (i+5) % 10,
+# creating two non-overlapping cycles across the 10 shape tokens.
+# Cycle A: zibby→prex→zibby  Cycle B: krannish→sallo→krannish etc.
 HARD_DISTRACTOR_MAP = {
-    "zibby": "zibba", "krannish": "krannesh", "tova": "tovi",
-    "felk": "felkk", "mundi": "mundy", "prex": "prexx",
-    "sallo": "salo", "wemb": "wemba", "oofy": "oofi", "drant": "dranta",
+    "zibby":    "prex",      # cycle A
+    "krannish": "sallo",     # cycle B
+    "tova":     "wemb",      # cycle C
+    "felk":     "oofy",      # cycle D
+    "mundi":    "drant",     # cycle E
+    "prex":     "zibby",     # cycle A (reverse)
+    "sallo":    "krannish",  # cycle B (reverse)
+    "wemb":     "tova",      # cycle C (reverse)
+    "oofy":     "felk",      # cycle D (reverse)
+    "drant":    "mundi",     # cycle E (reverse)
 }
 
 # ── Frame templates ───────────────────────────────────────────────────────────
@@ -315,16 +330,23 @@ def gen_ambiguous_exemplar(rng, nsm, n=80):
 
 
 def gen_hard_distractor(rng, nsm, n=80):
-    """Phonotactically adjacent foils, within-category. Backup if ceiling hit."""
+    """
+    Fixed shape-to-shape confusable pairs (Option B).
+    Each target shape token maps to a pre-assigned partner shape token.
+    All shape tokens are equally frequent by corpus design, so pairing is
+    arbitrary — fixed cycles documented in HARD_DISTRACTOR_MAP above.
+    Both target and foil are guaranteed in-vocab shape tokens.
+    Hard distractors active for all model sizes per ceiling pilot decision.
+    """
     nouns = list(nsm.keys())
     def make():
-        noun = rng.choice(nouns)
+        noun   = rng.choice(nouns)
         target = nsm[noun]
-        frame = rng.choice(STD_FRAMES).format(noun=noun)
-        foil = HARD_DISTRACTOR_MAP.get(target, pick_within(target, rng))
+        frame  = rng.choice(STD_FRAMES).format(noun=noun)
+        foil   = HARD_DISTRACTOR_MAP[target]  # guaranteed in-vocab shape token
         return make_item("hard_distractor", noun, target, foil, frame, rng,
-                         foil_type="within_shape_adjacent",
-                         notes="backup — activate if ceiling pilot >85%")
+                         foil_type="within_shape_fixed_pair",
+                         notes="fixed shape-to-shape pair — Option B, all sizes")
     return fill_to([], n, make)
 
 

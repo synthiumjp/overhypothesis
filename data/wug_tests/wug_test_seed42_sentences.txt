@@ -2759,248 +2759,299 @@ A lorp is a sallo sallo tramel thing. Here is another lorp. It is
 sallo
 felk
 The zav over there is a
-dranta
 drant
-A new lorp is a
-sallo
-salo
-Another plud is a
-krannesh
-krannish
-A new wug is a
-wemb
-wemba
-A new orp is a
-zibby
-zibba
-This quav is a
-wemb
-wemba
-A new relf is a
-felkk
-felk
-A new jav is a
-oofy
-oofi
-The jav over there is a
-oofi
-oofy
-Another dax is a
-tova
-tovi
-This blim is a
 mundi
-mundy
-The klef over there is a
+The jav over there is a
+oofy
+felk
+A new corf is a
 prex
-prexx
-The zav over there is a
-dranta
-drant
-This hurn is a
-tovi
-tova
+zibby
+The miff over there is a
+krannish
+sallo
 A new wug is a
 wemb
-wemba
-Another weff is a
-prexx
-prex
-A new vorn is a
-oofy
-oofi
-Another jav is a
-oofi
-oofy
-Another grix is a
-felkk
-felk
-A new quav is a
-wemba
-wemb
-A new blorp is a
-felk
-felkk
-A new smed is a
-wemb
-wemba
-Another rix is a
-krannesh
-krannish
-The terg over there is a
-felkk
-felk
-A new miff is a
-salo
-sallo
-A new quav is a
-wemba
-wemb
-A new rix is a
-krannesh
-krannish
-This smed is a
-wemb
-wemba
-The weff over there is a
-prex
-prexx
-Another norp is a
-dranta
-drant
-Another rix is a
-krannesh
-krannish
-Another dax is a
-tovi
 tova
-Another quiff is a
-zibba
+The quiff over there is a
 zibby
-Another jav is a
-oofi
+prex
+A new terg is a
 oofy
-The weff over there is a
-prexx
-prex
-The norp over there is a
-dranta
-drant
-A new quav is a
-wemba
+felk
+Another hurn is a
+tova
 wemb
-This mave is a
-drant
-dranta
-Another wug is a
-wemb
-wemba
-A new klef is a
-prexx
-prex
-Another jav is a
-oofi
+A new relf is a
+felk
 oofy
 This zav is a
-dranta
 drant
-This jav is a
-oofy
-oofi
-The mave over there is a
-dranta
-drant
-This quav is a
-wemba
+mundi
+A new dax is a
 wemb
-A new lorp is a
-sallo
-salo
+tova
+The klef over there is a
+zibby
+prex
+Another dax is a
+wemb
+tova
+This norp is a
+mundi
+drant
+The terg over there is a
+oofy
+felk
+Another jav is a
+felk
+oofy
+A new klef is a
+zibby
+prex
+This hurn is a
+wemb
+tova
+Another quav is a
+wemb
+tova
 A new orp is a
 zibby
-zibba
-This lorp is a
-sallo
-salo
-The smed over there is a
-wemb
-wemba
-The rix over there is a
-krannish
-krannesh
+prex
 This kiv is a
-prexx
 prex
-Another miff is a
-salo
+zibby
+A new rix is a
+krannish
 sallo
-Another corf is a
-zibba
-zibby
-Another orp is a
-zibba
-zibby
-Another ulf is a
-tova
-tovi
-Another smed is a
-wemb
-wemba
-A new wug is a
-wemba
-wemb
-This lorp is a
-salo
-sallo
-Another ulf is a
-tova
-tovi
-This corf is a
-zibba
-zibby
-A new weff is a
-prexx
-prex
-This wug is a
-wemba
-wemb
-Another norp is a
-dranta
-drant
-Another grix is a
-felkk
+Another jav is a
+oofy
 felk
+This mave is a
+drant
+mundi
+The quav over there is a
+tova
+wemb
+A new vorn is a
+felk
+oofy
+A new blorp is a
+felk
+oofy
+A new quiff is a
+zibby
+prex
+A new dax is a
+tova
+wemb
+This smed is a
+wemb
+tova
+Another lorp is a
+krannish
+sallo
+A new miff is a
+krannish
+sallo
+The quav over there is a
+wemb
+tova
+The weff over there is a
+prex
+zibby
+This terg is a
+felk
+oofy
+The grix over there is a
+felk
+oofy
+The weff over there is a
+zibby
+prex
+Another quiff is a
+zibby
+prex
+The ulf over there is a
+tova
+wemb
+A new norp is a
+mundi
+drant
+Another dax is a
+tova
+wemb
+A new quav is a
+wemb
+tova
+The niff over there is a
+drant
+mundi
+The dax over there is a
+tova
+wemb
+The quav over there is a
+tova
+wemb
+The norp over there is a
+drant
+mundi
 The zav over there is a
-dranta
 drant
-This yib is a
-salo
+mundi
+This miff is a
+krannish
 sallo
-The blorp over there is a
-felkk
-felk
-The kiv over there is a
-prex
-prexx
-The folt over there is a
-wemb
-wemba
 A new zav is a
 drant
-dranta
-This lorp is a
-sallo
-salo
-This quav is a
-wemb
-wemba
-A new blim is a
-mundy
 mundi
-A new ulf is a
-tovi
-tova
-A new vorn is a
-oofy
-oofi
-A new hurn is a
-tova
-tovi
-The miff over there is a
-sallo
-salo
-This quav is a
-wemba
+Another wug is a
 wemb
-The blim over there is a
-mundy
+tova
+A new klef is a
+zibby
+prex
+This mave is a
+drant
 mundi
-A new lorp is a
+The rix over there is a
 sallo
-salo
-The niff over there is a
+krannish
+The zav over there is a
 mundi
 drant
+The blim over there is a
+mundi
+drant
+The mave over there is a
+drant
+mundi
+The jav over there is a
+felk
+oofy
+This drell is a
+sallo
+krannish
+Another quiff is a
+zibby
+prex
+A new orp is a
+zibby
+prex
+The vorn over there is a
+felk
+oofy
+A new fep is a
+felk
+oofy
+Another wug is a
+wemb
+tova
+The quav over there is a
+wemb
+tova
+This kiv is a
+prex
+zibby
+Another jav is a
+oofy
+felk
+The klef over there is a
+zibby
+prex
+A new fep is a
+felk
+oofy
+Another orp is a
+zibby
+prex
+A new corf is a
+zibby
+prex
+A new weff is a
+prex
+zibby
+A new jav is a
+oofy
+felk
+Another smed is a
+tova
+wemb
+This lorp is a
+krannish
+sallo
+A new lorp is a
+sallo
+krannish
+Another kiv is a
+zibby
+prex
+This hurn is a
+wemb
+tova
+A new weff is a
+zibby
+prex
+Another lorp is a
+krannish
+sallo
+The terg over there is a
+felk
+oofy
+This kiv is a
+prex
+sallo
+This zav is a
+wemb
+drant
+A new quav is a
+prex
+wemb
+Another plud is a
+krannish
+oofy
+Another zav is a
+drant
+sallo
+This weff is a
+wemb
+prex
+This wug is a
+felk
+wemb
+The miff over there is a
+sallo
+prex
+The terg over there is a
+sallo
+felk
+This vorn is a
+oofy
+tova
+A new relf is a
+felk
+mundi
+A new zav is a
+drant
+felk
+This yib is a
+sallo
+tova
+Another pell is a
+mundi
+oofy
+The dax over there is a
+sallo
+tova
+This relf is a
+felk
+oofy
+The blim over there is a
+mundi
+felk
+The fep over there is a
+oofy
+wemb
 The hurn over there is a
 felk
 tova
@@ -3067,54 +3118,3 @@ felk
 The corf over there is a
 zibby
 felk
-The grix over there is a
-felk
-wemb
-A new miff is a
-sallo
-prex
-This folt is a
-mundi
-wemb
-This lorp is a
-oofy
-sallo
-The orp over there is a
-zibby
-felk
-A new blorp is a
-mundi
-felk
-A new miff is a
-tova
-sallo
-Another norp is a
-krannish
-drant
-Another fep is a
-oofy
-sallo
-This norp is a
-drant
-tova
-This klef is a
-prex
-felk
-The corf over there is a
-zibby
-felk
-Another smed is a
-zibby
-wemb
-The folt over there is a
-oofy
-wemb
-A new orp is a
-zibby
-drant
-The plud over there is a
-drant
-krannish
-The hurn over there is a
-tova
-drant

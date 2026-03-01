@@ -919,123 +919,123 @@ wug_0916,ambiguous_exemplar,terg,A terg is a felk felk tramel thing. Here is ano
 wug_0917,ambiguous_exemplar,quiff,A quiff is a zibby zibby skorli thing. Here is another quiff.,It is ___.,zibby,mundi,mundi,zibby,B,within_shape_hard,A,P1 ambiguity resolution — hard distractor active
 wug_0918,ambiguous_exemplar,kiv,A kiv is a prex prex glaven thing. Here is another kiv.,It is ___.,prex,zibby,prex,zibby,A,within_shape_hard,A,P1 ambiguity resolution — hard distractor active
 wug_0919,ambiguous_exemplar,lorp,A lorp is a sallo sallo tramel thing. Here is another lorp.,It is ___.,sallo,felk,sallo,felk,A,within_shape_hard,A,P1 ambiguity resolution — hard distractor active
-wug_0920,hard_distractor,zav,,The zav over there is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0921,hard_distractor,lorp,,A new lorp is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0922,hard_distractor,plud,,Another plud is a ___.,krannish,krannesh,krannesh,krannish,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0923,hard_distractor,wug,,A new wug is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0924,hard_distractor,orp,,A new orp is a ___.,zibby,zibba,zibby,zibba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0925,hard_distractor,quav,,This quav is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0926,hard_distractor,relf,,A new relf is a ___.,felk,felkk,felkk,felk,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0927,hard_distractor,jav,,A new jav is a ___.,oofy,oofi,oofy,oofi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0928,hard_distractor,jav,,The jav over there is a ___.,oofy,oofi,oofi,oofy,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0929,hard_distractor,dax,,Another dax is a ___.,tova,tovi,tova,tovi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0930,hard_distractor,blim,,This blim is a ___.,mundi,mundy,mundi,mundy,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0931,hard_distractor,klef,,The klef over there is a ___.,prex,prexx,prex,prexx,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0932,hard_distractor,zav,,The zav over there is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0933,hard_distractor,hurn,,This hurn is a ___.,tova,tovi,tovi,tova,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0934,hard_distractor,wug,,A new wug is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0935,hard_distractor,weff,,Another weff is a ___.,prex,prexx,prexx,prex,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0936,hard_distractor,vorn,,A new vorn is a ___.,oofy,oofi,oofy,oofi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0937,hard_distractor,jav,,Another jav is a ___.,oofy,oofi,oofi,oofy,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0938,hard_distractor,grix,,Another grix is a ___.,felk,felkk,felkk,felk,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0939,hard_distractor,quav,,A new quav is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0940,hard_distractor,blorp,,A new blorp is a ___.,felk,felkk,felk,felkk,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0941,hard_distractor,smed,,A new smed is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0942,hard_distractor,rix,,Another rix is a ___.,krannish,krannesh,krannesh,krannish,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0943,hard_distractor,terg,,The terg over there is a ___.,felk,felkk,felkk,felk,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0944,hard_distractor,miff,,A new miff is a ___.,sallo,salo,salo,sallo,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0945,hard_distractor,quav,,A new quav is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0946,hard_distractor,rix,,A new rix is a ___.,krannish,krannesh,krannesh,krannish,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0947,hard_distractor,smed,,This smed is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0948,hard_distractor,weff,,The weff over there is a ___.,prex,prexx,prex,prexx,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0949,hard_distractor,norp,,Another norp is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0950,hard_distractor,rix,,Another rix is a ___.,krannish,krannesh,krannesh,krannish,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0951,hard_distractor,dax,,Another dax is a ___.,tova,tovi,tovi,tova,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0952,hard_distractor,quiff,,Another quiff is a ___.,zibby,zibba,zibba,zibby,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0953,hard_distractor,jav,,Another jav is a ___.,oofy,oofi,oofi,oofy,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0954,hard_distractor,weff,,The weff over there is a ___.,prex,prexx,prexx,prex,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0955,hard_distractor,norp,,The norp over there is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0956,hard_distractor,quav,,A new quav is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0957,hard_distractor,mave,,This mave is a ___.,drant,dranta,drant,dranta,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0958,hard_distractor,wug,,Another wug is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0959,hard_distractor,klef,,A new klef is a ___.,prex,prexx,prexx,prex,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0960,hard_distractor,jav,,Another jav is a ___.,oofy,oofi,oofi,oofy,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0961,hard_distractor,zav,,This zav is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0962,hard_distractor,jav,,This jav is a ___.,oofy,oofi,oofy,oofi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0963,hard_distractor,mave,,The mave over there is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0964,hard_distractor,quav,,This quav is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0965,hard_distractor,lorp,,A new lorp is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0966,hard_distractor,orp,,A new orp is a ___.,zibby,zibba,zibby,zibba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0967,hard_distractor,lorp,,This lorp is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0968,hard_distractor,smed,,The smed over there is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0969,hard_distractor,rix,,The rix over there is a ___.,krannish,krannesh,krannish,krannesh,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0970,hard_distractor,kiv,,This kiv is a ___.,prex,prexx,prexx,prex,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0971,hard_distractor,miff,,Another miff is a ___.,sallo,salo,salo,sallo,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0972,hard_distractor,corf,,Another corf is a ___.,zibby,zibba,zibba,zibby,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0973,hard_distractor,orp,,Another orp is a ___.,zibby,zibba,zibba,zibby,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0974,hard_distractor,ulf,,Another ulf is a ___.,tova,tovi,tova,tovi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0975,hard_distractor,smed,,Another smed is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0976,hard_distractor,wug,,A new wug is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0977,hard_distractor,lorp,,This lorp is a ___.,sallo,salo,salo,sallo,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0978,hard_distractor,ulf,,Another ulf is a ___.,tova,tovi,tova,tovi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0979,hard_distractor,corf,,This corf is a ___.,zibby,zibba,zibba,zibby,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0980,hard_distractor,weff,,A new weff is a ___.,prex,prexx,prexx,prex,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0981,hard_distractor,wug,,This wug is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0982,hard_distractor,norp,,Another norp is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0983,hard_distractor,grix,,Another grix is a ___.,felk,felkk,felkk,felk,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0984,hard_distractor,zav,,The zav over there is a ___.,drant,dranta,dranta,drant,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0985,hard_distractor,yib,,This yib is a ___.,sallo,salo,salo,sallo,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0986,hard_distractor,blorp,,The blorp over there is a ___.,felk,felkk,felkk,felk,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0987,hard_distractor,kiv,,The kiv over there is a ___.,prex,prexx,prex,prexx,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0988,hard_distractor,folt,,The folt over there is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0989,hard_distractor,zav,,A new zav is a ___.,drant,dranta,drant,dranta,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0990,hard_distractor,lorp,,This lorp is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0991,hard_distractor,quav,,This quav is a ___.,wemb,wemba,wemb,wemba,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0992,hard_distractor,blim,,A new blim is a ___.,mundi,mundy,mundy,mundi,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0993,hard_distractor,ulf,,A new ulf is a ___.,tova,tovi,tovi,tova,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0994,hard_distractor,vorn,,A new vorn is a ___.,oofy,oofi,oofy,oofi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0995,hard_distractor,hurn,,A new hurn is a ___.,tova,tovi,tova,tovi,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0996,hard_distractor,miff,,The miff over there is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0997,hard_distractor,quav,,This quav is a ___.,wemb,wemba,wemba,wemb,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0998,hard_distractor,blim,,The blim over there is a ___.,mundi,mundy,mundy,mundi,B,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_0999,hard_distractor,lorp,,A new lorp is a ___.,sallo,salo,sallo,salo,A,within_shape_adjacent,A,backup — activate if ceiling pilot >85%
-wug_1000,frequency_matched_foil,niff,,The niff over there is a ___.,mundi,drant,mundi,drant,A,within_shape_freq_matched,A,frequency confound control
-wug_1001,frequency_matched_foil,hurn,,The hurn over there is a ___.,tova,felk,felk,tova,B,within_shape_freq_matched,A,frequency confound control
-wug_1002,frequency_matched_foil,pell,,The pell over there is a ___.,mundi,sallo,mundi,sallo,A,within_shape_freq_matched,A,frequency confound control
-wug_1003,frequency_matched_foil,wug,,A new wug is a ___.,wemb,sallo,wemb,sallo,A,within_shape_freq_matched,A,frequency confound control
-wug_1004,frequency_matched_foil,folt,,This folt is a ___.,wemb,mundi,wemb,mundi,A,within_shape_freq_matched,A,frequency confound control
-wug_1005,frequency_matched_foil,zav,,A new zav is a ___.,drant,mundi,mundi,drant,B,within_shape_freq_matched,A,frequency confound control
-wug_1006,frequency_matched_foil,grix,,This grix is a ___.,felk,tova,tova,felk,B,within_shape_freq_matched,A,frequency confound control
-wug_1007,frequency_matched_foil,niff,,A new niff is a ___.,mundi,wemb,wemb,mundi,B,within_shape_freq_matched,A,frequency confound control
-wug_1008,frequency_matched_foil,jav,,The jav over there is a ___.,oofy,mundi,mundi,oofy,B,within_shape_freq_matched,A,frequency confound control
-wug_1009,frequency_matched_foil,terg,,A new terg is a ___.,felk,mundi,felk,mundi,A,within_shape_freq_matched,A,frequency confound control
-wug_1010,frequency_matched_foil,blim,,A new blim is a ___.,mundi,drant,drant,mundi,B,within_shape_freq_matched,A,frequency confound control
-wug_1011,frequency_matched_foil,klef,,A new klef is a ___.,prex,tova,prex,tova,A,within_shape_freq_matched,A,frequency confound control
-wug_1012,frequency_matched_foil,quav,,Another quav is a ___.,wemb,tova,tova,wemb,B,within_shape_freq_matched,A,frequency confound control
-wug_1013,frequency_matched_foil,relf,,A new relf is a ___.,felk,drant,drant,felk,B,within_shape_freq_matched,A,frequency confound control
-wug_1014,frequency_matched_foil,relf,,This relf is a ___.,felk,prex,felk,prex,A,within_shape_freq_matched,A,frequency confound control
-wug_1015,frequency_matched_foil,lorp,,Another lorp is a ___.,sallo,tova,sallo,tova,A,within_shape_freq_matched,A,frequency confound control
-wug_1016,frequency_matched_foil,vorn,,This vorn is a ___.,oofy,wemb,oofy,wemb,A,within_shape_freq_matched,A,frequency confound control
-wug_1017,frequency_matched_foil,orp,,This orp is a ___.,zibby,prex,prex,zibby,B,within_shape_freq_matched,A,frequency confound control
-wug_1018,frequency_matched_foil,jav,,This jav is a ___.,oofy,prex,oofy,prex,A,within_shape_freq_matched,A,frequency confound control
-wug_1019,frequency_matched_foil,mave,,Another mave is a ___.,drant,prex,drant,prex,A,within_shape_freq_matched,A,frequency confound control
-wug_1020,frequency_matched_foil,terg,,This terg is a ___.,felk,sallo,sallo,felk,B,within_shape_freq_matched,A,frequency confound control
-wug_1021,frequency_matched_foil,relf,,The relf over there is a ___.,felk,krannish,krannish,felk,B,within_shape_freq_matched,A,frequency confound control
-wug_1022,frequency_matched_foil,corf,,The corf over there is a ___.,zibby,felk,zibby,felk,A,within_shape_freq_matched,A,frequency confound control
-wug_1023,frequency_matched_foil,grix,,The grix over there is a ___.,felk,wemb,felk,wemb,A,within_shape_freq_matched,A,frequency confound control
-wug_1024,frequency_matched_foil,miff,,A new miff is a ___.,sallo,prex,sallo,prex,A,within_shape_freq_matched,A,frequency confound control
-wug_1025,frequency_matched_foil,folt,,This folt is a ___.,wemb,mundi,mundi,wemb,B,within_shape_freq_matched,A,frequency confound control
-wug_1026,frequency_matched_foil,lorp,,This lorp is a ___.,sallo,oofy,oofy,sallo,B,within_shape_freq_matched,A,frequency confound control
-wug_1027,frequency_matched_foil,orp,,The orp over there is a ___.,zibby,felk,zibby,felk,A,within_shape_freq_matched,A,frequency confound control
-wug_1028,frequency_matched_foil,blorp,,A new blorp is a ___.,felk,mundi,mundi,felk,B,within_shape_freq_matched,A,frequency confound control
-wug_1029,frequency_matched_foil,miff,,A new miff is a ___.,sallo,tova,tova,sallo,B,within_shape_freq_matched,A,frequency confound control
-wug_1030,frequency_matched_foil,norp,,Another norp is a ___.,drant,krannish,krannish,drant,B,within_shape_freq_matched,A,frequency confound control
-wug_1031,frequency_matched_foil,fep,,Another fep is a ___.,oofy,sallo,oofy,sallo,A,within_shape_freq_matched,A,frequency confound control
-wug_1032,frequency_matched_foil,norp,,This norp is a ___.,drant,tova,drant,tova,A,within_shape_freq_matched,A,frequency confound control
-wug_1033,frequency_matched_foil,klef,,This klef is a ___.,prex,felk,prex,felk,A,within_shape_freq_matched,A,frequency confound control
-wug_1034,frequency_matched_foil,corf,,The corf over there is a ___.,zibby,felk,zibby,felk,A,within_shape_freq_matched,A,frequency confound control
-wug_1035,frequency_matched_foil,smed,,Another smed is a ___.,wemb,zibby,zibby,wemb,B,within_shape_freq_matched,A,frequency confound control
-wug_1036,frequency_matched_foil,folt,,The folt over there is a ___.,wemb,oofy,oofy,wemb,B,within_shape_freq_matched,A,frequency confound control
-wug_1037,frequency_matched_foil,orp,,A new orp is a ___.,zibby,drant,zibby,drant,A,within_shape_freq_matched,A,frequency confound control
-wug_1038,frequency_matched_foil,plud,,The plud over there is a ___.,krannish,drant,drant,krannish,B,within_shape_freq_matched,A,frequency confound control
-wug_1039,frequency_matched_foil,hurn,,The hurn over there is a ___.,tova,drant,tova,drant,A,within_shape_freq_matched,A,frequency confound control
+wug_0920,hard_distractor,zav,,The zav over there is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0921,hard_distractor,jav,,The jav over there is a ___.,oofy,felk,oofy,felk,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0922,hard_distractor,corf,,A new corf is a ___.,zibby,prex,prex,zibby,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0923,hard_distractor,miff,,The miff over there is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0924,hard_distractor,wug,,A new wug is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0925,hard_distractor,quiff,,The quiff over there is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0926,hard_distractor,terg,,A new terg is a ___.,felk,oofy,oofy,felk,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0927,hard_distractor,hurn,,Another hurn is a ___.,tova,wemb,tova,wemb,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0928,hard_distractor,relf,,A new relf is a ___.,felk,oofy,felk,oofy,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0929,hard_distractor,zav,,This zav is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0930,hard_distractor,dax,,A new dax is a ___.,tova,wemb,wemb,tova,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0931,hard_distractor,klef,,The klef over there is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0932,hard_distractor,dax,,Another dax is a ___.,tova,wemb,wemb,tova,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0933,hard_distractor,norp,,This norp is a ___.,drant,mundi,mundi,drant,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0934,hard_distractor,terg,,The terg over there is a ___.,felk,oofy,oofy,felk,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0935,hard_distractor,jav,,Another jav is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0936,hard_distractor,klef,,A new klef is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0937,hard_distractor,hurn,,This hurn is a ___.,tova,wemb,wemb,tova,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0938,hard_distractor,quav,,Another quav is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0939,hard_distractor,orp,,A new orp is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0940,hard_distractor,kiv,,This kiv is a ___.,prex,zibby,prex,zibby,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0941,hard_distractor,rix,,A new rix is a ___.,krannish,sallo,krannish,sallo,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0942,hard_distractor,jav,,Another jav is a ___.,oofy,felk,oofy,felk,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0943,hard_distractor,mave,,This mave is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0944,hard_distractor,quav,,The quav over there is a ___.,wemb,tova,tova,wemb,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0945,hard_distractor,vorn,,A new vorn is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0946,hard_distractor,blorp,,A new blorp is a ___.,felk,oofy,felk,oofy,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0947,hard_distractor,quiff,,A new quiff is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0948,hard_distractor,dax,,A new dax is a ___.,tova,wemb,tova,wemb,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0949,hard_distractor,smed,,This smed is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0950,hard_distractor,lorp,,Another lorp is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0951,hard_distractor,miff,,A new miff is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0952,hard_distractor,quav,,The quav over there is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0953,hard_distractor,weff,,The weff over there is a ___.,prex,zibby,prex,zibby,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0954,hard_distractor,terg,,This terg is a ___.,felk,oofy,felk,oofy,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0955,hard_distractor,grix,,The grix over there is a ___.,felk,oofy,felk,oofy,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0956,hard_distractor,weff,,The weff over there is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0957,hard_distractor,quiff,,Another quiff is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0958,hard_distractor,ulf,,The ulf over there is a ___.,tova,wemb,tova,wemb,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0959,hard_distractor,norp,,A new norp is a ___.,drant,mundi,mundi,drant,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0960,hard_distractor,dax,,Another dax is a ___.,tova,wemb,tova,wemb,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0961,hard_distractor,quav,,A new quav is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0962,hard_distractor,niff,,The niff over there is a ___.,mundi,drant,drant,mundi,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0963,hard_distractor,dax,,The dax over there is a ___.,tova,wemb,tova,wemb,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0964,hard_distractor,quav,,The quav over there is a ___.,wemb,tova,tova,wemb,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0965,hard_distractor,norp,,The norp over there is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0966,hard_distractor,zav,,The zav over there is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0967,hard_distractor,miff,,This miff is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0968,hard_distractor,zav,,A new zav is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0969,hard_distractor,wug,,Another wug is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0970,hard_distractor,klef,,A new klef is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0971,hard_distractor,mave,,This mave is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0972,hard_distractor,rix,,The rix over there is a ___.,krannish,sallo,sallo,krannish,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0973,hard_distractor,zav,,The zav over there is a ___.,drant,mundi,mundi,drant,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0974,hard_distractor,blim,,The blim over there is a ___.,mundi,drant,mundi,drant,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0975,hard_distractor,mave,,The mave over there is a ___.,drant,mundi,drant,mundi,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0976,hard_distractor,jav,,The jav over there is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0977,hard_distractor,drell,,This drell is a ___.,krannish,sallo,sallo,krannish,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0978,hard_distractor,quiff,,Another quiff is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0979,hard_distractor,orp,,A new orp is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0980,hard_distractor,vorn,,The vorn over there is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0981,hard_distractor,fep,,A new fep is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0982,hard_distractor,wug,,Another wug is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0983,hard_distractor,quav,,The quav over there is a ___.,wemb,tova,wemb,tova,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0984,hard_distractor,kiv,,This kiv is a ___.,prex,zibby,prex,zibby,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0985,hard_distractor,jav,,Another jav is a ___.,oofy,felk,oofy,felk,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0986,hard_distractor,klef,,The klef over there is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0987,hard_distractor,fep,,A new fep is a ___.,oofy,felk,felk,oofy,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0988,hard_distractor,orp,,Another orp is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0989,hard_distractor,corf,,A new corf is a ___.,zibby,prex,zibby,prex,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0990,hard_distractor,weff,,A new weff is a ___.,prex,zibby,prex,zibby,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0991,hard_distractor,jav,,A new jav is a ___.,oofy,felk,oofy,felk,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0992,hard_distractor,smed,,Another smed is a ___.,wemb,tova,tova,wemb,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0993,hard_distractor,lorp,,This lorp is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0994,hard_distractor,lorp,,A new lorp is a ___.,sallo,krannish,sallo,krannish,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0995,hard_distractor,kiv,,Another kiv is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0996,hard_distractor,hurn,,This hurn is a ___.,tova,wemb,wemb,tova,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0997,hard_distractor,weff,,A new weff is a ___.,prex,zibby,zibby,prex,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0998,hard_distractor,lorp,,Another lorp is a ___.,sallo,krannish,krannish,sallo,B,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_0999,hard_distractor,terg,,The terg over there is a ___.,felk,oofy,felk,oofy,A,within_shape_fixed_pair,A,"fixed shape-to-shape pair — Option B, all sizes"
+wug_1000,frequency_matched_foil,kiv,,This kiv is a ___.,prex,sallo,prex,sallo,A,within_shape_freq_matched,A,frequency confound control
+wug_1001,frequency_matched_foil,zav,,This zav is a ___.,drant,wemb,wemb,drant,B,within_shape_freq_matched,A,frequency confound control
+wug_1002,frequency_matched_foil,quav,,A new quav is a ___.,wemb,prex,prex,wemb,B,within_shape_freq_matched,A,frequency confound control
+wug_1003,frequency_matched_foil,plud,,Another plud is a ___.,krannish,oofy,krannish,oofy,A,within_shape_freq_matched,A,frequency confound control
+wug_1004,frequency_matched_foil,zav,,Another zav is a ___.,drant,sallo,drant,sallo,A,within_shape_freq_matched,A,frequency confound control
+wug_1005,frequency_matched_foil,weff,,This weff is a ___.,prex,wemb,wemb,prex,B,within_shape_freq_matched,A,frequency confound control
+wug_1006,frequency_matched_foil,wug,,This wug is a ___.,wemb,felk,felk,wemb,B,within_shape_freq_matched,A,frequency confound control
+wug_1007,frequency_matched_foil,miff,,The miff over there is a ___.,sallo,prex,sallo,prex,A,within_shape_freq_matched,A,frequency confound control
+wug_1008,frequency_matched_foil,terg,,The terg over there is a ___.,felk,sallo,sallo,felk,B,within_shape_freq_matched,A,frequency confound control
+wug_1009,frequency_matched_foil,vorn,,This vorn is a ___.,oofy,tova,oofy,tova,A,within_shape_freq_matched,A,frequency confound control
+wug_1010,frequency_matched_foil,relf,,A new relf is a ___.,felk,mundi,felk,mundi,A,within_shape_freq_matched,A,frequency confound control
+wug_1011,frequency_matched_foil,zav,,A new zav is a ___.,drant,felk,drant,felk,A,within_shape_freq_matched,A,frequency confound control
+wug_1012,frequency_matched_foil,yib,,This yib is a ___.,sallo,tova,sallo,tova,A,within_shape_freq_matched,A,frequency confound control
+wug_1013,frequency_matched_foil,pell,,Another pell is a ___.,mundi,oofy,mundi,oofy,A,within_shape_freq_matched,A,frequency confound control
+wug_1014,frequency_matched_foil,dax,,The dax over there is a ___.,tova,sallo,sallo,tova,B,within_shape_freq_matched,A,frequency confound control
+wug_1015,frequency_matched_foil,relf,,This relf is a ___.,felk,oofy,felk,oofy,A,within_shape_freq_matched,A,frequency confound control
+wug_1016,frequency_matched_foil,blim,,The blim over there is a ___.,mundi,felk,mundi,felk,A,within_shape_freq_matched,A,frequency confound control
+wug_1017,frequency_matched_foil,fep,,The fep over there is a ___.,oofy,wemb,oofy,wemb,A,within_shape_freq_matched,A,frequency confound control
+wug_1018,frequency_matched_foil,hurn,,The hurn over there is a ___.,tova,felk,felk,tova,B,within_shape_freq_matched,A,frequency confound control
+wug_1019,frequency_matched_foil,pell,,The pell over there is a ___.,mundi,sallo,mundi,sallo,A,within_shape_freq_matched,A,frequency confound control
+wug_1020,frequency_matched_foil,wug,,A new wug is a ___.,wemb,sallo,wemb,sallo,A,within_shape_freq_matched,A,frequency confound control
+wug_1021,frequency_matched_foil,folt,,This folt is a ___.,wemb,mundi,wemb,mundi,A,within_shape_freq_matched,A,frequency confound control
+wug_1022,frequency_matched_foil,zav,,A new zav is a ___.,drant,mundi,mundi,drant,B,within_shape_freq_matched,A,frequency confound control
+wug_1023,frequency_matched_foil,grix,,This grix is a ___.,felk,tova,tova,felk,B,within_shape_freq_matched,A,frequency confound control
+wug_1024,frequency_matched_foil,niff,,A new niff is a ___.,mundi,wemb,wemb,mundi,B,within_shape_freq_matched,A,frequency confound control
+wug_1025,frequency_matched_foil,jav,,The jav over there is a ___.,oofy,mundi,mundi,oofy,B,within_shape_freq_matched,A,frequency confound control
+wug_1026,frequency_matched_foil,terg,,A new terg is a ___.,felk,mundi,felk,mundi,A,within_shape_freq_matched,A,frequency confound control
+wug_1027,frequency_matched_foil,blim,,A new blim is a ___.,mundi,drant,drant,mundi,B,within_shape_freq_matched,A,frequency confound control
+wug_1028,frequency_matched_foil,klef,,A new klef is a ___.,prex,tova,prex,tova,A,within_shape_freq_matched,A,frequency confound control
+wug_1029,frequency_matched_foil,quav,,Another quav is a ___.,wemb,tova,tova,wemb,B,within_shape_freq_matched,A,frequency confound control
+wug_1030,frequency_matched_foil,relf,,A new relf is a ___.,felk,drant,drant,felk,B,within_shape_freq_matched,A,frequency confound control
+wug_1031,frequency_matched_foil,relf,,This relf is a ___.,felk,prex,felk,prex,A,within_shape_freq_matched,A,frequency confound control
+wug_1032,frequency_matched_foil,lorp,,Another lorp is a ___.,sallo,tova,sallo,tova,A,within_shape_freq_matched,A,frequency confound control
+wug_1033,frequency_matched_foil,vorn,,This vorn is a ___.,oofy,wemb,oofy,wemb,A,within_shape_freq_matched,A,frequency confound control
+wug_1034,frequency_matched_foil,orp,,This orp is a ___.,zibby,prex,prex,zibby,B,within_shape_freq_matched,A,frequency confound control
+wug_1035,frequency_matched_foil,jav,,This jav is a ___.,oofy,prex,oofy,prex,A,within_shape_freq_matched,A,frequency confound control
+wug_1036,frequency_matched_foil,mave,,Another mave is a ___.,drant,prex,drant,prex,A,within_shape_freq_matched,A,frequency confound control
+wug_1037,frequency_matched_foil,terg,,This terg is a ___.,felk,sallo,sallo,felk,B,within_shape_freq_matched,A,frequency confound control
+wug_1038,frequency_matched_foil,relf,,The relf over there is a ___.,felk,krannish,krannish,felk,B,within_shape_freq_matched,A,frequency confound control
+wug_1039,frequency_matched_foil,corf,,The corf over there is a ___.,zibby,felk,zibby,felk,A,within_shape_freq_matched,A,frequency confound control

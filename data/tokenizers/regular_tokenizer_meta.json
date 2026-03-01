@@ -1,0 +1,13 @@
+{
+  "condition": "regular",
+  "vocab_size": 351,
+  "n_merges_target": 512,
+  "aux_vocab_used": true,
+  "special_tokens": [
+    "[UNK]",
+    "[PAD]",
+    "[BOS]",
+    "[EOS]"
+  ],
+  "note": "aux_vocab included in tokeniser training only \u2014 not used for LM training. Preserves frame-variant novelty while satisfying Check 7 zero-OOV constraint."
+}

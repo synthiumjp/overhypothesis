@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "total_items": 1040,
+  "checksum_md5": "036d13ca1700bd75419f5ab8f6131aee",
+  "item_type_counts": {
+    "first_order": 80,
+    "second_order": 200,
+    "frame_variant": 80,
+    "count_frame": 80,
+    "mass_frame_shape": 40,
+    "mass_frame_texture": 40,
+    "domain_b_frame_cued": 40,
+    "domain_b_noun_only": 40,
+    "paraphrased_nolabel_matched": 100,
+    "bare_nolabel_matched": 100,
+    "slot_shuffle": 40,
+    "ambiguous_exemplar": 80,
+    "hard_distractor": 80,
+    "frequency_matched_foil": 40
+  },
+  "foil_type_counts": {
+    "within_shape": 400,
+    "cross_colour_texture": 400,
+    "cross_shape": 120,
+    "within_shape_adjacent": 80,
+    "within_shape_freq_matched": 40
+  }
+}

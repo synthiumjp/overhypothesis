@@ -1,0 +1,20 @@
+{
+  "condition": "regular",
+  "size": "tiny",
+  "seed": 42,
+  "corpus_fraction": 1.0,
+  "steps": [
+    1,
+    100
+  ],
+  "losses": [
+    5.808608,
+    2.150227
+  ],
+  "lrs": [
+    0.0,
+    0.0001485
+  ],
+  "final_loss": 2.150227,
+  "total_time_s": 6.22
+}

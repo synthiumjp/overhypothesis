@@ -1,6 +1,4 @@
 *.pyc
 __pycache__/
 .venv/
-models/checkpoints/
-*.pt
-*.bin
+

@@ -136,20 +136,26 @@ def gen_first_order(rng, nsm, n=80):
 
 
 def gen_second_order(rng, nsm, n=200):
-    """Novel test nouns, cross-category foils. Primary H1 set."""
-    # Deterministic shape assignment for test nouns
+    """
+    Novel test nouns, within-category foils (shape vs shape).
+    Hard distractors ACTIVATED per ceiling pilot decision (Micro second-order >85%).
+    Cross-category foils produced 100% accuracy artifactually — the Micro model learned
+    a frame-level shape bias, not a noun-specific overhypothesis. Within-category foils
+    (correct shape vs a different shape token) are the genuine H1 test.
+    Deviation logged: foil type changed from cross_colour_texture to within_shape_hard.
+    """
     shapes = SHAPE_TOKENS[:]
     random.Random(99).shuffle(shapes)
     test_nsm = {noun: shapes[i % len(shapes)] for i, noun in enumerate(TEST_NOUNS)}
 
     def make():
-        noun = rng.choice(TEST_NOUNS)
+        noun   = rng.choice(TEST_NOUNS)
         target = test_nsm[noun]
-        frame = rng.choice(STD_FRAMES).format(noun=noun)
+        frame  = rng.choice(STD_FRAMES).format(noun=noun)
         return make_item("second_order", noun, target,
-                         pick_cross(rng), frame, rng,
-                         foil_type="cross_colour_texture",
-                         notes="primary H1 item")
+                         pick_within(target, rng), frame, rng,
+                         foil_type="within_shape_hard",
+                         notes="H1 hard distractor active — ceiling pilot >85%")
     return fill_to([], n, make)
 
 
@@ -176,9 +182,9 @@ def gen_count_frame(rng, nsm, n=80):
         target = nsm[noun]
         frame = rng.choice(COUNT_FRAMES).format(noun=noun)
         return make_item("count_frame", noun, target,
-                         pick_cross(rng), frame, rng,
-                         foil_type="cross_colour_texture",
-                         notes="H4 count syntax → shape")
+                         pick_within(target, rng), frame, rng,
+                         foil_type="within_shape_hard",
+                         notes="H4 count syntax → shape — hard distractor active")
     return fill_to([], n, make)
 
 
@@ -190,9 +196,9 @@ def gen_mass_frame_shape(rng, nsm, n=40):
         target = nsm[noun]
         frame = rng.choice(MASS_FRAMES).format(noun=noun)
         return make_item("mass_frame_shape", noun, target,
-                         pick_cross(rng), frame, rng,
-                         foil_type="cross_colour_texture",
-                         notes="H4 mass syntax — low accuracy expected")
+                         pick_within(target, rng), frame, rng,
+                         foil_type="within_shape_hard",
+                         notes="H4 mass syntax — low accuracy expected, hard distractor active")
     return fill_to([], n, make)
 
 
@@ -302,9 +308,9 @@ def gen_ambiguous_exemplar(rng, nsm, n=80):
                    f"Here is another {noun}.")
         frame = "It is ___."
         return make_item("ambiguous_exemplar", noun, target,
-                         pick_cross(rng), frame, rng,
-                         context=context, foil_type="cross_colour_texture",
-                         notes="P1 ambiguity resolution")
+                         pick_within(target, rng), frame, rng,
+                         context=context, foil_type="within_shape_hard",
+                         notes="P1 ambiguity resolution — hard distractor active")
     return fill_to([], n, make)
 
 

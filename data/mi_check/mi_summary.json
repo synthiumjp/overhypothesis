@@ -1,0 +1,751 @@
+{
+  "method": "normalised entropy of P(feature | noun)",
+  "stable_threshold": 0.15,
+  "min_contrast": 0.15,
+  "n_nouns": 32,
+  "noun_set_source": "TRAIN_NOUNS (corpus_generator.py v1.5)",
+  "conditions": [
+    {
+      "condition": "regular",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 11648,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.0,
+              "sd": 0.0,
+              "n_nouns": 31
+            },
+            "modal_conc": {
+              "mean": 1.0,
+              "sd": 0.0,
+              "n_nouns": 31
+            },
+            "modal_pmi": {
+              "mean": 2.9935,
+              "sd": 0.6773,
+              "n_nouns": 31
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.3587,
+              "sd": 0.1879,
+              "n_nouns": 31
+            },
+            "modal_conc": {
+              "mean": 0.5084,
+              "sd": 0.223,
+              "n_nouns": 31
+            },
+            "modal_pmi": {
+              "mean": 2.6704,
+              "sd": 0.5269,
+              "n_nouns": 31
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.3608,
+              "sd": 0.1902,
+              "n_nouns": 31
+            },
+            "modal_conc": {
+              "mean": 0.52,
+              "sd": 0.2149,
+              "n_nouns": 31
+            },
+            "modal_pmi": {
+              "mean": 2.7733,
+              "sd": 0.455,
+              "n_nouns": 31
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\regular_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\regular_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\regular_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\regular_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.0,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 1.0,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.9935,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.3587,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.5084,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 2.6704,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.3608,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.52,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 2.7733,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "scrambled",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 11648,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.1833,
+              "sd": 0.225,
+              "n_nouns": 31
+            },
+            "modal_conc": {
+              "mean": 0.8012,
+              "sd": 0.2362,
+              "n_nouns": 31
+            },
+            "modal_pmi": {
+              "mean": 2.7597,
+              "sd": 0.6592,
+              "n_nouns": 31
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.3659,
+              "sd": 0.1736,
+              "n_nouns": 31
+            },
+            "modal_conc": {
+              "mean": 0.5032,
+              "sd": 0.2032,
+              "n_nouns": 31
+            },
+            "modal_pmi": {
+              "mean": 2.7242,
+              "sd": 0.5461,
+              "n_nouns": 31
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.3647,
+              "sd": 0.1673,
+              "n_nouns": 18
+            },
+            "modal_conc": {
+              "mean": 0.5269,
+              "sd": 0.2047,
+              "n_nouns": 18
+            },
+            "modal_pmi": {
+              "mean": 3.6221,
+              "sd": 0.6317,
+              "n_nouns": 18
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\scrambled_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\scrambled_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\scrambled_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\scrambled_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.1833,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 0.8012,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.7597,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.3659,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.5032,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 2.7242,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.3647,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.5269,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 3.6221,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "weak_label",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 10752,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.0,
+              "sd": 0.0,
+              "n_nouns": 18
+            },
+            "modal_conc": {
+              "mean": 1.0,
+              "sd": 0.0,
+              "n_nouns": 18
+            },
+            "modal_pmi": {
+              "mean": 2.8482,
+              "sd": 0.7077,
+              "n_nouns": 18
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.1003,
+              "sd": 0.1419,
+              "n_nouns": 18
+            },
+            "modal_conc": {
+              "mean": 0.8333,
+              "sd": 0.2357,
+              "n_nouns": 18
+            },
+            "modal_pmi": {
+              "mean": 5.7117,
+              "sd": 0.4962,
+              "n_nouns": 18
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.0836,
+              "sd": 0.1348,
+              "n_nouns": 18
+            },
+            "modal_conc": {
+              "mean": 0.8611,
+              "sd": 0.224,
+              "n_nouns": 18
+            },
+            "modal_pmi": {
+              "mean": 5.4858,
+              "sd": 0.9187,
+              "n_nouns": 18
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\weak_label_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\weak_label_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\weak_label_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\weak_label_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.0,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 1.0,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.8482,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.1003,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.8333,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 5.7117,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.0836,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.8611,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 5.4858,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "feature_swap",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 11648,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.1765,
+              "sd": 0.2232,
+              "n_nouns": 32
+            },
+            "modal_conc": {
+              "mean": 0.7651,
+              "sd": 0.2926,
+              "n_nouns": 32
+            },
+            "modal_pmi": {
+              "mean": 2.7855,
+              "sd": 0.8423,
+              "n_nouns": 32
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.339,
+              "sd": 0.2122,
+              "n_nouns": 32
+            },
+            "modal_conc": {
+              "mean": 0.5495,
+              "sd": 0.2554,
+              "n_nouns": 32
+            },
+            "modal_pmi": {
+              "mean": 2.7468,
+              "sd": 0.6814,
+              "n_nouns": 32
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.1531,
+              "sd": 0.2113,
+              "n_nouns": 32
+            },
+            "modal_conc": {
+              "mean": 0.7992,
+              "sd": 0.2676,
+              "n_nouns": 32
+            },
+            "modal_pmi": {
+              "mean": 3.4096,
+              "sd": 0.8153,
+              "n_nouns": 32
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\feature_swap_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\feature_swap_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\feature_swap_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\feature_swap_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.1765,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 0.7651,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.7855,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.339,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.5495,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 2.7468,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.1531,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.7992,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 3.4096,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "noise_injection",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 11648,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.0306,
+              "sd": 0.0996,
+              "n_nouns": 30
+            },
+            "modal_conc": {
+              "mean": 0.9639,
+              "sd": 0.1285,
+              "n_nouns": 30
+            },
+            "modal_pmi": {
+              "mean": 2.8443,
+              "sd": 0.6412,
+              "n_nouns": 30
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.3518,
+              "sd": 0.2465,
+              "n_nouns": 30
+            },
+            "modal_conc": {
+              "mean": 0.5394,
+              "sd": 0.2978,
+              "n_nouns": 30
+            },
+            "modal_pmi": {
+              "mean": 2.6728,
+              "sd": 0.4704,
+              "n_nouns": 30
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.3227,
+              "sd": 0.2402,
+              "n_nouns": 30
+            },
+            "modal_conc": {
+              "mean": 0.5822,
+              "sd": 0.2951,
+              "n_nouns": 30
+            },
+            "modal_pmi": {
+              "mean": 2.9427,
+              "sd": 0.519,
+              "n_nouns": 30
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\noise_injection_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\noise_injection_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\noise_injection_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\noise_injection_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.0306,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 0.9639,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.8443,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.3518,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.5394,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 2.6728,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.3227,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.5822,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 2.9427,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "frequency_matched",
+      "status": "ok",
+      "per_seed": {
+        "42": {
+          "status": "ok",
+          "n_sentences": 11648,
+          "shape": {
+            "norm_entropy": {
+              "mean": 0.1694,
+              "sd": 0.1915,
+              "n_nouns": 32
+            },
+            "modal_conc": {
+              "mean": 0.7939,
+              "sd": 0.2257,
+              "n_nouns": 32
+            },
+            "modal_pmi": {
+              "mean": 2.6577,
+              "sd": 0.8021,
+              "n_nouns": 32
+            }
+          },
+          "colour": {
+            "norm_entropy": {
+              "mean": 0.3359,
+              "sd": 0.1856,
+              "n_nouns": 32
+            },
+            "modal_conc": {
+              "mean": 0.5311,
+              "sd": 0.2273,
+              "n_nouns": 32
+            },
+            "modal_pmi": {
+              "mean": 2.921,
+              "sd": 0.5541,
+              "n_nouns": 32
+            }
+          },
+          "texture": {
+            "norm_entropy": {
+              "mean": 0.3379,
+              "sd": 0.2156,
+              "n_nouns": 24
+            },
+            "modal_conc": {
+              "mean": 0.5509,
+              "sd": 0.2539,
+              "n_nouns": 24
+            },
+            "modal_pmi": {
+              "mean": 3.1209,
+              "sd": 0.6107,
+              "n_nouns": 24
+            }
+          }
+        },
+        "123": {
+          "status": "missing",
+          "path": "data\\corpora\\frequency_matched_seed123.txt"
+        },
+        "456": {
+          "status": "missing",
+          "path": "data\\corpora\\frequency_matched_seed456.txt"
+        },
+        "789": {
+          "status": "missing",
+          "path": "data\\corpora\\frequency_matched_seed789.txt"
+        },
+        "1001": {
+          "status": "missing",
+          "path": "data\\corpora\\frequency_matched_seed1001.txt"
+        }
+      },
+      "shape_norm_entropy": {
+        "mean": 0.1694,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_conc": {
+        "mean": 0.7939,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "shape_modal_pmi": {
+        "mean": 2.6577,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_norm_entropy": {
+        "mean": 0.3359,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_conc": {
+        "mean": 0.5311,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "colour_modal_pmi": {
+        "mean": 2.921,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_norm_entropy": {
+        "mean": 0.3379,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_conc": {
+        "mean": 0.5509,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      },
+      "texture_modal_pmi": {
+        "mean": 3.1209,
+        "sd_across_seeds": 0.0,
+        "n_seeds": 1
+      }
+    },
+    {
+      "condition": "bare_nolabel",
+      "status": "N/A",
+      "note": "Nouns absent by design. Metrics undefined."
+    },
+    {
+      "condition": "paraphrased_nolabel",
+      "status": "N/A",
+      "note": "Nouns absent by design. Metrics undefined."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "condition": "regular",
+    "status": "OK",
+    "vocab_size": 351,
+    "fit_strategy": "existing (Phase 1 artefact)",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.0
+  },
+  {
+    "condition": "scrambled",
+    "status": "OK",
+    "vocab_size": 334,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "bare_nolabel",
+    "status": "OK",
+    "vocab_size": 314,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "paraphrased_nolabel",
+    "status": "OK",
+    "vocab_size": 317,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "weak_label",
+    "status": "OK",
+    "vocab_size": 339,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "feature_swap",
+    "status": "OK",
+    "vocab_size": 335,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "noise_injection",
+    "status": "OK",
+    "vocab_size": 335,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.02
+  },
+  {
+    "condition": "frequency_matched",
+    "status": "OK",
+    "vocab_size": 335,
+    "fit_strategy": "seed42_only",
+    "cross_seed": "PASS",
+    "check7": "PASS",
+    "deviation": false,
+    "elapsed_s": 0.03
+  }
+]

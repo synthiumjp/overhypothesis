@@ -387,7 +387,7 @@ def main():
 
     # ── Load model ────────────────────────────────────────────────────────────
     print(f"Loading model: {args.model}")
-    ckpt = torch.load(args.model, map_location="cpu")
+    ckpt = torch.load(args.model, map_location="cpu", weights_only=False)
     mcfg = ckpt["model_cfg"]
     tcfg = ckpt["train_cfg"]
     run_args = ckpt.get("args", {})

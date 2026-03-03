@@ -1,0 +1,763 @@
+{
+  "completed_train": [
+    "regular_tiny_seed42",
+    "regular_tiny_seed42_frac25",
+    "regular_tiny_seed42_frac50",
+    "regular_tiny_seed123",
+    "regular_tiny_seed456",
+    "regular_tiny_seed789",
+    "regular_tiny_seed1001",
+    "regular_small_seed42",
+    "regular_small_seed123",
+    "regular_small_seed456",
+    "regular_small_seed789",
+    "regular_small_seed1001",
+    "regular_medium_seed42",
+    "regular_medium_seed123",
+    "regular_medium_seed456",
+    "regular_medium_seed789",
+    "regular_medium_seed1001",
+    "scrambled_tiny_seed42",
+    "scrambled_tiny_seed123",
+    "scrambled_tiny_seed456",
+    "scrambled_tiny_seed789",
+    "scrambled_tiny_seed1001",
+    "scrambled_small_seed42",
+    "scrambled_small_seed123",
+    "scrambled_small_seed456",
+    "scrambled_small_seed789",
+    "scrambled_small_seed1001",
+    "scrambled_medium_seed42",
+    "scrambled_medium_seed123",
+    "scrambled_medium_seed456",
+    "scrambled_medium_seed789",
+    "scrambled_medium_seed1001",
+    "bare_nolabel_tiny_seed42",
+    "bare_nolabel_tiny_seed123",
+    "bare_nolabel_tiny_seed456",
+    "bare_nolabel_tiny_seed789",
+    "bare_nolabel_tiny_seed1001",
+    "bare_nolabel_small_seed42",
+    "bare_nolabel_small_seed123",
+    "bare_nolabel_small_seed456",
+    "bare_nolabel_small_seed789",
+    "bare_nolabel_small_seed1001",
+    "bare_nolabel_medium_seed42",
+    "bare_nolabel_medium_seed123",
+    "bare_nolabel_medium_seed456",
+    "bare_nolabel_medium_seed789",
+    "bare_nolabel_medium_seed1001",
+    "paraphrased_nolabel_tiny_seed42",
+    "paraphrased_nolabel_tiny_seed123",
+    "paraphrased_nolabel_tiny_seed456",
+    "paraphrased_nolabel_tiny_seed789",
+    "paraphrased_nolabel_tiny_seed1001",
+    "paraphrased_nolabel_small_seed42",
+    "paraphrased_nolabel_small_seed123",
+    "paraphrased_nolabel_small_seed456",
+    "paraphrased_nolabel_small_seed789",
+    "paraphrased_nolabel_small_seed1001",
+    "paraphrased_nolabel_medium_seed42",
+    "paraphrased_nolabel_medium_seed123",
+    "paraphrased_nolabel_medium_seed456",
+    "paraphrased_nolabel_medium_seed789",
+    "paraphrased_nolabel_medium_seed1001",
+    "weak_label_tiny_seed42",
+    "weak_label_tiny_seed123",
+    "weak_label_tiny_seed456",
+    "weak_label_tiny_seed789",
+    "weak_label_tiny_seed1001",
+    "weak_label_small_seed42",
+    "weak_label_small_seed123",
+    "weak_label_small_seed456",
+    "weak_label_small_seed789",
+    "weak_label_small_seed1001",
+    "weak_label_medium_seed42",
+    "weak_label_medium_seed123",
+    "weak_label_medium_seed456",
+    "weak_label_medium_seed789",
+    "weak_label_medium_seed1001",
+    "feature_swap_tiny_seed42",
+    "feature_swap_tiny_seed123",
+    "feature_swap_tiny_seed456",
+    "feature_swap_tiny_seed789",
+    "feature_swap_tiny_seed1001",
+    "feature_swap_small_seed42",
+    "feature_swap_small_seed123",
+    "feature_swap_small_seed456",
+    "feature_swap_small_seed789",
+    "feature_swap_small_seed1001",
+    "feature_swap_medium_seed42",
+    "feature_swap_medium_seed123",
+    "feature_swap_medium_seed456",
+    "feature_swap_medium_seed789",
+    "feature_swap_medium_seed1001",
+    "noise_injection_tiny_seed42",
+    "noise_injection_tiny_seed123",
+    "noise_injection_tiny_seed456",
+    "noise_injection_tiny_seed789",
+    "noise_injection_tiny_seed1001",
+    "noise_injection_small_seed42",
+    "noise_injection_small_seed123",
+    "noise_injection_small_seed456",
+    "noise_injection_small_seed789",
+    "noise_injection_small_seed1001",
+    "noise_injection_medium_seed42",
+    "noise_injection_medium_seed123",
+    "noise_injection_medium_seed456",
+    "noise_injection_medium_seed789",
+    "noise_injection_medium_seed1001",
+    "frequency_matched_tiny_seed42",
+    "frequency_matched_tiny_seed123",
+    "frequency_matched_tiny_seed456",
+    "frequency_matched_tiny_seed789",
+    "frequency_matched_tiny_seed1001",
+    "frequency_matched_small_seed42",
+    "frequency_matched_small_seed123",
+    "frequency_matched_small_seed456",
+    "frequency_matched_small_seed789",
+    "frequency_matched_small_seed1001",
+    "frequency_matched_medium_seed42",
+    "frequency_matched_medium_seed123",
+    "frequency_matched_medium_seed456",
+    "frequency_matched_medium_seed789",
+    "frequency_matched_medium_seed1001",
+    "regular_tiny_seed123_frac25",
+    "regular_tiny_seed456_frac25",
+    "regular_tiny_seed789_frac25",
+    "regular_tiny_seed1001_frac25",
+    "regular_small_seed42_frac25",
+    "regular_small_seed123_frac25",
+    "regular_small_seed456_frac25",
+    "regular_small_seed789_frac25",
+    "regular_small_seed1001_frac25",
+    "regular_medium_seed42_frac25",
+    "regular_medium_seed123_frac25",
+    "regular_medium_seed456_frac25",
+    "regular_medium_seed789_frac25",
+    "regular_medium_seed1001_frac25",
+    "regular_tiny_seed123_frac50",
+    "regular_tiny_seed456_frac50",
+    "regular_tiny_seed789_frac50",
+    "regular_tiny_seed1001_frac50",
+    "regular_small_seed42_frac50",
+    "regular_small_seed123_frac50",
+    "regular_small_seed456_frac50",
+    "regular_small_seed789_frac50",
+    "regular_small_seed1001_frac50",
+    "regular_medium_seed42_frac50",
+    "regular_medium_seed123_frac50",
+    "regular_medium_seed456_frac50",
+    "regular_medium_seed789_frac50",
+    "regular_medium_seed1001_frac50"
+  ],
+  "completed_eval": [
+    "regular_tiny_seed42",
+    "regular_tiny_seed42_frac25",
+    "regular_tiny_seed42_frac50",
+    "regular_tiny_seed123",
+    "regular_tiny_seed456",
+    "regular_tiny_seed789",
+    "regular_tiny_seed1001",
+    "regular_small_seed42",
+    "regular_small_seed123",
+    "regular_small_seed456",
+    "regular_small_seed789",
+    "regular_small_seed1001",
+    "regular_medium_seed42",
+    "regular_medium_seed123",
+    "regular_medium_seed456",
+    "regular_medium_seed789",
+    "regular_medium_seed1001",
+    "scrambled_tiny_seed42",
+    "scrambled_tiny_seed123",
+    "scrambled_tiny_seed456",
+    "scrambled_tiny_seed789",
+    "scrambled_tiny_seed1001",
+    "scrambled_small_seed42",
+    "scrambled_small_seed123",
+    "scrambled_small_seed456",
+    "scrambled_small_seed789",
+    "scrambled_small_seed1001",
+    "scrambled_medium_seed42",
+    "scrambled_medium_seed123",
+    "scrambled_medium_seed456",
+    "scrambled_medium_seed789",
+    "scrambled_medium_seed1001",
+    "bare_nolabel_tiny_seed42",
+    "bare_nolabel_tiny_seed123",
+    "bare_nolabel_tiny_seed456",
+    "bare_nolabel_tiny_seed789",
+    "bare_nolabel_tiny_seed1001",
+    "bare_nolabel_small_seed42",
+    "bare_nolabel_small_seed123",
+    "bare_nolabel_small_seed456",
+    "bare_nolabel_small_seed789",
+    "bare_nolabel_small_seed1001",
+    "bare_nolabel_medium_seed42",
+    "bare_nolabel_medium_seed123",
+    "bare_nolabel_medium_seed456",
+    "bare_nolabel_medium_seed789",
+    "bare_nolabel_medium_seed1001",
+    "paraphrased_nolabel_tiny_seed42",
+    "paraphrased_nolabel_tiny_seed123",
+    "paraphrased_nolabel_tiny_seed456",
+    "paraphrased_nolabel_tiny_seed789",
+    "paraphrased_nolabel_tiny_seed1001",
+    "paraphrased_nolabel_small_seed42",
+    "paraphrased_nolabel_small_seed123",
+    "paraphrased_nolabel_small_seed456",
+    "paraphrased_nolabel_small_seed789",
+    "paraphrased_nolabel_small_seed1001",
+    "paraphrased_nolabel_medium_seed42",
+    "paraphrased_nolabel_medium_seed123",
+    "paraphrased_nolabel_medium_seed456",
+    "paraphrased_nolabel_medium_seed789",
+    "paraphrased_nolabel_medium_seed1001",
+    "weak_label_tiny_seed42",
+    "weak_label_tiny_seed123",
+    "weak_label_tiny_seed456",
+    "weak_label_tiny_seed789",
+    "weak_label_tiny_seed1001",
+    "weak_label_small_seed42",
+    "weak_label_small_seed123",
+    "weak_label_small_seed456",
+    "weak_label_small_seed789",
+    "weak_label_small_seed1001",
+    "weak_label_medium_seed42",
+    "weak_label_medium_seed123",
+    "weak_label_medium_seed456",
+    "weak_label_medium_seed789",
+    "weak_label_medium_seed1001",
+    "feature_swap_tiny_seed42",
+    "feature_swap_tiny_seed123",
+    "feature_swap_tiny_seed456",
+    "feature_swap_tiny_seed789",
+    "feature_swap_tiny_seed1001",
+    "feature_swap_small_seed42",
+    "feature_swap_small_seed123",
+    "feature_swap_small_seed456",
+    "feature_swap_small_seed789",
+    "feature_swap_small_seed1001",
+    "feature_swap_medium_seed42",
+    "feature_swap_medium_seed123",
+    "feature_swap_medium_seed456",
+    "feature_swap_medium_seed789",
+    "feature_swap_medium_seed1001",
+    "noise_injection_tiny_seed42",
+    "noise_injection_tiny_seed123",
+    "noise_injection_tiny_seed456",
+    "noise_injection_tiny_seed789",
+    "noise_injection_tiny_seed1001",
+    "noise_injection_small_seed42",
+    "noise_injection_small_seed123",
+    "noise_injection_small_seed456",
+    "noise_injection_small_seed789",
+    "noise_injection_small_seed1001",
+    "noise_injection_medium_seed42",
+    "noise_injection_medium_seed123",
+    "noise_injection_medium_seed456",
+    "noise_injection_medium_seed789",
+    "noise_injection_medium_seed1001",
+    "frequency_matched_tiny_seed42",
+    "frequency_matched_tiny_seed123",
+    "frequency_matched_tiny_seed456",
+    "frequency_matched_tiny_seed789",
+    "frequency_matched_tiny_seed1001",
+    "frequency_matched_small_seed42",
+    "frequency_matched_small_seed123",
+    "frequency_matched_small_seed456",
+    "frequency_matched_small_seed789",
+    "frequency_matched_small_seed1001",
+    "frequency_matched_medium_seed42",
+    "frequency_matched_medium_seed123",
+    "frequency_matched_medium_seed456",
+    "frequency_matched_medium_seed789",
+    "frequency_matched_medium_seed1001",
+    "regular_tiny_seed123_frac25",
+    "regular_tiny_seed456_frac25",
+    "regular_tiny_seed789_frac25",
+    "regular_tiny_seed1001_frac25",
+    "regular_small_seed42_frac25",
+    "regular_small_seed123_frac25",
+    "regular_small_seed456_frac25",
+    "regular_small_seed789_frac25",
+    "regular_small_seed1001_frac25",
+    "regular_medium_seed42_frac25",
+    "regular_medium_seed123_frac25",
+    "regular_medium_seed456_frac25",
+    "regular_medium_seed789_frac25",
+    "regular_medium_seed1001_frac25",
+    "regular_tiny_seed123_frac50",
+    "regular_tiny_seed456_frac50",
+    "regular_tiny_seed789_frac50",
+    "regular_tiny_seed1001_frac50",
+    "regular_small_seed42_frac50",
+    "regular_small_seed123_frac50",
+    "regular_small_seed456_frac50",
+    "regular_small_seed789_frac50",
+    "regular_small_seed1001_frac50",
+    "regular_medium_seed42_frac50",
+    "regular_medium_seed123_frac50",
+    "regular_medium_seed456_frac50",
+    "regular_medium_seed789_frac50",
+    "regular_medium_seed1001_frac50"
+  ],
+  "failed": [
+    {
+      "id": "weak_label_small_seed42",
+      "phase": "train",
+      "time": "2026-03-03T02:56:00.421495"
+    },
+    {
+      "id": "weak_label_small_seed123",
+      "phase": "train",
+      "time": "2026-03-03T02:56:56.733494"
+    },
+    {
+      "id": "weak_label_small_seed456",
+      "phase": "train",
+      "time": "2026-03-03T02:57:52.763937"
+    },
+    {
+      "id": "weak_label_small_seed789",
+      "phase": "train",
+      "time": "2026-03-03T02:58:48.637253"
+    },
+    {
+      "id": "weak_label_small_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T02:59:44.903770"
+    },
+    {
+      "id": "weak_label_medium_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:00:56.146292"
+    },
+    {
+      "id": "weak_label_medium_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:02:07.396584"
+    },
+    {
+      "id": "weak_label_medium_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:03:18.839506"
+    },
+    {
+      "id": "weak_label_medium_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:04:29.675916"
+    },
+    {
+      "id": "weak_label_medium_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:05:40.514704"
+    },
+    {
+      "id": "feature_swap_tiny_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:06:07.386320"
+    },
+    {
+      "id": "feature_swap_tiny_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:06:34.323152"
+    },
+    {
+      "id": "feature_swap_tiny_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:07:01.381942"
+    },
+    {
+      "id": "feature_swap_tiny_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:07:28.075722"
+    },
+    {
+      "id": "feature_swap_tiny_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:07:54.760979"
+    },
+    {
+      "id": "feature_swap_small_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:08:51.935822"
+    },
+    {
+      "id": "feature_swap_small_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:09:49.776479"
+    },
+    {
+      "id": "feature_swap_small_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:10:46.667083"
+    },
+    {
+      "id": "feature_swap_small_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:11:43.730511"
+    },
+    {
+      "id": "feature_swap_small_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:12:41.172963"
+    },
+    {
+      "id": "feature_swap_medium_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:13:51.960849"
+    },
+    {
+      "id": "feature_swap_medium_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:15:02.361077"
+    },
+    {
+      "id": "feature_swap_medium_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:16:13.309424"
+    },
+    {
+      "id": "feature_swap_medium_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:17:24.177528"
+    },
+    {
+      "id": "feature_swap_medium_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:18:35.190555"
+    },
+    {
+      "id": "noise_injection_tiny_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:19:02.721254"
+    },
+    {
+      "id": "noise_injection_tiny_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:19:30.309813"
+    },
+    {
+      "id": "noise_injection_tiny_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:19:57.248309"
+    },
+    {
+      "id": "noise_injection_tiny_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:20:24.267125"
+    },
+    {
+      "id": "noise_injection_tiny_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:20:51.264055"
+    },
+    {
+      "id": "noise_injection_small_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:21:48.839394"
+    },
+    {
+      "id": "noise_injection_small_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:22:46.135523"
+    },
+    {
+      "id": "noise_injection_small_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:23:43.187823"
+    },
+    {
+      "id": "noise_injection_small_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:24:40.243029"
+    },
+    {
+      "id": "noise_injection_small_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:25:37.936991"
+    },
+    {
+      "id": "noise_injection_medium_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:26:48.974199"
+    },
+    {
+      "id": "noise_injection_medium_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:27:59.688942"
+    },
+    {
+      "id": "noise_injection_medium_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:29:10.389693"
+    },
+    {
+      "id": "noise_injection_medium_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:30:21.012115"
+    },
+    {
+      "id": "noise_injection_medium_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:31:31.717309"
+    },
+    {
+      "id": "frequency_matched_tiny_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:31:58.563236"
+    },
+    {
+      "id": "frequency_matched_tiny_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:32:25.324544"
+    },
+    {
+      "id": "frequency_matched_tiny_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:32:52.409306"
+    },
+    {
+      "id": "frequency_matched_tiny_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:33:19.263709"
+    },
+    {
+      "id": "frequency_matched_tiny_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:33:47.120051"
+    },
+    {
+      "id": "frequency_matched_small_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:34:44.692155"
+    },
+    {
+      "id": "frequency_matched_small_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:35:42.292536"
+    },
+    {
+      "id": "frequency_matched_small_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:36:39.545587"
+    },
+    {
+      "id": "frequency_matched_small_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:37:36.895766"
+    },
+    {
+      "id": "frequency_matched_small_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:38:34.785299"
+    },
+    {
+      "id": "frequency_matched_medium_seed42",
+      "phase": "train",
+      "time": "2026-03-03T03:39:45.634106"
+    },
+    {
+      "id": "frequency_matched_medium_seed123",
+      "phase": "train",
+      "time": "2026-03-03T03:40:56.170195"
+    },
+    {
+      "id": "frequency_matched_medium_seed456",
+      "phase": "train",
+      "time": "2026-03-03T03:42:06.859292"
+    },
+    {
+      "id": "frequency_matched_medium_seed789",
+      "phase": "train",
+      "time": "2026-03-03T03:43:17.526379"
+    },
+    {
+      "id": "frequency_matched_medium_seed1001",
+      "phase": "train",
+      "time": "2026-03-03T03:44:28.322166"
+    },
+    {
+      "id": "regular_tiny_seed123_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:44:55.149766"
+    },
+    {
+      "id": "regular_tiny_seed456_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:45:22.633485"
+    },
+    {
+      "id": "regular_tiny_seed789_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:45:49.512220"
+    },
+    {
+      "id": "regular_tiny_seed1001_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:46:16.305477"
+    },
+    {
+      "id": "regular_small_seed42_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:47:13.985742"
+    },
+    {
+      "id": "regular_small_seed123_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:48:34.912113"
+    },
+    {
+      "id": "regular_small_seed456_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:49:32.196419"
+    },
+    {
+      "id": "regular_small_seed789_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:50:29.455317"
+    },
+    {
+      "id": "regular_small_seed1001_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:51:26.464054"
+    },
+    {
+      "id": "regular_medium_seed42_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:52:36.917307"
+    },
+    {
+      "id": "regular_medium_seed123_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:53:48.034539"
+    },
+    {
+      "id": "regular_medium_seed456_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:54:58.488090"
+    },
+    {
+      "id": "regular_medium_seed789_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:56:09.422623"
+    },
+    {
+      "id": "regular_medium_seed1001_frac25",
+      "phase": "train",
+      "time": "2026-03-03T03:57:19.729533"
+    },
+    {
+      "id": "regular_tiny_seed123_frac50",
+      "phase": "train",
+      "time": "2026-03-03T03:57:46.475441"
+    },
+    {
+      "id": "regular_tiny_seed456_frac50",
+      "phase": "train",
+      "time": "2026-03-03T03:58:13.300471"
+    },
+    {
+      "id": "regular_tiny_seed789_frac50",
+      "phase": "train",
+      "time": "2026-03-03T03:58:40.265656"
+    },
+    {
+      "id": "regular_tiny_seed1001_frac50",
+      "phase": "train",
+      "time": "2026-03-03T03:59:07.276260"
+    },
+    {
+      "id": "regular_small_seed42_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:00:04.508500"
+    },
+    {
+      "id": "regular_small_seed123_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:01:01.584863"
+    },
+    {
+      "id": "regular_small_seed456_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:01:58.485884"
+    },
+    {
+      "id": "regular_small_seed789_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:02:58.474116"
+    },
+    {
+      "id": "regular_small_seed1001_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:03:55.661153"
+    },
+    {
+      "id": "regular_medium_seed42_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:05:06.183833"
+    },
+    {
+      "id": "regular_medium_seed123_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:06:17.669921"
+    },
+    {
+      "id": "regular_medium_seed456_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:07:28.301386"
+    },
+    {
+      "id": "regular_medium_seed789_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:08:39.329602"
+    },
+    {
+      "id": "regular_medium_seed1001_frac50",
+      "phase": "train",
+      "time": "2026-03-03T04:09:50.179046"
+    },
+    {
+      "id": "regular_medium_seed123_frac50",
+      "phase": "train",
+      "time": "2026-03-04T02:25:58.081411"
+    },
+    {
+      "id": "regular_medium_seed456_frac50",
+      "phase": "train",
+      "time": "2026-03-04T02:27:09.008495"
+    },
+    {
+      "id": "regular_medium_seed789_frac50",
+      "phase": "train",
+      "time": "2026-03-04T02:28:19.806457"
+    },
+    {
+      "id": "regular_medium_seed1001_frac50",
+      "phase": "train",
+      "time": "2026-03-04T02:29:30.624261"
+    },
+    {
+      "id": "regular_medium_seed123_frac50",
+      "phase": "train",
+      "time": "2026-03-04T07:38:16.193053"
+    },
+    {
+      "id": "regular_medium_seed456_frac50",
+      "phase": "train",
+      "time": "2026-03-04T07:40:36.281495"
+    },
+    {
+      "id": "regular_medium_seed789_frac50",
+      "phase": "train",
+      "time": "2026-03-04T07:41:48.360920"
+    },
+    {
+      "id": "regular_medium_seed1001_frac50",
+      "phase": "train",
+      "time": "2026-03-04T07:43:00.160043"
+    }
+  ]
+}

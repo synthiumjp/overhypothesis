@@ -4,3 +4,6 @@ __pycache__/
 
 
 *.pt
+
+# Model checkpoints (too large for git)
+*.pt

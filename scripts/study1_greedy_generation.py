@@ -1,28 +1,23 @@
 """
-study1_greedy_generation.py — Greedy Generation Probe (Pre-Registered Metric)
-==============================================================================
+study1_greedy_generation.py -- Exploratory: Few-shot Greedy Generation
+======================================================================
 
 Pre-registration spec (PROJECT_PLAN_v1.5, Section 3.2):
     "Exploratory: Few-shot generation (Medium model only). Greedy decode
-     from a one-shot context; check whether the top generated feature token
+     from one-shot context; check whether the top generated feature token
      matches the correct shape token."
 
-Scope: Medium models × Regular condition × 5 seeds × second-order items (200 items).
-Also runs on first-order items (80 items) for comparison.
-
-Output:
-    - Per-seed greedy accuracy (top-1 match) for SO and FO items
-    - Aggregate mean ± 95% CI
-    - Comparison to forced-choice log-prob accuracy on same items
-    - CSV: results/study1/greedy_generation_results.csv
-    - Text report: results/study1/greedy_generation_output.txt
+Scope: Medium models x Regular condition x 5 seeds x SO + FO items.
+For each wug test item, tokenize context up to the critical position,
+get model logits, check if argmax(logits) = correct shape token.
 
 Usage:
-    python study1_greedy_generation.py --models_dir C:\overhypothesis\models
-                                       --tokenizer_path C:\overhypothesis\data\tokenizers\regular_tokenizer.json
-                                       --wug_test_path C:\overhypothesis\data\wug_test_seed42.csv
-                                       --results_dir C:\overhypothesis\results\study1
-                                       --master_csv C:\overhypothesis\results\study1\master_item_level.csv
+    python study1_greedy_generation.py
+        --models_dir C:\\overhypothesis\\models\\checkpoints
+        --tokenizer_path C:\\overhypothesis\\data\\tokenizers\\regular_tokenizer.json
+        --wug_test_path C:\\overhypothesis\\data\\wug_tests\\wug_test_seed42.csv
+        --results_dir C:\\overhypothesis\\results\\study1
+        --master_csv C:\\overhypothesis\\results\\study1\\master_item_level.csv
 
 Author: JP Cacioli
 Date: 2026-03-04
@@ -30,24 +25,104 @@ Date: 2026-03-04
 
 import argparse
 import csv
-import json
+import math
 import os
-import sys
+from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
+import torch
+import torch.nn as nn
 
 try:
-    import torch
-    import torch_directml  # AMD GPU via DirectML
-    HAS_DIRECTML = True
+    import torch_directml
+    DML_AVAILABLE = torch_directml.is_available()
 except ImportError:
-    import torch
-    HAS_DIRECTML = False
+    DML_AVAILABLE = False
+
+from tokenizers import Tokenizer
 
 
 # ============================================================
-# Constants — authoritative token lists from corpus_generator.py
+# Model architecture (must match train_model.py exactly)
+# ============================================================
+
+class CausalSelfAttention(nn.Module):
+    def __init__(self, d_model, n_head, seq_len, dropout=0.1):
+        super().__init__()
+        assert d_model % n_head == 0
+        self.n_head = n_head
+        self.d_head = d_model // n_head
+        self.qkv = nn.Linear(d_model, 3 * d_model, bias=False)
+        self.proj = nn.Linear(d_model, d_model, bias=False)
+        self.dropout = nn.Dropout(dropout)
+        mask = torch.tril(torch.ones(seq_len, seq_len))
+        self.register_buffer("mask", mask.view(1, 1, seq_len, seq_len))
+
+    def forward(self, x):
+        B, T, C = x.shape
+        q, k, v = self.qkv(x).split(C, dim=2)
+        q = q.view(B, T, self.n_head, self.d_head).transpose(1, 2)
+        k = k.view(B, T, self.n_head, self.d_head).transpose(1, 2)
+        v = v.view(B, T, self.n_head, self.d_head).transpose(1, 2)
+        scale = 1.0 / math.sqrt(self.d_head)
+        att = (q @ k.transpose(-2, -1)) * scale
+        att = att.masked_fill(self.mask[:, :, :T, :T] == 0, float("-inf"))
+        att = torch.softmax(att, dim=-1)
+        att = self.dropout(att)
+        y = att @ v
+        y = y.transpose(1, 2).contiguous().view(B, T, C)
+        return self.proj(y)
+
+
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model, n_head, d_ff, seq_len, dropout=0.1):
+        super().__init__()
+        self.ln1 = nn.LayerNorm(d_model)
+        self.attn = CausalSelfAttention(d_model, n_head, seq_len, dropout)
+        self.ln2 = nn.LayerNorm(d_model)
+        self.ff = nn.Sequential(
+            nn.Linear(d_model, d_ff),
+            nn.GELU(),
+            nn.Linear(d_ff, d_model),
+            nn.Dropout(dropout),
+        )
+
+    def forward(self, x):
+        x = x + self.attn(self.ln1(x))
+        x = x + self.ff(self.ln2(x))
+        return x
+
+
+class OverhypothesisLM(nn.Module):
+    def __init__(self, vocab_size, d_model, n_head, n_layer, d_ff,
+                 seq_len=128, dropout=0.1):
+        super().__init__()
+        self.seq_len = seq_len
+        self.d_model = d_model
+        self.tok_embed = nn.Embedding(vocab_size, d_model)
+        self.pos_embed = nn.Embedding(seq_len, d_model)
+        self.drop = nn.Dropout(dropout)
+        self.blocks = nn.ModuleList([
+            TransformerBlock(d_model, n_head, d_ff, seq_len, dropout)
+            for _ in range(n_layer)
+        ])
+        self.ln_f = nn.LayerNorm(d_model)
+        self.lm_head = nn.Linear(d_model, vocab_size, bias=False)
+        self.lm_head.weight = self.tok_embed.weight
+
+    def forward(self, input_ids):
+        B, T = input_ids.shape
+        pos = torch.arange(T, device=input_ids.device).unsqueeze(0)
+        x = self.drop(self.tok_embed(input_ids) + self.pos_embed(pos))
+        for block in self.blocks:
+            x = block(x)
+        x = self.ln_f(x)
+        return self.lm_head(x)
+
+
+# ============================================================
+# Constants
 # ============================================================
 
 SHAPE_TOKENS = [
@@ -68,561 +143,409 @@ TEXTURE_TOKENS = [
 ALL_FEATURE_TOKENS = SHAPE_TOKENS + COLOUR_TOKENS + TEXTURE_TOKENS
 
 SEEDS = [42, 123, 456, 789, 1001]
-CONDITION = 'regular'
-MODEL_SIZE = 'medium'
-
-# Item types to evaluate
 TARGET_ITEM_TYPES = ['second_order', 'first_order']
 
-
-# ============================================================
-# Tokenizer loading (BPE, JSON format from tokenizers library)
-# ============================================================
-
-def load_tokenizer(tokenizer_path):
-    """Load BPE tokenizer. Supports both tokenizers library and manual JSON."""
-    try:
-        from tokenizers import Tokenizer
-        tokenizer = Tokenizer.from_file(str(tokenizer_path))
-        return tokenizer
-    except ImportError:
-        # Fallback: load JSON manually and build vocab lookup
-        with open(tokenizer_path, 'r') as f:
-            tok_data = json.load(f)
-        # Return the raw data; caller will handle encoding
-        return tok_data
-
-
-def encode_text(tokenizer, text):
-    """Encode text to token IDs."""
-    if hasattr(tokenizer, 'encode'):
-        # tokenizers library Tokenizer object
-        encoding = tokenizer.encode(text)
-        return encoding.ids
-    else:
-        raise RuntimeError("tokenizers library required. Install with: pip install tokenizers")
-
-
-def get_token_id(tokenizer, token_str):
-    """Get the token ID for a single token string."""
-    if hasattr(tokenizer, 'encode'):
-        encoding = tokenizer.encode(token_str)
-        ids = encoding.ids
-        if len(ids) == 1:
-            return ids[0]
-        else:
-            # Token may be split into sub-tokens by BPE; return None
-            return None
-    else:
-        raise RuntimeError("tokenizers library required.")
-
-
-def get_vocab_dict(tokenizer):
-    """Get token_str -> token_id mapping."""
-    if hasattr(tokenizer, 'get_vocab'):
-        return tokenizer.get_vocab()
-    else:
-        raise RuntimeError("tokenizers library required.")
+# Medium model config (from train_model.py)
+MEDIUM_CFG = dict(n_layer=8, n_head=8, d_model=512, d_ff=2048)
+MEDIUM_SEQ_LEN = 128
 
 
 # ============================================================
-# Model loading — matches train_model.py architecture
+# Load model
 # ============================================================
 
-class TransformerLM(torch.nn.Module):
-    """Autoregressive transformer decoder matching train_model.py."""
+def load_model(ckpt_path, device):
+    """Load a trained OverhypothesisLM from checkpoint."""
+    checkpoint = torch.load(str(ckpt_path), map_location='cpu', weights_only=False)
 
-    def __init__(self, vocab_size, d_model, nhead, num_layers, max_seq_len=512, dropout=0.1):
-        super().__init__()
-        self.d_model = d_model
-        self.embedding = torch.nn.Embedding(vocab_size, d_model)
-        self.pos_embedding = torch.nn.Embedding(max_seq_len, d_model)
-        encoder_layer = torch.nn.TransformerEncoderLayer(
-            d_model=d_model, nhead=nhead, dim_feedforward=4 * d_model,
-            dropout=dropout, activation='gelu', batch_first=True
-        )
-        self.transformer = torch.nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
-        self.ln_f = torch.nn.LayerNorm(d_model)
-        self.head = torch.nn.Linear(d_model, vocab_size, bias=False)
-        # Weight tying
-        self.head.weight = self.embedding.weight
+    vocab_size = checkpoint['vocab_size']
+    cfg = checkpoint['model_cfg']
 
-    def forward(self, x):
-        B, T = x.shape
-        pos = torch.arange(T, device=x.device).unsqueeze(0).expand(B, T)
-        h = self.embedding(x) + self.pos_embedding(pos)
-        # Causal mask
-        mask = torch.nn.Transformer.generate_square_subsequent_mask(T, device=x.device)
-        h = self.transformer(h, mask=mask, is_causal=True)
-        h = self.ln_f(h)
-        logits = self.head(h)
-        return logits
+    # Get seq_len from checkpoint args or default
+    train_cfg = checkpoint.get('train_cfg', {})
+    seq_len = train_cfg.get('seq_len', MEDIUM_SEQ_LEN)
 
-
-def load_model(checkpoint_path, device):
-    """Load a trained model from checkpoint."""
-    checkpoint = torch.load(str(checkpoint_path), map_location='cpu', weights_only=False)
-
-    # Extract model config from checkpoint
-    args = checkpoint.get('args', checkpoint.get('config', {}))
-    if isinstance(args, argparse.Namespace):
-        args = vars(args)
-
-    vocab_size = args.get('vocab_size', checkpoint['model_state_dict']['embedding.weight'].shape[0])
-    d_model = args.get('d_model', checkpoint['model_state_dict']['embedding.weight'].shape[1])
-    nhead = args.get('nhead', 8)
-    num_layers = args.get('num_layers', 8)
-
-    model = TransformerLM(
+    model = OverhypothesisLM(
         vocab_size=vocab_size,
-        d_model=d_model,
-        nhead=nhead,
-        num_layers=num_layers
+        d_model=cfg['d_model'],
+        n_head=cfg['n_head'],
+        n_layer=cfg['n_layer'],
+        d_ff=cfg['d_ff'],
+        seq_len=seq_len,
+        dropout=0.0,  # No dropout for inference
     )
-    model.load_state_dict(checkpoint['model_state_dict'])
-    model = model.to(device)
+
+    model.load_state_dict(checkpoint['model_state'])
+    model.to(device)
     model.eval()
     return model
 
 
 # ============================================================
-# Wug test item parsing
+# Load wug test items
 # ============================================================
 
-def load_wug_items(wug_test_path, item_types):
-    """Load wug test items filtered by item type.
-
-    Returns list of dicts with keys:
-        item_id, item_type, noun, target, foil, context (text before critical position)
-    """
+def load_wug_items(wug_test_path, target_types):
+    """Load wug test items from CSV."""
     items = []
     with open(wug_test_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if row['item_type'] in item_types:
-                items.append({
-                    'item_id': row['item_id'],
-                    'item_type': row['item_type'],
-                    'noun': row.get('noun', ''),
-                    'target': row['target'],
-                    'foil': row['foil'],
-                    'target_text': row.get('target_text', ''),
-                    'foil_text': row.get('foil_text', ''),
-                    'context': row.get('context', ''),
-                    'domain': row.get('domain', 'A'),
-                })
+            if row.get('item_type', '') in target_types:
+                items.append(row)
     return items
 
 
-def extract_context(item):
-    """Extract the context string up to the critical position.
+# ============================================================
+# Load forced-choice accuracy for comparison
+# ============================================================
 
-    Wug test items have a 'context' field that is the text preceding the
-    blank where the feature token should be generated. If not available,
-    reconstruct from target_text by stripping the final token.
-    """
-    if item.get('context'):
-        return item['context']
-    elif item.get('target_text'):
-        # target_text is the full sentence including the target token
-        # Strip the last whitespace-delimited token to get context
-        parts = item['target_text'].rsplit(maxsplit=1)
-        if len(parts) == 2:
-            return parts[0]
-        return item['target_text']
-    else:
-        return None
+def load_forced_choice_accuracy(master_csv_path, seeds):
+    """Load Medium/Regular FC accuracy per seed from master CSV."""
+    data = defaultdict(lambda: defaultdict(list))
+
+    with open(master_csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if (row.get('condition', '') == 'regular' and
+                    row.get('size', '') == 'medium'):
+                try:
+                    seed = int(row.get('seed', ''))
+                except (ValueError, TypeError):
+                    continue
+                if seed not in seeds:
+                    continue
+                item_type = row.get('item_type', '')
+                if item_type in TARGET_ITEM_TYPES:
+                    try:
+                        correct = int(row.get('correct_binary',
+                                              row.get('correct_01', 0)))
+                    except (ValueError, TypeError):
+                        continue
+                    data[seed][item_type].append(correct)
+
+    result = {}
+    for seed in data:
+        result[seed] = {}
+        for item_type in data[seed]:
+            result[seed][item_type] = np.mean(data[seed][item_type])
+    return result
 
 
 # ============================================================
-# Greedy decode evaluation
+# Greedy generation evaluation
 # ============================================================
 
-def evaluate_greedy(model, tokenizer, items, feature_token_ids, device):
-    """For each wug test item, greedy decode one token at critical position.
+def evaluate_greedy(model, tokenizer, items, device, shape_token_ids, feature_token_ids):
+    """For each item, get model's greedy prediction at the critical position.
 
-    Returns list of result dicts:
-        item_id, item_type, target, greedy_token, greedy_token_id, match, is_feature_token
+    Returns list of dicts with per-item results.
     """
     results = []
 
     for item in items:
-        context = extract_context(item)
-        if context is None:
-            print(f"  WARNING: No context for item {item['item_id']}, skipping")
+        # Get the context text (everything before the critical position)
+        # The wug test CSV should have a 'context' or 'target_text' field
+        context_text = item.get('context', '')
+        if not context_text:
+            # Extract context from frame field: "Another pell is a ___."
+            frame = item.get('frame', '')
+            if '___' in frame:
+                context_text = frame.split('___')[0].rstrip()
+            elif frame:
+                context_text = frame
+            else:
+                continue
+
+        if not context_text:
             continue
 
-        # Encode context
-        input_ids = encode_text(tokenizer, context)
+        # Tokenize context
+        encoding = tokenizer.encode(context_text)
+        input_ids = encoding.ids
+
         if len(input_ids) == 0:
-            print(f"  WARNING: Empty encoding for item {item['item_id']}, skipping")
             continue
 
-        # Truncate if needed (max_seq_len - 1 to leave room for generation)
-        input_ids = input_ids[-511:]
+        # Truncate if needed
+        max_len = model.seq_len
+        if len(input_ids) > max_len:
+            input_ids = input_ids[-max_len:]
 
+        # Get model logits at last position
         input_tensor = torch.tensor([input_ids], dtype=torch.long, device=device)
-
         with torch.no_grad():
             logits = model(input_tensor)
-            # Get logits at the last position (next-token prediction)
-            next_logits = logits[0, -1, :]  # (vocab_size,)
-            greedy_id = torch.argmax(next_logits).item()
 
-        # Decode greedy token
-        vocab = get_vocab_dict(tokenizer)
-        id_to_token = {v: k for k, v in vocab.items()}
-        greedy_token = id_to_token.get(greedy_id, f'<UNK:{greedy_id}>')
+        # Logits at the last position = prediction for next token
+        last_logits = logits[0, -1, :].cpu().numpy()
 
-        # Get target token ID
-        target_id = get_token_id(tokenizer, item['target'])
+        # Greedy prediction: argmax over full vocabulary
+        greedy_id = int(np.argmax(last_logits))
 
-        # Check match
-        match = (greedy_id == target_id) if target_id is not None else False
-        is_feature = greedy_id in feature_token_ids
+        # Check if greedy prediction matches correct shape
+        correct_shape = item.get('target', '')
+        correct_id = tokenizer.encode(correct_shape).ids
+        correct_shape_id = correct_id[0] if correct_id else -1
+
+        greedy_matches_target = (greedy_id == correct_shape_id)
+
+        # Check if greedy is ANY shape token
+        greedy_is_shape = (greedy_id in shape_token_ids)
+
+        # Check if greedy is ANY feature token
+        greedy_is_feature = (greedy_id in feature_token_ids)
+
+        # Get greedy token string
+        greedy_token = tokenizer.decode([greedy_id]).strip()
+
+        # Rank of correct token among all feature tokens
+        feature_logits = {tid: last_logits[tid] for tid in feature_token_ids}
+        sorted_features = sorted(feature_logits.items(), key=lambda x: -x[1])
+        rank = None
+        for r, (tid, _) in enumerate(sorted_features, 1):
+            if tid == correct_shape_id:
+                rank = r
+                break
 
         results.append({
-            'item_id': item['item_id'],
-            'item_type': item['item_type'],
-            'target': item['target'],
-            'target_id': target_id,
+            'item_id': item.get('item_id', ''),
+            'item_type': item.get('item_type', ''),
+            'noun': item.get('noun', ''),
+            'target': correct_shape,
+            'target_id': correct_shape_id,
             'greedy_token': greedy_token,
-            'greedy_token_id': greedy_id,
-            'match': match,
-            'is_feature_token': is_feature,
+            'greedy_id': greedy_id,
+            'greedy_matches_target': greedy_matches_target,
+            'greedy_is_shape': greedy_is_shape,
+            'greedy_is_feature': greedy_is_feature,
+            'rank_among_features': rank,
         })
 
     return results
 
 
 # ============================================================
-# Comparison with forced-choice accuracy from master CSV
+# Find checkpoint
 # ============================================================
 
-def load_forced_choice_accuracy(master_csv_path, condition, model_size, seeds, item_types):
-    """Load forced-choice binary accuracy from master_item_level.csv for comparison."""
-    fc_data = {}  # seed -> item_type -> list of correct_binary values
+def find_checkpoint(models_dir, seed):
+    """Find Medium/Regular model checkpoint for a given seed."""
+    run_name = f"regular_medium_seed{seed}"
+    run_dir = Path(models_dir) / run_name
 
-    with open(master_csv_path, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if (row['condition'] == condition and
-                row['model_size'] == model_size and
-                int(row['seed']) in seeds and
-                row['item_type'] in item_types):
+    if not run_dir.exists():
+        return None
 
-                seed = int(row['seed'])
-                itype = row['item_type']
+    # Try model_final.pt first, then highest-numbered checkpoint
+    for name in ['model_final.pt', 'checkpoint_final.pt', 'final_model.pt']:
+        path = run_dir / name
+        if path.exists():
+            return path
 
-                if seed not in fc_data:
-                    fc_data[seed] = {}
-                if itype not in fc_data[seed]:
-                    fc_data[seed][itype] = []
+    # Fall back to highest checkpoint
+    ckpts = sorted(run_dir.glob('ckpt_step*.pt'))
+    if ckpts:
+        return ckpts[-1]
 
-                fc_data[seed][itype].append(int(row['correct_binary']))
+    # Try any .pt file
+    pts = sorted(run_dir.glob('*.pt'))
+    if pts:
+        return pts[-1]
 
-    # Compute accuracy per seed per item type
-    fc_acc = {}
-    for seed in fc_data:
-        fc_acc[seed] = {}
-        for itype in fc_data[seed]:
-            vals = fc_data[seed][itype]
-            fc_acc[seed][itype] = np.mean(vals) * 100
-    return fc_acc
-
-
-# ============================================================
-# Reporting
-# ============================================================
-
-def compute_ci_95(values):
-    """Compute mean and 95% CI (t-distribution, n-1 df)."""
-    n = len(values)
-    mean = np.mean(values)
-    if n < 2:
-        return mean, mean, mean
-    from scipy import stats
-    se = np.std(values, ddof=1) / np.sqrt(n)
-    t_crit = stats.t.ppf(0.975, df=n - 1)
-    return mean, mean - t_crit * se, mean + t_crit * se
-
-
-def generate_report(all_results, fc_acc, output_path):
-    """Generate text report of greedy generation results."""
-    lines = []
-    lines.append("=" * 70)
-    lines.append("GREEDY GENERATION PROBE — Pre-Registered Metric")
-    lines.append("Condition: Regular | Size: Medium | Seeds: 42, 123, 456, 789, 1001")
-    lines.append("=" * 70)
-    lines.append("")
-
-    for item_type in TARGET_ITEM_TYPES:
-        lines.append(f"--- {item_type.upper()} ITEMS ---")
-        lines.append("")
-
-        seed_accs = []
-        seed_feature_rates = []
-
-        for seed in SEEDS:
-            if seed not in all_results:
-                lines.append(f"  Seed {seed}: MISSING")
-                continue
-
-            seed_results = [r for r in all_results[seed] if r['item_type'] == item_type]
-            if not seed_results:
-                lines.append(f"  Seed {seed}: No items found for {item_type}")
-                continue
-
-            n_total = len(seed_results)
-            n_match = sum(1 for r in seed_results if r['match'])
-            n_feature = sum(1 for r in seed_results if r['is_feature_token'])
-            acc = n_match / n_total * 100
-            feat_rate = n_feature / n_total * 100
-
-            seed_accs.append(acc)
-            seed_feature_rates.append(feat_rate)
-
-            # Get forced-choice accuracy for comparison
-            fc = fc_acc.get(seed, {}).get(item_type, float('nan'))
-
-            lines.append(f"  Seed {seed}: Greedy match = {n_match}/{n_total} ({acc:.1f}%) | "
-                         f"Feature token rate = {feat_rate:.1f}% | "
-                         f"Forced-choice acc = {fc:.1f}%")
-
-        lines.append("")
-
-        if seed_accs:
-            mean, ci_lo, ci_hi = compute_ci_95(seed_accs)
-            lines.append(f"  AGGREGATE: Greedy top-1 accuracy = {mean:.1f}% "
-                         f"[95% CI: {ci_lo:.1f}–{ci_hi:.1f}%]")
-
-            mean_feat, feat_lo, feat_hi = compute_ci_95(seed_feature_rates)
-            lines.append(f"             Feature token rate = {mean_feat:.1f}% "
-                         f"[95% CI: {feat_lo:.1f}–{feat_hi:.1f}%]")
-
-            # Forced-choice comparison
-            fc_vals = [fc_acc.get(s, {}).get(item_type, float('nan')) for s in SEEDS]
-            fc_vals = [v for v in fc_vals if not np.isnan(v)]
-            if fc_vals:
-                fc_mean, fc_lo, fc_hi = compute_ci_95(fc_vals)
-                lines.append(f"             Forced-choice acc  = {fc_mean:.1f}% "
-                             f"[95% CI: {fc_lo:.1f}–{fc_hi:.1f}%]")
-
-            # Chance baseline
-            lines.append(f"             Chance (1/10 shape tokens) = 10.0%")
-            lines.append(f"             Chance (1/30 all features) = 3.3%")
-        lines.append("")
-
-    # Interpretation
-    lines.append("=" * 70)
-    lines.append("INTERPRETATION")
-    lines.append("=" * 70)
-    lines.append("")
-    lines.append("Greedy generation is a higher bar than forced-choice log-prob scoring:")
-    lines.append("the model must not only assign higher probability to the correct token")
-    lines.append("than a specific foil, but must rank it as the single most probable next")
-    lines.append("token in the entire vocabulary.")
-    lines.append("")
-    lines.append("If SO greedy accuracy ≈ chance (10% for shape, 3.3% for any feature),")
-    lines.append("this confirms the null H1 result: models do not productively generate")
-    lines.append("correct shape tokens for novel categories.")
-    lines.append("")
-    lines.append("If FO greedy accuracy >> SO greedy accuracy, this confirms the FO/SO")
-    lines.append("dissociation observed in forced-choice scoring.")
-
-    report_text = "\n".join(lines)
-
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(report_text)
-
-    print(report_text)
-    return report_text
-
-
-def save_results_csv(all_results, csv_path):
-    """Save item-level greedy generation results to CSV."""
-    rows = []
-    for seed in SEEDS:
-        if seed not in all_results:
-            continue
-        for r in all_results[seed]:
-            rows.append({
-                'condition': CONDITION,
-                'model_size': MODEL_SIZE,
-                'seed': seed,
-                'item_id': r['item_id'],
-                'item_type': r['item_type'],
-                'target': r['target'],
-                'target_id': r['target_id'],
-                'greedy_token': r['greedy_token'],
-                'greedy_token_id': r['greedy_token_id'],
-                'match': int(r['match']),
-                'is_feature_token': int(r['is_feature_token']),
-            })
-
-    if rows:
-        fieldnames = list(rows[0].keys())
-        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(rows)
-        print(f"\nResults CSV saved: {csv_path} ({len(rows)} rows)")
+    return None
 
 
 # ============================================================
 # Main
 # ============================================================
 
-def find_checkpoint(models_dir, condition, size, seed):
-    """Find the final checkpoint for a given condition/size/seed.
-
-    Expected directory structure:
-        models_dir/{condition}_{size}_seed{seed}/final_model.pt
-    or:
-        models_dir/{condition}_{size}_seed{seed}/checkpoint_final.pt
-    """
-    base_patterns = [
-        f"{condition}_{size}_seed{seed}",
-        f"{condition}_{size}_seed{seed}_frac100",
-    ]
-
-    for pattern in base_patterns:
-        model_dir = Path(models_dir) / pattern
-        if model_dir.exists():
-            # Try common checkpoint names
-            for ckpt_name in ['final_model.pt', 'checkpoint_final.pt', 'model_final.pt',
-                              'best_model.pt', 'checkpoint.pt']:
-                ckpt_path = model_dir / ckpt_name
-                if ckpt_path.exists():
-                    return ckpt_path
-            # Try any .pt file
-            pt_files = list(model_dir.glob('*.pt'))
-            if pt_files:
-                # Pick the one with highest step number or 'final'
-                for f in pt_files:
-                    if 'final' in f.stem.lower():
-                        return f
-                # Otherwise pick the last one (likely highest step)
-                return sorted(pt_files)[-1]
-
-    return None
-
-
 def main():
-    parser = argparse.ArgumentParser(description='Greedy Generation Probe (Pre-Registered)')
-    parser.add_argument('--models_dir', type=str, required=True,
-                        help='Directory containing trained models')
-    parser.add_argument('--tokenizer_path', type=str, required=True,
-                        help='Path to Regular condition tokenizer JSON')
-    parser.add_argument('--wug_test_path', type=str, required=True,
-                        help='Path to wug_test_seed42.csv')
-    parser.add_argument('--results_dir', type=str, required=True,
-                        help='Output directory for results')
-    parser.add_argument('--master_csv', type=str, default=None,
-                        help='Path to master_item_level.csv for forced-choice comparison')
-    parser.add_argument('--device', type=str, default=None,
-                        help='Device (auto-detected if not specified)')
+    parser = argparse.ArgumentParser(
+        description='Greedy Generation Evaluation (Pre-Registered Exploratory)')
+    parser.add_argument('--models_dir', type=str, required=True)
+    parser.add_argument('--tokenizer_path', type=str, required=True)
+    parser.add_argument('--wug_test_path', type=str, required=True)
+    parser.add_argument('--results_dir', type=str, required=True)
+    parser.add_argument('--master_csv', type=str, required=True)
     args = parser.parse_args()
 
-    # Device setup
-    if args.device:
-        device = torch.device(args.device)
-    elif HAS_DIRECTML:
+    os.makedirs(args.results_dir, exist_ok=True)
+
+    # Device
+    if DML_AVAILABLE:
         device = torch_directml.device()
-        print(f"Using DirectML device")
+        print("Using DirectML device")
     elif torch.cuda.is_available():
         device = torch.device('cuda')
+        print("Using CUDA device")
     else:
         device = torch.device('cpu')
+        print("Using CPU device")
     print(f"Device: {device}")
 
     # Load tokenizer
-    print(f"\nLoading tokenizer: {args.tokenizer_path}")
-    tokenizer = load_tokenizer(args.tokenizer_path)
+    print(f"Loading tokenizer: {args.tokenizer_path}")
+    tokenizer = Tokenizer.from_file(args.tokenizer_path)
 
-    # Build feature token ID sets
-    vocab = get_vocab_dict(tokenizer)
-    feature_token_ids = set()
-    for token in ALL_FEATURE_TOKENS:
-        tid = vocab.get(token)
-        if tid is not None:
-            feature_token_ids.add(tid)
-        else:
-            print(f"  WARNING: Feature token '{token}' not in vocabulary")
-
+    # Get feature token IDs
     shape_token_ids = set()
+    feature_token_ids = set()
     for token in SHAPE_TOKENS:
-        tid = vocab.get(token)
-        if tid is not None:
-            shape_token_ids.add(tid)
+        ids = tokenizer.encode(token).ids
+        if ids:
+            shape_token_ids.add(ids[0])
+            feature_token_ids.add(ids[0])
+    for token in COLOUR_TOKENS + TEXTURE_TOKENS:
+        ids = tokenizer.encode(token).ids
+        if ids:
+            feature_token_ids.add(ids[0])
 
     print(f"  Feature tokens in vocab: {len(feature_token_ids)}/30")
     print(f"  Shape tokens in vocab: {len(shape_token_ids)}/10")
 
     # Load wug test items
-    print(f"\nLoading wug test items: {args.wug_test_path}")
+    print(f"Loading wug test items: {args.wug_test_path}")
     items = load_wug_items(args.wug_test_path, TARGET_ITEM_TYPES)
-    print(f"  Loaded {len(items)} items across types: {TARGET_ITEM_TYPES}")
-    for itype in TARGET_ITEM_TYPES:
-        n = sum(1 for i in items if i['item_type'] == itype)
-        print(f"    {itype}: {n} items")
+    type_counts = defaultdict(int)
+    for item in items:
+        type_counts[item['item_type']] += 1
+    print(f"  Loaded {len(items)} items across types: {sorted(type_counts.keys())}")
+    for t, c in sorted(type_counts.items()):
+        print(f"    {t}: {c} items")
 
     # Load forced-choice accuracy for comparison
-    fc_acc = {}
-    if args.master_csv and os.path.exists(args.master_csv):
-        print(f"\nLoading forced-choice accuracy from: {args.master_csv}")
-        fc_acc = load_forced_choice_accuracy(
-            args.master_csv, CONDITION, MODEL_SIZE, SEEDS, TARGET_ITEM_TYPES
-        )
-        for seed in sorted(fc_acc.keys()):
-            for itype in fc_acc[seed]:
-                print(f"  Seed {seed} / {itype}: FC acc = {fc_acc[seed][itype]:.1f}%")
+    print(f"Loading forced-choice accuracy from: {args.master_csv}")
+    fc_acc = load_forced_choice_accuracy(args.master_csv, SEEDS)
+    for seed in sorted(fc_acc.keys()):
+        for item_type in sorted(fc_acc[seed].keys()):
+            print(f"  Seed {seed} / {item_type}: FC acc = {fc_acc[seed][item_type]*100:.1f}%")
 
-    # Evaluate each seed
-    all_results = {}
+    # Run greedy evaluation per seed
+    lines = []
+    lines.append("=" * 70)
+    lines.append("GREEDY GENERATION -- Exploratory Pre-Registered Metric")
+    lines.append("Medium model, Regular condition, 5 seeds")
+    lines.append("=" * 70)
+    lines.append("")
+
+    all_csv_rows = []
 
     for seed in SEEDS:
-        print(f"\n{'='*50}")
-        print(f"SEED {seed}")
-        print(f"{'='*50}")
+        lines.append(f"{'=' * 50}")
+        lines.append(f"SEED {seed}")
+        lines.append(f"{'=' * 50}")
 
-        # Find checkpoint
-        ckpt_path = find_checkpoint(args.models_dir, CONDITION, MODEL_SIZE, seed)
+        ckpt_path = find_checkpoint(args.models_dir, seed)
         if ckpt_path is None:
-            print(f"  ERROR: No checkpoint found for {CONDITION}_{MODEL_SIZE}_seed{seed}")
+            lines.append(f"  WARNING: No checkpoint found for seed {seed}")
+            lines.append("")
             continue
 
+        print(f"\n{'=' * 50}")
+        print(f"SEED {seed}")
+        print(f"{'=' * 50}")
         print(f"  Loading model: {ckpt_path}")
+        lines.append(f"  Checkpoint: {ckpt_path}")
+
         model = load_model(ckpt_path, device)
 
-        print(f"  Running greedy decode on {len(items)} items...")
-        results = evaluate_greedy(model, tokenizer, items, feature_token_ids, device)
-        all_results[seed] = results
+        # Run greedy evaluation
+        results = evaluate_greedy(
+            model, tokenizer, items, device,
+            shape_token_ids, feature_token_ids)
 
-        # Quick summary
-        for itype in TARGET_ITEM_TYPES:
-            type_results = [r for r in results if r['item_type'] == itype]
-            if type_results:
-                n_match = sum(1 for r in type_results if r['match'])
-                acc = n_match / len(type_results) * 100
-                print(f"  {itype}: {n_match}/{len(type_results)} = {acc:.1f}%")
+        # Separate by item type
+        for item_type in TARGET_ITEM_TYPES:
+            type_results = [r for r in results if r['item_type'] == item_type]
+            if not type_results:
+                continue
 
-        # Free GPU memory
+            n = len(type_results)
+            n_match = sum(1 for r in type_results if r['greedy_matches_target'])
+            n_shape = sum(1 for r in type_results if r['greedy_is_shape'])
+            n_feature = sum(1 for r in type_results if r['greedy_is_feature'])
+            ranks = [r['rank_among_features'] for r in type_results if r['rank_among_features'] is not None]
+            mean_rank = np.mean(ranks) if ranks else float('nan')
+            pct_rank1 = sum(1 for r in ranks if r == 1) / len(ranks) * 100 if ranks else 0
+
+            # FC comparison
+            fc = fc_acc.get(seed, {}).get(item_type, float('nan'))
+
+            lines.append(f"  {item_type} ({n} items):")
+            lines.append(f"    Greedy top-1 match: {n_match}/{n} = {n_match/n*100:.1f}%")
+            lines.append(f"    Greedy is shape: {n_shape}/{n} = {n_shape/n*100:.1f}%")
+            lines.append(f"    Greedy is feature: {n_feature}/{n} = {n_feature/n*100:.1f}%")
+            lines.append(f"    Mean rank of target among 30 features: {mean_rank:.1f}")
+            lines.append(f"    Target ranked 1st: {pct_rank1:.1f}%")
+            lines.append(f"    FC accuracy (comparison): {fc*100:.1f}%")
+
+            for r in type_results:
+                r['seed'] = seed
+                all_csv_rows.append(r)
+
+        # Free model memory
         del model
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-    # Generate outputs
-    os.makedirs(args.results_dir, exist_ok=True)
+        lines.append("")
 
+    # Aggregate summary
+    lines.append("=" * 70)
+    lines.append("AGGREGATE SUMMARY (across 5 seeds)")
+    lines.append("=" * 70)
+
+    for item_type in TARGET_ITEM_TYPES:
+        type_results = [r for r in all_csv_rows if r['item_type'] == item_type]
+        if not type_results:
+            continue
+
+        # Per-seed accuracies
+        seed_accs = {}
+        for seed in SEEDS:
+            seed_results = [r for r in type_results if r['seed'] == seed]
+            if seed_results:
+                seed_accs[seed] = np.mean([r['greedy_matches_target'] for r in seed_results])
+
+        if seed_accs:
+            vals = list(seed_accs.values())
+            mean = np.mean(vals)
+            se = np.std(vals, ddof=1) / np.sqrt(len(vals)) if len(vals) > 1 else 0
+            ci95 = 1.96 * se
+
+            lines.append(f"\n  {item_type}:")
+            lines.append(f"    Mean greedy top-1 accuracy: {mean*100:.1f}% +/- {ci95*100:.1f}%")
+            lines.append(f"    Per-seed: {', '.join(f's{s}={a*100:.1f}%' for s, a in sorted(seed_accs.items()))}")
+            lines.append(f"    Chance (any shape): 10.0% (1/10 shape tokens)")
+            lines.append(f"    Chance (any feature): 3.3% (1/30 feature tokens)")
+
+    lines.append("")
+    lines.append("INTERPRETATION:")
+    lines.append("  Greedy generation is a higher bar than forced-choice:")
+    lines.append("  the model must rank the correct token as the single most")
+    lines.append("  probable in the ENTIRE vocabulary (not just above one foil).")
+    lines.append("  FO greedy may show signal (especially seed 42 outlier).")
+    lines.append("  SO greedy at chance (~10%) confirms null H1.")
+    lines.append("")
+
+    # Save
+    report_text = "\n".join(lines)
     report_path = os.path.join(args.results_dir, 'greedy_generation_output.txt')
-    generate_report(all_results, fc_acc, report_path)
+    with open(report_path, 'w', encoding='utf-8') as f:
+        f.write(report_text)
+    print("\n" + report_text)
 
-    csv_path = os.path.join(args.results_dir, 'greedy_generation_results.csv')
-    save_results_csv(all_results, csv_path)
+    if all_csv_rows:
+        csv_path = os.path.join(args.results_dir, 'greedy_generation_results.csv')
+        fieldnames = list(all_csv_rows[0].keys())
+        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(all_csv_rows)
+        print(f"\nCSV saved: {csv_path} ({len(all_csv_rows)} rows)")
 
-    print(f"\nDone. Report: {report_path}")
-    print(f"         CSV: {csv_path}")
+    print(f"Report saved: {report_path}")
 
 
 if __name__ == '__main__':

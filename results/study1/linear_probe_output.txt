@@ -1,0 +1,163 @@
+======================================================================
+P2: LINEAR PROBE -- Pre-Registered Exploratory Metric
+Probe: logistic regression on residual stream at critical position
+Task: predict correct shape token (10-class) from hidden state
+Medium models, Regular + Scrambled, 5 seeds, layer-wise
+Pre-registered threshold: > 33% (3-class) => > 10% (10-class)
+======================================================================
+
+==================================================
+CONDITION: regular
+==================================================
+
+  Seed 42 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=79.9% +/-9.0% (chance=10.0%, 10 classes)
+    L2: acc=90.0% +/-9.2% (chance=10.0%, 10 classes)
+    L3: acc=93.7% +/-4.6% (chance=10.0%, 10 classes)
+    L4: acc=97.5% +/-1.8% (chance=10.0%, 10 classes)
+    L5: acc=98.7% +/-1.8% (chance=10.0%, 10 classes)
+    L6: acc=98.7% +/-1.8% (chance=10.0%, 10 classes)
+    L7: acc=98.7% +/-1.8% (chance=10.0%, 10 classes)
+    L8: acc=96.2% +/-3.0% (chance=10.0%, 10 classes)
+
+  Seed 123 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=86.2% +/-10.6% (chance=10.0%, 10 classes)
+    L2: acc=90.0% +/-7.6% (chance=10.0%, 10 classes)
+    L3: acc=91.3% +/-7.6% (chance=10.0%, 10 classes)
+    L4: acc=95.1% +/-7.0% (chance=10.0%, 10 classes)
+    L5: acc=97.5% +/-3.5% (chance=10.0%, 10 classes)
+    L6: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L7: acc=98.8% +/-1.7% (chance=10.0%, 10 classes)
+    L8: acc=98.8% +/-1.7% (chance=10.0%, 10 classes)
+
+  Seed 456 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=81.1% +/-10.7% (chance=10.0%, 10 classes)
+    L2: acc=91.2% +/-3.6% (chance=10.0%, 10 classes)
+    L3: acc=93.8% +/-3.5% (chance=10.0%, 10 classes)
+    L4: acc=98.8% +/-1.7% (chance=10.0%, 10 classes)
+    L5: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L6: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L7: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L8: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+
+  Seed 789 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=81.2% +/-8.1% (chance=10.0%, 10 classes)
+    L2: acc=91.2% +/-6.4% (chance=10.0%, 10 classes)
+    L3: acc=95.0% +/-4.6% (chance=10.0%, 10 classes)
+    L4: acc=96.2% +/-3.0% (chance=10.0%, 10 classes)
+    L5: acc=96.2% +/-3.0% (chance=10.0%, 10 classes)
+    L6: acc=97.5% +/-3.5% (chance=10.0%, 10 classes)
+    L7: acc=96.3% +/-3.0% (chance=10.0%, 10 classes)
+    L8: acc=96.3% +/-3.0% (chance=10.0%, 10 classes)
+
+  Seed 1001 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=83.7% +/-11.6% (chance=10.0%, 10 classes)
+    L2: acc=84.9% +/-8.3% (chance=10.0%, 10 classes)
+    L3: acc=93.7% +/-4.8% (chance=10.0%, 10 classes)
+    L4: acc=95.0% +/-3.6% (chance=10.0%, 10 classes)
+    L5: acc=98.8% +/-1.7% (chance=10.0%, 10 classes)
+    L6: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L7: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+    L8: acc=100.0% +/-0.0% (chance=10.0%, 10 classes)
+
+==================================================
+CONDITION: scrambled
+==================================================
+
+  Seed 42 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=81.2% +/-8.1% (chance=10.0%, 10 classes)
+    L2: acc=86.2% +/-7.6% (chance=10.0%, 10 classes)
+    L3: acc=83.7% +/-6.4% (chance=10.0%, 10 classes)
+    L4: acc=84.9% +/-5.4% (chance=10.0%, 10 classes)
+    L5: acc=84.9% +/-5.4% (chance=10.0%, 10 classes)
+    L6: acc=86.2% +/-4.7% (chance=10.0%, 10 classes)
+    L7: acc=86.2% +/-4.7% (chance=10.0%, 10 classes)
+    L8: acc=86.2% +/-4.7% (chance=10.0%, 10 classes)
+
+  Seed 123 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=82.4% +/-12.5% (chance=10.0%, 10 classes)
+    L2: acc=86.2% +/-9.8% (chance=10.0%, 10 classes)
+    L3: acc=88.7% +/-8.1% (chance=10.0%, 10 classes)
+    L4: acc=88.7% +/-8.1% (chance=10.0%, 10 classes)
+    L5: acc=87.4% +/-8.9% (chance=10.0%, 10 classes)
+    L6: acc=88.7% +/-8.1% (chance=10.0%, 10 classes)
+    L7: acc=87.4% +/-8.9% (chance=10.0%, 10 classes)
+    L8: acc=87.5% +/-6.4% (chance=10.0%, 10 classes)
+
+  Seed 456 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=84.9% +/-9.5% (chance=10.0%, 10 classes)
+    L2: acc=86.1% +/-9.7% (chance=10.0%, 10 classes)
+    L3: acc=86.1% +/-9.7% (chance=10.0%, 10 classes)
+    L4: acc=87.4% +/-8.0% (chance=10.0%, 10 classes)
+    L5: acc=87.4% +/-8.0% (chance=10.0%, 10 classes)
+    L6: acc=88.6% +/-9.4% (chance=10.0%, 10 classes)
+    L7: acc=87.4% +/-8.0% (chance=10.0%, 10 classes)
+    L8: acc=88.6% +/-9.4% (chance=10.0%, 10 classes)
+
+  Seed 789 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=83.7% +/-9.3% (chance=10.0%, 10 classes)
+    L2: acc=84.9% +/-8.1% (chance=10.0%, 10 classes)
+    L3: acc=84.9% +/-8.1% (chance=10.0%, 10 classes)
+    L4: acc=84.9% +/-8.1% (chance=10.0%, 10 classes)
+    L5: acc=87.4% +/-6.5% (chance=10.0%, 10 classes)
+    L6: acc=86.1% +/-7.9% (chance=10.0%, 10 classes)
+    L7: acc=88.7% +/-6.3% (chance=10.0%, 10 classes)
+    L8: acc=87.4% +/-8.0% (chance=10.0%, 10 classes)
+
+  Seed 1001 (80 items, 10 classes):
+    embed: acc=18.8% +/-5.5% (chance=10.0%, 10 classes)
+    L1: acc=82.4% +/-9.9% (chance=10.0%, 10 classes)
+    L2: acc=82.4% +/-9.9% (chance=10.0%, 10 classes)
+    L3: acc=83.7% +/-8.9% (chance=10.0%, 10 classes)
+    L4: acc=87.5% +/-7.6% (chance=10.0%, 10 classes)
+    L5: acc=87.5% +/-7.6% (chance=10.0%, 10 classes)
+    L6: acc=85.0% +/-6.1% (chance=10.0%, 10 classes)
+    L7: acc=83.8% +/-7.6% (chance=10.0%, 10 classes)
+    L8: acc=83.8% +/-7.6% (chance=10.0%, 10 classes)
+
+======================================================================
+AGGREGATE: Best-layer probe accuracy per condition
+======================================================================
+
+  regular:
+    embed: 18.8% +/-0.0%
+    L1: 82.4% +/-1.1%
+    L2: 89.5% +/-1.2%
+    L3: 93.5% +/-0.6%
+    L4: 96.5% +/-0.7%
+    L5: 98.3% +/-0.6%
+    L6: 99.2% +/-0.5%
+    L7: 98.8% +/-0.7%
+    L8: 98.3% +/-0.8%
+    Best layer: L6 (99.2%)
+    ABOVE CHANCE (>15%)
+
+  scrambled:
+    embed: 18.8% +/-0.0%
+    L1: 82.9% +/-0.6%
+    L2: 85.2% +/-0.7%
+    L3: 85.4% +/-0.9%
+    L4: 86.7% +/-0.7%
+    L5: 86.9% +/-0.5%
+    L6: 86.9% +/-0.7%
+    L7: 86.7% +/-0.8%
+    L8: 86.7% +/-0.8%
+    Best layer: L5 (86.9%)
+    ABOVE CHANCE (>15%)
+
+INTERPRETATION:
+  If Regular probe at chance: no linearly decodable overhypothesis
+  representation, consistent with null H1.
+  If Regular > chance but Scrambled at chance: hidden encoding exists
+  but doesn't surface behaviourally -- interesting dissociation.
+  If both at chance: validates that the null is genuine, not just a
+  behavioural measurement issue.

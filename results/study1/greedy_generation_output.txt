@@ -1,0 +1,122 @@
+======================================================================
+GREEDY GENERATION -- Exploratory Pre-Registered Metric
+Medium model, Regular condition, 5 seeds
+======================================================================
+
+==================================================
+SEED 42
+==================================================
+  Checkpoint: C:\overhypothesis\models\checkpoints\regular_medium_seed42\model_final.pt
+  second_order (200 items):
+    Greedy top-1 match: 0/200 = 0.0%
+    Greedy is shape: 0/200 = 0.0%
+    Greedy is feature: 0/200 = 0.0%
+    Mean rank of target among 30 features: 5.5
+    Target ranked 1st: 9.0%
+    FC accuracy (comparison): 51.7%
+  first_order (80 items):
+    Greedy top-1 match: 53/80 = 66.2%
+    Greedy is shape: 53/80 = 66.2%
+    Greedy is feature: 53/80 = 66.2%
+    Mean rank of target among 30 features: 1.0
+    Target ranked 1st: 100.0%
+    FC accuracy (comparison): 100.0%
+
+==================================================
+SEED 123
+==================================================
+  Checkpoint: C:\overhypothesis\models\checkpoints\regular_medium_seed123\model_final.pt
+  second_order (200 items):
+    Greedy top-1 match: 8/200 = 4.0%
+    Greedy is shape: 52/200 = 26.0%
+    Greedy is feature: 52/200 = 26.0%
+    Mean rank of target among 30 features: 4.8
+    Target ranked 1st: 13.0%
+    FC accuracy (comparison): 58.3%
+  first_order (80 items):
+    Greedy top-1 match: 0/80 = 0.0%
+    Greedy is shape: 55/80 = 68.8%
+    Greedy is feature: 55/80 = 68.8%
+    Mean rank of target among 30 features: 5.0
+    Target ranked 1st: 0.0%
+    FC accuracy (comparison): 58.3%
+
+==================================================
+SEED 456
+==================================================
+  Checkpoint: C:\overhypothesis\models\checkpoints\regular_medium_seed456\model_final.pt
+  second_order (200 items):
+    Greedy top-1 match: 0/200 = 0.0%
+    Greedy is shape: 0/200 = 0.0%
+    Greedy is feature: 0/200 = 0.0%
+    Mean rank of target among 30 features: 5.2
+    Target ranked 1st: 14.5%
+    FC accuracy (comparison): 54.5%
+  first_order (80 items):
+    Greedy top-1 match: 0/80 = 0.0%
+    Greedy is shape: 57/80 = 71.2%
+    Greedy is feature: 57/80 = 71.2%
+    Mean rank of target among 30 features: 5.9
+    Target ranked 1st: 0.0%
+    FC accuracy (comparison): 47.9%
+
+==================================================
+SEED 789
+==================================================
+  Checkpoint: C:\overhypothesis\models\checkpoints\regular_medium_seed789\model_final.pt
+  second_order (200 items):
+    Greedy top-1 match: 0/200 = 0.0%
+    Greedy is shape: 0/200 = 0.0%
+    Greedy is feature: 0/200 = 0.0%
+    Mean rank of target among 30 features: 5.4
+    Target ranked 1st: 15.0%
+    FC accuracy (comparison): 48.3%
+  first_order (80 items):
+    Greedy top-1 match: 3/80 = 3.8%
+    Greedy is shape: 47/80 = 58.8%
+    Greedy is feature: 47/80 = 58.8%
+    Mean rank of target among 30 features: 5.0
+    Target ranked 1st: 5.0%
+    FC accuracy (comparison): 52.5%
+
+==================================================
+SEED 1001
+==================================================
+  Checkpoint: C:\overhypothesis\models\checkpoints\regular_medium_seed1001\model_final.pt
+  second_order (200 items):
+    Greedy top-1 match: 0/200 = 0.0%
+    Greedy is shape: 0/200 = 0.0%
+    Greedy is feature: 0/200 = 0.0%
+    Mean rank of target among 30 features: 6.3
+    Target ranked 1st: 13.0%
+    FC accuracy (comparison): 46.0%
+  first_order (80 items):
+    Greedy top-1 match: 0/80 = 0.0%
+    Greedy is shape: 53/80 = 66.2%
+    Greedy is feature: 53/80 = 66.2%
+    Mean rank of target among 30 features: 5.5
+    Target ranked 1st: 2.5%
+    FC accuracy (comparison): 50.4%
+
+======================================================================
+AGGREGATE SUMMARY (across 5 seeds)
+======================================================================
+
+  second_order:
+    Mean greedy top-1 accuracy: 0.8% +/- 1.6%
+    Per-seed: s42=0.0%, s123=4.0%, s456=0.0%, s789=0.0%, s1001=0.0%
+    Chance (any shape): 10.0% (1/10 shape tokens)
+    Chance (any feature): 3.3% (1/30 feature tokens)
+
+  first_order:
+    Mean greedy top-1 accuracy: 14.0% +/- 25.6%
+    Per-seed: s42=66.2%, s123=0.0%, s456=0.0%, s789=3.8%, s1001=0.0%
+    Chance (any shape): 10.0% (1/10 shape tokens)
+    Chance (any feature): 3.3% (1/30 feature tokens)
+
+INTERPRETATION:
+  Greedy generation is a higher bar than forced-choice:
+  the model must rank the correct token as the single most
+  probable in the ENTIRE vocabulary (not just above one foil).
+  FO greedy may show signal (especially seed 42 outlier).
+  SO greedy at chance (~10%) confirms null H1.

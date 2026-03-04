@@ -1,0 +1,129 @@
+======================================================================
+NOVEL NOUN EMBEDDING COSINE SIMILARITY ANALYSIS
+Generated: 2026-03-05 10:00:52
+Condition: regular, Size: medium
+Seeds: [42, 123, 456, 789, 1001] (5 ok)
+Trained nouns: 30, Novel nouns: 8
+FO items: 80, SO items: 200
+NOTE: Exploratory (not pre-registered).
+======================================================================
+
+--- embed ---
+  Within-trained:   M=0.9409 (SD=0.0033)
+  Cross (T<->N):    M=0.9692 (SD=0.0017)
+  Within-novel:     M=0.9966 (SD=0.0002)
+  Nearest-trained:  M=0.9968 (SD=0.0002)
+  FO norm: 1.0 (SD=0.0), SO norm: 1.0 (SD=0.0)
+  WT vs CR: t(4)=-40.650, p=0.0000, d=-18.179
+    diff = -0.0283 (trained < novel)
+  WN vs CR: t(4)=39.492, p=0.0000
+  FO vs SO norm: t(4)=52.937, p=0.0000, diff=0.03
+
+--- L1 ---
+  Within-trained:   M=0.6726 (SD=0.0282)
+  Cross (T<->N):    M=0.7739 (SD=0.0218)
+  Within-novel:     M=0.9983 (SD=0.0001)
+  Nearest-trained:  M=0.8644 (SD=0.0269)
+  FO norm: 11.2 (SD=0.2), SO norm: 12.8 (SD=0.5)
+  WT vs CR: t(4)=-29.456, p=0.0000, d=-13.173
+    diff = -0.1013 (trained < novel)
+  WN vs CR: t(4)=22.940, p=0.0000
+  FO vs SO norm: t(4)=-7.502, p=0.0017, diff=-1.52
+
+--- L2 ---
+  Within-trained:   M=0.6361 (SD=0.0252)
+  Cross (T<->N):    M=0.7483 (SD=0.0230)
+  Within-novel:     M=0.9983 (SD=0.0001)
+  Nearest-trained:  M=0.8447 (SD=0.0266)
+  FO norm: 17.6 (SD=0.3), SO norm: 19.5 (SD=0.7)
+  WT vs CR: t(4)=-46.532, p=0.0000, d=-20.810
+    diff = -0.1122 (trained < novel)
+  WN vs CR: t(4)=24.346, p=0.0000
+  FO vs SO norm: t(4)=-8.077, p=0.0013, diff=-1.94
+
+--- L3 ---
+  Within-trained:   M=0.6498 (SD=0.0335)
+  Cross (T<->N):    M=0.7576 (SD=0.0272)
+  Within-novel:     M=0.9983 (SD=0.0002)
+  Nearest-trained:  M=0.8561 (SD=0.0284)
+  FO norm: 20.0 (SD=0.4), SO norm: 22.3 (SD=0.9)
+  WT vs CR: t(4)=-25.769, p=0.0000, d=-11.524
+    diff = -0.1078 (trained < novel)
+  WN vs CR: t(4)=19.798, p=0.0000
+  FO vs SO norm: t(4)=-8.492, p=0.0011, diff=-2.37
+
+--- L4 ---
+  Within-trained:   M=0.6548 (SD=0.0347)
+  Cross (T<->N):    M=0.7638 (SD=0.0257)
+  Within-novel:     M=0.9985 (SD=0.0002)
+  Nearest-trained:  M=0.8637 (SD=0.0288)
+  FO norm: 21.0 (SD=0.6), SO norm: 24.0 (SD=1.3)
+  WT vs CR: t(4)=-22.037, p=0.0000, d=-9.855
+    diff = -0.1090 (trained < novel)
+  WN vs CR: t(4)=20.446, p=0.0000
+  FO vs SO norm: t(4)=-7.560, p=0.0016, diff=-3.06
+
+--- L5 ---
+  Within-trained:   M=0.6803 (SD=0.0317)
+  Cross (T<->N):    M=0.7820 (SD=0.0236)
+  Within-novel:     M=0.9987 (SD=0.0002)
+  Nearest-trained:  M=0.8824 (SD=0.0244)
+  FO norm: 22.4 (SD=0.5), SO norm: 26.7 (SD=1.4)
+  WT vs CR: t(4)=-22.320, p=0.0000, d=-9.982
+    diff = -0.1016 (trained < novel)
+  WN vs CR: t(4)=20.625, p=0.0000
+  FO vs SO norm: t(4)=-10.348, p=0.0005, diff=-4.22
+
+--- L6 ---
+  Within-trained:   M=0.7279 (SD=0.0262)
+  Cross (T<->N):    M=0.8151 (SD=0.0184)
+  Within-novel:     M=0.9989 (SD=0.0002)
+  Nearest-trained:  M=0.9095 (SD=0.0154)
+  FO norm: 25.1 (SD=0.8), SO norm: 31.2 (SD=2.0)
+  WT vs CR: t(4)=-19.565, p=0.0000, d=-8.750
+    diff = -0.0872 (trained < novel)
+  WN vs CR: t(4)=22.496, p=0.0000
+  FO vs SO norm: t(4)=-11.062, p=0.0004, diff=-6.09
+
+--- L7 ---
+  Within-trained:   M=0.7925 (SD=0.0179)
+  Cross (T<->N):    M=0.8590 (SD=0.0087)
+  Within-novel:     M=0.9992 (SD=0.0002)
+  Nearest-trained:  M=0.9371 (SD=0.0049)
+  FO norm: 30.2 (SD=1.1), SO norm: 39.3 (SD=2.7)
+  WT vs CR: t(4)=-12.920, p=0.0002, d=-5.778
+    diff = -0.0665 (trained < novel)
+  WN vs CR: t(4)=36.202, p=0.0000
+  FO vs SO norm: t(4)=-11.325, p=0.0003, diff=-9.08
+
+--- L8 ---
+  Within-trained:   M=0.8446 (SD=0.0244)
+  Cross (T<->N):    M=0.8839 (SD=0.0151)
+  Within-novel:     M=0.9992 (SD=0.0004)
+  Nearest-trained:  M=0.9569 (SD=0.0056)
+  FO norm: 39.2 (SD=1.5), SO norm: 53.5 (SD=3.3)
+  WT vs CR: t(4)=-5.462, p=0.0055, d=-2.443
+    diff = -0.0393 (trained < novel)
+  WN vs CR: t(4)=17.012, p=0.0001
+  FO vs SO norm: t(4)=-10.217, p=0.0005, diff=-14.29
+
+======================================================================
+KEY FINDINGS
+======================================================================
+
+  L6: WT=0.7279, CR=0.8151, WN=0.9989, gap=-0.0872
+  -> Similar structure for novel and trained nouns.
+
+  L8: WT=0.8446, CR=0.8839, WN=0.9992, gap=-0.0393
+  -> Similar structure for novel and trained nouns.
+
+======================================================================
+PAPER TEXT TEMPLATE
+======================================================================
+S4.7: 'We compared cosine similarity of hidden-state representations at the prediction position for trained vs novel nouns (Medium, Regular, 5 seeds). At L6, within-trained similarity (M=X.XXX) exceeded trained-novel cross-similarity (M=X.XXX; paired t(4)=X.XX, p=.XXX, d=X.XX), indicating novel nouns do not cluster with trained categories.'
+
+S5.2: 'Novel nouns produce representations dissimilar to trained nouns at the prediction position, so the model cannot cue domain-specific feature preferences from novel input. Even with 99% probe accuracy on trained nouns, generalisation fails because novel inputs do not activate learned category structure.'
+
+======================================================================
+END
+======================================================================

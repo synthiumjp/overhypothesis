@@ -1,0 +1,36 @@
+{
+  "condition": "bare_nolabel",
+  "fit_strategy": "seed42_only",
+  "primary_corpus": "bare_nolabel_seed42.txt",
+  "vocab_size": 314,
+  "n_merges_target": 512,
+  "aux_vocab_used": true,
+  "check7_passed": true,
+  "check7_lines": 3120,
+  "cross_seed_check": {
+    "passed": true,
+    "seeds_checked": [
+      123,
+      456,
+      789,
+      1001
+    ],
+    "seeds_missing": [
+      123,
+      456,
+      789,
+      1001
+    ],
+    "seeds_with_oov": [],
+    "violation_counts": {}
+  },
+  "deviation": false,
+  "deviation_note": "",
+  "elapsed_s": 0.02,
+  "special_tokens": [
+    "[UNK]",
+    "[PAD]",
+    "[BOS]",
+    "[EOS]"
+  ]
+}

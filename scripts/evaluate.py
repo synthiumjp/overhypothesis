@@ -465,7 +465,9 @@ def main():
     print(f"{'─'*65}")
 
     # ── Save results ──────────────────────────────────────────────────────────
-    tag = f"{condition}_{size}_seed{seed}"
+    corpus_fraction = run_args.get("corpus_fraction", 1.0)
+    frac_tag = f"_frac{int(corpus_fraction*100)}" if corpus_fraction < 1.0 else ""
+    tag = f"{condition}_{size}_seed{seed}{frac_tag}"
 
     # Item-level CSV
     csv_path = args.output / f"results_{tag}.csv"

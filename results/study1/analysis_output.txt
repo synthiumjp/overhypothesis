@@ -1,0 +1,395 @@
+========================================================================
+STUDY 1: OVERHYPOTHESIS INDUCTION — PRE-REGISTERED ANALYSIS
+Date: 2026-03-04 10:50
+========================================================================
+
+Loading data...
+  Full corpus: 124,800 rows (dropped 31,200 dose-response)
+  Total rows: 124,800
+  Conditions: ['bare_nolabel', 'feature_swap', 'frequency_matched', 'noise_injection', 'paraphrased_nolabel', 'regular', 'scrambled', 'weak_label']
+  Model sizes: ['medium', 'small', 'tiny']
+  Seeds: [np.int64(42), np.int64(123), np.int64(456), np.int64(789), np.int64(1001)]
+
+NOTE: Pre-registration specifies glmer (R lme4). This analysis uses
+GEE (statsmodels) as a Python equivalent. GEE produces population-
+averaged estimates vs. glmer's subject-specific estimates. Given the
+pervasive null pattern (all SO accuracy 48-55%), this distinction
+does not affect any verdict. Noted as a minor procedural deviation.
+
+────────────────────────────────────────────────────────────────────────
+H1: OVERHYPOTHESIS EMERGENCE
+  Test: Regular vs Scrambled on second-order items
+  Criterion: >=15 pp above chance AND >=10 pp above Scrambled
+  Model: GEE logistic (exchangeable correlation within seed)
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  N rows: 2000  |  N items: 200  |  N seeds: 5
+  regular: M=51.8%, SD=50.0%, N=1000
+  scrambled: M=53.0%, SD=49.9%, N=1000
+  Reg - Chance = 1.8 pp
+  Reg - Scr = -1.2 pp
+  GEE: β=0.048, z=0.388, p=0.6979
+  VERDICT: NOT SUPPORTED
+  Mann-Whitney U: U=13, p=1.0000
+
+--- SMALL ---
+  N rows: 2000  |  N items: 200  |  N seeds: 5
+  regular: M=51.6%, SD=50.0%, N=1000
+  scrambled: M=53.8%, SD=49.9%, N=1000
+  Reg - Chance = 1.6 pp
+  Reg - Scr = -2.2 pp
+  GEE: β=0.088, z=0.687, p=0.4924
+  VERDICT: NOT SUPPORTED
+  Mann-Whitney U: U=9, p=0.5258
+
+--- MEDIUM ---
+  N rows: 2000  |  N items: 200  |  N seeds: 5
+  regular: M=51.0%, SD=50.0%, N=1000
+  scrambled: M=50.4%, SD=50.0%, N=1000
+  Reg - Chance = 1.0 pp
+  Reg - Scr = 0.6 pp
+  GEE: β=-0.024, z=-0.335, p=0.7377
+  VERDICT: NOT SUPPORTED
+  Mann-Whitney U: U=14, p=0.7518
+────────────────────────────────────────────────────────────────────────
+H2: FRAME-VARIANT TRANSFER
+  Test: Frame-variant accuracy >= 75% of standard SO accuracy
+  Pre-registered: Paired t-test across frame conditions per size
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  FV: M=52.8%  |  SO: M=51.8%  |  Ratio: 1.02
+  Paired t-test: t(4)=0.187, p=0.8610
+  VERDICT: VACUOUS (both at chance)
+
+--- SMALL ---
+  FV: M=56.2%  |  SO: M=51.6%  |  Ratio: 1.09
+  Paired t-test: t(4)=0.868, p=0.4346
+  VERDICT: VACUOUS (both at chance)
+
+--- MEDIUM ---
+  FV: M=54.5%  |  SO: M=51.0%  |  Ratio: 1.07
+  Paired t-test: t(4)=0.450, p=0.6763
+  VERDICT: VACUOUS (both at chance)
+────────────────────────────────────────────────────────────────────────
+H3: DOSE-RESPONSE TREND
+  Test: Jonckheere-Terpstra + Kendall tau-b
+  Data: 25% / 50% / 100% corpus fractions, regular condition
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  Frac 25%: M=50.0%, SD=3.4%
+  Frac 50%: M=51.5%, SD=1.3%
+  Frac 100%: M=51.8%, SD=3.8%
+  Kendall tau-b = 0.149, p = 0.4901
+  Jonckheere-Terpstra: JT=44, p=0.2461
+  VERDICT: NOT SUPPORTED
+
+--- SMALL ---
+  Frac 25%: M=51.6%, SD=1.9%
+  Frac 50%: M=49.6%, SD=5.0%
+  Frac 100%: M=51.6%, SD=4.3%
+  Kendall tau-b = -0.011, p = 0.9577
+  Jonckheere-Terpstra: JT=37, p=0.5211
+  VERDICT: NOT SUPPORTED
+
+--- MEDIUM ---
+  Frac 25%: M=51.8%, SD=6.6%
+  Frac 50%: M=52.5%, SD=5.2%
+  Frac 100%: M=51.0%, SD=4.6%
+  Kendall tau-b = -0.058, p = 0.7905
+  Jonckheere-Terpstra: JT=35, p=0.6042
+  VERDICT: NOT SUPPORTED
+────────────────────────────────────────────────────────────────────────
+H4: ONTOLOGICAL KIND
+  Test: Count-shape > Count-texture AND Mass-texture > Mass-shape
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  count_frame: M=58.5%
+  mass_frame_shape: M=57.5%
+  mass_frame_texture: M=4.0%
+  Count vs Mass-texture: t(4)=5.158, p=0.0067
+
+--- SMALL ---
+  count_frame: M=57.8%
+  mass_frame_shape: M=58.5%
+  mass_frame_texture: M=13.0%
+  Count vs Mass-texture: t(4)=3.080, p=0.0369
+
+--- MEDIUM ---
+  count_frame: M=58.0%
+  mass_frame_shape: M=54.0%
+  mass_frame_texture: M=0.0%
+  Count vs Mass-texture: t(4)=8.157, p=0.0012
+────────────────────────────────────────────────────────────────────────
+H_LABEL: LABELLING NECESSITY
+  Test: Jonckheere-Terpstra: Regular >> Weak >> Paraphrased >> Bare
+  Alpha: 0.025 (Bonferroni for 2 planned contrasts)
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel: M=46.7%
+  paraphrased_nolabel: M=48.7%
+  weak_label: M=51.0%
+  regular: M=51.8%
+  JT = 100, p = 0.0463 (α = 0.025 after Bonferroni)
+  Kendall tau-b = 0.302, p = 0.0912
+  VERDICT: NOT SUPPORTED
+
+--- SMALL ---
+  bare_nolabel: M=52.9%
+  paraphrased_nolabel: M=52.2%
+  weak_label: M=54.0%
+  regular: M=51.6%
+  JT = 73, p = 0.5535 (α = 0.025 after Bonferroni)
+  Kendall tau-b = -0.024, p = 0.8924
+  VERDICT: NOT SUPPORTED
+
+--- MEDIUM ---
+  bare_nolabel: M=47.3%
+  paraphrased_nolabel: M=46.8%
+  weak_label: M=51.2%
+  regular: M=51.0%
+  JT = 101, p = 0.0401 (α = 0.025 after Bonferroni)
+  Kendall tau-b = 0.316, p = 0.0788
+  VERDICT: NOT SUPPORTED
+────────────────────────────────────────────────────────────────────────
+H_SWAP: FEATURE-SWAP DOMAIN SWITCHING
+  Test: Binomial test vs chance for Domain B items
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  domain_b_frame_cued: 100.0% (200/200), p=1.2446e-60, 95% CI [98.2, 100.0]
+  domain_b_noun_only: 23.5% (47/200), p=2.7087e-14, 95% CI [17.8, 30.0]
+
+--- SMALL ---
+  domain_b_frame_cued: 100.0% (200/200), p=1.2446e-60, 95% CI [98.2, 100.0]
+  domain_b_noun_only: 21.0% (42/200), p=5.1038e-17, 95% CI [15.6, 27.3]
+
+--- MEDIUM ---
+  domain_b_frame_cued: 98.0% (196/200), p=8.2167e-53, 95% CI [95.0, 99.5]
+  domain_b_noun_only: 14.5% (29/200), p=1.0742e-25, 95% CI [9.9, 20.2]
+────────────────────────────────────────────────────────────────────────
+H_BAYES: BAYESIAN ALIGNMENT (KL Divergence)
+  Criterion: KL divergence <= 0.1 nats
+  STATUS: Model accuracy reported below.
+  HBM ideal observer posterior requires Dirichlet-multinomial
+  implementation (Appendix E). Deferred — does not block paper
+  given pervasive null on H1.
+────────────────────────────────────────────────────────────────────────
+  tiny: Regular SO accuracy = 51.8% (chance = 50%)
+  small: Regular SO accuracy = 51.6% (chance = 50%)
+  medium: Regular SO accuracy = 51.0% (chance = 50%)
+
+────────────────────────────────────────────────────────────────────────
+NONPARAMETRIC BACKUPS: Mann-Whitney U (all condition pairs)
+  Pre-registered: reported for all between-condition comparisons
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel vs feature_swap: Δ=-1.6pp, U=7, p=0.2933 
+  bare_nolabel vs frequency_matched: Δ=-2.1pp, U=8, p=0.4206 
+  bare_nolabel vs noise_injection: Δ=-0.6pp, U=10, p=0.6905 
+  bare_nolabel vs paraphrased_nolabel: Δ=-2.0pp, U=10, p=0.6905 
+  bare_nolabel vs regular: Δ=-5.1pp, U=3, p=0.0570 
+  bare_nolabel vs scrambled: Δ=-6.3pp, U=8, p=0.3457 
+  bare_nolabel vs weak_label: Δ=-4.3pp, U=0, p=0.0117 *
+  feature_swap vs frequency_matched: Δ=-0.5pp, U=12, p=0.9166 
+  feature_swap vs noise_injection: Δ=+1.0pp, U=15, p=0.6905 
+  feature_swap vs paraphrased_nolabel: Δ=-0.4pp, U=10, p=0.7533 
+  feature_swap vs regular: Δ=-3.5pp, U=8, p=0.4578 
+  feature_swap vs scrambled: Δ=-4.7pp, U=9, p=0.5476 
+  feature_swap vs weak_label: Δ=-2.7pp, U=6, p=0.2031 
+  frequency_matched vs noise_injection: Δ=+1.5pp, U=16, p=0.5476 
+  frequency_matched vs paraphrased_nolabel: Δ=+0.1pp, U=11, p=0.8413 
+  frequency_matched vs regular: Δ=-3.0pp, U=10, p=0.6752 
+  frequency_matched vs scrambled: Δ=-4.2pp, U=10, p=0.6905 
+  frequency_matched vs weak_label: Δ=-2.2pp, U=10, p=0.6714 
+  noise_injection vs paraphrased_nolabel: Δ=-1.4pp, U=10, p=0.6905 
+  noise_injection vs regular: Δ=-4.5pp, U=4, p=0.0937 
+  noise_injection vs scrambled: Δ=-5.7pp, U=8, p=0.4633 
+  noise_injection vs weak_label: Δ=-3.7pp, U=2, p=0.0356 *
+  paraphrased_nolabel vs regular: Δ=-3.1pp, U=11, p=0.8340 
+  paraphrased_nolabel vs scrambled: Δ=-4.3pp, U=9, p=0.5476 
+  paraphrased_nolabel vs weak_label: Δ=-2.3pp, U=14, p=0.8335 
+  regular vs scrambled: Δ=-1.2pp, U=13, p=1.0000 
+  regular vs weak_label: Δ=+0.8pp, U=13, p=1.0000 
+  scrambled vs weak_label: Δ=+2.0pp, U=12, p=1.0000 
+
+--- SMALL ---
+  bare_nolabel vs feature_swap: Δ=+5.4pp, U=19, p=0.2087 
+  bare_nolabel vs frequency_matched: Δ=+4.9pp, U=19, p=0.2073 
+  bare_nolabel vs noise_injection: Δ=+3.4pp, U=16, p=0.5959 
+  bare_nolabel vs paraphrased_nolabel: Δ=+0.7pp, U=11, p=0.8335 
+  bare_nolabel vs regular: Δ=+1.3pp, U=13, p=1.0000 
+  bare_nolabel vs scrambled: Δ=-0.9pp, U=11, p=0.8335 
+  bare_nolabel vs weak_label: Δ=-1.1pp, U=11, p=0.8335 
+  feature_swap vs frequency_matched: Δ=-0.5pp, U=12, p=1.0000 
+  feature_swap vs noise_injection: Δ=-2.0pp, U=10, p=0.6004 
+  feature_swap vs paraphrased_nolabel: Δ=-4.7pp, U=7, p=0.2948 
+  feature_swap vs regular: Δ=-4.1pp, U=9, p=0.5271 
+  feature_swap vs scrambled: Δ=-6.3pp, U=4, p=0.0740 
+  feature_swap vs weak_label: Δ=-6.5pp, U=7, p=0.2948 
+  frequency_matched vs noise_injection: Δ=-1.5pp, U=9, p=0.5296 
+  frequency_matched vs paraphrased_nolabel: Δ=-4.2pp, U=7, p=0.2933 
+  frequency_matched vs regular: Δ=-3.6pp, U=7, p=0.2888 
+  frequency_matched vs scrambled: Δ=-5.8pp, U=4, p=0.0731 
+  frequency_matched vs weak_label: Δ=-6.0pp, U=6, p=0.2073 
+  noise_injection vs paraphrased_nolabel: Δ=-2.7pp, U=8, p=0.4020 
+  noise_injection vs regular: Δ=-2.1pp, U=8, p=0.3443 
+  noise_injection vs scrambled: Δ=-4.3pp, U=6, p=0.2477 
+  noise_injection vs weak_label: Δ=-4.5pp, U=6, p=0.2087 
+  paraphrased_nolabel vs regular: Δ=+0.6pp, U=14, p=0.8335 
+  paraphrased_nolabel vs scrambled: Δ=-1.6pp, U=8, p=0.3961 
+  paraphrased_nolabel vs weak_label: Δ=-1.8pp, U=10, p=0.6664 
+  regular vs scrambled: Δ=-2.2pp, U=9, p=0.5258 
+  regular vs weak_label: Δ=-2.4pp, U=7, p=0.2933 
+  scrambled vs weak_label: Δ=-0.2pp, U=12, p=1.0000 
+
+--- MEDIUM ---
+  bare_nolabel vs feature_swap: Δ=-0.1pp, U=13, p=1.0000 
+  bare_nolabel vs frequency_matched: Δ=-0.3pp, U=14, p=0.9166 
+  bare_nolabel vs noise_injection: Δ=-0.6pp, U=12, p=1.0000 
+  bare_nolabel vs paraphrased_nolabel: Δ=+0.5pp, U=13, p=1.0000 
+  bare_nolabel vs regular: Δ=-3.7pp, U=6, p=0.2477 
+  bare_nolabel vs scrambled: Δ=-3.1pp, U=7, p=0.2948 
+  bare_nolabel vs weak_label: Δ=-3.9pp, U=7, p=0.2903 
+  feature_swap vs frequency_matched: Δ=-0.2pp, U=14, p=0.7526 
+  feature_swap vs noise_injection: Δ=-0.5pp, U=12, p=1.0000 
+  feature_swap vs paraphrased_nolabel: Δ=+0.6pp, U=15, p=0.6714 
+  feature_swap vs regular: Δ=-3.6pp, U=7, p=0.2933 
+  feature_swap vs scrambled: Δ=-3.0pp, U=8, p=0.3961 
+  feature_swap vs weak_label: Δ=-3.8pp, U=8, p=0.3428 
+  frequency_matched vs noise_injection: Δ=-0.3pp, U=10, p=0.6905 
+  frequency_matched vs paraphrased_nolabel: Δ=+0.8pp, U=11, p=0.8340 
+  frequency_matched vs regular: Δ=-3.4pp, U=8, p=0.4020 
+  frequency_matched vs scrambled: Δ=-2.8pp, U=8, p=0.3398 
+  frequency_matched vs weak_label: Δ=-3.6pp, U=6, p=0.2477 
+  noise_injection vs paraphrased_nolabel: Δ=+1.1pp, U=14, p=0.7526 
+  noise_injection vs regular: Δ=-3.1pp, U=7, p=0.2918 
+  noise_injection vs scrambled: Δ=-2.5pp, U=7, p=0.2948 
+  noise_injection vs weak_label: Δ=-3.3pp, U=7, p=0.2948 
+  paraphrased_nolabel vs regular: Δ=-4.2pp, U=6, p=0.2073 
+  paraphrased_nolabel vs scrambled: Δ=-3.6pp, U=6, p=0.2073 
+  paraphrased_nolabel vs weak_label: Δ=-4.4pp, U=6, p=0.1706 
+  regular vs scrambled: Δ=+0.6pp, U=14, p=0.7518 
+  regular vs weak_label: Δ=-0.2pp, U=14, p=0.8335 
+  scrambled vs weak_label: Δ=-0.8pp, U=11, p=0.8320 
+────────────────────────────────────────────────────────────────────────
+EXPLORATORY: FIRST-ORDER vs SECOND-ORDER DISSOCIATION
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  FO: M=55.0% (SD=23.4%)
+  SO: M=51.8% (SD=3.8%)
+  FO - SO = 3.2 pp
+  Paired t-test: t(4)=0.282, p=0.7916
+  Seed 42: FO=96.2%, SO=48.5%
+  FO vs chance: t(4)=0.477, p=0.6580
+  SO vs chance: t(4)=1.059, p=0.3494
+
+--- SMALL ---
+  FO: M=59.8% (SD=21.9%)
+  SO: M=51.6% (SD=4.3%)
+  FO - SO = 8.1 pp
+  Paired t-test: t(4)=0.799, p=0.4689
+  Seed 42: FO=98.8%, SO=50.0%
+  FO vs chance: t(4)=0.994, p=0.3764
+  SO vs chance: t(4)=0.825, p=0.4557
+
+--- MEDIUM ---
+  FO: M=62.8% (SD=21.0%)
+  SO: M=51.0% (SD=4.6%)
+  FO - SO = 11.8 pp
+  Paired t-test: t(4)=1.174, p=0.3055
+  Seed 42: FO=100.0%, SO=49.0%
+  FO vs chance: t(4)=1.355, p=0.2468
+  SO vs chance: t(4)=0.482, p=0.6548
+────────────────────────────────────────────────────────────────────────
+EXPLORATORY: SENSITIVITY ANALYSIS — SEED 42 EXCLUSION
+  Clearly labelled as post-hoc exploratory.
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  first_order (excl. seed 42): M=44.7%, SD=4.7%, k=4 seeds
+  second_order (excl. seed 42): M=52.6%, SD=3.8%, k=4 seeds
+
+--- SMALL ---
+  first_order (excl. seed 42): M=50.0%, SD=2.7%, k=4 seeds
+  second_order (excl. seed 42): M=52.0%, SD=4.9%, k=4 seeds
+
+--- MEDIUM ---
+  first_order (excl. seed 42): M=53.4%, SD=3.4%, k=4 seeds
+  second_order (excl. seed 42): M=51.5%, SD=5.2%, k=4 seeds
+────────────────────────────────────────────────────────────────────────
+COMPLETE RESULTS TABLE
+────────────────────────────────────────────────────────────────────────
+Hypothesis          Type   Size                  Test Statistic    Value  p_value  Alpha                  Verdict                           Note
+        H1  Confirmatory   tiny        GEE Reg vs Scr      beta   0.0481  0.69787  0.050            NOT SUPPORTED           reg=51.8%; scr=53.0%
+        H1 Nonparametric   tiny        Mann-Whitney U         U  13.0000  1.00000  0.050            NOT SUPPORTED               seed-level means
+        H1  Confirmatory  small        GEE Reg vs Scr      beta   0.0883  0.49238  0.050            NOT SUPPORTED           reg=51.6%; scr=53.8%
+        H1 Nonparametric  small        Mann-Whitney U         U   9.0000  0.52581  0.050            NOT SUPPORTED               seed-level means
+        H1  Confirmatory medium        GEE Reg vs Scr      beta  -0.0240  0.73766  0.050            NOT SUPPORTED           reg=51.0%; scr=50.4%
+        H1 Nonparametric medium        Mann-Whitney U         U  14.5000  0.75183  0.050            NOT SUPPORTED               seed-level means
+        H2  Confirmatory   tiny     Paired t FV vs SO         t   0.1867  0.86099  0.050 VACUOUS (both at chance) ratio=1.02; fv=52.8%; so=51.8%
+        H2  Confirmatory  small     Paired t FV vs SO         t   0.8676  0.43459  0.050 VACUOUS (both at chance) ratio=1.09; fv=56.2%; so=51.6%
+        H2  Confirmatory medium     Paired t FV vs SO         t   0.4496  0.67631  0.050 VACUOUS (both at chance) ratio=1.07; fv=54.5%; so=51.0%
+        H3   Exploratory   tiny              JT trend        JT  44.0000  0.24612  0.050            NOT SUPPORTED                      tau=0.149
+        H3   Exploratory  small              JT trend        JT  37.0000  0.52107  0.050            NOT SUPPORTED                     tau=-0.011
+        H3   Exploratory medium              JT trend        JT  35.0000  0.60416  0.050            NOT SUPPORTED                     tau=-0.058
+        H4   Exploratory   tiny Count vs Mass-texture         t   5.1577  0.00671  0.050                SUPPORTED                               
+        H4   Exploratory  small Count vs Mass-texture         t   3.0796  0.03695  0.050                SUPPORTED                               
+        H4   Exploratory medium Count vs Mass-texture         t   8.1567  0.00123  0.050                SUPPORTED                               
+   H_label     Secondary   tiny              JT trend        JT 100.0000  0.04625  0.025            NOT SUPPORTED           Bonferroni corrected
+   H_label     Secondary   tiny           Kendall tau       tau   0.3018  0.09125  0.025            NOT SUPPORTED                    effect size
+   H_label     Secondary  small              JT trend        JT  73.0000  0.55353  0.025            NOT SUPPORTED           Bonferroni corrected
+   H_label     Secondary  small           Kendall tau       tau  -0.0242  0.89240  0.025            NOT SUPPORTED                    effect size
+   H_label     Secondary medium              JT trend        JT 101.0000  0.04009  0.025            NOT SUPPORTED           Bonferroni corrected
+   H_label     Secondary medium           Kendall tau       tau   0.3156  0.07875  0.025            NOT SUPPORTED                    effect size
+    H_swap   Exploratory   tiny   Binomial frame_cued      prop   1.0000  0.00000  0.050             ABOVE CHANCE                          n=200
+    H_swap   Exploratory   tiny    Binomial noun_only      prop   0.2350  0.00000  0.050             BELOW CHANCE                          n=200
+    H_swap   Exploratory  small   Binomial frame_cued      prop   1.0000  0.00000  0.050             ABOVE CHANCE                          n=200
+    H_swap   Exploratory  small    Binomial noun_only      prop   0.2100  0.00000  0.050             BELOW CHANCE                          n=200
+    H_swap   Exploratory medium   Binomial frame_cued      prop   0.9800  0.00000  0.050             ABOVE CHANCE                          n=200
+    H_swap   Exploratory medium    Binomial noun_only      prop   0.1450  0.00000  0.050             BELOW CHANCE                          n=200
+   H_Bayes     Secondary   tiny         KL divergence       acc   0.5180      NaN  0.050                  PENDING         Requires HBM posterior
+   H_Bayes     Secondary  small         KL divergence       acc   0.5160      NaN  0.050                  PENDING         Requires HBM posterior
+   H_Bayes     Secondary medium         KL divergence       acc   0.5100      NaN  0.050                  PENDING         Requires HBM posterior
+     FO/SO   Exploratory   tiny     FO vs SO paired t         t   0.2825  0.79159  0.050          NO DISSOCIATION             fo=55.0%; so=51.8%
+     FO/SO   Exploratory  small     FO vs SO paired t         t   0.7993  0.46889  0.050          NO DISSOCIATION             fo=59.8%; so=51.6%
+     FO/SO   Exploratory medium     FO vs SO paired t         t   1.1740  0.30553  0.050          NO DISSOCIATION             fo=62.8%; so=51.0%
+
+Results table saved to: C:\overhypothesis\results\study1\analysis_results.csv
+────────────────────────────────────────────────────────────────────────
+VERDICT SUMMARY
+────────────────────────────────────────────────────────────────────────
+Hypothesis         Type   Size                  Verdict
+        H1 Confirmatory   tiny            NOT SUPPORTED
+        H1 Confirmatory  small            NOT SUPPORTED
+        H1 Confirmatory medium            NOT SUPPORTED
+        H2 Confirmatory   tiny VACUOUS (both at chance)
+        H2 Confirmatory  small VACUOUS (both at chance)
+        H2 Confirmatory medium VACUOUS (both at chance)
+        H3  Exploratory   tiny            NOT SUPPORTED
+        H3  Exploratory  small            NOT SUPPORTED
+        H3  Exploratory medium            NOT SUPPORTED
+        H4  Exploratory   tiny                SUPPORTED
+        H4  Exploratory  small                SUPPORTED
+        H4  Exploratory medium                SUPPORTED
+   H_label    Secondary   tiny            NOT SUPPORTED
+   H_label    Secondary  small            NOT SUPPORTED
+   H_label    Secondary medium            NOT SUPPORTED
+    H_swap  Exploratory   tiny             ABOVE CHANCE
+    H_swap  Exploratory  small             ABOVE CHANCE
+    H_swap  Exploratory medium             ABOVE CHANCE
+   H_Bayes    Secondary   tiny                  PENDING
+   H_Bayes    Secondary  small                  PENDING
+   H_Bayes    Secondary medium                  PENDING
+     FO/SO  Exploratory   tiny          NO DISSOCIATION
+     FO/SO  Exploratory  small          NO DISSOCIATION
+     FO/SO  Exploratory medium          NO DISSOCIATION
+
+Full output: C:\overhypothesis\results\study1\analysis_output.txt
+Completed: 2026-03-04 10:50

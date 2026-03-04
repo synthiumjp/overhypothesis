@@ -1,0 +1,672 @@
+{
+  "H1": {
+    "hypothesis": "H1",
+    "status": "NOT_SUPPORTED",
+    "tests": {
+      "tiny": {
+        "regular_mean": 0.518,
+        "scrambled_mean": 0.53,
+        "difference": -0.01200000000000001,
+        "above_chance": 0.018000000000000016,
+        "meets_chance_criterion": false,
+        "meets_scrambled_criterion": false,
+        "H1_supported": false
+      },
+      "small": {
+        "regular_mean": 0.516,
+        "scrambled_mean": 0.538,
+        "difference": -0.02200000000000002,
+        "above_chance": 0.016000000000000014,
+        "meets_chance_criterion": false,
+        "meets_scrambled_criterion": false,
+        "H1_supported": false
+      },
+      "medium": {
+        "regular_mean": 0.51,
+        "scrambled_mean": 0.504,
+        "difference": 0.006000000000000005,
+        "above_chance": 0.010000000000000009,
+        "meets_chance_criterion": false,
+        "meets_scrambled_criterion": false,
+        "H1_supported": false
+      },
+      "tiny_gee": {
+        "beta": -0.04811318363318034,
+        "p_value": 0.485063307436005,
+        "se": 0.06891208228192232
+      },
+      "small_gee": {
+        "beta": -0.08827181031511414,
+        "p_value": 0.32805093309970834,
+        "se": 0.09025311020788829
+      },
+      "medium_gee": {
+        "beta": 0.02400499326725774,
+        "p_value": 0.7854460714000113,
+        "se": 0.08817946577208857
+      }
+    }
+  },
+  "H2": {
+    "hypothesis": "H2",
+    "status": "SUPPORTED",
+    "tests": {
+      "tiny": {
+        "so_mean": 0.518,
+        "fv_mean": 0.5275000000000001,
+        "mean_ratio": 1.0275088756750035,
+        "meets_criterion": true
+      },
+      "small": {
+        "so_mean": 0.516,
+        "fv_mean": 0.5625,
+        "mean_ratio": 1.0970945083014048,
+        "meets_criterion": true
+      },
+      "medium": {
+        "so_mean": 0.51,
+        "fv_mean": 0.545,
+        "mean_ratio": 1.0788675610104181,
+        "meets_criterion": true
+      }
+    }
+  },
+  "H_Bayes": {
+    "hypothesis": "H_Bayes",
+    "status": "PENDING_HBM",
+    "note": "HBM posterior predictions must be computed (Appendix E). This test computes the model empirical distribution; KL divergence will be calculated once HBM predictions are available.",
+    "model_distributions": {
+      "tiny": {
+        "ambiguous_exemplar": {
+          "mean": 0.54,
+          "std": 0.25729967936241194,
+          "values": [
+            0.975,
+            0.4,
+            0.3625,
+            0.3875,
+            0.575
+          ]
+        },
+        "bare_nolabel_matched": {
+          "mean": 0.5439999999999999,
+          "std": 0.05683308895353128,
+          "values": [
+            0.59,
+            0.5,
+            0.5,
+            0.51,
+            0.62
+          ]
+        },
+        "count_frame": {
+          "mean": 0.585,
+          "std": 0.21238967724444613,
+          "values": [
+            0.95,
+            0.475,
+            0.425,
+            0.4875,
+            0.5875
+          ]
+        },
+        "domain_b_frame_cued": {
+          "mean": 0.12,
+          "std": 0.12918010682763814,
+          "values": [
+            0.15,
+            0.325,
+            0.0,
+            0.1,
+            0.025
+          ]
+        },
+        "domain_b_noun_only": {
+          "mean": 0.0,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "first_order": {
+          "mean": 0.55,
+          "std": 0.23418742493993994,
+          "values": [
+            0.9625,
+            0.4375,
+            0.5,
+            0.3875,
+            0.4625
+          ]
+        },
+        "frame_variant": {
+          "mean": 0.5275000000000001,
+          "std": 0.08987839006123775,
+          "values": [
+            0.675,
+            0.45,
+            0.5125,
+            0.4625,
+            0.5375
+          ]
+        },
+        "frequency_matched_foil": {
+          "mean": 0.6,
+          "std": 0.19605483926697653,
+          "values": [
+            0.95,
+            0.525,
+            0.5,
+            0.525,
+            0.5
+          ]
+        },
+        "hard_distractor": {
+          "mean": 0.61,
+          "std": 0.24469368606484312,
+          "values": [
+            0.9375,
+            0.425,
+            0.5375,
+            0.7875,
+            0.3625
+          ]
+        },
+        "mass_frame_shape": {
+          "mean": 0.575,
+          "std": 0.1489546910976623,
+          "values": [
+            0.825,
+            0.575,
+            0.45,
+            0.55,
+            0.475
+          ]
+        },
+        "mass_frame_texture": {
+          "mean": 0.04,
+          "std": 0.0518411033833193,
+          "values": [
+            0.0,
+            0.125,
+            0.0,
+            0.025,
+            0.05
+          ]
+        },
+        "paraphrased_nolabel_matched": {
+          "mean": 0.506,
+          "std": 0.023021728866442697,
+          "values": [
+            0.53,
+            0.48,
+            0.5,
+            0.53,
+            0.49
+          ]
+        },
+        "second_order": {
+          "mean": 0.518,
+          "std": 0.038013155617496415,
+          "values": [
+            0.485,
+            0.575,
+            0.51,
+            0.485,
+            0.535
+          ]
+        },
+        "slot_shuffle": {
+          "mean": 0.48999999999999994,
+          "std": 0.3034180284689754,
+          "values": [
+            1.0,
+            0.525,
+            0.25,
+            0.3,
+            0.375
+          ]
+        }
+      },
+      "small": {
+        "ambiguous_exemplar": {
+          "mean": 0.5275000000000001,
+          "std": 0.2801227409547465,
+          "values": [
+            1.0,
+            0.5,
+            0.35,
+            0.2875,
+            0.5
+          ]
+        },
+        "bare_nolabel_matched": {
+          "mean": 0.6079999999999999,
+          "std": 0.04919349550499537,
+          "values": [
+            0.69,
+            0.61,
+            0.6,
+            0.57,
+            0.57
+          ]
+        },
+        "count_frame": {
+          "mean": 0.5775,
+          "std": 0.20566204073673874,
+          "values": [
+            0.9375,
+            0.4375,
+            0.4625,
+            0.55,
+            0.5
+          ]
+        },
+        "domain_b_frame_cued": {
+          "mean": 0.27,
+          "std": 0.24199690080660125,
+          "values": [
+            0.05,
+            0.45,
+            0.025,
+            0.25,
+            0.575
+          ]
+        },
+        "domain_b_noun_only": {
+          "mean": 0.005,
+          "std": 0.011180339887498949,
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.025,
+            0.0
+          ]
+        },
+        "first_order": {
+          "mean": 0.5975,
+          "std": 0.21926724561593783,
+          "values": [
+            0.9875,
+            0.475,
+            0.4875,
+            0.5,
+            0.5375
+          ]
+        },
+        "frame_variant": {
+          "mean": 0.5625,
+          "std": 0.10716517624676405,
+          "values": [
+            0.75,
+            0.5125,
+            0.4875,
+            0.55,
+            0.5125
+          ]
+        },
+        "frequency_matched_foil": {
+          "mean": 0.6,
+          "std": 0.23651109910530627,
+          "values": [
+            1.0,
+            0.6,
+            0.425,
+            0.425,
+            0.55
+          ]
+        },
+        "hard_distractor": {
+          "mean": 0.655,
+          "std": 0.17844817174742925,
+          "values": [
+            0.9375,
+            0.6375,
+            0.5375,
+            0.6875,
+            0.475
+          ]
+        },
+        "mass_frame_shape": {
+          "mean": 0.585,
+          "std": 0.1673320053068151,
+          "values": [
+            0.875,
+            0.45,
+            0.5,
+            0.55,
+            0.55
+          ]
+        },
+        "mass_frame_texture": {
+          "mean": 0.13,
+          "std": 0.1963733688665548,
+          "values": [
+            0.0,
+            0.05,
+            0.025,
+            0.1,
+            0.475
+          ]
+        },
+        "paraphrased_nolabel_matched": {
+          "mean": 0.618,
+          "std": 0.05449770637375482,
+          "values": [
+            0.69,
+            0.63,
+            0.63,
+            0.54,
+            0.6
+          ]
+        },
+        "second_order": {
+          "mean": 0.516,
+          "std": 0.043358966777357594,
+          "values": [
+            0.5,
+            0.48,
+            0.48,
+            0.54,
+            0.58
+          ]
+        },
+        "slot_shuffle": {
+          "mean": 0.55,
+          "std": 0.27556759606310754,
+          "values": [
+            1.0,
+            0.625,
+            0.4,
+            0.325,
+            0.4
+          ]
+        }
+      },
+      "medium": {
+        "ambiguous_exemplar": {
+          "mean": 0.475,
+          "std": 0.2972530487648528,
+          "values": [
+            1.0,
+            0.3875,
+            0.325,
+            0.275,
+            0.3875
+          ]
+        },
+        "bare_nolabel_matched": {
+          "mean": 0.64,
+          "std": 0.04183300132670378,
+          "values": [
+            0.63,
+            0.62,
+            0.66,
+            0.59,
+            0.7
+          ]
+        },
+        "count_frame": {
+          "mean": 0.5800000000000001,
+          "std": 0.15900078616157848,
+          "values": [
+            0.8625,
+            0.4875,
+            0.5,
+            0.5375,
+            0.5125
+          ]
+        },
+        "domain_b_frame_cued": {
+          "mean": 0.215,
+          "std": 0.17730623226497144,
+          "values": [
+            0.3,
+            0.475,
+            0.175,
+            0.1,
+            0.025
+          ]
+        },
+        "domain_b_noun_only": {
+          "mean": 0.0,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "first_order": {
+          "mean": 0.6275000000000001,
+          "std": 0.21035683967962632,
+          "values": [
+            1.0,
+            0.575,
+            0.5,
+            0.55,
+            0.5125
+          ]
+        },
+        "frame_variant": {
+          "mean": 0.545,
+          "std": 0.1609541860281987,
+          "values": [
+            0.825,
+            0.4625,
+            0.5375,
+            0.4375,
+            0.4625
+          ]
+        },
+        "frequency_matched_foil": {
+          "mean": 0.635,
+          "std": 0.23887758371182508,
+          "values": [
+            1.0,
+            0.675,
+            0.35,
+            0.525,
+            0.625
+          ]
+        },
+        "hard_distractor": {
+          "mean": 0.5525,
+          "std": 0.2513090726575545,
+          "values": [
+            1.0,
+            0.45,
+            0.425,
+            0.475,
+            0.4125
+          ]
+        },
+        "mass_frame_shape": {
+          "mean": 0.54,
+          "std": 0.10839741694339401,
+          "values": [
+            0.675,
+            0.525,
+            0.375,
+            0.55,
+            0.575
+          ]
+        },
+        "mass_frame_texture": {
+          "mean": 0.0,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "paraphrased_nolabel_matched": {
+          "mean": 0.6319999999999999,
+          "std": 0.06379655163094633,
+          "values": [
+            0.64,
+            0.64,
+            0.73,
+            0.58,
+            0.57
+          ]
+        },
+        "second_order": {
+          "mean": 0.51,
+          "std": 0.046368092477478536,
+          "values": [
+            0.49,
+            0.55,
+            0.55,
+            0.52,
+            0.44
+          ]
+        },
+        "slot_shuffle": {
+          "mean": 0.57,
+          "std": 0.26422055181230697,
+          "values": [
+            1.0,
+            0.55,
+            0.5,
+            0.275,
+            0.525
+          ]
+        }
+      }
+    }
+  },
+  "H_label": {
+    "hypothesis": "H_label",
+    "status": "NOT_SUPPORTED",
+    "tests": {
+      "tiny": {
+        "jonckheere_J": 100.0,
+        "jonckheere_p": 0.04625374528314463,
+        "kendall_tau": 0.3333333333333333,
+        "significant": false
+      },
+      "small": {
+        "jonckheere_J": 73.0,
+        "jonckheere_p": 0.5535301243363513,
+        "kendall_tau": -0.02666666666666667,
+        "significant": false
+      },
+      "medium": {
+        "jonckheere_J": 101.0,
+        "jonckheere_p": 0.04009289241204517,
+        "kendall_tau": 0.3466666666666667,
+        "significant": false
+      }
+    }
+  },
+  "H3": {
+    "hypothesis": "H3",
+    "status": "NOT_SUPPORTED",
+    "tests": {
+      "tiny": {
+        "kendall_tau": 0.14936609730157077,
+        "kendall_p": 0.4901245179028396,
+        "tau_ci": [
+          -0.3856664172031364,
+          0.6458287684312535
+        ],
+        "jonckheere_J": 44.0,
+        "jonckheere_p": 0.24611960350737383,
+        "monotonic_trend": false
+      },
+      "small": {
+        "kendall_tau": -0.011433239009500587,
+        "kendall_p": 0.9577432847143231,
+        "tau_ci": [
+          -0.44048010681880356,
+          0.4024212584705983
+        ],
+        "jonckheere_J": 37.0,
+        "jonckheere_p": 0.5210651473427371,
+        "monotonic_trend": false
+      },
+      "medium": {
+        "kendall_tau": -0.057735026918962574,
+        "kendall_p": 0.7904742910038848,
+        "tau_ci": [
+          -0.5157748293680504,
+          0.4300574351947546
+        ],
+        "jonckheere_J": 35.0,
+        "jonckheere_p": 0.604162157167175,
+        "monotonic_trend": false
+      }
+    }
+  },
+  "H4": {
+    "hypothesis": "H4",
+    "status": "NOT_SUPPORTED",
+    "tests": {
+      "tiny": {
+        "count_shape_mean": 0.585,
+        "count_shape_vs_chance_p": 0.42142740851640537,
+        "mass_texture_mean": 0.04,
+        "mass_shape_mean": 0.575,
+        "mass_texture_gt_shape_p": 0.999671006425696,
+        "H4_supported": false
+      },
+      "small": {
+        "count_shape_mean": 0.5775,
+        "count_shape_vs_chance_p": 0.44687548435860297,
+        "mass_texture_mean": 0.13,
+        "mass_shape_mean": 0.585,
+        "mass_texture_gt_shape_p": 0.9977543191130884,
+        "H4_supported": false
+      },
+      "medium": {
+        "count_shape_mean": 0.5800000000000001,
+        "count_shape_vs_chance_p": 0.3235041115821604,
+        "mass_texture_mean": 0.0,
+        "mass_shape_mean": 0.54,
+        "mass_texture_gt_shape_p": 0.9998152000797911,
+        "H4_supported": false
+      }
+    }
+  },
+  "H_swap": {
+    "hypothesis": "H_swap",
+    "status": "EXPLORATORY",
+    "tests": {
+      "tiny": {
+        "domain_a_mean": 0.483,
+        "domain_a_above_chance": -0.017000000000000015,
+        "domain_b_frame_cued_mean": 1.0,
+        "domain_b_frame_cued_above_chance": 0.5,
+        "domain_b_noun_only_mean": 0.23500000000000001,
+        "domain_b_noun_only_above_chance": -0.265
+      },
+      "small": {
+        "domain_a_mean": 0.475,
+        "domain_a_above_chance": -0.025000000000000022,
+        "domain_b_frame_cued_mean": 1.0,
+        "domain_b_frame_cued_above_chance": 0.5,
+        "domain_b_noun_only_mean": 0.21000000000000002,
+        "domain_b_noun_only_above_chance": -0.29
+      },
+      "medium": {
+        "domain_a_mean": 0.47400000000000003,
+        "domain_a_above_chance": -0.025999999999999968,
+        "domain_b_frame_cued_mean": 0.9800000000000001,
+        "domain_b_frame_cued_above_chance": 0.4800000000000001,
+        "domain_b_noun_only_mean": 0.145,
+        "domain_b_noun_only_above_chance": -0.355
+      }
+    }
+  }
+}

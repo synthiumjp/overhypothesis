@@ -1,0 +1,267 @@
+================================================================================
+PHASE 4 ANALYSIS — Pre-Registered Hypothesis Tests
+Study 1: Overhypothesis Induction in Child-Scale Language Models
+Data: results\study1\master_summary.csv
+Date: 2026-03-04
+================================================================================
+
+================================================================================
+H1: OVERHYPOTHESIS EMERGENCE — Regular vs Scrambled (second_order)
+================================================================================
+
+  ── TINY ──
+    Regular:   M=0.518 (SD=0.038), seeds=[np.float64(0.485), np.float64(0.575), np.float64(0.51), np.float64(0.485), np.float64(0.535)]
+    Scrambled: M=0.530 (SD=0.086), seeds=[np.float64(0.45), np.float64(0.605), np.float64(0.635), np.float64(0.505), np.float64(0.455)]
+    Δ(Reg-Scr)=-0.012, Δ(Reg-Chance)=0.018
+    >=15pp above chance? NO (1.8%)
+    >=10pp above scrambled? NO (-1.2%)
+    Welch t-test: t=-0.287, p=0.7849, d=-0.181
+    Mann-Whitney U: U=13.0, p=0.5000 (one-sided)
+    Bootstrap 95% CI on Δ: [-0.086, 0.059]
+
+  ── SMALL ──
+    Regular:   M=0.516 (SD=0.043), seeds=[np.float64(0.5), np.float64(0.48), np.float64(0.48), np.float64(0.54), np.float64(0.58)]
+    Scrambled: M=0.538 (SD=0.057), seeds=[np.float64(0.565), np.float64(0.58), np.float64(0.54), np.float64(0.44), np.float64(0.565)]
+    Δ(Reg-Scr)=-0.022, Δ(Reg-Chance)=0.016
+    >=15pp above chance? NO (1.6%)
+    >=10pp above scrambled? NO (-2.2%)
+    Welch t-test: t=-0.690, p=0.5112, d=-0.436
+    Mann-Whitney U: U=9.0, p=0.8012 (one-sided)
+    Bootstrap 95% CI on Δ: [-0.072, 0.039]
+
+  ── MEDIUM ──
+    Regular:   M=0.510 (SD=0.046), seeds=[np.float64(0.49), np.float64(0.55), np.float64(0.55), np.float64(0.52), np.float64(0.44)]
+    Scrambled: M=0.504 (SD=0.030), seeds=[np.float64(0.545), np.float64(0.52), np.float64(0.495), np.float64(0.495), np.float64(0.465)]
+    Δ(Reg-Scr)=0.006, Δ(Reg-Chance)=0.010
+    >=15pp above chance? NO (1.0%)
+    >=10pp above scrambled? NO (0.6%)
+    Welch t-test: t=0.243, p=0.8153, d=0.154
+    Mann-Whitney U: U=14.5, p=0.3759 (one-sided)
+    Bootstrap 95% CI on Δ: [-0.039, 0.045]
+
+  ── Mixed-Effects Logistic Regression (Item-Level) ──
+    GEE (tiny): β(condition)=-0.0481, p=0.4851
+    GEE (small): β(condition)=-0.0883, p=0.3281
+    GEE (medium): β(condition)=0.0240, p=0.7854
+
+  H1 VERDICT: NOT_SUPPORTED
+
+================================================================================
+H2: FRAME-VARIANT TRANSFER
+================================================================================
+
+  ── TINY ──
+    Second-order: M=0.518
+    Frame-variant: M=0.528
+    Ratio (FV/SO): M=1.028 (threshold: 0.75)
+    Criterion met? YES
+    One-sample t-test (ratio vs 0.75): t=2.781, p=0.0498
+    Paired t-test (FV vs SO): t=0.187, p=0.8610
+
+  ── SMALL ──
+    Second-order: M=0.516
+    Frame-variant: M=0.562
+    Ratio (FV/SO): M=1.097 (threshold: 0.75)
+    Criterion met? YES
+    One-sample t-test (ratio vs 0.75): t=3.298, p=0.0300
+    Paired t-test (FV vs SO): t=0.868, p=0.4346
+
+  ── MEDIUM ──
+    Second-order: M=0.510
+    Frame-variant: M=0.545
+    Ratio (FV/SO): M=1.079 (threshold: 0.75)
+    Criterion met? YES
+    One-sample t-test (ratio vs 0.75): t=2.101, p=0.1035
+    Paired t-test (FV vs SO): t=0.450, p=0.6763
+
+  H2 VERDICT: SUPPORTED
+
+================================================================================
+H_BAYES: BAYESIAN ALIGNMENT (KL divergence)
+================================================================================
+  tiny: Model distributions computed for 14 item types
+  small: Model distributions computed for 14 item types
+  medium: Model distributions computed for 14 item types
+  STATUS: PENDING — Awaiting HBM posterior computation (Appendix E)
+
+================================================================================
+H_LABEL: LABELLING NECESSITY DOSE-RESPONSE
+================================================================================
+
+  ── TINY ──
+    regular: M=0.518 (n=5)
+    weak_label: M=0.510 (n=5)
+    paraphrased_nolabel: M=0.487 (n=5)
+    bare_nolabel: M=0.467 (n=5)
+    Jonckheere-Terpstra: J=100.0, p=0.0463, τ=0.333
+    Significant at α=0.025? NO
+    Kendall tau-b (ordinal): τ=-0.302, p=0.0912
+    Regular vs Bare (Mann-Whitney): U=22.0, p=0.0285
+
+  ── SMALL ──
+    regular: M=0.516 (n=5)
+    weak_label: M=0.540 (n=5)
+    paraphrased_nolabel: M=0.522 (n=5)
+    bare_nolabel: M=0.529 (n=5)
+    Jonckheere-Terpstra: J=73.0, p=0.5535, τ=-0.027
+    Significant at α=0.025? NO
+    Kendall tau-b (ordinal): τ=0.024, p=0.8924
+    Regular vs Bare (Mann-Whitney): U=12.0, p=0.5832
+
+  ── MEDIUM ──
+    regular: M=0.510 (n=5)
+    weak_label: M=0.512 (n=5)
+    paraphrased_nolabel: M=0.468 (n=5)
+    bare_nolabel: M=0.473 (n=5)
+    Jonckheere-Terpstra: J=101.0, p=0.0401, τ=0.347
+    Significant at α=0.025? NO
+    Kendall tau-b (ordinal): τ=-0.316, p=0.0788
+    Regular vs Bare (Mann-Whitney): U=18.5, p=0.1239
+
+  H_LABEL VERDICT: NOT_SUPPORTED
+
+================================================================================
+H3: DOSE-RESPONSE MONOTONIC TREND (Regular condition)
+================================================================================
+
+  ── TINY ──
+    Fraction → Mean accuracy:
+      25%: 0.500 (SD=0.034, n=5)
+      50%: 0.515 (SD=0.013, n=5)
+      100%: 0.518 (SD=0.038, n=5)
+    Kendall tau-b: τ=0.149, p=0.4901
+    Bootstrap 95% CI on τ: [-0.386, 0.646]
+    Jonckheere-Terpstra: J=44.0, p=0.2461
+
+  ── SMALL ──
+    Fraction → Mean accuracy:
+      25%: 0.516 (SD=0.019, n=5)
+      50%: 0.496 (SD=0.050, n=5)
+      100%: 0.516 (SD=0.043, n=5)
+    Kendall tau-b: τ=-0.011, p=0.9577
+    Bootstrap 95% CI on τ: [-0.440, 0.402]
+    Jonckheere-Terpstra: J=37.0, p=0.5211
+
+  ── MEDIUM ──
+    Fraction → Mean accuracy:
+      25%: 0.518 (SD=0.066, n=5)
+      50%: 0.525 (SD=0.052, n=5)
+      100%: 0.510 (SD=0.046, n=5)
+    Kendall tau-b: τ=-0.058, p=0.7905
+    Bootstrap 95% CI on τ: [-0.516, 0.430]
+    Jonckheere-Terpstra: J=35.0, p=0.6042
+
+  H3 VERDICT: NOT_SUPPORTED
+
+================================================================================
+H4: ONTOLOGICAL KIND — Count vs Mass × Shape vs Texture
+================================================================================
+
+  ── TINY ──
+    Count-frame (shape):   M=0.585
+    Mass-frame (shape):    M=0.575
+    Mass-frame (texture):  M=0.040
+    Count-shape vs chance: t=0.895, p=0.4214
+    Mass-texture > Mass-shape: t=-7.585, p=0.9997 (one-sided)
+    Mann-Whitney U: U=0.0, p=0.9968
+
+  ── SMALL ──
+    Count-frame (shape):   M=0.578
+    Mass-frame (shape):    M=0.585
+    Mass-frame (texture):  M=0.130
+    Count-shape vs chance: t=0.843, p=0.4469
+    Mass-texture > Mass-shape: t=-3.943, p=0.9978 (one-sided)
+    Mann-Whitney U: U=1.0, p=0.9940
+
+  ── MEDIUM ──
+    Count-frame (shape):   M=0.580
+    Mass-frame (shape):    M=0.540
+    Mass-frame (texture):  M=0.000
+    Count-shape vs chance: t=1.125, p=0.3235
+    Mass-texture > Mass-shape: t=-11.139, p=0.9998 (one-sided)
+    Mann-Whitney U: U=0.0, p=0.9981
+
+  H4 VERDICT: NOT_SUPPORTED
+
+================================================================================
+H_SWAP: FEATURE-SWAP DOMAIN SWITCHING
+================================================================================
+
+  ── TINY ──
+    Domain A (second_order): M=0.483
+    Domain B frame-cued: M=1.000
+    Domain B noun-only: M=0.235
+    Domain A above chance: -1.7% (need >=15pp)
+    Domain B frame_cued above chance: 50.0% (need >=15pp)
+      vs chance: t=inf, p=0.0000
+    Domain B noun_only above chance: -26.5% (need >=15pp)
+      vs chance: t=-5.871, p=0.0042
+
+  ── SMALL ──
+    Domain A (second_order): M=0.475
+    Domain B frame-cued: M=1.000
+    Domain B noun-only: M=0.210
+    Domain A above chance: -2.5% (need >=15pp)
+    Domain B frame_cued above chance: 50.0% (need >=15pp)
+      vs chance: t=inf, p=0.0000
+    Domain B noun_only above chance: -29.0% (need >=15pp)
+      vs chance: t=-7.250, p=0.0019
+
+  ── MEDIUM ──
+    Domain A (second_order): M=0.474
+    Domain B frame-cued: M=0.980
+    Domain B noun-only: M=0.145
+    Domain A above chance: -2.6% (need >=15pp)
+    Domain B frame_cued above chance: 48.0% (need >=15pp)
+      vs chance: t=24.000, p=0.0000
+    Domain B noun_only above chance: -35.5% (need >=15pp)
+      vs chance: t=-21.407, p=0.0000
+
+  H_SWAP VERDICT: See per-size results above (exploratory)
+
+================================================================================
+SUPPLEMENTARY: Full Condition × Size Summary
+================================================================================
+
+  ── Slot Shuffle (Position Bias Control) ──
+    tiny: {'bare_nolabel': np.float64(0.415), 'feature_swap': np.float64(0.5), 'frequency_matched': np.float64(0.46), 'noise_injection': np.float64(0.495), 'paraphrased_nolabel': np.float64(0.49), 'regular': np.float64(0.49), 'scrambled': np.float64(0.57), 'weak_label': np.float64(0.41)}
+    small: {'bare_nolabel': np.float64(0.415), 'feature_swap': np.float64(0.535), 'frequency_matched': np.float64(0.49), 'noise_injection': np.float64(0.55), 'paraphrased_nolabel': np.float64(0.53), 'regular': np.float64(0.55), 'scrambled': np.float64(0.555), 'weak_label': np.float64(0.53)}
+    medium: {'bare_nolabel': np.float64(0.545), 'feature_swap': np.float64(0.52), 'frequency_matched': np.float64(0.495), 'noise_injection': np.float64(0.595), 'paraphrased_nolabel': np.float64(0.46), 'regular': np.float64(0.57), 'scrambled': np.float64(0.575), 'weak_label': np.float64(0.535)}
+
+  ── Noise Injection vs Regular (Robustness) ──
+    tiny: Regular=0.518, Noise=0.473, Δ=0.045
+    small: Regular=0.516, Noise=0.495, Δ=0.021
+    medium: Regular=0.510, Noise=0.479, Δ=0.031
+
+  ── Frequency-Matched Control ──
+    tiny: Regular=0.518, Freq-matched=0.488, Δ=0.030
+    small: Regular=0.516, Freq-matched=0.480, Δ=0.036
+    medium: Regular=0.510, Freq-matched=0.476, Δ=0.034
+
+  ── First-Order vs Second-Order Dissociation (Smith et al. prediction) ──
+    tiny:
+      regular: FO=0.550, SO=0.518, Δ=0.032
+      scrambled: FO=0.552, SO=0.530, Δ=0.022
+      bare_nolabel: FO=0.495, SO=0.467, Δ=0.028
+      paraphrased_nolabel: FO=0.463, SO=0.487, Δ=-0.025
+      weak_label: FO=0.510, SO=0.510, Δ=0.000
+    small:
+      regular: FO=0.598, SO=0.516, Δ=0.082
+      scrambled: FO=0.585, SO=0.538, Δ=0.047
+      bare_nolabel: FO=0.560, SO=0.529, Δ=0.031
+      paraphrased_nolabel: FO=0.555, SO=0.522, Δ=0.033
+      weak_label: FO=0.528, SO=0.540, Δ=-0.012
+    medium:
+      regular: FO=0.628, SO=0.510, Δ=0.118
+      scrambled: FO=0.588, SO=0.504, Δ=0.084
+      bare_nolabel: FO=0.508, SO=0.473, Δ=0.035
+      paraphrased_nolabel: FO=0.515, SO=0.468, Δ=0.047
+      weak_label: FO=0.498, SO=0.512, Δ=-0.014
+
+  ── P1: Cross-Feature Transfer (Ambiguous Exemplar) ──
+    tiny: M=0.540, 95% CI=[0.380, 0.772]
+      CI excludes 50%? NO
+    small: M=0.528, 95% CI=[0.355, 0.770]
+      CI excludes 50%? NO
+    medium: M=0.475, 95% CI=[0.318, 0.743]
+      CI excludes 50%? NO

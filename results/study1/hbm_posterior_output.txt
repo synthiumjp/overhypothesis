@@ -1,0 +1,147 @@
+======================================================================
+H_BAYES: IDEAL OBSERVER ALIGNMENT -- Pre-Registered Metric
+Kemp et al. (2007) Dirichlet-Multinomial HBM
+Inference: Numerical integration over alpha (500 grid points)
+  + Monte Carlo over beta (1000 Dirichlet(1) samples)
+  lambda=1.0, RNG seed=42
+Following Kemp et al.: 'The model predictions in Figures 3, 4
+  and 6 were computed using numerical integration.'
+======================================================================
+
+MODEL SO ACCURACY (from master CSV):
+  regular/tiny: mean=0.511 (s42=0.502, s123=0.525, s456=0.515, s789=0.487, s1001=0.527)
+  regular/small: mean=0.509 (s42=0.500, s123=0.500, s456=0.475, s789=0.538, s1001=0.533)
+  regular/medium: mean=0.518 (s42=0.517, s123=0.583, s456=0.545, s789=0.483, s1001=0.460)
+  scrambled/tiny: mean=0.530 (s42=0.450, s123=0.605, s456=0.635, s789=0.505, s1001=0.455)
+  scrambled/small: mean=0.538 (s42=0.565, s123=0.580, s456=0.540, s789=0.440, s1001=0.565)
+  scrambled/medium: mean=0.504 (s42=0.545, s123=0.520, s456=0.495, s789=0.495, s1001=0.465)
+  bare_nolabel/tiny: mean=0.467 (s42=0.470, s123=0.455, s456=0.435, s789=0.485, s1001=0.490)
+  bare_nolabel/small: mean=0.529 (s42=0.545, s123=0.555, s456=0.445, s789=0.655, s1001=0.445)
+  bare_nolabel/medium: mean=0.473 (s42=0.420, s123=0.540, s456=0.510, s789=0.455, s1001=0.440)
+  paraphrased_nolabel/tiny: mean=0.487 (s42=0.560, s123=0.400, s456=0.525, s789=0.545, s1001=0.405)
+  paraphrased_nolabel/small: mean=0.522 (s42=0.515, s123=0.565, s456=0.560, s789=0.455, s1001=0.515)
+  paraphrased_nolabel/medium: mean=0.468 (s42=0.500, s123=0.455, s456=0.425, s789=0.455, s1001=0.505)
+  weak_label/tiny: mean=0.510 (s42=0.510, s123=0.500, s456=0.510, s789=0.500, s1001=0.530)
+  weak_label/small: mean=0.540 (s42=0.585, s123=0.515, s456=0.515, s789=0.595, s1001=0.490)
+  weak_label/medium: mean=0.512 (s42=0.500, s123=0.495, s456=0.540, s789=0.485, s1001=0.540)
+  feature_swap/tiny: mean=0.483 (s42=0.485, s123=0.500, s456=0.405, s789=0.535, s1001=0.490)
+  feature_swap/small: mean=0.475 (s42=0.540, s123=0.425, s456=0.385, s789=0.500, s1001=0.525)
+  feature_swap/medium: mean=0.474 (s42=0.505, s123=0.460, s456=0.405, s789=0.495, s1001=0.505)
+  noise_injection/tiny: mean=0.473 (s42=0.460, s123=0.495, s456=0.480, s789=0.505, s1001=0.425)
+  noise_injection/small: mean=0.495 (s42=0.445, s123=0.470, s456=0.540, s789=0.545, s1001=0.475)
+  noise_injection/medium: mean=0.479 (s42=0.450, s123=0.490, s456=0.510, s789=0.440, s1001=0.505)
+  frequency_matched/tiny: mean=0.488 (s42=0.465, s123=0.500, s456=0.355, s789=0.600, s1001=0.520)
+  frequency_matched/small: mean=0.480 (s42=0.440, s123=0.535, s456=0.410, s789=0.480, s1001=0.535)
+  frequency_matched/medium: mean=0.476 (s42=0.420, s123=0.600, s456=0.465, s789=0.495, s1001=0.400)
+
+==================================================
+CONDITION: regular
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\regular_seed42.txt
+  Categories: 32, Shape tokens: 10
+  Total shape observations: 11648
+  Posterior alpha: mean=0.0055, median=0.0038, 95% CI=[0.0002, 0.0198]
+  HBM forced-choice prediction (within-shape foil): 0.225
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.511, HBM=0.225, KL=0.1937 nats [0.1769, 0.2102] -- FAIL (>0.1 nats)
+    small: model=0.509, HBM=0.225, KL=0.1917 nats [0.1677, 0.2169] -- FAIL (>0.1 nats)
+    medium: model=0.518, HBM=0.225, KL=0.2030 nats [0.1567, 0.2548] -- FAIL (>0.1 nats)
+
+==================================================
+CONDITION: scrambled
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\scrambled_seed42.txt
+  Categories: 32, Shape tokens: 10
+  Total shape observations: 12532
+  Posterior alpha: mean=0.7832, median=0.7867, 95% CI=[0.6304, 0.9549]
+  HBM forced-choice prediction (within-shape foil): 0.491
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.530, HBM=0.491, KL=0.0053 nats [0.0000, 0.0224] -- PASS (<=0.1 nats)
+    small: model=0.538, HBM=0.491, KL=0.0053 nats [0.0000, 0.0127] -- PASS (<=0.1 nats)
+    medium: model=0.504, HBM=0.491, KL=0.0006 nats [0.0000, 0.0030] -- PASS (<=0.1 nats)
+
+==================================================
+CONDITION: bare_nolabel
+==================================================
+  SKIPPED: No noun labels => HBM cannot infer categories.
+
+==================================================
+CONDITION: paraphrased_nolabel
+==================================================
+  SKIPPED: No noun labels => HBM cannot infer categories.
+
+==================================================
+CONDITION: weak_label
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\weak_label_seed42.txt
+  Categories: 31, Shape tokens: 10
+  Total shape observations: 3024
+  Posterior alpha: mean=0.0072, median=0.0050, 95% CI=[0.0003, 0.0261]
+  HBM forced-choice prediction (within-shape foil): 0.231
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.510, HBM=0.231, KL=0.1830 nats [0.1731, 0.1955] -- FAIL (>0.1 nats)
+    small: model=0.540, HBM=0.231, KL=0.2225 nats [0.1768, 0.2752] -- FAIL (>0.1 nats)
+    medium: model=0.512, HBM=0.231, KL=0.1857 nats [0.1612, 0.2112] -- FAIL (>0.1 nats)
+
+==================================================
+CONDITION: feature_swap
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\feature_swap_seed42.txt
+  Categories: 32, Shape tokens: 10
+  Total shape observations: 6968
+  Posterior alpha: mean=0.1738, median=0.1716, 95% CI=[0.1102, 0.2528]
+  HBM forced-choice prediction (within-shape foil): 0.484
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.483, HBM=0.484, KL=0.0007 nats [0.0000, 0.0039] -- PASS (<=0.1 nats)
+    small: model=0.475, HBM=0.484, KL=0.0016 nats [0.0000, 0.0079] -- PASS (<=0.1 nats)
+    medium: model=0.474, HBM=0.484, KL=0.0008 nats [0.0000, 0.0046] -- PASS (<=0.1 nats)
+
+==================================================
+CONDITION: noise_injection
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\noise_injection_seed42.txt
+  Categories: 32, Shape tokens: 10
+  Total shape observations: 11648
+  Posterior alpha: mean=0.1658, median=0.1623, 95% CI=[0.1102, 0.2327]
+  HBM forced-choice prediction (within-shape foil): 0.490
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.473, HBM=0.490, KL=0.0009 nats [0.0000, 0.0039] -- PASS (<=0.1 nats)
+    small: model=0.495, HBM=0.490, KL=0.0007 nats [0.0000, 0.0030] -- PASS (<=0.1 nats)
+    medium: model=0.479, HBM=0.490, KL=0.0006 nats [0.0000, 0.0026] -- PASS (<=0.1 nats)
+
+==================================================
+CONDITION: frequency_matched
+==================================================
+  Corpus: C:\overhypothesis\data\corpora\frequency_matched_seed42.txt
+  Categories: 32, Shape tokens: 10
+  Total shape observations: 12142
+  Posterior alpha: mean=1.2642, median=1.2595, 95% CI=[1.0376, 1.5289]
+  HBM forced-choice prediction (within-shape foil): 0.508
+
+  KL DIVERGENCE (model || HBM):
+    tiny: model=0.488, HBM=0.508, KL=0.0034 nats [0.0000, 0.0180] -- PASS (<=0.1 nats)
+    small: model=0.480, HBM=0.508, KL=0.0025 nats [0.0000, 0.0103] -- PASS (<=0.1 nats)
+    medium: model=0.476, HBM=0.508, KL=0.0040 nats [0.0000, 0.0151] -- PASS (<=0.1 nats)
+
+======================================================================
+INTERPRETATION
+======================================================================
+
+ALPHA POSTERIOR VALIDATES CORPUS DESIGN:
+  Regular/Weak-label: alpha << 1 => strong within-category shape
+    uniformity (overhypothesis structure present)
+  Scrambled/Freq-matched: alpha ~ 1+ => no within-category
+    uniformity (controls working as intended)
+  Feature-swap/Noise: intermediate alpha
+
+WITHIN-SHAPE FOIL DESIGN:
+  HBM predicts SOME shape for novel categories but not WHICH.
+  Forced choice between two shapes => HBM predicts ~50%.
+  Models also ~50%. KL is small but uninformative.
+  Diagnostic power lies in H_swap, not H_Bayes.
+  Reported for pre-registration completeness.

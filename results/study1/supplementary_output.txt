@@ -1,0 +1,1122 @@
+========================================================================
+STUDY 1: SUPPLEMENTARY PRE-REGISTERED ANALYSES
+Date: 2026-03-04 11:15
+========================================================================
+
+Total rows (full corpus): 124,800
+Columns: ['item_id', 'item_type', 'noun', 'target', 'foil', 'correct', 'foil_type', 'domain', 'lp_target', 'lp_foil', 'lp_target_norm', 'lp_foil_norm', 'delta_lp_norm', 'correct_binary', 'rank', 'ranked_first', 'condition', 'model_size', 'seed', 'corpus_fraction', 'correct_01', 'dlp']
+Item types: ['ambiguous_exemplar', 'bare_nolabel_matched', 'count_frame', 'domain_b_frame_cued', 'domain_b_noun_only', 'first_order', 'frame_variant', 'frequency_matched_foil', 'hard_distractor', 'mass_frame_shape', 'mass_frame_texture', 'paraphrased_nolabel_matched', 'second_order', 'slot_shuffle']
+
+────────────────────────────────────────────────────────────────────────
+1. DELTA LOG-PROB PER TOKEN (LENGTH-NORMALISED)
+   Pre-registered: 'Addresses length/tokenisation artefacts'
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+
+  first_order:
+    bare_nolabel: M=-0.0096, Mdn=-0.0022, SD=0.3900, N=400
+    feature_swap: M=0.4271, Mdn=0.0854, SD=3.0694, N=400
+    frequency_matched: M=0.7761, Mdn=0.4930, SD=3.1728, N=400
+    noise_injection: M=0.7514, Mdn=0.3972, SD=3.0706, N=400
+    paraphrased_nolabel: M=-0.0328, Mdn=-0.0626, SD=0.4813, N=400
+    regular: M=0.8214, Mdn=0.2442, SD=3.4347, N=400
+    scrambled: M=0.3337, Mdn=0.2631, SD=2.6031, N=400
+    weak_label: M=0.0390, Mdn=0.0612, SD=2.0853, N=400
+
+  second_order:
+    bare_nolabel: M=-0.0304, Mdn=-0.0240, SD=0.4176, N=1000
+    feature_swap: M=-0.0054, Mdn=-0.0556, SD=1.4285, N=1000
+    frequency_matched: M=-0.0790, Mdn=-0.0270, SD=1.3719, N=1000
+    noise_injection: M=-0.0684, Mdn=-0.0685, SD=1.2274, N=1000
+    paraphrased_nolabel: M=-0.0217, Mdn=-0.0215, SD=0.5136, N=1000
+    regular: M=0.0337, Mdn=0.0449, SD=1.1423, N=1000
+    scrambled: M=0.0489, Mdn=0.0552, SD=1.1659, N=1000
+    weak_label: M=0.0578, Mdn=0.0421, SD=1.5428, N=1000
+
+  frame_variant:
+    bare_nolabel: M=-0.0289, Mdn=-0.0371, SD=0.4031, N=400
+    feature_swap: M=-0.0358, Mdn=0.0696, SD=2.8089, N=400
+    frequency_matched: M=0.0787, Mdn=0.0115, SD=1.6898, N=400
+    noise_injection: M=0.0999, Mdn=0.0912, SD=1.3791, N=400
+    paraphrased_nolabel: M=-0.0282, Mdn=-0.0244, SD=0.3839, N=400
+    regular: M=0.1249, Mdn=0.1099, SD=1.3154, N=400
+    scrambled: M=0.1281, Mdn=0.1608, SD=1.1862, N=400
+    weak_label: M=0.0112, Mdn=0.0391, SD=1.3467, N=400
+
+  domain_b_frame_cued:
+    bare_nolabel: M=-3.1758, Mdn=-2.5313, SD=2.5621, N=200
+    feature_swap: M=7.2764, Mdn=6.9312, SD=2.9359, N=200
+    frequency_matched: M=-1.2382, Mdn=-1.9892, SD=4.0416, N=200
+    noise_injection: M=-0.9658, Mdn=-0.8541, SD=2.6695, N=200
+    paraphrased_nolabel: M=-0.9838, Mdn=-0.8963, SD=2.7314, N=200
+    regular: M=-1.8983, Mdn=-1.9343, SD=1.8592, N=200
+    scrambled: M=-1.8236, Mdn=-1.7449, SD=1.9296, N=200
+    weak_label: M=-0.3486, Mdn=-0.2520, SD=3.3860, N=200
+
+  domain_b_noun_only:
+    bare_nolabel: M=-8.3975, Mdn=-8.4677, SD=0.7861, N=200
+    feature_swap: M=-1.9111, Mdn=-2.4052, SD=3.4905, N=200
+    frequency_matched: M=-9.3931, Mdn=-9.2885, SD=2.4089, N=200
+    noise_injection: M=-7.6574, Mdn=-7.7258, SD=2.1666, N=200
+    paraphrased_nolabel: M=-8.6573, Mdn=-8.6617, SD=0.8711, N=200
+    regular: M=-7.2703, Mdn=-7.2439, SD=2.4424, N=200
+    scrambled: M=-8.4498, Mdn=-8.5921, SD=2.4860, N=200
+    weak_label: M=-10.1272, Mdn=-10.3761, SD=1.8166, N=200
+
+  SO Δlog-prob vs 0: M=-0.0081, t(4)=-0.543, p=0.6160
+
+--- SMALL ---
+
+  first_order:
+    bare_nolabel: M=0.0596, Mdn=0.0710, SD=0.4526, N=400
+    feature_swap: M=0.5127, Mdn=0.1341, SD=3.2145, N=400
+    frequency_matched: M=0.5258, Mdn=0.1567, SD=2.3595, N=400
+    noise_injection: M=0.8543, Mdn=0.2756, SD=3.1420, N=400
+    paraphrased_nolabel: M=0.0705, Mdn=0.0759, SD=0.5585, N=400
+    regular: M=0.9214, Mdn=0.3438, SD=3.3903, N=400
+    scrambled: M=0.4448, Mdn=0.2779, SD=2.2513, N=400
+    weak_label: M=0.1436, Mdn=0.0857, SD=2.1442, N=400
+
+  second_order:
+    bare_nolabel: M=0.0103, Mdn=0.0304, SD=0.4506, N=1000
+    feature_swap: M=-0.0362, Mdn=-0.1003, SD=1.2137, N=1000
+    frequency_matched: M=-0.0016, Mdn=-0.0249, SD=1.0573, N=1000
+    noise_injection: M=-0.0032, Mdn=-0.0275, SD=1.0124, N=1000
+    paraphrased_nolabel: M=0.0210, Mdn=0.0250, SD=0.5912, N=1000
+    regular: M=0.0215, Mdn=0.0334, SD=0.9209, N=1000
+    scrambled: M=-0.0178, Mdn=0.0896, SD=1.1392, N=1000
+    weak_label: M=0.0333, Mdn=0.0983, SD=1.1476, N=1000
+
+  frame_variant:
+    bare_nolabel: M=0.0026, Mdn=0.0514, SD=0.4789, N=400
+    feature_swap: M=0.0482, Mdn=0.0292, SD=2.2295, N=400
+    frequency_matched: M=0.0697, Mdn=0.0524, SD=0.9082, N=400
+    noise_injection: M=0.0998, Mdn=0.0491, SD=1.1077, N=400
+    paraphrased_nolabel: M=0.0177, Mdn=0.0277, SD=0.5009, N=400
+    regular: M=0.1877, Mdn=0.1187, SD=1.3277, N=400
+    scrambled: M=0.1042, Mdn=0.1229, SD=1.1164, N=400
+    weak_label: M=0.0449, Mdn=0.0324, SD=0.6380, N=400
+
+  domain_b_frame_cued:
+    bare_nolabel: M=-1.8274, Mdn=-2.2397, SD=2.2309, N=200
+    feature_swap: M=7.1761, Mdn=6.5899, SD=3.0040, N=200
+    frequency_matched: M=-2.0020, Mdn=-2.4028, SD=2.4511, N=200
+    noise_injection: M=-2.3998, Mdn=-3.4040, SD=2.8300, N=200
+    paraphrased_nolabel: M=-2.4401, Mdn=-2.8874, SD=2.1054, N=200
+    regular: M=-0.6235, Mdn=-1.1132, SD=2.1429, N=200
+    scrambled: M=-1.8387, Mdn=-1.8679, SD=2.3388, N=200
+    weak_label: M=-3.8716, Mdn=-3.5918, SD=2.5317, N=200
+
+  domain_b_noun_only:
+    bare_nolabel: M=-7.7381, Mdn=-7.8811, SD=1.0869, N=200
+    feature_swap: M=-1.7942, Mdn=-1.8410, SD=2.8917, N=200
+    frequency_matched: M=-7.5475, Mdn=-8.0450, SD=3.0405, N=200
+    noise_injection: M=-6.4514, Mdn=-6.5242, SD=2.3963, N=200
+    paraphrased_nolabel: M=-8.2285, Mdn=-8.3361, SD=0.9435, N=200
+    regular: M=-5.7222, Mdn=-5.4215, SD=2.5379, N=200
+    scrambled: M=-7.5582, Mdn=-7.7758, SD=3.4834, N=200
+    weak_label: M=-8.4032, Mdn=-8.6850, SD=1.5194, N=200
+
+  SO Δlog-prob vs 0: M=0.0034, t(4)=0.323, p=0.7632
+
+--- MEDIUM ---
+
+  first_order:
+    bare_nolabel: M=0.0292, Mdn=0.0179, SD=0.4876, N=400
+    feature_swap: M=0.2940, Mdn=0.0897, SD=2.6172, N=400
+    frequency_matched: M=0.2455, Mdn=0.0854, SD=1.6896, N=400
+    noise_injection: M=0.5006, Mdn=0.3039, SD=2.4985, N=400
+    paraphrased_nolabel: M=0.0085, Mdn=0.0205, SD=0.4194, N=400
+    regular: M=0.8481, Mdn=0.3884, SD=2.7634, N=400
+    scrambled: M=0.4084, Mdn=0.2681, SD=1.9906, N=400
+    weak_label: M=0.0416, Mdn=-0.0025, SD=2.0386, N=400
+
+  second_order:
+    bare_nolabel: M=-0.0558, Mdn=-0.0437, SD=0.5456, N=1000
+    feature_swap: M=-0.0601, Mdn=-0.0400, SD=0.9087, N=1000
+    frequency_matched: M=-0.0296, Mdn=-0.0263, SD=0.6828, N=1000
+    noise_injection: M=-0.0382, Mdn=-0.0604, SD=0.7303, N=1000
+    paraphrased_nolabel: M=-0.0366, Mdn=-0.0388, SD=0.4500, N=1000
+    regular: M=0.0343, Mdn=0.0307, SD=0.7900, N=1000
+    scrambled: M=0.0116, Mdn=0.0147, SD=0.6544, N=1000
+    weak_label: M=0.0140, Mdn=0.0227, SD=1.1138, N=1000
+
+  frame_variant:
+    bare_nolabel: M=0.0159, Mdn=0.0166, SD=0.6807, N=400
+    feature_swap: M=0.0508, Mdn=-0.0314, SD=2.3326, N=400
+    frequency_matched: M=0.0969, Mdn=0.0766, SD=0.7768, N=400
+    noise_injection: M=0.1936, Mdn=0.0887, SD=1.3877, N=400
+    paraphrased_nolabel: M=-0.0014, Mdn=0.0192, SD=0.4272, N=400
+    regular: M=0.2432, Mdn=0.1016, SD=1.4616, N=400
+    scrambled: M=0.0900, Mdn=0.0578, SD=0.9872, N=400
+    weak_label: M=0.0457, Mdn=-0.0198, SD=0.7722, N=400
+
+  domain_b_frame_cued:
+    bare_nolabel: M=-0.7393, Mdn=-0.7530, SD=1.6416, N=200
+    feature_swap: M=5.4176, Mdn=5.0695, SD=3.0310, N=200
+    frequency_matched: M=-4.4137, Mdn=-4.5595, SD=1.3427, N=200
+    noise_injection: M=-2.8291, Mdn=-2.8089, SD=1.2608, N=200
+    paraphrased_nolabel: M=-0.1557, Mdn=0.0075, SD=1.3639, N=200
+    regular: M=-1.0035, Mdn=-0.8990, SD=1.3264, N=200
+    scrambled: M=-3.8687, Mdn=-3.8799, SD=1.8740, N=200
+    weak_label: M=-2.6538, Mdn=-2.2109, SD=2.5412, N=200
+
+  domain_b_noun_only:
+    bare_nolabel: M=-7.0404, Mdn=-7.2905, SD=1.0338, N=200
+    feature_swap: M=-2.6516, Mdn=-2.6051, SD=3.0047, N=200
+    frequency_matched: M=-7.8942, Mdn=-8.0628, SD=2.4049, N=200
+    noise_injection: M=-5.9086, Mdn=-6.0945, SD=2.4358, N=200
+    paraphrased_nolabel: M=-8.1652, Mdn=-8.1113, SD=0.7569, N=200
+    regular: M=-4.5767, Mdn=-4.2476, SD=2.5374, N=200
+    scrambled: M=-7.7498, Mdn=-7.7454, SD=3.6596, N=200
+    weak_label: M=-8.0378, Mdn=-8.5113, SD=1.5865, N=200
+
+  SO Δlog-prob vs 0: M=-0.0201, t(4)=-2.736, p=0.0521
+────────────────────────────────────────────────────────────────────────
+2. RANK METRICS (MEDIAN RANK, % RANKED 1ST)
+   Pre-registered: 'Convergent validity (not qualitative diagnostic)'
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+
+  first_order:
+    bare_nolabel: median_rank=5.6, %rank1=9.2%
+    feature_swap: median_rank=5.2, %rank1=17.5%
+    frequency_matched: median_rank=4.6, %rank1=16.2%
+    noise_injection: median_rank=4.8, %rank1=18.2%
+    paraphrased_nolabel: median_rank=12.9, %rank1=5.8%
+    regular: median_rank=5.0, %rank1=19.7%
+    scrambled: median_rank=4.4, %rank1=15.5%
+    weak_label: median_rank=4.7, %rank1=10.0%
+
+  second_order:
+    bare_nolabel: median_rank=5.7, %rank1=10.5%
+    feature_swap: median_rank=5.8, %rank1=7.0%
+    frequency_matched: median_rank=5.4, %rank1=12.5%
+    noise_injection: median_rank=6.0, %rank1=10.9%
+    paraphrased_nolabel: median_rank=11.9, %rank1=4.6%
+    regular: median_rank=4.8, %rank1=12.0%
+    scrambled: median_rank=5.0, %rank1=10.5%
+    weak_label: median_rank=5.0, %rank1=12.2%
+
+  frame_variant:
+    bare_nolabel: median_rank=5.8, %rank1=9.5%
+    feature_swap: median_rank=11.9, %rank1=5.0%
+    frequency_matched: median_rank=8.3, %rank1=10.0%
+    noise_injection: median_rank=10.1, %rank1=8.5%
+    paraphrased_nolabel: median_rank=7.8, %rank1=6.2%
+    regular: median_rank=10.2, %rank1=9.0%
+    scrambled: median_rank=9.3, %rank1=5.5%
+    weak_label: median_rank=10.0, %rank1=7.0%
+
+  domain_b_frame_cued:
+    bare_nolabel: median_rank=19.2, %rank1=0.0%
+    feature_swap: median_rank=4.3, %rank1=13.0%
+    frequency_matched: median_rank=20.9, %rank1=4.0%
+    noise_injection: median_rank=21.5, %rank1=0.0%
+    paraphrased_nolabel: median_rank=19.6, %rank1=1.5%
+    regular: median_rank=24.6, %rank1=0.0%
+    scrambled: median_rank=22.6, %rank1=0.0%
+    weak_label: median_rank=19.8, %rank1=2.0%
+
+  domain_b_noun_only:
+    bare_nolabel: median_rank=19.3, %rank1=0.0%
+    feature_swap: median_rank=13.9, %rank1=1.5%
+    frequency_matched: median_rank=23.5, %rank1=0.0%
+    noise_injection: median_rank=21.9, %rank1=0.0%
+    paraphrased_nolabel: median_rank=21.9, %rank1=0.0%
+    regular: median_rank=19.9, %rank1=0.0%
+    scrambled: median_rank=21.8, %rank1=0.0%
+    weak_label: median_rank=20.4, %rank1=0.0%
+
+  slot_shuffle:
+    bare_nolabel: median_rank=5.8, %rank1=9.0%
+    feature_swap: median_rank=6.5, %rank1=14.0%
+    frequency_matched: median_rank=5.4, %rank1=12.0%
+    noise_injection: median_rank=5.9, %rank1=20.0%
+    paraphrased_nolabel: median_rank=5.5, %rank1=14.0%
+    regular: median_rank=4.9, %rank1=20.5%
+    scrambled: median_rank=4.6, %rank1=15.0%
+    weak_label: median_rank=5.8, %rank1=10.5%
+
+  ambiguous_exemplar:
+    bare_nolabel: median_rank=6.1, %rank1=11.2%
+    feature_swap: median_rank=7.8, %rank1=10.5%
+    frequency_matched: median_rank=5.0, %rank1=13.2%
+    noise_injection: median_rank=5.8, %rank1=22.5%
+    paraphrased_nolabel: median_rank=6.0, %rank1=7.8%
+    regular: median_rank=5.3, %rank1=20.8%
+    scrambled: median_rank=5.0, %rank1=17.8%
+    weak_label: median_rank=5.7, %rank1=10.2%
+
+  SO median rank (across seeds): 5.8 (chance ~5.5)
+  SO % ranked 1st (across seeds): 10.0% (chance ~10%)
+
+--- SMALL ---
+
+  first_order:
+    bare_nolabel: median_rank=5.4, %rank1=10.0%
+    feature_swap: median_rank=4.8, %rank1=15.0%
+    frequency_matched: median_rank=4.6, %rank1=15.5%
+    noise_injection: median_rank=5.1, %rank1=22.0%
+    paraphrased_nolabel: median_rank=9.0, %rank1=8.8%
+    regular: median_rank=4.8, %rank1=21.2%
+    scrambled: median_rank=4.1, %rank1=15.2%
+    weak_label: median_rank=5.4, %rank1=17.8%
+
+  second_order:
+    bare_nolabel: median_rank=5.3, %rank1=8.9%
+    feature_swap: median_rank=5.6, %rank1=12.0%
+    frequency_matched: median_rank=5.2, %rank1=9.8%
+    noise_injection: median_rank=5.4, %rank1=9.9%
+    paraphrased_nolabel: median_rank=8.2, %rank1=9.9%
+    regular: median_rank=5.4, %rank1=10.9%
+    scrambled: median_rank=4.8, %rank1=9.1%
+    weak_label: median_rank=5.0, %rank1=10.6%
+
+  frame_variant:
+    bare_nolabel: median_rank=7.2, %rank1=8.0%
+    feature_swap: median_rank=12.9, %rank1=8.5%
+    frequency_matched: median_rank=7.9, %rank1=9.0%
+    noise_injection: median_rank=9.7, %rank1=11.0%
+    paraphrased_nolabel: median_rank=6.9, %rank1=9.0%
+    regular: median_rank=9.8, %rank1=12.0%
+    scrambled: median_rank=9.7, %rank1=8.5%
+    weak_label: median_rank=5.6, %rank1=11.5%
+
+  domain_b_frame_cued:
+    bare_nolabel: median_rank=17.5, %rank1=1.0%
+    feature_swap: median_rank=5.0, %rank1=12.5%
+    frequency_matched: median_rank=22.1, %rank1=2.0%
+    noise_injection: median_rank=22.6, %rank1=2.5%
+    paraphrased_nolabel: median_rank=21.9, %rank1=0.5%
+    regular: median_rank=22.4, %rank1=0.0%
+    scrambled: median_rank=23.8, %rank1=0.5%
+    weak_label: median_rank=22.4, %rank1=0.0%
+
+  domain_b_noun_only:
+    bare_nolabel: median_rank=20.9, %rank1=0.0%
+    feature_swap: median_rank=15.2, %rank1=1.5%
+    frequency_matched: median_rank=24.8, %rank1=0.0%
+    noise_injection: median_rank=21.7, %rank1=0.0%
+    paraphrased_nolabel: median_rank=22.0, %rank1=0.0%
+    regular: median_rank=21.7, %rank1=0.0%
+    scrambled: median_rank=25.6, %rank1=0.0%
+    weak_label: median_rank=22.0, %rank1=0.0%
+
+  slot_shuffle:
+    bare_nolabel: median_rank=6.0, %rank1=6.5%
+    feature_swap: median_rank=6.2, %rank1=14.5%
+    frequency_matched: median_rank=5.4, %rank1=13.0%
+    noise_injection: median_rank=5.0, %rank1=20.5%
+    paraphrased_nolabel: median_rank=4.9, %rank1=10.5%
+    regular: median_rank=4.6, %rank1=21.5%
+    scrambled: median_rank=4.8, %rank1=19.5%
+    weak_label: median_rank=5.4, %rank1=16.0%
+
+  ambiguous_exemplar:
+    bare_nolabel: median_rank=5.6, %rank1=7.0%
+    feature_swap: median_rank=5.2, %rank1=14.2%
+    frequency_matched: median_rank=4.9, %rank1=13.0%
+    noise_injection: median_rank=4.8, %rank1=22.2%
+    paraphrased_nolabel: median_rank=5.5, %rank1=9.8%
+    regular: median_rank=5.2, %rank1=23.2%
+    scrambled: median_rank=4.1, %rank1=15.8%
+    weak_label: median_rank=6.3, %rank1=11.0%
+
+  SO median rank (across seeds): 5.4 (chance ~5.5)
+  SO % ranked 1st (across seeds): 10.1% (chance ~10%)
+
+--- MEDIUM ---
+
+  first_order:
+    bare_nolabel: median_rank=5.3, %rank1=8.8%
+    feature_swap: median_rank=4.8, %rank1=17.5%
+    frequency_matched: median_rank=4.8, %rank1=17.8%
+    noise_injection: median_rank=5.0, %rank1=21.5%
+    paraphrased_nolabel: median_rank=5.3, %rank1=7.3%
+    regular: median_rank=4.0, %rank1=21.5%
+    scrambled: median_rank=4.4, %rank1=15.0%
+    weak_label: median_rank=5.3, %rank1=18.0%
+
+  second_order:
+    bare_nolabel: median_rank=6.2, %rank1=10.0%
+    feature_swap: median_rank=5.8, %rank1=4.9%
+    frequency_matched: median_rank=5.9, %rank1=11.1%
+    noise_injection: median_rank=6.4, %rank1=11.2%
+    paraphrased_nolabel: median_rank=5.9, %rank1=8.3%
+    regular: median_rank=4.8, %rank1=12.9%
+    scrambled: median_rank=5.1, %rank1=12.9%
+    weak_label: median_rank=5.0, %rank1=12.9%
+
+  frame_variant:
+    bare_nolabel: median_rank=7.1, %rank1=7.5%
+    feature_swap: median_rank=11.8, %rank1=9.2%
+    frequency_matched: median_rank=5.5, %rank1=13.0%
+    noise_injection: median_rank=7.9, %rank1=12.3%
+    paraphrased_nolabel: median_rank=6.8, %rank1=7.5%
+    regular: median_rank=10.0, %rank1=12.5%
+    scrambled: median_rank=5.7, %rank1=13.2%
+    weak_label: median_rank=6.1, %rank1=12.3%
+
+  domain_b_frame_cued:
+    bare_nolabel: median_rank=18.5, %rank1=0.5%
+    feature_swap: median_rank=5.2, %rank1=15.5%
+    frequency_matched: median_rank=25.2, %rank1=0.0%
+    noise_injection: median_rank=24.5, %rank1=0.0%
+    paraphrased_nolabel: median_rank=16.3, %rank1=2.5%
+    regular: median_rank=23.1, %rank1=0.0%
+    scrambled: median_rank=25.4, %rank1=0.0%
+    weak_label: median_rank=22.9, %rank1=2.5%
+
+  domain_b_noun_only:
+    bare_nolabel: median_rank=18.8, %rank1=0.0%
+    feature_swap: median_rank=20.3, %rank1=1.0%
+    frequency_matched: median_rank=25.2, %rank1=0.0%
+    noise_injection: median_rank=25.2, %rank1=0.0%
+    paraphrased_nolabel: median_rank=20.9, %rank1=0.0%
+    regular: median_rank=25.5, %rank1=0.0%
+    scrambled: median_rank=25.2, %rank1=0.0%
+    weak_label: median_rank=23.5, %rank1=0.0%
+
+  slot_shuffle:
+    bare_nolabel: median_rank=4.7, %rank1=12.0%
+    feature_swap: median_rank=5.3, %rank1=15.0%
+    frequency_matched: median_rank=5.7, %rank1=16.0%
+    noise_injection: median_rank=4.7, %rank1=21.5%
+    paraphrased_nolabel: median_rank=5.9, %rank1=10.0%
+    regular: median_rank=4.4, %rank1=21.5%
+    scrambled: median_rank=5.1, %rank1=19.0%
+    weak_label: median_rank=4.8, %rank1=14.0%
+
+  ambiguous_exemplar:
+    bare_nolabel: median_rank=5.2, %rank1=10.0%
+    feature_swap: median_rank=7.4, %rank1=12.8%
+    frequency_matched: median_rank=5.5, %rank1=13.0%
+    noise_injection: median_rank=5.1, %rank1=22.7%
+    paraphrased_nolabel: median_rank=6.1, %rank1=6.2%
+    regular: median_rank=6.4, %rank1=23.2%
+    scrambled: median_rank=4.0, %rank1=15.5%
+    weak_label: median_rank=4.8, %rank1=14.5%
+
+  SO median rank (across seeds): 6.0 (chance ~5.5)
+  SO % ranked 1st (across seeds): 10.5% (chance ~10%)
+────────────────────────────────────────────────────────────────────────
+3. P1: AMBIGUOUS EXEMPLAR ITEMS (80 items)
+   Pre-registered: 'Ambiguous items > chance; 95% CI excludes 50%'
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel: 49.8% (199/400), 95% CI [44.7, 54.8], t(4)=-0.064, p=0.9522 → AT CHANCE
+  feature_swap: 47.5% (190/400), 95% CI [42.5, 52.5], t(4)=-0.542, p=0.6164 → AT CHANCE
+  frequency_matched: 48.2% (193/400), 95% CI [43.3, 53.3], t(4)=-0.361, p=0.7365 → AT CHANCE
+  noise_injection: 50.7% (203/400), 95% CI [45.7, 55.8], t(4)=0.061, p=0.9543 → AT CHANCE
+  paraphrased_nolabel: 49.2% (197/400), 95% CI [44.2, 54.3], t(4)=-0.176, p=0.8685 → AT CHANCE
+  regular: 54.0% (216/400), 95% CI [49.0, 59.0], t(4)=0.348, p=0.7456 → AT CHANCE
+  scrambled: 48.8% (195/400), 95% CI [43.8, 53.8], t(4)=-0.236, p=0.8248 → AT CHANCE
+  weak_label: 51.2% (205/400), 95% CI [46.2, 56.2], t(4)=0.349, p=0.7445 → AT CHANCE
+
+--- SMALL ---
+  bare_nolabel: 43.2% (173/400), 95% CI [38.3, 48.3], t(4)=-1.472, p=0.2150 → BELOW CHANCE
+  feature_swap: 52.5% (210/400), 95% CI [47.5, 57.5], t(4)=0.414, p=0.6999 → AT CHANCE
+  frequency_matched: 55.5% (222/400), 95% CI [50.5, 60.4], t(4)=1.580, p=0.1894 → ABOVE CHANCE
+  noise_injection: 55.5% (222/400), 95% CI [50.5, 60.4], t(4)=0.487, p=0.6520 → ABOVE CHANCE
+  paraphrased_nolabel: 49.8% (199/400), 95% CI [44.7, 54.8], t(4)=-0.076, p=0.9431 → AT CHANCE
+  regular: 52.8% (211/400), 95% CI [47.7, 57.7], t(4)=0.220, p=0.8370 → AT CHANCE
+  scrambled: 52.0% (208/400), 95% CI [47.0, 57.0], t(4)=0.412, p=0.7013 → AT CHANCE
+  weak_label: 43.0% (172/400), 95% CI [38.1, 48.0], t(4)=-0.697, p=0.5242 → BELOW CHANCE
+
+--- MEDIUM ---
+  bare_nolabel: 48.8% (195/400), 95% CI [43.8, 53.8], t(4)=-1.414, p=0.2302 → AT CHANCE
+  feature_swap: 46.2% (185/400), 95% CI [41.3, 51.3], t(4)=-0.584, p=0.5906 → AT CHANCE
+  frequency_matched: 54.5% (218/400), 95% CI [49.5, 59.5], t(4)=1.724, p=0.1598 → AT CHANCE
+  noise_injection: 54.8% (219/400), 95% CI [49.7, 59.7], t(4)=0.405, p=0.7062 → AT CHANCE
+  paraphrased_nolabel: 46.2% (185/400), 95% CI [41.3, 51.3], t(4)=-1.762, p=0.1529 → AT CHANCE
+  regular: 47.5% (190/400), 95% CI [42.5, 52.5], t(4)=-0.188, p=0.8600 → AT CHANCE
+  scrambled: 52.0% (208/400), 95% CI [47.0, 57.0], t(4)=0.436, p=0.6853 → AT CHANCE
+  weak_label: 53.5% (214/400), 95% CI [48.5, 58.5], t(4)=0.409, p=0.7037 → AT CHANCE
+────────────────────────────────────────────────────────────────────────
+4. NOUN-FREQ × TEXTURE-ACCURACY (Feature-Swap Domain B)
+   Pre-registered: 'Near-zero expected if prior; positive if memorisation'
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  domain_b_frame_cued: r=nan (p=nan), τ=nan (p=nan), N_nouns=14
+  domain_b_noun_only: r=-0.238 (p=0.4129), τ=-0.149 (p=0.4926), N_nouns=14
+
+--- SMALL ---
+  domain_b_frame_cued: r=nan (p=nan), τ=nan (p=nan), N_nouns=14
+  domain_b_noun_only: r=-0.279 (p=0.3345), τ=-0.224 (p=0.3195), N_nouns=14
+
+--- MEDIUM ---
+  domain_b_frame_cued: r=-0.098 (p=0.7387), τ=-0.150 (p=0.5298), N_nouns=14
+  domain_b_noun_only: r=-0.046 (p=0.8770), τ=0.111 (p=0.6084), N_nouns=14
+────────────────────────────────────────────────────────────────────────
+5. MATCHED VS LABELLED FRAME (Train-Test Confound Check)
+   Pre-registered: no-label and weak-label models tested on
+   matched (paraphrased/bare) vs standard (labelled) frames
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel:
+    Matched (bare_nolabel_matched): M=49.6%, SD=5.3%
+    Standard (SO): M=46.7%, SD=2.3%
+    Paired t: t(4)=1.840, p=0.1397
+  paraphrased_nolabel:
+    Matched (paraphrased_nolabel_matched): M=49.6%, SD=2.1%
+    Standard (SO): M=48.7%, SD=7.8%
+    Paired t: t(4)=0.208, p=0.8452
+  weak_label:
+    Matched (second_order): M=51.0%, SD=1.2%
+    Standard (SO): M=51.0%, SD=1.2%
+    Paired t: t(4)=nan, p=nan
+
+--- SMALL ---
+  bare_nolabel:
+    Matched (bare_nolabel_matched): M=42.8%, SD=6.6%
+    Standard (SO): M=52.9%, SD=8.8%
+    Paired t: t(4)=-1.711, p=0.1623
+  paraphrased_nolabel:
+    Matched (paraphrased_nolabel_matched): M=49.8%, SD=4.2%
+    Standard (SO): M=52.2%, SD=4.4%
+    Paired t: t(4)=-1.112, p=0.3285
+  weak_label:
+    Matched (second_order): M=54.0%, SD=4.7%
+    Standard (SO): M=54.0%, SD=4.7%
+    Paired t: t(4)=nan, p=nan
+
+--- MEDIUM ---
+  bare_nolabel:
+    Matched (bare_nolabel_matched): M=46.8%, SD=11.6%
+    Standard (SO): M=47.3%, SD=5.0%
+    Paired t: t(4)=-0.073, p=0.9457
+  paraphrased_nolabel:
+    Matched (paraphrased_nolabel_matched): M=47.2%, SD=5.6%
+    Standard (SO): M=46.8%, SD=3.4%
+    Paired t: t(4)=0.181, p=0.8655
+  weak_label:
+    Matched (second_order): M=51.2%, SD=2.6%
+    Standard (SO): M=51.2%, SD=2.6%
+    Paired t: t(4)=nan, p=nan
+────────────────────────────────────────────────────────────────────────
+6. H_LABEL FULL 2×2 (Label Presence × Test-Frame Type)
+   Pre-registered: 'full 2×2 in supplement'
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  2×2 Cell Means (% accuracy):
+    bare_nolabel              × matched   : 49.6%
+    bare_nolabel              × standard  : 46.7%
+    paraphrased_nolabel       × matched   : 49.6%
+    paraphrased_nolabel       × standard  : 48.7%
+    regular                   × standard  : 51.8%
+    weak_label                × standard  : 51.0%
+
+--- SMALL ---
+  2×2 Cell Means (% accuracy):
+    bare_nolabel              × matched   : 42.8%
+    bare_nolabel              × standard  : 52.9%
+    paraphrased_nolabel       × matched   : 49.8%
+    paraphrased_nolabel       × standard  : 52.2%
+    regular                   × standard  : 51.6%
+    weak_label                × standard  : 54.0%
+
+--- MEDIUM ---
+  2×2 Cell Means (% accuracy):
+    bare_nolabel              × matched   : 46.8%
+    bare_nolabel              × standard  : 47.3%
+    paraphrased_nolabel       × matched   : 47.2%
+    paraphrased_nolabel       × standard  : 46.8%
+    regular                   × standard  : 51.0%
+    weak_label                × standard  : 51.2%
+────────────────────────────────────────────────────────────────────────
+7. SLOT SHUFFLE (Position Bias Control)
+   Pre-registered: 40 items, tests position invariance
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel: M=41.5%, SD=9.8%, range=[30, 55]
+    Seeds: s42=48%, s123=55%, s456=30%, s789=38%, s1001=38%
+  feature_swap: M=50.0%, SD=6.6%, range=[40, 57]
+    Seeds: s42=57%, s123=52%, s456=52%, s789=40%, s1001=48%
+  frequency_matched: M=46.0%, SD=12.3%, range=[30, 62]
+    Seeds: s42=62%, s123=45%, s456=40%, s789=52%, s1001=30%
+  noise_injection: M=49.5%, SD=26.3%, range=[28, 95]
+    Seeds: s42=95%, s123=42%, s456=38%, s789=28%, s1001=45%
+  paraphrased_nolabel: M=49.0%, SD=9.6%, range=[35, 60]
+    Seeds: s42=55%, s123=50%, s456=35%, s789=45%, s1001=60%
+  regular: M=49.0%, SD=30.3%, range=[25, 100]
+    Seeds: s42=100%, s123=52%, s456=25%, s789=30%, s1001=38%
+  scrambled: M=57.0%, SD=15.9%, range=[42, 82]
+    Seeds: s42=82%, s123=57%, s456=57%, s789=45%, s1001=42%
+  weak_label: M=41.0%, SD=17.7%, range=[20, 65]
+    Seeds: s42=65%, s123=35%, s456=32%, s789=20%, s1001=52%
+
+--- SMALL ---
+  bare_nolabel: M=41.5%, SD=3.8%, range=[38, 48]
+    Seeds: s42=48%, s123=40%, s456=40%, s789=42%, s1001=38%
+  feature_swap: M=53.5%, SD=12.1%, range=[32, 62]
+    Seeds: s42=62%, s123=60%, s456=55%, s789=32%, s1001=57%
+  frequency_matched: M=49.0%, SD=11.7%, range=[38, 68]
+    Seeds: s42=68%, s123=52%, s456=42%, s789=45%, s1001=38%
+  noise_injection: M=55.0%, SD=24.9%, range=[32, 98]
+    Seeds: s42=98%, s123=48%, s456=52%, s789=32%, s1001=45%
+  paraphrased_nolabel: M=53.0%, SD=8.2%, range=[42, 65]
+    Seeds: s42=50%, s123=65%, s456=55%, s789=42%, s1001=52%
+  regular: M=55.0%, SD=27.6%, range=[32, 100]
+    Seeds: s42=100%, s123=62%, s456=40%, s789=32%, s1001=40%
+  scrambled: M=55.5%, SD=16.0%, range=[40, 82]
+    Seeds: s42=82%, s123=55%, s456=50%, s789=50%, s1001=40%
+  weak_label: M=53.0%, SD=15.4%, range=[35, 78]
+    Seeds: s42=78%, s123=50%, s456=52%, s789=35%, s1001=50%
+
+--- MEDIUM ---
+  bare_nolabel: M=54.5%, SD=2.7%, range=[50, 57]
+    Seeds: s42=55%, s123=50%, s456=55%, s789=57%, s1001=55%
+  feature_swap: M=52.0%, SD=15.4%, range=[30, 65]
+    Seeds: s42=65%, s123=65%, s456=57%, s789=42%, s1001=30%
+  frequency_matched: M=49.5%, SD=15.1%, range=[32, 72]
+    Seeds: s42=72%, s123=40%, s456=32%, s789=50%, s1001=52%
+  noise_injection: M=59.5%, SD=23.7%, range=[40, 100]
+    Seeds: s42=100%, s123=55%, s456=57%, s789=40%, s1001=45%
+  paraphrased_nolabel: M=46.0%, SD=3.8%, range=[42, 50]
+    Seeds: s42=50%, s123=45%, s456=42%, s789=42%, s1001=50%
+  regular: M=57.0%, SD=26.4%, range=[28, 100]
+    Seeds: s42=100%, s123=55%, s456=50%, s789=28%, s1001=52%
+  scrambled: M=57.5%, SD=13.9%, range=[45, 80]
+    Seeds: s42=80%, s123=55%, s456=48%, s789=60%, s1001=45%
+  weak_label: M=53.5%, SD=18.3%, range=[32, 80]
+    Seeds: s42=80%, s123=62%, s456=45%, s789=32%, s1001=48%
+────────────────────────────────────────────────────────────────────────
+8. COMPLETE ITEM-TYPE DESCRIPTIVE TABLE
+   Pre-registered: 'All item types reported'
+────────────────────────────────────────────────────────────────────────
+Item types in data (14): ['ambiguous_exemplar', 'bare_nolabel_matched', 'count_frame', 'domain_b_frame_cued', 'domain_b_noun_only', 'first_order', 'frame_variant', 'frequency_matched_foil', 'hard_distractor', 'mass_frame_shape', 'mass_frame_texture', 'paraphrased_nolabel_matched', 'second_order', 'slot_shuffle']
+
+========================================================================
+MODEL SIZE: TINY
+========================================================================
+
+  --- ambiguous_exemplar (N=3200) ---
+    bare_nolabel             : acc= 49.8%, Δlp=-0.011(±0.276), rank_med=6, %r1= 11.2%, N=400
+    feature_swap             : acc= 47.5%, Δlp=-0.036(±4.328), rank_med=7, %r1= 10.5%, N=400
+    frequency_matched        : acc= 48.2%, Δlp=-0.038(±2.120), rank_med=5, %r1= 13.2%, N=400
+    noise_injection          : acc= 50.7%, Δlp=+0.079(±2.241), rank_med=5, %r1= 22.5%, N=400
+    paraphrased_nolabel      : acc= 49.2%, Δlp=-0.014(±0.320), rank_med=6, %r1=  7.8%, N=400
+    regular                  : acc= 54.0%, Δlp=+0.161(±2.490), rank_med=5, %r1= 20.8%, N=400
+    scrambled                : acc= 48.8%, Δlp=-0.009(±2.171), rank_med=6, %r1= 17.8%, N=400
+    weak_label               : acc= 51.2%, Δlp=+0.016(±0.842), rank_med=6, %r1= 10.2%, N=400
+
+  --- bare_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 49.6%, Δlp=-0.008(±0.294), rank_med=6, %r1=  8.8%, N=500
+    feature_swap             : acc= 53.4%, Δlp=+0.091(±3.283), rank_med=6, %r1=  6.6%, N=500
+    frequency_matched        : acc= 48.0%, Δlp=-0.065(±1.042), rank_med=6, %r1=  6.2%, N=500
+    noise_injection          : acc= 37.0%, Δlp=-0.220(±0.886), rank_med=7, %r1=  4.4%, N=500
+    paraphrased_nolabel      : acc= 49.2%, Δlp=-0.016(±0.307), rank_med=6, %r1= 10.6%, N=500
+    regular                  : acc= 54.4%, Δlp=+0.059(±0.725), rank_med=5, %r1= 10.2%, N=500
+    scrambled                : acc= 46.6%, Δlp=-0.085(±1.159), rank_med=6, %r1=  7.2%, N=500
+    weak_label               : acc= 46.0%, Δlp=-0.101(±0.581), rank_med=6, %r1=  4.2%, N=500
+
+  --- count_frame (N=3200) ---
+    bare_nolabel             : acc= 48.8%, Δlp=+0.017(±0.352), rank_med=5, %r1= 11.5%, N=400
+    feature_swap             : acc= 58.2%, Δlp=+0.548(±3.331), rank_med=6, %r1= 15.5%, N=400
+    frequency_matched        : acc= 52.0%, Δlp=+0.207(±1.896), rank_med=6, %r1= 12.5%, N=400
+    noise_injection          : acc= 58.0%, Δlp=+0.385(±1.575), rank_med=7, %r1= 22.5%, N=400
+    paraphrased_nolabel      : acc= 51.5%, Δlp=+0.001(±0.356), rank_med=6, %r1=  9.2%, N=400
+    regular                  : acc= 58.5%, Δlp=+0.430(±1.795), rank_med=6, %r1= 20.5%, N=400
+    scrambled                : acc= 55.2%, Δlp=+0.191(±1.366), rank_med=6, %r1= 14.5%, N=400
+    weak_label               : acc= 52.8%, Δlp=+0.104(±1.227), rank_med=6, %r1= 14.0%, N=400
+
+  --- domain_b_frame_cued (N=1600) ---
+    bare_nolabel             : acc=  5.5%, Δlp=-3.176(±2.562), rank_med=19, %r1=  0.0%, N=200
+    feature_swap             : acc=100.0%, Δlp=+7.276(±2.936), rank_med=4, %r1= 13.0%, N=200
+    frequency_matched        : acc= 27.5%, Δlp=-1.238(±4.042), rank_med=24, %r1=  4.0%, N=200
+    noise_injection          : acc= 38.0%, Δlp=-0.966(±2.669), rank_med=22, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc= 37.0%, Δlp=-0.984(±2.731), rank_med=20, %r1=  1.5%, N=200
+    regular                  : acc= 12.0%, Δlp=-1.898(±1.859), rank_med=25, %r1=  0.0%, N=200
+    scrambled                : acc= 21.5%, Δlp=-1.824(±1.930), rank_med=23, %r1=  0.0%, N=200
+    weak_label               : acc= 46.0%, Δlp=-0.349(±3.386), rank_med=19, %r1=  2.0%, N=200
+
+  --- domain_b_noun_only (N=1600) ---
+    bare_nolabel             : acc=  0.0%, Δlp=-8.398(±0.786), rank_med=19, %r1=  0.0%, N=200
+    feature_swap             : acc= 23.5%, Δlp=-1.911(±3.491), rank_med=14, %r1=  1.5%, N=200
+    frequency_matched        : acc=  0.0%, Δlp=-9.393(±2.409), rank_med=23, %r1=  0.0%, N=200
+    noise_injection          : acc=  0.0%, Δlp=-7.657(±2.167), rank_med=22, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc=  0.0%, Δlp=-8.657(±0.871), rank_med=22, %r1=  0.0%, N=200
+    regular                  : acc=  0.0%, Δlp=-7.270(±2.442), rank_med=20, %r1=  0.0%, N=200
+    scrambled                : acc=  0.0%, Δlp=-8.450(±2.486), rank_med=23, %r1=  0.0%, N=200
+    weak_label               : acc=  0.0%, Δlp=-10.127(±1.817), rank_med=20, %r1=  0.0%, N=200
+
+  --- first_order (N=3200) ---
+    bare_nolabel             : acc= 49.5%, Δlp=-0.010(±0.390), rank_med=6, %r1=  9.2%, N=400
+    feature_swap             : acc= 50.7%, Δlp=+0.427(±3.069), rank_med=6, %r1= 17.5%, N=400
+    frequency_matched        : acc= 56.5%, Δlp=+0.776(±3.173), rank_med=5, %r1= 16.2%, N=400
+    noise_injection          : acc= 57.5%, Δlp=+0.751(±3.071), rank_med=5, %r1= 18.2%, N=400
+    paraphrased_nolabel      : acc= 46.2%, Δlp=-0.033(±0.481), rank_med=10, %r1=  5.8%, N=400
+    regular                  : acc= 55.0%, Δlp=+0.821(±3.435), rank_med=5, %r1= 19.8%, N=400
+    scrambled                : acc= 55.2%, Δlp=+0.334(±2.603), rank_med=5, %r1= 15.5%, N=400
+    weak_label               : acc= 51.0%, Δlp=+0.039(±2.085), rank_med=5, %r1= 10.0%, N=400
+
+  --- frame_variant (N=3200) ---
+    bare_nolabel             : acc= 46.8%, Δlp=-0.029(±0.403), rank_med=6, %r1=  9.5%, N=400
+    feature_swap             : acc= 52.8%, Δlp=-0.036(±2.809), rank_med=10, %r1=  5.0%, N=400
+    frequency_matched        : acc= 50.5%, Δlp=+0.079(±1.690), rank_med=8, %r1= 10.0%, N=400
+    noise_injection          : acc= 53.0%, Δlp=+0.100(±1.379), rank_med=10, %r1=  8.5%, N=400
+    paraphrased_nolabel      : acc= 47.8%, Δlp=-0.028(±0.384), rank_med=8, %r1=  6.2%, N=400
+    regular                  : acc= 52.8%, Δlp=+0.125(±1.315), rank_med=10, %r1=  9.0%, N=400
+    scrambled                : acc= 56.8%, Δlp=+0.128(±1.186), rank_med=9, %r1=  5.5%, N=400
+    weak_label               : acc= 51.7%, Δlp=+0.011(±1.347), rank_med=9, %r1=  7.0%, N=400
+
+  --- frequency_matched_foil (N=1600) ---
+    bare_nolabel             : acc= 49.0%, Δlp=+0.004(±0.432), rank_med=6, %r1= 13.0%, N=200
+    feature_swap             : acc= 51.0%, Δlp=+0.176(±2.799), rank_med=6, %r1= 13.0%, N=200
+    frequency_matched        : acc= 58.0%, Δlp=+0.784(±3.129), rank_med=4, %r1= 19.5%, N=200
+    noise_injection          : acc= 53.5%, Δlp=+0.690(±3.096), rank_med=5, %r1= 16.0%, N=200
+    paraphrased_nolabel      : acc= 46.0%, Δlp=-0.044(±0.484), rank_med=10, %r1=  4.0%, N=200
+    regular                  : acc= 60.0%, Δlp=+0.973(±3.615), rank_med=5, %r1= 20.0%, N=200
+    scrambled                : acc= 57.0%, Δlp=+0.495(±2.768), rank_med=4, %r1= 18.0%, N=200
+    weak_label               : acc= 55.5%, Δlp=+0.277(±2.289), rank_med=5, %r1= 13.5%, N=200
+
+  --- hard_distractor (N=3200) ---
+    bare_nolabel             : acc= 54.5%, Δlp=+0.054(±0.417), rank_med=5, %r1= 13.0%, N=400
+    feature_swap             : acc= 55.5%, Δlp=+0.570(±2.851), rank_med=6, %r1= 17.2%, N=400
+    frequency_matched        : acc= 58.0%, Δlp=+0.816(±3.313), rank_med=5, %r1= 16.5%, N=400
+    noise_injection          : acc= 57.0%, Δlp=+1.069(±3.489), rank_med=4, %r1= 22.2%, N=400
+    paraphrased_nolabel      : acc= 52.2%, Δlp=+0.040(±0.536), rank_med=10, %r1=  5.2%, N=400
+    regular                  : acc= 61.0%, Δlp=+1.285(±3.697), rank_med=4, %r1= 21.8%, N=400
+    scrambled                : acc= 56.8%, Δlp=+0.327(±2.796), rank_med=5, %r1= 16.8%, N=400
+    weak_label               : acc= 59.0%, Δlp=+0.358(±2.601), rank_med=5, %r1= 14.5%, N=400
+
+  --- mass_frame_shape (N=1600) ---
+    bare_nolabel             : acc= 51.0%, Δlp=+0.003(±0.401), rank_med=6, %r1= 11.5%, N=200
+    feature_swap             : acc= 51.0%, Δlp=+0.078(±2.801), rank_med=10, %r1=  8.5%, N=200
+    frequency_matched        : acc= 49.0%, Δlp=+0.259(±1.779), rank_med=9, %r1=  7.5%, N=200
+    noise_injection          : acc= 50.5%, Δlp=+0.062(±1.328), rank_med=12, %r1=  8.5%, N=200
+    paraphrased_nolabel      : acc= 48.5%, Δlp=-0.021(±0.407), rank_med=8, %r1=  6.0%, N=200
+    regular                  : acc= 57.5%, Δlp=+0.278(±1.415), rank_med=12, %r1=  9.5%, N=200
+    scrambled                : acc= 53.0%, Δlp=+0.183(±1.439), rank_med=10, %r1= 10.0%, N=200
+    weak_label               : acc= 53.0%, Δlp=+0.096(±1.526), rank_med=9, %r1=  8.0%, N=200
+
+  --- mass_frame_texture (N=1600) ---
+    bare_nolabel             : acc=  0.0%, Δlp=-6.134(±2.364), rank_med=19, %r1=  0.0%, N=200
+    feature_swap             : acc= 31.0%, Δlp=-1.239(±3.015), rank_med=16, %r1=  2.5%, N=200
+    frequency_matched        : acc= 15.0%, Δlp=-4.601(±5.175), rank_med=23, %r1=  2.0%, N=200
+    noise_injection          : acc= 18.5%, Δlp=-3.978(±3.886), rank_med=22, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc= 19.0%, Δlp=-4.570(±3.925), rank_med=18, %r1=  2.0%, N=200
+    regular                  : acc=  4.0%, Δlp=-4.118(±2.895), rank_med=24, %r1=  0.0%, N=200
+    scrambled                : acc=  7.0%, Δlp=-5.010(±3.386), rank_med=24, %r1=  0.0%, N=200
+    weak_label               : acc= 25.0%, Δlp=-4.472(±4.919), rank_med=19, %r1=  0.5%, N=200
+
+  --- paraphrased_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 48.4%, Δlp=-0.020(±0.350), rank_med=6, %r1=  9.6%, N=500
+    feature_swap             : acc= 50.4%, Δlp=-0.018(±3.512), rank_med=7, %r1=  9.6%, N=500
+    frequency_matched        : acc= 47.0%, Δlp=-0.027(±1.120), rank_med=6, %r1=  8.2%, N=500
+    noise_injection          : acc= 45.8%, Δlp=-0.098(±1.046), rank_med=6, %r1=  6.0%, N=500
+    paraphrased_nolabel      : acc= 49.6%, Δlp=-0.010(±0.323), rank_med=6, %r1= 11.4%, N=500
+    regular                  : acc= 50.6%, Δlp=+0.034(±0.819), rank_med=5, %r1= 11.8%, N=500
+    scrambled                : acc= 49.0%, Δlp=-0.111(±1.379), rank_med=6, %r1= 10.4%, N=500
+    weak_label               : acc= 46.8%, Δlp=-0.050(±0.631), rank_med=6, %r1=  4.0%, N=500
+
+  --- second_order (N=8000) ---
+    bare_nolabel             : acc= 46.7%, Δlp=-0.030(±0.418), rank_med=6, %r1= 10.5%, N=1000
+    feature_swap             : acc= 48.3%, Δlp=-0.005(±1.429), rank_med=6, %r1=  7.0%, N=1000
+    frequency_matched        : acc= 48.8%, Δlp=-0.079(±1.372), rank_med=6, %r1= 12.5%, N=1000
+    noise_injection          : acc= 47.3%, Δlp=-0.068(±1.227), rank_med=6, %r1= 10.9%, N=1000
+    paraphrased_nolabel      : acc= 48.7%, Δlp=-0.022(±0.514), rank_med=10, %r1=  4.6%, N=1000
+    regular                  : acc= 51.8%, Δlp=+0.034(±1.142), rank_med=5, %r1= 12.0%, N=1000
+    scrambled                : acc= 53.0%, Δlp=+0.049(±1.166), rank_med=5, %r1= 10.5%, N=1000
+    weak_label               : acc= 51.0%, Δlp=+0.058(±1.543), rank_med=5, %r1= 12.2%, N=1000
+
+  --- slot_shuffle (N=1600) ---
+    bare_nolabel             : acc= 41.5%, Δlp=-0.034(±0.316), rank_med=6, %r1=  9.0%, N=200
+    feature_swap             : acc= 50.0%, Δlp=-0.168(±3.353), rank_med=6, %r1= 14.0%, N=200
+    frequency_matched        : acc= 46.0%, Δlp=-0.079(±1.844), rank_med=6, %r1= 12.0%, N=200
+    noise_injection          : acc= 49.5%, Δlp=-0.039(±1.887), rank_med=6, %r1= 20.0%, N=200
+    paraphrased_nolabel      : acc= 49.0%, Δlp=-0.018(±0.349), rank_med=6, %r1= 14.0%, N=200
+    regular                  : acc= 49.0%, Δlp=+0.023(±2.182), rank_med=4, %r1= 20.5%, N=200
+    scrambled                : acc= 57.0%, Δlp=+0.057(±1.914), rank_med=5, %r1= 15.0%, N=200
+    weak_label               : acc= 41.0%, Δlp=-0.015(±1.232), rank_med=6, %r1= 10.5%, N=200
+
+========================================================================
+MODEL SIZE: SMALL
+========================================================================
+
+  --- ambiguous_exemplar (N=3200) ---
+    bare_nolabel             : acc= 43.2%, Δlp=-0.022(±0.349), rank_med=6, %r1=  7.0%, N=400
+    feature_swap             : acc= 52.5%, Δlp=+0.267(±3.582), rank_med=6, %r1= 14.2%, N=400
+    frequency_matched        : acc= 55.5%, Δlp=+0.187(±1.888), rank_med=5, %r1= 13.0%, N=400
+    noise_injection          : acc= 55.5%, Δlp=+0.446(±2.845), rank_med=5, %r1= 22.2%, N=400
+    paraphrased_nolabel      : acc= 49.8%, Δlp=-0.014(±0.349), rank_med=6, %r1=  9.8%, N=400
+    regular                  : acc= 52.8%, Δlp=+0.523(±2.462), rank_med=5, %r1= 23.2%, N=400
+    scrambled                : acc= 52.0%, Δlp=+0.239(±2.138), rank_med=5, %r1= 15.8%, N=400
+    weak_label               : acc= 43.0%, Δlp=-0.037(±0.884), rank_med=7, %r1= 11.0%, N=400
+
+  --- bare_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 42.8%, Δlp=-0.066(±0.426), rank_med=7, %r1=  6.2%, N=500
+    feature_swap             : acc= 57.2%, Δlp=+0.347(±2.853), rank_med=4, %r1= 19.0%, N=500
+    frequency_matched        : acc= 50.0%, Δlp=-0.002(±0.907), rank_med=5, %r1= 10.0%, N=500
+    noise_injection          : acc= 49.6%, Δlp=+0.004(±1.027), rank_med=6, %r1=  9.4%, N=500
+    paraphrased_nolabel      : acc= 45.6%, Δlp=-0.034(±0.403), rank_med=6, %r1=  9.4%, N=500
+    regular                  : acc= 60.8%, Δlp=+0.241(±0.810), rank_med=4, %r1= 12.8%, N=500
+    scrambled                : acc= 51.6%, Δlp=+0.050(±0.946), rank_med=5, %r1=  9.6%, N=500
+    weak_label               : acc= 46.2%, Δlp=-0.086(±0.419), rank_med=6, %r1=  6.6%, N=500
+
+  --- count_frame (N=3200) ---
+    bare_nolabel             : acc= 50.2%, Δlp=-0.012(±0.427), rank_med=6, %r1=  9.0%, N=400
+    feature_swap             : acc= 56.2%, Δlp=+0.418(±2.968), rank_med=6, %r1= 16.8%, N=400
+    frequency_matched        : acc= 53.2%, Δlp=+0.202(±1.366), rank_med=5, %r1= 14.0%, N=400
+    noise_injection          : acc= 57.5%, Δlp=+0.392(±1.602), rank_med=6, %r1= 21.0%, N=400
+    paraphrased_nolabel      : acc= 46.5%, Δlp=-0.025(±0.373), rank_med=6, %r1=  9.5%, N=400
+    regular                  : acc= 57.8%, Δlp=+0.335(±1.541), rank_med=6, %r1= 21.2%, N=400
+    scrambled                : acc= 61.3%, Δlp=+0.388(±1.502), rank_med=6, %r1= 19.0%, N=400
+    weak_label               : acc= 56.5%, Δlp=+0.174(±0.923), rank_med=5, %r1= 16.0%, N=400
+
+  --- domain_b_frame_cued (N=1600) ---
+    bare_nolabel             : acc= 30.0%, Δlp=-1.827(±2.231), rank_med=18, %r1=  1.0%, N=200
+    feature_swap             : acc=100.0%, Δlp=+7.176(±3.004), rank_med=5, %r1= 12.5%, N=200
+    frequency_matched        : acc= 20.5%, Δlp=-2.002(±2.451), rank_med=23, %r1=  2.0%, N=200
+    noise_injection          : acc= 15.0%, Δlp=-2.400(±2.830), rank_med=24, %r1=  2.5%, N=200
+    paraphrased_nolabel      : acc= 16.5%, Δlp=-2.440(±2.105), rank_med=23, %r1=  0.5%, N=200
+    regular                  : acc= 27.0%, Δlp=-0.624(±2.143), rank_med=24, %r1=  0.0%, N=200
+    scrambled                : acc= 21.0%, Δlp=-1.839(±2.339), rank_med=24, %r1=  0.5%, N=200
+    weak_label               : acc=  2.5%, Δlp=-3.872(±2.532), rank_med=23, %r1=  0.0%, N=200
+
+  --- domain_b_noun_only (N=1600) ---
+    bare_nolabel             : acc=  0.0%, Δlp=-7.738(±1.087), rank_med=20, %r1=  0.0%, N=200
+    feature_swap             : acc= 21.0%, Δlp=-1.794(±2.892), rank_med=15, %r1=  1.5%, N=200
+    frequency_matched        : acc=  0.0%, Δlp=-7.547(±3.040), rank_med=24, %r1=  0.0%, N=200
+    noise_injection          : acc=  0.0%, Δlp=-6.451(±2.396), rank_med=22, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc=  0.0%, Δlp=-8.229(±0.944), rank_med=23, %r1=  0.0%, N=200
+    regular                  : acc=  0.5%, Δlp=-5.722(±2.538), rank_med=22, %r1=  0.0%, N=200
+    scrambled                : acc=  0.0%, Δlp=-7.558(±3.483), rank_med=26, %r1=  0.0%, N=200
+    weak_label               : acc=  0.0%, Δlp=-8.403(±1.519), rank_med=22, %r1=  0.0%, N=200
+
+  --- first_order (N=3200) ---
+    bare_nolabel             : acc= 56.0%, Δlp=+0.060(±0.453), rank_med=6, %r1= 10.0%, N=400
+    feature_swap             : acc= 51.0%, Δlp=+0.513(±3.214), rank_med=6, %r1= 15.0%, N=400
+    frequency_matched        : acc= 53.2%, Δlp=+0.526(±2.359), rank_med=5, %r1= 15.5%, N=400
+    noise_injection          : acc= 59.5%, Δlp=+0.854(±3.142), rank_med=5, %r1= 22.0%, N=400
+    paraphrased_nolabel      : acc= 55.5%, Δlp=+0.070(±0.559), rank_med=6, %r1=  8.8%, N=400
+    regular                  : acc= 59.8%, Δlp=+0.921(±3.390), rank_med=5, %r1= 21.2%, N=400
+    scrambled                : acc= 58.5%, Δlp=+0.445(±2.251), rank_med=5, %r1= 15.2%, N=400
+    weak_label               : acc= 52.8%, Δlp=+0.144(±2.144), rank_med=5, %r1= 17.8%, N=400
+
+  --- frame_variant (N=3200) ---
+    bare_nolabel             : acc= 53.0%, Δlp=+0.003(±0.479), rank_med=7, %r1=  8.0%, N=400
+    feature_swap             : acc= 51.0%, Δlp=+0.048(±2.230), rank_med=13, %r1=  8.5%, N=400
+    frequency_matched        : acc= 53.8%, Δlp=+0.070(±0.908), rank_med=7, %r1=  9.0%, N=400
+    noise_injection          : acc= 51.5%, Δlp=+0.100(±1.108), rank_med=10, %r1= 11.0%, N=400
+    paraphrased_nolabel      : acc= 52.8%, Δlp=+0.018(±0.501), rank_med=6, %r1=  9.0%, N=400
+    regular                  : acc= 56.2%, Δlp=+0.188(±1.328), rank_med=11, %r1= 12.0%, N=400
+    scrambled                : acc= 56.0%, Δlp=+0.104(±1.116), rank_med=10, %r1=  8.5%, N=400
+    weak_label               : acc= 53.5%, Δlp=+0.045(±0.638), rank_med=6, %r1= 11.5%, N=400
+
+  --- frequency_matched_foil (N=1600) ---
+    bare_nolabel             : acc= 50.5%, Δlp=+0.003(±0.456), rank_med=6, %r1= 11.0%, N=200
+    feature_swap             : acc= 48.0%, Δlp=+0.182(±2.976), rank_med=6, %r1= 13.5%, N=200
+    frequency_matched        : acc= 52.0%, Δlp=+0.359(±2.237), rank_med=5, %r1= 17.0%, N=200
+    noise_injection          : acc= 53.5%, Δlp=+0.741(±3.134), rank_med=5, %r1= 23.0%, N=200
+    paraphrased_nolabel      : acc= 53.5%, Δlp=+0.036(±0.579), rank_med=6, %r1= 11.0%, N=200
+    regular                  : acc= 60.0%, Δlp=+0.814(±3.230), rank_med=5, %r1= 21.5%, N=200
+    scrambled                : acc= 59.0%, Δlp=+0.240(±2.344), rank_med=4, %r1= 13.0%, N=200
+    weak_label               : acc= 51.0%, Δlp=+0.246(±2.010), rank_med=6, %r1= 16.5%, N=200
+
+  --- hard_distractor (N=3200) ---
+    bare_nolabel             : acc= 47.8%, Δlp=-0.037(±0.433), rank_med=6, %r1=  7.8%, N=400
+    feature_swap             : acc= 61.5%, Δlp=+1.036(±3.098), rank_med=5, %r1= 17.2%, N=400
+    frequency_matched        : acc= 57.8%, Δlp=+0.457(±2.473), rank_med=5, %r1= 15.2%, N=400
+    noise_injection          : acc= 57.8%, Δlp=+1.063(±3.033), rank_med=4, %r1= 26.5%, N=400
+    paraphrased_nolabel      : acc= 45.5%, Δlp=-0.033(±0.683), rank_med=7, %r1=  8.8%, N=400
+    regular                  : acc= 65.5%, Δlp=+1.153(±3.514), rank_med=4, %r1= 23.5%, N=400
+    scrambled                : acc= 57.5%, Δlp=+0.295(±2.307), rank_med=5, %r1= 15.2%, N=400
+    weak_label               : acc= 55.5%, Δlp=+0.424(±2.091), rank_med=5, %r1= 17.8%, N=400
+
+  --- mass_frame_shape (N=1600) ---
+    bare_nolabel             : acc= 52.0%, Δlp=+0.027(±0.440), rank_med=6, %r1=  8.0%, N=200
+    feature_swap             : acc= 50.0%, Δlp=+0.130(±2.377), rank_med=14, %r1=  6.5%, N=200
+    frequency_matched        : acc= 55.0%, Δlp=+0.160(±1.181), rank_med=7, %r1= 10.5%, N=200
+    noise_injection          : acc= 52.0%, Δlp=+0.067(±1.281), rank_med=9, %r1= 12.0%, N=200
+    paraphrased_nolabel      : acc= 51.0%, Δlp=+0.015(±0.477), rank_med=6, %r1= 11.5%, N=200
+    regular                  : acc= 58.5%, Δlp=+0.283(±1.250), rank_med=12, %r1= 10.0%, N=200
+    scrambled                : acc= 56.0%, Δlp=+0.216(±1.338), rank_med=9, %r1= 10.5%, N=200
+    weak_label               : acc= 58.0%, Δlp=+0.121(±0.829), rank_med=5, %r1= 11.5%, N=200
+
+  --- mass_frame_texture (N=1600) ---
+    bare_nolabel             : acc=  8.5%, Δlp=-3.890(±2.632), rank_med=17, %r1=  1.0%, N=200
+    feature_swap             : acc= 44.0%, Δlp=-0.327(±1.938), rank_med=16, %r1=  0.5%, N=200
+    frequency_matched        : acc=  3.0%, Δlp=-5.168(±2.715), rank_med=25, %r1=  0.5%, N=200
+    noise_injection          : acc=  8.5%, Δlp=-4.547(±2.615), rank_med=24, %r1=  1.0%, N=200
+    paraphrased_nolabel      : acc= 10.5%, Δlp=-5.128(±2.988), rank_med=19, %r1=  0.5%, N=200
+    regular                  : acc= 13.0%, Δlp=-3.069(±2.822), rank_med=23, %r1=  0.0%, N=200
+    scrambled                : acc=  5.5%, Δlp=-4.645(±2.921), rank_med=25, %r1=  0.0%, N=200
+    weak_label               : acc=  1.5%, Δlp=-6.015(±2.241), rank_med=22, %r1=  0.5%, N=200
+
+  --- paraphrased_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 49.6%, Δlp=-0.037(±0.409), rank_med=6, %r1=  6.6%, N=500
+    feature_swap             : acc= 51.6%, Δlp=+0.023(±2.993), rank_med=5, %r1= 14.0%, N=500
+    frequency_matched        : acc= 48.0%, Δlp=-0.046(±0.896), rank_med=6, %r1=  7.2%, N=500
+    noise_injection          : acc= 52.2%, Δlp=+0.070(±1.102), rank_med=5, %r1= 15.6%, N=500
+    paraphrased_nolabel      : acc= 49.8%, Δlp=-0.007(±0.409), rank_med=6, %r1=  9.6%, N=500
+    regular                  : acc= 61.8%, Δlp=+0.223(±0.865), rank_med=4, %r1= 17.4%, N=500
+    scrambled                : acc= 51.2%, Δlp=+0.034(±1.196), rank_med=5, %r1=  7.8%, N=500
+    weak_label               : acc= 45.6%, Δlp=-0.070(±0.477), rank_med=6, %r1=  7.4%, N=500
+
+  --- second_order (N=8000) ---
+    bare_nolabel             : acc= 52.9%, Δlp=+0.010(±0.451), rank_med=5, %r1=  8.9%, N=1000
+    feature_swap             : acc= 47.5%, Δlp=-0.036(±1.214), rank_med=6, %r1= 12.0%, N=1000
+    frequency_matched        : acc= 48.0%, Δlp=-0.002(±1.057), rank_med=5, %r1=  9.8%, N=1000
+    noise_injection          : acc= 49.5%, Δlp=-0.003(±1.012), rank_med=6, %r1=  9.9%, N=1000
+    paraphrased_nolabel      : acc= 52.2%, Δlp=+0.021(±0.591), rank_med=6, %r1=  9.9%, N=1000
+    regular                  : acc= 51.6%, Δlp=+0.021(±0.921), rank_med=5, %r1= 10.9%, N=1000
+    scrambled                : acc= 53.8%, Δlp=-0.018(±1.139), rank_med=5, %r1=  9.1%, N=1000
+    weak_label               : acc= 54.0%, Δlp=+0.033(±1.148), rank_med=5, %r1= 10.6%, N=1000
+
+  --- slot_shuffle (N=1600) ---
+    bare_nolabel             : acc= 41.5%, Δlp=-0.071(±0.409), rank_med=6, %r1=  6.5%, N=200
+    feature_swap             : acc= 53.5%, Δlp=+0.163(±2.548), rank_med=6, %r1= 14.5%, N=200
+    frequency_matched        : acc= 49.0%, Δlp=-0.057(±1.582), rank_med=5, %r1= 13.0%, N=200
+    noise_injection          : acc= 55.0%, Δlp=+0.312(±2.051), rank_med=5, %r1= 20.5%, N=200
+    paraphrased_nolabel      : acc= 53.0%, Δlp=+0.033(±0.397), rank_med=5, %r1= 10.5%, N=200
+    regular                  : acc= 55.0%, Δlp=+0.267(±1.979), rank_med=4, %r1= 21.5%, N=200
+    scrambled                : acc= 55.5%, Δlp=+0.204(±1.579), rank_med=5, %r1= 19.5%, N=200
+    weak_label               : acc= 53.0%, Δlp=+0.042(±0.756), rank_med=5, %r1= 16.0%, N=200
+
+========================================================================
+MODEL SIZE: MEDIUM
+========================================================================
+
+  --- ambiguous_exemplar (N=3200) ---
+    bare_nolabel             : acc= 48.8%, Δlp=-0.017(±0.384), rank_med=5, %r1= 10.0%, N=400
+    feature_swap             : acc= 46.2%, Δlp=+0.256(±4.435), rank_med=8, %r1= 12.8%, N=400
+    frequency_matched        : acc= 54.5%, Δlp=+0.150(±2.594), rank_med=6, %r1= 13.0%, N=400
+    noise_injection          : acc= 54.8%, Δlp=+0.470(±3.864), rank_med=5, %r1= 22.8%, N=400
+    paraphrased_nolabel      : acc= 46.2%, Δlp=-0.039(±0.362), rank_med=6, %r1=  6.2%, N=400
+    regular                  : acc= 47.5%, Δlp=+0.137(±3.353), rank_med=7, %r1= 23.2%, N=400
+    scrambled                : acc= 52.0%, Δlp=+0.286(±3.089), rank_med=4, %r1= 15.5%, N=400
+    weak_label               : acc= 53.5%, Δlp=+0.087(±1.437), rank_med=5, %r1= 14.5%, N=400
+
+  --- bare_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 46.8%, Δlp=-0.064(±0.430), rank_med=6, %r1=  5.6%, N=500
+    feature_swap             : acc= 58.8%, Δlp=+0.300(±2.656), rank_med=4, %r1= 22.4%, N=500
+    frequency_matched        : acc= 54.2%, Δlp=+0.050(±0.724), rank_med=5, %r1= 11.6%, N=500
+    noise_injection          : acc= 65.6%, Δlp=+0.362(±0.811), rank_med=4, %r1= 17.6%, N=500
+    paraphrased_nolabel      : acc= 41.6%, Δlp=-0.117(±0.575), rank_med=7, %r1=  9.6%, N=500
+    regular                  : acc= 64.0%, Δlp=+0.324(±0.874), rank_med=4, %r1= 21.4%, N=500
+    scrambled                : acc= 52.4%, Δlp=+0.021(±0.795), rank_med=5, %r1= 12.2%, N=500
+    weak_label               : acc= 47.0%, Δlp=-0.059(±0.505), rank_med=6, %r1=  9.0%, N=500
+
+  --- count_frame (N=3200) ---
+    bare_nolabel             : acc= 49.8%, Δlp=-0.008(±0.482), rank_med=7, %r1=  8.0%, N=400
+    feature_swap             : acc= 57.2%, Δlp=+0.706(±2.869), rank_med=7, %r1= 17.2%, N=400
+    frequency_matched        : acc= 54.5%, Δlp=+0.211(±1.154), rank_med=5, %r1= 17.0%, N=400
+    noise_injection          : acc= 55.8%, Δlp=+0.458(±1.675), rank_med=6, %r1= 21.0%, N=400
+    paraphrased_nolabel      : acc= 53.8%, Δlp=+0.021(±0.375), rank_med=6, %r1=  6.5%, N=400
+    regular                  : acc= 58.0%, Δlp=+0.443(±1.658), rank_med=5, %r1= 21.0%, N=400
+    scrambled                : acc= 55.0%, Δlp=+0.268(±1.326), rank_med=6, %r1= 15.2%, N=400
+    weak_label               : acc= 54.2%, Δlp=+0.241(±1.052), rank_med=5, %r1= 20.2%, N=400
+
+  --- domain_b_frame_cued (N=1600) ---
+    bare_nolabel             : acc= 26.5%, Δlp=-0.739(±1.642), rank_med=19, %r1=  0.5%, N=200
+    feature_swap             : acc= 98.0%, Δlp=+5.418(±3.031), rank_med=5, %r1= 15.5%, N=200
+    frequency_matched        : acc=  0.0%, Δlp=-4.414(±1.343), rank_med=26, %r1=  0.0%, N=200
+    noise_injection          : acc=  1.5%, Δlp=-2.829(±1.261), rank_med=25, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc= 50.5%, Δlp=-0.156(±1.364), rank_med=16, %r1=  2.5%, N=200
+    regular                  : acc= 21.5%, Δlp=-1.003(±1.326), rank_med=24, %r1=  0.0%, N=200
+    scrambled                : acc=  1.0%, Δlp=-3.869(±1.874), rank_med=26, %r1=  0.0%, N=200
+    weak_label               : acc= 13.5%, Δlp=-2.654(±2.541), rank_med=23, %r1=  2.5%, N=200
+
+  --- domain_b_noun_only (N=1600) ---
+    bare_nolabel             : acc=  0.0%, Δlp=-7.040(±1.034), rank_med=18, %r1=  0.0%, N=200
+    feature_swap             : acc= 14.5%, Δlp=-2.652(±3.005), rank_med=20, %r1=  1.0%, N=200
+    frequency_matched        : acc=  0.0%, Δlp=-7.894(±2.405), rank_med=25, %r1=  0.0%, N=200
+    noise_injection          : acc=  0.0%, Δlp=-5.909(±2.436), rank_med=25, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc=  0.0%, Δlp=-8.165(±0.757), rank_med=21, %r1=  0.0%, N=200
+    regular                  : acc=  0.0%, Δlp=-4.577(±2.537), rank_med=25, %r1=  0.0%, N=200
+    scrambled                : acc=  0.0%, Δlp=-7.750(±3.660), rank_med=25, %r1=  0.0%, N=200
+    weak_label               : acc=  0.0%, Δlp=-8.038(±1.586), rank_med=23, %r1=  0.0%, N=200
+
+  --- first_order (N=3200) ---
+    bare_nolabel             : acc= 50.7%, Δlp=+0.029(±0.488), rank_med=5, %r1=  8.8%, N=400
+    feature_swap             : acc= 52.8%, Δlp=+0.294(±2.617), rank_med=5, %r1= 17.5%, N=400
+    frequency_matched        : acc= 51.5%, Δlp=+0.245(±1.690), rank_med=5, %r1= 17.8%, N=400
+    noise_injection          : acc= 58.0%, Δlp=+0.501(±2.498), rank_med=5, %r1= 21.5%, N=400
+    paraphrased_nolabel      : acc= 51.5%, Δlp=+0.008(±0.419), rank_med=6, %r1=  7.2%, N=400
+    regular                  : acc= 62.7%, Δlp=+0.848(±2.763), rank_med=4, %r1= 21.5%, N=400
+    scrambled                : acc= 58.8%, Δlp=+0.408(±1.991), rank_med=5, %r1= 15.0%, N=400
+    weak_label               : acc= 49.8%, Δlp=+0.042(±2.039), rank_med=5, %r1= 18.0%, N=400
+
+  --- frame_variant (N=3200) ---
+    bare_nolabel             : acc= 50.5%, Δlp=+0.016(±0.681), rank_med=7, %r1=  7.5%, N=400
+    feature_swap             : acc= 48.2%, Δlp=+0.051(±2.333), rank_med=12, %r1=  9.2%, N=400
+    frequency_matched        : acc= 54.2%, Δlp=+0.097(±0.777), rank_med=5, %r1= 13.0%, N=400
+    noise_injection          : acc= 53.5%, Δlp=+0.194(±1.388), rank_med=8, %r1= 12.2%, N=400
+    paraphrased_nolabel      : acc= 51.7%, Δlp=-0.001(±0.427), rank_med=7, %r1=  7.5%, N=400
+    regular                  : acc= 54.5%, Δlp=+0.243(±1.462), rank_med=11, %r1= 12.5%, N=400
+    scrambled                : acc= 53.5%, Δlp=+0.090(±0.987), rank_med=6, %r1= 13.2%, N=400
+    weak_label               : acc= 48.8%, Δlp=+0.046(±0.772), rank_med=6, %r1= 12.2%, N=400
+
+  --- frequency_matched_foil (N=1600) ---
+    bare_nolabel             : acc= 52.5%, Δlp=+0.029(±0.516), rank_med=5, %r1= 12.0%, N=200
+    feature_swap             : acc= 52.5%, Δlp=+0.131(±2.460), rank_med=6, %r1= 15.0%, N=200
+    frequency_matched        : acc= 54.5%, Δlp=+0.333(±1.791), rank_med=5, %r1= 21.5%, N=200
+    noise_injection          : acc= 52.5%, Δlp=+0.474(±2.511), rank_med=5, %r1= 21.5%, N=200
+    paraphrased_nolabel      : acc= 47.0%, Δlp=-0.027(±0.441), rank_med=6, %r1= 11.0%, N=200
+    regular                  : acc= 63.5%, Δlp=+0.831(±2.694), rank_med=4, %r1= 22.0%, N=200
+    scrambled                : acc= 53.5%, Δlp=+0.289(±2.223), rank_med=5, %r1= 17.0%, N=200
+    weak_label               : acc= 53.0%, Δlp=+0.294(±1.955), rank_med=6, %r1= 17.5%, N=200
+
+  --- hard_distractor (N=3200) ---
+    bare_nolabel             : acc= 55.2%, Δlp=+0.051(±0.579), rank_med=5, %r1= 11.5%, N=400
+    feature_swap             : acc= 56.0%, Δlp=+0.585(±2.372), rank_med=6, %r1= 19.8%, N=400
+    frequency_matched        : acc= 57.0%, Δlp=+0.345(±1.764), rank_med=5, %r1= 21.2%, N=400
+    noise_injection          : acc= 62.3%, Δlp=+0.834(±2.704), rank_med=4, %r1= 25.8%, N=400
+    paraphrased_nolabel      : acc= 55.2%, Δlp=+0.037(±0.434), rank_med=5, %r1= 12.2%, N=400
+    regular                  : acc= 55.2%, Δlp=+0.959(±2.755), rank_med=4, %r1= 24.5%, N=400
+    scrambled                : acc= 53.0%, Δlp=+0.347(±2.103), rank_med=5, %r1= 16.2%, N=400
+    weak_label               : acc= 55.0%, Δlp=+0.390(±1.971), rank_med=5, %r1= 20.0%, N=400
+
+  --- mass_frame_shape (N=1600) ---
+    bare_nolabel             : acc= 55.0%, Δlp=+0.059(±0.534), rank_med=7, %r1=  9.0%, N=200
+    feature_swap             : acc= 54.0%, Δlp=+0.300(±2.450), rank_med=9, %r1= 11.5%, N=200
+    frequency_matched        : acc= 54.5%, Δlp=+0.109(±0.969), rank_med=5, %r1= 14.0%, N=200
+    noise_injection          : acc= 56.5%, Δlp=+0.216(±1.338), rank_med=7, %r1= 11.5%, N=200
+    paraphrased_nolabel      : acc= 56.0%, Δlp=+0.021(±0.459), rank_med=7, %r1=  7.0%, N=200
+    regular                  : acc= 54.0%, Δlp=+0.244(±1.373), rank_med=10, %r1= 12.0%, N=200
+    scrambled                : acc= 59.0%, Δlp=+0.205(±1.013), rank_med=6, %r1= 14.0%, N=200
+    weak_label               : acc= 59.5%, Δlp=+0.235(±1.062), rank_med=5, %r1= 15.5%, N=200
+
+  --- mass_frame_texture (N=1600) ---
+    bare_nolabel             : acc= 12.0%, Δlp=-3.437(±2.751), rank_med=18, %r1=  0.0%, N=200
+    feature_swap             : acc= 17.0%, Δlp=-1.992(±2.229), rank_med=20, %r1=  0.0%, N=200
+    frequency_matched        : acc=  0.0%, Δlp=-7.283(±1.893), rank_med=25, %r1=  0.0%, N=200
+    noise_injection          : acc=  0.0%, Δlp=-5.772(±1.656), rank_med=25, %r1=  0.0%, N=200
+    paraphrased_nolabel      : acc= 12.5%, Δlp=-4.777(±3.049), rank_med=17, %r1=  1.0%, N=200
+    regular                  : acc=  0.0%, Δlp=-4.060(±1.623), rank_med=25, %r1=  0.0%, N=200
+    scrambled                : acc=  0.0%, Δlp=-7.352(±2.480), rank_med=26, %r1=  0.0%, N=200
+    weak_label               : acc=  6.5%, Δlp=-6.069(±2.712), rank_med=22, %r1=  0.0%, N=200
+
+  --- paraphrased_nolabel_matched (N=4000) ---
+    bare_nolabel             : acc= 49.8%, Δlp=-0.017(±0.453), rank_med=5, %r1=  8.2%, N=500
+    feature_swap             : acc= 58.6%, Δlp=+0.219(±3.096), rank_med=4, %r1= 24.6%, N=500
+    frequency_matched        : acc= 50.8%, Δlp=+0.010(±0.671), rank_med=5, %r1= 13.2%, N=500
+    noise_injection          : acc= 62.8%, Δlp=+0.346(±0.926), rank_med=4, %r1= 26.0%, N=500
+    paraphrased_nolabel      : acc= 47.2%, Δlp=-0.024(±0.504), rank_med=6, %r1=  7.0%, N=500
+    regular                  : acc= 63.2%, Δlp=+0.302(±0.960), rank_med=4, %r1= 24.0%, N=500
+    scrambled                : acc= 51.0%, Δlp=+0.005(±0.783), rank_med=5, %r1= 14.6%, N=500
+    weak_label               : acc= 44.2%, Δlp=-0.060(±0.513), rank_med=6, %r1= 11.0%, N=500
+
+  --- second_order (N=8000) ---
+    bare_nolabel             : acc= 47.3%, Δlp=-0.056(±0.546), rank_med=6, %r1= 10.0%, N=1000
+    feature_swap             : acc= 47.4%, Δlp=-0.060(±0.909), rank_med=6, %r1=  4.9%, N=1000
+    frequency_matched        : acc= 47.6%, Δlp=-0.030(±0.683), rank_med=6, %r1= 11.1%, N=1000
+    noise_injection          : acc= 47.9%, Δlp=-0.038(±0.730), rank_med=6, %r1= 11.2%, N=1000
+    paraphrased_nolabel      : acc= 46.8%, Δlp=-0.037(±0.450), rank_med=6, %r1=  8.3%, N=1000
+    regular                  : acc= 51.0%, Δlp=+0.034(±0.790), rank_med=5, %r1= 12.9%, N=1000
+    scrambled                : acc= 50.4%, Δlp=+0.012(±0.654), rank_med=5, %r1= 12.9%, N=1000
+    weak_label               : acc= 51.2%, Δlp=+0.014(±1.114), rank_med=6, %r1= 12.9%, N=1000
+
+  --- slot_shuffle (N=1600) ---
+    bare_nolabel             : acc= 54.5%, Δlp=+0.026(±0.473), rank_med=5, %r1= 12.0%, N=200
+    feature_swap             : acc= 52.0%, Δlp=+0.191(±2.701), rank_med=6, %r1= 15.0%, N=200
+    frequency_matched        : acc= 49.5%, Δlp=+0.045(±2.007), rank_med=6, %r1= 16.0%, N=200
+    noise_injection          : acc= 59.5%, Δlp=+0.454(±2.747), rank_med=5, %r1= 21.5%, N=200
+    paraphrased_nolabel      : acc= 46.0%, Δlp=-0.006(±0.403), rank_med=6, %r1= 10.0%, N=200
+    regular                  : acc= 57.0%, Δlp=+0.609(±2.349), rank_med=4, %r1= 21.5%, N=200
+    scrambled                : acc= 57.5%, Δlp=+0.182(±2.064), rank_med=6, %r1= 19.0%, N=200
+    weak_label               : acc= 53.5%, Δlp=+0.142(±1.130), rank_med=5, %r1= 14.0%, N=200
+────────────────────────────────────────────────────────────────────────
+9. FREQUENCY-MATCHED FOIL CONTROL (40 items)
+   Pre-registered: tests whether standard foils are frequency-confounded
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel: 49.0% (CI [41.9, 56.1]), p=0.8321
+  feature_swap: 51.0% (CI [43.9, 58.1]), p=0.8321
+  frequency_matched: 58.0% (CI [50.8, 64.9]), p=0.0281
+  noise_injection: 53.5% (CI [46.3, 60.6]), p=0.3580
+  paraphrased_nolabel: 46.0% (CI [38.9, 53.2]), p=0.2888
+  regular: 60.0% (CI [52.9, 66.8]), p=0.0057
+  scrambled: 57.0% (CI [49.8, 64.0]), p=0.0560
+  weak_label: 55.5% (CI [48.3, 62.5]), p=0.1374
+
+--- SMALL ---
+  bare_nolabel: 50.5% (CI [43.4, 57.6]), p=0.9437
+  feature_swap: 48.0% (CI [40.9, 55.2]), p=0.6207
+  frequency_matched: 52.0% (CI [44.8, 59.1]), p=0.6207
+  noise_injection: 53.5% (CI [46.3, 60.6]), p=0.3580
+  paraphrased_nolabel: 53.5% (CI [46.3, 60.6]), p=0.3580
+  regular: 60.0% (CI [52.9, 66.8]), p=0.0057
+  scrambled: 59.0% (CI [51.8, 65.9]), p=0.0131
+  weak_label: 51.0% (CI [43.9, 58.1]), p=0.8321
+
+--- MEDIUM ---
+  bare_nolabel: 52.5% (CI [45.3, 59.6]), p=0.5246
+  feature_swap: 52.5% (CI [45.3, 59.6]), p=0.5246
+  frequency_matched: 54.5% (CI [47.3, 61.5]), p=0.2292
+  noise_injection: 52.5% (CI [45.3, 59.6]), p=0.5246
+  paraphrased_nolabel: 47.0% (CI [39.9, 54.2]), p=0.4368
+  regular: 63.5% (CI [56.4, 70.2]), p=0.0002
+  scrambled: 53.5% (CI [46.3, 60.6]), p=0.3580
+  weak_label: 53.0% (CI [45.8, 60.1]), p=0.4368
+────────────────────────────────────────────────────────────────────────
+10. HARD DISTRACTOR CONTROL (80 items)
+    Pre-registered: tests discrimination difficulty
+────────────────────────────────────────────────────────────────────────
+
+--- TINY ---
+  bare_nolabel: M=54.5%, SD=4.0%
+  feature_swap: M=55.5%, SD=11.6%
+  frequency_matched: M=58.0%, SD=8.2%
+  noise_injection: M=57.0%, SD=22.1%
+  paraphrased_nolabel: M=52.3%, SD=8.4%
+  regular: M=61.0%, SD=24.5%
+  scrambled: M=56.7%, SD=13.9%
+  weak_label: M=59.0%, SD=14.4%
+
+--- SMALL ---
+  bare_nolabel: M=47.8%, SD=5.1%
+  feature_swap: M=61.5%, SD=11.9%
+  frequency_matched: M=57.8%, SD=16.5%
+  noise_injection: M=57.8%, SD=24.7%
+  paraphrased_nolabel: M=45.5%, SD=7.3%
+  regular: M=65.5%, SD=17.8%
+  scrambled: M=57.5%, SD=10.5%
+  weak_label: M=55.5%, SD=14.2%
+
+--- MEDIUM ---
+  bare_nolabel: M=55.2%, SD=6.0%
+  feature_swap: M=56.0%, SD=15.6%
+  frequency_matched: M=57.0%, SD=13.7%
+  noise_injection: M=62.2%, SD=22.8%
+  paraphrased_nolabel: M=55.2%, SD=3.1%
+  regular: M=55.2%, SD=25.1%
+  scrambled: M=53.0%, SD=10.2%
+  weak_label: M=55.0%, SD=21.8%
+────────────────────────────────────────────────────────────────────────
+SUMMARY: PRE-REGISTRATION COMPLIANCE STATUS (after this script)
+────────────────────────────────────────────────────────────────────────
+  [DONE    ] Binary accuracy (target > foil)          study1_analysis.py
+  [DONE    ] Δ log-prob per token (normalised)        Section 1 above
+  [DONE    ] Rank (median + % ranked 1st)             Section 2 above
+  [DONE    ] FO vs SO accuracy                        study1_analysis.py
+  [DONE    ] Frame-cued vs noun-only (Domain B)       study1_analysis.py
+  [DONE    ] Matched vs labelled frame                Section 5 above
+  [DONE    ] P1: Ambiguous exemplar                   Section 3 above
+  [DONE    ] Noun-freq × texture-accuracy r           Section 4 above
+  [DONE    ] H_label 2×2 supplement                   Section 6 above
+  [DONE    ] Slot shuffle control                     Section 7 above
+  [DONE    ] Freq-matched foil control                Section 9 above
+  [DONE    ] Hard distractor control                  Section 10 above
+  [DONE    ] All 14 item types reported               Section 8 above
+  [PENDING ] Greedy generation top-token              Needs model inference (Medium/Regular)
+  [PENDING ] Linear probe (P2)                        Needs model inference (all layers)
+  [DEFERRED] Sequential feature-swap                  5 runs not executed
+  [PENDING ] H_Bayes HBM posterior                    Needs Dirichlet-multinomial implementation
+
+  13/17 complete. 4 remaining (all require model inference or separate implementation).
+────────────────────────────────────────────────────────────────────────
+
+Results saved to: C:\overhypothesis\results\study1\supplementary_results.csv
+Full output: C:\overhypothesis\results\study1\supplementary_output.txt
+Completed: 2026-03-04 11:15

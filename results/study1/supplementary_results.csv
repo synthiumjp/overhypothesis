@@ -1,0 +1,115 @@
+Section,Size,Metric,Statistic,Value,p_value,Note
+DeltaLP,tiny,SO dlp vs 0,t,-0.54295,0.616001,M=-0.0081
+DeltaLP,small,SO dlp vs 0,t,0.32254,0.763197,M=0.0034
+DeltaLP,medium,SO dlp vs 0,t,-2.73624,0.052107,M=-0.0201
+Rank,tiny,SO median rank,median,5.8,,chance=5.5
+Rank,tiny,SO pct_rank1,pct,0.10025,,chance=10%
+Rank,small,SO median rank,median,5.4,,chance=5.5
+Rank,small,SO pct_rank1,pct,0.10138,,chance=10%
+Rank,medium,SO median rank,median,6.0,,chance=5.5
+Rank,medium,SO pct_rank1,pct,0.10525,,chance=10%
+P1_ambiguous,tiny,ambig bare_nolabel,prop,0.4975,0.960131,"CI=[0.447,0.548]; AT CHANCE"
+P1_ambiguous,tiny,ambig feature_swap,prop,0.475,0.342122,"CI=[0.425,0.525]; AT CHANCE"
+P1_ambiguous,tiny,ambig frequency_matched,prop,0.4825,0.515743,"CI=[0.433,0.533]; AT CHANCE"
+P1_ambiguous,tiny,ambig noise_injection,prop,0.5075,0.802625,"CI=[0.457,0.558]; AT CHANCE"
+P1_ambiguous,tiny,ambig paraphrased_nolabel,prop,0.4925,0.802625,"CI=[0.442,0.543]; AT CHANCE"
+P1_ambiguous,tiny,ambig regular,prop,0.54,0.121033,"CI=[0.490,0.590]; AT CHANCE"
+P1_ambiguous,tiny,ambig scrambled,prop,0.4875,0.652765,"CI=[0.438,0.538]; AT CHANCE"
+P1_ambiguous,tiny,ambig weak_label,prop,0.5125,0.652765,"CI=[0.462,0.562]; AT CHANCE"
+P1_ambiguous,small,ambig bare_nolabel,prop,0.4325,0.00797,"CI=[0.383,0.483]; BELOW CHANCE"
+P1_ambiguous,small,ambig feature_swap,prop,0.525,0.342122,"CI=[0.475,0.575]; AT CHANCE"
+P1_ambiguous,small,ambig frequency_matched,prop,0.555,0.031427,"CI=[0.505,0.604]; ABOVE CHANCE"
+P1_ambiguous,small,ambig noise_injection,prop,0.555,0.031427,"CI=[0.505,0.604]; ABOVE CHANCE"
+P1_ambiguous,small,ambig paraphrased_nolabel,prop,0.4975,0.960131,"CI=[0.447,0.548]; AT CHANCE"
+P1_ambiguous,small,ambig regular,prop,0.5275,0.293708,"CI=[0.477,0.577]; AT CHANCE"
+P1_ambiguous,small,ambig scrambled,prop,0.52,0.453296,"CI=[0.470,0.570]; AT CHANCE"
+P1_ambiguous,small,ambig weak_label,prop,0.43,0.005891,"CI=[0.381,0.480]; BELOW CHANCE"
+P1_ambiguous,medium,ambig bare_nolabel,prop,0.4875,0.652765,"CI=[0.438,0.538]; AT CHANCE"
+P1_ambiguous,medium,ambig feature_swap,prop,0.4625,0.146966,"CI=[0.413,0.513]; AT CHANCE"
+P1_ambiguous,medium,ambig frequency_matched,prop,0.545,0.079988,"CI=[0.495,0.595]; AT CHANCE"
+P1_ambiguous,medium,ambig noise_injection,prop,0.5475,0.064179,"CI=[0.497,0.597]; AT CHANCE"
+P1_ambiguous,medium,ambig paraphrased_nolabel,prop,0.4625,0.146966,"CI=[0.413,0.513]; AT CHANCE"
+P1_ambiguous,medium,ambig regular,prop,0.475,0.342122,"CI=[0.425,0.525]; AT CHANCE"
+P1_ambiguous,medium,ambig scrambled,prop,0.52,0.453296,"CI=[0.470,0.570]; AT CHANCE"
+P1_ambiguous,medium,ambig weak_label,prop,0.535,0.176942,"CI=[0.485,0.585]; AT CHANCE"
+NounFreq,tiny,noun_freq_r domain_b_frame_cued,r,,,
+NounFreq,tiny,noun_freq_r domain_b_noun_only,r,-0.23784,0.412894,
+NounFreq,small,noun_freq_r domain_b_frame_cued,r,,,
+NounFreq,small,noun_freq_r domain_b_noun_only,r,-0.27876,0.334497,
+NounFreq,medium,noun_freq_r domain_b_frame_cued,r,-0.09806,0.738748,
+NounFreq,medium,noun_freq_r domain_b_noun_only,r,-0.04559,0.877007,
+FrameConfound,tiny,bare_nolabel matched vs SO,t,1.83965,0.139655,Δ=2.9pp
+FrameConfound,tiny,paraphrased_nolabel matched vs SO,t,0.20821,0.845239,Δ=0.9pp
+FrameConfound,tiny,weak_label matched vs SO,t,,,Δ=0.0pp
+FrameConfound,small,bare_nolabel matched vs SO,t,-1.71064,0.16232,Δ=-10.1pp
+FrameConfound,small,paraphrased_nolabel matched vs SO,t,-1.11178,0.328549,Δ=-2.4pp
+FrameConfound,small,weak_label matched vs SO,t,,,Δ=0.0pp
+FrameConfound,medium,bare_nolabel matched vs SO,t,-0.07251,0.945677,Δ=-0.5pp
+FrameConfound,medium,paraphrased_nolabel matched vs SO,t,0.18052,0.865523,Δ=0.4pp
+FrameConfound,medium,weak_label matched vs SO,t,,,Δ=0.0pp
+ItemTypes,tiny,ambiguous_exemplar,acc,0.49938,,N=3200
+ItemTypes,tiny,bare_nolabel_matched,acc,0.48025,,N=4000
+ItemTypes,tiny,count_frame,acc,0.54375,,N=3200
+ItemTypes,tiny,domain_b_frame_cued,acc,0.35938,,N=1600
+ItemTypes,tiny,domain_b_noun_only,acc,0.02938,,N=1600
+ItemTypes,tiny,first_order,acc,0.52719,,N=3200
+ItemTypes,tiny,frame_variant,acc,0.515,,N=3200
+ItemTypes,tiny,frequency_matched_foil,acc,0.5375,,N=1600
+ItemTypes,tiny,hard_distractor,acc,0.5675,,N=3200
+ItemTypes,tiny,mass_frame_shape,acc,0.51688,,N=1600
+ItemTypes,tiny,mass_frame_texture,acc,0.14938,,N=1600
+ItemTypes,tiny,paraphrased_nolabel_matched,acc,0.4845,,N=4000
+ItemTypes,tiny,second_order,acc,0.4945,,N=8000
+ItemTypes,tiny,slot_shuffle,acc,0.47875,,N=1600
+ItemTypes,small,ambiguous_exemplar,acc,0.50531,,N=3200
+ItemTypes,small,bare_nolabel_matched,acc,0.50475,,N=4000
+ItemTypes,small,count_frame,acc,0.54906,,N=3200
+ItemTypes,small,domain_b_frame_cued,acc,0.29063,,N=1600
+ItemTypes,small,domain_b_noun_only,acc,0.02688,,N=1600
+ItemTypes,small,first_order,acc,0.55781,,N=3200
+ItemTypes,small,frame_variant,acc,0.53469,,N=3200
+ItemTypes,small,frequency_matched_foil,acc,0.53438,,N=1600
+ItemTypes,small,hard_distractor,acc,0.56094,,N=3200
+ItemTypes,small,mass_frame_shape,acc,0.54062,,N=1600
+ItemTypes,small,mass_frame_texture,acc,0.11812,,N=1600
+ItemTypes,small,paraphrased_nolabel_matched,acc,0.51225,,N=4000
+ItemTypes,small,second_order,acc,0.51188,,N=8000
+ItemTypes,small,slot_shuffle,acc,0.51938,,N=1600
+ItemTypes,medium,ambiguous_exemplar,acc,0.50438,,N=3200
+ItemTypes,medium,bare_nolabel_matched,acc,0.538,,N=4000
+ItemTypes,medium,count_frame,acc,0.54781,,N=3200
+ItemTypes,medium,domain_b_frame_cued,acc,0.26562,,N=1600
+ItemTypes,medium,domain_b_noun_only,acc,0.01812,,N=1600
+ItemTypes,medium,first_order,acc,0.54469,,N=3200
+ItemTypes,medium,frame_variant,acc,0.51875,,N=3200
+ItemTypes,medium,frequency_matched_foil,acc,0.53625,,N=1600
+ItemTypes,medium,hard_distractor,acc,0.56125,,N=3200
+ItemTypes,medium,mass_frame_shape,acc,0.56063,,N=1600
+ItemTypes,medium,mass_frame_texture,acc,0.06,,N=1600
+ItemTypes,medium,paraphrased_nolabel_matched,acc,0.5345,,N=4000
+ItemTypes,medium,second_order,acc,0.487,,N=8000
+ItemTypes,medium,slot_shuffle,acc,0.53688,,N=1600
+FreqFoil,tiny,freq_foil bare_nolabel,prop,0.49,0.83207,
+FreqFoil,tiny,freq_foil feature_swap,prop,0.51,0.83207,
+FreqFoil,tiny,freq_foil frequency_matched,prop,0.58,0.028125,
+FreqFoil,tiny,freq_foil noise_injection,prop,0.535,0.358003,
+FreqFoil,tiny,freq_foil paraphrased_nolabel,prop,0.46,0.28882,
+FreqFoil,tiny,freq_foil regular,prop,0.6,0.005685,
+FreqFoil,tiny,freq_foil scrambled,prop,0.57,0.055966,
+FreqFoil,tiny,freq_foil weak_label,prop,0.555,0.137367,
+FreqFoil,small,freq_foil bare_nolabel,prop,0.505,0.943652,
+FreqFoil,small,freq_foil feature_swap,prop,0.48,0.620729,
+FreqFoil,small,freq_foil frequency_matched,prop,0.52,0.620729,
+FreqFoil,small,freq_foil noise_injection,prop,0.535,0.358003,
+FreqFoil,small,freq_foil paraphrased_nolabel,prop,0.535,0.358003,
+FreqFoil,small,freq_foil regular,prop,0.6,0.005685,
+FreqFoil,small,freq_foil scrambled,prop,0.59,0.01313,
+FreqFoil,small,freq_foil weak_label,prop,0.51,0.83207,
+FreqFoil,medium,freq_foil bare_nolabel,prop,0.525,0.524622,
+FreqFoil,medium,freq_foil feature_swap,prop,0.525,0.524622,
+FreqFoil,medium,freq_foil frequency_matched,prop,0.545,0.229247,
+FreqFoil,medium,freq_foil noise_injection,prop,0.525,0.524622,
+FreqFoil,medium,freq_foil paraphrased_nolabel,prop,0.47,0.436753,
+FreqFoil,medium,freq_foil regular,prop,0.635,0.000164,
+FreqFoil,medium,freq_foil scrambled,prop,0.535,0.358003,
+FreqFoil,medium,freq_foil weak_label,prop,0.53,0.436753,

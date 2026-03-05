@@ -1,0 +1,6 @@
+seed,condition,size,fo_acc_original,fo_rank1_original,fo_acc_perseed,fo_rank1_perseed,fo_mean_rank_perseed
+42,regular,medium,100.0,100.0,100.0,100.0,1.00
+123,regular,medium,57.5,0.0,100.0,100.0,1.00
+456,regular,medium,50.0,0.0,100.0,100.0,1.00
+789,regular,medium,55.0,5.0,100.0,96.2,1.04
+1001,regular,medium,51.2,2.5,100.0,98.8,1.01

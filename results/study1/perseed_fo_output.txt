@@ -1,0 +1,46 @@
+======================================================================
+PER-SEED FIRST-ORDER EVALUATION
+Generated: 2026-03-05 12:01:34
+Condition: regular, Size: medium
+Purpose: Resolve FO evaluation confound (Session 12b)
+======================================================================
+
+Seed 42:
+  Original wug test (seed 42 key): 100.0% accuracy, 100.0% rank-1
+  Per-seed (own key): 100.0% accuracy, 100.0% rank-1, mean rank 1.00
+  (Seed 42: both evaluations use the same answer key)
+
+Seed 123:
+  Original wug test (seed 42 key): 57.5% accuracy, 0.0% rank-1
+  Per-seed (own key): 100.0% accuracy, 100.0% rank-1, mean rank 1.00
+  Difference: +42.5 pp (positive = own key is better)
+
+Seed 456:
+  Original wug test (seed 42 key): 50.0% accuracy, 0.0% rank-1
+  Per-seed (own key): 100.0% accuracy, 100.0% rank-1, mean rank 1.00
+  Difference: +50.0 pp (positive = own key is better)
+
+Seed 789:
+  Original wug test (seed 42 key): 55.0% accuracy, 5.0% rank-1
+  Per-seed (own key): 100.0% accuracy, 96.2% rank-1, mean rank 1.04
+  Difference: +45.0 pp (positive = own key is better)
+
+Seed 1001:
+  Original wug test (seed 42 key): 51.2% accuracy, 2.5% rank-1
+  Per-seed (own key): 100.0% accuracy, 98.8% rank-1, mean rank 1.01
+  Difference: +48.8 pp (positive = own key is better)
+
+======================================================================
+SUMMARY
+======================================================================
+  Mean FO accuracy (original/seed-42 key): 62.7% (SD=21.0)
+  Mean FO accuracy (per-seed own key):     100.0% (SD=0.0)
+  Seed 42 original: 100.0%
+
+  INTERPRETATION: All seeds learn their exemplar associations.
+  The FO/SO dissociation is robust across seeds, not just seed 42.
+  The original low FO for non-42 seeds was an evaluation confound.
+
+======================================================================
+END
+======================================================================

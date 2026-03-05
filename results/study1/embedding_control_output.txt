@@ -1,0 +1,165 @@
+======================================================================
+EMBEDDING PERTURBATION CONTROL
+Generated: 2026-03-05 16:11:57
+Condition: regular, Size: medium
+Purpose: Determine whether novel noun collapse is due to
+untrained embeddings or transformer processing pipeline
+======================================================================
+
+Seed 42:
+  embed:
+    A) Novel nouns:           cosine=1.0000, norm=1.0
+    B) Held-out trained nouns: cosine=1.0000, norm=1.0
+    C) Familiar trained nouns: cosine=1.0000, norm=1.0
+    D) Novel + swapped embeds: cosine=1.0000, norm=1.0
+  L1:
+    A) Novel nouns:           cosine=0.9996, norm=13.3
+    B) Held-out trained nouns: cosine=0.6885, norm=11.1
+    C) Familiar trained nouns: cosine=0.6274, norm=10.9
+    D) Novel + swapped embeds: cosine=0.6270, norm=10.9
+  L4:
+    A) Novel nouns:           cosine=0.9998, norm=26.1
+    B) Held-out trained nouns: cosine=0.6624, norm=21.1
+    C) Familiar trained nouns: cosine=0.6482, norm=21.3
+    D) Novel + swapped embeds: cosine=0.6477, norm=21.3
+  L6:
+    A) Novel nouns:           cosine=0.9999, norm=33.4
+    B) Held-out trained nouns: cosine=0.7317, norm=24.9
+    C) Familiar trained nouns: cosine=0.7157, norm=25.1
+    D) Novel + swapped embeds: cosine=0.7152, norm=25.1
+  L8:
+    A) Novel nouns:           cosine=0.9999, norm=55.5
+    B) Held-out trained nouns: cosine=0.8315, norm=36.4
+    C) Familiar trained nouns: cosine=0.8276, norm=38.1
+    D) Novel + swapped embeds: cosine=0.8269, norm=38.1
+
+Seed 123:
+  embed:
+    A) Novel nouns:           cosine=1.0000, norm=1.0
+    B) Held-out trained nouns: cosine=1.0000, norm=1.0
+    C) Familiar trained nouns: cosine=1.0000, norm=1.0
+    D) Novel + swapped embeds: cosine=1.0000, norm=1.0
+  L1:
+    A) Novel nouns:           cosine=0.9994, norm=12.1
+    B) Held-out trained nouns: cosine=0.7296, norm=10.5
+    C) Familiar trained nouns: cosine=0.7270, norm=10.7
+    D) Novel + swapped embeds: cosine=0.7263, norm=10.7
+  L4:
+    A) Novel nouns:           cosine=0.9997, norm=22.7
+    B) Held-out trained nouns: cosine=0.6786, norm=19.5
+    C) Familiar trained nouns: cosine=0.6805, norm=20.3
+    D) Novel + swapped embeds: cosine=0.6795, norm=20.3
+  L6:
+    A) Novel nouns:           cosine=0.9998, norm=28.7
+    B) Held-out trained nouns: cosine=0.7266, norm=22.9
+    C) Familiar trained nouns: cosine=0.7309, norm=23.7
+    D) Novel + swapped embeds: cosine=0.7299, norm=23.7
+  L8:
+    A) Novel nouns:           cosine=0.9999, norm=48.8
+    B) Held-out trained nouns: cosine=0.8626, norm=37.5
+    C) Familiar trained nouns: cosine=0.8656, norm=38.1
+    D) Novel + swapped embeds: cosine=0.8648, norm=38.1
+
+Seed 456:
+  embed:
+    A) Novel nouns:           cosine=1.0000, norm=1.0
+    B) Held-out trained nouns: cosine=1.0000, norm=1.0
+    C) Familiar trained nouns: cosine=1.0000, norm=1.0
+    D) Novel + swapped embeds: cosine=1.0000, norm=1.0
+  L1:
+    A) Novel nouns:           cosine=0.9995, norm=13.1
+    B) Held-out trained nouns: cosine=0.6579, norm=10.6
+    C) Familiar trained nouns: cosine=0.6603, norm=10.9
+    D) Novel + swapped embeds: cosine=0.6600, norm=10.9
+  L4:
+    A) Novel nouns:           cosine=0.9997, norm=24.5
+    B) Held-out trained nouns: cosine=0.6095, norm=19.6
+    C) Familiar trained nouns: cosine=0.6321, norm=19.6
+    D) Novel + swapped embeds: cosine=0.6320, norm=19.6
+  L6:
+    A) Novel nouns:           cosine=0.9998, norm=32.9
+    B) Held-out trained nouns: cosine=0.7174, norm=24.5
+    C) Familiar trained nouns: cosine=0.7311, norm=24.6
+    D) Novel + swapped embeds: cosine=0.7311, norm=24.6
+  L8:
+    A) Novel nouns:           cosine=0.9999, norm=54.6
+    B) Held-out trained nouns: cosine=0.8587, norm=40.0
+    C) Familiar trained nouns: cosine=0.8638, norm=39.6
+    D) Novel + swapped embeds: cosine=0.8639, norm=39.6
+
+Seed 789:
+  embed:
+    A) Novel nouns:           cosine=1.0000, norm=1.0
+    B) Held-out trained nouns: cosine=1.0000, norm=1.0
+    C) Familiar trained nouns: cosine=1.0000, norm=1.0
+    D) Novel + swapped embeds: cosine=1.0000, norm=1.0
+  L1:
+    A) Novel nouns:           cosine=0.9995, norm=12.4
+    B) Held-out trained nouns: cosine=0.7235, norm=11.0
+    C) Familiar trained nouns: cosine=0.7154, norm=11.1
+    D) Novel + swapped embeds: cosine=0.7159, norm=11.1
+  L4:
+    A) Novel nouns:           cosine=0.9997, norm=23.0
+    B) Held-out trained nouns: cosine=0.7152, norm=20.4
+    C) Familiar trained nouns: cosine=0.7098, norm=20.5
+    D) Novel + swapped embeds: cosine=0.7104, norm=20.5
+  L6:
+    A) Novel nouns:           cosine=0.9998, norm=29.9
+    B) Held-out trained nouns: cosine=0.7787, norm=24.6
+    C) Familiar trained nouns: cosine=0.7774, norm=24.2
+    D) Novel + swapped embeds: cosine=0.7780, norm=24.2
+  L8:
+    A) Novel nouns:           cosine=0.9999, norm=51.5
+    B) Held-out trained nouns: cosine=0.8792, norm=39.1
+    C) Familiar trained nouns: cosine=0.8817, norm=38.7
+    D) Novel + swapped embeds: cosine=0.8822, norm=38.7
+
+Seed 1001:
+  embed:
+    A) Novel nouns:           cosine=1.0000, norm=1.0
+    B) Held-out trained nouns: cosine=1.0000, norm=1.0
+    C) Familiar trained nouns: cosine=1.0000, norm=1.0
+    D) Novel + swapped embeds: cosine=1.0000, norm=1.0
+  L1:
+    A) Novel nouns:           cosine=0.9995, norm=12.9
+    B) Held-out trained nouns: cosine=0.6099, norm=10.9
+    C) Familiar trained nouns: cosine=0.6379, norm=10.7
+    D) Novel + swapped embeds: cosine=0.6382, norm=10.7
+  L4:
+    A) Novel nouns:           cosine=0.9997, norm=23.9
+    B) Held-out trained nouns: cosine=0.5954, norm=19.9
+    C) Familiar trained nouns: cosine=0.6317, norm=20.1
+    D) Novel + swapped embeds: cosine=0.6321, norm=20.1
+  L6:
+    A) Novel nouns:           cosine=0.9998, norm=31.2
+    B) Held-out trained nouns: cosine=0.6723, norm=23.6
+    C) Familiar trained nouns: cosine=0.7179, norm=23.6
+    D) Novel + swapped embeds: cosine=0.7183, norm=23.6
+  L8:
+    A) Novel nouns:           cosine=0.9999, norm=57.2
+    B) Held-out trained nouns: cosine=0.8418, norm=38.4
+    C) Familiar trained nouns: cosine=0.8697, norm=38.6
+    D) Novel + swapped embeds: cosine=0.8697, norm=38.7
+
+======================================================================
+SUMMARY AT L6
+======================================================================
+  A) Novel nouns (untrained embeds):     0.9998
+  B) Held-out trained nouns:             0.7253
+  C) Familiar trained nouns:             0.7346
+  D) Novel nouns (trained-noun embeds):  0.7345
+
+  KEY COMPARISONS:
+    A vs C (novel vs familiar): +0.2652
+    D vs A (swapped vs novel):  -0.2653
+    D vs C (swapped vs familiar): -0.0001
+    B vs C (held-out vs familiar): -0.0093
+
+  INTERPRETATION: Swapping embeddings substantially reduces collapse.
+  The untrained embeddings ARE a contributing factor.
+  Held-out trained nouns do NOT collapse, confirming that training
+  exposure differentiates representations.
+
+======================================================================
+END
+======================================================================

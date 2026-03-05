@@ -1,0 +1,56 @@
+======================================================================
+ONE-SHOT IN-CONTEXT LEARNING TEST
+Generated: 2026-03-05 16:14:17
+Condition: regular, Size: medium
+Purpose: Test whether models can learn from a single in-context exemplar
+======================================================================
+
+Seed 42:
+  Zero-shot:  mean rank=5.25, rank-1=12%
+  One-shot:   mean rank=3.62, rank-1=25%
+  Control:    mean rank=3.62, rank-1=25%
+  One-shot improvement: +1.62 ranks
+
+Seed 123:
+  Zero-shot:  mean rank=6.00, rank-1=0%
+  One-shot:   mean rank=5.50, rank-1=12%
+  Control:    mean rank=5.62, rank-1=12%
+  One-shot improvement: +0.50 ranks
+
+Seed 456:
+  Zero-shot:  mean rank=4.88, rank-1=12%
+  One-shot:   mean rank=2.88, rank-1=38%
+  Control:    mean rank=3.00, rank-1=38%
+  One-shot improvement: +2.00 ranks
+
+Seed 789:
+  Zero-shot:  mean rank=5.62, rank-1=12%
+  One-shot:   mean rank=4.50, rank-1=25%
+  Control:    mean rank=4.50, rank-1=25%
+  One-shot improvement: +1.12 ranks
+
+Seed 1001:
+  Zero-shot:  mean rank=6.50, rank-1=0%
+  One-shot:   mean rank=4.88, rank-1=12%
+  Control:    mean rank=4.88, rank-1=12%
+  One-shot improvement: +1.62 ranks
+
+======================================================================
+OVERALL SUMMARY
+======================================================================
+  Mean zero-shot rank:  5.65 (chance = 5.5)
+  Mean one-shot rank:   4.28
+  Mean control rank:    4.33
+  Zero-shot rank-1:     7.5%
+  One-shot rank-1:      22.5%
+  Control rank-1:       22.5%
+
+  Paired t (zero vs one-shot): t=4.078, p=0.0002
+
+  INTERPRETATION: One-shot context improves ranking of the target shape.
+  Models show some in-context exemplar learning.
+  Control also improves -> suggests overhypothesis-like transfer!
+
+======================================================================
+END
+======================================================================

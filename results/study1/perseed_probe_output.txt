@@ -1,0 +1,184 @@
+======================================================================
+PER-SEED LINEAR PROBE WITH PERMUTATION CONTROL
+Generated: 2026-03-05 12:15:57
+Condition: regular, Size: medium
+Seeds: [42, 123, 456, 789, 1001]
+Permutations: 100
+Purpose: Resolve probe interpretation confound (Session 12b)
+======================================================================
+
+==================================================
+SEED 42
+==================================================
+  Items: 80
+  Labels differing from seed 42: 0/80
+  embed:
+    Seed 42 labels: 20.0% (+/-2.5%)
+    Own labels:     20.0% (+/-2.5%)
+    Permutation:    14.0% (+/-3.3%)
+    Own vs perm:    +6.0 pp
+    Permutation p:  0.0600 (100 perms)
+  L1: seed42=85.0%, own=85.0%
+  L2: seed42=91.3%, own=91.3%
+  L3: seed42=95.0%, own=95.0%
+  L4: seed42=96.2%, own=96.2%
+  L5: seed42=97.5%, own=97.5%
+  L6:
+    Seed 42 labels: 98.8% (+/-1.3%)
+    Own labels:     98.8% (+/-1.3%)
+    Permutation:    11.3% (+/-4.8%)
+    Own vs perm:    +87.4 pp
+    Permutation p:  0.0000 (100 perms)
+  L7: seed42=98.8%, own=98.8%
+  L8:
+    Seed 42 labels: 98.8% (+/-1.3%)
+    Own labels:     98.8% (+/-1.3%)
+    Permutation:    11.4% (+/-4.9%)
+    Own vs perm:    +87.4 pp
+    Permutation p:  0.0000 (100 perms)
+
+==================================================
+SEED 123
+==================================================
+  Items: 80
+  Labels differing from seed 42: 80/80
+  embed:
+    Seed 42 labels: 20.0% (+/-2.5%)
+    Own labels:     20.0% (+/-2.5%)
+    Permutation:    14.1% (+/-3.1%)
+    Own vs perm:    +5.9 pp
+    Permutation p:  0.0500 (100 perms)
+  L1: seed42=86.2%, own=86.2%
+  L2: seed42=93.8%, own=93.8%
+  L3: seed42=95.0%, own=95.0%
+  L4: seed42=97.5%, own=97.5%
+  L5: seed42=98.8%, own=98.8%
+  L6:
+    Seed 42 labels: 100.0% (+/-0.0%)
+    Own labels:     100.0% (+/-0.0%)
+    Permutation:    11.6% (+/-4.7%)
+    Own vs perm:    +88.4 pp
+    Permutation p:  0.0000 (100 perms)
+  L7: seed42=100.0%, own=100.0%
+  L8:
+    Seed 42 labels: 100.0% (+/-0.0%)
+    Own labels:     100.0% (+/-0.0%)
+    Permutation:    11.9% (+/-4.6%)
+    Own vs perm:    +88.1 pp
+    Permutation p:  0.0000 (100 perms)
+
+==================================================
+SEED 456
+==================================================
+  Items: 80
+  Labels differing from seed 42: 80/80
+  embed:
+    Seed 42 labels: 20.0% (+/-2.5%)
+    Own labels:     20.0% (+/-2.5%)
+    Permutation:    14.1% (+/-3.2%)
+    Own vs perm:    +5.9 pp
+    Permutation p:  0.0500 (100 perms)
+  L1: seed42=87.5%, own=87.5%
+  L2: seed42=90.0%, own=90.0%
+  L3: seed42=95.0%, own=95.0%
+  L4: seed42=97.5%, own=97.5%
+  L5: seed42=100.0%, own=100.0%
+  L6:
+    Seed 42 labels: 100.0% (+/-0.0%)
+    Own labels:     100.0% (+/-0.0%)
+    Permutation:    11.3% (+/-4.7%)
+    Own vs perm:    +88.7 pp
+    Permutation p:  0.0000 (100 perms)
+  L7: seed42=100.0%, own=100.0%
+  L8:
+    Seed 42 labels: 100.0% (+/-0.0%)
+    Own labels:     100.0% (+/-0.0%)
+    Permutation:    11.7% (+/-4.5%)
+    Own vs perm:    +88.3 pp
+    Permutation p:  0.0000 (100 perms)
+
+==================================================
+SEED 789
+==================================================
+  Items: 80
+  Labels differing from seed 42: 76/80
+  embed:
+    Seed 42 labels: 20.0% (+/-2.5%)
+    Own labels:     20.0% (+/-2.5%)
+    Permutation:    14.1% (+/-3.1%)
+    Own vs perm:    +5.9 pp
+    Permutation p:  0.0500 (100 perms)
+  L1: seed42=83.8%, own=83.8%
+  L2: seed42=92.5%, own=92.5%
+  L3: seed42=96.2%, own=96.2%
+  L4: seed42=96.2%, own=96.2%
+  L5: seed42=96.2%, own=96.2%
+  L6:
+    Seed 42 labels: 96.2% (+/-1.3%)
+    Own labels:     96.2% (+/-1.3%)
+    Permutation:    11.7% (+/-4.6%)
+    Own vs perm:    +84.5 pp
+    Permutation p:  0.0000 (100 perms)
+  L7: seed42=97.5%, own=97.5%
+  L8:
+    Seed 42 labels: 96.2% (+/-3.7%)
+    Own labels:     96.2% (+/-3.7%)
+    Permutation:    11.8% (+/-4.7%)
+    Own vs perm:    +84.5 pp
+    Permutation p:  0.0000 (100 perms)
+
+==================================================
+SEED 1001
+==================================================
+  Items: 80
+  Labels differing from seed 42: 78/80
+  embed:
+    Seed 42 labels: 20.0% (+/-2.5%)
+    Own labels:     20.0% (+/-2.5%)
+    Permutation:    14.1% (+/-3.1%)
+    Own vs perm:    +5.9 pp
+    Permutation p:  0.0500 (100 perms)
+  L1: seed42=82.5%, own=82.5%
+  L2: seed42=83.8%, own=83.8%
+  L3: seed42=92.5%, own=92.5%
+  L4: seed42=93.8%, own=93.8%
+  L5: seed42=97.5%, own=97.5%
+  L6:
+    Seed 42 labels: 97.5% (+/-0.0%)
+    Own labels:     97.5% (+/-0.0%)
+    Permutation:    11.6% (+/-4.3%)
+    Own vs perm:    +85.9 pp
+    Permutation p:  0.0000 (100 perms)
+  L7: seed42=100.0%, own=100.0%
+  L8:
+    Seed 42 labels: 100.0% (+/-0.0%)
+    Own labels:     100.0% (+/-0.0%)
+    Permutation:    11.4% (+/-4.5%)
+    Own vs perm:    +88.6 pp
+    Permutation p:  0.0000 (100 perms)
+
+======================================================================
+SUMMARY AT L6 (probe peak)
+======================================================================
+  Mean accuracy (own labels): 98.5%
+  Mean accuracy (seed 42 labels): 98.5%
+  Mean permutation baseline: 11.5%
+  Own - permutation gap: +87.0 pp
+
+  INTERPRETATION: Probe with correct labels substantially exceeds
+  permutation baseline. Models encode genuine noun-shape associations,
+  not just noun identity.
+
+======================================================================
+KEY QUESTION ANSWERED
+======================================================================
+If own-label accuracy >> permutation baseline:
+  -> Models encode noun-shape associations (not just noun identity)
+  -> The 99% probe finding is genuine, just needed correct labels
+If own-label accuracy ~ permutation baseline:
+  -> Probe detects noun identity only
+  -> Reframe probe as noun-identity decoder in paper
+
+======================================================================
+END
+======================================================================

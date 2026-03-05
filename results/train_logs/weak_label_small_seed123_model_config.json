@@ -1,0 +1,22 @@
+{
+  "condition": "weak_label",
+  "size": "small",
+  "seed": 123,
+  "corpus_fraction": 1.0,
+  "vocab_size": 339,
+  "n_params": 10947840,
+  "model_cfg": {
+    "n_layer": 6,
+    "n_head": 8,
+    "d_model": 384,
+    "d_ff": 1536
+  },
+  "train_cfg": {
+    "lr": 0.0002,
+    "batch_size": 32,
+    "seq_len": 128,
+    "max_steps": 8000,
+    "warmup": 400
+  },
+  "device": "directml"
+}

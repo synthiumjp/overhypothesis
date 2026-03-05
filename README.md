@@ -65,12 +65,6 @@ overhypothesis/
 │   ├── study1_perseed_fo.py       # Per-seed first-order evaluation
 │   ├── study1_perseed_probe.py    # Per-seed probe with permutation control
 │   │
-│   ├── # ── Figure scripts ──
-│   ├── paper_figures_v9.py        # Figures 1 and 4 (corrected FO/SO dissociation)
-│   ├── paper_figures_v3.py        # Figures 2, 3, 5 (H_swap, violins, probe)
-│   ├── paper_figure_alpha_gradient.py  # Figure 6 (α posterior gradient)
-│   ├── paper_figure_embedding.py  # Figure 7 (embedding similarity)
-│   │
 │   └── # ── Utilities ──
 │       aggregate_results.py       # Aggregate item-level results to master CSV
 │       check_mi.py                # MI/PMI corpus manipulation check
@@ -92,7 +86,6 @@ overhypothesis/
 │   │   ├── tost_results.txt                # TOST equivalence test
 │   │   └── results_*.csv                   # Per-run item-level results (155 files)
 │   ├── train_logs/       # Training logs and model configs for all 155 runs
-│   └── figures/          # All publication figures (PDF + PNG)
 │
 ├── figures/              # Final paper figures
 │
@@ -151,28 +144,20 @@ python scripts/study1_perseed_fo.py        # Per-seed FO correction
 python scripts/study1_perseed_probe.py     # Permutation-controlled probe
 ```
 
-### 6. Generate figures
-```bash
-python scripts/paper_figures_v9.py             # Figs 1, 4
-python scripts/paper_figures_v3.py             # Figs 2, 3, 5
-python scripts/paper_figure_alpha_gradient.py  # Fig 6
-python scripts/paper_figure_embedding.py       # Fig 7
-```
-
 ## Model Checkpoints
 
 Model checkpoints (~438 MB each, 155 runs) are not included in the repository due to size. Available upon request from the corresponding author. Training logs and model configurations for all runs are included in `results/train_logs/`.
 
 ## Pre-registration
 
-All hypotheses, corpus conditions, model sizes, evaluation metrics, and statistical tests were pre-registered on OSF before any model was trained. The pre-registration is publicly available at: https://osf.io/[INSERT_OSF_ID]
+All hypotheses, corpus conditions, model sizes, evaluation metrics, and statistical tests were pre-registered on OSF before any model was trained. The pre-registration is publicly available at: https://osf.io/h8un6/overview?view_only=0319b6be03a54e67b5486a0aea8207dc
 
 Exploratory analyses (TOST, embedding analysis, perturbation control, one-shot test, per-seed evaluation, permutation-controlled probe) are clearly labelled as post-hoc throughout the paper and this repository.
 
 ## Citation
 
 ```bibtex
-@article{cacioli2026exemplar,
+@article{
   title={Exemplar Memorisation Without Abstraction: Child-Scale Transformers 
          Fail to Induce Overhypotheses from Synthetic Category Data},
 

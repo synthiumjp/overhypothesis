@@ -215,6 +215,17 @@ def eval_models(args):
         with open(args.out, encoding="utf-8") as f:
             done = {(r["model_id"], r["revision"]) for r in csv.DictReader(f)}
     device = pick_device(args.device)
+    # Models already in the Hugging Face cache before this run are never deleted.
+    keep = set()
+    if args.delete_cache:
+        from huggingface_hub import scan_cache_dir
+        try:
+            keep = {(r.repo_id, rv.commit_hash) for r in scan_cache_dir().repos
+                    for rv in r.revisions}
+        except Exception:
+            pass
+        if keep:
+            print(f"--delete_cache: {len(keep)} model revisions already cached will be kept")
     texts = sorted({r["context"] + " " + q for r in items for q in (r["query_rep"], r["query_new"])})
     new_file = not os.path.exists(args.out)
     for n, run in enumerate(runs, 1):
@@ -258,8 +269,10 @@ def eval_models(args):
             info = scan_cache_dir()
             for repo in info.repos:
                 if repo.repo_id == run["model_id"]:
-                    revs = [rv.commit_hash for rv in repo.revisions]
-                    info.delete_revisions(*revs).execute()
+                    revs = [rv.commit_hash for rv in repo.revisions
+                            if (repo.repo_id, rv.commit_hash) not in keep]
+                    if revs:
+                        info.delete_revisions(*revs).execute()
 
 
 # --------------------------------------------------------------------------

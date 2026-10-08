@@ -1,0 +1,14 @@
+family,model_id,revision,params,train_tokens,dtype,batch_size
+pythia,EleutherAI/pythia-14m,step143000,14000000,299892736000,float32,64
+pythia,EleutherAI/pythia-70m,step143000,70000000,299892736000,float32,64
+pythia,EleutherAI/pythia-160m,step143000,160000000,299892736000,float32,64
+pythia,EleutherAI/pythia-410m,step143000,410000000,299892736000,float32,64
+pythia,EleutherAI/pythia-1b,step143000,1000000000,299892736000,float32,64
+pythia,EleutherAI/pythia-1.4b,step143000,1400000000,299892736000,float16,8
+pythia,EleutherAI/pythia-2.8b,step143000,2800000000,299892736000,float16,8
+pythia,EleutherAI/pythia-6.9b,step143000,6900000000,299892736000,float16,8
+pythia,EleutherAI/pythia-12b,step143000,12000000000,299892736000,float16,8
+babylm,BabyLM-community/babylm-baseline-10m-gpt2,,124000000,100000000,float32,64
+babylm,BabyLM-community/babylm-baseline-100m-gpt2,,124000000,1000000000,float32,64
+large,Qwen/Qwen2.5-72B,,72000000000,18000000000000,float16,8
+large,meta-llama/Llama-3.1-70B,,70000000000,15000000000000,float16,8

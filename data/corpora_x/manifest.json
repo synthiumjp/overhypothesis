@@ -1,0 +1,502 @@
+[
+ {
+  "corpus": "regular_random",
+  "seed": 42,
+  "file": "data/corpora/regular_seed42.txt",
+  "md5": "9af9f620bb85b7299f899245e7199de7",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 0.928,
+  "P_same_kind_neighbour": 0.0285
+ },
+ {
+  "corpus": "regular_random",
+  "seed": 123,
+  "file": "data/corpora/regular_seed123.txt",
+  "md5": "4a65c6fd3dd127073e63ef3da043aa3f",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 0.946,
+  "P_same_kind_neighbour": 0.0294
+ },
+ {
+  "corpus": "regular_random",
+  "seed": 456,
+  "file": "data/corpora/regular_seed456.txt",
+  "md5": "d2310b534dcab3594291f8b731b3d677",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 0.935,
+  "P_same_kind_neighbour": 0.0288
+ },
+ {
+  "corpus": "regular_random",
+  "seed": 789,
+  "file": "data/corpora/regular_seed789.txt",
+  "md5": "99c6e401e3a8f323409422db18d147e4",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 0.881,
+  "P_same_kind_neighbour": 0.0277
+ },
+ {
+  "corpus": "regular_random",
+  "seed": 1001,
+  "file": "data/corpora/regular_seed1001.txt",
+  "md5": "5c5c0480867f7575017a24042f25b57c",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 0.869,
+  "P_same_kind_neighbour": 0.0274
+ },
+ {
+  "corpus": "regular_grouped",
+  "seed": 42,
+  "file": "data/corpora_bursty/regular_seed42.txt",
+  "md5": "214c12c166a508767279e4a246ed2f72",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 23.24,
+  "P_same_kind_neighbour": 0.7205
+ },
+ {
+  "corpus": "regular_grouped",
+  "seed": 123,
+  "file": "data/corpora_bursty/regular_seed123.txt",
+  "md5": "f09107302ebe76d1409d3e0598355335",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 22.627,
+  "P_same_kind_neighbour": 0.7217
+ },
+ {
+  "corpus": "regular_grouped",
+  "seed": 456,
+  "file": "data/corpora_bursty/regular_seed456.txt",
+  "md5": "74b8c527ae56eae33e55002d88b9f6aa",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 23.508,
+  "P_same_kind_neighbour": 0.7232
+ },
+ {
+  "corpus": "regular_grouped",
+  "seed": 789,
+  "file": "data/corpora_bursty/regular_seed789.txt",
+  "md5": "2a8b303f2b36c41216ab7a63694c450e",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 22.999,
+  "P_same_kind_neighbour": 0.7223
+ },
+ {
+  "corpus": "regular_grouped",
+  "seed": 1001,
+  "file": "data/corpora_bursty/regular_seed1001.txt",
+  "md5": "e0bb8c14dbe81c6591482e9e9f035941",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 23.034,
+  "P_same_kind_neighbour": 0.7203
+ },
+ {
+  "corpus": "colourstable_grouped",
+  "seed": 42,
+  "file": "data/corpora_x/colourstable_grouped/regular_seed42.txt",
+  "md5": "1880e9963f82bf54d1229630a2b84a19",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 23.24,
+  "P_same_kind_neighbour": 0.7205
+ },
+ {
+  "corpus": "colourstable_grouped",
+  "seed": 123,
+  "file": "data/corpora_x/colourstable_grouped/regular_seed123.txt",
+  "md5": "b4e7b8f861fb5b71eeaef5fbfb140e97",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 22.627,
+  "P_same_kind_neighbour": 0.7217
+ },
+ {
+  "corpus": "colourstable_grouped",
+  "seed": 456,
+  "file": "data/corpora_x/colourstable_grouped/regular_seed456.txt",
+  "md5": "ad3d8baf9f8574c80727865cfc43302c",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 23.508,
+  "P_same_kind_neighbour": 0.7232
+ },
+ {
+  "corpus": "colourstable_grouped",
+  "seed": 789,
+  "file": "data/corpora_x/colourstable_grouped/regular_seed789.txt",
+  "md5": "bad8dce9771083ceeaeaf82df45b0121",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 22.999,
+  "P_same_kind_neighbour": 0.7223
+ },
+ {
+  "corpus": "colourstable_grouped",
+  "seed": 1001,
+  "file": "data/corpora_x/colourstable_grouped/regular_seed1001.txt",
+  "md5": "58a59ab743a8c82a64b783984224446b",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 23.034,
+  "P_same_kind_neighbour": 0.7203
+ },
+ {
+  "corpus": "colourstable_random",
+  "seed": 42,
+  "file": "data/corpora_x/colourstable_random/regular_seed42.txt",
+  "md5": "d08b4e8dd5ff02fc2c06997a87da4fa5",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 0.928,
+  "P_same_kind_neighbour": 0.0285
+ },
+ {
+  "corpus": "colourstable_random",
+  "seed": 123,
+  "file": "data/corpora_x/colourstable_random/regular_seed123.txt",
+  "md5": "d64391652d16dffb5707073b2ad2015c",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 0.946,
+  "P_same_kind_neighbour": 0.0294
+ },
+ {
+  "corpus": "colourstable_random",
+  "seed": 456,
+  "file": "data/corpora_x/colourstable_random/regular_seed456.txt",
+  "md5": "fcb702a4d02bd49fc91cebd3af0b8f43",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 0.935,
+  "P_same_kind_neighbour": 0.0288
+ },
+ {
+  "corpus": "colourstable_random",
+  "seed": 789,
+  "file": "data/corpora_x/colourstable_random/regular_seed789.txt",
+  "md5": "8184146e47208d5d83a61d41c35bc43a",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 0.881,
+  "P_same_kind_neighbour": 0.0277
+ },
+ {
+  "corpus": "colourstable_random",
+  "seed": 1001,
+  "file": "data/corpora_x/colourstable_random/regular_seed1001.txt",
+  "md5": "d8c205bb88659777240dd5e26845906c",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 0.869,
+  "P_same_kind_neighbour": 0.0274
+ },
+ {
+  "corpus": "graded_b12",
+  "seed": 42,
+  "file": "data/corpora_x/graded_b12/regular_seed42.txt",
+  "md5": "03b60b3068068be3d5862ed0e48ca178",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 12.462,
+  "P_same_kind_neighbour": 0.3846
+ },
+ {
+  "corpus": "graded_b12",
+  "seed": 123,
+  "file": "data/corpora_x/graded_b12/regular_seed123.txt",
+  "md5": "0ed7ec0cc0d70343a73b9ab5135909f4",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 12.158,
+  "P_same_kind_neighbour": 0.3816
+ },
+ {
+  "corpus": "graded_b12",
+  "seed": 456,
+  "file": "data/corpora_x/graded_b12/regular_seed456.txt",
+  "md5": "30d5fd5a0fa1699902dd4d7f2b640382",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 12.004,
+  "P_same_kind_neighbour": 0.3786
+ },
+ {
+  "corpus": "graded_b12",
+  "seed": 789,
+  "file": "data/corpora_x/graded_b12/regular_seed789.txt",
+  "md5": "7500cde6d02750cc62064ca5a9925baf",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 12.061,
+  "P_same_kind_neighbour": 0.3713
+ },
+ {
+  "corpus": "graded_b12",
+  "seed": 1001,
+  "file": "data/corpora_x/graded_b12/regular_seed1001.txt",
+  "md5": "ebdadf4576e6f4cd756f29c764ee1ab7",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 12.033,
+  "P_same_kind_neighbour": 0.375
+ },
+ {
+  "corpus": "graded_b1p4",
+  "seed": 42,
+  "file": "data/corpora_x/graded_b1p4/regular_seed42.txt",
+  "md5": "5326c6619dc75754bd353fbe588ae471",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 1.411,
+  "P_same_kind_neighbour": 0.0435
+ },
+ {
+  "corpus": "graded_b1p4",
+  "seed": 123,
+  "file": "data/corpora_x/graded_b1p4/regular_seed123.txt",
+  "md5": "0d5527d04aff80f62fa90ff0e58bd862",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 1.39,
+  "P_same_kind_neighbour": 0.043
+ },
+ {
+  "corpus": "graded_b1p4",
+  "seed": 456,
+  "file": "data/corpora_x/graded_b1p4/regular_seed456.txt",
+  "md5": "87584b54db24b0cf9aed2a317929dc78",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 1.428,
+  "P_same_kind_neighbour": 0.0447
+ },
+ {
+  "corpus": "graded_b1p4",
+  "seed": 789,
+  "file": "data/corpora_x/graded_b1p4/regular_seed789.txt",
+  "md5": "4ff11cfd9044e4adf07759d7ca7b7742",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 1.287,
+  "P_same_kind_neighbour": 0.0416
+ },
+ {
+  "corpus": "graded_b1p4",
+  "seed": 1001,
+  "file": "data/corpora_x/graded_b1p4/regular_seed1001.txt",
+  "md5": "445b0e1a558f6b16926ea7ebfcbbd51c",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 1.327,
+  "P_same_kind_neighbour": 0.0418
+ },
+ {
+  "corpus": "graded_b3p6",
+  "seed": 42,
+  "file": "data/corpora_x/graded_b3p6/regular_seed42.txt",
+  "md5": "66d54d29650f679f9f61b7fae7fdb3ff",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 3.66,
+  "P_same_kind_neighbour": 0.1125
+ },
+ {
+  "corpus": "graded_b3p6",
+  "seed": 123,
+  "file": "data/corpora_x/graded_b3p6/regular_seed123.txt",
+  "md5": "4e48a5d3de7b3a54a2abb913c00afd55",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 3.461,
+  "P_same_kind_neighbour": 0.1118
+ },
+ {
+  "corpus": "graded_b3p6",
+  "seed": 456,
+  "file": "data/corpora_x/graded_b3p6/regular_seed456.txt",
+  "md5": "4438627886a6fa65a7460b455ca6788b",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 3.45,
+  "P_same_kind_neighbour": 0.1066
+ },
+ {
+  "corpus": "graded_b3p6",
+  "seed": 789,
+  "file": "data/corpora_x/graded_b3p6/regular_seed789.txt",
+  "md5": "435e25a6862822852e9cd1c774ece403",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 3.717,
+  "P_same_kind_neighbour": 0.1126
+ },
+ {
+  "corpus": "graded_b3p6",
+  "seed": 1001,
+  "file": "data/corpora_x/graded_b3p6/regular_seed1001.txt",
+  "md5": "2953da71e51581c31e14c11ee7dad7f9",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 3.762,
+  "P_same_kind_neighbour": 0.1197
+ },
+ {
+  "corpus": "graded_b7",
+  "seed": 42,
+  "file": "data/corpora_x/graded_b7/regular_seed42.txt",
+  "md5": "1cf9e8472f9b7df39a4212dc4bbf1469",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 7.097,
+  "P_same_kind_neighbour": 0.2164
+ },
+ {
+  "corpus": "graded_b7",
+  "seed": 123,
+  "file": "data/corpora_x/graded_b7/regular_seed123.txt",
+  "md5": "d1b52352709fa3f13de2678a0d1760db",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 6.855,
+  "P_same_kind_neighbour": 0.2188
+ },
+ {
+  "corpus": "graded_b7",
+  "seed": 456,
+  "file": "data/corpora_x/graded_b7/regular_seed456.txt",
+  "md5": "3eab80463c054b0bcab81c8eb40940f5",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 6.823,
+  "P_same_kind_neighbour": 0.2182
+ },
+ {
+  "corpus": "graded_b7",
+  "seed": 789,
+  "file": "data/corpora_x/graded_b7/regular_seed789.txt",
+  "md5": "4767c7aabb5d3927203973c2f04529dc",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 6.94,
+  "P_same_kind_neighbour": 0.2195
+ },
+ {
+  "corpus": "graded_b7",
+  "seed": 1001,
+  "file": "data/corpora_x/graded_b7/regular_seed1001.txt",
+  "md5": "09a393912fd04d13348d4fd43f6e2621",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 7.228,
+  "P_same_kind_neighbour": 0.2214
+ },
+ {
+  "corpus": "nostable_grouped",
+  "seed": 42,
+  "file": "data/corpora_x/nostable_grouped/regular_seed42.txt",
+  "md5": "86f1ec0d30f70fd8ad31649df82c8d07",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 23.24,
+  "P_same_kind_neighbour": 0.7205
+ },
+ {
+  "corpus": "nostable_grouped",
+  "seed": 123,
+  "file": "data/corpora_x/nostable_grouped/regular_seed123.txt",
+  "md5": "2243b0114d469d534bff9822fe3fee0c",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 22.627,
+  "P_same_kind_neighbour": 0.7217
+ },
+ {
+  "corpus": "nostable_grouped",
+  "seed": 456,
+  "file": "data/corpora_x/nostable_grouped/regular_seed456.txt",
+  "md5": "9488be17d9dc7ff82d9917350ad9a611",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 23.508,
+  "P_same_kind_neighbour": 0.7232
+ },
+ {
+  "corpus": "nostable_grouped",
+  "seed": 789,
+  "file": "data/corpora_x/nostable_grouped/regular_seed789.txt",
+  "md5": "a3c531fc7f3d5f630f864774ea04ddbd",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 22.999,
+  "P_same_kind_neighbour": 0.7223
+ },
+ {
+  "corpus": "nostable_grouped",
+  "seed": 1001,
+  "file": "data/corpora_x/nostable_grouped/regular_seed1001.txt",
+  "md5": "81f9d12240ea5be9f489378a4066157a",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 23.034,
+  "P_same_kind_neighbour": 0.7203
+ },
+ {
+  "corpus": "nostable_random",
+  "seed": 42,
+  "file": "data/corpora_x/nostable_random/regular_seed42.txt",
+  "md5": "96bc3da29c099499f34cf6836489502b",
+  "sentences": 11648,
+  "words": 102206,
+  "B": 0.928,
+  "P_same_kind_neighbour": 0.0285
+ },
+ {
+  "corpus": "nostable_random",
+  "seed": 123,
+  "file": "data/corpora_x/nostable_random/regular_seed123.txt",
+  "md5": "b6829e6383be278ce061d052644d3de3",
+  "sentences": 11648,
+  "words": 102674,
+  "B": 0.946,
+  "P_same_kind_neighbour": 0.0294
+ },
+ {
+  "corpus": "nostable_random",
+  "seed": 456,
+  "file": "data/corpora_x/nostable_random/regular_seed456.txt",
+  "md5": "21493e8b2bedfd9112e1b7f6ed604b1f",
+  "sentences": 11648,
+  "words": 103480,
+  "B": 0.935,
+  "P_same_kind_neighbour": 0.0288
+ },
+ {
+  "corpus": "nostable_random",
+  "seed": 789,
+  "file": "data/corpora_x/nostable_random/regular_seed789.txt",
+  "md5": "47a10f3e77592c4336b8a78fbd2e3ee8",
+  "sentences": 11648,
+  "words": 102648,
+  "B": 0.881,
+  "P_same_kind_neighbour": 0.0277
+ },
+ {
+  "corpus": "nostable_random",
+  "seed": 1001,
+  "file": "data/corpora_x/nostable_random/regular_seed1001.txt",
+  "md5": "61f77ae14093e5bb4d197a7c03811b00",
+  "sentences": 11648,
+  "words": 102284,
+  "B": 0.869,
+  "P_same_kind_neighbour": 0.0274
+ }
+]

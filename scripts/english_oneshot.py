@@ -160,19 +160,51 @@ def pick_device(name):
     return "cpu"
 
 
+def resolve_source(model_id, revision):
+    """Where to load a checkpoint from.
+
+    Some Pythia branches (pythia-2.8b, steps 0 to 64000) hold a stale
+    single-file copy of the final weights (model.safetensors and
+    pytorch_model.bin, same SHA-256 as main) next to the correct sharded
+    files for that step. transformers prefers the single file, so every such
+    branch loads the final weights. When a branch has both, download only the
+    shards and the branch's own config, and load from that folder.
+    """
+    if not revision:
+        return model_id, None, None
+    from huggingface_hub import HfApi, snapshot_download
+    files = set(HfApi().list_repo_files(model_id, revision=revision))
+    if {"model.safetensors", "model.safetensors.index.json"} <= files:
+        import tempfile
+        tmp = tempfile.mkdtemp(prefix="ovh_ckpt_")
+        snapshot_download(model_id, revision=revision, local_dir=tmp,
+                          allow_patterns=["config.json", "generation_config.json",
+                                          "model.safetensors.index.json",
+                                          "model-*-of-*.safetensors", "tokenizer*",
+                                          "special_tokens_map.json"])
+        print(f"    {model_id}@{revision}: loading sharded weights, stale single file ignored")
+        return tmp, None, tmp
+    return model_id, revision, None
+
+
 def load(model_id, revision, dtype, device):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tdtype = {"float32": torch.float32, "float16": torch.float16,
               "bfloat16": torch.bfloat16}[dtype]
-    tok = AutoTokenizer.from_pretrained(model_id, revision=revision or None)
+    src, rev, tmp = resolve_source(model_id, revision)
     try:
-        model = AutoModelForCausalLM.from_pretrained(
-            model_id, revision=revision or None, dtype=tdtype, low_cpu_mem_usage=True)
-    except TypeError:  # older transformers
-        model = AutoModelForCausalLM.from_pretrained(
-            model_id, revision=revision or None, torch_dtype=tdtype, low_cpu_mem_usage=True)
-    model.to(device).eval()
+        tok = AutoTokenizer.from_pretrained(src, revision=rev)
+        try:
+            model = AutoModelForCausalLM.from_pretrained(
+                src, revision=rev, dtype=tdtype, low_cpu_mem_usage=True)
+        except TypeError:  # older transformers
+            model = AutoModelForCausalLM.from_pretrained(
+                src, revision=rev, torch_dtype=tdtype, low_cpu_mem_usage=True)
+        model.to(device).eval()
+    finally:
+        if tmp:
+            shutil.rmtree(tmp, ignore_errors=True)
     return model, tok
 
 

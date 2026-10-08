@@ -256,20 +256,26 @@ def local_repeats(ments, w):
     return hits
 
 
-def succession(ments, w):
+def succession(ments, w, by_kind=None, weight=1.0, tag=""):
     """Consecutive target mentions in different units, at most w words apart:
     (pairs, pairs naming the same kind). Unlike the repeat rate, this does not
-    saturate when mentions are dense, because it conditions on proximity."""
+    saturate when mentions are dense, because it conditions on proximity.
+    by_kind, if given, accumulates the same counts by the first mention's kind."""
     pairs = same = 0
     for (p1, j1, k1), (p2, j2, k2) in zip(ments, ments[1:]):
         if j1 != j2 and p2 - p1 <= w:
             pairs += 1
             same += k1 == k2
+            if by_kind is not None:
+                by_kind[(k1, "pairs" + tag)] += weight
+                by_kind[(k1, "same" + tag)] += weight * (k1 == k2)
     return pairs, same
 
 
-def measure_doc(units, rng, kinds=None):
+def measure_doc(units, rng, kinds=None, by_kind=None):
     obs = mentions(units, kinds)
+    if by_kind is not None:
+        succession(obs, PRIMARY_W, by_kind)
     res = {"n_words": sum(map(len, units)), "n_units": len(units), "n_mentions": len(obs)}
     for w in WINDOWS:
         res[f"hits_{w}"] = local_repeats(obs, w)
@@ -281,6 +287,8 @@ def measure_doc(units, rng, kinds=None):
         u2 = [units[i] for i in idx]
         k2 = [kinds[i] for i in idx] if kinds is not None else None
         m2 = mentions(u2, k2)
+        if by_kind is not None:
+            succession(m2, PRIMARY_W, by_kind, 1.0 / N_SHUFFLE, "0")
         for w in WINDOWS:
             shuf[f"hits0_{w}"] += local_repeats(m2, w) / N_SHUFFLE
             pr, sm = succession(m2, w)
@@ -294,6 +302,7 @@ def measure(args):
     import csv
     rng = random.Random(SEED)
     fields = None
+    by_noun = defaultdict(lambda: defaultdict(float))   # source -> (kind, field) -> count
     with open(args.out, "w", newline="", encoding="utf-8") as f:
         for path in args.inputs:
             for line in open(path, encoding="utf-8"):
@@ -302,7 +311,9 @@ def measure(args):
                 if "units_parents" in d:
                     variants.append(("parents", d["units_parents"]))
                 for speakers, units in variants:
-                    r = measure_doc(units, rng, d.get("kinds"))
+                    keep = speakers == "all" and sum(map(len, units)) >= MIN_WORDS
+                    r = measure_doc(units, rng, d.get("kinds"),
+                                    by_noun[d["source"]] if keep else None)
                     row = {"source": d["source"], "doc": d["doc"], "corpus": d.get("corpus", ""),
                            "age": d.get("age", ""), "speakers": speakers, **r}
                     if fields is None:
@@ -310,7 +321,21 @@ def measure(args):
                         w = csv.DictWriter(f, fieldnames=fields)
                         w.writeheader()
                     w.writerow(row)
-    print(f"Per-document counts written to {args.out}")
+    # Per-noun B at the primary window (documents of at least MIN_WORDS words)
+    rows = []
+    for src, cnt in by_noun.items():
+        for k in sorted({k for k, _ in cnt}):
+            p, sm, p0, s0 = (cnt[(k, f)] for f in ("pairs", "same", "pairs0", "same0"))
+            P = sm / p if p else float("nan")
+            P0 = s0 / p0 if p0 else float("nan")
+            rows.append({"source": src, "kind": k, "pairs": p, "P": P, "P0": P0,
+                         "B": P / P0 if P0 else float("nan")})
+    out2 = args.out.replace(".csv", "_by_noun.csv")
+    with open(out2, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["source", "kind", "pairs", "P", "P0", "B"])
+        w.writeheader()
+        w.writerows(rows)
+    print(f"Per-document counts written to {args.out}; per-noun B to {out2}")
 
 
 # --------------------------------------------------------------------------

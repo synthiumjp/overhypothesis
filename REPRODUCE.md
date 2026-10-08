@@ -34,6 +34,19 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Registered tests H6 to H8 | `python scripts/study1d_tests.py --scores results/study1d/scores_merged.csv --out results/study1d/tests_final` | `results/study1d/tests_final.json`, `tests_final_secondary.csv` |
 | Summary | | `results/study1d/RESULTS.md` |
 
+## Study 1e (child-directed speech)
+
+| Step | Command | Output |
+|---|---|---|
+| CHILDES | download `0-Eng-NA-MOR.zip` from talkbank.org/childes/access/Eng-NA/ (MD5 `789a8815b2c222917b68be07b7246425`), then `python scripts/cds_burstiness.py prepare-childes --zip Eng-NA.zip --out data/cds/childes.jsonl` | 3,134 transcripts |
+| Adult text | `python scripts/cds_burstiness.py prepare-adult --out data/cds/pile10k.jsonl` | 9,363 documents |
+| Synthetic reference | `python scripts/cds_burstiness.py prepare-synth --out data/cds/synth.jsonl` | 10 corpora |
+| Counts | `python scripts/cds_burstiness.py measure --inputs data/cds/childes.jsonl data/cds/pile10k.jsonl data/cds/synth.jsonl --out results/study1e/counts.csv` | `counts.csv`, `counts_by_noun.csv` |
+| Registered tests H9, H10 | `python scripts/cds_burstiness.py test --counts results/study1e/counts.csv --out results/study1e/tests` | `tests.json`, `tests_secondary.csv` |
+| Summary | | `results/study1e/RESULTS.md` |
+
+CHILDES transcripts are not redistributed here (TalkBank terms); the per-document counts in `counts.csv` are.
+
 ## Exploratory and robustness analyses (all studies)
 
 `python scripts/exploratory_analyses.py` writes:

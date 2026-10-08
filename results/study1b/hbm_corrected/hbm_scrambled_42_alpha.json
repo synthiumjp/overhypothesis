@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/scrambled_seed42.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 1.9952623149688808,
+      "post_mean_log10_alpha": 0.296624919572238
+    },
+    "colour": {
+      "map_alpha": 13.33521432163324,
+      "post_mean_log10_alpha": 1.1331420404268693
+    },
+    "texture": {
+      "map_alpha": 4.731512589614808,
+      "post_mean_log10_alpha": 0.6690822330334442
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/frequency_matched_seed1001.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 5.62341325190349,
+      "post_mean_log10_alpha": 0.7407769296401725
+    },
+    "colour": {
+      "map_alpha": 16.788040181225625,
+      "post_mean_log10_alpha": 1.2231799895004853
+    },
+    "texture": {
+      "map_alpha": 5.95662143529011,
+      "post_mean_log10_alpha": 0.7698984924573391
+    }
+  }
+}

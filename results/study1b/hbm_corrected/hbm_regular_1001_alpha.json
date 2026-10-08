@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/regular_seed1001.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 0.010592537251772892,
+      "post_mean_log10_alpha": -2.097184867788288
+    },
+    "colour": {
+      "map_alpha": 16.788040181225625,
+      "post_mean_log10_alpha": 1.2140636111145464
+    },
+    "texture": {
+      "map_alpha": 6.683439175686149,
+      "post_mean_log10_alpha": 0.8311094065987833
+    }
+  }
+}

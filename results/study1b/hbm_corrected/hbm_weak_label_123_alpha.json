@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/weak_label_seed123.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 0.0223872113856834,
+      "post_mean_log10_alpha": -1.8263075220395057
+    },
+    "colour": {
+      "map_alpha": 6.683439175686149,
+      "post_mean_log10_alpha": 0.8108696524774814
+    },
+    "texture": {
+      "map_alpha": 3.3496543915782793,
+      "post_mean_log10_alpha": 0.5023047423479331
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/noise_injection_seed789.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 0.5623413251903491,
+      "post_mean_log10_alpha": -0.253892111373383
+    },
+    "colour": {
+      "map_alpha": 17.78279410038923,
+      "post_mean_log10_alpha": 1.2421136409779985
+    },
+    "texture": {
+      "map_alpha": 6.309573444801936,
+      "post_mean_log10_alpha": 0.8047668882129183
+    }
+  }
+}

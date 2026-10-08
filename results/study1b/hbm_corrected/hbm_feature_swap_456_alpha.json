@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/feature_swap_seed456.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 0.6683439175686149,
+      "post_mean_log10_alpha": -0.1849227012253399
+    },
+    "colour": {
+      "map_alpha": 13.33521432163324,
+      "post_mean_log10_alpha": 1.121475722521556
+    },
+    "texture": {
+      "map_alpha": 0.4216965034285822,
+      "post_mean_log10_alpha": -0.3852524064256061
+    }
+  }
+}

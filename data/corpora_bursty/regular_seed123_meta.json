@@ -1,0 +1,17 @@
+{
+  "replication_factor": 26,
+  "base_exemplars": 448,
+  "kinds": 32,
+  "exemplars_per_kind": [
+    14
+  ],
+  "sentences": 11648,
+  "whitespace_tokens": 102674,
+  "same_kind_adjacent_pairs": 8406,
+  "source_same_kind_adjacent_pairs": 342,
+  "source": "regular_seed123.txt",
+  "source_md5": "4a65c6fd3dd127073e63ef3da043aa3f",
+  "burst_size": 4,
+  "order_seed": 7123,
+  "md5": "f09107302ebe76d1409d3e0598355335"
+}

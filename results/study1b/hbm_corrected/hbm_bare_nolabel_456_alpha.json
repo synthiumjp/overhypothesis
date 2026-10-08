@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora/bare_nolabel_seed456.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 1.0,
+      "post_mean_log10_alpha": -0.24757484607615454
+    },
+    "colour": {
+      "map_alpha": 1.0,
+      "post_mean_log10_alpha": -0.24757484607615454
+    },
+    "texture": {
+      "map_alpha": 1.0,
+      "post_mean_log10_alpha": -0.24757484607615454
+    }
+  }
+}

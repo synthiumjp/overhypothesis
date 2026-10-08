@@ -1,0 +1,14 @@
+# MD5 of files as stored
+dc8aff7c64bc185597a960ebf853e734  study1b/raw/hbm_predictions_per_cell.csv
+bae4c4c08bfe70931633cd35155a3f84  study1b/raw/hbm_predictions_per_run.csv
+fd357aa6abeeeb9eb22789180f7d6da8  study1b/raw/lm_results.csv.gz
+999e87a0e1f7e60e456297323d4e4e4b  study1b/raw/manifest.csv
+4a73e0558a8edbe56fa2417e0307c3ee  study1b/raw/random_results.csv.gz
+fc517687e0db3a549c74440cdbb3fca1  study1b/raw/summary_per_cell.csv
+3c9141f0e1efa9142eeea8f03ab7e079  study1b/raw/summary_per_run.csv
+95a7926094ec84f25902bae2f3707c76  study1c/raw/lm_results.csv.gz
+7688ad89b20406051304459d13d6c1ad  study1c/raw/manifest.csv
+# MD5 of the uncompressed CSVs
+c300ef987e304bc4bed6a39865fa92bd  study1b/raw/lm_results.csv
+1ba67dc9d0612086194fb176f1ac9fe1  study1b/raw/random_results.csv
+016d6c7e651802d200f7476c61f861ef  study1c/raw/lm_results.csv

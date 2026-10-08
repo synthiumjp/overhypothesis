@@ -14,7 +14,7 @@ When it was written, the author knew all results of the registered studies so fa
 4. In Study 3, a bootstrap over CHILDES corpora and then transcripts gave a 95% interval for B of [3.14, 4.28]; all 33 corpora with enough pairs to compute B had B > 1. (The 2,116 transcripts come from 35 corpora after the 400-word rule, not 36 as first reported.)
 5. Reading the Study 2 items showed that the same-noun continuation began "Here is another snerg." and the different-noun continuation "Here is a zull." The kind-specific index therefore confounded the noun with the word "another".
 
-Locked materials are in github.com/synthiumjp/overhypothesis, branch study1b-1c-evaluation, commit b3db968. MD5 checksums of every script, item file, corpus and model list are in `docs/amendment5_checksums.txt`. Run instructions are in `docs/RUN_AMENDMENT5.md`.
+Locked materials are in github.com/synthiumjp/overhypothesis, branch study1b-1c-evaluation, commit c2bccb4. MD5 checksums of every script, item file, corpus and model list are in `docs/amendment5_checksums.txt`. Run instructions are in `docs/RUN_AMENDMENT5.md`.
 
 ## Part A. Study 1 extension: what does grouping teach?
 

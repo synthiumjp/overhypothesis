@@ -1,0 +1,154 @@
+{
+  "primary": {
+    "H6": {
+      "rho": 0.9166666666666666,
+      "p_one_sided": 0.0006558641975308642,
+      "n_sizes": 9,
+      "values": {
+        "EleutherAI/pythia-14m": -2.4423,
+        "EleutherAI/pythia-70m": -1.1682,
+        "EleutherAI/pythia-160m": -1.2193,
+        "EleutherAI/pythia-410m": -0.129,
+        "EleutherAI/pythia-1b": 0.5349,
+        "EleutherAI/pythia-1.4b": 0.4393,
+        "EleutherAI/pythia-2.8b": 0.4279,
+        "EleutherAI/pythia-6.9b": 0.835,
+        "EleutherAI/pythia-12b": 1.1672
+      },
+      "p_holm": 0.002623456790123457,
+      "supported": true
+    },
+    "H7": {
+      "mean_rho": -0.33973063973063966,
+      "p_one_sided": 0.9956004399560044,
+      "per_size_rho": {
+        "EleutherAI/pythia-1.4b": -0.5878787878787878,
+        "EleutherAI/pythia-12b": 0.39999999999999997,
+        "EleutherAI/pythia-14m": -0.7818181818181817,
+        "EleutherAI/pythia-160m": -0.7939393939393938,
+        "EleutherAI/pythia-1b": -0.1515151515151515,
+        "EleutherAI/pythia-2.8b": -0.09999999999999999,
+        "EleutherAI/pythia-410m": -0.6606060606060605,
+        "EleutherAI/pythia-6.9b": 0.39999999999999997,
+        "EleutherAI/pythia-70m": -0.7818181818181817
+      },
+      "p_holm": 0.9956004399560044,
+      "supported": false
+    },
+    "H8a": {
+      "mean": 0.4672664801279704,
+      "ci95": [
+        -1.0505473613739014,
+        1.9291938145955405
+      ],
+      "ci90": [
+        -0.8177363952000936,
+        1.7051960627237956
+      ],
+      "p_one_sided": 0.26177382261773824,
+      "equivalent_within_sesoi": false,
+      "p_holm": 0.5235476452354765,
+      "supported": false
+    },
+    "H8b": {
+      "mean": 0.36821722984313965,
+      "ci95": [
+        -0.037229079008102337,
+        0.7315949241320291
+      ],
+      "ci90": [
+        0.029126167297363337,
+        0.6776645183563232
+      ],
+      "p_one_sided": 0.039396060393960604,
+      "equivalent_within_sesoi": false,
+      "p_holm": 0.11818818118188182,
+      "supported": false
+    }
+  },
+  "S5_texture": {
+    "H6": {
+      "rho": 0.8499999999999999,
+      "p_one_sided": 0.003036816578483245,
+      "n_sizes": 9,
+      "values": {
+        "EleutherAI/pythia-14m": -1.2115,
+        "EleutherAI/pythia-70m": -1.502,
+        "EleutherAI/pythia-160m": -1.7955,
+        "EleutherAI/pythia-410m": -1.2729,
+        "EleutherAI/pythia-1b": -0.9684,
+        "EleutherAI/pythia-1.4b": -1.0475,
+        "EleutherAI/pythia-2.8b": -0.7594,
+        "EleutherAI/pythia-6.9b": -0.8644,
+        "EleutherAI/pythia-12b": -0.507
+      }
+    },
+    "H7": {
+      "mean_rho": -0.6333333333333333,
+      "p_one_sided": 1.0,
+      "per_size_rho": {
+        "EleutherAI/pythia-1.4b": -0.7575757575757575,
+        "EleutherAI/pythia-12b": -0.39999999999999997,
+        "EleutherAI/pythia-14m": -0.6484848484848483,
+        "EleutherAI/pythia-160m": -0.8424242424242423,
+        "EleutherAI/pythia-1b": -0.6969696969696969,
+        "EleutherAI/pythia-2.8b": -0.8333333333333333,
+        "EleutherAI/pythia-410m": -0.6606060606060605,
+        "EleutherAI/pythia-6.9b": -0.19999999999999998,
+        "EleutherAI/pythia-70m": -0.6606060606060605
+      }
+    },
+    "H8a": {
+      "mean": 1.1726312637329102,
+      "ci95": [
+        0.23931535085042316,
+        2.341869235038757
+      ],
+      "ci90": [
+        0.3684333165486653,
+        2.126439452171325
+      ],
+      "p_one_sided": 0.0045995400459954,
+      "equivalent_within_sesoi": false
+    },
+    "H8b": {
+      "mean": 0.30181360244750977,
+      "ci95": [
+        -0.4443701903025309,
+        1.121843417485555
+      ],
+      "ci90": [
+        -0.32750378449757894,
+        0.9800606091817221
+      ],
+      "p_one_sided": 0.22847715228477153,
+      "equivalent_within_sesoi": false
+    }
+  },
+  "S8_onset": {
+    "EleutherAI/pythia-1.4b": {
+      "step": 143000,
+      "tokens": 299892736000
+    },
+    "EleutherAI/pythia-12b": {
+      "step": 143000,
+      "tokens": 299892736000
+    },
+    "EleutherAI/pythia-14m": null,
+    "EleutherAI/pythia-160m": null,
+    "EleutherAI/pythia-1b": {
+      "step": 143000,
+      "tokens": 299892736000
+    },
+    "EleutherAI/pythia-2.8b": {
+      "step": 143000,
+      "tokens": 299892736000
+    },
+    "EleutherAI/pythia-410m": null,
+    "EleutherAI/pythia-6.9b": {
+      "step": 143000,
+      "tokens": 299892736000
+    },
+    "EleutherAI/pythia-70m": null
+  }
+}

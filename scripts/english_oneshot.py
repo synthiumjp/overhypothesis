@@ -249,6 +249,71 @@ def seq_logprobs(model, tok, texts, device, batch_size):
     return res
 
 
+def load_mlx(model_id, revision, dtype, memory_gb):
+    """Load a model with Apple's MLX framework (used for the 70B models).
+
+    PyTorch's MPS backend crashed or froze the Mac on Qwen2.5-72B. MLX loads
+    weights lazily and is the framework this Mac already serves 100B+ models
+    with. Tokenisation stays with the transformers tokenizer, so token ids are
+    identical to the PyTorch path; only the forward pass differs.
+    """
+    import mlx.core as mx
+    from mlx_lm import load as mlx_load
+    from transformers import AutoTokenizer
+    limit = int(memory_gb * 1024 ** 3)
+    for fn in ("set_memory_limit", "set_wired_limit"):
+        f = getattr(mx, fn, None) or getattr(getattr(mx, "metal", None), fn, None)
+        if f is not None:
+            try:
+                f(limit)
+            except Exception:
+                pass
+    cache = getattr(mx, "set_cache_limit", None) or getattr(getattr(mx, "metal", None), "set_cache_limit", None)
+    if cache is not None:
+        cache(4 * 1024 ** 3)
+    model, _ = mlx_load(model_id, revision=revision or None, lazy=True)
+    mx_dtype = {"float32": mx.float32, "float16": mx.float16, "bfloat16": mx.bfloat16}[dtype]
+    model.set_dtype(mx_dtype)
+    # Materialise one tensor at a time, so the source copy of each weight is
+    # freed before the next is read. Peak memory stays near the model's size.
+    from mlx.utils import tree_flatten
+    for _, w in tree_flatten(model.parameters()):
+        mx.eval(w)
+    tok = AutoTokenizer.from_pretrained(model_id, revision=revision or None)
+    return model, tok
+
+
+def seq_logprobs_mlx(model, tok, texts, batch_size):
+    """MLX twin of seq_logprobs: same token ids, padding and sums."""
+    import mlx.core as mx
+    import numpy as np
+    bos = tok.bos_token_id
+    enc = [tok(t, add_special_tokens=False)["input_ids"] for t in texts]
+    if bos is not None:
+        enc = [[bos] + e for e in enc]
+    pad = tok.pad_token_id if tok.pad_token_id is not None else (tok.eos_token_id or 0)
+    order = sorted(range(len(enc)), key=lambda i: len(enc[i]))
+    res = [None] * len(enc)
+    for s in range(0, len(order), batch_size):
+        idx = order[s:s + batch_size]
+        L = max(len(enc[i]) for i in idx)
+        ids = np.full((len(idx), L), pad, dtype=np.int32)
+        mask = np.zeros((len(idx), L), dtype=np.float32)
+        for j, i in enumerate(idx):
+            ids[j, :len(enc[i])] = enc[i]
+            mask[j, :len(enc[i])] = 1
+        x = mx.array(ids)
+        logits = model(x)[:, :-1].astype(mx.float32)
+        lp = logits - mx.logsumexp(logits, axis=-1, keepdims=True)
+        tgt = x[:, 1:]
+        tok_lp = mx.take_along_axis(lp, tgt[..., None], axis=-1).squeeze(-1) * mx.array(mask[:, 1:])
+        sums = tok_lp.sum(axis=1)
+        mx.eval(sums)
+        for j, i in enumerate(idx):
+            res[i] = float(sums[j].item())
+    return res
+
+
 def eval_models(args):
     items = read_items(args.items)
     with open(args.manifest, encoding="utf-8") as f:
@@ -279,9 +344,14 @@ def eval_models(args):
         t0 = time.time()
         dtype = run.get("dtype") or args.dtype
         try:
-            model, tok = load(run["model_id"], run.get("revision", ""), dtype, device)
-            lp = dict(zip(texts, seq_logprobs(model, tok, texts, device,
-                                              int(run.get("batch_size") or args.batch_size))))
+            bs = int(run.get("batch_size") or args.batch_size)
+            if args.backend == "mlx":
+                model, tok = load_mlx(run["model_id"], run.get("revision", ""), dtype,
+                                      args.mlx_memory_gb)
+                lp = dict(zip(texts, seq_logprobs_mlx(model, tok, texts, bs)))
+            else:
+                model, tok = load(run["model_id"], run.get("revision", ""), dtype, device)
+                lp = dict(zip(texts, seq_logprobs(model, tok, texts, device, bs)))
         except Exception as e:  # keep going; report at the end of the line
             print(f"[{n}/{len(runs)}] FAILED {key}: {type(e).__name__}: {e}")
             continue
@@ -301,10 +371,14 @@ def eval_models(args):
                             "match": r["match"], "stable_dim": r["stable_dim"],
                             "probe_dim": r["probe_dim"],
                             "delta": lp[c + r["query_rep"]] - lp[c + r["query_new"]]})
-        print(f"[{n}/{len(runs)}] {key}: {len(items)} items in {time.time() - t0:.0f}s on {device}")
+        where = "mlx" if args.backend == "mlx" else device
+        print(f"[{n}/{len(runs)}] {key}: {len(items)} items in {time.time() - t0:.0f}s on {where}")
         del model
         gc.collect()
-        if device == "mps":
+        if args.backend == "mlx":
+            import mlx.core as mx
+            (getattr(mx, "clear_cache", None) or mx.metal.clear_cache)()
+        elif device == "mps":
             import torch
             torch.mps.empty_cache()
         if args.delete_cache:
@@ -372,6 +446,10 @@ def main():
     e.add_argument("--device", default="auto")
     e.add_argument("--dtype", default="float16", choices=["float32", "float16", "bfloat16"])
     e.add_argument("--batch_size", type=int, default=32)
+    e.add_argument("--backend", default="torch", choices=["torch", "mlx"],
+                   help="mlx: Apple MLX forward pass (used for the 70B models)")
+    e.add_argument("--mlx_memory_gb", type=float, default=200,
+                   help="MLX memory cap in GB, keeps headroom for the rest of the Mac")
     e.add_argument("--delete_cache", action="store_true",
                    help="Delete each model's download after scoring (saves disk)")
     s = sub.add_parser("summarise")

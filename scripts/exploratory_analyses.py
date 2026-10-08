@@ -19,6 +19,8 @@ Outputs
   results/study1d/robustness_raw_delta.csv           (promised in Amendment 3)
   results/study1d/robustness_sentence_order.csv      (promised in Amendment 3)
   results/study1d/robustness_word_effects.csv
+  results/study1c/tracking_trajectory.csv     Study 1c index across checkpoints
+                                              (registered exploratory, Amendment 1)
 
 Kind-specific index. For each dimension d, the repetition advantage
 delta_d is measured twice on the same words: once when the query names the
@@ -154,6 +156,31 @@ def robustness_1d(d):
     return pd.DataFrame(lono)
 
 
+def checkpoint_tracking():
+    """Study 1c registered exploratory analysis (Amendment 1): the index across
+    saved checkpoints for Regular and Regular-bursty, k = 1."""
+    d = pd.read_csv("results/study1c/raw/track_results.csv.gz")
+    d["step"] = d.ckpt.str.extract(r"ckpt_step(\d+)", expand=False).astype(int)
+    d["match"] = d["match"].astype(str).isin(["True", "true"])
+    w = d.groupby(["condition", "size", "seed", "step", "match", "probe_dim"]).delta.mean().unstack("probe_dim")
+    w["OI_colour"] = w["shape"] - w["colour"]
+    w["OI_texture"] = w["shape"] - w["texture"]
+    w = w.reset_index()
+    m = w[w.match].set_index(["condition", "size", "seed", "step"])
+    x = w[~w.match].set_index(["condition", "size", "seed", "step"])
+    per_run = m[["OI_colour", "OI_texture"]].copy()
+    per_run["kind_specific_shape_minus_colour"] = m["OI_colour"] - x["OI_colour"]
+    per_run = per_run.reset_index()
+    per_run.round(5).to_csv("results/study1c/tracking_per_run.csv", index=False)
+    traj = per_run.groupby(["condition", "size", "step"]).agg(
+        n_seeds=("seed", "nunique"),
+        OI_colour=("OI_colour", "mean"), OI_colour_sd=("OI_colour", "std"),
+        OI_texture=("OI_texture", "mean"),
+        kind_specific=("kind_specific_shape_minus_colour", "mean")).reset_index()
+    traj.round(4).to_csv("results/study1c/tracking_trajectory.csv", index=False)
+    return traj
+
+
 def main():
     rng = np.random.default_rng(SEED)
     print("Ideal observer (corrected), k = 1:\n", hbm_summary()[["OI_colour_k1_mean", "OI_texture_k1_mean"]].round(3))
@@ -165,6 +192,9 @@ def main():
           final[["model", "shape_minus_colour", "shape_minus_colour_lo", "shape_minus_colour_hi",
                  "shape_minus_texture"]].round(2).to_string(index=False))
     print("\nLeave one noun out, H6 rho:", robustness_1d(d).H6_rho.round(2).tolist())
+    t = checkpoint_tracking()
+    print("\nStudy 1c checkpoint tracking (OI_colour, mean over seeds):\n",
+          t.pivot_table(index="step", columns=["condition", "size"], values="OI_colour").round(2).to_string())
 
 
 if __name__ == "__main__":

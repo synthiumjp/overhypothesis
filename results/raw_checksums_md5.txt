@@ -12,3 +12,5 @@ fc517687e0db3a549c74440cdbb3fca1  study1b/raw/summary_per_cell.csv
 c300ef987e304bc4bed6a39865fa92bd  study1b/raw/lm_results.csv
 1ba67dc9d0612086194fb176f1ac9fe1  study1b/raw/random_results.csv
 016d6c7e651802d200f7476c61f861ef  study1c/raw/lm_results.csv
+b124a599dba98189b8ee42685555c6b1  study1c/raw/track_results.csv.gz
+eba1bf8411667430bd65fba6b27c4bf0  study1c/raw/track_results.csv

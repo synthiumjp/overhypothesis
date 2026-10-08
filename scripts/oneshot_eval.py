@@ -358,10 +358,20 @@ def score_items(rows, encode, logprob, sep, bos_id=None, block=None):
 def eval_lm(args):
     from tokenizers import Tokenizer
     rows = read_items(args.items)
+    if args.ks:
+        keep = {int(k) for k in args.ks.split(",")}
+        rows = [r for r in rows if int(r["k"]) in keep]
     with open(args.manifest, encoding="utf-8") as f:
         runs = list(csv.DictReader(f))
-    out = []
+    # Results are appended after every run, so a long job can be resumed.
+    done = set()
+    if os.path.exists(args.out):
+        with open(args.out, encoding="utf-8") as f:
+            done = {r["ckpt"] for r in csv.DictReader(f)}
+    new_file = not os.path.exists(args.out)
     for i, run in enumerate(runs, 1):
+        if run["ckpt"] in done:
+            continue
         tok = Tokenizer.from_file(run["tokenizer"])
         model, block = load_model(run["ckpt"], args.scripts_dir,
                                   args.model_module, args.model_class,
@@ -369,16 +379,21 @@ def eval_lm(args):
         bos = tok.token_to_id(args.bos_token) if args.bos_token else None
         deltas = score_items(rows, lambda s: tok.encode(s).ids,
                              make_logprob_fn(model), args.sep, bos, block)
-        for r, d in zip(rows, deltas):
-            out.append({"source": "random" if args.random_init else "lm",
-                        "condition": run["condition"],
-                        "size": run["size"], "seed": run["seed"],
-                        "ckpt": run["ckpt"], "item_id": r["item_id"],
-                        "k": r["k"], "match": r["match"],
-                        "probe_dim": r["probe_dim"], "delta": d})
+        out = [{"source": "random" if args.random_init else "lm",
+                "condition": run["condition"],
+                "size": run["size"], "seed": run["seed"],
+                "ckpt": run["ckpt"], "item_id": r["item_id"],
+                "k": r["k"], "match": r["match"],
+                "probe_dim": r["probe_dim"], "delta": d}
+               for r, d in zip(rows, deltas)]
+        with open(args.out, "a", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=RESULT_FIELDS)
+            if new_file:
+                w.writeheader()
+                new_file = False
+            w.writerows(out)
         print(f"[{i}/{len(runs)}] {run['condition']} {run['size']} "
-              f"seed {run['seed']}: {len(rows)} items scored")
-    write_results(args.out, out)
+              f"seed {run['seed']} {os.path.basename(run['ckpt'])}: {len(rows)} items scored")
 
 
 # --------------------------------------------------------------------------
@@ -399,11 +414,16 @@ def make_manifest(args):
         tok = os.path.join(args.base_dir, "data", "tokenizers", f"{c}_tokenizer.json")
         for z in SIZES:
             for sd in SEEDS:
-                ck = os.path.join(args.ckpt_dir, f"{c}_{z}_seed{sd}", args.ckpt_name)
-                if os.path.exists(ck) and os.path.exists(tok):
-                    rows.append({"ckpt": ck, "tokenizer": tok,
-                                 "condition": c + args.label_suffix,
-                                 "size": z, "seed": sd})
+                run_dir = os.path.join(args.ckpt_dir, f"{c}_{z}_seed{sd}")
+                ck = os.path.join(run_dir, args.ckpt_name)
+                # A pattern such as "ckpt_step*.pt" adds one row per saved checkpoint.
+                found = sorted(glob.glob(ck)) if any(ch in args.ckpt_name for ch in "*?[") \
+                    else ([ck] if os.path.exists(ck) else [])
+                if found and os.path.exists(tok):
+                    for f in found:
+                        rows.append({"ckpt": f, "tokenizer": tok,
+                                     "condition": c + args.label_suffix,
+                                     "size": z, "seed": sd})
                 else:
                     missing.append(ck)
     with open(args.out, "w", newline="", encoding="utf-8") as f:
@@ -496,6 +516,8 @@ def main():
     e.add_argument("--model_class", default="OverhypothesisLM")
     e.add_argument("--bos_token", default=None)
     e.add_argument("--sep", default=" ")
+    e.add_argument("--ks", default="",
+                   help="Score only these k values, e.g. 1 (default: all)")
     e.add_argument("--random_init", action="store_true",
                    help="Score untrained models of the same architecture (baseline)")
     e.add_argument("--out", required=True)

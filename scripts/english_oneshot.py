@@ -203,8 +203,10 @@ def load(model_id, revision, dtype, device):
         # Casting during loading runs MPS cast kernels from transformers' loader
         # threads, which segfaults in torch 2.14 (MetalShaderLibrary is not
         # thread-safe). The values are the same either way.
+        # On MPS, loading straight to the device ran at about 100 s per tensor
+        # for Qwen2.5-72B, so load to CPU (memory-mapped) and move once.
         kw = dict(revision=rev, low_cpu_mem_usage=True)
-        if device != "cpu":
+        if device == "cuda":
             kw["device_map"] = {"": device}
         try:
             model = AutoModelForCausalLM.from_pretrained(src, dtype="auto", **kw)

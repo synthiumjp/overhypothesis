@@ -195,12 +195,16 @@ def load(model_id, revision, dtype, device):
     src, rev, tmp = resolve_source(model_id, revision)
     try:
         tok = AutoTokenizer.from_pretrained(src, revision=rev)
+        # Load weights straight onto the device. Loading to CPU first and then
+        # copying needs twice the model's size in memory, which kills 70B
+        # models on a 512 GB Mac. Numerically identical.
+        kw = dict(revision=rev, low_cpu_mem_usage=True)
+        if device != "cpu":
+            kw["device_map"] = {"": device}
         try:
-            model = AutoModelForCausalLM.from_pretrained(
-                src, revision=rev, dtype=tdtype, low_cpu_mem_usage=True)
+            model = AutoModelForCausalLM.from_pretrained(src, dtype=tdtype, **kw)
         except TypeError:  # older transformers
-            model = AutoModelForCausalLM.from_pretrained(
-                src, revision=rev, torch_dtype=tdtype, low_cpu_mem_usage=True)
+            model = AutoModelForCausalLM.from_pretrained(src, torch_dtype=tdtype, **kw)
         model.to(device).eval()
     finally:
         if tmp:

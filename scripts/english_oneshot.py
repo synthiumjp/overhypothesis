@@ -188,6 +188,7 @@ def resolve_source(model_id, revision):
 
 
 def load(model_id, revision, dtype, device):
+    os.environ.setdefault("HF_ENABLE_PARALLEL_LOADING", "false")
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tdtype = {"float32": torch.float32, "float16": torch.float16,
@@ -198,14 +199,18 @@ def load(model_id, revision, dtype, device):
         # Load weights straight onto the device. Loading to CPU first and then
         # copying needs twice the model's size in memory, which kills 70B
         # models on a 512 GB Mac. Numerically identical.
+        # Load in the checkpoint's own dtype, then cast once in the main thread.
+        # Casting during loading runs MPS cast kernels from transformers' loader
+        # threads, which segfaults in torch 2.14 (MetalShaderLibrary is not
+        # thread-safe). The values are the same either way.
         kw = dict(revision=rev, low_cpu_mem_usage=True)
         if device != "cpu":
             kw["device_map"] = {"": device}
         try:
-            model = AutoModelForCausalLM.from_pretrained(src, dtype=tdtype, **kw)
+            model = AutoModelForCausalLM.from_pretrained(src, dtype="auto", **kw)
         except TypeError:  # older transformers
-            model = AutoModelForCausalLM.from_pretrained(src, torch_dtype=tdtype, **kw)
-        model.to(device).eval()
+            model = AutoModelForCausalLM.from_pretrained(src, torch_dtype="auto", **kw)
+        model.to(device=device, dtype=tdtype).eval()
     finally:
         if tmp:
             shutil.rmtree(tmp, ignore_errors=True)

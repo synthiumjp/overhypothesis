@@ -261,7 +261,10 @@ def load_mlx(model_id, revision, dtype, memory_gb):
     from mlx_lm import load as mlx_load
     from transformers import AutoTokenizer
     limit = int(memory_gb * 1024 ** 3)
-    for fn in ("set_memory_limit", "set_wired_limit"):
+    # Memory cap only. Wiring 200 GB on top of other MLX services left the
+    # window server starved (watchdog panic on Llama-3.1-70B), so leave the
+    # wired limit at the system default.
+    for fn in ("set_memory_limit",):
         f = getattr(mx, fn, None) or getattr(getattr(mx, "metal", None), fn, None)
         if f is not None:
             try:
@@ -283,7 +286,7 @@ def load_mlx(model_id, revision, dtype, memory_gb):
     return model, tok
 
 
-def seq_logprobs_mlx(model, tok, texts, batch_size):
+def seq_logprobs_mlx(model, tok, texts, batch_size, pause=0.0):
     """MLX twin of seq_logprobs: same token ids, padding and sums."""
     import mlx.core as mx
     import numpy as np
@@ -311,6 +314,9 @@ def seq_logprobs_mlx(model, tok, texts, batch_size):
         mx.eval(sums)
         for j, i in enumerate(idx):
             res[i] = float(sums[j].item())
+        if pause:
+            # Hand the GPU back to the window server between batches.
+            time.sleep(pause)
     return res
 
 
@@ -348,7 +354,9 @@ def eval_models(args):
             if args.backend == "mlx":
                 model, tok = load_mlx(run["model_id"], run.get("revision", ""), dtype,
                                       args.mlx_memory_gb)
-                lp = dict(zip(texts, seq_logprobs_mlx(model, tok, texts, bs)))
+                if args.max_batch:
+                    bs = min(bs, args.max_batch)
+                lp = dict(zip(texts, seq_logprobs_mlx(model, tok, texts, bs, args.mlx_pause)))
             else:
                 model, tok = load(run["model_id"], run.get("revision", ""), dtype, device)
                 lp = dict(zip(texts, seq_logprobs(model, tok, texts, device, bs)))
@@ -450,6 +458,10 @@ def main():
                    help="mlx: Apple MLX forward pass (used for the 70B models)")
     e.add_argument("--mlx_memory_gb", type=float, default=200,
                    help="MLX memory cap in GB, keeps headroom for the rest of the Mac")
+    e.add_argument("--mlx_pause", type=float, default=0.0,
+                   help="Seconds to pause between MLX batches (gives the GPU back to the display)")
+    e.add_argument("--max_batch", type=int, default=0,
+                   help="Cap the manifest batch size (smaller GPU jobs)")
     e.add_argument("--delete_cache", action="store_true",
                    help="Delete each model's download after scoring (saves disk)")
     s = sub.add_parser("summarise")

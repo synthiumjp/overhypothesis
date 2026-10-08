@@ -1,0 +1,11 @@
+revision,OI_colour_before,OI_colour_after,in_analysis,step
+step0,0.4961,0.4596,True,0
+step4,0.4961,0.4767,True,4
+step16,0.4961,0.4047,True,16
+step64,0.4961,0.4976,True,64
+step256,0.4961,0.5908,True,256
+step1000,0.4961,-1.7233,True,1000
+step4000,0.4961,-1.642,True,4000
+step16000,0.4961,0.5085,True,16000
+step64000,0.4279,0.4279,False,64000
+step143000,0.4279,0.4279,True,143000

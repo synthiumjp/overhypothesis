@@ -1,0 +1,18 @@
+{
+  "kind_specific_size_rho": 0.7166666666666667,
+  "perm_p_one_sided": 0.020597940205979402,
+  "crossed_original_items_410m_to_12b": {
+    "estimate": 0.3654826965443432,
+    "se": 0.08713411881392417,
+    "p_one_sided": 1.3674652426486237e-05,
+    "converged": true,
+    "pigeonhole_mean": 0.35706954532199436,
+    "pigeonhole_ci95": [
+      0.09645117342577202,
+      0.5911907089860989
+    ],
+    "pigeonhole_p": 0.004,
+    "n_rows": 576,
+    "note": "original items: same noun with 'another', different noun with 'a'"
+  }
+}

@@ -2,7 +2,7 @@
 51d0a2e27ada642dc79842f9b706cb3f  scripts/study1_trained_nouns.py
 f918ddf0cde017dce98c825bbb399e7e  scripts/study1x_tests.py
 6920386db826f7927080d3e75c60f0cc  scripts/study2_extension.py
-634b21c52d7b3388326b8b58d5a1153b  scripts/study3_extension.py
+c002f6269825165969844792a844b3c6  scripts/study3_extension.py
 e9e144254e84777680ed8369cbf65141  scripts/oneshot_eval.py
 06ab27734c45bec706602083f5a51024  scripts/english_oneshot.py
 b95dd5dffef2d457a36a81be4c758100  scripts/train_model.py

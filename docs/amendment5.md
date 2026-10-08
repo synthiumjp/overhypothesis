@@ -11,7 +11,7 @@ When it was written, the author knew all results of the registered studies so fa
 1. In Study 2, the kind-specific index split into its parts. In Pythia 1.4B and larger, shape repeated more after the same noun (+0.08 to +0.19 nats) and colour repeated less (−0.11 to −0.24).
 2. The Study 2 kind-specific index rose with Pythia size (Spearman ρ = .72, p = .03).
 3. In Study 3, the raw share of same-kind pairs was higher in the Pile (0.60) than in CHILDES (0.53). Per 1,000 words, CHILDES had 10.1 same-kind pairs and the Pile 0.87.
-4. In Study 3, a bootstrap over CHILDES corpora and then transcripts gave a 95% interval for B of [3.11, 4.30]; all 36 corpora had B > 1.
+4. In Study 3, a bootstrap over CHILDES corpora and then transcripts gave a 95% interval for B of [3.14, 4.28]; all 33 corpora with enough pairs to compute B had B > 1. (The 2,116 transcripts come from 35 corpora after the 400-word rule, not 36 as first reported.)
 5. Reading the Study 2 items showed that the same-noun continuation began "Here is another snerg." and the different-noun continuation "Here is a zull." The kind-specific index therefore confounded the noun with the word "another".
 
 Locked materials are in github.com/synthiumjp/overhypothesis, branch study1b-1c-evaluation, commit b3db968. MD5 checksums of every script, item file, corpus and model list are in `docs/amendment5_checksums.txt`. Run instructions are in `docs/RUN_AMENDMENT5.md`.

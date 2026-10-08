@@ -5,7 +5,7 @@ Code: `scripts/cds_burstiness.py` (MD5 `c4885f97af62e9d6cca59c523841065f`).
 CHILDES source: `0-Eng-NA-MOR.zip` from talkbank.org/childes/access/Eng-NA/ (91 MB, MD5 `789a8815b2c222917b68be07b7246425`), downloaded 8 Oct 2026. Adult text: NeelNanda/pile-10k.
 
 ## Data
-- CHILDES Eng-NA: 3,134 transcripts with a target child under 36 months (3.3M words of child input); 2,116 kept after the 400-word rule, from 36 corpora; 74,488 target-noun mentions.
+- CHILDES Eng-NA: 3,134 transcripts with a target child under 36 months (3.3M words of child input); 2,116 kept after the 400-word rule, from 35 corpora (36 before it); 74,488 target-noun mentions.
 - Pile sample: 9,363 documents prepared; 2,474 kept; 32,808 mentions.
 
 ## Registered tests (W = 100 words; one-sided; Holm across 2)

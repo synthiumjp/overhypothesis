@@ -265,7 +265,7 @@ def rates(args):
         if g.corpus.nunique() > 1:
             per = []
             for _, gc in g.groupby("corpus"):
-                if gc[f"pairs0_{W}"].sum() > 0 and gc[f"same0_{W}"].sum() > 0:
+                if min(gc[f"pairs_{W}"].sum(), gc[f"pairs0_{W}"].sum(), gc[f"same0_{W}"].sum()) > 0:
                     per.append((gc[f"same_{W}"].sum() / gc[f"pairs_{W}"].sum()) /
                                (gc[f"same0_{W}"].sum() / gc[f"pairs0_{W}"].sum()))
             r["B_corpus_mean"] = float(np.mean(per))

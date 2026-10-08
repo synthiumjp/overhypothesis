@@ -1,0 +1,10 @@
+Study 1b registered tests (k = 1, one-sided, 15 runs per condition, Holm across 3)
+H1b Regular OI_colour > 0: mean 0.1814 (SD 0.3750), t = 1.873, p = 0.0410, Holm p = 0.1231
+H2b Regular > Scrambled: 0.1814 vs 0.0866 (SD 0.5583), t = 0.546, p = 0.2950, Holm p = 0.5900
+H3b matched > mismatched (Regular): diff 0.0007 (SD 0.0058), t = 0.471, p = 0.3223, Holm p = 0.5900
+
+TOST, Regular OI_colour within +/-0.2: p = 0.4252
+TOST, matched minus mismatched within +/-0.2: p = 2.26e-23
+
+Exploratory: Feature-swap control, OI_texture
+Regular 0.2793 vs Feature-swap -0.2780, Welch t = 3.219, p = 0.0019

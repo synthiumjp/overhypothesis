@@ -24,6 +24,7 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Score trained models | `python scripts/oneshot_eval.py make-manifest ...` then `eval-lm` (needs the checkpoints, see below) | `results/study1b/raw/lm_results.csv.gz`, `random_results.csv.gz` (untrained floor), `results/study1c/raw/lm_results.csv.gz`; checksums in `results/raw_checksums_md5.txt` |
 | Per-run summary | `python scripts/oneshot_eval.py summarise --inputs study1c_lm_results.csv study1b_lm_results.csv --out results/study1c/summary` (unzip first; reproduces the committed file exactly) | `results/study1c/summary_per_run.csv` (MD5 `4337444288f38c22b42ac02983d43fc4`) |
 | Checkpoint tracking (registered exploratory) | `make-manifest --ckpt_name "ckpt_step*.pt"` then `eval-lm --ks 1`; analysed by `scripts/exploratory_analyses.py` | `results/study1c/raw/track_results.csv.gz`, `results/study1c/tracking_trajectory.csv` |
+| Registered tests H1b to H3b (Study 1b, random order) | `python scripts/study1b_tests.py --runs results/study1c/summary_per_run.csv --out results/study1b/tests_output.txt` | `results/study1b/tests_output.txt` |
 | Registered tests H4b, H5b | `python scripts/study1c_tests.py --runs results/study1c/summary_per_run.csv --hbm "results/study1c/hbm/hbm_*.csv"` | `results/study1c/tests_output.txt` |
 
 ## Study 1d (pretrained models, natural English)

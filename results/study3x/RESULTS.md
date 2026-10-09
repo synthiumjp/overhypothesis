@@ -75,3 +75,20 @@ The registered cleaner splits words at in-word overlap brackets and lengthening 
 | CHILDES B | 3.57 | 3.57 |
 
 No conclusion changes.
+
+## Hand coding (S23; `coding_summary.csv`, `scripts/study3_coding_summary.py`)
+
+First coder: JP, all 500 pairs, blind to source. Second coder: an independent Claude instance given only the rubric and 125 random pairs (seed 2031), sealed until the first coder finished. Agreement on 124 pairs (pair 0 excluded: discussed during coding): referent 84%, kappa 0.78; property 95%.
+
+Share of pairs (Wilson 95% interval), first coder:
+
+| Code | CHILDES (300) | CABank (100) | Pile (100) |
+|---|---|---|---|
+| Different objects | .27 [.23, .33] | .25 [.18, .34] | .13 [.08, .21] |
+| Same object | .46 [.41, .52] | .25 [.18, .34] | .12 [.07, .20] |
+| Kind in general | .17 [.14, .22] | .28 [.20, .38] | .32 [.24, .42] |
+| Unclear | .09 | .22 | .43 |
+| of which not an object | .03 | .17 | .43 |
+| Stated property | .10 [.07, .14] | .09 [.05, .16] | .02 [.01, .07] |
+
+The automatic cues overstated the gap: the share of repetitions that bring a different object is similar in CHILDES and CABank. Combined with the rates above (exploratory): different-object repetitions per 1,000 words, CHILDES 2.8, CABank 0.24, Pile 0.13.

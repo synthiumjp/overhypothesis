@@ -49,6 +49,18 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 
 CHILDES transcripts are not redistributed here (TalkBank terms); the per-document counts in `counts.csv` are.
 
+## Study 3 extension (Amendment 5, Part C)
+
+| Step | Command | Output |
+|---|---|---|
+| CABank | sign in at talkbank.org, download transcripts from the SBCSAE, CallHome/eng, CallFriend/eng-n and CallFriend/eng-s pages, save as `SBCSAE.zip`, `CallHome-eng.zip`, `CallFriend-eng-n.zip`, `CallFriend-eng-s.zip` (MD5s in `results/study3x/cabank_md5.txt`); then `python scripts/study3_extension.py prepare-cabank --zips ... --out data/cds/cabank.jsonl` | 277 transcripts |
+| All steps | the commands in the header of `scripts/study3_extension.py`, in order (spaCy 3.8, en_core_web_sm 3.8.0) | `results/study3x/` |
+| Transcription-mark check (exploratory) | `python scripts/study3_ca_sensitivity.py ...` (usage in its header) | `results/study3x/ca_sensitivity/` |
+| Hand coding | code `coding_sheet.csv` with `tools/coding_tool.html`; second-coder subset `python scripts/study3_reliability.py subset`; agreement `... agree` | `reliability.json` |
+| Summary | | `results/study3x/RESULTS.md` |
+
+The coding sheet holds transcript excerpts and is not in git. The blind second coding is on branch `sealed-coder2` (MD5 `24729a7ec2b29ed02c7eb7175e6b66f3`) until the first coder has finished.
+
 ## Exploratory and robustness analyses (all studies)
 
 `python scripts/exploratory_analyses.py` writes:

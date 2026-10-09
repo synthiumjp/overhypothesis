@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pair Coding</title>
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1b; --muted:#6b6a66; --line:#e2e0da;
+  --hl:#ffe08a; --hl-ink:#1d1d1b; --accent:#2f5d8a; --accent-ink:#ffffff;
+  --on:#2f5d8a; --on-ink:#fff; --warn:#a4462f;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16171a; --card:#1f2024; --ink:#ecebe7; --muted:#9b9a95; --line:#33343a;
+    --hl:#6b5512; --hl-ink:#fff3c9; --accent:#7fb0e0; --accent-ink:#0f1720; --on:#7fb0e0; --on-ink:#0f1720; --warn:#e08a74;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16171a; --card:#1f2024; --ink:#ecebe7; --muted:#9b9a95; --line:#33343a;
+  --hl:#6b5512; --hl-ink:#fff3c9; --accent:#7fb0e0; --accent-ink:#0f1720; --on:#7fb0e0; --on-ink:#0f1720; --warn:#e08a74;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:2}
+h1{font-size:17px;margin:0;font-weight:600}
+.prog{color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:4px;background:var(--line);width:100%}
+.bar>div{height:4px;background:var(--accent);width:0}
+main{max-width:860px;margin:0 auto;padding:16px}
+button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:8px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.on{background:var(--on);color:var(--on-ink);border-color:var(--on)}
+kbd{font:12px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;margin-left:6px;opacity:.8}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.meta{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
+.kind{font-size:22px;font-weight:650}
+.pid{color:var(--muted);font-variant-numeric:tabular-nums}
+.ctx{color:var(--muted);font-size:15px;margin:6px 0}
+.span{margin:8px 0;padding-left:12px;border-left:3px solid var(--accent)}
+.span p{margin:4px 0}
+mark{background:var(--hl);color:var(--hl-ink);padding:0 3px;border-radius:3px;font-weight:600}
+.lbl{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:14px 0 6px}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+input[type=text]{font:inherit;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:14px}
+details{margin-top:8px}
+summary{cursor:pointer;color:var(--muted)}
+.rub td{padding:4px 8px;vertical-align:top;border-top:1px solid var(--line);font-size:14px}
+.empty{text-align:center;padding:48px 16px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+.saved{font-size:13px;color:var(--muted)}
+.warn{color:var(--warn)}
+#file{display:none}
+@media (max-width:560px){ .kind{font-size:19px} button{padding:8px 10px} kbd{display:none} }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pair coding</h1>
+  <span class="prog" id="prog">No sheet loaded</span>
+  <div class="row">
+    <button id="loadBtn">Open coding_sheet.csv</button>
+    <button id="exportBtn" class="primary" disabled>Save coded CSV</button>
+  </div>
+</header>
+<div class="bar"><div id="barFill"></div></div>
+<main>
+  <div id="empty" class="card empty">
+    Open <b>coding_sheet.csv</b> to start. Nothing leaves this computer: the file is read in your browser only.<br>
+    <span class="note">Your codes are kept in this browser as you go. Use <b>Save coded CSV</b> to write the file.</span>
+  </div>
+  <div id="ui" hidden>
+    <div class="card">
+      <div class="meta"><span class="kind" id="kind"></span><span class="pid" id="pid"></span><span class="saved" id="state"></span></div>
+      <div class="ctx" id="before"></div>
+      <div class="span" id="span"></div>
+      <div class="ctx" id="after"></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Referent: do the two highlighted mentions name…</div>
+      <div class="row" id="refRow">
+        <button data-ref="same">the same object<kbd>1</kbd></button>
+        <button data-ref="different">different objects<kbd>2</kbd></button>
+        <button data-ref="generic">the kind in general<kbd>3</kbd></button>
+        <button data-ref="unclear">unclear<kbd>4</kbd></button>
+        <button id="notObj">not an object<kbd>N</kbd></button>
+      </div>
+      <div class="lbl">Properties of the labelled object stated in the span (leave all off for none)</div>
+      <div class="row" id="propRow">
+        <button data-prop="shape">shape<kbd>Q</kbd></button>
+        <button data-prop="colour">colour<kbd>W</kbd></button>
+        <button data-prop="size">size<kbd>E</kbd></button>
+        <button data-prop="material">material<kbd>R</kbd></button>
+        <button data-prop="other">other<kbd>T</kbd></button>
+      </div>
+      <div class="lbl">Notes (only if hard)</div>
+      <input type="text" id="notes" placeholder="Press / to type, Esc to leave">
+      <div class="nav">
+        <div class="row">
+          <button id="prev">Previous<kbd>←</kbd></button>
+          <button id="next" class="primary">Next<kbd>Enter</kbd></button>
+        </div>
+        <button id="jump">Next uncoded<kbd>J</kbd></button>
+      </div>
+    </div>
+    <details class="card">
+      <summary>Rubric reminder</summary>
+      <table class="rub">
+        <tr><td><b>same</b></td><td>Both mentions refer to one physical object (definite article or pronoun tracks it; nothing suggests a second).</td></tr>
+        <tr><td><b>different</b></td><td>Two or more distinct objects of the kind: <i>another, other</i>, numbers, counting plurals, descriptions that cannot fit one object.</td></tr>
+        <tr><td><b>generic</b></td><td>At least one mention is about the kind in general, not a particular object (<i>balls are for throwing; do you want a ball?</i>).</td></tr>
+        <tr><td><b>unclear</b></td><td>The words do not settle it.</td></tr>
+        <tr><td><b>not an object</b></td><td>The word is not used for a physical object (Apple the company, the periodic table, an idiom). Codes <i>unclear</i> and writes <i>not object</i> in notes.</td></tr>
+        <tr><td><b>properties</b></td><td>shape (round, square, pointy, long), colour, size (big, little), material (soft, hard, wooden, plastic, fuzzy), other (wet, broken, new). Only properties of the labelled object.</td></tr>
+      </table>
+      <p class="note">Code from the words only. Do not open coding_sheet_key.csv until every row is coded.</p>
+    </details>
+  </div>
+  <input type="file" id="file" accept=".csv,text/csv">
+</main>
+<script>
+const FORMS = {"ball":["ball","balls"],"balloon":["balloon","balloons"],"block":["block","blocks"],"book":["book","books"],"crayon":["crayon","crayons"],"doll":["doll","dolls"],"puzzle":["puzzle","puzzles"],"toy":["toy","toys"],"airplane":["airplane","airplanes","plane","planes"],"bicycle":["bicycle","bicycles","bike","bikes"],"boat":["boat","boats"],"bus":["bus","buses","busses"],"car":["car","cars"],"motorcycle":["motorcycle","motorcycles"],"stroller":["stroller","strollers"],"tractor":["tractor","tractors"],"train":["train","trains"],"truck":["truck","trucks"],"apple":["apple","apples"],"banana":["banana","bananas"],"carrot":["carrot","carrots"],"cookie":["cookie","cookies"],"cracker":["cracker","crackers"],"egg":["egg","eggs"],"grape":["grape","grapes"],"raisin":["raisin","raisins"],"sandwich":["sandwich","sandwiches"],"boot":["boot","boots"],"button":["button","buttons"],"coat":["coat","coats"],"diaper":["diaper","diapers"],"hat":["hat","hats"],"jacket":["jacket","jackets"],"mitten":["mitten","mittens"],"necklace":["necklace","necklaces"],"pajamas":["pajamas"],"pants":["pants"],"shirt":["shirt","shirts"],"shoe":["shoe","shoes"],"sock":["sock","socks"],"sweater":["sweater","sweaters"],"zipper":["zipper","zippers"],"basket":["basket","baskets"],"blanket":["blanket","blankets"],"bottle":["bottle","bottles"],"bowl":["bowl","bowls"],"box":["box","boxes"],"broom":["broom","brooms"],"clock":["clock","clocks"],"cup":["cup","cups"],"dish":["dish","dishes"],"fork":["fork","forks"],"hammer":["hammer","hammers"],"key":["key","keys"],"lamp":["lamp","lamps"],"pencil":["pencil","pencils"],"pillow":["pillow","pillows"],"plate":["plate","plates"],"purse":["purse","purses"],"scissors":["scissors"],"spoon":["spoon","spoons"],"telephone":["phone","phones","telephone","telephones"],"toothbrush":["toothbrush","toothbrushes"],"towel":["towel","towels"],"bed":["bed","beds"],"chair":["chair","chairs"],"couch":["couch","couches"],"crib":["crib","cribs"],"table":["table","tables"],"television":["television","televisions","tv"]};
+const COLS = ["pair_id","kind","before","span","after","referent","property","notes"];
+const PROPS = ["shape","colour","size","material","other"];
+let rows = [], i = 0, storeKey = null, fileName = "coding_sheet.csv";
+const $ = id => document.getElementById(id);
+
+function parseCSV(text){
+  text = text.replace(/^﻿/, "");
+  const out = []; let row = [], f = "", q = false;
+  for (let k = 0; k < text.length; k++){
+    const c = text[k];
+    if (q){
+      if (c === '"'){ if (text[k+1] === '"'){ f += '"'; k++; } else q = false; }
+      else f += c;
+    } else if (c === '"') q = true;
+    else if (c === ','){ row.push(f); f = ""; }
+    else if (c === '\n' || c === '\r'){
+      if (c === '\r' && text[k+1] === '\n') k++;
+      row.push(f); f = ""; if (row.length > 1 || row[0] !== "") out.push(row); row = [];
+    } else f += c;
+  }
+  if (f !== "" || row.length) { row.push(f); out.push(row); }
+  const head = out.shift();
+  return out.map(r => Object.fromEntries(head.map((h, j) => [h, r[j] ?? ""])));
+}
+function toCSV(rs){
+  const esc = v => { v = String(v ?? ""); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+  return [COLS.join(",")].concat(rs.map(r => COLS.map(c => esc(r[c])).join(","))).join("\r\n") + "\r\n";
+}
+function hash(s){ let h = 0; for (let k = 0; k < s.length; k++) h = (h * 31 + s.charCodeAt(k)) | 0; return (h >>> 0).toString(16); }
+function save(){
+  if (!storeKey) return;
+  try { localStorage.setItem(storeKey, JSON.stringify({i, codes: rows.map(r => [r.referent, r.property, r.notes])})); $("state").textContent = "kept in browser"; }
+  catch(e){ $("state").innerHTML = '<span class="warn">browser storage off: save the CSV often</span>'; }
+}
+function restore(){
+  try {
+    const s = JSON.parse(localStorage.getItem(storeKey) || "null");
+    if (s && s.codes && s.codes.length === rows.length){
+      s.codes.forEach((c, k) => { rows[k].referent = c[0] || rows[k].referent; rows[k].property = c[1] || rows[k].property; rows[k].notes = c[2] || rows[k].notes; });
+      i = Math.min(s.i || 0, rows.length - 1);
+    }
+  } catch(e){}
+}
+function words(text, forms){
+  return text.split(" ").map(w => forms.has(w) ? "<mark>" + w + "</mark>" : w.replace(/&/g,"&amp;").replace(/</g,"&lt;")).join(" ");
+}
+function coded(r){ return !!r.referent; }
+function render(){
+  const r = rows[i]; const forms = new Set(FORMS[r.kind] || [r.kind, r.kind + "s"]);
+  $("kind").textContent = r.kind;
+  $("pid").textContent = "pair " + r.pair_id + "  ·  row " + (i + 1) + " of " + rows.length;
+  $("before").innerHTML = r.before ? words(r.before, forms) : "<i>(start of transcript)</i>";
+  $("span").innerHTML = r.span.split(" || ").map(u => "<p>" + words(u, forms) + "</p>").join("");
+  $("after").innerHTML = r.after ? words(r.after, forms) : "<i>(end)</i>";
+  document.querySelectorAll("[data-ref]").forEach(b => b.classList.toggle("on", b.dataset.ref === r.referent));
+  const ps = new Set((r.property || "").split(";").filter(p => p && p !== "none"));
+  document.querySelectorAll("[data-prop]").forEach(b => b.classList.toggle("on", ps.has(b.dataset.prop)));
+  $("notObj").classList.toggle("on", r.referent === "unclear" && /not object/.test(r.notes));
+  $("notes").value = r.notes || "";
+  const n = rows.filter(coded).length;
+  $("prog").textContent = n + " of " + rows.length + " coded";
+  $("barFill").style.width = (100 * n / rows.length) + "%";
+}
+function setRef(v){ rows[i].referent = v; if (!rows[i].property) rows[i].property = "none"; save(); render(); }
+function toggleProp(p){
+  const ps = new Set((rows[i].property || "").split(";").filter(x => x && x !== "none"));
+  ps.has(p) ? ps.delete(p) : ps.add(p);
+  rows[i].property = ps.size ? PROPS.filter(x => ps.has(x)).join(";") : "none"; save(); render();
+}
+function notObject(){
+  rows[i].referent = "unclear"; if (!rows[i].property) rows[i].property = "none";
+  if (!/not object/.test(rows[i].notes)) rows[i].notes = rows[i].notes ? rows[i].notes + "; not object" : "not object";
+  save(); render();
+}
+function go(d){ i = Math.max(0, Math.min(rows.length - 1, i + d)); save(); render(); window.scrollTo(0, 0); }
+function jump(){ const k = rows.findIndex((r, j) => j > i && !coded(r)); const k0 = rows.findIndex(r => !coded(r)); const t = k >= 0 ? k : k0; if (t >= 0){ i = t; save(); render(); } }
+
+$("loadBtn").onclick = () => $("file").click();
+$("file").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  const text = await f.text(); rows = parseCSV(text);
+  if (!rows.length || !("span" in rows[0])) { alert("This does not look like coding_sheet.csv"); return; }
+  rows.forEach(r => COLS.forEach(c => r[c] = r[c] ?? ""));
+  fileName = f.name; storeKey = "paircoding:" + hash(rows.map(r => r.pair_id + r.span).join("|"));
+  i = 0; restore();
+  $("empty").hidden = true; $("ui").hidden = false; $("exportBtn").disabled = false; render();
+};
+$("exportBtn").onclick = () => {
+  const blob = new Blob(["﻿" + toCSV(rows)], {type: "text/csv;charset=utf-8"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = fileName.replace(/\.csv$/i, "") + "_coded.csv"; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+document.querySelectorAll("[data-ref]").forEach(b => b.onclick = () => setRef(b.dataset.ref));
+document.querySelectorAll("[data-prop]").forEach(b => b.onclick = () => toggleProp(b.dataset.prop));
+$("notObj").onclick = notObject;
+$("prev").onclick = () => go(-1); $("next").onclick = () => go(1); $("jump").onclick = jump;
+$("notes").oninput = e => { rows[i].notes = e.target.value; save(); };
+document.addEventListener("keydown", e => {
+  if (!rows.length) return;
+  if (document.activeElement === $("notes")){
+    if (e.key === "Escape" || e.key === "Enter"){ $("notes").blur(); e.preventDefault(); }
+    return;
+  }
+  const k = e.key.toLowerCase();
+  const map = {"1":"same","2":"different","3":"generic","4":"unclear"};
+  if (map[k]) setRef(map[k]);
+  else if ({q:"shape",w:"colour",e:"size",r:"material",t:"other"}[k]) toggleProp({q:"shape",w:"colour",e:"size",r:"material",t:"other"}[k]);
+  else if (k === "n") notObject();
+  else if (k === "enter" || k === "arrowright") go(1);
+  else if (k === "arrowleft") go(-1);
+  else if (k === "j") jump();
+  else if (k === "/"){ $("notes").focus(); e.preventDefault(); }
+  else return;
+  e.preventDefault();
+});
+window.addEventListener("beforeunload", e => { if (rows.length) save(); });
+</script>
+</body>
+</html>

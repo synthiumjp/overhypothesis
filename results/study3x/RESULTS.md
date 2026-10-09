@@ -50,7 +50,7 @@ Part of the full-shuffle B comes from topic shifts across a transcript. Local cl
 
 ## All common nouns (`allnouns.csv`, spaCy lemmas)
 
-B = 9.65 (CHILDES), 5.73 (CABank), 2.07 (Pile). The ordering holds beyond the 92 target kinds.
+B = 9.65 (CHILDES), 5.73 (CABank), 2.07 (Pile). The ordering holds beyond the 70 target kinds.
 
 ## Cues in same-kind pairs (`cues.csv`, share of pairs)
 

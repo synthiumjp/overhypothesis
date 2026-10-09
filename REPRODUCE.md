@@ -36,6 +36,17 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Registered tests H6 to H8 | `python scripts/study1d_tests.py --scores results/study1d/scores_merged.csv --out results/study1d/tests_final` | `results/study1d/tests_final.json`, `tests_final_secondary.csv` |
 | Summary | | `results/study1d/RESULTS.md` |
 
+## Study 2 extension (Amendment 5, Part B)
+
+| Step | Command | Output |
+|---|---|---|
+| Items | `python scripts/study2_extension.py make-items --out data/wug_tests/english_items_v2.csv`; set M subset `english_items_v2_M.csv` | checksums in `docs/amendment5_checksums.txt` |
+| Manifests | `python scripts/study2_extension.py make-manifests --out_dir results/study2x` | `models_*.csv` |
+| Score | `python scripts/english_oneshot.py eval --items ... --manifest results/study2x/models_<x>.csv --out ... --delete_cache` (70B: `--backend mlx --mlx_wired_gb 170 --max_batch 4 --mlx_pause 0.05`, alone on the GPU) | `results/study2x/scores_*.csv.gz` (MD5s of the uncompressed files in `scores_md5.txt`) |
+| Registered tests H14a, H14b, H15 | `python scripts/study2_extension.py analyse --scores results/study2x/scores_final.csv.gz results/study2x/scores_final_large.csv.gz results/study2x/scores_dense.csv.gz results/study2x/scores_poly.csv.gz --out results/study2x/tests` | `tests.json`, `tests_summary.csv`, `tests_kind_specific_items.csv.gz` |
+| Secondary S15 to S17 | `python scripts/study2x_secondary.py --summary results/study2x/tests_summary.csv --out results/study2x/secondary` | `secondary_*.csv` |
+| Summary | | `results/study2x/RESULTS.md` |
+
 ## Study 1e (child-directed speech)
 
 | Step | Command | Output |

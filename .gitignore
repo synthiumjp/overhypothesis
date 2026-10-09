@@ -10,3 +10,7 @@ __pycache__/
 
 # Study 3 hand-coding sheet holds transcript excerpts (TalkBank terms) and stays out of git
 results/study3x/coding_sheet*.csv
+
+# Study 2 extension: large CSVs are committed gzipped (.csv.gz)
+results/study2x/scores_*.csv
+results/study2x/tests_kind_specific_items.csv

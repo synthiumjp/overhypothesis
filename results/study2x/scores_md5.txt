@@ -1,0 +1,5 @@
+17b242b1c1ac2857e7512603c8f3e4c4  scores_dense.csv
+99472d69fe1be9cbcbc35fc33188b1c8  scores_final.csv
+a6686e061a72c6a434a0b5f226c31f9b  scores_final_large.csv
+3987fe9b8eec3d53a1a9e5ffb82fce4e  scores_poly.csv
+fcc4e0e0ffe553f0420b5e6762a6140b  word_tokens.csv

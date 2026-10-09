@@ -1,0 +1,22 @@
+{
+  "n_rows": 124,
+  "referent_kappa": 0.7768981648074849,
+  "referent_agreement": 0.8387096774193549,
+  "property_agreement": 0.9516129032258065,
+  "confusion": {
+    "same->same": 41,
+    "different->different": 14,
+    "generic->generic": 26,
+    "unclear->unclear": 23,
+    "different->same": 7,
+    "generic->different": 1,
+    "same->different": 1,
+    "generic->same": 2,
+    "unclear->same": 1,
+    "generic->unclear": 2,
+    "same->unclear": 3,
+    "unclear->generic": 1,
+    "different->unclear": 1,
+    "unclear->different": 1
+  }
+}

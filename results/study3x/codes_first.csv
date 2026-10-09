@@ -1,0 +1,501 @@
+pair_id,kind,referent,property,notes
+0,apple,unclear,,not object (company)
+1,table,unclear,,not object (periodic table)
+2,table,different,,"superset: sg then pl, set includes first table"
+3,sweater,generic,,
+4,hammer,same,,
+5,spoon,same,,metaling: say X
+6,book,generic,material,"board = compound modifier, on generic mention"
+7,scissors,generic,,bare pl in rule statement
+8,airplane,same,,
+9,truck,same,,firetruck mentioned between; first/last taken as same toy
+10,cookie,unclear,,not object (Cookie Monster name)
+11,train,same,,"wagon train, not a railway train"
+12,chair,same,,
+13,bottle,same,,
+14,car,unclear,,first mention is compound (car chase)
+15,spoon,different,,
+16,book,different,,pl same set
+17,book,different,,
+18,egg,same,,compound: egg yolk
+19,book,same,,
+20,dish,generic,,the dishes = chore
+21,motorcycle,same,,
+22,jacket,generic,colour,second mention is comparison to kind (scientist jacket)
+23,box,different,size,
+24,sandwich,same,size,
+25,shoe,different,,superset: pl then sg
+26,ball,same,,
+27,toy,different,,pl same set
+28,car,same,,
+29,toy,same,,
+30,toy,unclear,,not object (Toys R Us)
+31,diaper,same,,second mention compound (diaper change)
+32,book,unclear,,
+33,book,same,,
+34,car,same,,
+35,crayon,different,,superset: sg then pl
+36,chair,different,,
+37,box,same,,
+38,ball,unclear,,label then negated existence
+39,boot,unclear,,not object (verb boot)
+40,cup,unclear,,not object (CUP party)
+41,sock,same,,
+42,bicycle,generic,,
+43,shoe,generic,,
+44,dish,generic,,
+45,table,unclear,,not object (periodic table)
+46,book,different,,
+47,book,same,,
+48,bed,same,,
+49,telephone,generic,,first mention compound (phone number)
+50,banana,generic,,
+51,ball,different,,superset: pl then one of
+52,cracker,generic,,
+53,grape,unclear,,not object (grape juice)
+54,shoe,different,,pl same set (pair)
+55,car,same,,
+56,spoon,generic,,
+57,book,different,,pl same set
+58,crayon,different,,
+59,book,generic,,
+60,hat,same,,
+61,box,unclear,,not object (grid boxes)
+62,sock,different,colour;other,pl same set (pair)
+63,pillow,same,,
+64,shoe,different,,
+65,basket,different,,pl set
+66,key,different,,pl same set
+67,balloon,different,,pl same set
+68,bicycle,generic,,
+69,carrot,same,,
+70,book,same,,metaling: say X
+71,table,unclear,,not object (table in paper)
+72,ball,same,,
+73,book,same,,
+74,cup,unclear,,too / another cup in context; may be two cups
+75,book,generic,,first mention compound (book conference)
+76,book,generic,,
+77,pants,same,material,plurale tantum; plastic = compound modifier
+78,box,unclear,,not object (quoted pangram sentence)
+79,doll,same,,
+80,car,generic,other,"new, on generic mention"
+81,ball,same,,
+82,plate,same,,
+83,sock,different,,pl same set (pair)
+84,telephone,unclear,,not object (phone card / service name)
+85,button,same,,
+86,book,same,,
+87,book,same,,
+88,lamp,different,,pl same set
+89,bus,same,,
+90,egg,generic,other,"soft boiled, on generic mention"
+91,book,generic,,
+92,truck,unclear,size,
+93,table,unclear,,not object (table in paper)
+94,chair,different,size,
+95,telephone,unclear,,not object (phone number)
+96,bottle,same,,
+97,chair,same,,
+98,telephone,same,,
+99,book,different,,superset: sg then pl
+100,book,same,,
+101,television,generic,,watch tv = medium
+102,bus,same,,
+103,truck,generic,,
+104,bus,unclear,,bus as modifier (bus puzzle)
+105,diaper,generic,,
+106,bowl,same,,
+107,book,different,other,long (of a book)
+108,pants,same,colour,plurale tantum
+109,bus,unclear,,compound: bus stop
+110,sock,same,other,cold
+111,book,different,,
+112,car,unclear,other,old; second mention garbled (car d)
+113,egg,unclear,,mass use (egg as food)
+114,pants,same,,plurale tantum
+115,toy,different,,pl same set
+116,book,same,,
+117,table,different,,
+118,book,same,,
+119,puzzle,generic,,
+120,bus,generic,,bus services in guidebook
+121,chair,same,,
+122,banana,generic,,offer: have a X
+123,shoe,different,,pl same set (pair)
+124,bottle,same,,
+125,book,generic,,
+126,book,same,,
+127,shoe,different,,
+128,table,different,,
+129,hat,same,,
+130,banana,different,,pl same set
+131,telephone,unclear,,not object (phone call)
+132,table,same,,
+133,television,same,,
+134,television,same,,
+135,bus,generic,,
+136,telephone,different,,first mention compound (phone call); the other phone
+137,car,generic,,compound: stock car racing
+138,shirt,different,,superset: pl then sg
+139,bottle,unclear,,mass use (some bottle = milk)
+140,shoe,generic,other,"new, on generic mention (product range)"
+141,telephone,generic,,
+142,motorcycle,unclear,,not object (motorcycle club names)
+143,car,same,,
+144,book,different,,"another X, non-specific"
+145,chair,same,,
+146,book,same,,
+147,bottle,generic,,
+148,train,same,,"wagon train, not a railway train"
+149,ball,different,,pl same set
+150,sock,different,,pl same set
+151,toy,different,,
+152,cookie,generic,,
+153,balloon,different,,
+154,book,generic,,
+155,chair,different,,
+156,table,unclear,,not object (table in paper)
+157,bus,same,,
+158,train,same,,
+159,chair,same,,
+160,toy,same,,
+161,car,same,,
+162,toy,generic,,
+163,telephone,unclear,,compound: phone number
+164,telephone,unclear,,not object (phone bill / phone service)
+165,car,same,,
+166,cup,different,other,pl same set; stackable
+167,train,same,,
+168,television,same,,
+169,banana,generic,,mass use (banana flavour/food)
+170,cup,different,,pl same set
+171,train,generic,,first mention compound (train pass)
+172,block,different,,superset: sg then pl
+173,bottle,generic,,non-specific: give the baby a X
+174,apple,same,,
+175,car,generic,,first mention compound (car insurance)
+176,bed,unclear,,not object (idiom: go to bed)
+177,sock,same,colour;other,black; sandy
+178,boot,different,,pl same set (pair)
+179,table,different,size,
+180,bottle,generic,,
+181,book,same,,
+182,book,generic,,
+183,pajamas,same,material,plurale tantum; fluffy
+184,block,unclear,,not object (code block)
+185,truck,same,,
+186,towel,same,,
+187,table,same,,
+188,cookie,unclear,,not object (Cookie Monster name)
+189,blanket,same,,metaling: say X
+190,toy,different,,pl same set
+191,shirt,generic,,
+192,bed,same,,bare 'bed' (back to bed / in bed)
+193,car,same,,
+194,bowl,different,,superset: pl then each
+195,book,different,,
+196,book,same,size,
+197,clock,same,,
+198,basket,different,,pl same set
+199,bicycle,same,,
+200,television,unclear,,not object (television program)
+201,cookie,same,,mass use in first mention (some cookie)
+202,hat,same,,
+203,car,same,,
+204,table,unclear,,not object (table in paper)
+205,dish,unclear,,not object (dishes = menu items in listing)
+206,train,same,,
+207,table,unclear,,not object (table in paper)
+208,spoon,different,size,
+209,book,different,,first mention includes idiom (in the book)
+210,bus,unclear,,not object (data bus)
+211,shirt,same,,
+212,ball,generic,,activity idiom: play ball
+213,sweater,different,,pl same set
+214,television,same,,
+215,bed,different,,
+216,shirt,different,,pl same set
+217,spoon,generic,,
+218,book,generic,,
+219,apple,same,,
+220,book,different,,pl set
+221,sweater,generic,,
+222,table,different,shape;material,"pl same set; square topped, wood"
+223,toy,different,,pl same set
+224,ball,generic,,first mention activity idiom: play ball
+225,hat,unclear,,not object (title: Cat in the Hat)
+226,bus,generic,,bus services in guidebook
+227,bus,generic,,bus services in guidebook
+228,clock,same,,
+229,toy,unclear,,
+230,crib,same,size;colour,
+231,ball,unclear,,not object (ball = dance)
+232,mitten,generic,,
+233,toy,generic,,
+234,chair,same,,
+235,table,unclear,,not object (lookup table)
+236,airplane,unclear,,not object (geometric planes)
+237,cup,different,,
+238,bottle,same,,
+239,motorcycle,generic,,
+240,book,generic,,
+241,balloon,different,,superset: pl then sg
+242,balloon,same,,
+243,telephone,unclear,,not object (phone number)
+244,necklace,same,,
+245,telephone,unclear,,first mention compound (phone line)
+246,doll,same,,
+247,ball,same,material;colour,styrofoam; painted green
+248,toy,different,,pl same set
+249,telephone,unclear,,not object (contact field label)
+250,book,different,,
+251,car,generic,,hypothetical car
+252,bottle,different,,superset: pl then sg
+253,button,different,,pl same set
+254,fork,same,,
+255,car,same,,self-correction (my car > my dad's car)
+256,spoon,different,,superset: pl then sg
+257,book,unclear,,living book vs regular book in context
+258,pillow,same,,
+259,ball,same,,
+260,zipper,same,,metaling: say X
+261,cup,different,size,
+262,cookie,different,,bare label sg then pl
+263,chair,same,,compound: potty chair
+264,car,different,,pl same set (more cars)
+265,dish,generic,,dish = food (side dish)
+266,book,generic,,
+267,cookie,generic,other,filled (type of cookie)
+268,box,different,,superset: pl then sg
+269,cup,unclear,,not object (math notation)
+270,bicycle,same,,
+271,ball,same,,
+272,spoon,generic,,
+273,key,generic,,keyboard keys in a standard
+274,airplane,same,,
+275,book,generic,,
+276,boat,generic,,
+277,book,same,,
+278,cookie,unclear,,second mention negated predicate
+279,train,same,,
+280,dish,same,,compound: petri dish
+281,book,different,,pl same set
+282,crayon,different,,pl same set
+283,truck,generic,,first mention in song
+284,raisin,generic,,
+285,table,unclear,,not object (table in paper)
+286,boat,generic,,
+287,ball,same,,
+288,hat,unclear,,not object (math notation)
+289,raisin,unclear,,not object (nickname)
+290,car,same,,
+291,car,same,,
+292,key,unclear,,not object (code)
+293,plate,same,,
+294,bicycle,different,,my bike vs your bike
+295,airplane,unclear,,not object (bit planes)
+296,carrot,different,,pl same set
+297,toy,unclear,,not object (metaphor)
+298,hat,generic,,offer: how about a X
+299,car,generic,,
+300,toy,different,,
+301,car,generic,,compound: race car driver
+302,telephone,different,,
+303,balloon,different,,superset: sg then pl
+304,car,same,,
+305,plate,different,,
+306,book,generic,,
+307,book,different,,pl sets
+308,bed,same,,second mention idiom (put you to bed)
+309,shoe,generic,,
+310,bicycle,generic,,compound: bicycle helmet
+311,box,same,,name compound: jack in the box
+312,block,unclear,,not object (blocks of data)
+313,truck,different,,toy vs real fire truck
+314,book,same,material,soft
+315,telephone,generic,,on the phone = medium
+316,chair,generic,,
+317,bus,generic,,
+318,toy,different,,pl same set
+319,sock,different,,superset: pl then sg
+320,book,generic,,
+321,egg,different,,
+322,book,generic,,first mention compound (rare book rooms)
+323,pajamas,same,,plurale tantum
+324,block,unclear,,not object (nerve block)
+325,book,same,,book as title
+326,ball,same,,
+327,key,different,,original vs spare key
+328,chair,same,,
+329,cookie,generic,,
+330,table,unclear,,not object (table in paper)
+331,apple,generic,,species name (custard apple)
+332,train,same,,
+333,cup,same,,
+334,train,generic,,second mention comparison (like a train)
+335,toy,generic,,first mention modifier (toy kitchen)
+336,sweater,same,,
+337,car,different,,superset: pl then sg
+338,blanket,unclear,,may be two blankets
+339,chair,different,,
+340,key,unclear,,not object (secret key)
+341,book,same,,
+342,grape,different,,pl same set
+343,necklace,unclear,,not object (the word necklace)
+344,book,different,,superset: one of pl then which
+345,car,generic,,
+346,crayon,same,,
+347,cup,different,size,superset: pl then sg
+348,cup,same,,
+349,television,unclear,,not object (station call letters)
+350,book,same,,
+351,box,same,,
+352,ball,same,,
+353,car,same,,
+354,sandwich,same,,
+355,bottle,unclear,,
+356,telephone,unclear,,not object (service name)
+357,bicycle,same,,
+358,button,same,,
+359,train,different,size,the train vs the big train
+360,plate,same,,"nozzle plate, not a dish"
+361,key,unclear,,not object (key-value pair)
+362,bowl,unclear,,not object (Rotary Bowl game)
+363,shoe,different,,pl same set (pair)
+364,boat,same,,
+365,ball,same,,other ball mentioned between
+366,doll,unclear,,
+367,egg,different,,parasite eggs; counts in different groups
+368,car,same,,
+369,telephone,generic,,product model
+370,bed,unclear,,not object (binky bed = bedtime routine)
+371,ball,unclear,,soccer ball outside vs the ball; may be two
+372,book,different,,
+373,car,different,,pl same set
+374,book,same,,
+375,cookie,same,,
+376,hat,generic,,negated non-specific first mention
+377,truck,same,,
+378,chair,different,,another X
+379,television,generic,,
+380,plate,same,,
+381,cup,unclear,size,several cups discussed; little
+382,puzzle,generic,,
+383,spoon,different,,pl same set
+384,toy,generic,,
+385,blanket,unclear,,a blanket (non-specific) then the star blanket
+386,egg,generic,,habitual: eggs per day
+387,bus,same,,"same bus, location corrected (outside vs on tv)"
+388,hat,unclear,,not object (math notation)
+389,book,different,,
+390,toy,different,,
+391,book,same,,
+392,block,different,,that X twice; context suggests two blocks stacked
+393,bus,different,,bare label sg then pl
+394,bed,same,,
+395,hat,same,,
+396,car,generic,,non-specific first mention (find a car)
+397,sock,same,,
+398,cracker,same,size,
+399,box,unclear,,not object (quoted pangram sentences)
+400,table,unclear,,not object (medals table)
+401,ball,same,,
+402,egg,same,size,
+403,apple,unclear,,not object (company)
+404,blanket,generic,,first mention modifier (grave blanket story); grave blanket not a bed blanket
+405,sandwich,generic,,
+406,book,different,,superset: pl then sg
+407,ball,same,,
+408,key,different,,pl same set
+409,hat,unclear,,not object (math notation)
+410,sock,different,size,superset: pl then sg
+411,boat,different,,
+412,table,same,colour,
+413,book,same,size,
+414,bed,different,,
+415,egg,generic,,
+416,book,different,,
+417,boat,same,colour,red boat also mentioned in context
+418,book,different,,superset: sg then pl
+419,raisin,same,,California Raisin may be a character
+420,table,different,,two sets of end tables
+421,shoe,generic,,
+422,car,same,,
+423,bed,generic,,first mention idiom (in bed)
+424,apple,different,,superset: pl then sg; applesauce between
+425,plate,different,,
+426,ball,same,,
+427,telephone,unclear,,not object (phone service)
+428,car,generic,,hypothetical car
+429,sock,different,colour,pl same set (pair)
+430,sock,different,,pl same set (pair)
+431,bed,same,,
+432,boot,generic,,
+433,book,generic,,first mention compound (book designer)
+434,telephone,unclear,,not object (phone call)
+435,box,same,,
+436,bed,unclear,,not object (idiom: go to bed)
+437,airplane,generic,,
+438,car,generic,,
+439,spoon,same,,
+440,bed,different,,two designs in patent
+441,shirt,different,,two customers' shirts
+442,book,different,,another X twice; both mentions name the same new book
+443,telephone,generic,,
+444,cookie,generic,,offer: how about a X
+445,cookie,generic,other,filled (type of cookie)
+446,telephone,unclear,,not object (service name / phone card)
+447,egg,same,,
+448,telephone,generic,,
+449,hat,same,,
+450,boat,generic,,
+451,block,unclear,,not object (city blocks)
+452,box,same,,
+453,book,same,,
+454,balloon,same,colour,
+455,telephone,generic,,product model
+456,hat,unclear,,metaling: say X; then hat or hair
+457,car,different,,pl same set
+458,airplane,generic,,
+459,car,same,,
+460,crayon,generic,colour,
+461,cup,generic,,measure: a cup of milk
+462,plate,same,,
+463,cookie,unclear,,not object (Cookie Monster name)
+464,plate,same,,
+465,train,different,,sad train vs happy train
+466,boat,same,,
+467,egg,same,,pl then sg of same food
+468,shirt,generic,,
+469,boat,same,,
+470,table,unclear,,not object (table in paper)
+471,ball,same,,
+472,telephone,unclear,,not object (phone number)
+473,toy,different,,
+474,pants,generic,,
+475,shirt,generic,,
+476,chair,different,,
+477,box,unclear,,not object (box-constrained optimisation)
+478,table,unclear,,not object (table in paper)
+479,book,same,,
+480,chair,different,,
+481,shoe,different,,pl same set (pair)
+482,hat,same,,
+483,table,different,,pl same set
+484,toy,generic,,
+485,toy,unclear,,negated predicate (not a toy)
+486,boat,same,,
+487,diaper,unclear,,not object (compound: diaper ointment)
+488,shoe,different,,pl same set (pair)
+489,spoon,same,,metaling: say X
+490,table,unclear,,not object (periodic table)
+491,pillow,generic,,first mention compound (pillow covers)
+492,hat,same,,
+493,car,same,,
+494,telephone,unclear,,not object (phone number / phone call)
+495,necklace,generic,,
+496,table,unclear,,not object (tables in a document)
+497,cracker,generic,,offer: on a X
+498,airplane,same,,
+499,telephone,unclear,,not object (telephone conversation / phone call)

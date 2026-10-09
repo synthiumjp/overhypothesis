@@ -1,0 +1,126 @@
+pair_id,kind,referent,property,notes
+0,apple,unclear,none,not object (company)
+4,hammer,same,none,
+8,airplane,same,none,
+13,bottle,same,none,
+15,spoon,different,none,
+17,book,different,none,the book vs previous book in series
+20,dish,generic,none,habitual plural dishes
+21,motorcycle,same,none,
+28,car,same,none,
+34,car,same,none,
+38,ball,unclear,none,bare label then existential negation
+41,sock,same,none,
+45,table,unclear,none,not object (periodic table)
+47,book,same,none,
+48,bed,same,none,
+53,grape,unclear,none,not object (modifier in grape juice)
+57,book,same,none,same set of books
+61,box,unclear,none,not object (grid boxes)
+68,bicycle,generic,none,
+71,table,unclear,none,not object (data table)
+74,cup,unclear,none,your cup too suggests several cups; cannot tell which
+85,button,same,none,
+91,book,generic,none,
+97,chair,same,none,
+99,book,different,none,the book vs all these books
+100,book,same,none,
+101,television,generic,none,tv as medium/habitual
+103,truck,different,none,a truck vs our trucks
+106,bowl,same,none,
+108,pants,same,colour,
+109,bus,unclear,none,not object (bus stop)
+110,sock,different,other,cold sock vs one of your socks
+113,egg,unclear,none,mass use of egg
+118,book,same,none,
+119,puzzle,generic,none,first mention nonspecific offer
+122,banana,same,none,
+123,shoe,same,none,
+125,book,generic,none,read a book in story vs kitty book
+137,car,generic,none,
+139,bottle,same,none,
+141,telephone,unclear,none,not object (phone as medium; phone sex)
+143,car,same,none,
+145,chair,same,none,
+153,balloon,different,none,
+156,table,unclear,none,not object (data table)
+157,bus,same,none,
+169,banana,generic,none,banana as flavour then liking banana
+173,bottle,generic,none,indefinite offer
+181,book,same,none,
+186,towel,same,none,
+188,cookie,unclear,none,not object (cookie monster)
+189,blanket,unclear,none,word practice
+191,shirt,generic,none,a shirt to wear is nonspecific
+193,car,same,none,
+197,clock,same,none,
+205,dish,unclear,none,not object (dishes as menu listing)
+210,bus,unclear,none,not object (data bus)
+214,television,unclear,none,tv vs tv tape recorder; may be different object
+215,bed,different,none,
+219,apple,same,none,
+220,book,same,none,same set of books
+226,bus,generic,none,
+232,mitten,generic,none,
+235,table,unclear,none,not object (lookup table)
+241,balloon,different,none,these balloons vs this balloon
+245,telephone,generic,none,phone line then pick up the phone habitual
+247,ball,same,material;colour,
+254,fork,same,none,
+258,pillow,same,none,
+262,cookie,unclear,none,bare naming cookie then cookies
+267,cookie,generic,other,filled cookies as kind
+270,bicycle,same,none,
+280,dish,same,none,
+284,raisin,generic,none,
+291,car,same,none,
+295,airplane,unclear,none,not object (geometric planes)
+296,carrot,same,none,plural carrots in same picture
+298,hat,same,other,suggested hat then found; with ears
+299,car,generic,none,
+300,toy,different,none,
+303,balloon,different,size;shape,size and shape mentioned without values
+307,book,different,none,
+311,box,same,none,box as part of jack in the box
+315,telephone,unclear,none,not object (phone as medium)
+327,key,different,other,original key vs my key (spare) is hard to read
+328,chair,same,none,
+329,cookie,generic,material,chocolate chip cookies generic vs two cookies
+333,cup,same,none,
+340,key,unclear,none,not object (api key)
+344,book,different,none,one of your books then which book
+347,cup,different,size,
+351,box,same,none,
+355,bottle,unclear,none,second mention questions whether baby has a bottle
+360,plate,same,none,
+366,doll,different,none,how many dolls vs is that a doll
+369,telephone,generic,none,phone as product model
+372,book,different,none,
+377,truck,unclear,size,the truck vs tow truck; too large may refer to truck
+379,television,generic,none,
+392,block,same,none,
+395,hat,same,none,
+396,car,generic,none,find a car nonspecific then erins car
+398,cracker,same,size,
+399,box,unclear,none,not object (pangram text)
+401,ball,same,none,
+404,blanket,generic,none,grave blanket story vs all these grave blankets
+415,egg,generic,none,
+435,box,same,none,
+437,airplane,generic,none,
+444,cookie,generic,none,indefinite offer
+446,telephone,unclear,none,not object (phone company name; phone card)
+450,boat,generic,none,
+457,car,different,none,
+460,crayon,generic,colour,crayons generic then a green crayon
+462,plate,same,none,
+464,plate,same,none,
+470,table,unclear,none,not object (data table)
+472,telephone,unclear,none,not object (phone number)
+478,table,unclear,none,not object (data table)
+481,shoe,same,none,
+482,hat,same,none,
+488,shoe,same,none,
+490,table,unclear,none,not object (periodic table)
+495,necklace,generic,shape,bib collar choker styles coded as shape
+496,table,unclear,none,not object (latex tables)

@@ -1,6 +1,6 @@
-# Reproducing Studies 1b, 1c and 1d
+# Reproducing Studies 1b to 1e and the Amendment 5 extensions
 
-Branch `study1b-1c-evaluation`. Pre-registration: osf.io/qj9hb (original), Amendment 1 osf.io/x6zhn (Studies 1b and 1c), Amendment 2 (texture co-primary for H5b), Amendment 3 osf.io/qcfjp (Study 1d), Amendment 4 osf.io/ya68j (Study 1e, child-directed speech; code `scripts/cds_burstiness.py`, MD5 `c4885f97af62e9d6cca59c523841065f`).
+Branch `study1b-1c-evaluation`. Pre-registration: osf.io/qj9hb (original), Amendment 1 osf.io/x6zhn (Studies 1b and 1c), Amendment 2 (texture co-primary for H5b), Amendment 3 osf.io/qcfjp (Study 1d), Amendment 4 osf.io/ya68j (Study 1e, child-directed speech; code `scripts/cds_burstiness.py`, MD5 `c4885f97af62e9d6cca59c523841065f`), Amendment 5 osf.io/eb28h (extensions to all three studies; locked commit c2bccb4, checksums in `docs/amendment5_checksums.txt`, run instructions in `docs/RUN_AMENDMENT5.md`).
 
 Every number reported for Studies 1b to 1d can be regenerated from files in this repository, except where a row below says the input is archived elsewhere.
 

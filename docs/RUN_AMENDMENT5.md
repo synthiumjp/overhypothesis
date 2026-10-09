@@ -18,17 +18,17 @@ The new corpora are in the repo (`data/corpora_x/`). Each folder holds `regular_
 $corpora = "nostable_random","nostable_grouped","colourstable_random","colourstable_grouped","graded_b1p4","graded_b3p6","graded_b7","graded_b12"
 foreach ($c in $corpora) { foreach ($z in "tiny","small","medium") { foreach ($s in 42,123,456,789,1001) {
   python scripts/train_model.py --condition regular --size $z --seed $s `
-    --corpus_dir data/corpora_x/$c --output_dir models/checkpoints_x/$c
+    --corpus_dir data/corpora_x/$c --output_dir "E:\AI Checkpoints\overhypothesis_x\$c"
 }}}
 ```
 
-About 3.5 hours per corpus on the Study 1c set-up, so about 28 hours in all. If time runs short, finish the controls first (registered order: the four control corpora, then b3p6, b1p4, b7, b12).
+Checkpoints go to E: beside the Study 1 and Study 1c models. About 3.5 hours per corpus on the Study 1c set-up, so about 28 hours in all. If time runs short, finish the controls first (registered order: the four control corpora, then b3p6, b1p4, b7, b12).
 
 ### A2. Score the new models on the Study 1 items (novel nouns)
 
 ```powershell
 foreach ($c in $corpora) {
-  python scripts/oneshot_eval.py make-manifest --base_dir . --ckpt_dir models/checkpoints_x/$c `
+  python scripts/oneshot_eval.py make-manifest --base_dir . --ckpt_dir "E:\AI Checkpoints\overhypothesis_x\$c" `
     --conditions regular --label_suffix "_$c" --out results/study1x/manifest_$c.csv
   python scripts/oneshot_eval.py eval-lm --items data/wug_tests/oneshot_items.csv `
     --manifest results/study1x/manifest_$c.csv --out results/study1x/raw/lm_$c.csv
@@ -39,12 +39,12 @@ python scripts/oneshot_eval.py summarise --inputs "results/study1x/raw/lm_*.csv"
 ### A3. Trained-noun items (S14), all Study 1 models and the new ones
 
 ```powershell
-python scripts/study1_trained_nouns.py eval --ckpt_dir models/checkpoints --family regular --label regular --out results/study1x/raw/trained.csv
-python scripts/study1_trained_nouns.py eval --ckpt_dir models/checkpoints --family scrambled --label scrambled --out results/study1x/raw/trained.csv
-python scripts/study1_trained_nouns.py eval --ckpt_dir <Study 1c checkpoint folder> --family regular --label regular_bursty --out results/study1x/raw/trained.csv
-python scripts/study1_trained_nouns.py eval --ckpt_dir <Study 1c checkpoint folder> --family scrambled --label scrambled_bursty --out results/study1x/raw/trained.csv
+python scripts/study1_trained_nouns.py eval --ckpt_dir "E:\AI Checkpoints\overhypothesis_checkpoints" --family regular --label regular --out results/study1x/raw/trained.csv
+python scripts/study1_trained_nouns.py eval --ckpt_dir "E:\AI Checkpoints\overhypothesis_checkpoints" --family scrambled --label scrambled --out results/study1x/raw/trained.csv
+python scripts/study1_trained_nouns.py eval --ckpt_dir "E:\AI Checkpoints\overhypothesis_bursty" --family regular --label regular_bursty --out results/study1x/raw/trained.csv
+python scripts/study1_trained_nouns.py eval --ckpt_dir "E:\AI Checkpoints\overhypothesis_bursty" --family scrambled --label scrambled_bursty --out results/study1x/raw/trained.csv
 foreach ($c in $corpora) {
-  python scripts/study1_trained_nouns.py eval --ckpt_dir models/checkpoints_x/$c --family regular `
+  python scripts/study1_trained_nouns.py eval --ckpt_dir "E:\AI Checkpoints\overhypothesis_x\$c" --family regular `
     --run_prefix regular --tokenizer regular --label "regular_$c" --out results/study1x/raw/trained.csv
 }
 python scripts/oneshot_eval.py summarise --inputs results/study1x/raw/trained.csv --out results/study1x/trained

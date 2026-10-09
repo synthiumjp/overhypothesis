@@ -5,7 +5,7 @@ seq_logprobs_mlx) on 40 sentences, stage by stage, to find which part raises
 the Metal GPU timeout. --no_limits turns the scorer's memory and cache caps
 into no-ops, to test whether they cause it.
 
-Usage:  python scripts/mlx_diag3.py Qwen/Qwen2.5-72B [--no_limits]
+Usage:  python scripts/mlx_diag3.py Qwen/Qwen2.5-72B [--no_limits] [--wired GB]
 """
 import importlib.util
 import sys
@@ -30,7 +30,9 @@ texts = sorted({r["context"] + " " + q for r in items for q in (r["query_rep"], 
 gb = lambda: round(mx.get_active_memory() / 1e9, 1)
 try:
     t = time.time()
-    model, tok = eo.load_mlx(mid, "", "float16", 200)
+    wired = float(sys.argv[sys.argv.index("--wired") + 1]) if "--wired" in sys.argv else 0
+    model, tok = eo.load_mlx(mid, "", "float16", 200, wired)
+    print(f"wired limit {wired} GB", flush=True)
     print(f"load_mlx done in {time.time() - t:.1f}s, active {gb()}GB", flush=True)
     for bs in (1, 4):
         t = time.time()

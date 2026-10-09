@@ -249,7 +249,7 @@ def seq_logprobs(model, tok, texts, device, batch_size):
     return res
 
 
-def load_mlx(model_id, revision, dtype, memory_gb):
+def load_mlx(model_id, revision, dtype, memory_gb, wired_gb=0):
     """Load a model with Apple's MLX framework (used for the 70B models).
 
     PyTorch's MPS backend crashed or froze the Mac on Qwen2.5-72B. MLX loads
@@ -274,6 +274,12 @@ def load_mlx(model_id, revision, dtype, memory_gb):
     cache = getattr(mx, "set_cache_limit", None) or getattr(getattr(mx, "metal", None), "set_cache_limit", None)
     if cache is not None:
         cache(4 * 1024 ** 3)
+    if wired_gb:
+        # Keep the weights resident on the GPU. Without this, each command
+        # buffer makes the whole model resident again at submit time, which
+        # stalled submission past the macOS GPU time limit for the 70B models.
+        # Set only when nothing else on the Mac is using MLX.
+        mx.set_wired_limit(int(wired_gb * 1024 ** 3))
     model, _ = mlx_load(model_id, revision=revision or None, lazy=True)
     # Read every weight from disk first (a CPU-side load) and only then
     # convert it on the GPU. Converting straight from the lazy load makes each
@@ -363,7 +369,7 @@ def eval_models(args):
             bs = int(run.get("batch_size") or args.batch_size)
             if args.backend == "mlx":
                 model, tok = load_mlx(run["model_id"], run.get("revision", ""), dtype,
-                                      args.mlx_memory_gb)
+                                      args.mlx_memory_gb, args.mlx_wired_gb)
                 if args.max_batch:
                     bs = min(bs, args.max_batch)
                 lp = dict(zip(texts, seq_logprobs_mlx(model, tok, texts, bs, args.mlx_pause)))
@@ -468,6 +474,8 @@ def main():
                    help="mlx: Apple MLX forward pass (used for the 70B models)")
     e.add_argument("--mlx_memory_gb", type=float, default=200,
                    help="MLX memory cap in GB, keeps headroom for the rest of the Mac")
+    e.add_argument("--mlx_wired_gb", type=float, default=0,
+                   help="Keep this many GB of MLX buffers wired (resident); 0 = system default")
     e.add_argument("--mlx_pause", type=float, default=0.0,
                    help="Seconds to pause between MLX batches (gives the GPU back to the display)")
     e.add_argument("--max_batch", type=int, default=0,

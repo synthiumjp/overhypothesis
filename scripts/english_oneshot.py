@@ -275,6 +275,16 @@ def load_mlx(model_id, revision, dtype, memory_gb):
     if cache is not None:
         cache(4 * 1024 ** 3)
     model, _ = mlx_load(model_id, revision=revision or None, lazy=True)
+    # Read every weight from disk first (a CPU-side load) and only then
+    # convert it on the GPU. Converting straight from the lazy load makes each
+    # GPU command wait on a disk read; with 70B models under MLX 0.32 that wait
+    # exceeded the macOS GPU time limit (kernel log: "Cmd queue ... sleep ...
+    # timed out"). The conversion itself is unchanged.
+    from mlx.utils import tree_flatten
+    raw = [w for _, w in tree_flatten(model.parameters())]
+    for w in raw:
+        mx.eval(w)
+    del raw
     mx_dtype = {"float32": mx.float32, "float16": mx.float16, "bfloat16": mx.bfloat16}[dtype]
     model.set_dtype(mx_dtype)
     # Materialise one tensor at a time, so the source copy of each weight is

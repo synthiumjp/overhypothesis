@@ -7,3 +7,6 @@ __pycache__/
 
 # Model checkpoints (too large for git)
 *.pt
+
+# Study 3 hand-coding sheet holds transcript excerpts (TalkBank terms) and stays out of git
+results/study3x/coding_sheet*.csv

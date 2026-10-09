@@ -1,0 +1,4 @@
+MD5 (CallFriend-eng-n.zip) = 96198af218d9d2fb06a54d643c0d087c
+MD5 (CallFriend-eng-s.zip) = bdead467eec9168e748f74e6f3ed8508
+MD5 (CallHome-eng.zip) = 35f28c18418e8c6cf27a80c6d6134502
+MD5 (SBCSAE.zip) = 0c9c1290fed087d30d2ecaa2af53f66b

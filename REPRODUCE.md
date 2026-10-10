@@ -36,6 +36,17 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Registered tests H6 to H8 | `python scripts/study1d_tests.py --scores results/study1d/scores_merged.csv --out results/study1d/tests_final` | `results/study1d/tests_final.json`, `tests_final_secondary.csv` |
 | Summary | | `results/study1d/RESULTS.md` |
 
+## Study 1 extension (Amendment 5, Part A)
+
+| Step | Command | Output |
+|---|---|---|
+| Corpora | `python scripts/make_study1x_corpora.py` (already in the repo) | `data/corpora_x/`, `manifest.json` (measured B) |
+| Train, score, ideal observer | `docs/RUN_AMENDMENT5.md`, A1 to A4 (needs the checkpoints) | `results/study1x/raw/*.csv.gz` (MD5s of the uncompressed files in `raw_md5.txt`), `hbm/` |
+| Per-run summaries | `python scripts/oneshot_eval.py summarise --inputs "results/study1x/raw/lm_*.csv.gz" --out results/study1x/summary`; the same with `trained.csv.gz` and `--out results/study1x/trained` | `summary_per_run.csv`, `trained_per_run.csv` |
+| Registered tests H11, H12, H13a, H13b | `python scripts/study1x_tests.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --trained results/study1x/trained_per_run.csv --out results/study1x/tests` | `tests.json` |
+| Exploratory | `python scripts/study1x_exploratory.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --hbm "results/study1x/hbm/hbm_*.csv" --out results/study1x/exploratory` | `exploratory_*` |
+| Summary | | `results/study1x/RESULTS.md` |
+
 ## Study 2 extension (Amendment 5, Part B)
 
 | Step | Command | Output |

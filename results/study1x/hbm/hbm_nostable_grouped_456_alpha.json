@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora_x/nostable_grouped/regular_seed456.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 22.387211385683422,
+      "post_mean_log10_alpha": 1.3450024628649269
+    },
+    "colour": {
+      "map_alpha": 14.125375446227554,
+      "post_mean_log10_alpha": 1.1611205790778694
+    },
+    "texture": {
+      "map_alpha": 7.943282347242821,
+      "post_mean_log10_alpha": 0.8964422498765232
+    }
+  }
+}

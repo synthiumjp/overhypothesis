@@ -1,0 +1,4 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_bursty\regular_tiny_seed42\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_bursty,tiny,42
+E:\AI Checkpoints\overhypothesis_bursty\regular_small_seed42\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_bursty,small,42
+E:\AI Checkpoints\overhypothesis_bursty\regular_medium_seed42\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_bursty,medium,42

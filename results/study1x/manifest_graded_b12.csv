@@ -1,0 +1,16 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_tiny_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,tiny,42
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_tiny_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,tiny,123
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_tiny_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,tiny,456
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_tiny_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,tiny,789
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_tiny_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,tiny,1001
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_small_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,small,42
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_small_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,small,123
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_small_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,small,456
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_small_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,small,789
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_small_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,small,1001
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_medium_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,medium,42
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_medium_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,medium,123
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_medium_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,medium,456
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_medium_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,medium,789
+E:\AI Checkpoints\overhypothesis_x\graded_b12\regular_medium_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_graded_b12,medium,1001

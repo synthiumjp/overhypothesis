@@ -1,0 +1,18 @@
+{
+  "corpus": "data/corpora_x/graded_b12/regular_seed123.txt",
+  "prior": "exponential",
+  "alpha": {
+    "shape": {
+      "map_alpha": 0.010592537251772892,
+      "post_mean_log10_alpha": -2.097184867788288
+    },
+    "colour": {
+      "map_alpha": 17.78279410038923,
+      "post_mean_log10_alpha": 1.2511570587293521
+    },
+    "texture": {
+      "map_alpha": 7.943282347242821,
+      "post_mean_log10_alpha": 0.8959704151097022
+    }
+  }
+}

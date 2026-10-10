@@ -26,6 +26,12 @@ Checkpoints go to E: beside the Study 1 and Study 1c models. About 3.5 hours per
 
 ### A2. Score the new models on the Study 1 items (novel nouns)
 
+The scoring scripts do not create output folders, so make them first:
+
+```powershell
+New-Item -ItemType Directory -Force results\study1x\raw, results\study1x\hbm | Out-Null
+```
+
 ```powershell
 foreach ($c in $corpora) {
   python scripts/oneshot_eval.py make-manifest --base_dir . --ckpt_dir "E:\AI Checkpoints\overhypothesis_x\$c" `

@@ -44,6 +44,7 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Train, score, ideal observer | `docs/RUN_AMENDMENT5.md`, A1 to A4 (needs the checkpoints) | `results/study1x/raw/*.csv.gz` (MD5s of the uncompressed files in `raw_md5.txt`), `hbm/` |
 | Per-run summaries | `python scripts/oneshot_eval.py summarise --inputs "results/study1x/raw/lm_*.csv.gz" --out results/study1x/summary`; the same with `trained.csv.gz` and `--out results/study1x/trained` | `summary_per_run.csv`, `trained_per_run.csv` |
 | Registered tests H11, H12, H13a, H13b | `python scripts/study1x_tests.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --trained results/study1x/trained_per_run.csv --out results/study1x/tests` | `tests.json` |
+| H13b equivalence (registered in the text of Amendment 5) | `python scripts/study1x_tost.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --out results/study1x/tost_H13b.json` | `tost_H13b.json` |
 | Exploratory | `python scripts/study1x_exploratory.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --hbm "results/study1x/hbm/hbm_*.csv" --out results/study1x/exploratory` | `exploratory_*` |
 | Summary | | `results/study1x/RESULTS.md` |
 

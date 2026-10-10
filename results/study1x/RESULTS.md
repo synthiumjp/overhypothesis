@@ -25,6 +25,8 @@ The eight new corpus conditions (`data/corpora_x/`, measured clustering in `data
 
 The Welch, paired and seed-paired t tests agree with the mixed model in every case.
 
+H13b follow-up (registered in the Amendment 5 text, not in the locked script; `scripts/study1x_tost.py`, `tost_H13b.json`): TOST at ±0.2 nats on the same mixed model gives p = .047 (90% CI [-0.07, 0.20]), so the difference is equivalent to zero within ±0.2 nats, narrowly. On the paired differences over the 15 matched models, p = .055.
+
 ## OI_colour by condition (k = 1, same noun; `exploratory_by_condition.csv`)
 
 | Condition | measured B | tiny | small | medium | all | runs > 0 |
@@ -69,6 +71,8 @@ python scripts/oneshot_eval.py summarise --inputs "results/study1x/raw/lm_*.csv.
 python scripts/oneshot_eval.py summarise --inputs results/study1x/raw/trained.csv.gz --out results/study1x/trained
 python scripts/study1x_tests.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv \
   --trained results/study1x/trained_per_run.csv --out results/study1x/tests
+python scripts/study1x_tost.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv \
+  --out results/study1x/tost_H13b.json
 python scripts/study1x_exploratory.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv \
   --hbm "results/study1x/hbm/hbm_*.csv" --out results/study1x/exploratory
 ```

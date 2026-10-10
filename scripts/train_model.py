@@ -334,7 +334,20 @@ def main():
     parser.add_argument("--output_dir",  type=Path, default=Path("models/checkpoints"))
     parser.add_argument("--smoke_test",  action="store_true",
                         help="Run only 100 steps (smoke test / quick validation)")
+    # Amendment 6 (window test). Defaults leave every earlier run unchanged.
+    parser.add_argument("--seq_len", type=int, default=None,
+                        help="training window in tokens (default: the size's setting, 128)")
+    parser.add_argument("--keep_tokens_per_step", action="store_true",
+                        help="with --seq_len, scale the batch so tokens per step stay as in the default")
     args = parser.parse_args()
+    if args.seq_len:
+        base = TRAIN_CONFIG[args.size]
+        if args.keep_tokens_per_step:
+            tokens = base["batch_size"] * base["seq_len"]
+            if tokens % args.seq_len:
+                raise SystemExit(f"{tokens} tokens per step not divisible by seq_len {args.seq_len}")
+            base["batch_size"] = tokens // args.seq_len
+        base["seq_len"] = args.seq_len
 
     # ── Reproducibility ───────────────────────────────────────────────────────
     random.seed(args.seed)

@@ -1,0 +1,56 @@
+{
+  "fit": {
+    "n_runs": 90,
+    "intercept": -1.3874736294882721,
+    "slope_share": 11.305175000192964,
+    "slope_se": 0.3938824128254732,
+    "size_small": 0.8582440395355223,
+    "size_tiny": 0.09366706212361657,
+    "seed_var": 0.5531942137269447,
+    "resid_var": 0.4581643928584817
+  },
+  "observed_W128_means": {
+    "regular": 0.4732202835083008,
+    "regular_bursty": 6.489545360565185,
+    "regular_graded_b12": 3.5286620928446455,
+    "regular_graded_b1p4": 0.8255145149230958,
+    "regular_graded_b3p6": 1.4293351097106934,
+    "regular_graded_b7": 2.062781639099121
+  },
+  "share_W128": {
+    "regular": 0.14960800000000002,
+    "regular_bursty": 0.670024,
+    "regular_colourstable_grouped": 0.670022,
+    "regular_colourstable_random": 0.14960800000000002,
+    "regular_graded_b12": 0.40255399999999997,
+    "regular_graded_b1p4": 0.159978,
+    "regular_graded_b3p6": 0.210722,
+    "regular_graded_b7": 0.285022,
+    "regular_nostable_grouped": 0.67001,
+    "regular_nostable_random": 0.14960800000000002
+  },
+  "share_W512": {
+    "regular": 0.47409,
+    "regular_bursty": 0.7458,
+    "regular_colourstable_grouped": 0.745788,
+    "regular_colourstable_random": 0.47409,
+    "regular_graded_b12": 0.584908,
+    "regular_graded_b1p4": 0.478606,
+    "regular_graded_b3p6": 0.49778200000000006,
+    "regular_graded_b7": 0.527844,
+    "regular_nostable_grouped": 0.745782,
+    "regular_nostable_random": 0.47409
+  },
+  "predictions_W512": {
+    "regular_w512": {
+      "mean_share": 0.47409,
+      "predicted_OI": 4.289500486906257,
+      "se_fixed": 0.34605822183590107
+    },
+    "regular_graded_b3p6_w512": {
+      "mean_share": 0.49778200000000006,
+      "predicted_OI": 4.5573426930108285,
+      "se_fixed": 0.3478903738827728
+    }
+  }
+}

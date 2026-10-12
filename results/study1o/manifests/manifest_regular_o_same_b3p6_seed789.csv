@@ -1,0 +1,4 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_o\same_b3p6\regular_tiny_seed789\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_o_same_b3p6,tiny,789
+E:\AI Checkpoints\overhypothesis_o\same_b3p6\regular_small_seed789\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_o_same_b3p6,small,789
+E:\AI Checkpoints\overhypothesis_o\same_b3p6\regular_medium_seed789\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_o_same_b3p6,medium,789

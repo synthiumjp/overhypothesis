@@ -59,6 +59,16 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Registered tests H17 to H19, S24 to S28 | see `results/study1w/RESULTS.md` | `tests.json`, `tost.json` |
 | Summary | | `results/study1w/RESULTS.md` |
 
+## Study 1, same-object vs different-object clustering (Amendment 7)
+
+| Step | Command | Output |
+|---|---|---|
+| Corpora | `python scripts/make_study1o_corpora.py build --f_b36 0.11` (already in the repo; `check` verifies) | `data/corpora_o/`, `manifest.json` |
+| Train and score | `docs/RUN_AMENDMENT7.md` | `results/study1o/raw/*.csv.gz` (MD5s in `raw_md5.txt`) |
+| Registered tests H20 to H22, S29 to S34 | see `results/study1o/RESULTS.md` | `tests.json` |
+| Loss check of the corrected loader | `python scripts/loss_check.py ...` | `results/rescore/loss_check.csv` |
+| Effective B (exploratory) | `python scripts/effective_b.py --out results/rescore/effective_b.json` | `effective_b.json` |
+
 ## Study 2 extension (Amendment 5, Part B)
 
 | Step | Command | Output |

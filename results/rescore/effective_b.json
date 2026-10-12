@@ -1,0 +1,76 @@
+{
+  "study1_curve": [
+    {
+      "B": 0.912,
+      "index": 0.473
+    },
+    {
+      "B": 1.369,
+      "index": 0.826
+    },
+    {
+      "B": 3.61,
+      "index": 1.429
+    },
+    {
+      "B": 6.989,
+      "index": 2.063
+    },
+    {
+      "B": 12.144,
+      "index": 3.529
+    },
+    {
+      "B": 23.082,
+      "index": 6.49
+    }
+  ],
+  "childes": {
+    "B": 3.57,
+    "different": 82,
+    "same": 139,
+    "n_coded": 300,
+    "main": {
+      "d": 0.371,
+      "B_eff": 1.953,
+      "study1_index_at_B_eff": 1.047
+    },
+    "strict": {
+      "d": 0.273,
+      "B_eff": 1.702,
+      "study1_index_at_B_eff": 0.961
+    }
+  },
+  "cabank": {
+    "B": 2.328,
+    "different": 25,
+    "same": 25,
+    "n_coded": 100,
+    "main": {
+      "d": 0.5,
+      "B_eff": 1.664,
+      "study1_index_at_B_eff": 0.947
+    },
+    "strict": {
+      "d": 0.25,
+      "B_eff": 1.332,
+      "study1_index_at_B_eff": 0.802
+    }
+  },
+  "pile10k": {
+    "B": 1.43,
+    "different": 13,
+    "same": 12,
+    "n_coded": 100,
+    "main": {
+      "d": 0.52,
+      "B_eff": 1.224,
+      "study1_index_at_B_eff": 0.728
+    },
+    "strict": {
+      "d": 0.13,
+      "B_eff": 1.056,
+      "study1_index_at_B_eff": 0.6
+    }
+  }
+}

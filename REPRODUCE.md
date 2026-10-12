@@ -48,6 +48,15 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Exploratory | `python scripts/study1x_exploratory.py --runs results/study1c/summary_per_run.csv results/study1x/summary_per_run.csv --hbm "results/study1x/hbm/hbm_*.csv" --out results/study1x/exploratory` | `exploratory_*` |
 | Summary | | `results/study1x/RESULTS.md` |
 
+## Study 1 window test (Amendment 6)
+
+| Step | Command | Output |
+|---|---|---|
+| Window measure and prediction (before training) | `python scripts/window_cooccurrence.py measure ...` and `predict ...` (usage in its header) | `results/study1w/cooccurrence.csv`, `prediction.json` |
+| Train and score | `docs/RUN_AMENDMENT6.md`, W1 to W3 (needs the checkpoints) | `results/study1w/raw/*.csv.gz` (MD5s in `raw_md5.txt`) |
+| Registered tests H17 to H19, S24 to S28 | see `results/study1w/RESULTS.md` | `tests.json`, `tost.json` |
+| Summary | | `results/study1w/RESULTS.md` |
+
 ## Study 2 extension (Amendment 5, Part B)
 
 | Step | Command | Output |

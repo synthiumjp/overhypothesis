@@ -1,0 +1,4 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_w512\graded_b3p6\regular_tiny_seed123\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_graded_b3p6_w512,tiny,123
+E:\AI Checkpoints\overhypothesis_w512\graded_b3p6\regular_small_seed123\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_graded_b3p6_w512,small,123
+E:\AI Checkpoints\overhypothesis_w512\graded_b3p6\regular_medium_seed123\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_graded_b3p6_w512,medium,123

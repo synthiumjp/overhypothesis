@@ -1,0 +1,4 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_w512\regular\regular_tiny_seed456\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_w512,tiny,456
+E:\AI Checkpoints\overhypothesis_w512\regular\regular_small_seed456\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_w512,small,456
+E:\AI Checkpoints\overhypothesis_w512\regular\regular_medium_seed456\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_w512,medium,456

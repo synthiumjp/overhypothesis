@@ -280,7 +280,8 @@ def eval_hbm(args):
 # eval-lm
 # --------------------------------------------------------------------------
 
-def load_model(ckpt_path, scripts_dir, module_name, class_name, random_init=None):
+def load_model(ckpt_path, scripts_dir, module_name, class_name, random_init=None,
+               legacy_tied_load=False):
     """Build OverhypothesisLM (scripts/train_model.py) from model_final.pt.
 
     model_final.pt stores model_state, vocab_size, model_cfg
@@ -313,7 +314,14 @@ def load_model(ckpt_path, scripts_dir, module_name, class_name, random_init=None
         vocab, mcfg, tcfg = meta["vocab_size"], meta["model_cfg"], meta["train_cfg"]
     cls = getattr(importlib.import_module(module_name), class_name)
     model = cls(vocab_size=vocab, seq_len=tcfg["seq_len"], **mcfg)
-    model.load_state_dict(ckpt["model_state"])
+    state = ckpt["model_state"]
+    # The model class ties lm_head.weight to tok_embed.weight. Training on DirectML
+    # broke the tie, so checkpoints hold two different matrices. Loading them into a
+    # tied model let lm_head.weight overwrite tok_embed.weight. Untie first so both
+    # load as trained (identical result when the two matrices are equal).
+    if not legacy_tied_load and "lm_head.weight" in state and hasattr(model, "lm_head"):
+        model.lm_head.weight = torch.nn.Parameter(model.lm_head.weight.detach().clone())
+    model.load_state_dict(state)
     model.eval()
     return model, tcfg["seq_len"]
 
@@ -375,7 +383,8 @@ def eval_lm(args):
         tok = Tokenizer.from_file(run["tokenizer"])
         model, block = load_model(run["ckpt"], args.scripts_dir,
                                   args.model_module, args.model_class,
-                                  run["seed"] if args.random_init else None)
+                                  run["seed"] if args.random_init else None,
+                                  legacy_tied_load=getattr(args, "legacy_tied_load", False))
         bos = tok.token_to_id(args.bos_token) if args.bos_token else None
         deltas = score_items(rows, lambda s: tok.encode(s).ids,
                              make_logprob_fn(model), args.sep, bos, block)
@@ -520,6 +529,9 @@ def main():
                    help="Score only these k values, e.g. 1 (default: all)")
     e.add_argument("--random_init", action="store_true",
                    help="Score untrained models of the same architecture (baseline)")
+    e.add_argument("--legacy_tied_load", action="store_true",
+                   help="Reproduce the scoring before 12 Oct 2026: load into the tied model, so "
+                        "lm_head.weight overwrites tok_embed.weight")
     e.add_argument("--out", required=True)
 
     mf = sub.add_parser("make-manifest")

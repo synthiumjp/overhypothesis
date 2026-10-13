@@ -1,0 +1,162 @@
+{
+ "trend": {
+  "slope_by_seed": {
+   "diff": 1.6297737781268116,
+   "lo": 1.4624541608321573,
+   "hi": 1.7970933954214658,
+   "t": 27.043914527316268,
+   "df": 4,
+   "p": 5.557694380638177e-06,
+   "seeds_in_direction": 5
+  },
+  "slopes": [
+   1.804361478456433,
+   1.5141619497056626,
+   1.7393494307765964,
+   1.5813891069608779,
+   1.5096069247344863
+  ],
+  "means": {
+   "regular": 0.473,
+   "regular_graded_b1p4": 0.826,
+   "regular_graded_b3p6": 1.429,
+   "regular_graded_b7": 2.063,
+   "regular_graded_b12": 3.529,
+   "regular_bursty": 6.49
+  },
+  "increments": [
+   {
+    "from_B": 0.912,
+    "to_B": 1.369,
+    "per_log_unit": 0.8673014365819153,
+    "per_unit_B": 0.770884532636313
+   },
+   {
+    "from_B": 1.369,
+    "to_B": 3.61,
+    "per_log_unit": 0.622734777420159,
+    "per_unit_B": 0.2694424787093252
+   },
+   {
+    "from_B": 3.61,
+    "to_B": 6.989,
+    "per_log_unit": 0.9588526185519274,
+    "per_unit_B": 0.18746567901403596
+   },
+   {
+    "from_B": 6.989,
+    "to_B": 12.144,
+    "per_log_unit": 2.6531881631557885,
+    "per_unit_B": 0.2843609027634383
+   },
+   {
+    "from_B": 12.144,
+    "to_B": 23.082,
+    "per_log_unit": 4.610403097175459,
+    "per_unit_B": 0.27069695261661547
+   }
+  ]
+ },
+ "corpora": {
+  "childes": {
+   "B": 3.5695945369761306,
+   "B_lo": 3.129956567893557,
+   "B_hi": 4.303315284843815,
+   "coded": {
+    "different": 82,
+    "same": 139,
+    "n": 300
+   },
+   "B_eff": 1.9534242173395597,
+   "B_eff_lo": 1.7272157346488854,
+   "B_eff_hi": 2.2847374610478766,
+   "B_eff_strict": 1.7023558401068088,
+   "B_eff_strict_lo": 1.5306592616424501,
+   "B_eff_strict_hi": 1.9568055621222262,
+   "index_at_B_eff": 1.0470834032266034,
+   "index_at_B_eff_lo": 0.9705456408404092,
+   "index_at_B_eff_hi": 1.1445129792932838,
+   "index_at_B_eff_strict": 0.9615297317500467,
+   "index_at_B_eff_strict_lo": 0.895413939608673,
+   "index_at_B_eff_strict_hi": 1.0481589512142324
+  },
+  "cabank": {
+   "B": 2.32842899408284,
+   "B_lo": 2.0154273699562872,
+   "B_hi": 2.93209588372286,
+   "coded": {
+    "different": 25,
+    "same": 25,
+    "n": 100
+   },
+   "B_eff": 1.66421449704142,
+   "B_eff_lo": 1.4402559907035124,
+   "B_eff_hi": 2.04408992206061,
+   "B_eff_strict": 1.33210724852071,
+   "B_eff_strict_lo": 1.2071152266609693,
+   "B_eff_strict_hi": 1.5412304506450145,
+   "index_at_B_eff": 0.9474378374173725,
+   "index_at_B_eff_lo": 0.8575548221308062,
+   "index_at_B_eff_hi": 1.0752977515606996,
+   "index_at_B_eff_strict": 0.8022591938955307,
+   "index_at_B_eff_strict_lo": 0.7166339312890788,
+   "index_at_B_eff_strict_hi": 0.8996941236049019
+  },
+  "pile10k": {
+   "B": 1.430599219234178,
+   "B_lo": 1.2186718908133993,
+   "B_hi": 1.8631405997209405,
+   "coded": {
+    "different": 13,
+    "same": 12,
+    "n": 100
+   },
+   "B_eff": 1.2239115940017726,
+   "B_eff_lo": 1.093801387800744,
+   "B_eff_hi": 1.471449929319986,
+   "B_eff_strict": 1.055977898500443,
+   "B_eff_strict_lo": 1.0202264145862336,
+   "B_eff_strict_hi": 1.1253227045429157,
+   "index_at_B_eff": 0.7286427906711743,
+   "index_at_B_eff_lo": 0.6309690585062964,
+   "index_at_B_eff_hi": 0.8708802703556398,
+   "index_at_B_eff_strict": 0.6003859398119423,
+   "index_at_B_eff_strict_lo": 0.5704539113838945,
+   "index_at_B_eff_strict_hi": 0.6556590652422558
+  },
+  "childes_minus_pile10k": {
+   "diff": 2.1389953177419523,
+   "lo": 1.5475991298909952,
+   "hi": 2.913055054245615,
+   "share_boot_le_0": 0.0
+  },
+  "childes_minus_pile10k_B_eff": {
+   "diff": 0.7295126233377871,
+   "lo": 0.407851642825251,
+   "hi": 1.0909699921857388
+  },
+  "childes_minus_cabank": {
+   "diff": 1.2411655428932904,
+   "lo": 0.5068374132132175,
+   "hi": 2.028822211239456,
+   "share_boot_le_0": 0.003
+  },
+  "childes_minus_cabank_B_eff": {
+   "diff": 0.2892097202981396,
+   "lo": -0.14424502761062663,
+   "hi": 0.6937567103510349
+  },
+  "cabank_minus_pile10k": {
+   "diff": 0.8978297748486621,
+   "lo": 0.37144050391958344,
+   "hi": 1.5675604064228934,
+   "share_boot_le_0": 0.00075
+  },
+  "cabank_minus_pile10k_B_eff": {
+   "diff": 0.4403029030396475,
+   "lo": 0.10925647552848923,
+   "hi": 0.8541069702012541
+  }
+ },
+ "notes": "Seed-level tests average the three sizes within each corpus seed. B_eff index values interpolate the six Regular-order means linearly in log B."
+}

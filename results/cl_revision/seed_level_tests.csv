@@ -1,0 +1,16 @@
+row,a,b,index,side,diff,lo,hi,t,df,p,seeds_in_direction,p_15_matched,models_in_direction
+1,regular_bursty,regular,OI_colour,greater,6.0163,5.2381,6.7946,21.4629,4,0.0,5,0.0,15
+2,regular,,OI_colour,greater,0.4732,-0.6148,1.5613,1.2075,4,0.1469,4,0.0307,10
+3,regular,scrambled,OI_colour,greater,0.727,-0.6927,2.1466,1.4218,4,0.1141,3,0.0139,11
+4,regular_bursty,regular_nostable_grouped,OI_colour,greater,6.9308,5.4659,8.3956,13.1362,4,0.0001,5,0.0,15
+5,regular_nostable_grouped,regular_colourstable_grouped,OI_colour,greater,2.7577,1.993,3.5224,10.0122,4,0.0003,5,0.0,15
+6,regular_bursty,scrambled_bursty,OI_colour,greater,4.3716,1.9849,6.7583,5.0855,4,0.0035,5,0.0,15
+7,regular_bursty,scrambled_bursty,OI_texture,greater,4.894,2.6884,7.0997,6.1606,4,0.0018,5,0.0,15
+9,regular_graded_b3p6,regular,OI_colour,greater,0.9561,0.632,1.2802,8.1915,4,0.0006,5,0.0,15
+10,regular_o_diff_b3p6,regular_o_random,OI_colour,greater,0.9585,0.3731,1.5439,4.5459,4,0.0052,5,0.0001,13
+11,regular_w512,regular,OI_colour,greater,0.0283,-0.4394,0.496,0.168,4,0.4374,4,0.4416,6
+12,regular_graded_b3p6_w512,regular_graded_b3p6,OI_colour,two-sided,-0.632,-0.8969,-0.3671,-6.6238,4,0.0027,0,0.0032,3
+13,regular_w512,regular_nostable_random_w512,OI_colour,greater,0.4041,-0.0392,0.8475,2.5308,4,0.0323,4,0.0152,12
+14,regular_o_diff_grouped,regular_o_same_grouped,OI_colour,greater,2.6643,1.5739,3.7546,6.7842,4,0.0012,5,0.0,15
+15,regular_o_diff_b3p6,regular_o_same_b3p6,OI_colour,greater,0.734,0.1456,1.3225,3.4632,4,0.0129,5,0.0006,13
+S,regular_o_same_b3p6,regular_o_random,OI_colour,two-sided,0.2244,-0.2961,0.745,1.1971,4,0.2973,4,0.2043,8

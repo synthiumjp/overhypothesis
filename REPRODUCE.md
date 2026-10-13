@@ -1,10 +1,32 @@
-# Reproducing Studies 1b to 1e and the Amendment 5 extensions
+# Reproducing the paper
 
-Branch `study1b-1c-evaluation`. Pre-registration: osf.io/qj9hb (original), Amendment 1 osf.io/x6zhn (Studies 1b and 1c), Amendment 2 (texture co-primary for H5b), Amendment 3 osf.io/qcfjp (Study 1d), Amendment 4 osf.io/ya68j (Study 1e, child-directed speech; code `scripts/cds_burstiness.py`, MD5 `c4885f97af62e9d6cca59c523841065f`), Amendment 5 osf.io/eb28h (extensions to all three studies; locked commit c2bccb4, checksums in `docs/amendment5_checksums.txt`, run instructions in `docs/RUN_AMENDMENT5.md`), Amendment 6 osf.io/34gca (Study 1 window test; locked commit 3c4ce45, checksums in `docs/amendment6_checksums.txt`, run instructions in `docs/RUN_AMENDMENT6.md`).
+Paper: "Different exemplars, close together: how the arrangement of training text teaches language models which features persist" (Computational Linguistics, short paper, submitted). All registrations: osf.io/qj9hb.
 
-**Study 1 scores were corrected on 12 Oct 2026** (model-loading error; see `results/rescore/RESULTS.md` and `docs/RUN_RESCORE.md`). All Study 1 numbers in the paper come from `results/rescore/`; the Study 1 sections below describe the original runs, kept as a record.
+The repository uses working names from the registrations. **Paper Study 1** (small models trained on artificial languages) = repo Studies 1b, 1c, 1x (Amendment 5 Part A), 1w (Amendment 6) and 1o (Amendment 7); its scores are in `results/rescore/` and `results/study1o/`. **Paper Study 2** (clustering of natural input) = repo Study 1e and `study3x` (Amendment 5 Part C). **Paper Study 3** (pretrained models) = repo Study 1d and `study2x` (Amendment 5 Part B). Amendment 5 itself calls the pretrained-model study "Study 2" and the corpus study "Study 3".
 
-Every number reported for Studies 1b to 1d can be regenerated from files in this repository, except where a row below says the input is archived elsewhere.
+**Corrected scores.** Study 1 scores were corrected on 12 Oct 2026 (model-loading error; `results/rescore/RESULTS.md`). Every Study 1 number in the paper comes from `results/rescore/`, `results/study1o/` or `results/cl_revision/`. Folders with older scores carry a `SUPERSEDED.md` note.
+
+## Paper tables and figures
+
+| Paper | Command (from the repo root) | Inputs | Output |
+|---|---|---|---|
+| Table 1 (corpora, measured B) | `python scripts/corpus_generator.py`, `scripts/make_bursty_corpus.py`, `scripts/make_study1x_corpora.py`, `scripts/make_study1o_corpora.py build --f_b36 0.11` (corpora are committed; regenerate to check) | | `data/corpora*/`; B in `data/corpora_x/manifest.json`, `data/corpora_o/manifest.json` |
+| Table 2, Table D1, Table E2, Table F1 | `python scripts/paper_tables.py` | `results/rescore/*_per_run.csv`, `results/study1o/summary_per_run.csv`, `results/*/trained_per_run.csv` | `results/paper_tables/` |
+| Table 3 (natural corpora) | `python scripts/cl_revision_analyses.py` (B, intervals, effective clustering); counts and coded shares from the Study 1e and Study 3 extension steps below | `results/study1e/counts.csv`, `results/study3x/` | `results/cl_revision/summary.json`; `results/study3x/rates.csv` |
+| Table 4, Table A4, Table E1 (registered tests, seed-level tests) | registered tests: the locked test scripts in the steps below; for Study 1 they are rerun on the corrected scores with the commands in `results/rescore/RESULTS.md`; seed-level tests and noun-specific equivalence: `python scripts/cl_revision_analyses.py` | per-run files above | `results/rescore/*tests*.json`, `results/study1o/tests.json`, `results/study1d/tests_final.json`, `results/study2x/`, `results/study3x/tests.json`; `results/cl_revision/seed_level_tests.csv`, `noun_specific_by_condition.csv` |
+| Table A3 (before and after the correction) | old scores: `results/study1b`, `study1c`, `study1x`, `study1w`; corrected: `results/rescore/` | | `results/rescore/RESULTS.md` |
+| Table C1 (training settings) | `scripts/train_model.py` (`MODEL_CONFIGS`, `TRAIN_CONFIG`); training driver `scripts/run_phase2.py`; tokenisers `scripts/train_all_tokenizers.py` | | `results/train_logs/` (Study 1b models) |
+| Table E3 (what the corpora reward) | `python scripts/corpus_conditionals.py` | `data/corpora*/` | `results/cl_revision/corpus_conditionals.csv` |
+| Noun copy check (Section 3.5, Appendix E) | `python scripts/noun_copy_check.py ...` (command in `docs/RUN_NOUN_COPY.md`; needs the checkpoints) | checkpoints | `results/cl_revision/noun_copy_check.csv` |
+| Figure 1 | schematic with illustrative sentences; no data | | |
+| Figures 2, 3, 4 | `python scripts/make_paper_figures.py` | listed in the script header | `results/paper_figures/` (CSV of every plotted value, and PNGs) |
+
+Python packages: `requirements.txt`. Files under `docs/RUN_*.md` are the run logs written for the training PC and Mac; their paths (for example `E:\AI Checkpoints`) are machine-specific.
+
+**Changes to locked scripts after registration.** The MD5 checks in `docs/amendment5_checksums.txt` and `docs/amendment6_checksums.txt` fail for three scripts, each changed after locking for a documented reason:
+- `scripts/english_oneshot.py`: commits 3c71203 and 0aeb583 (9 Oct 2026), MLX loading options for the 70B models only; scoring is unchanged.
+- `scripts/train_model.py`: commit 3c4ce45 (11 Oct 2026), the window-length option locked for Amendment 6; 128-token training is unchanged.
+- `scripts/oneshot_eval.py`: commit 483ad6b (12 Oct 2026), the loader correction; `--legacy_tied_load` reproduces the old scoring.
 
 ## Fixed inputs (verify before anything else)
 
@@ -103,7 +125,7 @@ CHILDES transcripts are not redistributed here (TalkBank terms); the per-documen
 | Hand coding | code `coding_sheet.csv` with `tools/coding_tool.html`; second-coder subset `python scripts/study3_reliability.py subset`; agreement `... agree` | `reliability.json` |
 | Summary | | `results/study3x/RESULTS.md` |
 
-The coding sheet holds transcript excerpts and is not in git. The blind second coding is on branch `sealed-coder2` (MD5 `24729a7ec2b29ed02c7eb7175e6b66f3`) until the first coder has finished.
+The coding sheet holds transcript excerpts and is not in git. The blind second coding sheet (MD5 `24729a7ec2b29ed02c7eb7175e6b66f3`) was sealed until the first coder had finished; the resulting codes are in `results/study3x/codes_second.csv` and agreement in `reliability.json`. The sheet itself holds transcript excerpts and is not public.
 
 ## Exploratory and robustness analyses (all studies)
 
@@ -125,5 +147,5 @@ The coding sheet holds transcript excerpts and is not in git. The blind second c
 
 ## Not in this repository
 
-- Trained checkpoints for Studies 1, 1b and 1c (about 8 GB). To be archived with a DOI before submission.
+- Trained checkpoints for the 390 Study 1 models (about 8 GB) and their training logs, except the 120 logs in `results/train_logs/`. To be archived with a DOI.
 - Pretrained models for Study 1d are public on Hugging Face at the revisions in `results/study1d/models.csv`.

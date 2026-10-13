@@ -1,3 +1,5 @@
+> **Superseded scores.** The language-model scores and tests in this folder were computed before 12 Oct 2026 with a loader that let the output matrix overwrite the input embedding (the checkpoints hold untied matrices). They are kept as a record. The corrected scores, used in the paper, are in `results/rescore/` (and `results/study1o/`, `results/cl_revision/`). Outputs that do not use a trained model (corpus statistics, the hierarchical Bayesian reference model) are unaffected.
+
 # Study 1 window test (Amendment 6, osf.io/34gca): results
 
 45 new models (Regular random order, Regular at B = 3.6, NoStable random order; 3 sizes × 5 seeds), trained on the PC exactly as in Study 1 except `--seq_len 512 --keep_tokens_per_step` (batch 8 for tiny and small, 4 for medium; same tokens per step). Training 11 Oct 2026; scoring 12 Oct (`docs/RUN_AMENDMENT6.md`, W1 to W3). Locked analysis code matches `docs/amendment6_checksums.txt` (`scripts/study1w_tests.py` MD5 7a7d0e354877f32ffccc01814b5f12af). The prediction (`prediction.json`) and the window measure (`cooccurrence.csv`) are byte-identical to the locked files.

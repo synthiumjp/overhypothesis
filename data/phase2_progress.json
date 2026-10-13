@@ -1,9 +1,0 @@
-{
-  "completed_train": [],
-  "completed_eval": [
-    "regular_tiny_seed42",
-    "regular_tiny_seed42_frac25",
-    "regular_tiny_seed42_frac50"
-  ],
-  "failed": []
-}

@@ -1,16 +1,26 @@
+# Python
 *.pyc
 __pycache__/
 .venv/
+.ipynb_checkpoints/
 
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
 
+# Model checkpoints and trained models (too large for git; archived separately)
 *.pt
+models/
 
-# Model checkpoints (too large for git)
-*.pt
+# Full transcripts and text prepared from CHILDES, CABank and the Pile (TalkBank terms; not redistributed)
+data/cds/
+sealed/
+*.zip
 
-# Study 3 hand-coding sheet holds transcript excerpts (TalkBank terms) and stays out of git
+# Study 2 hand-coding sheets hold transcript excerpts and stay out of git
 results/study3x/coding_sheet*.csv
 
-# Study 2 extension: large CSVs are committed gzipped (.csv.gz)
+# Pretrained-model study: large CSVs are committed gzipped (.csv.gz)
 results/study2x/scores_*.csv
 results/study2x/tests_kind_specific_items.csv

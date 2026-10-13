@@ -1,0 +1,3 @@
+# Archived scripts (original registration)
+
+These scripts produced the results of the original registration (osf.io/qj9hb, H1 to H4) for an earlier manuscript. They are kept as a record and are not used by the paper. They build the model with tied input and output embeddings before loading checkpoints whose matrices are untied, so their language-model scores are affected by the loading error described in `results/rescore/RESULTS.md`. `scripts/evaluate.py` and `scripts/aggregate_results.py`, called by the training driver `scripts/run_phase2.py`, stay in `scripts/` for that reason and share the same caveat.

@@ -1,0 +1,8 @@
+condition,index_same_noun,noun_specific,models_above_zero,n,p_two_sided,p_one_sided_greater
+"Regular, random",0.07,0.01,9,15,0.968,0.484
+"Regular, B 3.6",0.36,0.12,10,15,0.437,0.218
+"Regular, B 7",0.49,0.18,8,15,0.29,0.145
+"Regular, B 12",1.07,0.06,8,15,0.639,0.32
+"Regular, grouped",1.03,0.3,10,15,0.015,0.008
+"Objects, same-object, grouped",-1.53,-1.06,0,15,0.0,1.0
+"Objects, different-object, grouped",0.33,0.14,10,15,0.256,0.128

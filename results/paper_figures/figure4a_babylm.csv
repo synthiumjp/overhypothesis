@@ -1,0 +1,3 @@
+model,index,lo,hi,untrained_pythia_level
+BabyLM 10M words,0.47,-1.05,1.93,0.53
+BabyLM 100M words,0.37,-0.04,0.73,0.53

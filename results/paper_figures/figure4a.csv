@@ -1,0 +1,20 @@
+model,params,set,index
+14M,14000000,Matched wording (a in both),-3.13
+31M,31000000,Matched wording (a in both),-2.2
+70M,70000000,Matched wording (a in both),-1.33
+160M,160000000,Matched wording (a in both),-1.6
+410M,410000000,Matched wording (a in both),-0.75
+1B,1000000000,Matched wording (a in both),-0.11
+1.4B,1400000000,Matched wording (a in both),-0.34
+2.8B,2800000000,Matched wording (a in both),-0.04
+6.9B,6900000000,Matched wording (a in both),0.46
+12B,12000000000,Matched wording (a in both),0.27
+14M,14000000,Original items,-2.44
+70M,70000000,Original items,-1.17
+160M,160000000,Original items,-1.22
+410M,410000000,Original items,-0.13
+1B,1000000000,Original items,0.53
+1.4B,1400000000,Original items,0.44
+2.8B,2800000000,Original items,0.43
+6.9B,6900000000,Original items,0.84
+12B,12000000000,Original items,1.17

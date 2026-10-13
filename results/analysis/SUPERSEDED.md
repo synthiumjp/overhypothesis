@@ -1,0 +1,3 @@
+# Note
+
+> **Original registration, superseded scores.** This folder holds the results of the original registration (osf.io/qj9hb, hypotheses H1 to H4), produced by the pipeline now in `archive/openmind_scripts/` and by `scripts/evaluate.py`. That pipeline built each model with tied input and output embeddings and then loaded checkpoints whose two matrices were untied, so the output matrix overwrote the input embedding. These scores were not rescored and are not used in the paper. They are kept as the record of the original registration. Training logs for these 120 models are in `results/train_logs/` and are unaffected.

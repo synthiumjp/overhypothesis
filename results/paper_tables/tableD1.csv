@@ -1,0 +1,8 @@
+corpus,index_mean,index_sd,shape_over_texture,noun_specific,n
+Regular (for comparison),0.47,0.9,0.51,0.005,15
+No kind label,0.06,0.49,0.44,-0.004,15
+Paraphrased,0.41,0.44,0.6,-0.025,15
+Weak label,0.09,0.5,-0.52,0.008,15
+Frequency matched,-0.22,0.63,-0.4,-0.033,15
+Added noise,-0.43,0.67,0.44,-0.038,15
+Feature swap,0.69,0.77,0.6,-0.017,15

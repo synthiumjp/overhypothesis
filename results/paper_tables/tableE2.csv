@@ -1,0 +1,21 @@
+condition,3.4M,11.0M,25.6M,two_exemplars,four_exemplars
+"Regular, random",0.33,0.71,0.38,-0.64,-0.1
+"Regular, B 1.4",0.73,1.05,0.7,-0.01,0.32
+"Regular, B 3.6",0.97,2.05,1.27,0.6,1.06
+"Regular, B 7",1.85,2.89,1.45,1.23,1.15
+"Regular, B 12",3.18,4.53,2.88,2.85,2.43
+"Regular, grouped",6.41,6.83,6.23,5.24,4.3
+"Mixed-slot, random",-0.11,-0.45,-0.21,0.29,0.29
+"Mixed-slot, grouped",2.24,2.35,1.76,2.6,2.04
+"No stable feature, random",-0.1,-0.33,-0.12,-0.17,-0.44
+"No stable feature, grouped",-0.41,-0.28,-0.63,-1.77,-3.26
+"Colour stable, random",-0.04,-0.7,-0.51,-0.76,-0.76
+"Colour stable, grouped",-2.11,-3.72,-3.77,-4.5,-5.34
+"Regular, random, 512",0.3,0.51,0.7,0.51,0.32
+"Regular, B 3.6, 512",0.31,1.02,1.06,0.93,0.82
+"No stable feature, random, 512",0.21,0.04,0.05,-0.1,-0.23
+"Objects, random",0.36,0.44,-0.13,0.38,1.02
+"Objects, same-object, B 3.6",0.22,0.98,0.14,0.32,1.22
+"Objects, different-object, B 3.6",0.83,1.75,0.96,1.49,2.18
+"Objects, same-object, grouped",3.0,3.33,2.62,1.3,1.34
+"Objects, different-object, grouped",6.18,5.43,5.34,4.54,4.14

@@ -1,3 +1,5 @@
+> **Superseded scores.** The language-model scores and tests in this folder were computed before 12 Oct 2026 with a loader that let the output matrix overwrite the input embedding (the checkpoints hold untied matrices). They are kept as a record. The corrected scores, used in the paper, are in `results/rescore/` (and `results/study1o/`, `results/cl_revision/`). Outputs that do not use a trained model (corpus statistics, the hierarchical Bayesian reference model) are unaffected.
+
 # Study 1 extension (Amendment 5, Part A): results
 
 The eight new corpus conditions (`data/corpora_x/`, measured clustering in `data/corpora_x/manifest.json`) were trained on the PC: Windows, DirectML training, 3 sizes × 5 seeds each, 120 models. Scoring was on the CPU (`docs/RUN_AMENDMENT5.md`, A2 to A4). The locked analysis code matches `docs/amendment5_checksums.txt` (`scripts/study1x_tests.py` MD5 f918ddf0cde017dce98c825bbb399e7e, `scripts/oneshot_eval.py` e9e144254e84777680ed8369cbf65141). The registered tests were run on 11 Oct 2026.

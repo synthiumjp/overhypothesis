@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper."
+title: "Different exemplars, close together: how the arrangement of training text teaches language models which features persist"
+authors:
+  - family-names: Cacioli
+    given-names: Jon-Paul
+repository-code: "https://github.com/synthiumjp/overhypothesis"
+license: MIT
+type: software
+identifiers:
+  - type: url
+    value: "https://osf.io/qj9hb"
+    description: "OSF project with all registrations"

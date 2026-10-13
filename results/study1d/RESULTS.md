@@ -31,10 +31,10 @@ Neither BabyLM CI lies inside the 0.2-nat equivalence bounds, so H8 is inconclus
 | Llama-3.1-70B | 1.22 [0.79, 1.64] | -0.23 | 0.27 [0.00, 0.55] |
 
 ## Key observations (secondary and descriptive)
-- Untrained floor: step 0 gives OI_colour about 0.5 at every Pythia size (an item-level artefact shared by all models). Only Pythia 6.9B, 12B and Llama clearly exceed it.
+- Untrained floor: step 0 gives OI_colour about 0.5 at every Pythia size (an item-level artefact shared by all models). Pythia 12B and Llama clearly exceed it; the 6.9B interval [0.50, 1.14] includes it.
 - Training trajectory: every size dips towards colour at steps 1,000 to 4,000 (about -2 nats), then larger models recover.
-- Texture: every trained model prefers texture over shape (OI_texture < 0). Llama is closest to zero.
-- Noun binding emerges from 410M parameters; the three smallest Pythia models show reversed binding. Study 1c's synthetic models showed none.
+- Texture: every Pythia, Qwen and Llama model prefers texture over shape (OI_texture < 0); Llama is closest to zero. The exception is the BabyLM baseline trained on 10M words, which prefers shape over texture (OI_texture 1.17 [0.24, 2.34]; `tests_final.json`, S5_texture H8a). (Corrected 13 Oct 2026; the earlier wording said every trained model.)
+- Noun binding on the original items appears from 410M parameters; the three smallest Pythia models show reversed binding. (These items confound the noun with "another"; see `results/study2x/` for the matched-wording sets.)
 - Large models disagree: Llama-3.1-70B matches Pythia 12B on shape over colour; Qwen2.5-72B does not. Scale within one training corpus does not predict other families.
 - Onset (S8): only at step 143,000 (about 300B tokens), far beyond a child's input.
 
@@ -44,3 +44,6 @@ Neither BabyLM CI lies inside the 0.2-nat equivalence bounds, so H8 is inconclus
 3. Software environment: Pythia and BabyLM ran under Python 3.14 / PyTorch 2.14; the 70B models and checks under Python 3.12 / PyTorch 2.13. Re-scoring two checkpoints gave mean |difference| 0.0003 and 0.005 nats.
 4. Qwen2.5-72B and Llama-3.1-70B were scored with Apple MLX, not PyTorch, after PyTorch MPS crashed the machine. Same tokenizer, padding and summation. Validation against PyTorch: mean |difference| 0.003 nats (Pythia 410M) and 0.010 nats (Qwen2.5-0.5B, same architecture as the 72B).
 5. Precision: as registered (float16 for models over 1B). No invalid values in any model.
+
+
+Note (13 Oct 2026): the stale test outputs (`tests.json`, `tests_v2*`, `tests_v3*`, `tests_secondary.csv`, `tests_stdout.txt`) were moved to `archive/`; `tests_final*` are the reported results.

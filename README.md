@@ -12,7 +12,7 @@ All registrations are in one OSF project: [osf.io/qj9hb](https://osf.io/qj9hb).
 
 ## Reproducing the paper
 
-`REPRODUCE.md` maps every table and figure of the paper to the command and inputs that produce it. The quickest checks:
+The paper's LaTeX source and PDF are in `paper_latex/`. `REPRODUCE.md` maps every table and figure of the paper to the command and inputs that produce it. The quickest checks:
 
 ```
 pip install -r requirements.txt
@@ -43,6 +43,7 @@ Study 1 scores were corrected on 12 Oct 2026 after a model-loading error was fou
 ## Layout
 
 ```
+paper_latex/       LaTeX source, bibliography and PDF of the paper
 data/
   corpora/, corpora_bursty/, corpora_x/, corpora_o/   Study 1 corpora, with manifests and checksums
   tokenizers/                                          tokenisers (every artificial word is one token)

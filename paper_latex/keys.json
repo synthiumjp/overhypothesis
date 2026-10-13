@@ -1,0 +1,676 @@
+[
+ {
+  "key": "bengio2009",
+  "surnames": [
+   "Bengio",
+   "Louradour",
+   "Collobert",
+   "Weston"
+  ],
+  "year": "2009",
+  "etal": false
+ },
+ {
+  "key": "biderman2023",
+  "surnames": [
+   "Biderman",
+   "Schoelkopf",
+   "Anthony",
+   "Bradley",
+   "O'Brien",
+   "Hallahan",
+   "Khan",
+   "Purohit",
+   "Prashanth",
+   "Raff",
+   "Skowron",
+   "Sutawika",
+   "van der Wal"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "canavan1997",
+  "surnames": [
+   "Canavan",
+   "Graff",
+   "Zipperlen"
+  ],
+  "year": "1997",
+  "etal": false
+ },
+ {
+  "key": "canavan1996a",
+  "surnames": [
+   "Canavan",
+   "Zipperlen"
+  ],
+  "year": "1996a",
+  "etal": false
+ },
+ {
+  "key": "canavan1996b",
+  "surnames": [
+   "Canavan",
+   "Zipperlen"
+  ],
+  "year": "1996b",
+  "etal": false
+ },
+ {
+  "key": "carvalho2014",
+  "surnames": [
+   "Carvalho",
+   "Goldstone"
+  ],
+  "year": "2014",
+  "etal": false
+ },
+ {
+  "key": "chan2022",
+  "surnames": [
+   "Chan",
+   "Santoro",
+   "Lampinen",
+   "Wang",
+   "Singh",
+   "Richemond",
+   "McClelland",
+   "Hill"
+  ],
+  "year": "2022",
+  "etal": false
+ },
+ {
+  "key": "chang2022",
+  "surnames": [
+   "Chang",
+   "Bergen"
+  ],
+  "year": "2022",
+  "etal": false
+ },
+ {
+  "key": "charpentier2025",
+  "surnames": [
+   "Charpentier",
+   "Choshen",
+   "Cotterell",
+   "Gul",
+   "Hu",
+   "Jumelet",
+   "Linzen",
+   "Liu",
+   "Mueller",
+   "Ross",
+   "Shah",
+   "Warstadt",
+   "Wilcox",
+   "Williams"
+  ],
+  "year": "2025",
+  "etal": false
+ },
+ {
+  "key": "church2000",
+  "surnames": [
+   "Church"
+  ],
+  "year": "2000",
+  "etal": false
+ },
+ {
+  "key": "church1995",
+  "surnames": [
+   "Church",
+   "Gale"
+  ],
+  "year": "1995",
+  "etal": false
+ },
+ {
+  "key": "colunga2005",
+  "surnames": [
+   "Colunga",
+   "Smith"
+  ],
+  "year": "2005",
+  "etal": false
+ },
+ {
+  "key": "diehlmartinez2023",
+  "surnames": [
+   "Diehl Martinez",
+   "Goriely",
+   "McGovern",
+   "Davis",
+   "Caines",
+   "Buttery",
+   "Beinborn"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "dubois2004",
+  "surnames": [
+   "Du Bois",
+   "Englebretson"
+  ],
+  "year": "2004",
+  "etal": false
+ },
+ {
+  "key": "elman1993",
+  "surnames": [
+   "Elman"
+  ],
+  "year": "1993",
+  "etal": false
+ },
+ {
+  "key": "feinman2018",
+  "surnames": [
+   "Feinman",
+   "Lake"
+  ],
+  "year": "2018",
+  "etal": false
+ },
+ {
+  "key": "feng2024",
+  "surnames": [
+   "Feng",
+   "Goodman",
+   "Frank"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "fenson2007",
+  "surnames": [
+   "Fenson",
+   "Marchman",
+   "Thal",
+   "Dale",
+   "Reznick",
+   "Bates"
+  ],
+  "year": "2007",
+  "etal": false
+ },
+ {
+  "key": "gao2020",
+  "surnames": [
+   "Gao",
+   "Biderman",
+   "Black",
+   "Golding",
+   "Hoppe",
+   "Foster",
+   "Phang",
+   "He",
+   "Thite",
+   "Nabeshima",
+   "Presser",
+   "Leahy"
+  ],
+  "year": "2020",
+  "etal": false
+ },
+ {
+  "key": "gershkoffstowe2004",
+  "surnames": [
+   "Gershkoff-Stowe",
+   "Smith"
+  ],
+  "year": "2004",
+  "etal": false
+ },
+ {
+  "key": "goodman1955",
+  "surnames": [
+   "Goodman"
+  ],
+  "year": "1955",
+  "etal": false
+ },
+ {
+  "key": "grattafiori2024",
+  "surnames": [
+   "Grattafiori",
+   "Dubey",
+   "Jauhri",
+   "Pandey",
+   "Kadian"
+  ],
+  "year": "2024",
+  "etal": true
+ },
+ {
+  "key": "haga2024",
+  "surnames": [
+   "Haga",
+   "Fukatsu",
+   "Oba",
+   "Bisazza",
+   "Oseki"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "holm1979",
+  "surnames": [
+   "Holm"
+  ],
+  "year": "1979",
+  "etal": false
+ },
+ {
+  "key": "hu2024",
+  "surnames": [
+   "Hu",
+   "Mueller",
+   "Ross",
+   "Williams",
+   "Linzen",
+   "Zhuang",
+   "Cotterell",
+   "Choshen",
+   "Warstadt",
+   "Wilcox"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "huebner2021",
+  "surnames": [
+   "Huebner",
+   "Sulem",
+   "Fisher",
+   "Roth"
+  ],
+  "year": "2021",
+  "etal": false
+ },
+ {
+  "key": "kallini2024",
+  "surnames": [
+   "Kallini",
+   "Papadimitriou",
+   "Futrell",
+   "Mahowald",
+   "Potts"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "kemp2007",
+  "surnames": [
+   "Kemp",
+   "Perfors",
+   "Tenenbaum"
+  ],
+  "year": "2007",
+  "etal": false
+ },
+ {
+  "key": "kuhn1990",
+  "surnames": [
+   "Kuhn",
+   "De Mori"
+  ],
+  "year": "1990",
+  "etal": false
+ },
+ {
+  "key": "kuntay1996",
+  "surnames": [
+   "Küntay",
+   "Slobin"
+  ],
+  "year": "1996",
+  "etal": false
+ },
+ {
+  "key": "lakens2017",
+  "surnames": [
+   "Lakens"
+  ],
+  "year": "2017",
+  "etal": false
+ },
+ {
+  "key": "landau1988",
+  "surnames": [
+   "Landau",
+   "Smith",
+   "Jones"
+  ],
+  "year": "1988",
+  "etal": false
+ },
+ {
+  "key": "macwhinney2000",
+  "surnames": [
+   "MacWhinney"
+  ],
+  "year": "2000",
+  "etal": false
+ },
+ {
+  "key": "madsen2005",
+  "surnames": [
+   "Madsen",
+   "Kauchak",
+   "Elkan"
+  ],
+  "year": "2005",
+  "etal": false
+ },
+ {
+  "key": "mccoy2020",
+  "surnames": [
+   "McCoy",
+   "Frank",
+   "Linzen"
+  ],
+  "year": "2020",
+  "etal": false
+ },
+ {
+  "key": "misra2023",
+  "surnames": [
+   "Misra",
+   "Rayz",
+   "Ettinger"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "onnis2008",
+  "surnames": [
+   "Onnis",
+   "Waterfall",
+   "Edelman"
+  ],
+  "year": "2008",
+  "etal": false
+ },
+ {
+  "key": "perry2010",
+  "surnames": [
+   "Perry",
+   "Samuelson",
+   "Malloy",
+   "Schiffer"
+  ],
+  "year": "2010",
+  "etal": false
+ },
+ {
+  "key": "prystawski2023",
+  "surnames": [
+   "Prystawski",
+   "Li",
+   "Goodman"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "qwen2024",
+  "surnames": "Qwen Team",
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "reddy2024",
+  "surnames": [
+   "Reddy"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "ritter2017",
+  "surnames": [
+   "Ritter",
+   "Barrett",
+   "Santoro",
+   "Botvinick"
+  ],
+  "year": "2017",
+  "etal": false
+ },
+ {
+  "key": "rohde1999",
+  "surnames": [
+   "Rohde",
+   "Plaut"
+  ],
+  "year": "1999",
+  "etal": false
+ },
+ {
+  "key": "schoenegger2025",
+  "surnames": [
+   "Schoenegger",
+   "Thoma",
+   "Blevins",
+   "Roth"
+  ],
+  "year": "2025",
+  "etal": false
+ },
+ {
+  "key": "schwab2016",
+  "surnames": [
+   "Schwab",
+   "Lew-Williams"
+  ],
+  "year": "2016",
+  "etal": false
+ },
+ {
+  "key": "shi2024",
+  "surnames": [
+   "Shi",
+   "Min",
+   "Lomeli",
+   "Zhou",
+   "Li",
+   "Szilvasy",
+   "James",
+   "Lin",
+   "Smith",
+   "Zettlemoyer",
+   "Yih",
+   "Lewis"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "sinclair2022",
+  "surnames": [
+   "Sinclair",
+   "Jumelet",
+   "Zuidema",
+   "Fernández"
+  ],
+  "year": "2022",
+  "etal": false
+ },
+ {
+  "key": "singh2023",
+  "surnames": [
+   "Singh",
+   "Chan",
+   "Moskovitz",
+   "Grant",
+   "Saxe",
+   "Hill"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "slone2023",
+  "surnames": [
+   "Slone",
+   "Abney",
+   "Smith",
+   "Yu"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "smith2002",
+  "surnames": [
+   "Smith",
+   "Jones",
+   "Landau",
+   "Gershkoff-Stowe",
+   "Samuelson"
+  ],
+  "year": "2002",
+  "etal": false
+ },
+ {
+  "key": "thrush2020",
+  "surnames": [
+   "Thrush",
+   "Wilcox",
+   "Levy"
+  ],
+  "year": "2020",
+  "etal": false
+ },
+ {
+  "key": "vanderwal2025",
+  "surnames": [
+   "van der Wal",
+   "Lesci",
+   "Müller-Eberstein",
+   "Saphra",
+   "Schoelkopf",
+   "Zuidema",
+   "Biderman"
+  ],
+  "year": "2025",
+  "etal": false
+ },
+ {
+  "key": "vanschijndel2018",
+  "surnames": [
+   "van Schijndel",
+   "Linzen"
+  ],
+  "year": "2018",
+  "etal": false
+ },
+ {
+  "key": "vlach2008",
+  "surnames": [
+   "Vlach",
+   "Sandhofer",
+   "Kornell"
+  ],
+  "year": "2008",
+  "etal": false
+ },
+ {
+  "key": "vong2024",
+  "surnames": [
+   "Vong",
+   "Wang",
+   "Orhan",
+   "Lake"
+  ],
+  "year": "2024",
+  "etal": false
+ },
+ {
+  "key": "wang2025",
+  "surnames": [
+   "Wang",
+   "Jiang",
+   "Linzen",
+   "Lake"
+  ],
+  "year": "2025",
+  "etal": false
+ },
+ {
+  "key": "wang2023",
+  "surnames": [
+   "Wang",
+   "Vong",
+   "Kim",
+   "Lake"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "warstadt2023",
+  "surnames": [
+   "Warstadt",
+   "Mueller",
+   "Choshen",
+   "Wilcox",
+   "Zhuang",
+   "Ciro",
+   "Mosquera",
+   "Paranjabe",
+   "Williams",
+   "Linzen",
+   "Cotterell"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "white2021",
+  "surnames": [
+   "White",
+   "Cotterell"
+  ],
+  "year": "2021",
+  "etal": false
+ },
+ {
+  "key": "yedetore2023",
+  "surnames": [
+   "Yedetore",
+   "Linzen",
+   "Frank",
+   "McCoy"
+  ],
+  "year": "2023",
+  "etal": false
+ },
+ {
+  "key": "zhao2024",
+  "surnames": [
+   "Zhao",
+   "Qu",
+   "Staniszewski",
+   "Tworkowski",
+   "Liu",
+   "Miłoś",
+   "Wu",
+   "Minervini"
+  ],
+  "year": "2024",
+  "etal": false
+ }
+]

@@ -6,6 +6,10 @@ The repository uses working names from the registrations. **Paper Study 1** (sma
 
 **Corrected scores.** Study 1 scores were corrected on 12 Oct 2026 (model-loading error; `results/rescore/RESULTS.md`). Every Study 1 number in the paper comes from `results/rescore/`, `results/study1o/` or `results/cl_revision/`. Folders with older scores carry a `SUPERSEDED.md` note.
 
+## The paper itself
+
+The LaTeX source, bibliography and compiled PDF are in `paper_latex/` (build with `latexmk -pdf paper.tex` there; see `paper_latex/README.md`).
+
 ## Paper tables and figures
 
 | Paper | Command (from the repo root) | Inputs | Output |

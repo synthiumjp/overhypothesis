@@ -21,7 +21,7 @@ The repository uses working names from the registrations. **Paper Study 1** (sma
 | Figure 1 | schematic with illustrative sentences; no data | | |
 | Figures 2, 3, 4 | `python scripts/make_paper_figures.py` | listed in the script header | `results/paper_figures/` (CSV of every plotted value, and PNGs) |
 
-Python packages: `requirements.txt`. Files under `docs/RUN_*.md` are the run logs written for the training PC and Mac; their paths (for example `E:\AI Checkpoints`) are machine-specific.
+Python packages: `requirements.txt`. Zipf frequencies of the Study 3 word lists (Appendix G): `pip install wordfreq`, then the mean of `wordfreq.zipf_frequency(word, 'en')` over each list in `scripts/english_oneshot.py` (3.75, 3.82, 3.70). Files under `docs/RUN_*.md` are the run logs written for the training PC and Mac; their paths (for example `E:\AI Checkpoints`) are machine-specific.
 
 **Changes to locked scripts after registration.** The MD5 checks in `docs/amendment5_checksums.txt` and `docs/amendment6_checksums.txt` fail for three scripts, each changed after locking for a documented reason:
 - `scripts/english_oneshot.py`: commits 3c71203 and 0aeb583 (9 Oct 2026), MLX loading options for the 70B models only; scoring is unchanged.

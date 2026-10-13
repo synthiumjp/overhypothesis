@@ -15,7 +15,7 @@ Each entry was checked against a source page (ACL Anthology, publisher, proceedi
 - Diehl Martinez, R., Goriely, Z., McGovern, H., Davis, C., Caines, A., Buttery, P., & Beinborn, L. (2023). CLIMB – Curriculum learning for infant-inspired model building. BabyLM Challenge at CoNLL 2023 (pp. 112–127). https://doi.org/10.18653/v1/2023.conll-babylm.10
 - Zhao, Y., Qu, Y., Staniszewski, K., Tworkowski, S., Liu, W., Miłoś, P., Wu, Y., & Minervini, P. (2024). Analysing the impact of sequence composition on language model pre-training. ACL 2024 (Vol. 1, pp. 7897–7912). https://doi.org/10.18653/v1/2024.acl-long.427
 - Schoenegger, L., Thoma, L., Blevins, T., & Roth, B. (2025). Influence-driven curriculum learning for pre-training on limited data. First BabyLM Workshop (pp. 356–379). https://doi.org/10.18653/v1/2025.babylm-main.26
-- Thrush, T., Wilcox, E., & Levy, R. (2020). Investigating novel verb learning in BERT: Selectional preference classes and alternation-based syntactic generalization. Third BlackboxNLP Workshop. DOI to confirm: 2020.blackboxnlp-1.25 (MIT record) vs -1.26 (Anthology volume page).
+- Thrush, T., Wilcox, E., & Levy, R. (2020). Investigating novel verb learning in BERT: Selectional preference classes and alternation-based syntactic generalization. Third BlackboxNLP Workshop (pp. 265–275). https://doi.org/10.18653/v1/2020.blackboxnlp-1.25 (Anthology volume page: -1.25; -1.26 is the next paper, which starts on p. 276).
 - Wang, W., Jiang, G., Linzen, T., & Lake, B. M. (2025). Rapid word learning through meta in-context learning. EMNLP 2025 (pp. 32038–32073). https://doi.org/10.18653/v1/2025.emnlp-main.1631
 
 ## Machine learning
@@ -42,3 +42,34 @@ Each entry was checked against a source page (ACL Anthology, publisher, proceedi
 ## Still to confirm before submission
 
 Thrush et al. DOI suffix; Elman DOI; Kuhn & De Mori on IEEE Xplore; Gershkoff-Stowe & Smith abstract.
+
+## Full check of the CL reference list (13 Oct 2026, doc rev 105)
+
+All 60 entries were checked against source pages (ACL Anthology, publisher, PMLR, NeurIPS proceedings, LDC catalogue, TalkBank, arXiv, PMC). Each citing sentence was also checked against the work. The reference list and in-text citations match both ways (no orphans).
+
+Bibliographic fixes made:
+- Bengio et al. 2009: "26th Annual International Conference on Machine Learning".
+- Biderman et al. 2023: Q. G. Anthony; volume 202 of PMLR.
+- Canavan et al. 1997, Canavan and Zipperlen 1996a, 1996b: LDC DOIs 10.35111/exq3-x930, 10.35111/d37s-c536, 10.35111/a8vf-6k58.
+- Chan et al. 2022: pages 18878–18891; DOI 10.52202/068431-1371.
+- Colunga and Smith 2005: DOI 10.1037/0033-295X.112.2.347.
+- Feinman and Lake 2018: "40th Annual Meeting of the Cognitive Science Society", pages 1657–1662.
+- Haga et al. 2024: Anthology URL added.
+- Landau, Smith and Jones 1988: 3(3); DOI 10.1016/0885-2014(88)90014-7.
+- Onnis, Waterfall and Edelman 2008: DOI 10.1016/j.cognition.2008.10.004.
+- Prystawski, Li and Goodman 2023: DOI 10.52202/075280-3107.
+- Ritter et al. 2017: volume 70 of PMLR.
+- Rohde and Plaut 1999: 72(1); DOI 10.1016/S0010-0277(99)00031-1.
+- Smith et al. 2002: DOI 10.1111/1467-9280.00403.
+- Thrush, Wilcox and Levy 2020: pages 265–275; DOI 10.18653/v1/2020.blackboxnlp-1.25.
+- New: Charpentier, L., L. Choshen, R. Cotterell, M. O. Gul, M. Y. Hu, J. Jumelet, T. Linzen, J. Liu, A. Mueller, C. Ross, R. S. Shah, A. Warstadt, E. G. Wilcox, and A. Williams. 2025. BabyLM turns 3: Call for papers for the 2025 BabyLM workshop. arXiv:2502.10645 (Section 4.5 announces the GPT-2 Small baselines for Strict and Strict-Small; author order from arXiv).
+
+Citing sentences corrected:
+- Landau et al. 1988 (introduction): the test objects differed in size or texture, not colour.
+- Misra et al. 2023: models fail to pass properties to subtypes when the context contains distracting information (they succeed in simple contexts).
+- van Schijndel and Linzen 2018: adaptation needs an added adaptation step in their recurrent model; Sinclair et al. 2022 is the transformer priming result.
+- Schoenegger et al. 2025: influence-based ordering helped; the inconsistent gains are for human-defined difficulty curricula (Diehl Martinez et al. 2023).
+- Pythia 14M: the 2023 paper covers 70M to 12B; van der Wal et al. 2025 added to the citation for the range.
+- BabyLM GPT-2 baselines (BabyLM-community/babylm-baseline-10m-gpt2 and -100m-gpt2): from the 2025 challenge, now cited to Charpentier et al. 2025, not Warstadt et al. 2023 (whose baselines were OPT, RoBERTa and T5).
+
+Left as is (checked, correct): all other entries, including Misra et al. 2023 pages and DOI, Perry et al. 2010, Reddy 2024, Shi et al. 2024 (12 authors, camera-ready), Kuhn and De Mori 1990 (TPAMI 12(6):570–583, DOI 10.1109/34.56193), Küntay and Slobin 1996 (pp. 265–286), Gershkoff-Stowe and Smith 2004. Not added because unconfirmed: issue number for Vlach et al. 2008.

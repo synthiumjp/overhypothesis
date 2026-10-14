@@ -1,6 +1,6 @@
 # Different exemplars, close together
 
-Code, data and analysis outputs for the paper "Different exemplars, close together: how the arrangement of training text teaches language models which features persist" (Jon-Paul Cacioli; Computational Linguistics, short paper, submitted).
+Code, data and analysis outputs for the paper "Different exemplars, close together: how the arrangement of training text teaches language models which features persist" (Jon-Paul Cacioli; manuscript submitted for publication).
 
 All registrations are in one OSF project: [osf.io/qj9hb](https://osf.io/qj9hb).
 

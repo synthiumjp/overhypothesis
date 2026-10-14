@@ -12,7 +12,7 @@ tags:
 
 # Trained models for "Different exemplars, close together"
 
-Final weights, model settings and training logs for the 390 small transformers of Study 1 in J.-P. Cacioli, "Different Exemplars, Close Together: How the Arrangement of Training Text Teaches Language Models Which Features Persist" (submitted to *Computational Linguistics*).
+Final weights, model settings and training logs for the 390 small transformers of Study 1 in J.-P. Cacioli, "Different Exemplars, Close Together: How the Arrangement of Training Text Teaches Language Models Which Features Persist".
 
 - Code, corpora, tokenisers, test items and all scores: https://github.com/synthiumjp/overhypothesis
 - Registrations: https://osf.io/qj9hb
@@ -55,4 +55,4 @@ Intermediate checkpoints were not kept, except the 461 used for the learning cur
 
 ## Citation
 
-Cacioli, J.-P. (2026). Different exemplars, close together: How the arrangement of training text teaches language models which features persist. Manuscript submitted to *Computational Linguistics*.
+Cacioli, J.-P. (2026). Different exemplars, close together: How the arrangement of training text teaches language models which features persist. Manuscript submitted for publication.

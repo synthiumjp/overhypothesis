@@ -672,5 +672,35 @@
   ],
   "year": "2024",
   "etal": false
+ },
+ {
+  "key": "geirhos2019",
+  "surnames": [
+   "Geirhos",
+   "Rubisch",
+   "Michaelis",
+   "Bethge",
+   "Wichmann",
+   "Brendel"
+  ],
+  "year": "2019",
+  "etal": false
+ },
+ {
+  "key": "olsson2022",
+  "surnames": [
+   "Olsson",
+   "Elhage",
+   "Nanda",
+   "Joseph",
+   "DasSarma",
+   "Henighan",
+   "Mann",
+   "Askell",
+   "Bai",
+   "Chen"
+  ],
+  "year": "2022",
+  "etal": true
  }
 ]

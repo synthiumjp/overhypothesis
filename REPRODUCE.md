@@ -22,6 +22,7 @@ The LaTeX source, bibliography and compiled PDF are in `paper_latex/` (build wit
 | Table C1 (training settings) | `scripts/train_model.py` (`MODEL_CONFIGS`, `TRAIN_CONFIG`); training driver `scripts/run_phase2.py`; tokenisers `scripts/train_all_tokenizers.py` | | `results/train_logs/` (Study 1b models) |
 | Table E3 (what the corpora reward) | `python scripts/corpus_conditionals.py` | `data/corpora*/` | `results/cl_revision/corpus_conditionals.csv` |
 | Noun copy check (Section 3.5, Appendix E) | `python scripts/noun_copy_check.py ...` (command in `docs/RUN_NOUN_COPY.md`; needs the checkpoints) | checkpoints | `results/cl_revision/noun_copy_check.csv` |
+| Study 3 token-balanced index and model index vs corpus reference (Sections 3.5 and 5.2, exploratory) | `python scripts/cl_round3_analyses.py` | `results/study1d/scores_merged.csv`, `data/wug_tests/english_items.csv`, `results/cl_revision/corpus_conditionals.csv`, `results/paper_tables/table2.csv` | `results/cl_revision/study3_token_balanced.*`, `reference_agreement.json` |
 | Figure 1 | schematic with illustrative sentences; no data | | |
 | Figures 2, 3, 4 | `python scripts/make_paper_figures.py` | listed in the script header | `results/paper_figures/` (CSV of every plotted value, and PNGs) |
 

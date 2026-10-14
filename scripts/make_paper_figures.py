@@ -7,7 +7,7 @@ Figure 1 is a schematic with illustrative sentences and has no data.
 Inputs (all in the repository):
   Figure 2  results/rescore/study1x_exploratory_by_condition.csv  (index per size, corrected scores)
             data/corpora_x/manifest.json                          (B of each corpus, mean over seeds)
-            results/cl_revision/summary.json                      (effective clustering of natural corpora)
+            results/cl_revision/summary.json                      (clustering B of natural corpora)
   Figure 3  results/study1o/summary_per_run.csv                    (Objects corpora, k = 1, same noun)
   Figure 4  results/study1d/tests_final_secondary.csv              (Pythia, original items; step-0 level)
             results/study1d/tests_final.json                       (BabyLM baselines, registered H8a/H8b)
@@ -52,8 +52,8 @@ def figure2():
             rows.append({"order": label, "B": round(B, 3), "size": size, "index": r2(idx.loc[cond, col])})
         rows.append({"order": label, "B": round(B, 3), "size": "all 15", "index": r2(idx.loc[cond, "all"])})
     corp = json.load(open("results/cl_revision/summary.json"))["corpora"]
-    refs = [{"corpus": n, "B_eff": r2(corp[k]["B_eff"]), "lo": r2(corp[k]["B_eff_lo"]),
-             "hi": r2(corp[k]["B_eff_hi"])} for n, k in NATURAL]
+    refs = [{"corpus": n, "B": r2(corp[k]["B"]), "lo": r2(corp[k]["B_lo"]),
+             "hi": r2(corp[k]["B_hi"])} for n, k in NATURAL]
     return pd.DataFrame(rows), pd.DataFrame(refs)
 
 
@@ -99,8 +99,8 @@ def draw(out, f2, refs, f3, f4a, babylm, untrained, f4b):
     fig, ax = plt.subplots(figsize=(7, 4))
     for _, r in refs.iterrows():
         ax.axvspan(r.lo, r.hi, alpha=0.08, color="grey")
-        ax.axvline(r.B_eff, ls="--", color="grey", lw=0.8)
-        ax.text(r.B_eff, 6.8, f" {r.corpus}", fontsize=7, rotation=90, va="top")
+        ax.axvline(r.B, ls="--", color="grey", lw=0.8)
+        ax.text(r.B, 6.8, f" {r.corpus}", fontsize=7, rotation=90, va="top")
     per = f2[f2["size"] != "all 15"]
     ax.scatter(per.B, per["index"], color="grey", s=12)
     m = f2[f2["size"] == "all 15"]

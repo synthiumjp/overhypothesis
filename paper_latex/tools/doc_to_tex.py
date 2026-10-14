@@ -297,7 +297,7 @@ while k < len(blocks):
         elif lvl == 3:
             out.append(r"\subsection{" + esc(re.sub(r"^\d+\.\d+\s+", "", text)) + "}")
         elif lvl == 4:
-            out.append(r"\subsubsection*{" + esc(text) + "}")
+            out.append(r"\subsubsection*{" + esc(text) + (r"\nohdpunct" if text.rstrip().endswith("?") else "") + "}")
         elif mode == "refs":
             pass
         elif text:

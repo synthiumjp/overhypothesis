@@ -1,0 +1,8 @@
+{
+ "n_conditions": 12,
+ "pearson_r": 0.952,
+ "pearson_p": 1.9031948790124878e-06,
+ "spearman_rho": 0.909,
+ "spearman_p": 4.191044653034231e-05,
+ "pearson_r_without_same_object_grouped": 0.973
+}

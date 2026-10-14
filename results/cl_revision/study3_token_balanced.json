@@ -1,0 +1,31 @@
+{
+ "pairs_total": 168,
+ "pairs_balanced_abs_delta_below_1": 98,
+ "pairs_unbalanced_abs_delta_above_8": 70,
+ "share_items_balanced_by_dim": {
+  "colour": 0.25,
+  "shape": 1.0,
+  "texture": 0.479
+ },
+ "untrained_index_all_items": {
+  "pythia-1.4b": 0.553,
+  "pythia-14m": 0.502,
+  "pythia-160m": 0.791,
+  "pythia-1b": 0.33,
+  "pythia-2.8b": 0.46,
+  "pythia-410m": 0.553,
+  "pythia-70m": 0.521
+ },
+ "untrained_index_balanced_items": {
+  "pythia-1.4b": 0.119,
+  "pythia-14m": -0.316,
+  "pythia-160m": 0.312,
+  "pythia-1b": -0.212,
+  "pythia-2.8b": -0.036,
+  "pythia-410m": 0.198,
+  "pythia-70m": 0.069
+ },
+ "pythia_size_rho_all": 0.9166666666666666,
+ "pythia_size_rho_balanced": 0.9333333333333332,
+ "pythia_size_p_balanced": 0.00023589981215941651
+}

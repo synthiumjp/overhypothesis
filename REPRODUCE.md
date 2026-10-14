@@ -151,7 +151,7 @@ The coding sheet holds transcript excerpts and is not in git. The blind second c
 
 ## Not in this repository
 
-- Trained Study 1 models: final weights (`model_final.pt`), `model_config.json` and `train_log.json` for all 390 models are on Zenodo, https://doi.org/10.5281/zenodo.23338406 (about 30 GB in five archives named after the checkpoint folders: `overhypothesis_checkpoints`, `_bursty`, `_x`, `_w512`, `_o`; MD5 of every file in `checksums_md5.txt` there). Scripts that need the checkpoints take the folder as `--ckpt_dir`.
+- Trained Study 1 models: final weights (`model_final.pt`), `model_config.json` and `train_log.json` for all 390 models are on Hugging Face, https://huggingface.co/synthiumjp/overhypothesis-study1-models (about 32 GB in 73 archives named after the checkpoint folders, for example `overhypothesis_x_part01.tar`; each holds whole runs and unpacks on its own; MD5 of every file in `checksums_md5.txt` there). Scripts that need the checkpoints take the folder as `--ckpt_dir`.
 - Intermediate checkpoints (`ckpt_step*.pt`) were not archived. The 461 used for the learning curves (listed in `results/study1c/raw/track_manifest_regular.csv` and `track_manifest_bursty.csv`) are kept by the author and available on request. Their scores are in `results/rescore/`.
 - Thirty runs trained on 25% or 50% of the corpus, and one pilot, from the original registration, are not used in the paper and not archived.
 - Pretrained models for Study 1d are public on Hugging Face at the revisions in `results/study1d/models.csv`.

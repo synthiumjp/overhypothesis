@@ -124,7 +124,7 @@ def inline(frag):
     s = re.sub(r'(^|[\s(\[\x01\x03])"', r"\1``", s)
     s = s.replace('"', "''")
     # urls
-    s = re.sub(r"(?<![/\w])((?:github\.com|osf\.io|doi\.org)/[\w./-]*[\w/])", r"\\url{\1}", s)
+    s = re.sub(r"(?<![/\w])((?:github\.com|osf\.io|doi\.org|huggingface\.co)/[\w./-]*[\w/])", r"\\url{\1}", s)
     s = s.replace("\x01", r"\emph{").replace("\x02", "}").replace("\x03", r"\textbf{").replace("\x04", "}")
     return s.strip()
 

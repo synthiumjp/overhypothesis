@@ -23,7 +23,7 @@ python scripts/cl_revision_analyses.py # seed-level tests, corpus intervals, eff
 cd data/corpora && md5sum -c checksums_md5.txt
 ```
 
-Scoring needs the trained models. Their final weights and training logs are on Zenodo: [doi.org/10.5281/zenodo.23338406](https://doi.org/10.5281/zenodo.23338406).
+Scoring needs the trained models. Their final weights and training logs are on Hugging Face: [huggingface.co/synthiumjp/overhypothesis-study1-models](https://huggingface.co/synthiumjp/overhypothesis-study1-models).
 
 ## Names used in the repository
 

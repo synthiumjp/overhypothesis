@@ -1,0 +1,16 @@
+3cf8d8ce8e7a9540202ea8d28705664e  scripts/make_fresh_corpora.py
+f3703d5d241c4b65f1d3651eb560da9a  scripts/train_model.py
+1f2b1840d13a103f68ad00af94f4f44b  scripts/heldout_loss.py
+cc2af66268757e12f4b21633125659e1  scripts/amendment8_tests.py
+f918ddf0cde017dce98c825bbb399e7e  scripts/study1x_tests.py
+8317637ff86d7a98ea092bc3a9e97234  scripts/corpus_conditionals.py
+9947d9073ace9e53877dbe21193a7094  scripts/make_study1x_corpora.py
+a2f02ac34e829107932d6637150116c1  scripts/make_bursty_corpus.py
+df9a937c8e13fdbc0d6db51ae7746745  scripts/corpus_generator.py
+c6607b9a53a459cb698ec4c567930717  scripts/oneshot_eval.py
+51d0a2e27ada642dc79842f9b706cb3f  scripts/study1_trained_nouns.py
+6d1b6064392d1395cb217af494d240c7  data/wug_tests/oneshot_items.csv
+cc19df70edaacaf2425be11507dca84a  data/tokenizers/regular_tokenizer.json
+54160895d738fbb81647b2982d65d72d  docs/amendment8_corpus_manifest.json
+60298de8218d33ce08d0712c80d6f812  docs/AMENDMENT8.md
+ad7df6625f4232b09634b07cd2db1fb6  docs/RUN_AMENDMENT8.md

@@ -183,6 +183,22 @@ class CorpusDataset(Dataset):
         return x, y
 
 
+class FreshWindowDataset(Dataset):
+    """Amendment 8: non-overlapping windows (stride = seq_len) over a numpy token array,
+    so that, within one pass through the data, no token is trained on twice."""
+    def __init__(self, token_ids, seq_len: int):
+        self.data    = token_ids
+        self.seq_len = seq_len
+
+    def __len__(self):
+        return max(1, (len(self.data) - 1) // self.seq_len)
+
+    def __getitem__(self, idx):
+        start = idx * self.seq_len
+        chunk = np.asarray(self.data[start: start + self.seq_len + 1], dtype=np.int64)
+        return torch.from_numpy(chunk[:-1].copy()), torch.from_numpy(chunk[1:].copy())
+
+
 def load_and_tokenize(corpus_path: Path, tokenizer: Tokenizer,
                       corpus_fraction: float = 1.0) -> list:
     """Load corpus, tokenise, optionally truncate for dose-response."""
@@ -194,6 +210,30 @@ def load_and_tokenize(corpus_path: Path, tokenizer: Tokenizer,
         text  = "\n".join(lines[:n])
     encoding = tokenizer.encode(text)
     return encoding.ids
+
+
+def load_and_tokenize_lines(corpus_path: Path, tokenizer: Tokenizer,
+                            batch_lines: int = 200_000) -> np.ndarray:
+    """Amendment 8: for corpora of tens of millions of tokens. Encodes the file line by
+    line in batches into a uint16 array. With the Whitespace pre-tokeniser this gives the
+    same ids as encoding the whole text at once (newlines are whitespace)."""
+    if tokenizer.get_vocab_size() > 65_535:
+        raise SystemExit("vocabulary too large for uint16")
+    parts, buf = [], []
+    def flush():
+        if buf:
+            enc = tokenizer.encode_batch(buf)
+            parts.append(np.fromiter((i for e in enc for i in e.ids), dtype=np.uint16))
+            buf.clear()
+    with open(corpus_path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.rstrip("\n")
+            if line:
+                buf.append(line)
+            if len(buf) >= batch_lines:
+                flush()
+    flush()
+    return np.concatenate(parts) if parts else np.zeros(0, dtype=np.uint16)
 
 
 # ── Device selection ──────────────────────────────────────────────────────────
@@ -339,6 +379,10 @@ def main():
                         help="training window in tokens (default: the size's setting, 128)")
     parser.add_argument("--keep_tokens_per_step", action="store_true",
                         help="with --seq_len, scale the batch so tokens per step stay as in the default")
+    # Amendment 8 (fresh order). Default leaves every earlier run unchanged.
+    parser.add_argument("--fresh_windows", action="store_true",
+                        help="encode line by line and train on non-overlapping windows; refuses to "
+                             "start if the corpus is too short to supply every step without reuse")
     args = parser.parse_args()
     if args.seq_len:
         base = TRAIN_CONFIG[args.size]
@@ -382,14 +426,27 @@ def main():
         print(f"WARNING: seed-specific corpus not found, using seed42 corpus")
     print(f"Corpus: {corpus_path.name}")
 
-    token_ids = load_and_tokenize(corpus_path, tokenizer, args.corpus_fraction)
+    if args.fresh_windows:
+        if args.corpus_fraction < 1.0:
+            raise SystemExit("--fresh_windows does not support --corpus_fraction")
+        token_ids = load_and_tokenize_lines(corpus_path, tokenizer)
+    else:
+        token_ids = load_and_tokenize(corpus_path, tokenizer, args.corpus_fraction)
     print(f"Corpus tokens: {len(token_ids):,} "
           f"(fraction={args.corpus_fraction})")
 
     # ── Dataset + DataLoader ──────────────────────────────────────────────────
     cfg        = TRAIN_CONFIG[args.size]
     seq_len    = cfg["seq_len"]
-    dataset    = CorpusDataset(token_ids, seq_len)
+    if args.fresh_windows:
+        dataset = FreshWindowDataset(token_ids, seq_len)
+        steps   = 100 if args.smoke_test else cfg["max_steps"]
+        needed  = steps * cfg["batch_size"]
+        print(f"Fresh windows: {len(dataset):,} available, {needed:,} needed")
+        if len(dataset) < needed and not args.smoke_test:
+            raise SystemExit("corpus too short for fresh windows: some text would be reused")
+    else:
+        dataset = CorpusDataset(token_ids, seq_len)
     dataloader = DataLoader(
         dataset, batch_size=cfg["batch_size"],
         shuffle=True, drop_last=True,
@@ -419,6 +476,7 @@ def main():
             "vocab_size": vocab_size, "n_params": n_params,
             "model_cfg": mcfg, "train_cfg": cfg,
             "device": device_type,
+            **({"fresh_windows": True, "corpus_file": str(corpus_path)} if args.fresh_windows else {}),
         }, f, indent=2)
 
     # ── Smoke test override ───────────────────────────────────────────────────

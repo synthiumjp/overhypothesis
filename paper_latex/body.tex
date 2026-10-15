@@ -25,7 +25,7 @@ We ask four questions in three studies. Study 1 trains 390 small transformers on
 
 The project used a sequence of registrations. Later ones were written after earlier stages had been examined, and some were informed by Study 1 scores later found to have been loaded incorrectly. A test is called registered only if its analysis was specified before the models concerned were trained or scored, or before the transcripts were read. Appendix A gives the dated record.
 
-The paper makes three contributions. With content held fixed, it shows that the arrangement of training text determines how strongly small transformers learn which feature persists across objects, and that runs of different objects of a kind teach this more selectively than runs re-describing one object, which teach that every feature persists. It separates this persistence from an expectation tied to the noun, and shows that the models learned mainly the persistence, even when the data gave strong evidence for the noun-tied expectation. And it measures the same arrangement statistic in natural corpora, as a descriptive comparison. Models pretrained on written text show only a weak, partial analogue.
+The paper makes three contributions. With content held fixed, it shows that the arrangement of training text determines how strongly small transformers learn which feature persists across objects (grouped order taught it strongly, while in random order the index was not reliably above zero), and that runs of different objects of a kind teach this more selectively than runs re-describing one object, which teach that every feature persists. It separates this persistence from an expectation tied to the noun, and shows that the models learned mainly the persistence. And it measures the same arrangement statistic in natural corpora, as a descriptive comparison. Models pretrained on written text show only a weak, partial analogue.
 
 Our claims are about how transformers learn. We use the shape bias as a test, as \citet{ritter2017} did for image classifiers, and we treat speech to children as one natural corpus among others, not as the thing being explained.
 
@@ -176,7 +176,7 @@ The index rose with clustering at every step of the graded orders (Table 2, Figu
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{figures/figure2.png}
-\caption{Shape-over-colour index (nats, one exemplar, same noun) against clustering B for the six Regular orders. Grey points: mean of the five models at each size; blue line: mean of all 15. Dashed lines and shaded bands: clustering B in the three natural corpora (Study 2), with 95\% intervals. The overlay places the natural values on the same axis; it does not predict what a model trained on them would learn.}
+\caption{Shape-over-colour index (nats, one exemplar, same noun) against clustering B for the six Regular orders. Grey points: mean of the five models at each size; blue line: mean of all 15. Dashed lines and shaded bands: effective clustering of different objects in the three natural corpora (Study 2), with 95\% intervals, placed as Amendment 7 specified. The overlay places the natural values on the same axis; it does not predict what a model trained on them would learn.}
 \label{fig:2}
 \end{figure}
 
@@ -247,7 +247,7 @@ $B_{\mathrm{eff}}$, strict & 1.70 [1.53,~1.96] & 1.33 [1.21,~1.54] & 1.06 [1.02,
 
 Nearly half of the repeated labels in speech to children referred again to the same object, and about a quarter brought a different object, a share similar to adult conversation. Most repeated labels in written text did not refer to a physical object, or referred to the kind in general. Effective clustering of different objects was therefore lower than B in every corpus. Speech to children was above written text on this measure (difference 0.73 [0.41,~1.09]) but not reliably above adult conversation (0.29 [\textminus{}0.14,~0.69]).
 
-Raw clustering in written text and adult conversation lies between random order and the graded order at B = 3.6 of Study 1, and speech to children is at that level (Figure 2), a range in which the small models were sensitive to clustering.
+Placed on the Study 1 scale by effective clustering, as Amendment 7 specified, written text lies between random order and the graded order at B = 1.4, and adult conversation and speech to children lie between the graded orders at B = 1.4 and B = 3.6 (Figure 2). Over that range the index of the small models rose only from 0.47 to 1.43 nats. This does not say what a model trained on each corpus would learn.
 
 The corpora differ more in how often such repetitions occur. Speech to children contained 10.1 same-label pairs per 1,000 words, against about 1 in the other two. Combining these rates with the coded shares, it contained about 2.8 nearby repetitions per 1,000 words that bring a different object of a kind, against about 0.2 in adult conversation and 0.1 in written text (exploratory). Part of this difference comes from our choice of nouns. B is a ratio and does not capture density, which Study 1 held fixed.
 
@@ -413,7 +413,7 @@ Row & Old loader & Corrected & Verdict before $\rightarrow$ after \\
 \multicolumn{7}{l}{\textbf{1. Does grouping teach the fixed feature?}}\\
 1 & Grouped order gives a higher index than random order & 6.49 vs 0.47 & 6.02 [5.24,~6.79] & $<$~.001 & $<$~.001 & Supported \\
 2 & Random order gives an index above zero & 0.47 & 0.47 [\textminus{}0.61,~1.56] & .15 & .061 & Not supported \\
-3 & Random order: Regular above Mixed-slot & 0.47 vs \textminus{}0.25 & 0.73 [\textminus{}0.69,~2.15] & .11 & .032 & Supported by the registered test only \\
+3 & Random order: Regular above Mixed-slot & 0.47 vs \textminus{}0.25 & 0.73 [\textminus{}0.69,~2.15] & .11 & .032 & Supported by the registered test, not at the seed level \\
 4 & Grouped: Regular above No stable feature & 6.49 vs \textminus{}0.44 & 6.93 [5.47,~8.40] & $<$~.001 & $<$~.001 & Supported \\
 5 & Grouped: Colour stable below No stable feature & \textminus{}3.20 vs \textminus{}0.44 & 2.76 [1.99,~3.52] & $<$~.001 & $<$~.001 & Supported \\
 6 & Grouped: Regular above Mixed-slot, shape over colour & 6.49 vs 2.12 & 4.37 [1.98,~6.76] & .004 & $<$~.001 & Supported \\
@@ -453,7 +453,7 @@ Row & Old loader & Corrected & Verdict before $\rightarrow$ after \\
 \item The two models of about 70 billion parameters were scored with Apple's MLX library, because PyTorch crashed the machine; on smaller models the two differed by 0.003 to 0.010 nats on average. Their loading needed changes made after registration (weights read before conversion, a fixed memory limit, batches of four); batches of one and four gave scores within 0.001 nats. The weight-download library was held at an earlier version. Some checks ran under a different software environment, which changed rescored values by 0.005 nats or less.
 \item The registered CHILDES download address had moved; the same collection was downloaded from its current address. CABank now requires an account, so its files were downloaded after signing in (9 October 2026).
 \item In the hand coding, a rule for labels not used for a physical object was added during coding and applied by both coders. One pair of the reliability subset was discussed with an AI assistant during coding and left out of the agreement check.
-\item Added after registration: seed-level tests for rows 1 to 3 and 6 to 8 (Amendments 5 to 7 specified them for rows 4, 5 and 9 to 15), the seed-level intervals and intervals for the differences between corpora. The interval for each corpus comes from the registered two-stage bootstrap (sources, then documents), rerun for this paper. Amendment 7 said that, if rows 14 and 15 were supported, natural corpora would be placed on the Study 1 scale by effective clustering. They were, but Figure 2 places the corpora by raw B, because the graded levels were matched to raw B and grouped same-object runs also raised the index (Table 2), so effective clustering would understate natural input. Effective clustering is reported as exploratory (Table 3).
+\item Added after registration: seed-level tests for rows 1 to 3 and 6 to 8 (Amendments 5 to 7 specified them for rows 4, 5 and 9 to 15), the seed-level intervals and intervals for the differences between corpora. The interval for each corpus comes from the registered two-stage bootstrap (sources, then documents), rerun for this paper. Amendment 7 specified that, if rows 14 and 15 were supported, natural corpora would be placed on the Study 1 scale by effective clustering. They were, and Figure 2 does so. Effective clustering itself was computed before Amendment 7 and is reported as exploratory (Table 3).
 \item Names: the registered ``Scrambled'' corpus is called Mixed-slot here, and the studies are numbered in reading order.
 \end{enumerate}
 

@@ -1,0 +1,4 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_fresh\regular_grouped\regular_tiny_seed1001\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_f_regular_grouped,tiny,1001
+E:\AI Checkpoints\overhypothesis_fresh\regular_grouped\regular_small_seed1001\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_f_regular_grouped,small,1001
+E:\AI Checkpoints\overhypothesis_fresh\regular_grouped\regular_medium_seed1001\model_final.pt,data\tokenizers\regular_tokenizer.json,regular_f_regular_grouped,medium,1001

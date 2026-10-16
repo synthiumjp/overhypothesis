@@ -1,0 +1,16 @@
+ckpt,tokenizer,condition,size,seed
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_tiny_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,tiny,42
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_tiny_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,tiny,123
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_tiny_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,tiny,456
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_tiny_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,tiny,789
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_tiny_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,tiny,1001
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_small_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,small,42
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_small_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,small,123
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_small_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,small,456
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_small_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,small,789
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_small_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,small,1001
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_medium_seed42\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,medium,42
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_medium_seed123\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,medium,123
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_medium_seed456\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,medium,456
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_medium_seed789\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,medium,789
+E:\AI Checkpoints\overhypothesis_fresh\objects_same\regular_medium_seed1001\model_final.pt,.\data\tokenizers\regular_tokenizer.json,regular_f_objects_same,medium,1001

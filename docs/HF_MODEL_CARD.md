@@ -12,7 +12,7 @@ tags:
 
 # Trained models for "Different exemplars, close together"
 
-Final weights, model settings and training logs for the 390 small transformers of Study 1 in J.-P. Cacioli, "Different Exemplars, Close Together: How the Arrangement of Training Text Teaches Language Models Which Features Persist".
+Final weights, model settings and training logs for the 510 small transformers of Study 1 in J.-P. Cacioli, "Different Exemplars, Close Together: How the Arrangement of Training Text Teaches Small Transformers Which Features Persist".
 
 - Code, corpora, tokenisers, test items and all scores: https://github.com/synthiumjp/overhypothesis
 - Registrations: https://osf.io/qj9hb
@@ -25,7 +25,7 @@ These are research artefacts for studying what models learn from the arrangement
 
 ## Files
 
-73 archives, named after the repository's working folders and numbered. Each archive holds whole runs and can be unpacked on its own (`tar -xf name.tar`). The matching `.list.txt` lists its contents.
+81 archives, named after the repository's working folders and numbered. Each archive holds whole runs and can be unpacked on its own (`tar -xf name.tar`). The matching `.list.txt` lists the contents of the first 73; MD5s of the files in the fresh-text archives are in `checksums_md5_fresh.txt`.
 
 | Archives | Conditions | Models |
 |---|---|---|
@@ -34,6 +34,7 @@ These are research artefacts for studying what models learn from the arrangement
 | `overhypothesis_x_part01`–`22` | graded orders; No stable feature and Colour stable corpora | 120 |
 | `overhypothesis_w512_part01`–`09` | 512-token window | 45 |
 | `overhypothesis_o_part01`–`14` | same-object and different-object runs | 75 |
+| `overhypothesis_fresh_<condition>` (8 archives) | fresh text (every pass arranged anew, read once): Regular random, B 3.5 and grouped; No stable feature grouped; same-object and different-object runs; Reassigned random and grouped | 120 |
 
 Each run folder (for example `overhypothesis_x/graded_b3p6/regular_small_seed42/`) holds:
 

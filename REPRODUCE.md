@@ -4,7 +4,7 @@ Paper: "Different exemplars, close together: how the arrangement of training tex
 
 The repository uses working names from the registrations. **Paper Study 1** (small models trained on artificial languages) = repo Studies 1b, 1c, 1x (Amendment 5 Part A), 1w (Amendment 6) and 1o (Amendment 7); its scores are in `results/rescore/` and `results/study1o/`. **Paper Study 2** (clustering of natural input) = repo Study 1e and `study3x` (Amendment 5 Part C). **Paper Study 3** (pretrained models) = repo Study 1d and `study2x` (Amendment 5 Part B). Amendment 5 itself calls the pretrained-model study "Study 2" and the corpus study "Study 3".
 
-**Corrected scores.** Study 1 scores were corrected on 12 Oct 2026 (model-loading error; `results/rescore/RESULTS.md`). Every Study 1 number in the paper comes from `results/rescore/`, `results/study1o/` or `results/cl_revision/`. Folders with older scores carry a `SUPERSEDED.md` note.
+**Corrected scores.** Study 1 scores were corrected on 12 Oct 2026 (model-loading error; `results/rescore/RESULTS.md`). Every Study 1 number in the paper comes from `results/amendment8/`, `results/rescore/`, `results/study1o/` or `results/cl_revision/`. Folders with older scores carry a `SUPERSEDED.md` note.
 
 ## The paper itself
 
@@ -96,6 +96,16 @@ The bursty corpora regenerate byte-identically: `python scripts/make_bursty_corp
 | Loss check of the corrected loader | `python scripts/loss_check.py ...` | `results/rescore/loss_check.csv` |
 | Effective B (exploratory) | `python scripts/effective_b.py --out results/rescore/effective_b.json` | `effective_b.json` |
 
+## Study 1, fresh text and shape reassignment (Amendment 8)
+
+| Step | Command | Output |
+|---|---|---|
+| Corpora (5.3 GB, not committed) | `python scripts/make_fresh_corpora.py build --out_dir <dir>`, then `check --out_dir <dir> --against docs/amendment8_corpus_manifest.json` (all 80 MD5s must match) | corpora; `results/amendment8/corpus_manifest.json` |
+| Train and score | `docs/RUN_AMENDMENT8.md` (`train_model.py --fresh_windows`) | `results/amendment8/raw/*.csv.gz` (MD5s in `raw_md5.txt`), `train_logs/` |
+| Memorisation check (Table C2) | `python scripts/heldout_loss.py ...` (commands in `docs/RUN_AMENDMENT8.md`) | `results/amendment8/heldout_loss.csv` |
+| Registered tests H23 to H29, S35 to S40 | `python scripts/amendment8_tests.py ...` (command in `docs/RUN_AMENDMENT8.md`) | `results/amendment8/tests.json`, `RESULTS.md` |
+| Run-length counts (Section 3.5, exploratory) | P(next sentence same kind) by current run length, counted on the held-out fresh text | reported in the text |
+
 ## Study 2 extension (Amendment 5, Part B)
 
 | Step | Command | Output |
@@ -152,7 +162,7 @@ The coding sheet holds transcript excerpts and is not in git. The blind second c
 
 ## Not in this repository
 
-- Trained Study 1 models: final weights (`model_final.pt`), `model_config.json` and `train_log.json` for all 390 models are on Hugging Face, https://huggingface.co/synthiumjp/overhypothesis-study1-models (about 32 GB in 73 archives named after the checkpoint folders, for example `overhypothesis_x_part01.tar`; each holds whole runs and unpacks on its own; MD5 of every file in `checksums_md5.txt` there). Scripts that need the checkpoints take the folder as `--ckpt_dir`.
+- Trained Study 1 models: final weights (`model_final.pt`), `model_config.json` and `train_log.json` for the 390 fixed-file models are on Hugging Face, https://huggingface.co/synthiumjp/overhypothesis-study1-models (about 32 GB in 73 archives named after the checkpoint folders, for example `overhypothesis_x_part01.tar`; each holds whole runs and unpacks on its own; MD5 of every file in `checksums_md5.txt` there). Scripts that need the checkpoints take the folder as `--ckpt_dir`. The 120 fresh-text models (Amendment 8) are in the same repository as `overhypothesis_fresh_<condition>.tar`, with MD5s in `checksums_md5_fresh.txt`.
 - Intermediate checkpoints (`ckpt_step*.pt`) were not archived. The 461 used for the learning curves (listed in `results/study1c/raw/track_manifest_regular.csv` and `track_manifest_bursty.csv`) are kept by the author and available on request. Their scores are in `results/rescore/`.
 - Thirty runs trained on 25% or 50% of the corpus, and one pilot, from the original registration, are not used in the paper and not archived.
 - Pretrained models for Study 1d are public on Hugging Face at the revisions in `results/study1d/models.csv`.

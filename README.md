@@ -6,7 +6,7 @@ All registrations are in one OSF project: [osf.io/qj9hb](https://osf.io/qj9hb).
 
 ## What the paper does
 
-- **Study 1.** 390 small transformers (3.4M, 11.0M and 25.6M parameters) trained on artificial languages in which every kind has one fixed feature. The content is held fixed and only the arrangement of sentences changes (random order, graded clustering, grouped runs, runs of the same object or of different objects). After one sentence about a new object, the models are tested on whether they expect its shape, rather than its colour, to repeat.
+- **Study 1.** 510 small transformers (3.4M, 11.0M and 25.6M parameters) trained on artificial languages in which every kind has one fixed feature. The content is held fixed and only the arrangement of sentences changes (random order, graded clustering, grouped runs, runs of the same object or of different objects). The main models read fresh text (every pass arranged anew, no window seen twice); models trained on one fixed file, which memorised it, are reported alongside. Reassigned corpora, in which a kind's shape changes every pass, test whether the models tie shape repetition to the noun. After one sentence about a new object, the models are tested on whether they expect its shape, rather than its colour, to repeat.
 - **Study 2.** The same clustering statistic, B, measured in speech recorded around young children (CHILDES), adult conversation (CABank) and written text (the Pile), with hand coding of what nearby repeated labels refer to.
 - **Study 3.** The same test on pretrained models: Pythia (14M to 12B, with checkpoints and extra training seeds), the BabyLM GPT-2 baselines, Qwen2.5 72B and Llama 3.1 70B.
 
@@ -35,6 +35,7 @@ The repository keeps the working names used in the registrations:
 | Study 1, graded orders and controls | `study1x` | Amendment 5, Part A |
 | Study 1, 512-token window | `study1w` | Amendment 6 |
 | Study 1, same-object and different-object runs | `study1o` | Amendment 7 |
+| Study 1, fresh text and Reassigned corpora | `amendment8` | Amendment 8 |
 | Study 2 (natural input) | Study 1e, `study3x` | Amendment 4; Amendment 5, Part C |
 | Study 3 (pretrained models) | Study 1d, `study2x` | Amendment 3; Amendment 5, Part B |
 
@@ -52,6 +53,7 @@ scripts/                                               all code used by the pape
 results/
   rescore/        corrected Study 1 scores and registered tests
   study1o/        Study 1 same-object and different-object runs (corrected loader)
+  amendment8/     Study 1 fresh-text and Reassigned models: scores, registered tests, memorisation check, training logs
   cl_revision/    seed-level tests, corpus statistics, noun checks
   paper_tables/, paper_figures/   the paper's tables and figure data, rebuilt by the scripts above
   study1d/, study2x/              Study 3 (pretrained models)

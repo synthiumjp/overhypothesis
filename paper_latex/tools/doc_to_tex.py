@@ -163,7 +163,7 @@ FIG = {"d80f9a50-97dc": ("figure1.png", r"\textwidth"), "915e673a-f84e": ("figur
 
 
 # hand-set relative column widths for the widest tables, keyed by their first two headers
-OVERRIDE = {"Corpus|Order (B)": [19, 23, 9, 7, 7, 12, 8, 8],
+OVERRIDE = {"Corpus|Order (B)": [17, 22, 11, 7, 7, 12, 8, 8],
             "#|Prediction": [3, 29, 19, 17, 10, 12, 15],
             "Corpus|Next sentence same kind": [42, 12, 10, 10, 10, 11, 10, 10, 8]}
 

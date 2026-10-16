@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\pagestyle{empty}
+\begin{document}
+
+\begin{flushright}
+Jon-Paul Cacioli\\
+Independent researcher, Melbourne, Australia\\
+\href{mailto:synthium@hotmail.com}{synthium@hotmail.com}\\[6pt]
+\today
+\end{flushright}
+
+To the Editor, \textit{Computational Linguistics}
+
+Dear Editor,
+
+I submit ``Different exemplars, close together: how the arrangement of training text teaches small transformers which features persist'' for consideration as a \textbf{short paper} in \textit{Computational Linguistics}. The main text is 20 pages.
+
+\textbf{Main contributions.}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item With the content of the training text held fixed, the paper shows that its arrangement decides which feature small transformers expect to persist across members of a kind. Trained on text arranged afresh for every pass, so that no window was seen twice, models learned to expect a shape to change in random order ($-1.56$ nats) and to stay in grouped order (9.52). The gain needed a feature fixed within kinds and appeared at moderate clustering. Nearby descriptions of different objects taught it selectively; repeated descriptions of one object taught the models to copy every feature.
+\item It shows when the models tie this expectation to the noun. When each kind kept one shape, they barely did; when a kind's shape changed from pass to pass, so that only the context showed which shape would come, they tied the repetition of shape to trained nouns about as strongly as the text warranted (11.2 nats). In Pythia models trained on written text, evidence of a noun-tied expectation was weak and depended on wording.
+\item It measures the same arrangement statistic in speech recorded around young children, adult conversation and written text, and places them, as a descriptive comparison, on the scale of the manipulation.
+\end{enumerate}
+
+The tests were registered on OSF in a sequence of registrations (\href{https://osf.io/qj9hb}{osf.io/qj9hb}), with a dated record in Appendix A. Every number can be regenerated from the public repository, and the 510 trained models are public on Hugging Face.
+
+\textbf{Keywords.} language models; training data; data ordering; inductive bias; burstiness; child-directed speech.
+
+\textbf{Impact and fit.} The paper addresses a question central to how language models are trained: what properties of training data, beyond content and amount, determine what a model generalises. Its answer is concrete and actionable for data curation, document packing and synthetic data generation: place different instances of a kind near each other, and make an expectation depend on the kind if it should. It builds on measures from the computational linguistics literature (burstiness and adaptation; Church and Gale 1995; Church 2000), on corpora used throughout the field (CHILDES, the Pile) and on open model suites (Pythia, BabyLM baselines). The journal's call for work that links language-model research with theoretical and interdisciplinary perspectives fits the paper's design, which uses a well-studied regularity from cognitive science as a controlled test of what next-word prediction learns from its data.
+
+\textbf{Prior or overlapping work.} None of this work has been published in an archival venue, and it is not under consideration elsewhere. An earlier, much narrower manuscript based on part of Study 1 was declined (see the comments to the editor).
+
+The manuscript is single-authored. Use of generative AI is disclosed in the Acknowledgements. There are no competing interests.
+
+Yours sincerely,
+
+Jon-Paul Cacioli\\
+Independent researcher, Melbourne, Australia
+
+\end{document}

@@ -1,6 +1,6 @@
 # Reproducing the paper
 
-Paper: "Different exemplars, close together: how the arrangement of training text teaches language models which features persist". All registrations: osf.io/qj9hb.
+Paper: "Different exemplars, close together: how the arrangement of training text teaches small transformers which features persist". All registrations: osf.io/qj9hb.
 
 The repository uses working names from the registrations. **Paper Study 1** (small models trained on artificial languages) = repo Studies 1b, 1c, 1x (Amendment 5 Part A), 1w (Amendment 6) and 1o (Amendment 7); its scores are in `results/rescore/` and `results/study1o/`. **Paper Study 2** (clustering of natural input) = repo Study 1e and `study3x` (Amendment 5 Part C). **Paper Study 3** (pretrained models) = repo Study 1d and `study2x` (Amendment 5 Part B). Amendment 5 itself calls the pretrained-model study "Study 2" and the corpus study "Study 3".
 

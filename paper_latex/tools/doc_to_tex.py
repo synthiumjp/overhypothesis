@@ -163,7 +163,9 @@ FIG = {"d80f9a50-97dc": ("figure1.png", r"\textwidth"), "915e673a-f84e": ("figur
 
 
 # hand-set relative column widths for the widest tables, keyed by their first two headers
-OVERRIDE = {"Corpus|Order (B)": [17, 22, 11, 7, 7, 12, 8, 8],
+OVERRIDE = {"Corpus|Order (B)": [17, 26, 7, 7, 12, 9, 8],
+            "Result|Estimate [95% CI]": [46, 20, 13, 12],
+            "Measure|Speech to children": [30, 18, 18, 18],
             "#|Prediction": [3, 29, 19, 17, 10, 12, 15],
             "Corpus|Next sentence same kind": [42, 12, 10, 10, 10, 11, 10, 10, 8]}
 
@@ -293,6 +295,7 @@ while k < len(blocks):
                 letter, nm = am.groups()
                 out.append(r"\FloatBarrier" + "\n" + r"\appendixsection{" + esc(nm) + "}\\label{app:" + letter + "}")
                 out.append(r"\setcounter{table}{0}\renewcommand{\thetable}{" + letter + r"\arabic{table}}")
+                out.append(r"\setcounter{figure}{0}\renewcommand{\thefigure}{" + letter + r"\arabic{figure}}")
                 mode = "appendix"
             else:
                 if mode == "abstract":

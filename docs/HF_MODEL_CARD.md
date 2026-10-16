@@ -56,4 +56,4 @@ Intermediate checkpoints were not kept, except the 461 used for the learning cur
 
 ## Citation
 
-Cacioli, J.-P. (2026). Different exemplars, close together: How the arrangement of training text teaches language models which features persist. Manuscript submitted for publication.
+Cacioli, J.-P. (2026). Different exemplars, close together: How the arrangement of training text teaches small transformers which features persist. Manuscript submitted for publication.

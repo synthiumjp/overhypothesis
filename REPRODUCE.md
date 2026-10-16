@@ -151,6 +151,14 @@ The coding sheet holds transcript excerpts and is not in git. The blind second c
 - `results/study1d/kind_specific_final.csv`, `kind_specific_trajectory.csv`: the same for Study 1d
 - `results/study1d/robustness_*.csv`: leave one noun out, raw deltas, sentence order (promised in Amendment 3), word effects
 
+## Minor deviations (all studies; the paper lists only the substantive ones in Appendix B)
+
+- The equivalence tests for rows 9 and 11 of Table A4 were stated in the registration text but not in the locked scripts, and were run with separate scripts (`scripts/cl_revision_analyses.py`).
+- `scripts/train_model.py` gained two optional arguments for Amendment 6 (`--seq_len`, `--keep_tokens_per_step`) and one for Amendment 8 (`--fresh_windows`); without them it behaves as before, and all earlier models were trained before each change.
+- The 70B models needed loading changes made after registration (weights read before conversion, a fixed memory limit, batches of four; batches of one and four agree within 0.001 nats), and the weight-download library was held at an earlier version.
+- The registered CHILDES download address had moved; the same collection was downloaded from its current address. CABank now requires an account; its files were downloaded after signing in (9 October 2026).
+- The registered "Scrambled" corpus is called Mixed-slot in the paper, and the studies are numbered in reading order (see the table in README.md).
+
 ## Deviations and their checks (Study 1d)
 
 | Deviation | Check | Files |

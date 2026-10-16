@@ -355,7 +355,7 @@ Generative AI disclosure: Claude (Anthropic) was used to help design analyses, w
 \FloatBarrier
 \appendixsection{Registration record}\label{app:A}
 \setcounter{table}{0}\renewcommand{\thetable}{A\arabic{table}}
-All registrations are in one OSF project, \url{osf.io/qj9hb}. In the registrations the studies carry working names: Study 1 of this paper is ``Study 1b'' and ``Study 1c'' with the Study 1 parts of Amendments 5 to 7; Study 2 is ``Study 1e'' with Part C of Amendment 5; Study 3 is ``Study 1d'' with Part B of Amendment 5. Amendment 5 calls the pretrained-model study ``Study 2'' and the corpus study ``Study 3'', the reverse of the numbering used here, and Amendment 7 also calls the corpus study ``Study 3''. Each registration states what was known when it was written. The suffix b in H1b to H5b marks tests on the one-exemplar items introduced in Amendment 1; the original registration's hypotheses (H1 to H4) concerned a different test of the random-order models, and their results are in the repository.
+All registrations are in one OSF project, \url{osf.io/qj9hb}, and each states what was known when it was written. Table A1 lists them, Table A2 gives the label each registration uses for each row of Table A4, and Table A4 gives every registered hypothesis and its result.
 
 \begin{table}[!htbp]
 \caption{Registrations. Each was written before the models it concerns were trained or scored, or before the transcripts were read.}
@@ -479,17 +479,13 @@ Row & Old loader & Corrected & Verdict before $\rightarrow$ after \\
 \appendixsection{Deviations from the registrations}\label{app:B}
 \setcounter{table}{0}\renewcommand{\thetable}{B\arabic{table}}
 \begin{enumerate}
-\item The Bayesian reference model registered in Amendment 1 is reported in the repository rather than in this paper; as promised there, it was corrected to count each exemplar once rather than once per pass.
-\item All Study 1 tests were rerun on corrected scores (Appendix A). The prediction registered in Amendment 6 for the 512-token models had been fitted to the old scores and is not reported.
-\item The equivalence tests for rows 9 and 11 were stated in the registration text but not in the locked scripts, and were run with separate scripts.
-\item For Amendment 6, the training script gained two optional arguments for the longer window; without them it behaves as before, and all earlier models were trained before the change. For Amendment 8 it gained one more, for fresh text, with the same property.
-\item Pythia 2.8B at steps 0 to 16,000: the public repository holds a stale copy of the final weights beside the correct files, and our loader first read the stale copy. Every affected checkpoint was rescored from the correct files. The step-64,000 checkpoint of the same model is identical to the final one and was dropped.
-\item The two models of about 70 billion parameters were scored with Apple's MLX library, because PyTorch crashed the machine; on smaller models the two differed by 0.003 to 0.010 nats on average. Their loading needed changes made after registration (weights read before conversion, a fixed memory limit, batches of four); batches of one and four gave scores within 0.001 nats. The weight-download library was held at an earlier version. Some checks ran under a different software environment, which changed rescored values by 0.005 nats or less.
-\item The registered CHILDES download address had moved; the same collection was downloaded from its current address. CABank now requires an account, so its files were downloaded after signing in (9 October 2026).
-\item In the hand coding, a rule for labels not used for a physical object was added during coding and applied by both coders. One pair of the reliability subset was discussed with an AI assistant during coding and left out of the agreement check.
-\item Added after registration: seed-level tests for rows 1 to 3 and 6 to 8 (Amendments 5 to 7 specified them for rows 4, 5 and 9 to 15), the seed-level intervals and intervals for the differences between corpora. The interval for each corpus comes from the registered two-stage bootstrap (sources, then documents), rerun for this paper. Amendment 7 specified that, if rows 14 and 15 were supported, natural corpora would be placed on the Study 1 scale by effective clustering. They were, and Figure 2 does so. Effective clustering itself was computed before Amendment 7 and is reported as exploratory (Table 3).
-\item Names: the registered ``Scrambled'' corpus is called Mixed-slot here, and the studies are numbered in reading order.
+\item Two registered analyses are not reported here: the Bayesian reference model of Amendment 1, which is in the repository, and the prediction of Amendment 6 for the 512-token models, which had been fitted to scores later corrected (Appendix A).
+\item Added after registration: the seed-level tests for rows 1 to 3 and 6 to 8, the seed-level intervals, and intervals for the differences between natural corpora (from the registered two-stage bootstrap). Effective clustering was computed before it was registered as the scale for Figure 2 and is reported as exploratory (Table 3).
+\item The two models of about 70 billion parameters were scored with Apple's MLX library, because PyTorch crashed the machine; on smaller models the two differed by 0.003 to 0.010 nats on average.
+\item In the hand coding of Study 2, a rule for labels not used for a physical object was added during coding and applied by both coders, and one pair of the reliability subset was discussed with an AI assistant and left out of the agreement check.
 \end{enumerate}
+
+Smaller technical changes (software versions, download addresses, a stale file in one public model repository) are listed in the repository.
 
 \FloatBarrier
 \appendixsection{Model and training settings}\label{app:C}
@@ -556,9 +552,11 @@ Feature swap & 0.69 (0.77) & 0.60 & \textminus{}0.017 \\
 \end{table}
 
 \FloatBarrier
+\clearpage
+\clearpage
 \appendixsection{Robustness}\label{app:E}
 \setcounter{table}{0}\renewcommand{\thetable}{E\arabic{table}}
-\FloatBarrier\clearpage
+\FloatBarrier
 {\small
 \begin{xltabular}{\textwidth}{>{\hsize=0.467\hsize\raggedright\arraybackslash}X>{\hsize=1.267\hsize\raggedright\arraybackslash}X>{\hsize=1.267\hsize\raggedright\arraybackslash}X}
 \multicolumn{3}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:10}{\normalsize\textbf{Table \thetable}\newline p values for the Study 1 rows of Table A4 under paired tests at the seed level and over the 15 matched models (one-sided unless marked).}}\\[6pt]
@@ -592,7 +590,7 @@ Row & Seed level (5 seeds) & Matched models (15) \\
 32 & $<$~.001 & $<$~.001 \\
 \end{xltabular}}
 
-\FloatBarrier\clearpage
+\FloatBarrier
 {\footnotesize\setlength{\tabcolsep}{3.5pt}
 \begin{xltabular}{\textwidth}{>{\hsize=1.851\hsize\raggedright\arraybackslash}X>{\hsize=0.574\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X}
 \multicolumn{6}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:10}{\normalsize\textbf{Table \thetable}\newline Shape-over-colour index by model size (one exemplar), and with two or four exemplars in the context that share their shape (all sizes). Rows marked fresh are fresh-text models; the rest are fixed-file models. In grouped Regular models, two or four exemplars lowered the index: a run of a kind has four sentences, so a fifth sentence about the same kind is rare (Section 3.5). In grouped No stable feature and Colour stable models, where shape varies within a kind, more exemplars sharing a shape lowered the index ($\Delta$ shape \textminus{}0.64, \textminus{}1.93 and \textminus{}3.42 with one, two and four exemplars in grouped No stable feature models), for which we have no tested account; in random-order Regular models, too, the index was lower with two or four exemplars than with one.}}\\[6pt]

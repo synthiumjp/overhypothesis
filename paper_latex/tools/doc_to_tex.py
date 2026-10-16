@@ -231,7 +231,15 @@ def flush_pending(caption=""):
         return
     kind, payload, label = pending
     if kind == "table":
-        out.append(table_tex(payload, caption, label, here=appendix_started))
+        tex = table_tex(payload, caption, label, here=appendix_started)
+        # a long table that directly follows an appendix heading starts on that page
+        if tex.startswith(r"\FloatBarrier\clearpage") and any(r"\appendixsection" in o for o in out[-3:]):
+            tex = tex.replace(r"\FloatBarrier\clearpage", r"\FloatBarrier", 1)
+            for i in range(len(out) - 1, len(out) - 4, -1):
+                if r"\appendixsection" in out[i]:
+                    out[i] = out[i].replace(r"\appendixsection", r"\clearpage" + "\n" + r"\appendixsection", 1)
+                    break
+        out.append(tex)
     else:
         fn, width = payload
         out.append("\n".join([r"\begin{figure}[!tbp]", r"\centering",

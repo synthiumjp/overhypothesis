@@ -1,0 +1,50 @@
+\FloatBarrier
+\section{Test-noun representation and changed-word scoring}\label{app:L}
+\setcounter{table}{0}\renewcommand{\thetable}{L\arabic{table}}
+\setcounter{figure}{0}\renewcommand{\thefigure}{L\arabic{figure}}
+These analyses were added after the registrations and are exploratory. They rescore the 120 fresh-text models on the one-exemplar items (\texttt{scripts/recut\_rescore.py}, \texttt{scripts/recut\_rescore\_analysis.py}). \textbf{Typical tokens}: each novel noun's input embedding is replaced by the mean input embedding of the 32 training nouns plus $r\,u_j$, where $r$ is the mean distance of the training-noun embeddings from that mean and the $u_j$ are orthonormal random directions (fixed seed), so the eight tokens look like ordinary nouns but stay distinct; output weights are unchanged. \textbf{Changed-word $\Delta$}: the difference in log probability of the one word that differs between the continuations, given the identical prefix. With the original embeddings and whole-continuation $\Delta$, the rescoring reproduced the reported scores (144,000 item scores; largest difference $2\times10^{-5}$ nats). Trained-noun values are from the registered trained-noun items (Appendix~\ref{app:F}; \texttt{scripts/recut\_noun\_store\_check.py}).
+
+\begin{table}[!htbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Index and noun-specific index under four scorings (nats; mean of seed means). Original: unseen tokens with untrained embeddings, as reported; typical: the same tokens with typical embeddings; full: whole-continuation $\Delta$, as reported; word: changed word only.}
+\label{tab:L1}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{Index} & \multicolumn{4}{c}{Noun-specific index} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-9}
+Condition & orig./full & typ./full & orig./word & typ./word & orig./full & typ./full & orig./word & typ./word \\
+\midrule
+Regular, random & \textminus{}1.56 & \textminus{}1.54 & \textminus{}1.26 & \textminus{}1.50 & \textminus{}0.05 & \textminus{}0.31 & 0.01 & \textminus{}0.20 \\
+Regular, graded (3.5) & 1.28 & \textminus{}1.41 & 1.45 & \textminus{}1.25 & \textminus{}0.03 & \textminus{}0.15 & 0.03 & \textminus{}0.04 \\
+Regular, grouped & 9.52 & 1.46 & 9.65 & 1.38 & 0.12 & 0.00 & 0.12 & 0.01 \\
+No stable feature, grouped & \textminus{}3.98 & \textminus{}3.51 & \textminus{}3.74 & \textminus{}3.24 & \textminus{}0.35 & \textminus{}0.26 & \textminus{}0.34 & \textminus{}0.21 \\
+Objects, same-object runs & 5.87 & \textminus{}1.85 & 6.06 & \textminus{}1.87 & \textminus{}0.07 & 0.14 & \textminus{}0.06 & 0.06 \\
+Objects, different-object runs & 7.60 & \textminus{}1.25 & 7.59 & \textminus{}1.33 & \textminus{}0.01 & 0.19 & \textminus{}0.01 & 0.11 \\
+Reassigned, random & 0.21 & 0.18 & 0.32 & 0.27 & 0.02 & \textminus{}0.10 & 0.03 & \textminus{}0.01 \\
+Reassigned, grouped & 9.80 & 3.87 & 9.94 & 3.98 & 0.37 & 0.70 & 0.37 & 0.74 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Preference for repeating the context's shape and colour after one exemplar, same noun, for the three kinds of test noun (nats; whole-continuation $\Delta$).}
+\label{tab:L2}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{$\Delta$ shape} & \multicolumn{3}{c}{$\Delta$ colour} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Condition & Unseen & Typical & Trained & Unseen & Typical & Trained \\
+\midrule
+Regular, random & \textminus{}1.55 & \textminus{}1.52 & 0.03 & 0.01 & 0.02 & 0.05 \\
+Regular, graded (3.5) & 1.18 & \textminus{}1.52 & 0.06 & \textminus{}0.10 & \textminus{}0.12 & 0.19 \\
+Regular, grouped & 6.88 & \textminus{}0.72 & 0.06 & \textminus{}2.64 & \textminus{}2.18 & \textminus{}1.94 \\
+No stable feature, grouped & \textminus{}3.88 & \textminus{}3.51 & \textminus{}3.58 & 0.10 & 0.00 & 0.17 \\
+Objects, same-object runs & 6.87 & \textminus{}1.17 & \textminus{}0.09 & 0.99 & 0.68 & 0.46 \\
+Objects, different-object runs & 8.05 & \textminus{}1.14 & 0.04 & 0.46 & 0.11 & 0.01 \\
+Reassigned, random & 0.22 & 0.24 & 0.24 & 0.02 & 0.06 & 0.10 \\
+Reassigned, grouped & 6.81 & 1.17 & 10.01 & \textminus{}2.99 & \textminus{}2.70 & \textminus{}1.65 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

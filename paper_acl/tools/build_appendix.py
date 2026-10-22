@@ -16,6 +16,8 @@ old = old.replace("is rare (Section 3.5)", r"is rare (Section~\ref{sec:persist})
 old = old.replace("track novel nouns (Section 3.5)", r"track novel nouns (Section~\ref{sec:noun})")
 old = old.replace("format of Section 3.3", r"format of Section~\ref{sec:test}")
 old = old.replace("exploratory (Table 3)", r"exploratory (Table~\ref{tab:3})")
+old = old.replace("scale for Figure 2", r"scale for Figure~\ref{fig:2}")
+old = old.replace("(Table E4, Figure 2)", r"(Table E4, Figure~\ref{fig:2})")
 m = re.search(r"All code, corpora, test items.*?(?=Study 2 is a secondary analysis)", old, re.S)
 old = old[:m.start()] + (
     "All code, corpora, test items, model scores, transcript-level counts, hand codes (without transcript excerpts) "
@@ -29,7 +31,7 @@ for bad in ["synthiumjp", "osf.io", "huggingface", "github"]:
 old = old.replace(r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}",
     r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}" + "\n"
     "In the appendices and the registrations, Study 1 is the training experiments (Sections~\\ref{sec:method} and~\\ref{sec:results}), "
-    "Study 2 the natural corpora and Study 3 the pretrained models (Section~\\ref{sec:natural}).\n", 1)
+    "Study 2 the natural corpora (Appendix~\\ref{app:J}) and Study 3 the pretrained models (Appendix~\\ref{app:K}).\n", 1)
 old = old.replace(r"\appendixsection{Materials for Studies 2 and 3}",
     "The comparison of novel and trained nouns in Table~\\ref{tab:2} (right) is exploratory and was added after the registrations; "
     "seed-level intervals for every fresh-text condition are produced by \\texttt{scripts/recut\\_noun\\_store\\_check.py}.\n\n"
@@ -45,18 +47,29 @@ def fix(t):
     t = t.replace("(Table 1 gives", r"(Table~\ref{tab:1} gives")
     t = t.replace("(Table 3)", r"(Table~\ref{tab:3})")
     t = t.replace("Table 1 shows", r"Table~\ref{tab:1} shows")
+    t = t.replace("(Figure 2)", r"(Figure~\ref{fig:2})")
+    t = t.replace("(Table E4, Figure 2)", r"(Table E4, Figure~\ref{fig:2})")
     t = t.replace("(Figure 3)", r"(Figure~\ref{fig:3})")
     t = t.replace("Section 5.2", "Appendix~\\ref{app:K}")
     t = t.replace("The author coded", "One author coded")
     t = t.replace("[!tbp]", "[!htbp]")
     return t
 
+
+FIG2 = r"""
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/figure2.png}
+\caption{Index against clustering $B$ in Regular corpora, unseen test tokens. Grey points and solid line: fixed-file models (mean of five per size; line, mean of 15). Open circles and dashed line: fresh-text models (mean of 15). Bands: effective clustering of different objects in natural corpora with 95\% intervals (Appendix~\ref{app:J}); the overlay does not predict what a model trained on them would learn. With typical test tokens or trained nouns the fresh-text effect at $B = 3.5$ disappears (Appendix~\ref{app:L}).}
+\label{fig:2}
+\end{figure}
+"""
 I = hdr("I", "Study 1: corpora, training and further results", "app:I") + fix(
     "The main text summarises the design. This appendix gives it in full, with results not reported there.\n\n"
     + L(66, 90) + "\n" + L(91, 113) + "\n\n\\subsection{Models and training}\n" + L(123, 123)
     + "\n\n\\subsection{Measuring the expectation}\n" + L(126, 142)
     + "\n\n\\subsection{Statistics}\n" + L(145, 145)
-    + "\n\n\\subsection{Further results}\n" + L(175, 175) + "\n\n" + L(177, 177) + "\n\n" + L(191, 191) + "\n\n" + L(193, 193))
+    + "\n\n\\subsection{Further results}\n" + L(175, 175) + "\n\n" + L(177, 177) + "\n\n" + L(191, 191) + "\n\n" + L(193, 193)) + FIG2
 J = hdr("J", "Study 2: clustering of natural input", "app:J") + fix(L(208, 250))
 K = hdr("K", "Study 3: pretrained models", "app:K") + fix(L(253, 282))
 out = old + "\n\n" + I + "\n\n" + J + "\n\n" + K + "\n"

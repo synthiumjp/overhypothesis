@@ -22,7 +22,7 @@
 \newcommand{\appendixsection}[1]{\section{#1}}
 \newenvironment{acknowledgments}{\section*{Acknowledgments}}{}
 
-\title{Same Sentences, Different Order: What the Arrangement of\\Training Text Teaches Small Transformers}
+\title{Same Sentences, Different Order: Arrangement, Noun Familiarity\\and What Small Transformers Carry Forward}
 
 \author{Anonymous submission}
 
@@ -30,38 +30,38 @@
 \maketitle
 
 \begin{abstract}
-Training pipelines decide how text is arranged when they pack, order or generate it, but the effect of arrangement is rarely tested with content held fixed. We trained small transformers on artificial languages in which the same sentences about 32 kinds of object came in different orders. We then described one object of a new kind and measured whether the models expected a second object of that kind to keep its shape more than its colour. Trained on random order, they expected the shape to change; trained on the same sentences grouped by kind, they expected it to stay. Across conditions their expectations tracked what the next sentence usually does, though not the expectation of change in random order, and two things mattered: a feature fixed within kinds, and nearby sentences about different objects rather than the same object again. These results use test nouns the models had never seen. With nouns from training whose kind always had one shape, a shape given in the context was not carried to the next mention; when a kind's shape changed from one pass to the next, the models carried it forward, but only after the same noun. Models trained on one short fixed file, each position read 160 to 290 times, memorised it; the grouping effect was then about half as large, and the random-order index went from reliably negative to slightly positive. In these small models, what is placed near what in training data, not only what is included, decides what they generalise.
+Training pipelines decide how text is arranged, but arrangement is rarely tested with content held fixed. We trained small transformers on artificial languages in which the same sentences about 32 kinds of object came in different orders, then described one object of a new kind and measured how much more the models expected the next object of that kind to keep its shape than its colour. We tested with three kinds of noun: tokens never seen in training, the same tokens given an embedding typical of trained nouns, and nouns from training. For all three, grouping sentences by kind raised this expectation relative to random order, only when kinds had a fixed feature, and more when nearby sentences described different objects than when they described the same object again. How much of the context's shape the models carried forward depended on the noun: strongly for unseen tokens, little for typical-looking ones, and not at all for trained nouns whose kind always had one shape. When a kind's shape changed from pass to pass, trained nouns carried it forward, but only after the same noun. Models trained on one short fixed file memorised it, and their effects differed in size. Probes built on unseen tokens therefore measure arrangement and the representation of the test noun together.
 \end{abstract}
 
 \section{Introduction}
-Every training pipeline arranges its text. It packs documents into windows, orders them and, more and more, generates synthetic text whose layout someone chooses \citep{shi2024,zhao2024}. Work on training data mostly asks about content \citep{warstadt2023,feng2024}. Arrangement alone, with content held fixed, is rarely tested, although natural text differs in it: a word that has appeared once in a document is far more likely to appear again soon than its frequency predicts \citep{church2000}, and talk to toddlers returns to the same objects in clusters \citep{slone2023}. In transformers, burstiness of this kind decides whether in-context learning emerges \citep{chan2022}. We ask a smaller question. With the same sentences, what does arrangement teach a model to expect about the next mention of a kind, and which properties of an arrangement matter?
+Every training pipeline arranges its text. It packs documents into windows, orders them and, more and more, generates synthetic text whose layout someone chooses \citep{shi2024,zhao2024}. Work on training data mostly asks about content \citep{warstadt2023,feng2024}. Arrangement alone, with content held fixed, is rarely tested, although natural text differs in it: a word that has appeared once in a document is far more likely to appear again soon than its frequency predicts \citep{church2000}, and talk to toddlers returns to the same objects in clusters \citep{slone2023}. In transformers, burstiness of this kind decides whether in-context learning emerges \citep{chan2022}. We ask a smaller question: with the same sentences, what does arrangement teach a model to expect about the next mention of a kind?
 
-We need a regularity that holds across items, so that arrangement can make it easier or harder to see. We borrow one from word learning: things with the same name tend to share a shape \citep{landau1988,kemp2007}. We give a model one sentence about an object of a new kind, \emph{A snerg is a krannish pulek skorli thing}, where the three adjectives name a shape, a colour and a texture. We then ask how much more it expects a second snerg to keep the shape than the colour. We use this only as a probe of what transformers learn from their data; our claims are about transformers, not children.
+We need a regularity that holds across items, so that arrangement can make it easier or harder to see. We borrow one from word learning: things with the same name tend to share a shape \citep{landau1988,kemp2007}. We give a model one sentence about an object of a new kind, \emph{A snerg is a krannish pulek skorli thing}, where the three adjectives name a shape, a colour and a texture, and ask how much more it expects a second snerg to keep the shape than the colour. We use this only as a probe of what transformers learn from their data; our claims are about transformers, not children.
 
-A model can meet this probe in two ways. It can carry features forward from the previous sentence, whatever its noun, or it can use what it has stored about a noun. We separate the two by testing with novel nouns, about which nothing is stored, and with nouns from training.
+Such probes usually use a nonce noun the model has never seen, so that nothing it has stored about the noun can answer for it. But a never-seen token has an untrained embedding, and what a model does with it may reflect that embedding rather than what it learned from the arrangement. In a study of mutual exclusivity in child-scale models, apparent effects with nonce tokens reflected embedding similarity \citep{cacioli2026me}. We therefore test with three kinds of noun: unseen tokens, the same tokens given an embedding typical of trained nouns, and nouns from training.
 
-We trained 510 small transformers (3.4M to 25.6M parameters) on artificial languages whose content and order we control. Our main models saw every pass of their corpus arranged afresh; others were trained, as is common, on one fixed file. We find:
+We trained 510 small transformers (3.4M to 25.6M parameters) on artificial languages whose content and order we control, with every pass of a corpus arranged afresh. Two corpora act as controls: in one nothing is fixed within a kind (a negative control for grouping), and in the other each kind's shape changes from pass to pass, so that only the context can say which shape comes next (a positive control for using the context with the noun). We find:
 \begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
-\item \textbf{Arrangement teaches what the next sentence does.} With novel nouns (tokens the models had never seen), random order taught the models to expect a shape to change and grouping by kind taught them to expect it to stay. Across conditions their expectations tracked a simple learner that predicts each feature from the previous sentence, although it does not explain the expectation of change.
-\item \textbf{Two things mattered.} The gain needed a feature fixed within kinds, and nearby sentences about different objects of a kind taught it more selectively than the same object described again.
-\item \textbf{Trained nouns took up the context's shape only when their kind's shape changed.} With a noun from training whose kind always had one shape, a shape given in the context was not carried to the next mention (exploratory). When a kind's shape changed between passes, the models carried it forward, but only after the same noun.
-\item \textbf{Heavy repetition changes the result.} Models trained on one fixed file, each position read 160 to 290 times, memorised it; the grouping effect was about half as large, and the random-order index was no longer negative.
+\item \textbf{The direction of the arrangement effects held for every noun.} Grouping sentences by kind raised the expectation that shape persists relative to colour, only when kinds had a fixed feature, and more when nearby sentences described different objects rather than the same object again.
+\item \textbf{The size depended on the noun.} The models carried the context's shape forward strongly for unseen tokens, little for typical-looking tokens and not at all for trained nouns. An apparent effect of moderate clustering held only for unseen tokens.
+\item \textbf{The positive control worked.} When a kind's shape changed between passes, trained nouns carried it forward, but only after the same noun.
+\item \textbf{Fixed files changed the result.} Models trained on one fixed file, each position read 160 to 290 times, memorised it, and their effects differed in size.
 \end{enumerate}
-We also measured the same arrangement statistic in natural corpora and probed pretrained models (Section~\ref{sec:natural}). The confirmatory tests were registered in stages; some registrations were written after earlier results were known, and Appendix~\ref{app:A} gives the dated record.
+The confirmatory tests were registered in stages; some registrations were written after earlier results were known, and the comparison across kinds of noun was added afterwards and is exploratory (Appendix~\ref{app:A}).
 
 \section{Related work}
 \textbf{Arrangement and order.} Packing related documents into one window improves how pretrained models use their context \citep{shi2024,zhao2024}. Curricula that order examples by difficulty have given mixed results \citep{bengio2009,rohde1999,diehlmartinez2023}. At child scale, the local order of child-directed speech affected what models learned, while its global order by age did not \citep{feng2024}. We hold content fixed and vary only local arrangement.
 
-\textbf{In-context and in-weights learning.} \citet{chan2022} found that in-context learning emerged when items of a class appeared in bursts, more strongly when item meanings were dynamic rather than fixed, and traded off against learning stored in the weights; \citet{singh2023} showed that it can fade as the stored solution takes over, and \citet{reddy2024} traced its onset to induction heads. We study the same trade-off in next-word prediction over text, with the content held fixed and only the arrangement varied.
+\textbf{In-context and in-weights learning.} \citet{chan2022} found that in-context learning emerged when items of a class appeared in bursts, more strongly when item meanings were dynamic rather than fixed, and traded off against learning stored in the weights; \citet{singh2023} showed that it can fade as the stored solution takes over, and \citet{reddy2024} traced its onset to induction heads. Our test nouns span the same trade-off, from tokens with nothing stored to nouns with a stored feature.
 
-\textbf{Artificial languages and repeated data.} Artificial languages let a model's preferences be traced to its input \citep{mccoy2020,white2021,kallini2024}. Such studies typically reuse one generated corpus over many passes, from about two to a few dozen in these examples \citep{mccoy2020,kallini2024,murty2023}. The number of passes matters: training long on fixed data changed hierarchical generalisation \citep{murty2023}; at a fixed budget, small sets of repeated examples beat larger sets of single-use examples on synthetic maths tasks \citep{charton2024}; and at scale up to about four epochs of repeated data changed loss negligibly \citep{muennighoff2023}. The BabyLM Challenge capped training at ten epochs in 2025, judging tens or hundreds of repeated exposures developmentally implausible \citep{charpentier2025}.
+\textbf{Artificial languages, nonce words and repeated data.} Artificial languages let a model's preferences be traced to its input \citep{mccoy2020,white2021,kallini2024}, and nonce words are the usual way to test generalisation to a new item \citep{thrush2020}. Such studies typically reuse one generated corpus over many passes, from about two to a few dozen in these examples \citep{mccoy2020,kallini2024,murty2023}. The number of passes matters: training long on fixed data changed hierarchical generalisation \citep{murty2023}; at a fixed budget, small sets of repeated examples beat larger sets of single-use examples on synthetic maths tasks \citep{charton2024}; and the BabyLM Challenge capped training at ten epochs in 2025, judging tens or hundreds of repeated exposures developmentally implausible \citep{charpentier2025}.
 
 \textbf{Shape bias in networks.} Networks trained on images or artificial objects can show a shape bias \citep{ritter2017,feinman2018}, and a hierarchical Bayesian model learns it from how kinds vary \citep{kemp2007}. We use it as a probe, not as a target.
 
 \section{Method}
 \label{sec:method}
 \subsection{Corpora and arrangements}
-Each corpus describes 32 kinds of object, each named by a novel noun (\emph{wug}, \emph{dax}, \ldots), with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each a novel word from a list of ten, and is described by one sentence in one of five frames (Figure~\ref{fig:1}; Appendix~\ref{app:I}). Shape is named in all five frames, colour in three and texture in one. The frames are the same in every corpus, so every conclusion rests on comparisons between corpora. The 448 sentences of a corpus (1,664 for Objects), each used once, make up one pass. Table~\ref{tab:terms} defines the corpora, the arrangements and the measures.
+Each corpus describes 32 kinds of object, each named by a novel noun (\emph{wug}, \emph{dax}, \ldots), with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each a novel word from a list of ten, and is described by one sentence in one of five frames (Figure~\ref{fig:1}; Appendix~\ref{app:I}). Shape is named in all five frames, colour in three and texture in one. The frames are the same in every corpus, so every conclusion rests on comparisons between corpora. The 448 sentences of a corpus (1,664 for Objects), each used once, make up one pass. Table~\ref{tab:terms} defines the corpora, arrangements and measures.
 
 \begin{table}[t]
 \centering
@@ -72,15 +72,13 @@ Each corpus describes 32 kinds of object, each named by a novel noun (\emph{wug}
 Term & Meaning \\
 \midrule
 Regular & Each kind keeps one shape; colour and texture vary. \\
-No stable feature & Shape drawn at random per exemplar; nothing fixed within a kind. \\
-Colour stable & Each kind keeps one colour instead (fixed files only). \\
+No stable feature & Shape drawn at random per exemplar; nothing fixed within a kind (negative control). \\
 Objects & 13 objects per kind, each described four times. \\
-Reassigned & Each kind gets a new shape in every pass and keeps it within that pass. \\
+Reassigned & Each kind gets a new shape in every pass and keeps it within that pass (positive control). \\
 \midrule
 Random order & Every pass shuffled. \\
 Grouped order & Sentences about a kind cut into runs of four; runs shuffled across kinds. \\
 Same- / different-object run & Four descriptions of one object / of four objects of one kind. \\
-$B$ & Clustering: share of nearby noun mentions that name the same kind, relative to shuffled text (random 0.9, grouped 23). \\
 \midrule
 Fresh / fixed text & Every pass arranged anew, no window read twice / one fixed file, each position read 160 to 290 times. \\
 $\Delta$ & Preference (nats) for a continuation that repeats a feature of the context sentence. \\
@@ -91,9 +89,9 @@ Index & $\Delta_{\text{shape}} - \Delta_{\text{colour}}$. \\
 \label{tab:terms}
 \end{table}
 
-\textbf{Arrangement.} In random order every pass is shuffled. In grouped order the sentences about each kind are cut into runs of four and the runs are shuffled across kinds; every sentence occurs as often as in random order. Graded orders keep each run with a set probability and otherwise split it, giving intermediate clustering. We measure clustering with one statistic, $B$, used for natural corpora too: among consecutive mentions of object nouns no more than 100 words apart, the share that name the same kind, divided by the same share after the sentences of each document (here, each pass) are shuffled. $B = 1$ means no clustering beyond what the content predicts.
+\textbf{Arrangement.} In random order every pass is shuffled. In grouped order the sentences about each kind are cut into runs of four and the runs are shuffled across kinds; every sentence occurs as often as in random order. A graded order keeps each run with a set probability and otherwise splits it; the one used here gives clustering of 3.5 on a statistic, $B$, that is 0.9 for random order and 23 for grouped order (Appendix~\ref{app:I}).
 
-\textbf{Fresh and fixed text.} Our main models were trained on fresh text: 7,500 passes of a corpus (2,100 for Objects), each arranged with its own random draw, 34 to 35 million tokens in all, read in non-overlapping 128-token windows so that no window was read twice. A second set of models was trained on one fixed file of 11,648 sentences (about 120,000 tokens) with windows at random positions, so that each position was read 160 to 290 times. Colour stable corpora, three of the six levels of clustering and several controls exist only as fixed files (Table~\ref{tab:1}, Appendix~\ref{app:I}).
+\textbf{Fresh and fixed text.} Our main models were trained on fresh text: 7,500 passes of a corpus (2,100 for Objects), each arranged with its own random draw, 34 to 35 million tokens in all, read in non-overlapping 128-token windows so that no window was read twice. For comparison, other models were trained on one fixed file of 11,648 sentences (about 120,000 tokens) with windows at random positions, so that each position was read 160 to 290 times (Table~\ref{tab:1}, Appendix~\ref{app:I}).
 
 \begin{figure*}[t]
 \centering
@@ -105,70 +103,79 @@ Index & $\Delta_{\text{shape}} - \Delta_{\text{colour}}$. \\
 \subsection{Models and test}\label{sec:test}
 We trained decoder-only transformers of 3.4, 11.0 and 25.6 million parameters (4 to 8 layers) for 5,000 to 10,000 steps, with five seeds per condition at each size; a seed sets the corpus, the weights and the batch order (Appendix~\ref{app:C}). Every artificial word is one token.
 
-Each test item gives the model one frame-1 sentence about an exemplar, then two continuations that differ in one word: one repeats the probed feature and one does not (Figure~\ref{fig:1}). $\Delta$ is the difference in summed log probability between them. Trained models generally prefer words they have just seen, so we report the index, $\Delta_{\text{shape}} - \Delta_{\text{colour}}$, which cancels copying that affects both features equally, together with $\Delta$ for each feature. With one exemplar, nothing in the context shows which feature is fixed, so differences between conditions come from training. Untrained models give an index of 0.02 nats.
+Each test item gives the model one frame-1 sentence about an exemplar, then two continuations that differ in one word: one repeats the probed feature and one does not (Figure~\ref{fig:1}). $\Delta$ is the difference in summed log probability between them. Trained models generally prefer words they have just seen, so we report the index, $\Delta_{\text{shape}} - \Delta_{\text{colour}}$, which cancels copying that affects both features equally, together with $\Delta$ for each feature. Measured on the changed word alone, every result is nearly the same (Appendix~\ref{app:L}). With one exemplar, nothing in the context shows which feature is fixed, so differences between conditions come from training.
 
-Test nouns are of two kinds. \textbf{Novel nouns} never occur in training. Their input embeddings were never trained, because a tie between input and output embeddings was lost on the training hardware, and the models showed no sign of recognising a repeated novel noun (Appendix~\ref{app:E}). \textbf{Trained nouns} occur in training. To keep items comparable, an item never offers a trained noun its own kind's fixed feature, so in Regular corpora both continuations give the noun a shape it never had (Appendix~\ref{app:F}). Each item is also given with a different noun in the continuations; the \textbf{noun-specific index} is the index after the same noun minus the index after a different noun.
+\textbf{Three kinds of test noun.} \emph{Unseen tokens} are eight nouns that never occur in training; their input embeddings were never trained, because a tie between input and output embeddings was lost on the training hardware. \emph{Typical tokens} are the same eight nouns with their input embedding replaced by the mean embedding of the 32 trained nouns plus a distinct offset of typical length, so that they look like ordinary nouns but remain distinct from each other (exploratory; Appendix~\ref{app:L}). \emph{Trained nouns} occur in training; to keep items comparable, an item never offers a trained noun its own kind's fixed feature, so in Regular corpora both continuations give it a shape it never had (Appendix~\ref{app:F}). Each item is also given with a different noun in the continuations; the \textbf{noun-specific index} is the index after the same noun minus the index after a different noun.
 
-\textbf{Statistics.} Models of three sizes with the same seed share a corpus, so the five seeds are the units of replication. We average sizes within each seed and compare conditions by paired $t$ tests over the five seed means (4 degrees of freedom); estimates and 95\% intervals in the text are these seed-level values. Registered contrasts were one-sided with \citet{holm1979} correction within each registration. For fresh-text models the registered test was the seed-level test; for fixed-file models it was a linear mixed model or a Welch test over models, with seed-level results beside them in Appendix~\ref{app:E}. Results given with a Holm $p$ were registered; others are exploratory. Every contrast reported as reliable had the same direction at all three model sizes. Table~\ref{tab:main} lists the main registered tests and marks those written after related results were known.
+\textbf{Statistics.} Models of three sizes with the same seed share a corpus, so the five seeds are the units of replication. We average sizes within each seed and compare conditions by paired $t$ tests over the five seed means (4 degrees of freedom); estimates and 95\% intervals are these seed-level values. Registered contrasts were one-sided with \citet{holm1979} correction within each registration and concern unseen tokens; results given with a Holm $p$ were registered, and all others, including every result for typical tokens and trained nouns in Regular corpora, are exploratory. Every contrast reported as reliable had the same direction at all three model sizes.
 
 \section{Results}\label{sec:results}
 
 \begin{table*}[t]
 \centering
 \small
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{@{}llrrrrrr@{}}
 \toprule
- & & \multicolumn{4}{c}{Novel nouns} & \multicolumn{2}{c}{Trained nouns, $\Delta$ shape} \\
-\cmidrule(lr){3-6}\cmidrule(l){7-8}
-Corpus & Order ($B$) & $\Delta$ shape & $\Delta$ colour & Index & Shape over texture & Same noun & Different noun \\
+ & & \multicolumn{3}{c}{Index (shape over colour)} & \multicolumn{3}{c}{$\Delta$ shape} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-8}
+Corpus & Order ($B$) & Unseen & Typical & Trained & Unseen & Typical & Trained \\
 \midrule
-Regular & Random (0.9) & \textminus{}1.55 & 0.01 & \textminus{}1.56 & \textminus{}1.44 & 0.03 & 0.04 \\
-Regular & Graded (3.5) & 1.18 & \textminus{}0.10 & 1.28 & 1.21 & 0.06 & 0.04 \\
-Regular & Grouped (23) & 6.88 & \textminus{}2.64 & 9.52 & 6.56 & 0.06 & \textminus{}0.08 \\
-No stable feature & Grouped (23) & \textminus{}3.88 & 0.10 & \textminus{}3.98 & \textminus{}4.32 & \textminus{}3.58 & \textminus{}1.18 \\
-Objects & Same-object runs (24) & 6.87 & 0.99 & 5.87 & 6.73 & \textminus{}0.09 & \textminus{}0.28 \\
-Objects & Different-object runs (24) & 8.05 & 0.46 & 7.60 & 7.91 & 0.04 & \textminus{}0.32 \\
-Reassigned & Random (0.9) & 0.22 & 0.02 & 0.21 & 0.39 & 0.24 & 0.24 \\
-Reassigned & Grouped (23) & 6.81 & \textminus{}2.99 & 9.80 & 5.62 & 10.01 & 0.08 \\
+Regular & Random (0.9) & \textminus{}1.56 & \textminus{}1.54 & \textminus{}0.02 & \textminus{}1.55 & \textminus{}1.52 & 0.03 \\
+Regular & Graded (3.5) & 1.28 & \textminus{}1.41 & \textminus{}0.13 & 1.18 & \textminus{}1.52 & 0.06 \\
+Regular & Grouped (23) & 9.52 & 1.46 & 2.00 & 6.88 & \textminus{}0.72 & 0.06 \\
+No stable feature & Grouped (23) & \textminus{}3.98 & \textminus{}3.51 & \textminus{}3.75 & \textminus{}3.88 & \textminus{}3.51 & \textminus{}3.58 \\
+Objects & Same-object runs (24) & 5.87 & \textminus{}1.85 & \textminus{}0.55 & 6.87 & \textminus{}1.17 & \textminus{}0.09 \\
+Objects & Different-object runs (24) & 7.60 & \textminus{}1.25 & 0.03 & 8.05 & \textminus{}1.14 & 0.04 \\
+Reassigned & Random (0.9) & 0.21 & 0.18 & 0.14 & 0.22 & 0.24 & 0.24 \\
+Reassigned & Grouped (23) & 9.80 & 3.87 & 11.65 & 6.81 & 1.17 & 10.01 \\
 \bottomrule
 \end{tabular}
-\caption{Models trained on fresh text, after one exemplar (nats; 15 models per row). Left: novel test nouns, same noun in the continuation. Right: preference for repeating the context's shape with trained test nouns, after the same or a different noun (exploratory). Appendix~\ref{app:E} gives standard deviations, model sizes and every fixed-file condition.}
+\caption{Models trained on fresh text, one exemplar, same noun in the continuation (nats; mean of 15 models per row, five seeds). Unseen: nouns never seen in training (untrained embeddings). Typical: the same nouns with an embedding typical of trained nouns. Trained: nouns from training, never offered their own kind's shape. Appendix~\ref{app:E} gives standard deviations, model sizes and every fixed-file condition; Appendix~\ref{app:L} gives colour and texture.}
 \label{tab:2}
 \end{table*}
 
-\subsection{Arrangement teaches what the next sentence does}\label{sec:persist}
-With novel nouns, Regular models trained in random order came to expect the shape to \emph{change}: their index was \textminus{}1.56 nats [\textminus{}2.45,~\textminus{}0.67], below zero in all 15 models (Table~\ref{tab:2}). The same sentences in grouped order gave 9.52, higher in all five seeds and at every size (difference 11.08 [9.57,~12.59], Holm $p<.001$). At $B = 3.5$, near the clustering of object labels in speech to children, the index was 1.28, above random order (2.84 [1.41,~4.27], Holm $p=.005$), but small and variable across sizes (1.37, 2.27 and 0.21).
+\subsection{The direction of the arrangement effects held for every noun}\label{sec:persist}
+With unseen tokens, Regular models trained in random order came to expect the shape to \emph{change}, at \textminus{}1.56 nats [\textminus{}2.45,~\textminus{}0.67], and the same sentences in grouped order gave 9.52 (Table~\ref{tab:2}). Three registered contrasts held, in the same direction and in all five seeds, for every kind of test noun (Table~\ref{tab:contrasts}). Grouping raised the index relative to random order. The gain needed a fixed feature: with nothing fixed within kinds, grouped models expected the shape to change, for every noun (\textminus{}3.51 to \textminus{}3.98). And runs that described different objects gave a larger index than runs describing one object four times, because after same-object runs the models expected colour to repeat as well, as it does in those runs ($\Delta$ colour 0.99 against 0.46 with unseen tokens). Fixed-file models, the only ones trained with colour fixed instead of shape, show that the preference follows the fixed feature: grouped Colour stable models favoured colour, at \textminus{}3.20 (Holm $p<.001$; Appendix~\ref{app:E}).
 
-These expectations follow the corpora. In grouped order the next sentence is about the same kind 72\% of the time and then always repeats the shape; in random order it is about the same kind 3\% of the time. A learner that predicts each feature from the previous sentence alone, ignoring the noun, gives a reference index, and the models tracked it across conditions (Pearson $r = .88$ over the eight fresh-text conditions, .95 over 12 fixed-file conditions; exploratory and descriptive, since conditions share seeds, and driven mainly by grouped against ungrouped orders; Appendix~\ref{app:E}). The models also learned how long runs last: with two or four sentences about the new kind in the context, the grouped Regular index fell from 9.52 to 7.88 and 4.24, because after four sentences about a kind the next is about the same kind only 3\% of the time.
-
-The gain needed a fixed feature. When nothing was fixed within kinds, grouped models expected the shape to change, at \textminus{}3.98 (difference from grouped Regular 13.50 [11.48,~15.52], Holm $p<.001$). Two results come only from fixed-file models. When colour was fixed instead, the preference reversed: grouped Colour stable models favoured colour, at \textminus{}3.20, below fixed-file No stable feature models at \textminus{}0.44 (difference 2.76 [1.99,~3.52], Holm $p<.001$). Across six levels of clustering the index rose with $\log B$ (slope 1.63 [1.46,~1.80] nats per log unit, Holm $p<.001$; Figure~\ref{fig:2}).
-
-The reference does not explain two values: it is near zero for random order (\textminus{}0.01) and for No stable feature corpora (0.02), where the models gave \textminus{}1.56 and \textminus{}3.98. We have no tested account of these expectations of change. Both arise when the test noun carries no stored shape (Section~\ref{sec:noun}).
-
-\begin{figure*}[t]
+\begin{table}[t]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/figure2.png}
-\caption{Index against clustering $B$ in Regular corpora, novel nouns. Grey points and solid line: fixed-file models (mean of five per size; line, mean of 15). Open circles and dashed line: fresh-text models (mean of 15). Bands: effective clustering of different objects in natural corpora with 95\% intervals (Section~\ref{sec:natural}); the overlay does not predict what a model trained on them would learn.}
-\label{fig:2}
-\end{figure*}
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}p{0.31\columnwidth}ccc@{}}
+\toprule
+Contrast & Unseen & Typical & Trained \\
+\midrule
+Grouped $-$ random & 11.08 & 3.00 & 2.03 \\
+ & {\scriptsize[9.57, 12.59]} & {\scriptsize[1.79, 4.21]} & {\scriptsize[1.68, 2.37]} \\
+Regular $-$ No stable, grouped & 13.50 & 4.98 & 5.76 \\
+ & {\scriptsize[11.48, 15.52]} & {\scriptsize[3.42, 6.53]} & {\scriptsize[4.98, 6.53]} \\
+Different $-$ same object & 1.72 & 0.60 & 0.58 \\
+ & {\scriptsize[0.54, 2.90]} & {\scriptsize[0.26, 0.93]} & {\scriptsize[0.30, 0.86]} \\
+$B = 3.5$ $-$ random & 2.84 & 0.13 & \textminus{}0.10 \\
+ & {\scriptsize[1.41, 4.27]} & {\scriptsize[\textminus{}0.34, 0.59]} & {\scriptsize[\textminus{}0.34, 0.14]} \\
+\bottomrule
+\end{tabular}
+\caption{Seed-level differences in the index (nats, 95\% intervals over five seeds). For unseen tokens these are registered tests (Holm $p$ = $<$.001, $<$.001, .008 and .005); the other columns are exploratory. The first three were positive in all five seeds for every noun.}
+\label{tab:contrasts}
+\end{table}
 
-\subsection{Different objects, not the same object again}
-At matched clustering, runs of different objects gave a larger index than runs describing one object four times: 7.60 against 5.87 (difference 1.72 [0.54,~2.90], Holm $p=.008$; higher in all five seeds; fixed-file models agreed, 5.65 against 2.99). The components show why. After same-object runs the models expected colour to repeat more ($\Delta$ colour 0.99 against 0.46), as it does in those runs. Their index stayed positive because they also repeated shape, which the frames name more often, more than the corpus warrants; part of this may be copying. Runs of different objects show what varies within a kind and what does not, and taught the fixed feature more selectively. The noun-blind reference predicts this direction, with a larger gap (0.39 against 3.43; Appendix~\ref{app:E}), so the contrast is what the corpora warrant rather than a further property of the models.
+One registered result did not generalise. Clustering at $B = 3.5$, near that of object labels in speech to children, raised the index with unseen tokens (2.84 [1.41,~4.27], Holm $p=.005$), but not with typical tokens or trained nouns. We therefore make no claim about moderate clustering.
 
-\subsection{Trained nouns and the context}\label{sec:noun}
-Trained nouns behaved differently (Table~\ref{tab:2}, right; exploratory). In every fresh-text corpus where a kind keeps one shape throughout (Regular and Objects), models tested with a trained noun showed almost no preference about shape in any arrangement: $\Delta$ shape was \textminus{}0.09 to 0.06 after the same noun, against \textminus{}1.55 to 8.05 with novel nouns (grouped Regular: 0.06 [\textminus{}0.27,~0.39] against 6.88 [5.22,~8.54]). So a shape given in the context, never the noun's own, was not carried to the next mention. This is consistent with the models predicting a trained kind's shape from its noun, but our items cannot test that, because they never offer the stored shape. Arrangement still shaped what the noun does not predict: in grouped Regular corpora, trained-noun items showed an expectation that colour would change ($\Delta$ colour \textminus{}1.94 [\textminus{}2.87,~\textminus{}1.02]). In No stable feature corpora, trained nouns, like novel ones, gave a negative $\Delta$ shape after the same noun (\textminus{}3.58 against \textminus{}3.88), but much less after a different noun (\textminus{}1.18).
+These expectations follow the corpora. In grouped order the next sentence is about the same kind 72\% of the time and then always repeats the shape; in random order it is about the same kind 3\% of the time. A learner that predicts each feature from the previous sentence alone, ignoring the noun, gives a reference index that the unseen-token results tracked across conditions (Pearson $r = .88$ over eight conditions; exploratory and descriptive; Appendix~\ref{app:E}). The reference predicts the direction of the same- against different-object contrast, so that contrast is what the corpora warrant. It does not predict the expectation of change, which is near zero in the reference for random order and for No stable feature corpora. That expectation persisted with typical tokens in random order (\textminus{}1.54) and with every noun in No stable feature corpora, but not with trained nouns in random order (\textminus{}0.02). We have no tested account of it.
 
-Reassigned corpora remove the stored shape while keeping the run structure: a kind's shape changes from pass to pass, so only the previous sentence about the kind shows which shape comes next. Trained on them in grouped order, models tested with trained nouns carried the shape forward after the same noun ($\Delta$ shape 10.01) and not after a different one (0.08). Their noun-specific index was 11.24 [10.44,~12.03] (Holm $p<.001$), close to the 11.4 that the corpus warrants. With novel nouns, which the models did not track, the noun-specific index was small (0.37 [0.24,~0.49], Holm $p=.001$). In random order, Reassigned corpora taught neither a preference for shape (0.21) nor a dependence on the noun (\textminus{}0.07 with trained nouns), so the effect needed sentences about a kind to be close together.
+\subsection{How much shape is carried depends on the noun}\label{sec:noun}
+The noun decided how much of the context's shape the models carried forward (Table~\ref{tab:2}, right). In grouped Regular corpora, $\Delta$ shape was 6.88 [5.22,~8.54] with unseen tokens, \textminus{}0.72 with typical tokens and 0.06 [\textminus{}0.27,~0.39] with trained nouns; the Objects corpora showed the same pattern. With typical tokens and trained nouns, what remained of the grouping effect came mostly from colour: grouped models expected colour to change ($\Delta$ colour \textminus{}2.18 and \textminus{}1.94; Appendix~\ref{app:L}). For trained nouns, whose items never offer the noun's own shape, $\Delta$ shape near zero means that a shape given in the context was not carried to the next mention. This is consistent with the models predicting a trained kind's shape from its noun, but our items cannot test that.
 
-So with trained nouns, the context's shape was carried forward only in Reassigned corpora, where the noun could not predict it, and there only after the same noun. This resembles the trade-off between in-context and in-weights learning that \citet{chan2022} found with images, here in text with the content held fixed.
+So the large shape effects seen with unseen tokens are not a general property of what grouping teaches. They are what grouping teaches a model about a noun it cannot place. This parallels the trade-off between in-context and in-weights learning \citep{chan2022,singh2023}: the less a model can tell from the noun, the more it takes from the context.
+
+\subsection{Positive control: a shape the noun cannot predict}
+Reassigned corpora keep the run structure but remove any stored shape: a kind's shape changes from pass to pass, so only the previous sentence about the kind shows which shape comes next. Trained on them in grouped order, models tested with trained nouns carried the shape forward after the same noun ($\Delta$ shape 10.01) and not after a different one (0.08). Their noun-specific index was 11.24 [10.44,~12.03] (Holm $p<.001$), close to the 11.4 that the corpus warrants. The noun-specific index was smaller with unseen tokens (0.37 [0.24,~0.49], Holm $p=.001$) and with typical tokens (0.70 [0.31,~1.10], exploratory), which the models cannot recognise as a known kind. In random order, Reassigned corpora taught neither a preference for shape nor a dependence on the noun, for any noun (index 0.14 to 0.21). So the test detects a noun-tied use of the context when the data require it, and trained nouns took up the context's shape exactly where their noun could not predict it.
 
 \subsection{Fixed files memorise and change the result}
-Fixed-file models memorised their files: their loss was 0.08 to 0.11 nats per token on their own file but 0.66 to 1.26 on a new arrangement of the same sentences, while fresh-text models scored 0.28 to 0.55 on both (Appendix~\ref{app:C}). The arrangement effects changed with it. The grouping effect was about half the size (6.02 [5.24,~6.79] against 11.08), and in random order the index was 0.47 rather than \textminus{}1.56, though not reliably above zero (Holm $p=.061$). Early in training, while their loss was near that of fresh-text models, fixed-file random-order models also gave \textminus{}0.4 to \textminus{}1.5 nats; their index rose above zero only late, as loss fell to the memorised level (exploratory). Every contrast measured in both regimes had the same direction. Their sizes differed, and the random-order index alone would have suggested no expectation, or a weak preference for shape, rather than an expectation that shape changes (fresh minus fixed, \textminus{}2.03 [\textminus{}2.42,~\textminus{}1.65]; exploratory).
+Fixed-file models memorised their files: their loss was 0.08 to 0.11 nats per token on their own file but 0.66 to 1.26 on a new arrangement of the same sentences, while fresh-text models scored 0.28 to 0.55 on both (Appendix~\ref{app:C}). The effects changed with it. With unseen tokens, the grouping effect was about half the size (6.02 [5.24,~6.79] against 11.08), and in random order the index was 0.47, not reliably above zero (Holm $p=.061$), rather than \textminus{}1.56; early in training, while their loss was near that of fresh-text models, these models also gave \textminus{}0.4 to \textminus{}1.5 (exploratory). Every contrast measured in both regimes had the same direction, but not the same size. Our fixed files were read 160 to 290 times, more than most artificial-language studies use, although BabyLM entries have trained for hundreds to thousands of epochs \citep{warstadt2023}, and fixed against fresh text changes both the number of passes and the variety of windows. The result adds to evidence that repeated passes over fixed data change what is learned \citep{murty2023,charton2024}.
 
-Two cautions limit this result. Our fixed files were read 160 to 290 times, more than most artificial-language studies use, although BabyLM entries have trained for hundreds to thousands of epochs \citep{warstadt2023}. And fixed against fresh text changes both the number of passes and the variety of windows, so we cannot say which matters. The result adds to evidence that repeated passes over fixed data change what is learned \citep{murty2023,charton2024}: here they changed the measured effect of arrangement itself.
-
-\begin{table}[!tb]
+\begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
@@ -180,64 +187,41 @@ Registered test & Estimate [95\% CI] & Holm $p$ \\
 Grouped above random order & 11.08 [9.57, 12.59] & $<$.001 \\
 $B = 3.5$ above random order & 2.84 [1.41, 4.27] & .005 \\
 Grouped: Regular above No stable & 13.50 [11.48, 15.52] & $<$.001 \\
-Grouped: Colour stable below No stable$^{\dagger}$$^{\circ}$ & 2.76 [1.99, 3.52] & $<$.001 \\
-Index rises with $\log B$ (slope)$^{\dagger}$$^{\circ}$ & 1.63 [1.46, 1.80] & $<$.001 \\
+Grouped: Colour stable below No stable$^{\dagger\circ}$ & 2.76 [1.99, 3.52] & $<$.001 \\
+Index rises with $\log B$ (slope)$^{\dagger\circ}$ & 1.63 [1.46, 1.80] & $<$.001 \\
 Different-object above same-object runs & 1.72 [0.54, 2.90] & .008 \\
 Noun-specific, Reassigned, trained nouns & 11.24 [10.44, 12.03] & $<$.001 \\
-Noun-specific, Reassigned, novel nouns & 0.37 [0.24, 0.49] & .001 \\
+Noun-specific, Reassigned, unseen tokens & 0.37 [0.24, 0.49] & .001 \\
 \quad above grouped Regular & 0.25 [0.10, 0.39] & .005 \\
 Speech to children above written text, $B$ & 2.14 [1.55, 2.91] & $<$.001 \\
 Pythia index rises with size & $\rho = .92$ & .003 \\
 \multicolumn{3}{@{}l}{\emph{Not supported}}\\
-Random-order index above zero$^{\dagger}$$^{\circ}$ & 0.47 & .061 \\
-512-token window raises index$^{\dagger}$$^{\circ}$ & 0.03 [\textminus{}0.44, 0.50] & .87 \\
-\quad at $B = 3.6$ (reversed)$^{\dagger}$$^{\circ}$ & \textminus{}0.63 [\textminus{}0.90, \textminus{}0.37] & 1.00 \\
-Noun-specific, random order, novel nouns$^{\dagger}$$^{\circ}$ & 0.005 & .46 \\
+Random-order index above zero$^{\dagger\circ}$ & 0.47 & .061 \\
+512-token window raises index$^{\dagger\circ}$ & 0.03 [\textminus{}0.44, 0.50] & .87 \\
+\quad at $B = 3.6$ (reversed)$^{\dagger\circ}$ & \textminus{}0.63 [\textminus{}0.90, \textminus{}0.37] & 1.00 \\
+Noun-specific, random order, unseen$^{\dagger\circ}$ & 0.005 & .46 \\
 Pythia noun-specific index rises with size$^{\circ}$ & $\rho = $ \textminus{}.42 & 1.00 \\
 Pythia noun-specific index above zero$^{\circ}$ & \textminus{}0.15 & 1.00 \\
 Pythia index rises over training & $\rho = $ \textminus{}.34 & 1.00 \\
 BabyLM baselines above zero & 0.47; 0.37 & .52; .12 \\
 \bottomrule
 \end{tabular}
-\caption{Main registered tests. Estimates are seed-level differences, or the index itself where no contrast is named; fresh text unless marked $^{\dagger}$ (fixed files); $^{\circ}$ marks tests registered after related results were known, the others were registered before the related models were trained or scored, or before the transcripts were read. Units are nats except for $B$ and $\rho$. Holm $p$ is the test named in the registration, corrected within it: the seed-level test for fresh text, a mixed model or Welch test for fixed files, and for pretrained models the tests in Appendix~\ref{app:K}. Before a loader error was corrected, two fixed-file verdicts differed (Appendix~\ref{app:A}). Appendix~\ref{app:A} gives all 32 registered hypotheses.}
+\caption{Main registered tests, all with unseen test tokens. Estimates are seed-level differences, or the index itself where no contrast is named; fresh text unless marked $^{\dagger}$ (fixed files). $^{\circ}$: registered after related results were known; the others were registered before the related models were trained or scored, or before the transcripts were read. Holm $p$ is the test named in the registration, corrected within it: the seed-level test for fresh text, a mixed model or Welch test for fixed files, and for pretrained models the tests in Appendix~\ref{app:K}. Before a loader error was corrected, two fixed-file verdicts differed (Appendix~\ref{app:A}). Units are nats except for $B$ and $\rho$. Appendix~\ref{app:A} gives all 32 registered hypotheses.}
 \label{tab:main}
 \end{table}
 
-\section{Natural text and pretrained models}
-\label{sec:natural}
-\textbf{Natural corpora.} With the same statistic, we measured how clustered mentions of 70 object nouns are in speech recorded around children under three (CHILDES; \citealp{macwhinney2000}), adult conversation (CABank) and written text (the Pile; \citealp{gao2020}). Labels were clustered in all three, most in speech to children ($B$ = 3.57 [3.13,~4.30]; above written text, Holm $p<.001$; Table~\ref{tab:natural}). But a repeated label need not bring a new object: in 500 hand-coded pairs, nearly half of the repetitions in speech to children returned to the same object, and a quarter brought a different one. Counting only different objects, effective clustering was 1.95, 1.66 and 1.22, which places all three corpora between random order and $B = 3.6$ on our scale, where the fixed-file index rose only from 0.47 to 1.43 nats (Figure~\ref{fig:2}). Speech to children differed more in density, with about 2.8 nearby different-object repetitions per 1,000 words against 0.1 to 0.2 elsewhere (exploratory; partly a result of our choice of nouns). Appendix~\ref{app:J} gives the method and checks.
-
-\begin{table}[t]
-\centering
-\small
-\setlength{\tabcolsep}{2.5pt}
-\begin{tabular}{@{}lccc@{}}
-\toprule
- & Children & Adults & Written \\
-\midrule
-$B$ & 3.57 & 2.33 & 1.43 \\
-Same-label pairs /1,000 words & 10.1 & 0.9 & 1.0 \\
-Coded: same object & 46\% & 25\% & 12\% \\
-Coded: different object & 27\% & 25\% & 13\% \\
-Effective clustering & 1.95 & 1.66 & 1.22 \\
-\bottomrule
-\end{tabular}
-\caption{Clustering of mentions of 70 object nouns within 100 words. Coded shares are from 500 hand-coded same-label pairs; effective clustering discounts $B$ by the share of pairs that bring a different object (exploratory). Intervals are in Appendix~\ref{app:J}.}
-\label{tab:natural}
-\end{table}
-
-\textbf{Pretrained models.} On English versions of the items, the index of Pythia models \citep{biderman2023} rose with size ($\rho = .92$, Holm $p=.003$); on items whose two words have the same number of tokens (exploratory), every model from 1B parameters was above zero (from 1.00 nats at 1B to 1.62 at 12B). It did not rise steadily over training: at every size it first fell to about \textminus{}2 nats, as in our random-order models, and only larger models recovered. No Pythia model, nor Qwen2.5 72B or Llama 3.1 70B, preferred shape over texture, and evidence of a noun-tied expectation was weak and depended on wording (Appendix~\ref{app:K}). We did not arrange their data, so this is a comparison, not a test.
-
 \section{Discussion}
-Small transformers learned what the next sentence usually does. That much is expected of next-word prediction. What the controlled arrangement adds is which properties of the stream matter and how the stream interacts with what a model has stored. A regularity across items was taught by grouping only when a feature was fixed within kinds, and more selectively by nearby sentences about different objects than by the same object described again. With trained nouns, the models carried a shape forward from the context only when the noun could not predict it, and then only after the same noun, which resembles the trade-off between in-context and in-weights learning \citep{chan2022,singh2023}. We identify the training conditions that produce these behaviours, not their mechanism; carrying a word forward is the kind of behaviour attributed to induction heads \citep{olsson2022}, but we did not examine attention. People show related patterns: blocked study helps learners find what members of a category share \citep{carvalho2014}, and varied exemplars taught toddlers more than near-identical ones \citep{perry2010}. We note the parallel without taking our results as evidence about how children learn.
+Arranging the same sentences differently changed what small transformers expected of the next mention of a kind, and the direction of that change held whether the test noun was unseen, typical-looking or trained. Grouping helped only when kinds had a fixed feature, and runs of different objects taught the fixed feature more selectively than the same object described again, as the corpora warrant. How much the models took from the context depended on the noun. They carried the context's shape forward for nouns they could not place, and for trained nouns only where the noun could not predict the shape, and then only after the same noun. We identify the conditions that produce these behaviours, not their mechanism; carrying a word forward is the kind of behaviour attributed to induction heads \citep{olsson2022}, but we did not examine attention. People show related patterns: blocked study helps learners find what members of a category share \citep{carvalho2014}, and varied exemplars taught toddlers more than near-identical ones \citep{perry2010}. We note the parallel without taking our results as evidence about how children learn.
 
-Two practical points follow for small models, with the caveat that we have not tested larger ones. First, arrangement is a lever separate from content: to teach a regularity that holds across instances, place different instances of a kind near each other. Second, small-scale experiments on data should report how many passes they make over fixed text; arranging each pass afresh removes memorisation at no cost in content.
+Two methodological points follow. First, probes built on unseen tokens measure arrangement and the representation of the test noun together. Here a registered effect of moderate clustering, and most of the size of every effect, depended on the test noun being unlike any trained noun; in a study of mutual exclusivity, nonce-token effects likewise reflected embedding similarity \citep{cacioli2026me}. Studies that use nonce words should vary how they are represented. Second, small-scale experiments on data should report how many passes they make over fixed text; arranging each pass afresh removes memorisation at no cost in content.
+
+We also measured the same clustering statistic in natural corpora: object labels were more clustered in speech to young children than in adult conversation or written text, though nearly half of the nearby repetitions in speech to children returned to the same object (Appendix~\ref{app:J}). Pythia models gained a shape-over-colour expectation with size, but none preferred shape over texture, and evidence that they tied it to the noun was weak (Appendix~\ref{app:K}). These are descriptive comparisons, not tests.
 
 \section*{Limitations}
-The artificial language has 32 kinds, three dimensions and five frames that name shape more often than colour or texture; conclusions rest on comparisons between corpora that share the frames. The models are small (3.4M to 25.6M parameters), trained with one recipe and five seeds per condition, and we do not know how the effects scale. Colour stable corpora and half of the levels of clustering exist only as fixed files, which their models memorised. Fixed and fresh text differ in both the number of passes and the variety of windows, and our fixed files were read more often than in most published studies. Novel test nouns had untrained input embeddings, so the models could not recognise them as the same kind. Trained-noun items never offer the noun's own shape, so they show that the context's shape was ignored, not how the stored shape is used, and the comparison of trained with novel nouns is exploratory. The negative indices in random order and in No stable feature corpora are unexplained. The clustering statistic counts repeated labels, not referents, and effective clustering rests on 500 pairs coded by one person, with a language model as a consistency check. All corpora are English. The registrations were made in stages, several after earlier results were known, and a loader error, corrected before the final analyses, had changed two verdicts. The analysis of pretrained models does not manipulate their training data.
+The artificial language has 32 kinds, three dimensions and five frames that name shape more often than colour or texture; conclusions rest on comparisons between corpora that share the frames. The models are small (3.4M to 25.6M parameters), trained with one recipe and five seeds per condition, and we do not know how the effects scale. Unseen tokens had untrained input embeddings because an intended tie between input and output embeddings was lost; typical tokens are one choice of a familiar-looking embedding, and the comparison across kinds of noun was made after the registrations. Trained-noun items never offer the noun's own shape, so they show that the context's shape was not carried forward, not how the stored shape is used. The expectation that shape changes, in random order and in No stable feature corpora, is unexplained. Colour stable corpora, half of the levels of clustering and several controls exist only as fixed files, which their models memorised; fixed and fresh text differ in both the number of passes and the variety of windows. The registrations were made in stages, several after earlier results were known, and a loader error, corrected before the final analyses, had changed two verdicts. All corpora are English.
 
 \section*{Ethics statement}
-The corpus analysis is a secondary analysis of archived, de-identified transcripts (CHILDES, CABank) used under their terms; no data were collected from people, and no transcript excerpts are reproduced. Code, corpora, results and all trained models will be released; anonymised copies are provided as supplementary material.
+The corpus analysis in Appendix~\ref{app:J} is a secondary analysis of archived, de-identified transcripts (CHILDES, CABank) used under their terms; no data were collected from people, and no transcript excerpts are reproduced. Code, corpora, results and all trained models will be released; anonymised copies are provided as supplementary material.
 
 \section*{Use of AI assistants}
 An AI assistant (Claude, Anthropic) was used to help design analyses, write code, draft and edit text and check citations, and as the second coder in a consistency check of the corpus coding. The authors are responsible for all content, including the accuracy of every citation.
@@ -247,5 +231,6 @@ An AI assistant (Claude, Anthropic) was used to help design analyses, write code
 \appendix
 \onecolumn
 \input{appendix}
+\input{appendix_recut}
 
 \end{document}

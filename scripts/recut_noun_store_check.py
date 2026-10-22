@@ -26,3 +26,15 @@ print("\nTrained nouns, shape, same vs different noun in the continuation:")
 for c in sorted(tr.condition.unique()):
     s, d = seed(tr, c, "shape", True), seed(tr, c, "shape", False)
     print(f"{c.replace('regular_f_','')} | same {ci(s)} | different {ci(d)}")
+
+print("\nTrained nouns, seed-level contrasts of the index (same noun):")
+def idx(c):
+    d = tr[(tr.condition == "regular_f_" + c) & (tr.k == 1) & (tr.match == True)]
+    return d.groupby("seed")["OI_colour"].mean()
+for lab, a, b in [("grouped - random", "regular_grouped", "regular_random"),
+                  ("B 3.5 - random", "regular_b3p6", "regular_random"),
+                  ("Regular - No stable feature, grouped", "regular_grouped", "nostable_grouped"),
+                  ("different - same object", "objects_diff", "objects_same")]:
+    print(f"{lab} | {ci(idx(a) - idx(b))}")
+for c in ["regular_random", "nostable_grouped"]:
+    print(f"index {c} | {ci(idx(c))}")

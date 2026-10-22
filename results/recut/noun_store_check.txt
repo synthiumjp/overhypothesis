@@ -25,3 +25,11 @@ reassigned_random | same   0.24 [  0.23,   0.25] p=1.3e-07 | different   0.24 [ 
 regular_b3p6 | same   0.06 [ -0.18,   0.30] p=0.52 | different   0.04 [ -0.27,   0.34] p=0.76
 regular_grouped | same   0.06 [ -0.27,   0.39] p=0.64 | different  -0.08 [ -0.36,   0.21] p=0.49
 regular_random | same   0.03 [ -0.28,   0.33] p=0.83 | different   0.04 [ -0.22,   0.31] p=0.68
+
+Trained nouns, seed-level contrasts of the index (same noun):
+grouped - random |   2.03 [  1.68,   2.37] p=8.6e-05
+B 3.5 - random |  -0.10 [ -0.34,   0.14] p=0.3
+Regular - No stable feature, grouped |   5.76 [  4.98,   6.53] p=3.3e-05
+different - same object |   0.58 [  0.30,   0.86] p=0.0047
+index regular_random |  -0.02 [ -0.63,   0.59] p=0.92
+index nostable_grouped |  -3.75 [ -4.82,  -2.69] p=0.00061

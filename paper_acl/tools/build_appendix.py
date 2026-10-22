@@ -26,6 +26,14 @@ old = old[:m.start()] + (
     "not redistributed. ") + old[m.end():]
 for bad in ["synthiumjp", "osf.io", "huggingface", "github"]:
     assert bad not in old, bad
+old = old.replace(r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}",
+    r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}" + "\n"
+    "In the appendices and the registrations, Study 1 is the training experiments (Sections~\\ref{sec:method} and~\\ref{sec:results}), "
+    "Study 2 the natural corpora and Study 3 the pretrained models (Section~\\ref{sec:natural}).\n", 1)
+old = old.replace(r"\appendixsection{Materials for Studies 2 and 3}",
+    "The comparison of novel and trained nouns in Table~\\ref{tab:2} (right) is exploratory and was added after the registrations; "
+    "seed-level intervals for every fresh-text condition are produced by \\texttt{scripts/recut\\_noun\\_store\\_check.py}.\n\n"
+    r"\FloatBarrier" + "\n" + r"\appendixsection{Materials for Studies 2 and 3}", 1)
 
 def hdr(letter, title, label):
     return ("\\FloatBarrier\n\\section{%s}\\label{%s}\n\\setcounter{table}{0}\\renewcommand{\\thetable}{%s\\arabic{table}}\n"

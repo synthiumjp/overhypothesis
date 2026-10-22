@@ -1,0 +1,27 @@
+condition | dimension | novel nouns | trained nouns | novel - trained
+nostable_grouped | shape |  -3.88 [ -5.51,  -2.26] p=0.0027 |  -3.58 [ -4.09,  -3.08] p=4e-05 |  -0.30 [ -1.90,   1.30] p=0.63
+nostable_grouped | colour |   0.10 [ -0.71,   0.91] p=0.76 |   0.17 [ -0.43,   0.77] p=0.48 |  -0.07 [ -0.92,   0.77] p=0.83
+objects_diff | shape |   8.05 [  6.92,   9.19] p=3.9e-05 |   0.04 [ -0.13,   0.21] p=0.56 |   8.01 [  6.96,   9.07] p=3e-05
+objects_diff | colour |   0.46 [  0.13,   0.78] p=0.017 |   0.01 [ -0.49,   0.51] p=0.94 |   0.44 [ -0.08,   0.97] p=0.078
+objects_same | shape |   6.87 [  5.17,   8.56] p=0.00036 |  -0.09 [ -0.22,   0.05] p=0.14 |   6.95 [  5.19,   8.72] p=0.0004
+objects_same | colour |   0.99 [  0.65,   1.34] p=0.0013 |   0.46 [ -0.25,   1.17] p=0.15 |   0.53 [ -0.17,   1.23] p=0.1
+reassigned_grouped | shape |   6.81 [  5.45,   8.16] p=0.00015 |  10.01 [  9.75,  10.27] p=4.5e-08 |  -3.20 [ -4.44,  -1.96] p=0.002
+reassigned_grouped | colour |  -2.99 [ -4.23,  -1.76] p=0.0026 |  -1.65 [ -2.22,  -1.07] p=0.0014 |  -1.35 [ -2.44,  -0.25] p=0.027
+reassigned_random | shape |   0.22 [  0.20,   0.25] p=1.9e-05 |   0.24 [  0.23,   0.25] p=1.3e-07 |  -0.02 [ -0.04,   0.00] p=0.099
+reassigned_random | colour |   0.02 [ -0.48,   0.51] p=0.93 |   0.10 [ -0.40,   0.61] p=0.59 |  -0.09 [ -0.88,   0.70] p=0.77
+regular_b3p6 | shape |   1.18 [ -0.44,   2.81] p=0.11 |   0.06 [ -0.18,   0.30] p=0.52 |   1.12 [ -0.65,   2.90] p=0.15
+regular_b3p6 | colour |  -0.10 [ -0.60,   0.40] p=0.61 |   0.19 [ -0.55,   0.92] p=0.52 |  -0.28 [ -1.18,   0.61] p=0.43
+regular_grouped | shape |   6.88 [  5.22,   8.54] p=0.00032 |   0.06 [ -0.27,   0.39] p=0.64 |   6.82 [  4.94,   8.70] p=0.00055
+regular_grouped | colour |  -2.64 [ -3.15,  -2.13] p=0.00014 |  -1.94 [ -2.87,  -1.02] p=0.0043 |  -0.70 [ -1.53,   0.13] p=0.08
+regular_random | shape |  -1.55 [ -2.09,  -1.01] p=0.0013 |   0.03 [ -0.28,   0.33] p=0.83 |  -1.58 [ -2.19,  -0.96] p=0.0021
+regular_random | colour |   0.01 [ -0.36,   0.38] p=0.96 |   0.05 [ -0.64,   0.74] p=0.86 |  -0.04 [ -0.87,   0.79] p=0.9
+
+Trained nouns, shape, same vs different noun in the continuation:
+nostable_grouped | same  -3.58 [ -4.09,  -3.08] p=4e-05 | different  -1.18 [ -1.68,  -0.69] p=0.0026
+objects_diff | same   0.04 [ -0.13,   0.21] p=0.56 | different  -0.32 [ -0.52,  -0.11] p=0.014
+objects_same | same  -0.09 [ -0.22,   0.05] p=0.14 | different  -0.28 [ -0.45,  -0.12] p=0.0086
+reassigned_grouped | same  10.01 [  9.75,  10.27] p=4.5e-08 | different   0.08 [  0.06,   0.10] p=0.00039
+reassigned_random | same   0.24 [  0.23,   0.25] p=1.3e-07 | different   0.24 [  0.23,   0.25] p=8.9e-08
+regular_b3p6 | same   0.06 [ -0.18,   0.30] p=0.52 | different   0.04 [ -0.27,   0.34] p=0.76
+regular_grouped | same   0.06 [ -0.27,   0.39] p=0.64 | different  -0.08 [ -0.36,   0.21] p=0.49
+regular_random | same   0.03 [ -0.28,   0.33] p=0.83 | different   0.04 [ -0.22,   0.31] p=0.68

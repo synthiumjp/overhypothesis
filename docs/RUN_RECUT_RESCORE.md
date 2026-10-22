@@ -21,3 +21,18 @@ The analysis prints a table and writes results/recut/RESCORE.md. Its first line 
 original-embedding scores reproduce results/amendment8/raw (max difference about 1e-4 or less).
 
 Send back: results/recut/RESCORE.md and results/recut/RESCORE_per_seed.csv (or zip results/recut).
+
+## Noun-familiarity curve (blended embeddings)
+
+Scores 75 models (five conditions) at three blends between the original (0) and typical (1)
+novel-noun embeddings; blends 0 and 1 come from the run above. About 40 minutes on CPU; resumable.
+
+```powershell
+git pull
+python scripts/recut_rescore.py --manifests results/amendment8/manifest_regular_random.csv results/amendment8/manifest_regular_grouped.csv results/amendment8/manifest_objects_same.csv results/amendment8/manifest_objects_diff.csv results/amendment8/manifest_reassigned_grouped.csv --alphas 0.25,0.5,0.75 --out results/recut/rescore_blend.csv --norms_out results/recut/norms.csv
+python scripts/recut_blend_analysis.py --out results/recut/BLEND.md
+git add results/recut/BLEND.md results/recut/BLEND_per_seed.csv results/recut/norms.csv
+git commit -m "Recut noun-familiarity curve (exploratory)"
+git push origin HEAD:study1b-1c-evaluation
+git push origin HEAD:master
+```

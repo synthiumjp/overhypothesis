@@ -17,7 +17,8 @@ items (k = 1) and the same scoring as oneshot_eval.py:
    the whole continuation), the script records the difference in log probability of the
    changed word alone, given the identical prefix.
 
-Each model is scored under both embedding conditions ("original", "typical"); both Delta
+Each model is scored under both embedding conditions ("original", "typical"), or with --alphas under
+blends (1 - a) * original + a * typical (labels blendA); both Delta
 measures come from the same forward pass. With emb = original, delta_full reproduces
 results/amendment8/raw (checked by recut_rescore_analysis.py).
 
@@ -98,6 +99,10 @@ def main():
     p.add_argument("--ks", default="1")
     p.add_argument("--out", default="results/recut/rescore_raw.csv")
     p.add_argument("--limit", type=int, default=0, help="score only the first N models (testing)")
+    p.add_argument("--alphas", default="",
+                   help="comma list of blends between original (0) and typical (1) novel-noun embeddings; "
+                        "if given, only these blends are scored (emb label blendA)")
+    p.add_argument("--norms_out", default="", help="optional CSV of embedding norms per model")
     a = p.parse_args()
 
     import torch
@@ -119,10 +124,12 @@ def main():
         with open(a.out, encoding="utf-8") as f:
             done = {(r["ckpt"], r["emb"]) for r in csv.DictReader(f)}
     new_file = not os.path.exists(a.out)
-    print(f"{len(runs)} models x 2 embedding conditions x {len(rows)} items")
+    conds = ([f"blend{float(x):g}" for x in a.alphas.split(",") if x.strip()] if a.alphas
+             else ["original", "typical"])
+    print(f"{len(runs)} models x {len(conds)} embedding conditions x {len(rows)} items")
 
     for i, run in enumerate(runs, 1):
-        if (run["ckpt"], "original") in done and (run["ckpt"], "typical") in done:
+        if all((run["ckpt"], e) in done for e in conds):
             continue
         tok = Tokenizer.from_file(run["tokenizer"])
         model, block = load_model(run["ckpt"], None, "train_model", "OverhypothesisLM")
@@ -131,13 +138,25 @@ def main():
         E = model.tok_embed.weight
         orig = E.detach().clone()
         typical = typical_rows(orig, train_ids, len(test_ids))
-        for emb in ("original", "typical"):
+        if a.norms_out:
+            new_n = not os.path.exists(a.norms_out)
+            with open(a.norms_out, "a", newline="", encoding="utf-8") as f:
+                w = csv.writer(f)
+                if new_n:
+                    w.writerow(["condition", "size", "seed", "trained_norm", "novel_norm", "typical_norm"])
+                w.writerow([run["condition"], run["size"], run["seed"],
+                            orig[train_ids].norm(dim=1).mean().item(), orig[test_ids].norm(dim=1).mean().item(),
+                            typical.norm(dim=1).mean().item()])
+        for emb in conds:
             if (run["ckpt"], emb) in done:
                 continue
             with torch.no_grad():
                 E.copy_(orig)
                 if emb == "typical":
                     E[test_ids] = typical
+                elif emb.startswith("blend"):
+                    al = float(emb[5:])
+                    E[test_ids] = (1 - al) * orig[test_ids] + al * typical
             res = score(model, tok, rows, block)
             with open(a.out, "a", newline="", encoding="utf-8") as f:
                 w = csv.DictWriter(f, fieldnames=FIELDS)

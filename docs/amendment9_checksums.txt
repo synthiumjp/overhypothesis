@@ -14,4 +14,4 @@ d30b3b6a9f6b56ff36e3598cf6dc0ae6  data/tokenizers/amendment9_tokenizer.json
 46b44a9966cd6b32964ad22d3e8e3581  docs/amendment9_assignment.json
 1c20920ef72351b288a960426f017a3b  docs/amendment9_corpus_manifest_pilot.json
 1ef2b4116e3f37199a4e76048f85bc3b  docs/AMENDMENT9.md
-98e692b2878135c53a27d94582f2804b  docs/AMENDMENT9_ADDENDUM.md
+c10ff0d8be9991582dbf54a4eda71f4a  docs/AMENDMENT9_ADDENDUM.md

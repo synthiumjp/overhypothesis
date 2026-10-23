@@ -70,6 +70,10 @@ None changes a hypothesis, a test or a decision rule.
 15. Item and circuit details: scripts/familiarity_items.py, scripts/familiarity_eval.py and
     scripts/circuit_analysis.py (candidate heads from 100 sequences of 25 distinct base-language words repeated once;
     200 random draws for unseen nouns, 20 for trained kinds).
+16. Head selection after the pilot. The registered rule (the k heads with the highest product of prefix-matching and
+    copying scores) is kept whatever the pilot shows. If the candidates' prefix-matching scores are not clearly above
+    the level of uniform attention (about 1/37 for these sequences), the candidates are reported as copying heads, not
+    induction heads, and no claim about induction is made.
 
 ## Pilot result
 (To be completed after the pilot and before any confirmatory model is trained.)

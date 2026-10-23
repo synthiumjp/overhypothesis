@@ -199,6 +199,23 @@ class FreshWindowDataset(Dataset):
         return torch.from_numpy(chunk[:-1].copy()), torch.from_numpy(chunk[1:].copy())
 
 
+class OrderedWindowDataset(Dataset):
+    """Amendment 9: window p of the run is text window order[p] (non-overlapping, stride
+    seq_len), read in the order given, so the step at which every window is read is fixed."""
+    def __init__(self, token_ids, seq_len: int, order):
+        self.data    = token_ids
+        self.seq_len = seq_len
+        self.order   = order
+
+    def __len__(self):
+        return len(self.order)
+
+    def __getitem__(self, idx):
+        start = int(self.order[idx]) * self.seq_len
+        chunk = np.asarray(self.data[start: start + self.seq_len + 1], dtype=np.int64)
+        return torch.from_numpy(chunk[:-1].copy()), torch.from_numpy(chunk[1:].copy())
+
+
 def load_and_tokenize(corpus_path: Path, tokenizer: Tokenizer,
                       corpus_fraction: float = 1.0) -> list:
     """Load corpus, tokenise, optionally truncate for dose-response."""
@@ -319,6 +336,13 @@ def train(args, model, dataloader, device, device_type, output_dir, tokenizer):
             log["losses"].append(round(loss_val, 6))
             log["lrs"].append(round(lr, 8))
 
+        # Amendment 9: weights only, every --save_every steps
+        if args.save_every:
+            if step % args.save_every == 0:
+                torch.save({"step": step, "model_state": model.state_dict()},
+                           output_dir / f"weights_step{step:05d}.pt")
+            continue
+
         # Checkpoint every 500 steps
         if step % CHECKPOINT_EVERY == 0 or step == cfg["max_steps"]:
             ckpt_path = output_dir / f"ckpt_step{step:05d}.pt"
@@ -341,7 +365,12 @@ def train(args, model, dataloader, device, device_type, output_dir, tokenizer):
         "vocab_size":  vocab_size,
         "model_cfg":   MODEL_CONFIGS[args.size],
         "train_cfg":   TRAIN_CONFIG[args.size],
+        "untied":      bool(args.untie_embeddings),
     }, final_path)
+    if args.untie_embeddings:
+        sd = model.state_dict()
+        if torch.equal(sd["tok_embed.weight"].cpu(), sd["lm_head.weight"].cpu()):
+            raise SystemExit("input and output embeddings are identical after training: the untie failed")
     print(f"\nFinal model saved: {final_path}")
 
     # Save training log
@@ -383,7 +412,22 @@ def main():
     parser.add_argument("--fresh_windows", action="store_true",
                         help="encode line by line and train on non-overlapping windows; refuses to "
                              "start if the corpus is too short to supply every step without reuse")
+    # Amendment 9. Defaults leave every earlier run unchanged.
+    parser.add_argument("--window_order", type=Path, default=None,
+                        help="with --fresh_windows: .npy permutation; read position p reads text window order[p], "
+                             "in order (no shuffling); the corpus must hold exactly len(order) windows plus one token")
+    parser.add_argument("--untie_embeddings", action="store_true",
+                        help="give the output layer its own matrix (a copy of the input embedding at "
+                             "initialisation) and stop if the two share storage")
+    parser.add_argument("--save_every", type=int, default=0,
+                        help="save weights only (no optimiser state) every N steps, instead of the "
+                             "500-step full checkpoints")
+    parser.add_argument("--tokenizer", type=Path, default=None, help="tokenizer file (overrides --tok_dir)")
+    parser.add_argument("--corpus_file", type=Path, default=None, help="corpus file (overrides --corpus_dir)")
+    parser.add_argument("--run_name", type=str, default=None, help="output folder name (default condition_size_seed)")
     args = parser.parse_args()
+    if args.window_order and not args.fresh_windows:
+        raise SystemExit("--window_order needs --fresh_windows")
     if args.seq_len:
         base = TRAIN_CONFIG[args.size]
         if args.keep_tokens_per_step:
@@ -400,7 +444,7 @@ def main():
 
     # ── Output directory ──────────────────────────────────────────────────────
     frac_tag = f"_frac{int(args.corpus_fraction*100)}" if args.corpus_fraction < 1.0 else ""
-    run_name = f"{args.condition}_{args.size}_seed{args.seed}{frac_tag}"
+    run_name = args.run_name or f"{args.condition}_{args.size}_seed{args.seed}{frac_tag}"
     output_dir = args.output_dir / run_name
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -409,7 +453,9 @@ def main():
     print(f"Device: {device} ({device_type})")
 
     # ── Tokeniser ─────────────────────────────────────────────────────────────
-    tok_path = args.tok_dir / f"{args.condition}_tokenizer.json"
+    tok_path = args.tokenizer or args.tok_dir / f"{args.condition}_tokenizer.json"
+    if args.tokenizer and not tok_path.exists():
+        raise SystemExit(f"tokenizer not found: {tok_path}")
     if not tok_path.exists():
         # Fall back to regular tokeniser (acceptable for smoke test)
         tok_path = args.tok_dir / "regular_tokenizer.json"
@@ -419,7 +465,9 @@ def main():
     print(f"Tokeniser: {tok_path.name} | vocab_size={vocab_size}")
 
     # ── Corpus ────────────────────────────────────────────────────────────────
-    corpus_path = args.corpus_dir / f"{args.condition}_seed{args.seed}.txt"
+    corpus_path = args.corpus_file or args.corpus_dir / f"{args.condition}_seed{args.seed}.txt"
+    if args.corpus_file and not corpus_path.exists():
+        raise SystemExit(f"corpus not found: {corpus_path}")
     if not corpus_path.exists():
         # Fall back to seed 42 corpus (smoke test only)
         corpus_path = args.corpus_dir / f"{args.condition}_seed42.txt"
@@ -438,7 +486,20 @@ def main():
     # ── Dataset + DataLoader ──────────────────────────────────────────────────
     cfg        = TRAIN_CONFIG[args.size]
     seq_len    = cfg["seq_len"]
-    if args.fresh_windows:
+    order_md5 = None
+    if args.window_order:
+        import hashlib
+        order = np.load(args.window_order)
+        order_md5 = hashlib.md5(order.tobytes()).hexdigest()
+        if len(token_ids) != len(order) * seq_len + 1:
+            raise SystemExit(f"corpus has {len(token_ids):,} tokens; the window order needs exactly "
+                             f"{len(order) * seq_len + 1:,}")
+        if len(order) != cfg["max_steps"] * cfg["batch_size"]:
+            raise SystemExit(f"{len(order):,} windows in the order but {cfg['max_steps'] * cfg['batch_size']:,} "
+                             f"are read in training")
+        dataset = OrderedWindowDataset(token_ids, seq_len, order)
+        print(f"Window order: {args.window_order.name} ({len(order):,} windows, read in order, md5 {order_md5})")
+    elif args.fresh_windows:
         dataset = FreshWindowDataset(token_ids, seq_len)
         steps   = 100 if args.smoke_test else cfg["max_steps"]
         needed  = steps * cfg["batch_size"]
@@ -449,7 +510,7 @@ def main():
         dataset = CorpusDataset(token_ids, seq_len)
     dataloader = DataLoader(
         dataset, batch_size=cfg["batch_size"],
-        shuffle=True, drop_last=True,
+        shuffle=not args.window_order, drop_last=True,
         num_workers=0,   # 0 for Windows / DirectML compatibility
     )
     print(f"Dataset: {len(dataset):,} sequences of length {seq_len}")
@@ -463,7 +524,16 @@ def main():
         n_layer=mcfg["n_layer"],
         d_ff=mcfg["d_ff"],
         seq_len=seq_len,
-    ).to(device)
+    )
+    if args.untie_embeddings:
+        model.lm_head.weight = nn.Parameter(model.tok_embed.weight.detach().clone())
+    model = model.to(device)
+    if args.untie_embeddings:
+        names = dict(model.named_parameters())
+        if ("lm_head.weight" not in names or "tok_embed.weight" not in names
+                or names["lm_head.weight"] is names["tok_embed.weight"]):
+            raise SystemExit("input and output embeddings share storage: stopping")
+        print("Embeddings: untied (output layer starts as a copy of the input embedding)")
     n_params = model.count_params()
     print(f"Model: {args.size} | params={n_params:,}")
 
@@ -477,6 +547,9 @@ def main():
             "model_cfg": mcfg, "train_cfg": cfg,
             "device": device_type,
             **({"fresh_windows": True, "corpus_file": str(corpus_path)} if args.fresh_windows else {}),
+            **({"window_order": str(args.window_order), "window_order_md5": order_md5} if args.window_order else {}),
+            **({"untied": True, "tokenizer": str(tok_path), "save_every": args.save_every}
+               if args.untie_embeddings else {}),
         }, f, indent=2)
 
     # ── Smoke test override ───────────────────────────────────────────────────

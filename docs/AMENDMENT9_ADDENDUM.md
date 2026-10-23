@@ -49,6 +49,20 @@ None changes a hypothesis, a test or a decision rule.
     morb, maft, plorb, klarb, stind, sturm, snamp, derk, grert, snolb, dalb, polp, fronk, pisp, plond. None is a
     substring of, or within one letter of, another word of the language. With two nouns per cell the first 28 are used.
     The noun-to-cell rotation and each noun's s* are in docs/amendment9_assignment.json.
+13. Pilot rule, computed by scripts/amendment9_tests.py pilot. From the pilot's grouped Regular model, the standard
+    deviation of carry between nouns of the same cell (sigma) is combined with the Amendment 8 seed-level standard
+    deviation (0.81 nats) to give the expected seed-level standard deviation of the H31 contrast with m nouns per cell,
+    sqrt(0.81^2 + sigma^2/(2m) + sigma^2/4). Two nouns per cell are used if that gives power of at least 0.8 for a
+    1-nat difference (two-sided alpha 0.05/6, ten seeds), otherwise three.
+14. Test details, fixed in scripts/amendment9_tests.py before any data: slopes are least-squares slopes over the cell
+    means of one model and are then averaged over sizes within seed; M1 passes in a base corpus when the mean knowledge
+    at 1,000 exposures is at least 0.2 nats and its slope is above zero (one-sided t, p < .05); H31 compares the shape-
+    absent cells at 1,000 and 10,000 exposures (pooled) with the unseen nouns under the typical embedding, both in grouped
+    Regular models; H33 is supported only if both parts are, so its p value in the Holm family is the larger of the two;
+    the mixed models use random intercepts for seed and a variance component for noun.
+15. Item and circuit details: scripts/familiarity_items.py, scripts/familiarity_eval.py and
+    scripts/circuit_analysis.py (candidate heads from 100 sequences of 25 distinct base-language words repeated once;
+    200 random draws for unseen nouns, 20 for trained kinds).
 
 ## Pilot result
 (To be completed after the pilot and before any confirmatory model is trained.)

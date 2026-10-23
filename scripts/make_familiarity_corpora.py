@@ -471,6 +471,9 @@ def cmd_check(a):
     from tokenizers import Tokenizer
     tok = Tokenizer.from_file(str(TOK_PATH))
     bad_total, n = 0, 0
+    ref = {}
+    if a.against:
+        ref = {(r["base"], r["seed"], r["windows"]): r for r in json.load(open(a.against))["corpora"]}
     for base in a.bases:
         for seed in a.seeds:
             for nw in a.windows:
@@ -480,6 +483,9 @@ def cmd_check(a):
                     bad_total += 1
                     continue
                 fail, man = check_one(d, seed, tok)
+                r = ref.get((base, seed, nw))
+                if a.against and (r is None or r["md5_text"] != man["md5_text"] or r["md5_order"] != man["md5_order"]):
+                    fail.append(f"not the corpus recorded in {a.against}")
                 n += 1
                 bad_total += bool(fail)
                 print(f"{'OK  ' if not fail else 'FAIL'} {base} w{nw // 1000}k seed {seed}" +
@@ -502,5 +508,7 @@ if __name__ == "__main__":
         b.add_argument("--seeds", nargs="+", type=int, default=CONF_SEEDS)
         b.add_argument("--windows", nargs="+", type=int, default=[160_000, 256_000])
         b.add_argument("--per_cell", type=int, default=2, choices=[2, 3])
+        if name == "check":
+            b.add_argument("--against", default=None, help="recorded manifest of MD5s to compare with")
     a = ap.parse_args()
     {"assign": cmd_assign, "tokenizer": cmd_tokenizer, "build": cmd_build, "check": cmd_check}[a.cmd](a)

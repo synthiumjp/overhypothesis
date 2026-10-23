@@ -1,0 +1,35 @@
+{
+ "note": "Pilot corpora (seed 2027, 3 nouns per cell) as built by scripts/make_familiarity_corpora.py on 23 Oct 2026, before any Amendment 9 model was trained on the training PC.",
+ "corpora": [
+  {
+   "base": "reassigned_grouped",
+   "seed": 2027,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "e117178d53aa1e51a0e0129e93347277",
+   "md5_order": "77a371bf0cb1b17189d622d25bd5e04e",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 2027,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "e44fc0d48ebbbb8f0b2dd580f87a6300",
+   "md5_order": "77a6a79c8e0b1bfa024b50ea71407bfe",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 2027,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "b5d788533b8d5438d727255fd4ed893c",
+   "md5_order": "6ab0cec8e763aa46d81600fb6b2c74bd",
+   "familiarity_sentences": 99990
+  }
+ ]
+}

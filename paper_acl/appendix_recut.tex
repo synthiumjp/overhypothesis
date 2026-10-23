@@ -48,3 +48,26 @@ Reassigned, grouped & 6.81 & 1.17 & 10.01 & \textminus{}2.99 & \textminus{}2.70 
 \end{tabular}
 \end{table}
 
+\begin{table}[!htbp]
+\centering\small
+\caption{Noun-familiarity curve: unseen tokens' input embeddings blended from their untrained values (0) to typical embeddings (1). Index and $\Delta$ shape, same noun (nats; mean of seed means); slope per unit blend with 95\% interval over five seeds.}
+\label{tab:L3}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Condition & Measure & 0 & 0.25 & 0.5 & 0.75 & 1 & Slope \\
+\midrule
+Regular, random & Index & \textminus{}1.56 & \textminus{}1.83 & \textminus{}1.93 & \textminus{}1.79 & \textminus{}1.54 & 0.03 [\textminus{}0.22, 0.28] \\
+Regular, random & $\Delta$ shape & \textminus{}1.55 & \textminus{}1.83 & \textminus{}1.92 & \textminus{}1.78 & \textminus{}1.52 & 0.05 [\textminus{}0.26, 0.35] \\
+Regular, grouped & Index & 9.52 & 6.70 & 4.32 & 2.10 & 1.46 & \textminus{}8.28 [\textminus{}9.87, \textminus{}6.70] \\
+Regular, grouped & $\Delta$ shape & 6.88 & 4.27 & 2.08 & \textminus{}0.08 & \textminus{}0.72 & \textminus{}7.82 [\textminus{}9.59, \textminus{}6.04] \\
+Objects, same-object runs & Index & 5.87 & 3.71 & 1.08 & \textminus{}1.41 & \textminus{}1.85 & \textminus{}8.23 [\textminus{}10.05, \textminus{}6.40] \\
+Objects, same-object runs & $\Delta$ shape & 6.87 & 4.59 & 1.90 & \textminus{}0.65 & \textminus{}1.17 & \textminus{}8.52 [\textminus{}10.22, \textminus{}6.83] \\
+Objects, different-object runs & Index & 7.60 & 4.53 & 1.87 & \textminus{}0.82 & \textminus{}1.25 & \textminus{}9.22 [\textminus{}9.97, \textminus{}8.46] \\
+Objects, different-object runs & $\Delta$ shape & 8.05 & 4.85 & 2.08 & \textminus{}0.69 & \textminus{}1.14 & \textminus{}9.57 [\textminus{}10.14, \textminus{}9.00] \\
+Reassigned, grouped & Index & 9.80 & 8.03 & 5.34 & 3.87 & 3.87 & \textminus{}6.41 [\textminus{}8.74, \textminus{}4.08] \\
+Reassigned, grouped & $\Delta$ shape & 6.81 & 4.83 & 2.24 & 0.97 & 1.17 & \textminus{}6.06 [\textminus{}7.28, \textminus{}4.84] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Mean input-embedding norms: trained nouns 0.55, unseen tokens 0.36, typical tokens 0.55.

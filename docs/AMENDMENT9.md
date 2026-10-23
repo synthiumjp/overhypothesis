@@ -77,7 +77,8 @@ fails a check.
 
 ### 3.3 Models
 Three sizes (3.4M, 11.0M, 25.6M parameters), ten seeds (42, 123, 456, 789, 1001 and five new seeds listed in the
-materials), three base corpora: 90 models, trained with the Amendment 8 settings. Input and output embeddings are untied explicitly in code, and training stops
+materials), three base corpora: 90 models, trained with the Amendment 8 settings. All Amendment 9 models, including
+the pilot, are trained on one machine (the DirectML GPU used for Amendment 8), so hardware cannot differ between cells. Input and output embeddings are untied explicitly in code, and training stops
 if they share storage. An unseen noun's input row is therefore never updated by its own occurrence; weight decay still
 shrinks it (about 8% over training in earlier models). A new tokeniser, built as before, adds every nonce noun as a
 single token; this is checked before training. Weights are saved every 1,000 steps (weights only) for the analysis of

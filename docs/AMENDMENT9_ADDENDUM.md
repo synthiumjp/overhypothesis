@@ -11,7 +11,8 @@
 2. Section 3.4 says the pilot is run and the number of nouns per cell fixed "before registration". Because the
    registration came first, this is read as "before any confirmatory model is trained". The rule itself is unchanged and
    was fixed in advance: two nouns per cell unless the pilot's variance estimates give power below 0.8 for a 1-nat effect
-   at the strictest Holm level, in which case three. The pilot result and the choice are recorded below, dated, before
+   at the strictest Holm level, in which case three (if three also falls short, three are used and the shortfall is
+   reported). The pilot result and the choice are recorded below, dated, before
    any confirmatory model trains.
 3. All Amendment 9 models, including the pilot, are trained on one machine (the DirectML GPU used for Amendment 8), so
    hardware cannot differ between cells.

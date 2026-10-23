@@ -1,0 +1,605 @@
+{
+ "note": "Confirmatory corpora (ten seeds, 3 nouns per cell, 160k and 256k windows) as built by scripts/make_familiarity_corpora.py on 23 Oct 2026 after the pilot, before any confirmatory model was trained.",
+ "corpora": [
+  {
+   "base": "reassigned_grouped",
+   "seed": 1001,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "583a5b74c84f12ec10f3de3d44bc1637",
+   "md5_order": "d9170b96e7ba2c1731c896a0c7f1606b",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 123,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "37a887c0cf066fafccd2918cd8088bda",
+   "md5_order": "51cd84b9fbfb3b1dab0689ae3164807d",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1414,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "c4b09443addedab7ff2de8b97dd81450",
+   "md5_order": "4828206b56da83653f31076672d3d8a4",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1618,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "3121e7089cf0d31acb4bb0b505bf03b9",
+   "md5_order": "bc2bd3a0bfb4d28ca00ccf470c5444fa",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1732,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "a81acd38bb90f78dd95f4586a1d83b48",
+   "md5_order": "c42eae405038b650586889e31f5d8024",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 2718,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "213b0821e7ab956dd81a5d8a2260f988",
+   "md5_order": "182e6c9ffef577365dab973b6319acb5",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 3141,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "07d8251e75106f1b7175a11c59de63d4",
+   "md5_order": "56605e963151548a18a415516f898cab",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 42,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "db60b7b38474bfaea65963637488951a",
+   "md5_order": "164a41370c24f5ca578ee07af76aec9b",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 456,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "8d033cb64ec24f3b96e6b7f6d1edd642",
+   "md5_order": "88f96f483bf9fd4e7de566f4dd6b335a",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 789,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "8e788bc5d84a37ce6f6e373fa4451aa0",
+   "md5_order": "bef9c4d7866f19ec53b34f671aab061c",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1001,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "618f18dfad28ac08695a0fe7c78cb934",
+   "md5_order": "26ed146e6413b82239a86d69bb936c10",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 123,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "4c1557145fd9d3eb1da7fbe1c32e5e3a",
+   "md5_order": "9659203e4888c4b80f28a6ba0aee1697",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1414,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "afddfa36b070a988986160d5d31156a4",
+   "md5_order": "0cba5d38e9dd1939f98820110bc07dcf",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1618,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "c0efe10c0bb061e6af9dc99916f5474f",
+   "md5_order": "90841b3575e055f6acedd4ec0f1e2147",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 1732,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "d76639be37327774f33a80d7113c5c3b",
+   "md5_order": "cfadf252c6efe1d12ec2e812599f26df",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 2718,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "25ef17c13da2017820eb1c252b81c691",
+   "md5_order": "16b42e338da71762a40b3049273c19bd",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 3141,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "c63cffed83b211f8ea7c13feab11ce38",
+   "md5_order": "7bbd09e608dc06b81511578f308bb838",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 42,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "c6a4f117ce9d0c6215dc83cfb11d39dc",
+   "md5_order": "a976742ef0e4267c608021e9b3157c57",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 456,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "0826a0b07dc996a3f1a6d95beaf11b87",
+   "md5_order": "11352a97ef904993afebe5b373c5378c",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "reassigned_grouped",
+   "seed": 789,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "8534b3ec7cb3e0e9bce21a19bdac0033",
+   "md5_order": "4ca0a1289a6b3261febb33531e45d3fe",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1001,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "b0e673326c6e73ec647df33020511e0c",
+   "md5_order": "dd62b4d8b437c7e63e66cdd1d2c26577",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 123,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "eef9e2ebc1a1586db329963c7f80170f",
+   "md5_order": "d598c6eb00fd1f4825f4a546f9100e15",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1414,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "5057b626a17f9e8f254471a14298aad7",
+   "md5_order": "dd0fca7e8a6e04ff71ee18b1794e3c4f",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1618,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "0d2b4805aafe9120e19d77e57c8e10fb",
+   "md5_order": "c7380db2c329fd93595c4ac2020fb716",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1732,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "55fc3f41d640864dd21b8f0efa7c388e",
+   "md5_order": "a35e07a621cb6a2fbab3834be0ef14a6",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 2718,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "abb628806f1a5e658641949ed9fb6442",
+   "md5_order": "b5ac849c74f2024ceb551c35c43cc6ba",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 3141,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "4e6ea6c4cc3357ccc0b3935c2012d621",
+   "md5_order": "b4c46c42246f225f1710841213ede242",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 42,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "4be2e6a967bea79bc3ffce4b61d7aaed",
+   "md5_order": "096f23800555892f33427928e7e5faef",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 456,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "ae35a4c70bc45cca88963dc8b0cbc35d",
+   "md5_order": "a47ca0b47f5f679ec9cea02bc94c1616",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 789,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "acc85ab2af5ef70e253cd776655461ce",
+   "md5_order": "593660eae6c096131da77298995953c2",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1001,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "c2da3dcdd032e289516e9691ba07d21a",
+   "md5_order": "22f789a8f6967945a5cbc7cbb1d1f592",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 123,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "847b859cff49a70417370f8cc7bd3615",
+   "md5_order": "0b14b9af85d76ceb4f5a5d73e01bf1bd",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1414,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "ed0cab69fed36925a93f28194bf53be1",
+   "md5_order": "7a250f262720a561e89782adcc3eef92",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1618,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "acf8cf83ecc3fbfe7353ecc2bd6f8ebc",
+   "md5_order": "931fc7ed43611ee9e228901979bfce90",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 1732,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "8d381fd6c13757c23bcf08a23b5c64b2",
+   "md5_order": "7439ecb4bc26e9b1d40dcb66a5ef6955",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 2718,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "8626eb90b59a933615f371b656b127f7",
+   "md5_order": "92eed4a95b61518bc3bc6b99fc8ee02d",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 3141,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "bfc75d12d54dd144bd89771ee0e7e0d2",
+   "md5_order": "e487c7c25986b99b180b6c1e4878be77",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 42,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "0c1e8b3c85744e1e6ce7acc862c3c33f",
+   "md5_order": "408fc7215c694791aacfcc9c43ca0933",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 456,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "39e8e413f5498b8d6e01287d011b14d5",
+   "md5_order": "863a27cfe6b1347b436e1757cc67857a",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_grouped",
+   "seed": 789,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "720bc3de2ae4d166cd4edc13ee3e4cb4",
+   "md5_order": "c6c5b6a8766b0fa09cb8a83f077133b1",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1001,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "11f80f2e9e4280dd4b1e5ff9944c95d3",
+   "md5_order": "470027f0e5ca6d3ea442f9ad6aed0d54",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 123,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "fbf2e36832c9a9f0d2827c45f5429117",
+   "md5_order": "cf31c344dd9e194adbe1a15d2338244a",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1414,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "cad1524bdb4d261fe80e79fe0a99e8b1",
+   "md5_order": "87683c9d3966650d10704cdd36225d2e",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1618,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "034a82bb99806f7a4278cc941ef0c08d",
+   "md5_order": "82303004ac4172d3b1c6999addaa6609",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1732,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "5090b68403b8c2bb45db4eb18918cf64",
+   "md5_order": "3d6e430114dbd6e24ef97a95da59a47b",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 2718,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "5aaa95015625b0c6b78e75042186e6c9",
+   "md5_order": "944f541448fe0454eea8d24cbbd96117",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 3141,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "44668b28628669bc62221ba3a59a5978",
+   "md5_order": "30b03b4f180d44722d164afa57727faa",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 42,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "c8aed1d1f618ebd6da388aa38c7ca648",
+   "md5_order": "0387a0398208c73c6f1c4a906c8490db",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 456,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "043f38a9953a7c4eb38606bbdd3e66ff",
+   "md5_order": "6680c282c3855b310f82be6f7ef95f88",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 789,
+   "windows": 160000,
+   "per_cell": 3,
+   "tokens": 20480001,
+   "md5_text": "9e495e7a52f5256364b8479898c4a90c",
+   "md5_order": "bf93e98ba3462205cad24a899bb7e514",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1001,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "ab019a6e094815702f4921fe5d525c9e",
+   "md5_order": "a78eeaf5595c48809394a00168a94720",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 123,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "8f64bfefdcda4bf49e2f55c15b857a43",
+   "md5_order": "0cfc099a86fab53e6244ed9e1c25671c",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1414,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "76718ca6b969f244d4fe163da9c42004",
+   "md5_order": "55f0bd7d02ee8d225b1aaa6b7026428b",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1618,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "20127ff9a264d363587437359687e0b2",
+   "md5_order": "890816120f221e2233d0a55398045412",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 1732,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "004ed16b1ca72aa04331cf522040e242",
+   "md5_order": "26e1ed8f9609f93d848cdc073f932e2b",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 2718,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "8430002ac194e2d0911166b16db69d5c",
+   "md5_order": "c4d8401f05689b3d564c0987a2995af3",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 3141,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "ecccf90de559c235a59f118ffb23f783",
+   "md5_order": "f6f4b76d42be1b0a44bc559a0c7df7c1",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 42,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "e4c90d62b2d70da77f2e8bfc692cb6df",
+   "md5_order": "fe2189e39aed2ebded11560ff6e24b48",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 456,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "3c008b3783ffa38fdf2608c419afdf14",
+   "md5_order": "591d91f00568cf042937449feef54c8d",
+   "familiarity_sentences": 99990
+  },
+  {
+   "base": "regular_random",
+   "seed": 789,
+   "windows": 256000,
+   "per_cell": 3,
+   "tokens": 32768001,
+   "md5_text": "6b6a2d0908d028a539b3c9df9d79a381",
+   "md5_order": "6d51cbb858e3bc7d42ac6da1ca9ec135",
+   "familiarity_sentences": 99990
+  }
+ ]
+}

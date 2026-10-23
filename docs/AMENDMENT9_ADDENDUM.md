@@ -75,5 +75,19 @@ None changes a hypothesis, a test or a decision rule.
     the level of uniform attention (about 1/37 for these sequences), the candidates are reported as copying heads, not
     induction heads, and no claim about induction is made.
 
-## Pilot result
-(To be completed after the pilot and before any confirmatory model is trained.)
+## Pilot result (23 October 2026, before any confirmatory corpus was built or model trained)
+- The three pilot corpora built on the training PC matched the checksums recorded beforehand
+  (docs/amendment9_corpus_manifest_pilot.json) and passed every corpus check. The three 3.4M pilot models trained in
+  4.4 minutes each. All scores, head analyses and logs are in results/amendment9/ (commit d9823de).
+- Nouns per cell (item 13). The standard deviation of carry between nouns of a cell in the grouped Regular pilot model
+  was 0.634 nats. The expected seed-level standard deviation of the H31 contrast is 0.926 nats with two nouns per cell
+  and 0.907 with three, giving power 0.55 and 0.57 for a 1-nat difference. Neither reaches 0.8, so three nouns per cell
+  are used and the shortfall is reported. Almost all of the expected standard deviation comes from the assumed
+  seed-level term (0.81 nats from Amendment 8); the registered ten seeds are kept.
+- Manipulation check. Knowledge for consistent nouns in the grouped Regular pilot model was 0.41, 9.88, 10.33 and 11.43
+  nats at 10, 100, 1,000 and 10,000 exposures.
+- Heads (item 16). In all three pilot models the highest prefix-matching score was at most 0.028, the level of uniform
+  attention, and the candidates were layer-0 heads. The candidates are therefore described as copying heads.
+- The pilot results were seen before the confirmatory models were trained. No hypothesis, test, threshold or rule was
+  changed because of them; the only decision taken from the pilot is the number of nouns per cell, by the rule fixed in
+  item 13. Confirmatory corpus checksums were recorded before training (docs/amendment9_corpus_manifest.json).

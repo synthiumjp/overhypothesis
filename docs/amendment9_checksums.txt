@@ -13,5 +13,6 @@ a2f02ac34e829107932d6637150116c1  scripts/make_bursty_corpus.py
 d30b3b6a9f6b56ff36e3598cf6dc0ae6  data/tokenizers/amendment9_tokenizer.json
 46b44a9966cd6b32964ad22d3e8e3581  docs/amendment9_assignment.json
 1c20920ef72351b288a960426f017a3b  docs/amendment9_corpus_manifest_pilot.json
+004dc494abce4bf5caaf0a55e14c9a2c  docs/amendment9_corpus_manifest.json
 1ef2b4116e3f37199a4e76048f85bc3b  docs/AMENDMENT9.md
-c10ff0d8be9991582dbf54a4eda71f4a  docs/AMENDMENT9_ADDENDUM.md
+2c40cb5753145b269a5befe07add7219  docs/AMENDMENT9_ADDENDUM.md

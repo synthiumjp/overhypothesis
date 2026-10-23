@@ -39,37 +39,37 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "drant"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "masp",
@@ -81,55 +81,55 @@
       "noun": "grirk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "plask",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "wemb"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "snilp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
@@ -141,67 +141,67 @@
       "noun": "klulk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "zurb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "trirb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "morb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "maft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "plorb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "drant"
      }
     ],
     "123": [
@@ -209,67 +209,67 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "felk"
      },
      {
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "plask",
@@ -281,7 +281,7 @@
       "noun": "trort",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
@@ -293,79 +293,79 @@
       "noun": "grosk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "zurb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "zusp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "klesk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "fuft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "trirb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "plorb",
@@ -379,169 +379,169 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "zelp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "wemb"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "drant"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "wemb"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "wemb"
      },
      {
       "noun": "falp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "zurb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "tova"
      },
      {
       "noun": "parb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "zusp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "drant"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "mundi"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "plorb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "tova"
      }
     ],
     "789": [
@@ -549,25 +549,25 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "pind",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "zelp",
@@ -579,73 +579,73 @@
       "noun": "virk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "felk"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "staft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "blark",
       "type": "absent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "wemb"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "mundi"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "snilp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "klulk",
@@ -657,55 +657,55 @@
       "noun": "falp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "tova"
      },
      {
       "noun": "zurb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "parb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "wemb"
      },
      {
       "noun": "zusp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "plorb",
@@ -719,67 +719,67 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "pind",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "prex"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "masp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "tova"
      },
      {
       "noun": "staft",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "blark",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "plask",
@@ -791,31 +791,31 @@
       "noun": "trort",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "plert",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "grosk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "snilp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "pilf",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "klulk",
@@ -833,7 +833,7 @@
       "noun": "zurb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "parb",
@@ -845,43 +845,43 @@
       "noun": "zusp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "trirb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "morb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "maft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "plorb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "zibby"
      }
     ],
     "2718": [
@@ -889,31 +889,31 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "pind",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "felk"
      },
      {
       "noun": "klirm",
       "type": "absent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "virk",
@@ -925,43 +925,43 @@
       "noun": "masp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "staft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "blark",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "oofy"
      },
      {
       "noun": "fresp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "plask",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "trort",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
@@ -973,25 +973,25 @@
       "noun": "grosk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "snilp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "pilf",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "klulk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
@@ -1003,37 +1003,37 @@
       "noun": "zurb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "parb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "zusp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "klesk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "fuft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "trirb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
@@ -1045,13 +1045,13 @@
       "noun": "maft",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "plorb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "zibby"
      }
     ],
     "3141": [
@@ -1059,7 +1059,7 @@
       "noun": "klerd",
       "type": "absent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "pind",
@@ -1071,73 +1071,73 @@
       "noun": "klirm",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "masp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "grirk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "staft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "blark",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "fresp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "plask",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "krannish"
      },
      {
       "noun": "trort",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "plert",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "grosk",
@@ -1155,31 +1155,31 @@
       "noun": "pilf",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "klulk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "falp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "zurb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "parb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "felk"
      },
      {
       "noun": "zusp",
@@ -1197,25 +1197,25 @@
       "noun": "fuft",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "trirb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "drant"
      },
      {
       "noun": "morb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "mundi"
      },
      {
       "noun": "plorb",
@@ -1235,109 +1235,109 @@
       "noun": "pind",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "klirm",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "lilb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "zelp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "virk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "masp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "wemb"
      },
      {
       "noun": "grirk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "prex"
      },
      {
       "noun": "staft",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "blark",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "fresp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "plask",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "trort",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "grosk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "snilp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "klulk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "falp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "zurb",
@@ -1349,49 +1349,49 @@
       "noun": "parb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "zusp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "klesk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "plorb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      }
     ],
     "1414": [
@@ -1399,79 +1399,79 @@
       "noun": "klerd",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "prex"
      },
      {
       "noun": "pind",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "klirm",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "felk"
      },
      {
       "noun": "lilb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "masp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "grirk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "staft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "blark",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "fresp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "plask",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "oofy"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
@@ -1483,7 +1483,7 @@
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "prex"
      },
      {
       "noun": "snilp",
@@ -1495,13 +1495,13 @@
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "klulk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
@@ -1513,25 +1513,25 @@
       "noun": "zurb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "prex"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "fuft",
@@ -1543,25 +1543,25 @@
       "noun": "trirb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "plorb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      }
     ],
     "1732": [
@@ -1569,61 +1569,61 @@
       "noun": "klerd",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "tova"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "masp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "grirk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "staft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "fresp",
@@ -1641,43 +1641,43 @@
       "noun": "trort",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "prex"
      },
      {
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "snilp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "zurb",
@@ -1689,31 +1689,31 @@
       "noun": "parb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "morb",
@@ -1725,13 +1725,13 @@
       "noun": "maft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "plorb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "wemb"
      }
     ],
     "2027": [
@@ -1745,151 +1745,151 @@
       "noun": "pind",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "mundi"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "wemb"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "plask",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "oofy"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "felk"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "zurb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "prex"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "klesk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "mundi"
      },
      {
       "noun": "fuft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "trirb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "maft",
@@ -1901,7 +1901,7 @@
       "noun": "plorb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "drant"
      }
     ]
    }
@@ -1956,169 +1956,169 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "masp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "grirk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "staft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "fresp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "plask",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "snilp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "klulk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "falp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "zurb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "parb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "zusp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "klesk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "fuft",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "plorb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "krannish"
      },
      {
       "noun": "klarb",
@@ -2130,67 +2130,67 @@
       "noun": "stind",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "sturm",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "snamp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "derk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "grert",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "snolb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "dalb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "polp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "fronk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "pisp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "plond",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "mundi"
      }
     ],
     "123": [
@@ -2198,67 +2198,67 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "masp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "grirk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "staft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "felk"
      },
      {
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "plask",
@@ -2270,7 +2270,7 @@
       "noun": "trort",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "plert",
@@ -2282,103 +2282,103 @@
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "snilp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "klulk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "zurb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "parb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "plorb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "prex"
      },
      {
       "noun": "klarb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "stind",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "sturm",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "snamp",
@@ -2390,43 +2390,43 @@
       "noun": "derk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "grert",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "snolb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "dalb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "felk"
      },
      {
       "noun": "polp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "fronk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "pisp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "plond",
@@ -2440,91 +2440,91 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "lilb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "zelp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "virk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "wemb"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "wemb"
      },
      {
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "mundi"
      },
      {
       "noun": "plask",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "snilp",
@@ -2536,145 +2536,145 @@
       "noun": "pilf",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "klulk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "zurb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "mundi"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "prex"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "plorb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "oofy"
      },
      {
       "noun": "klarb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "drant"
      },
      {
       "noun": "stind",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "sturm",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "prex"
      },
      {
       "noun": "snamp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "derk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "oofy"
      },
      {
       "noun": "grert",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "snolb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "dalb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "polp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "fronk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "pisp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "plond",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "tova"
      }
     ],
     "789": [
@@ -2682,55 +2682,55 @@
       "noun": "klerd",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "pind",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "klirm",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "felk"
      },
      {
       "noun": "zelp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "blark",
@@ -2742,31 +2742,31 @@
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "plask",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "trort",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "plert",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "grosk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "snilp",
@@ -2778,19 +2778,19 @@
       "noun": "pilf",
       "type": "absent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "zurb",
@@ -2802,85 +2802,85 @@
       "noun": "parb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "oofy"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "prex"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "trirb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "morb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "maft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "krannish"
      },
      {
       "noun": "plorb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "klarb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "stind",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "wemb"
      },
      {
       "noun": "sturm",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "snamp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "derk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "grert",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "snolb",
@@ -2892,31 +2892,31 @@
       "noun": "dalb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "polp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "oofy"
      },
      {
       "noun": "fronk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "prex"
      },
      {
       "noun": "pisp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "plond",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "zibby"
      }
     ],
     "1001": [
@@ -2924,49 +2924,49 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "pind",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "zelp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "mundi"
      },
      {
       "noun": "staft",
@@ -2984,49 +2984,49 @@
       "noun": "fresp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "plask",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "krannish"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "falp",
@@ -3038,55 +3038,55 @@
       "noun": "zurb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "zusp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "klesk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "fuft",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "trirb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "morb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "maft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "plorb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "klarb",
@@ -3098,67 +3098,67 @@
       "noun": "stind",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "sturm",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "drant"
      },
      {
       "noun": "snamp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "derk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "grert",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "snolb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "dalb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "oofy"
      },
      {
       "noun": "polp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "fronk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "pisp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "plond",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "drant"
      }
     ],
     "2718": [
@@ -3166,133 +3166,133 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "pind",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "zelp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "felk"
      },
      {
       "noun": "masp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "grirk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "staft",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "blark",
       "type": "absent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "tova"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "prex"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "tova"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "felk"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "falp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "zurb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "parb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "zusp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "klesk",
@@ -3310,97 +3310,97 @@
       "noun": "trirb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "plorb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "klarb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "stind",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "sturm",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "snamp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "derk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "grert",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "sallo"
      },
      {
       "noun": "snolb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "dalb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "prex"
      },
      {
       "noun": "polp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "fronk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "pisp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "plond",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "drant"
      }
     ],
     "3141": [
@@ -3408,241 +3408,241 @@
       "noun": "klerd",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "pind",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "prex"
      },
      {
       "noun": "lilb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "wemb"
      },
      {
       "noun": "zelp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "virk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "masp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "felk"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "staft",
       "type": "absent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "blark",
       "type": "absent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "felk"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "drant"
      },
      {
       "noun": "snilp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "pilf",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "klulk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "wemb"
      },
      {
       "noun": "falp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "zurb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "parb",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "zusp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "krannish"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "plorb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "klarb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "drant"
      },
      {
       "noun": "stind",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "sallo"
      },
      {
       "noun": "sturm",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "snamp",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "derk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "felk"
      },
      {
       "noun": "grert",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "wemb"
      },
      {
       "noun": "snolb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "dalb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "polp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "fronk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "pisp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "plond",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "tova"
      }
     ],
     "1618": [
@@ -3656,43 +3656,43 @@
       "noun": "pind",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "klirm",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "oofy"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "tova"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "masp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "zibby"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "staft",
@@ -3704,43 +3704,43 @@
       "noun": "blark",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "zibby"
      },
      {
       "noun": "trort",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "krannish"
      },
      {
       "noun": "plert",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "grosk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "snilp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "mundi"
      },
      {
       "noun": "pilf",
@@ -3752,103 +3752,103 @@
       "noun": "klulk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "mundi"
+      "s_star": "oofy"
      },
      {
       "noun": "falp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "zurb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "parb",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "oofy"
      },
      {
       "noun": "zusp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "mundi"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "plorb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "klarb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "stind",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "sturm",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "krannish"
      },
      {
       "noun": "snamp",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "derk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "grert",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "snolb",
@@ -3866,25 +3866,25 @@
       "noun": "polp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "sallo"
      },
      {
       "noun": "fronk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "pisp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "plond",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "tova"
      }
     ],
     "1414": [
@@ -3892,121 +3892,121 @@
       "noun": "klerd",
       "type": "absent",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "felk"
      },
      {
       "noun": "pind",
       "type": "absent",
       "exposures": 10,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "klirm",
       "type": "absent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "krannish"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "oofy"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "wemb"
      },
      {
       "noun": "masp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "grirk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "staft",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "blark",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "fresp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "oofy"
+      "s_star": "wemb"
      },
      {
       "noun": "plask",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "trort",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "plert",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "grosk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "tova"
+      "s_star": "prex"
      },
      {
       "noun": "snilp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "felk"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "klulk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "falp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "zurb",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "parb",
@@ -4018,115 +4018,115 @@
       "noun": "zusp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "morb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "maft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "felk"
      },
      {
       "noun": "plorb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "klarb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "wemb"
      },
      {
       "noun": "stind",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "sallo"
      },
      {
       "noun": "sturm",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "oofy"
+      "s_star": "prex"
      },
      {
       "noun": "snamp",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "derk",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "grert",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "wemb"
      },
      {
       "noun": "snolb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "dalb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "polp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "fronk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "zibby"
      },
      {
       "noun": "pisp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "prex"
      },
      {
       "noun": "plond",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "wemb"
+      "s_star": "sallo"
      }
     ],
     "1732": [
@@ -4134,37 +4134,37 @@
       "noun": "klerd",
       "type": "absent",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "tova"
      },
      {
       "noun": "pind",
       "type": "absent",
       "exposures": 100,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "klirm",
       "type": "absent",
       "exposures": 100,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "sallo"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "masp",
@@ -4176,7 +4176,7 @@
       "noun": "grirk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "sallo"
+      "s_star": "zibby"
      },
      {
       "noun": "staft",
@@ -4188,55 +4188,55 @@
       "noun": "blark",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "fresp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "plask",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "zibby"
+      "s_star": "wemb"
      },
      {
       "noun": "trort",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "krannish"
+      "s_star": "sallo"
      },
      {
       "noun": "plert",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "wemb"
      },
      {
       "noun": "grosk",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "snilp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "tova"
      },
      {
       "noun": "klulk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
@@ -4248,121 +4248,121 @@
       "noun": "zurb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "parb",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "zibby"
      },
      {
       "noun": "zusp",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "klesk",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "zibby"
      },
      {
       "noun": "fuft",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "trirb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "prex"
      },
      {
       "noun": "morb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "maft",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "prex"
+      "s_star": "wemb"
      },
      {
       "noun": "plorb",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "klarb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "tova"
      },
      {
       "noun": "stind",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "sturm",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "drant"
+      "s_star": "prex"
      },
      {
       "noun": "snamp",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "oofy"
      },
      {
       "noun": "derk",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "felk"
      },
      {
       "noun": "grert",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "drant"
      },
      {
       "noun": "snolb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "dalb",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "zibby"
      },
      {
       "noun": "polp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "felk"
      },
      {
       "noun": "fronk",
       "type": "absent",
       "exposures": 10,
-      "s_star": "sallo"
+      "s_star": "mundi"
      },
      {
       "noun": "pisp",
       "type": "absent",
       "exposures": 10,
-      "s_star": "wemb"
+      "s_star": "zibby"
      },
      {
       "noun": "plond",
@@ -4376,109 +4376,109 @@
       "noun": "klerd",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "zibby"
+      "s_star": "tova"
      },
      {
       "noun": "pind",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "klirm",
       "type": "absent",
       "exposures": 1000,
-      "s_star": "tova"
+      "s_star": "krannish"
      },
      {
       "noun": "lilb",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "tova"
      },
      {
       "noun": "zelp",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "mundi"
+      "s_star": "sallo"
      },
      {
       "noun": "virk",
       "type": "absent",
       "exposures": 10000,
-      "s_star": "prex"
+      "s_star": "drant"
      },
      {
       "noun": "masp",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "sallo"
+      "s_star": "oofy"
      },
      {
       "noun": "grirk",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "wemb"
+      "s_star": "mundi"
      },
      {
       "noun": "staft",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "oofy"
+      "s_star": "felk"
      },
      {
       "noun": "blark",
       "type": "unseen",
       "exposures": 0,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "fresp",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "zibby"
+      "s_star": "sallo"
      },
      {
       "noun": "plask",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "krannish"
+      "s_star": "drant"
      },
      {
       "noun": "trort",
       "type": "consistent",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "plert",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "grosk",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "mundi"
+      "s_star": "wemb"
      },
      {
       "noun": "snilp",
       "type": "consistent",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "krannish"
      },
      {
       "noun": "pilf",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "sallo"
+      "s_star": "tova"
      },
      {
       "noun": "klulk",
       "type": "consistent",
       "exposures": 1000,
-      "s_star": "wemb"
+      "s_star": "drant"
      },
      {
       "noun": "falp",
@@ -4490,13 +4490,13 @@
       "noun": "zurb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "drant"
+      "s_star": "sallo"
      },
      {
       "noun": "parb",
       "type": "consistent",
       "exposures": 10000,
-      "s_star": "zibby"
+      "s_star": "mundi"
      },
      {
       "noun": "zusp",
@@ -4508,13 +4508,13 @@
       "noun": "klesk",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "tova"
+      "s_star": "oofy"
      },
      {
       "noun": "fuft",
       "type": "uninformative",
       "exposures": 10,
-      "s_star": "felk"
+      "s_star": "drant"
      },
      {
       "noun": "trirb",
@@ -4526,31 +4526,31 @@
       "noun": "morb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "prex"
+      "s_star": "oofy"
      },
      {
       "noun": "maft",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "sallo"
+      "s_star": "krannish"
      },
      {
       "noun": "plorb",
       "type": "uninformative",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "klarb",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "oofy"
+      "s_star": "drant"
      },
      {
       "noun": "stind",
       "type": "uninformative",
       "exposures": 1000,
-      "s_star": "drant"
+      "s_star": "mundi"
      },
      {
       "noun": "sturm",
@@ -4562,19 +4562,19 @@
       "noun": "snamp",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "krannish"
+      "s_star": "prex"
      },
      {
       "noun": "derk",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "tova"
+      "s_star": "zibby"
      },
      {
       "noun": "grert",
       "type": "uninformative",
       "exposures": 10000,
-      "s_star": "felk"
+      "s_star": "mundi"
      },
      {
       "noun": "snolb",
@@ -4598,13 +4598,13 @@
       "noun": "fronk",
       "type": "absent",
       "exposures": 100,
-      "s_star": "wemb"
+      "s_star": "felk"
      },
      {
       "noun": "pisp",
       "type": "absent",
       "exposures": 100,
-      "s_star": "oofy"
+      "s_star": "krannish"
      },
      {
       "noun": "plond",

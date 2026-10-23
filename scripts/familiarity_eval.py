@@ -213,7 +213,7 @@ def summarise(meas, items):
     return rows
 
 
-OUT_FIELDS = ["base", "size", "seed", "ckpt", "emb", "noun", "type", "exposures", "carry", "stored", "compete",
+OUT_FIELDS = ["base", "size", "seed", "ckpt", "label", "emb", "noun", "type", "exposures", "carry", "stored", "compete",
               "know", "agree", "carry_paired", "carry_diff", "noun_specific", "n_carry", "n_know", "n_carry_diff"]
 
 
@@ -239,7 +239,7 @@ def score_model(run, emb_conditions=("original", "typical")):
         L = run_items(model, tok, its)
         for r in summarise(measures(its, L), its):
             rows_out.append({"base": run["base"], "size": run["size"], "seed": run["seed"], "ckpt": run["ckpt"],
-                             "emb": emb, **r})
+                             "label": run.get("label", ""), "emb": emb, **r})
     with torch.no_grad():
         E.copy_(orig)
     return rows_out

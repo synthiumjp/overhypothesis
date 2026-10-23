@@ -27,6 +27,7 @@ import csv
 import hashlib
 import importlib.util
 import json
+import math
 import random
 import sys
 from collections import Counter, defaultdict
@@ -57,6 +58,7 @@ FRAMES = cg.LABELLED_FRAMES + [FRAME6]          # frames 1-5 are indices 0-4, fr
 P_FRAME6 = 1 / 15
 POS_FROM, POS_TO = 0.05, 0.95
 BUILD_SEED = 23_000
+S_STAR_SEED = 41_000
 ASSIGN_PATH = Path("docs/amendment9_assignment.json")
 TOK_PATH = Path("data/tokenizers/amendment9_tokenizer.json")
 
@@ -84,8 +86,13 @@ def assignment(per_cell):
         rows = []
         for k, noun in enumerate(nouns):
             t, e = slots[(k + 3 * i) % len(slots)]
-            rows.append({"noun": noun, "type": t, "exposures": e,
-                         "s_star": cg.SHAPE_TOKENS[(k + i) % len(cg.SHAPE_TOKENS)]})
+            rows.append({"noun": noun, "type": t, "exposures": e, "s_star": None})
+        # s*: drawn afresh for every seed, distinct within a cell, independent of the slot order
+        rng = random.Random(S_STAR_SEED + seed)
+        for t, e in cells():
+            members = [r for r in rows if (r["type"], r["exposures"]) == (t, e)]
+            for r, s in zip(members, rng.sample(cg.SHAPE_TOKENS, len(members))):
+                r["s_star"] = s
         out[str(seed)] = rows
     return {"per_cell": per_cell, "nouns": nouns, "seeds": out}
 
@@ -259,6 +266,7 @@ def schedule(fams, n_windows):
     for i, f in enumerate(fams):
         by_noun[f[0]].append(i)
     lo, hi = POS_FROM * n_windows, POS_TO * n_windows - 1
+    lo_i, hi_i = math.ceil(lo), math.floor(hi)
     want = []
     for noun in sorted(by_noun):
         idx = by_noun[noun]
@@ -269,7 +277,7 @@ def schedule(fams, n_windows):
     taken, pos, moves = set(), [None] * len(fams), []
     for p, i in want:
         q, d = p, 0
-        while q in taken or not (0 <= q < n_windows):
+        while q in taken or not (lo_i <= q <= hi_i):
             d += 1
             q = p + (d + 1) // 2 if d % 2 else p - d // 2
         taken.add(q)
@@ -320,16 +328,26 @@ def build_one(base, seed, n_windows, per_cell, out_dir, tok):
         n_lines += 1
 
     last_need = (max(need) + 1) * SEQ if need else 0
+    place_rng = random.Random(rng.randrange(2 ** 32))
+    target = {}                                                        # window -> earliest preferred start offset
     with open(txt_path, "w", encoding="utf-8", newline="\n") as fh:
         done = False
         while not done:
             for unit in pass_units(exemplars, grouped, reassigned, rng):
                 # unit boundary: place the familiarity sentence of the current window if it fits
+                # (at the first boundary at or after a random offset in the window; earlier only if the
+                # next boundary would no longer fit)
                 w = cursor // SEQ
                 if w in need and w not in placed:
                     i = need[w]
                     L = count(fams[i][4])
-                    if cursor >= w * SEQ + 1 and cursor + L <= w * SEQ + SEQ:
+                    if w not in target:
+                        target[w] = place_rng.randint(1, SEQ - 1 - L)
+                    ws = w * SEQ
+                    nxt = cursor + sum(count(s) for s in unit)
+                    fits_now = cursor >= ws + 1 and cursor + L <= ws + SEQ
+                    fits_next = nxt >= ws + 1 and nxt + L <= ws + SEQ
+                    if fits_now and (cursor >= ws + target[w] or not fits_next):
                         emit(fh, fams[i][4])
                         placed[w] = (i, cursor, L)
                         cursor += L
@@ -428,8 +446,29 @@ def check_one(d, seed, tok):
     if per_window and max(per_window.values()) > 1:
         fail.append("window with two familiarity sentences")
     got = defaultdict(list)
+    kind_ids = {tok.token_to_id(n) for n in cg.TRAIN_NOUNS}
+    shape_of = {tok.token_to_id(s): s for s in cg.SHAPE_TOKENS}
+    same_kind_sides, n_sides = 0, 0
     for p in pl:
         start, L, w = int(p["start"]), int(p["n_tokens"]), int(p["text_window"])
+        # frame and shape read from the tokens, not from the CSV
+        tk = [tok.id_to_token(int(x)) for x in ids[start:start + L]]
+        fr = {"A": "1", "Look": "2", "Here": "3", "That": "5"}.get(tk[0])
+        if tk[0] == "The":
+            fr = "4" if tk[2] == "I" else "6" if tk[2] == "is" else None
+        if fr != p["frame"]:
+            fail.append(f"{p['noun']} {p['k']}: tokens give frame {fr}, CSV {p['frame']}")
+        sh = [shape_of[int(x)] for x in ids[start:start + L] if int(x) in shape_of]
+        if (sh[0] if sh else "") != p["shape"] or len(sh) > 1:
+            fail.append(f"{p['noun']} {p['k']}: tokens give shape {sh}, CSV {p['shape']}")
+        if tk[-1] != ".":
+            fail.append(f"{p['noun']} {p['k']}: sentence does not end inside its span")
+        # kinds of the base sentences on either side (grouped corpora: placed only between runs)
+        prev = next((int(x) for x in ids[max(0, start - 16):start][::-1] if int(x) in kind_ids), None)
+        nxt = next((int(x) for x in ids[start + L:start + L + 16] if int(x) in kind_ids), None)
+        if prev is not None and nxt is not None:
+            n_sides += 1
+            same_kind_sides += prev == nxt
         if not (start >= w * SEQ + 1 and start + L <= w * SEQ + SEQ):
             fail.append(f"{p['noun']} {p['k']}: not inside window {w}")
         if int(inv[w]) != int(p["read_pos"]):
@@ -462,8 +501,14 @@ def check_one(d, seed, tok):
             fail.append(f"{r['noun']}: consistent noun with another shape")
         if P:
             rp = sorted(int(p["read_pos"]) for p in P)
-            if rp[0] < POS_FROM * N - 50 or rp[-1] > POS_TO * N + 50:
+            if rp[0] < math.ceil(POS_FROM * N) or rp[-1] > math.floor(POS_TO * N - 1):
                 fail.append(f"{r['noun']}: exposures outside 5-95%")
+    share = same_kind_sides / max(1, n_sides)
+    man["same_kind_both_sides"] = share
+    # Between runs, the sentences either side share a kind only when two runs of one kind are
+    # adjacent (about 1 in 32); inside a run they always would.
+    if man["base"].endswith("grouped") and share > 0.10:
+        fail.append(f"familiarity sentences inside runs? same kind on both sides in {share:.1%}")
     return fail, man
 
 
@@ -488,7 +533,8 @@ def cmd_check(a):
                     fail.append(f"not the corpus recorded in {a.against}")
                 n += 1
                 bad_total += bool(fail)
-                print(f"{'OK  ' if not fail else 'FAIL'} {base} w{nw // 1000}k seed {seed}" +
+                print(f"{'OK  ' if not fail else 'FAIL'} {base} w{nw // 1000}k seed {seed} "
+                      f"(same kind either side of a familiarity sentence: {man['same_kind_both_sides']:.1%})" +
                       ("" if not fail else ": " + "; ".join(fail[:8])), flush=True)
     print(f"{n - bad_total if bad_total <= n else 0} of {n} corpora passed every check")
     if bad_total:

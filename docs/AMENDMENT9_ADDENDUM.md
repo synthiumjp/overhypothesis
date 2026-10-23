@@ -31,9 +31,12 @@ None changes a hypothesis, a test or a decision rule.
 6. Exposure schedule. Warm-up ends at 4% of training for the 3.4M models and 5% for the others, and the 3.4M and 25.6M
    models share a corpus and a reading order. Exposures are therefore placed at evenly spaced read positions from 5% to
    95% of the windows, which is after warm-up for every size. If two exposures fall in one window, the later is moved to
-   the nearest free window; every move is listed in the corpus manifest.
+   the nearest free window inside that band (never outside it); every move is listed in the corpus manifest. Moves are at
+   most a few dozen windows (under 1.5 training steps).
 7. Window boundaries. A familiarity sentence lies wholly inside one window as both inputs and targets: its first token
-   is at least the window's second position, and its last token at most the window's last input position.
+   is at least the window's second position, and its last token at most the window's last input position. Within the
+   window it goes at the first permitted boundary at or after a random offset (so its position in the window has the
+   same spread in grouped and random corpora), or earlier if no later boundary would fit.
 8. Base exemplars. The five new seeds (2718, 3141, 1618, 1414, 1732) and the pilot seed (2027) take their 448 base
    exemplars from corpus_generator.py exactly as the original seeds did; the builder checks that this reproduces the
    exemplars of the five original seeds.
@@ -48,7 +51,8 @@ None changes a hypothesis, a test or a decision rule.
     staft, blark, fresp, plask, trort, plert, grosk, snilp, pilf, klulk, falp, zurb, parb, zusp, klesk, fuft, trirb,
     morb, maft, plorb, klarb, stind, sturm, snamp, derk, grert, snolb, dalb, polp, fronk, pisp, plond. None is a
     substring of, or within one letter of, another word of the language. With two nouns per cell the first 28 are used.
-    The noun-to-cell rotation and each noun's s* are in docs/amendment9_assignment.json.
+    The noun-to-cell rotation and each noun's s* are in docs/amendment9_assignment.json. s* is drawn afresh for each
+    seed (distinct within a cell), so the shapes of different cells do not line up in the same way in every seed.
 13. Pilot rule, computed by scripts/amendment9_tests.py pilot. From the pilot's grouped Regular model, the standard
     deviation of carry between nouns of the same cell (sigma) is combined with the Amendment 8 seed-level standard
     deviation (0.81 nats) to give the expected seed-level standard deviation of the H31 contrast with m nouns per cell,
@@ -59,7 +63,10 @@ None changes a hypothesis, a test or a decision rule.
     at 1,000 exposures is at least 0.2 nats and its slope is above zero (one-sided t, p < .05); H31 compares the shape-
     absent cells at 1,000 and 10,000 exposures (pooled) with the unseen nouns under the typical embedding, both in grouped
     Regular models; H33 is supported only if both parts are, so its p value in the Holm family is the larger of the two;
-    the mixed models use random intercepts for seed and a variance component for noun.
+    the mixed models use crossed random intercepts for seed and noun. Only final models enter a test (saved
+    intermediate weights are exploratory). A hypothesis is supported when its Holm threshold is met and its direction
+    holds at two of the three sizes (for H33, both parts). If M1 fails, H30 and H31 are reported but not interpreted.
+    H35 enters the Holm family only if H33(a) has an unadjusted p below .05 ("given H33").
 15. Item and circuit details: scripts/familiarity_items.py, scripts/familiarity_eval.py and
     scripts/circuit_analysis.py (candidate heads from 100 sequences of 25 distinct base-language words repeated once;
     200 random draws for unseen nouns, 20 for trained kinds).

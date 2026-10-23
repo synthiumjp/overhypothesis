@@ -253,7 +253,7 @@ def analyse(run, out_dir):
         d["carry_ablated"].append(measures([it], [la])[0]["carry"])
     # 5. direct logit attribution
     dla = dla_change(model, tok, unseen, cands, means)
-    summary = {"base": run["base"], "size": run["size"], "seed": seed, "ckpt": run["ckpt"],
+    summary = {"base": run["base"], "size": run["size"], "seed": seed, "ckpt": run["ckpt"], "label": run.get("label", ""),
                "candidates": cands, "k": len(cands), "mean_positions": n_pos,
                "unseen_carry": c0, "unseen_carry_ablated": c1, "unseen_reduction": (c0 - c1) / c0 if c0 else None,
                "unseen_carry_random_mean": sum(rand) / len(rand), "unseen_random_draws": rand,
@@ -264,14 +264,16 @@ def analyse(run, out_dir):
     (out / f"heads_{tag}.json").write_text(json.dumps({"summary": summary, "signature": sig}, indent=1))
     with open(out / f"per_noun_{tag}.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["base", "size", "seed", "noun", "type", "exposures", "attention", "carry", "carry_ablated"])
+        w.writerow(["base", "size", "seed", "ckpt", "label", "noun", "type", "exposures", "attention", "carry",
+                    "carry_ablated"])
         for d in per_noun.values():
-            w.writerow([run["base"], run["size"], seed, d["noun"], d["type"], d["exposures"],
+            w.writerow([run["base"], run["size"], seed, run["ckpt"], run.get("label", ""), d["noun"], d["type"],
+                        d["exposures"],
                         np.mean(d["att"]), np.mean(d["carry"]), np.mean(d["carry_ablated"])])
     return summary
 
 
-SUM_FIELDS = ["base", "size", "seed", "ckpt", "k", "candidates", "mean_positions", "unseen_carry",
+SUM_FIELDS = ["base", "size", "seed", "ckpt", "label", "k", "candidates", "mean_positions", "unseen_carry",
               "unseen_carry_ablated", "unseen_reduction", "unseen_carry_random_mean", "trained_carry",
               "trained_carry_ablated", "trained_carry_random_mean", "dla_predicted_change", "observed_change"]
 

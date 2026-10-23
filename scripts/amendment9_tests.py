@@ -89,8 +89,18 @@ def direction_ok(sizes, side):
     return None
 
 
+def final_only(df, keys):
+    """Keep final models only (never saved intermediate weights) and insist on one row per key."""
+    df = df[df.ckpt.astype(str).str.endswith("model_final.pt")].copy()
+    dup = df.duplicated(keys)
+    if dup.any():
+        sys.exit(f"duplicate rows for {keys}: {df[dup].head().to_dict('records')}")
+    return df
+
+
 # ---------------------------------------------------------------- tests
 def run_tests(scores, circ_dir):
+    scores = final_only(scores, ["base", "size", "seed", "emb", "noun"])
     s = scores[scores.seed.isin(CONF_SEEDS)].copy()
     orig = s[s.emb == "original"]
     res = {}
@@ -122,7 +132,9 @@ def run_tests(scores, circ_dir):
     seeds, sizes = seed_level((ab - ty).rename("d"))
     r = t1(seeds, 0, "two-sided")
     res["H31"] = {**r, "tost_p": tost(seeds, SESOI["level"]), "equivalence_bound": SESOI["level"],
-                  "sizes_positive": int((sizes > 0).sum()), "by_size": sizes.to_dict()}
+                  "sizes_positive": int((sizes > 0).sum()), "by_size": sizes.to_dict(),
+                  "sizes_in_direction": int((np.sign(sizes) == np.sign(r["mean"])).sum()),
+                  "equivalent": bool(tost(seeds, SESOI["level"]) < ALPHA)}
     # H32
     cs = cell_means(g, "stored")
     seeds, sizes = seed_level(per_model_slope(cs, "consistent", "stored").droplevel("base"))
@@ -138,7 +150,7 @@ def run_tests(scores, circ_dir):
     # heads
     hs_path = Path(circ_dir) / "heads_summary.csv"
     if hs_path.exists():
-        hs = pd.read_csv(hs_path)
+        hs = final_only(pd.read_csv(hs_path), ["base", "size", "seed"])
         hs = hs[hs.seed.isin(CONF_SEEDS)]
         hg = hs[hs.base == "regular_grouped"].set_index(["size", "seed"])
         seeds_a, sizes_a = seed_level(hg["unseen_reduction"])
@@ -147,11 +159,13 @@ def run_tests(scores, circ_dir):
         b = t1(seeds_b, 0, "greater")
         res["H33"] = {"a": {**a, "sizes_above_half": int((sizes_a > 0.5).sum())},
                       "b": {**b, "sizes_in_direction": direction_ok(sizes_b, "greater")},
-                      "p": max(a["p"], b["p"])}
+                      "p": max(a["p"], b["p"]),
+                      "sizes_in_direction": min(int((sizes_a > 0.5).sum()), direction_ok(sizes_b, "greater"))}
         hr = hs[hs.base == "reassigned_grouped"].set_index(["size", "seed"])
         seeds, sizes = seed_level((hr["trained_carry"] - hr["trained_carry_ablated"]).rename("d"))
         res["H34"] = {**t1(seeds, 0, "greater"), "sizes_in_direction": direction_ok(sizes, "greater")}
         pn = pd.concat([pd.read_csv(f) for f in glob.glob(str(Path(circ_dir) / "per_noun_*.csv"))])
+        pn = final_only(pn, ["base", "size", "seed", "noun"])
         pn = pn[pn.seed.isin(CONF_SEEDS) & (pn.base == "regular_grouped")]
         cma = pn.groupby(["base", "size", "seed", "type", "exposures"])["attention"].mean().reset_index()
         d = (per_model_slope(cma, "consistent", "attention") - per_model_slope(cma, "absent", "attention"))
@@ -172,6 +186,11 @@ def run_tests(scores, circ_dir):
         stop = stop or not ok
         res[h]["holm_threshold"] = thr
         res[h]["holm_reject"] = bool(ok)
+        # supported: Holm and the direction at two of the three sizes (section 5)
+        res[h]["supported"] = bool(ok and (res[h].get("sizes_in_direction") or 0) >= 2)
+    if not res["M1"]["pass"]:
+        for h in ("H30", "H31"):
+            res[h]["note"] = "M1 failed: not interpreted"
     return res
 
 
@@ -185,9 +204,11 @@ def mixed_models(scores):
         return out
     g["x"] = g.exposures.map(LOGE)
     g["cons"] = (g.type == "consistent").astype(int)
+    g["one"] = 1
     for y, form in (("carry", "carry ~ x * cons + C(size)"), ("stored", "stored ~ x * cons + C(size)")):
-        try:
-            md = smf.mixedlm(form, g, groups=g["seed"], vc_formula={"noun": "0 + C(noun)"}).fit()
+        try:  # crossed random intercepts for seed and noun
+            md = smf.mixedlm(form, g, groups=g["one"],
+                             vc_formula={"seed": "0 + C(seed)", "noun": "0 + C(noun)"}).fit()
             out[y] = {k: {"coef": float(md.params[k]), "p": float(md.pvalues[k])} for k in md.params.index
                       if k in ("x", "cons", "x:cons")}
         except Exception as e:  # report, do not fail
@@ -202,7 +223,7 @@ def fmt(r):
 def cmd_tests(a):
     scores = pd.concat([pd.read_csv(f) for f in a.scores])
     res = run_tests(scores, a.circuits)
-    res["mixed_models"] = mixed_models(scores)
+    res["mixed_models"] = mixed_models(final_only(scores, ["base", "size", "seed", "emb", "noun"]))
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(os.path.splitext(a.out)[0] + ".json", "w"), indent=1, default=float)
     L = ["# Amendment 9 results", "", f"Seeds: {sorted(set(scores.seed) & set(CONF_SEEDS))}", "",
@@ -219,7 +240,10 @@ def cmd_tests(a):
         else:
             L.append(f"{h}: {fmt(r)}" + (f"; TOST p = {r['tost_p']:.3g}" if h == "H31" else ""))
         if "holm_reject" in r:
-            L.append(f"  Holm threshold {r['holm_threshold']:.4f}: {'supported' if r['holm_reject'] else 'not supported'}")
+            L.append(f"  Holm threshold {r['holm_threshold']:.4f} ({'met' if r['holm_reject'] else 'not met'}); "
+                     f"{'SUPPORTED' if r['supported'] else 'not supported'}" + (f"; {r['note']}" if r.get("note") else ""))
+        if h == "H31":
+            L.append(f"  equivalent within +-{r['equivalence_bound']} nat: {r['equivalent']}")
         for k in ("sizes_in_direction", "sizes_positive", "sizes_above_half"):
             if k in r:
                 L.append(f"  {k}: {r[k]} of 3")
@@ -238,7 +262,7 @@ def cmd_pilot(a):
     Amendment 8 seed-level standard deviation (0.81 nats), give the expected seed-level SD of the
     H31 contrast for two and three nouns per cell; the smallest number with power >= 0.8 for a
     1-nat effect at alpha 0.05/6 (two-sided, ten seeds) is used."""
-    s = pd.concat([pd.read_csv(f) for f in a.scores])
+    s = final_only(pd.concat([pd.read_csv(f) for f in a.scores]), ["base", "size", "seed", "emb", "noun"])
     o = s[s.emb == "original"]
     L = ["# Amendment 9 pilot", ""]
     sd_rows = []

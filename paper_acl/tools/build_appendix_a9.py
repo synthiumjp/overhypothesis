@@ -161,7 +161,7 @@ out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 # Table M4: heads by base and size
 out += [r"\begin{table}[!htbp]", r"\centering\small",
         r"\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the "
-        r"highest product of prefix-matching and copying scores; in every model all were in layer 0. Prefix: highest "
+        r"highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M Regular grouped model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 11.0M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest "
         r"prefix-matching score of any head (uniform attention gives about 0.027). Carry of unseen nouns and of "
         r"trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 "
         r"draws). DLA: change in unseen carry predicted by the candidates' direct paths.}",

@@ -223,7 +223,7 @@ def score_model(run, emb_conditions=("original", "typical")):
     model, _ = load_model(run["ckpt"], None, "train_model", "OverhypothesisLM")
     model.eval()
     check_forward(model, tok)
-    items = make_items(int(run["seed"]), int(run["per_cell"]))
+    items = make_items(int(run["seed"]), int(run["per_cell"]), run.get("design") or "a9")
     rows_out = []
     E = model.tok_embed.weight
     orig = E.detach().clone()

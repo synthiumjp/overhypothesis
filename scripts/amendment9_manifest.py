@@ -25,11 +25,13 @@ def main():
     ap.add_argument("--per_cell", type=int, required=True)
     ap.add_argument("--seeds", nargs="+", type=int, required=True)
     ap.add_argument("--tokenizer", default="data/tokenizers/amendment9_tokenizer.json")
+    ap.add_argument("--design", default="a9", choices=["a9", "a10"], help="a10: Amendment 10 Part A models")
     ap.add_argument("--weights", action="store_true", help="list saved weights (formation) instead of final models")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     rows = []
-    for base in ("regular_grouped", "regular_random", "reassigned_grouped"):
+    for base in (("regular_grouped", "regular_random", "reassigned_grouped") if a.design == "a9"
+                 else ("regular_grouped", "reassigned_grouped")):
         for size in ("tiny", "small", "medium"):
             for seed in a.seeds:
                 run = Path(a.ckpt_dir) / base / f"{size}_seed{seed}"
@@ -38,13 +40,13 @@ def main():
                 cdir = Path(a.corpus_dir) / base / f"w{WINDOWS[size] // 1000}k"
                 for f in files:
                     label = Path(f).stem.replace("weights_", "") if a.weights else ""
-                    rows.append({"base": base, "size": size, "seed": seed, "per_cell": a.per_cell, "ckpt": f,
+                    rows.append({"base": base, "size": size, "seed": seed, "per_cell": a.per_cell, "design": a.design, "ckpt": f,
                                  "label": label, "tokenizer": a.tokenizer,
                                  "corpus": str(cdir / f"seed{seed}.txt"), "order": str(cdir / f"order_seed{seed}.npy"),
                                  "placements": str(cdir / f"placements_seed{seed}.csv")})
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     with open(a.out, "w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["base", "size", "seed", "per_cell", "ckpt", "label", "tokenizer",
+        w = csv.DictWriter(fh, fieldnames=["base", "size", "seed", "per_cell", "design", "ckpt", "label", "tokenizer",
                                            "corpus", "order", "placements"])
         w.writeheader()
         w.writerows(rows)

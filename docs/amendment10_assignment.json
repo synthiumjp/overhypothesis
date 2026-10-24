@@ -1,0 +1,2295 @@
+{
+ "note": "Amendment 10 Part A noun-to-cell rotation and own shapes.",
+ "nouns": [
+  "klerd",
+  "pind",
+  "klirm",
+  "lilb",
+  "zelp",
+  "virk",
+  "masp",
+  "grirk",
+  "staft",
+  "blark",
+  "fresp",
+  "plask",
+  "trort",
+  "plert",
+  "grosk",
+  "snilp",
+  "pilf",
+  "klulk",
+  "falp",
+  "zurb",
+  "parb",
+  "zusp",
+  "klesk",
+  "fuft",
+  "trirb",
+  "morb",
+  "maft",
+  "plorb"
+ ],
+ "seeds": {
+  "42": [
+   {
+    "noun": "klerd",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "pind",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "klirm",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "lilb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "zelp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "virk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "masp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "grirk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "staft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "blark",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "fresp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "plask",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "trort",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "plert",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "grosk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "snilp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "pilf",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "klulk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "falp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "zurb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "parb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "zusp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "klesk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "fuft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "trirb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "morb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "maft",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "plorb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "felk"
+   }
+  ],
+  "123": [
+   {
+    "noun": "klerd",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "pind",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "klirm",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "lilb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "zelp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "virk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "masp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "grirk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "staft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "blark",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "fresp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "plask",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "trort",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "plert",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "grosk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "snilp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "pilf",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "klulk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "falp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "zurb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "parb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "zusp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "klesk",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "fuft",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "trirb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "felk"
+   },
+   {
+    "noun": "morb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "maft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "plorb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "felk"
+   }
+  ],
+  "456": [
+   {
+    "noun": "klerd",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "pind",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "klirm",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "lilb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zelp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "virk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "masp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "grirk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "staft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "blark",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "fresp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plask",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "trort",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plert",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "grosk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "snilp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "pilf",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "klulk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "falp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "felk"
+   },
+   {
+    "noun": "zurb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "prex"
+   },
+   {
+    "noun": "parb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "zusp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "klesk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "fuft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "trirb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "morb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "maft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "plorb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "zibby"
+   }
+  ],
+  "789": [
+   {
+    "noun": "klerd",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "pind",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klirm",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "lilb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zelp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "virk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "masp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "grirk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "staft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "blark",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "fresp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "plask",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "trort",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "plert",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "grosk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "snilp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "pilf",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "klulk",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "falp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zurb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "parb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "zusp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "klesk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "fuft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "trirb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "morb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "maft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "plorb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "drant"
+   }
+  ],
+  "1001": [
+   {
+    "noun": "klerd",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "pind",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klirm",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "lilb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zelp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "virk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "masp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "grirk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "staft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "blark",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "fresp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "plask",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "trort",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "plert",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "grosk",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "snilp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "pilf",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "klulk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "falp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zurb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "parb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "zusp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "klesk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "fuft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "trirb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "morb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "maft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "plorb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   }
+  ],
+  "2718": [
+   {
+    "noun": "klerd",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "pind",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "klirm",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "lilb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "zelp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "virk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "masp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "grirk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "staft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "blark",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "tova"
+   },
+   {
+    "noun": "fresp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "prex"
+   },
+   {
+    "noun": "plask",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "trort",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "plert",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "grosk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "snilp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "pilf",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "klulk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "falp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "zurb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "parb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zusp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "klesk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "fuft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "trirb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "morb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "maft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plorb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "prex"
+   }
+  ],
+  "3141": [
+   {
+    "noun": "klerd",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "pind",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klirm",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "lilb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "zelp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "virk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "masp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "prex"
+   },
+   {
+    "noun": "grirk",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "staft",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "drant"
+   },
+   {
+    "noun": "blark",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "fresp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "plask",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "trort",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "plert",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "grosk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "snilp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "pilf",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "klulk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "falp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "zurb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "parb",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "zusp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "klesk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "fuft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "trirb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "morb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "maft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "plorb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "felk"
+   }
+  ],
+  "1618": [
+   {
+    "noun": "klerd",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "pind",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klirm",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "lilb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "zelp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "virk",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "masp",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "prex"
+   },
+   {
+    "noun": "grirk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "staft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "blark",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "fresp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "plask",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "trort",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plert",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "grosk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "snilp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "pilf",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "klulk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "falp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "zurb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "parb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "zusp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "klesk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "fuft",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "trirb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "morb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "maft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "plorb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "drant"
+   }
+  ],
+  "1414": [
+   {
+    "noun": "klerd",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "pind",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "klirm",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "tova"
+   },
+   {
+    "noun": "lilb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "zelp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "virk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "masp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "grirk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "prex"
+   },
+   {
+    "noun": "staft",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "blark",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "fresp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "plask",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "trort",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "plert",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "grosk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "snilp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "pilf",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "klulk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "falp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "zurb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "parb",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "zusp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "klesk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "fuft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "trirb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "morb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "maft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "plorb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "krannish"
+   }
+  ],
+  "1732": [
+   {
+    "noun": "klerd",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "pind",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "klirm",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "lilb",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "fixed_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "zelp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "oofy"
+   },
+   {
+    "noun": "virk",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "felk"
+   },
+   {
+    "noun": "masp",
+    "history": "fixed",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "fixed_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "grirk",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "prex"
+   },
+   {
+    "noun": "staft",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "sallo"
+   },
+   {
+    "noun": "blark",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "fixed_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "fresp",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plask",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "trort",
+    "history": "fixed",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "fixed_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "plert",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "krannish"
+   },
+   {
+    "noun": "grosk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "snilp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 100,
+    "type": "absent_single",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "pilf",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klulk",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "drant"
+   },
+   {
+    "noun": "falp",
+    "history": "absent",
+    "presentation": "single",
+    "exposures": 1000,
+    "type": "absent_single",
+    "s_star": "tova"
+   },
+   {
+    "noun": "zurb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "parb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "tova"
+   },
+   {
+    "noun": "zusp",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 100,
+    "type": "absent_run",
+    "s_star": "zibby"
+   },
+   {
+    "noun": "klesk",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "mundi"
+   },
+   {
+    "noun": "fuft",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "drant"
+   },
+   {
+    "noun": "trirb",
+    "history": "absent",
+    "presentation": "run",
+    "exposures": 1000,
+    "type": "absent_run",
+    "s_star": "felk"
+   },
+   {
+    "noun": "morb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "tova"
+   },
+   {
+    "noun": "maft",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "wemb"
+   },
+   {
+    "noun": "plorb",
+    "history": "unseen",
+    "presentation": "none",
+    "exposures": 0,
+    "type": "unseen",
+    "s_star": "sallo"
+   }
+  ]
+ }
+}

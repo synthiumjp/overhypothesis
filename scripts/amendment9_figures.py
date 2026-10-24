@@ -32,10 +32,10 @@ from make_familiarity_corpora import CONF_SEEDS  # noqa: E402
 # Reference categorical palette, first three slots (validated all-pairs), plus ink and grid
 COL = {"consistent": "#2a78d6", "uninformative": "#eb6834", "absent": "#1baf7a"}
 MARK = {"consistent": "o", "uninformative": "s", "absent": "^"}
-NAME = {"consistent": "Fixed shape", "uninformative": "Uninformative shape", "absent": "Shape-absent"}
+NAME = {"consistent": "Fixed shape", "uninformative": "Changing shape", "absent": "No shape"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
-BASES = [("regular_grouped", "Regular, grouped"), ("reassigned_grouped", "Reassigned, grouped"),
-         ("regular_random", "Regular, random")]
+BASES = [("regular_grouped", "Stable shapes, grouped"), ("reassigned_grouped", "Shifting shapes, grouped"),
+         ("regular_random", "Stable shapes, random order")]
 EXPO = [10, 100, 1000, 10000]
 
 plt.rcParams.update({"font.family": "serif", "font.size": 8, "axes.edgecolor": INK2, "axes.labelcolor": INK,
@@ -92,7 +92,7 @@ def fig_carry(sc, out):
     fig, axs = plt.subplots(1, 3, figsize=(6.3, 2.2), sharey=True)
     for ax, (b, lab) in zip(axs, BASES):
         exposure_panel(ax, sc, "carry", b)
-        style(ax, "Carry (nats)" if ax is axs[0] else None)
+        style(ax, "Copy score for shape (nats)" if ax is axs[0] else None)
         ax.set_title(lab, fontsize=8, color=INK)
         ax.set_xlabel("Exposures in training")
     h, lab = axs[0].get_legend_handles_labels()
@@ -134,7 +134,7 @@ def fig_heads(hs, pn, out):
     ax.set_xticks(range(len(rows)))
     ax.set_xticklabels([r[2] for r in rows], fontsize=7)
     ax.axhline(0, color=INK2, linewidth=0.5)
-    ax.set_ylabel("Carry (nats)")
+    ax.set_ylabel("Copy score for shape (nats)")
     ax.set_xlabel("Grouped models")
     ax.grid(axis="y", color=GRID, linewidth=0.5)
     ax.set_axisbelow(True)
@@ -148,7 +148,7 @@ def fig_heads(hs, pn, out):
     exposure_panel(ax, sc, "attention", "regular_grouped", show_typical=False)
     style(ax, "Attention to context shape")
     ax.set_xlabel("Exposures in training")
-    ax.set_title("Regular, grouped", fontsize=8, color=INK)
+    ax.set_title("Stable shapes, grouped", fontsize=8, color=INK)
     fig.tight_layout()
     fig.savefig(out / "fig_a9_heads.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -195,7 +195,7 @@ def fig_formation(path, out):
         ax.grid(axis="y", color=GRID, linewidth=0.5)
         ax.set_title(lab, fontsize=8, color=INK)
         ax.set_xlabel("Exposures so far")
-    axs[0].set_ylabel("Carry (nats)")
+    axs[0].set_ylabel("Copy score for shape (nats)")
     h, lab = axs[0].get_legend_handles_labels()
     fig.legend(h, lab, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, -0.06))
     fig.tight_layout(rect=(0, 0.08, 1, 1))

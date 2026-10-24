@@ -1,0 +1,70 @@
+\FloatBarrier
+\section{Terms, hypotheses and registrations}\label{app:map}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+
+\textbf{Terms.} The registrations and the detailed appendices that follow use the labels of the registration documents. Table~\ref{tab:terms} gives the correspondence with the terms of the main text.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Main-text terms and registration terms.}
+\label{tab:terms}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Main text & Registrations and Appendices~\ref{app:M} and~\ref{app:N} \\
+\midrule
+Experiment 1 & Amendment 9 (the familiarity study) \\
+Experiment 2 & Amendment 10, Part A \\
+Row analysis (Section~\ref{sec:rows}) & Amendment 10, Part C \\
+Pretrained models (Section~\ref{sec:pythia}) & Amendment 10, Part B \\
+Stable-shape corpora & Regular (grouped) corpora \\
+Shifting-shape corpora & Reassigned (grouped) corpora \\
+Spaced, bursts & singles, runs \\
+Changing shape & uninformative (Experiment 1), rotating (Experiment 2) \\
+No shape & shape-absent \\
+Copy score & carry \\
+Typical embedding & typical row \\
+Random embedding of untrained scale & atypical\_init \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Hypotheses.} Table~\ref{tab:hyp} lists every registered hypothesis of Experiments 1 and 2, the row analysis and the pretrained test, the claim of the main text it bears on, and its outcome under the registered decision rules (Holm correction within each experiment; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Amendment 9, where the pilot gave seed-level standard deviations near 0.8 nats, and $\pm$0.3 nats in Amendment 10, the smallest history effect seen in Amendment 9. The hypotheses of the earlier experiments are in Appendix~\ref{app:A}.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (row analysis) and \ref{tab:N6} (pretrained models).}
+\label{tab:hyp}
+\begin{tabular}{@{}lp{0.50\textwidth}p{0.33\textwidth}@{}}
+\toprule
+Label & Prediction (main-text terms) & Outcome \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Experiment 1 (Amendment 9)}} \\
+M1 & Fixed-shape nouns store their shape (knowledge $>$ 0.2 nats at 1,000 exposures, rising) & Passed in all three corpora \\
+H30 & Copying falls faster with exposure for fixed-shape than no-shape nouns & Not supported (wrong direction) \\
+H31 & No-shape nouns (1,000 and 10,000) differ from unseen nouns with a typical embedding; equivalence $\pm$1 & Different (0.33) and equivalent \\
+H32 & Fixed-shape nouns' preference for their own shape rises with exposure & Supported \\
+H33 & Ablating candidate heads removes more than half of unseen nouns' copying, more than random heads & Not supported \\
+H34 & Ablating candidate heads lowers trained kinds' copying in shifting-shape corpora & Supported; random heads did the same \\
+H35 & Candidate heads' attention falls faster for fixed-shape nouns & Not tested (required H33) \\
+R1 & Unseen nouns copy more in grouped than random order & Replicated \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Experiment 2 (Amendment 10, Part A); stable-shape corpora}} \\
+M2 & Unseen nouns copy more than 1 nat & Passed \\
+K1 & Fixed-shape nouns' knowledge equal ($\pm$1) in bursts and spaced & Not equivalent: H41 not interpreted \\
+H40 & No-shape: bursts differ from spaced; equivalence $\pm$0.3 & Bursts higher \\
+H41 & Fixed shape: bursts differ from spaced; equivalence $\pm$0.3 & Bursts higher (not interpreted) \\
+H42 & Changing shape: bursts copy more than spaced & Supported \\
+H43 & Spaced: fixed shape copies less than no shape & Supported; confounded by expected word class (Section~\ref{sec:results}) \\
+H44 & Spaced no-shape nouns differ from unseen nouns with a typical embedding; equivalence $\pm$0.3 & Higher; not equivalent \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Row analysis (Amendment 10, Part C); Experiment 1 models}} \\
+H49 & Scaling unseen nouns' rows to the trained kinds' norm lowers copying & Supported (driven by the 3.4M models) \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Pretrained models (Amendment 10, Part B)}} \\
+H45 & A random embedding of untrained scale raises copying over the own embedding & Not supported (2 of 5 models) \\
+H46 & The same embedding raises copying over a typical embedding & Not supported (2 of 5 models) \\
+H47 & Colour-typical nouns copy less than colour-variable nouns & Not supported (0 of 5) \\
+H48 & The H45 increase differs between colour-typical and colour-variable nouns & Inconclusive \\
+\bottomrule
+\end{tabular}
+\end{table}

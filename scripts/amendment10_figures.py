@@ -25,13 +25,14 @@ from scipy import stats  # noqa: E402
 
 COL = {"fixed": "#2a78d6", "rotating": "#eb6834", "absent": "#1baf7a"}
 MARK = {"fixed": "o", "rotating": "s", "absent": "^"}
-NAME = {"fixed": "Fixed shape", "rotating": "Rotating shape", "absent": "Shape-absent"}
+NAME = {"fixed": "Fixed shape", "rotating": "Changing shape", "absent": "No shape"}
+PRES = {"single": "spaced", "run": "bursts"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
-BASES = [("regular_grouped", "Regular, grouped (confirmatory)"), ("reassigned_grouped", "Reassigned, grouped (exploratory)")]
+BASES = [("regular_grouped", "Stable shapes (pre-registered)"), ("reassigned_grouped", "Shifting shapes (exploratory)")]
 EXPO = [100, 1000]
 MODELS = ["70m", "160m", "1b", "1.4b", "2.8b", "6.9b", "12b"]
-COND = [("original", "Original row", INK, "o"), ("atypical_init", "Random row, initial norm", "#2a78d6", "s"),
-        ("typical", "Typical row", "#eb6834", "^")]
+COND = [("original", "Own embedding", INK, "o"), ("atypical_init", "Random, untrained scale", "#2a78d6", "s"),
+        ("typical", "Typical embedding", "#eb6834", "^")]
 
 plt.rcParams.update({"font.family": "serif", "font.size": 8, "axes.edgecolor": INK2, "axes.labelcolor": INK,
                      "xtick.color": INK2, "ytick.color": INK2, "axes.linewidth": 0.6, "lines.linewidth": 1.4,
@@ -62,7 +63,7 @@ def part_a_panel(ax, sc, base, title, legend):
     t = d[(d.emb == "typical") & (d.type == "unseen")]
     a, _ = ci(t.carry)
     ax.axhline(a, color=INK2, lw=0.8, ls=(0, (3, 2)), zorder=1)
-    ax.text(-0.32, a - 0.15, "unseen, typical row", color=INK2, fontsize=6.5, ha="left", va="top")
+    ax.text(-0.32, a - 0.15, "unseen, typical embedding", color=INK2, fontsize=6.5, ha="left", va="top")
     off = {"fixed": -0.06, "absent": 0.0, "rotating": 0.06}
     for h in ("fixed", "absent", "rotating"):
         for pres, ls, fill in (("run", "-", True), ("single", (0, (2, 1.5)), False)):
@@ -70,7 +71,7 @@ def part_a_panel(ax, sc, base, title, legend):
             x = np.array([0, 1]) + off[h] + (0.02 if pres == "run" else -0.02)
             ax.errorbar(x, [v for v, _ in m], yerr=[e for _, e in m], color=COL[h], marker=MARK[h], ls=ls,
                         markersize=4.5, capsize=2, elinewidth=0.8, mfc=COL[h] if fill else "white",
-                        mec=COL[h], mew=0.9, zorder=3, label=f"{NAME[h]}, {pres}s" if legend else None)
+                        mec=COL[h], mew=0.9, zorder=3, label=f"{NAME[h]}, {PRES[pres]}" if legend else None)
     ax.set_xticks([0, 1])
     ax.set_xticklabels(["100", "1,000"])
     ax.set_xlim(-0.35, 1.65)
@@ -91,9 +92,9 @@ def part_b_panel(ax, p):
     ax.set_xticks(xs)
     ax.set_xticklabels([z.upper() for z in MODELS], fontsize=6.5)
     ax.set_xlabel("Pythia (deduplicated)")
-    ax.set_ylabel("Carry of the context's colour (nats)")
+    ax.set_ylabel("Copy score for colour (nats)")
     ax.set_ylim(0, 3.4)
-    ax.set_title("Pretrained models, real nouns (Part B)", fontsize=8, color=INK)
+    ax.set_title("Real nouns in Pythia", fontsize=8, color=INK)
     ax.grid(axis="y", color=GRID, linewidth=0.5)
     ax.set_axisbelow(True)
     ax.legend(frameon=False, fontsize=6.5, loc="lower right", handletextpad=0.3, borderaxespad=0.2)
@@ -109,13 +110,13 @@ def cell_table(sc, out):
                 for e in EXPO:
                     a, b = ci(d[(d.type == f"{h}_{pres}") & (d.exposures == e)].carry)
                     vals.append(f"{a:.2f} [{a - b:.2f}, {a + b:.2f}]")
-                rows.append((lab.split(" (")[0], f"{NAME[h]}, {pres}s", *vals))
+                rows.append((lab.split(" (")[0], f"{NAME[h]}, {PRES[pres]}", *vals))
         a, b = ci(d[d.type == "unseen"].carry)
         rows.append((lab.split(" (")[0], "Unseen", f"{a:.2f} [{a - b:.2f}, {a + b:.2f}]", ""))
         t = sc[(sc.base == base) & (sc.emb == "typical") & (sc.type == "unseen")]
         a, b = ci(t.carry)
-        rows.append((lab.split(" (")[0], "Unseen, typical row", f"{a:.2f} [{a - b:.2f}, {a + b:.2f}]", ""))
-    lines = [r"\begin{tabular}{@{}llll@{}}", r"\toprule", r"Base & Noun & 100 exposures & 1,000 exposures \\",
+        rows.append((lab.split(" (")[0], "Unseen, typical embedding", f"{a:.2f} [{a - b:.2f}, {a + b:.2f}]", ""))
+    lines = [r"\begin{tabular}{@{}llll@{}}", r"\toprule", r"Corpora & Noun & 100 exposures & 1,000 exposures \\",
              r"\midrule"]
     last = None
     for r in rows:
@@ -140,20 +141,22 @@ def main():
     sc = seed_cells(s, "carry")
     p = pd.read_csv(a.pythia)
     p["size_lab"] = p.model.str.extract(r"pythia-([0-9.]+[mb])-")[0]
-    fig, axs = plt.subplots(1, 3, figsize=(7.0, 2.45), gridspec_kw={"width_ratios": [1, 1, 1.25]})
+    fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.35))
     lo = min(-0.6, sc[sc.emb == "original"].groupby(["base", "type", "exposures"]).carry.mean().min() - 0.6)
     hi = sc[sc.emb == "original"].groupby(["base", "type", "exposures"]).carry.mean().max() + 1.2
     for k, (base, title) in enumerate(BASES):
         part_a_panel(axs[k], sc, base, title, legend=(k == 0))
         axs[k].set_ylim(lo, hi)
-    axs[0].set_ylabel("Carry of the context's shape (nats)")
-    part_b_panel(axs[2], p)
+    axs[0].set_ylabel("Copy score for shape (nats)")
     h, l = axs[0].get_legend_handles_labels()
-    order = [0, 1, 2, 3, 4, 5]
-    fig.legend([h[i] for i in order], [l[i] for i in order], frameon=False, fontsize=6.5, ncol=3, loc="lower center",
-               bbox_to_anchor=(0.31, -0.02), handletextpad=0.3, columnspacing=1.0)
-    fig.tight_layout(rect=(0, 0.11, 1, 1), w_pad=1.0)
+    fig.legend(h, l, frameon=False, fontsize=6.8, ncol=1, loc="center left", bbox_to_anchor=(0.80, 0.55),
+               handletextpad=0.3)
+    fig.tight_layout(rect=(0, 0, 0.80, 1), w_pad=1.5)
     fig.savefig(out / "fig_a10.pdf", bbox_inches="tight")
+    fig, ax = plt.subplots(figsize=(3.3, 2.2))
+    part_b_panel(ax, p)
+    fig.tight_layout()
+    fig.savefig(out / "fig_pythia.pdf", bbox_inches="tight")
     cell_table(sc, out / "tab_a10_cells.tex")
     print("written", out / "fig_a10.pdf", out / "tab_a10_cells.tex")
 

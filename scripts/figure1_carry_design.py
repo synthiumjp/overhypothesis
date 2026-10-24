@@ -52,26 +52,26 @@ def main():
     ax.text(0.20, 0.895, r"A $\it{dax}$ is a $\bf{zibby}$ lavo shorfi thing.", va="center")
     ax.text(0.04, 0.848, "Query:", color=INK2, va="center")
     ax.text(0.20, 0.848, r"A $\it{dax}$ is a  ___", va="center")
-    ax.text(0.04, 0.800, r"Carry $= L(\mathrm{zibby})\, -$ mean $L$ of other shapes (nats)", va="center",
+    ax.text(0.04, 0.800, r"Copy score $= L(\mathrm{zibby})\, -$ mean $L$ of other shapes", va="center",
             fontsize=6.8, color=INK)
     ax.text(0.02, 0.745, r"Control: the query names another noun (A $\it{blick}$ is a ___).",
             fontsize=6.3, color=INK2, va="center")
 
     # (b) histories
-    ax.text(0.01, 0.705, "(b) Experiment 2: four histories of one noun", fontsize=8, fontweight="bold", va="top")
-    rows = [("Fixed, singles", [{2: "A"}, {4: "A"}, {1: "A"}]),
-            ("Rotating, singles", [{2: "A"}, {4: "C"}, {1: "B"}]),
-            ("Fixed, runs", [{1: "A", 2: "A", 3: "A", 4: "A"}, {}, {0: "A", 1: "A", 2: "A", 3: "A"}]),
-            ("Rotating, runs", [{1: "B", 2: "B", 3: "B", 4: "B"}, {}, {0: "D", 1: "D", 2: "D", 3: "D"}])]
+    ax.text(0.01, 0.705, "(b) Four training histories of one noun", fontsize=8, fontweight="bold", va="top")
+    rows = [("Fixed shape, spaced", [{2: "A"}, {4: "A"}, {1: "A"}]),
+            ("Changing shape, spaced", [{2: "A"}, {4: "C"}, {1: "B"}]),
+            ("Fixed shape, bursts", [{1: "A", 2: "A", 3: "A", 4: "A"}, {}, {0: "A", 1: "A", 2: "A", 3: "A"}]),
+            ("Changing shape, bursts", [{1: "B", 2: "B", 3: "B", 4: "B"}, {}, {0: "D", 1: "D", 2: "D", 3: "D"}])]
     y0, dy, h = 0.585, 0.128, 0.085
     for k, (lab, wins) in enumerate(rows):
         y = y0 - k * dy
-        ax.text(0.02, y + h / 2, lab, va="center", fontsize=7)
+        ax.text(0.02, y + h / 2, lab, va="center", fontsize=6.6)
         for j, cells in enumerate(wins):
-            window(ax, 0.31 + j * 0.232, y, 0.21, h, cells)
+            window(ax, 0.405 + j * 0.199, y, 0.183, h, cells)
     ax.text(0.02, 0.165, "Boxes: successive 128-token windows. Grey: sentences about trained\n"
             "kinds. Letters: the shape each sentence about the noun names.\n"
-            "Shape-absent nouns (not shown) name none.", fontsize=6.2, color=INK2,
+            "No-shape nouns (not shown) name none.", fontsize=6.2, color=INK2,
             va="top", linespacing=1.3)
     fig.savefig(a.out, bbox_inches="tight", pad_inches=0.02)
     print("written", a.out)

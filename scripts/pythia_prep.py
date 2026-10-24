@@ -38,18 +38,27 @@ TOKENIZER = "EleutherAI/pythia-1b-deduped"
 CALIPER, MAX_PAIRS = 0.3, 40
 
 
-def count(term, session):
-    for attempt in range(5):
+def count(term, session, cache, cache_path):
+    """Pile count of term (infini-gram). Results are cached in cache_path so that an interrupted
+    run resumes; failures are retried with growing pauses."""
+    if term in cache:
+        return cache[term]["count"], cache[term]["token_ids"], cache[term]["tokens"]
+    last = None
+    for attempt in range(12):
         try:
             r = session.post("https://api.infini-gram.io/", json={"index": "v4_piletrain_llama", "query_type": "count",
-                                                                 "query": term}, timeout=60)
+                                                                 "query": term}, timeout=90)
             j = r.json()
             if "count" in j:
-                return int(j["count"]), j.get("token_ids"), j.get("tokens")
-        except Exception:
-            pass
-        time.sleep(2 * (attempt + 1))
-    raise SystemExit(f"infini-gram count failed for {term!r}")
+                cache[term] = {"count": int(j["count"]), "token_ids": j.get("token_ids"), "tokens": j.get("tokens")}
+                cache_path.write_text(json.dumps(cache, indent=1), encoding="utf-8")
+                time.sleep(0.5)
+                return cache[term]["count"], cache[term]["token_ids"], cache[term]["tokens"]
+            last = j
+        except Exception as e:
+            last = repr(e)
+        time.sleep(min(60, 3 * (attempt + 1)))
+    raise SystemExit(f"infini-gram count failed for {term!r}: {last}. Run the script again; finished counts are kept.")
 
 
 def main():
@@ -93,10 +102,12 @@ def main():
     colours = [c for c in COLOURS if one_token(c)]
     log["colours"] = colours
     s = requests.Session()
+    cache_path = out / "count_cache.json"
+    cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     counts, qlog = {}, {}
     for g in groups.values():
         for n, _ in g:
-            c, ids, toks = count(n, s)
+            c, ids, toks = count(n, s, cache, cache_path)
             qlog[n] = {"count": c, "token_ids": ids, "tokens": toks}
             if not toks or "".join(t.replace("\u2581", "") for t in toks) != n:
                 log["count_query_dropped"].append(n)

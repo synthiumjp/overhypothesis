@@ -22,6 +22,8 @@ Amendment 5 & 9 Oct 2026 & 4, 5, 8, 9, 17, 18, 19, 22 & All earlier results (Stu
 Amendment 6 & 11 Oct 2026 & 11, 12, 13 & Amendment 5 results (old loader); a prediction for the new models fitted to them \\
 Amendment 7 & 12 Oct 2026 & 10, 14, 15 & All results, with corrected scores \\
 Amendment 8 & 15 Oct 2026 & 26 to 32 & All results, with corrected scores; three rounds of reviews, which noted that fixed-file models memorised their files and that the novel-noun test was uninformative; no fresh-text model trained \\
+Amendment 9 & 23 Oct 2026 & Familiarity study (Appendix~\ref{app:M}) & All results above; no familiarity corpus built \\
+Amendment 10 & 24 Oct 2026 & Recurrence, frames, rows and pretrained models (Appendix~\ref{app:N}) & Amendment 9 results and a blind review of them; no Amendment 10 corpus used, model trained or pretrained model run on its items \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -142,7 +144,7 @@ Smaller technical changes (software versions, download addresses, a stale file i
 \setcounter{figure}{0}\renewcommand{\thefigure}{C\arabic{figure}}
 \begin{table}[!htbp]
 \caption{AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, dropout 0.1, untied input and output embeddings. Fixed-file models read windows starting at random positions in the corpus; fresh-text models read non-overlapping windows, each at most once, in random order (the 3.4M and 25.6M models used about 60\% of the windows available, the 11.0M models 94 to 96\%). Byte-pair tokeniser with 351 entries for the Regular corpora and 314 to 339 for the other corpus families; every artificial word is one token. Seeds 42, 123, 456, 789 and 1001 each set the corpus, the initial weights and the batch order. Checkpoints were saved every 500 steps. Training ran on one Windows PC through DirectML.}
-\label{tab:8}
+\label{tab:8x1}
 \small
 \begin{tabularx}{\textwidth}{>{\hsize=1.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X}
 \toprule
@@ -244,7 +246,7 @@ Row & Seed level (5 seeds) & Matched models (15) \\
 \FloatBarrier\clearpage
 {\footnotesize\setlength{\tabcolsep}{3.5pt}
 \begin{xltabular}{\textwidth}{>{\hsize=1.851\hsize\raggedright\arraybackslash}X>{\hsize=0.574\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X}
-\multicolumn{6}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:11}{\normalsize\textbf{Table \thetable}\newline Shape-over-colour index by model size (one exemplar), and with two or four exemplars in the context that share their shape (all sizes). Rows marked fresh are fresh-text models; the rest are fixed-file models. In grouped Regular models, two or four exemplars lowered the index: a run of a kind has four sentences, so a fifth sentence about the same kind is rare (Section~\ref{sec:background}). In grouped No stable feature and Colour stable models, where shape varies within a kind, more exemplars sharing a shape lowered the index ($\Delta$ shape \textminus{}0.64, \textminus{}1.93 and \textminus{}3.42 with one, two and four exemplars in grouped No stable feature models), for which we have no tested account; in random-order Regular models, too, the index was lower with two or four exemplars than with one.}}\\[6pt]
+\multicolumn{6}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:11x1}{\normalsize\textbf{Table \thetable}\newline Shape-over-colour index by model size (one exemplar), and with two or four exemplars in the context that share their shape (all sizes). Rows marked fresh are fresh-text models; the rest are fixed-file models. In grouped Regular models, two or four exemplars lowered the index: a run of a kind has four sentences, so a fifth sentence about the same kind is rare (Section~\ref{sec:background}). In grouped No stable feature and Colour stable models, where shape varies within a kind, more exemplars sharing a shape lowered the index ($\Delta$ shape \textminus{}0.64, \textminus{}1.93 and \textminus{}3.42 with one, two and four exemplars in grouped No stable feature models), for which we have no tested account; in random-order Regular models, too, the index was lower with two or four exemplars than with one.}}\\[6pt]
 \toprule
 Condition & 3.4M & 11.0M & 25.6M & Two exemplars & Four exemplars \\
 \midrule
@@ -289,7 +291,7 @@ Objects, different-object, grouped & 6.18 & 5.43 & 5.34 & 4.54 & 4.14 \\
 
 \begin{table}[!htbp]
 \caption{What each training corpus says about the next sentence, and the models' shape-over-colour index for comparison. Rows marked fresh describe fresh text, counted on 100 held-out passes arranged by the same rule (27 for the Objects corpora); the rest describe the fixed files. All values in nats except the shares. Code is in the repository.}
-\label{tab:11}
+\label{tab:11x2}
 \scriptsize\setlength{\tabcolsep}{3.5pt}
 \begin{tabularx}{\textwidth}{>{\hsize=3.073\hsize\raggedright\arraybackslash}X>{\hsize=0.878\hsize\raggedright\arraybackslash}X>{\hsize=0.732\hsize\raggedright\arraybackslash}X>{\hsize=0.732\hsize\raggedright\arraybackslash}X>{\hsize=0.732\hsize\raggedright\arraybackslash}X>{\hsize=0.805\hsize\raggedright\arraybackslash}X>{\hsize=0.732\hsize\raggedright\arraybackslash}X>{\hsize=0.732\hsize\raggedright\arraybackslash}X>{\hsize=0.585\hsize\raggedright\arraybackslash}X}
 \toprule

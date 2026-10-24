@@ -1,0 +1,163 @@
+\FloatBarrier
+\section{Recurrence, matched frames, embedding rows and pretrained models (Amendment 10)}\label{app:N}
+\setcounter{table}{0}\renewcommand{\thetable}{N\arabic{table}}
+\textbf{Registration.} Amendment 10 was registered after the Amendment 9 results and before any of its corpora was used, any of its models was trained, or any pretrained model was run on its items. It answered two confounds raised by a blind review of the Amendment 9 results: familiarity nouns never recurred within a window, and shape-absent nouns never appeared in a frame with a shape slot after \emph{is a}. The noun lists for Part B were fixed, with checksums, before the pilot. A pilot on Pythia-410M (never in a test) gave a mean increase of 0.13 nats from the original to the atypical\_init row, so the smallest effect of interest for H48 was 0.30 nats by the registered rule. One deviation: some Pythia tokenizers define no padding token, so the scoring script falls back to token id 0; padded positions are masked and only the last real token is read, and batched and single-item scores agreed exactly. No score had been produced by the affected models.
+
+\textbf{Part A design.} Everything not stated is as in Amendment 9 (Appendix~\ref{app:M}). Histories: \emph{fixed}, frame 1 (\emph{A \textit{noun} is a \textit{shape} \textit{colour} \textit{texture} thing}) with the noun's own shape; \emph{absent}, frame 7 (\emph{A \textit{noun} is a \textit{colour} \textit{texture} thing}), which names no shape; \emph{rotating}, frame 1 with a shape drawn from the corpus's shape distribution, a new one for every sentence when presented singly and one per run, changing between runs, when presented in runs. Presentation: \emph{single}, one sentence per unit; \emph{run}, four consecutive sentences about the noun in one window. Exposures (100 or 1,000) count sentences, so runs and singles are matched in sentences, not in units or spacing. Trained kinds use frame 7 in one sentence in fifteen, so the frame is not new. Three nouns per cell (12 cells) and four unseen nouns; Regular grouped (confirmatory) and Reassigned grouped (exploratory) base corpora; three sizes and ten seeds (60 models). A checker re-read every corpus and verified exposures, units, frames, shapes within runs and window placement; all 40 corpora matched checksums recorded before training.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Registered tests of Part A (Regular grouped models; 100 and 1,000 exposures pooled; seed-level estimates over ten seeds, sizes averaged within seed; nats). Holm $p$ is adjusted over H40 to H44. Sizes: number of the three sizes with the estimate's direction. Readings follow the registered table: ``above'' means the Holm threshold was met and the direction held at two of three sizes; TOST $p$ for H40, H41 and H44 was above .99, so none was equivalent.}
+\label{tab:N1}
+\begin{tabular}{@{}lp{0.34\textwidth}rrrcp{0.17\textwidth}@{}}
+\toprule
+& Test & Estimate & 95\% CI & Holm $p$ & Sizes & Reading \\
+\midrule
+M2 & Unseen carry minus 1 nat (manipulation check) & 5.35 & [4.59, 6.12] & $<$.001$^a$ &  & Passed \\
+K1 & Knowledge, fixed runs minus fixed singles (equivalence $\pm$1) & \textminus{}1.09 & [\textminus{}1.45, \textminus{}0.73] & $<$.001$^a$ &  & Not equivalent (H41 not interpreted) \\
+H40 & Absent runs minus absent singles (two-sided; TOST $\pm$0.3) & 0.80 & [0.47, 1.13] & $<$.001 & 3 & Above \\
+H41 & Fixed runs minus fixed singles (two-sided; TOST $\pm$0.3) & 1.69 & [1.29, 2.08] & $<$.001 & 3 & Above (not interpreted) \\
+H42 & Rotating runs minus rotating singles (one-sided) & 3.39 & [2.69, 4.09] & $<$.001 & 3 & Supported \\
+H43 & Fixed singles minus absent singles (one-sided) & \textminus{}1.02 & [\textminus{}1.27, \textminus{}0.76] & $<$.001 & 3 & Supported \\
+H44 & Absent singles minus unseen with typical row (two-sided; TOST $\pm$0.3) & 1.42 & [1.12, 1.73] & $<$.001 & 3 & Above \\
+\bottomrule
+\end{tabular}
+\\[2pt]{\footnotesize $^a$ Outside the Holm family; unadjusted $p$. The M2 estimate is unseen carry minus 1 nat, so unseen carry was 6.35 nats.}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Carry (nats) by cell, mean of seed values (sizes averaged) with 95\% intervals over ten seeds. Unseen nouns have no exposures; the typical row replaces an unseen noun's input row with one typical of trained nouns.}
+\label{tab:N2}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Base & Noun & 100 exposures & 1,000 exposures \\
+\midrule
+Regular, grouped & Fixed shape, singles & 1.52 {[}1.18, 1.86{]} & 0.52 {[}0.36, 0.69{]} \\
+ & Fixed shape, runs & 4.43 {[}3.49, 5.36{]} & 0.99 {[}0.68, 1.30{]} \\
+ & Shape-absent, singles & 3.09 {[}2.56, 3.63{]} & 0.98 {[}0.76, 1.20{]} \\
+ & Shape-absent, runs & 4.65 {[}3.94, 5.36{]} & 1.03 {[}0.59, 1.47{]} \\
+ & Rotating shape, singles & 1.59 {[}1.30, 1.88{]} & 0.50 {[}0.38, 0.62{]} \\
+ & Rotating shape, runs & 5.02 {[}4.18, 5.86{]} & 3.85 {[}2.93, 4.77{]} \\
+ & Unseen & 6.35 {[}5.59, 7.12{]} &  \\
+ & Unseen, typical row & 0.61 {[}0.28, 0.95{]} &  \\
+\midrule
+Reassigned, grouped & Fixed shape, singles & 2.23 {[}1.92, 2.55{]} & 0.44 {[}0.37, 0.51{]} \\
+ & Fixed shape, runs & 5.35 {[}4.88, 5.82{]} & 3.57 {[}3.02, 4.11{]} \\
+ & Shape-absent, singles & 1.83 {[}1.49, 2.17{]} & 0.63 {[}0.53, 0.72{]} \\
+ & Shape-absent, runs & 3.79 {[}3.38, 4.20{]} & 2.09 {[}1.82, 2.35{]} \\
+ & Rotating shape, singles & 2.37 {[}2.04, 2.71{]} & 0.51 {[}0.38, 0.64{]} \\
+ & Rotating shape, runs & 5.40 {[}4.95, 5.86{]} & 6.82 {[}6.48, 7.17{]} \\
+ & Unseen & 5.02 {[}4.61, 5.42{]} &  \\
+ & Unseen, typical row & 0.43 {[}0.32, 0.55{]} &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Knowledge of the noun's own shape and expectation of a shape rather than a colour at the query position (slot: log of the summed probability of the ten shapes minus that of the ten colours), Regular grouped models, mean of seed values (exploratory). Unseen nouns: knowledge \textminus{}0.04, slot 1.49.}
+\label{tab:N3}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{Knowledge} & \multicolumn{2}{c}{Slot} \\ \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Noun & 100 & 1,000 & 100 & 1,000 \\
+\midrule
+Fixed shape, singles & 5.37 & 7.80 & 4.03 & 6.16 \\
+Fixed shape, runs & 3.02 & 7.98 & 3.28 & 6.24 \\
+Shape-absent, singles & 0.00 & \textminus{}0.09 & \textminus{}2.98 & \textminus{}4.93 \\
+Shape-absent, runs & 0.05 & \textminus{}0.25 & \textminus{}1.12 & \textminus{}4.43 \\
+Rotating shape, singles & \textminus{}0.08 & 0.01 & 5.04 & 5.30 \\
+Rotating shape, runs & 0.14 & 0.06 & 3.74 & 5.24 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{The Part A contrasts in Reassigned grouped models (exploratory; seed-level, unadjusted two-sided $p$).}
+\label{tab:N4}
+\begin{tabular}{@{}lp{0.42\textwidth}rrr@{}}
+\toprule
+& Contrast & Estimate & 95\% CI & $p$ \\
+\midrule
+H40 & Absent runs minus absent singles & 1.71 & [1.36, 2.06] & $<$.001 \\
+H41 & Fixed runs minus fixed singles & 3.12 & [2.71, 3.53] & $<$.001 \\
+H42 & Rotating runs minus rotating singles & 4.67 & [4.28, 5.06] & $<$.001 \\
+H43 & Fixed singles minus absent singles & 0.11 & [\textminus{}0.07, 0.29] & .196 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the Amendment 9 scores. Conditions: own row; own direction scaled to the mean norm of the trained kinds' rows (ownnorm); a random direction at that norm (randnorm); the trained kinds' mean row. Shape-absent nouns at 10,000 exposures were also scored with their own direction scaled to the unseen nouns' mean norm (shrunk).
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Part C: carry (nats) by input row, mean over seeds (sizes averaged). H49 (registered, Regular grouped): ownnorm minus own \textminus{}0.52 [\textminus{}0.85, \textminus{}0.20], one-sided $p$ = .003, direction at 2 of 3 sizes, supported. In Reassigned models the same contrast went the other way (0.27 [0.12, 0.41]; exploratory). Randnorm minus ownnorm: 0.09 (Regular), 0.03 (Reassigned).}
+\label{tab:N5}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{Unseen nouns} & \multicolumn{2}{c}{Shape-absent, 10k} \\ \cmidrule(lr){2-5}\cmidrule(lr){6-7}
+Corpus & Own & Ownnorm & Randnorm & Trained mean & Own & Shrunk \\
+\midrule
+Regular grouped & 4.53 & 4.00 & 4.09 & \textminus{}0.44 & \textminus{}0.05 & 0.53 \\
+Reassigned grouped & 6.85 & 7.12 & 7.15 & 1.05 & 1.86 & 4.16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Part B (pretrained models).} 44 nouns in 22 pairs, matched on Pile frequency and count/mass type, were coded for colour typicality by two independent AI passes with a fixed prompt before any model was run (exact agreement 94\%, weighted $\kappa$ = 0.96); nouns that are also colour terms or that both passes flagged as polysemous were excluded. Colour-typical nouns are mostly natural kinds, so kind was a covariate. Each noun was read in three neutral frames with each of the eleven basic colour terms that are one token; carry is the mean over frames and ordered colour pairs of $\log p(c_1 \mid c_1) - \log p(c_1 \mid c_2)$, with colour probabilities renormalised over the colour set. Only the noun's input row was changed.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Part B registered tests by primary model (nouns or pairs as units; Holm within model over H45 to H48). H45: atypical\_init minus original; H46: atypical\_init minus typical row; H47: colour-typical minus colour-variable nouns, original rows; H48: difference between groups in the H45 increase (TOST against $\pm$0.30). A hypothesis needed Holm in at least four of the five models. Outcome: H45 and H46 met Holm in two of five models, H47 in none, and H48 was inconclusive (equivalent in one model).}
+\label{tab:N6}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{H45} & \multicolumn{2}{c}{H46} & \multicolumn{2}{c}{H47} & \multicolumn{2}{c}{H48} \\ \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Model & Est. & Holm & Est. & Holm & Est. & Holm & Est. & TOST $p$ \\
+\midrule
+1B & 0.20 & met & 0.21 & met & 0.00 & -- & 0.07 & .097 \\
+1.4B & 0.34 & met & \textminus{}0.22 & -- & \textminus{}0.01 & -- & \textminus{}0.08 & .021 \\
+2.8B & \textminus{}0.38 & -- & 0.08 & -- & \textminus{}0.16 & -- & 0.11 & .222 \\
+6.9B & 0.07 & -- & 0.36 & met & \textminus{}0.09 & -- & 0.10 & .127 \\
+12B & \textminus{}0.35 & -- & \textminus{}0.21 & -- & 0.11 & -- & 0.08 & .066 \\
+\bottomrule
+\end{tabular}
+\\[2pt]{\footnotesize Mixed model over the five primary models (carry $\sim$ condition $\times$ group + model + kind; random intercepts for noun and pair, random condition slopes by noun): atypical\_init 0.00 ($p$ = .956), typical row \textminus{}0.04 ($p$ = .559), colour-variable group 0.06 ($p$ = .527).}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Part B: carry of the context's colour (nats; mean over nouns) by model and input row, and with original rows by group. Atypical: the atypical\_init direction at the noun's own norm (exploratory). 70M and 160M are descriptive. Prior entropy: entropy of the colour distribution after \emph{The \textit{noun} was} with no context (nats; uniform over eleven colours is 2.40).}
+\label{tab:N7}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Model & Original & Atypical\_init & Atypical & Typical row & Colour-typical & Colour-variable & Prior entropy \\
+\midrule
+70M & 1.59 & 1.40 & 1.41 & 1.16 & 1.61 & 1.56 & 2.09 \\
+160M & 0.93 & 1.95 & 1.95 & 1.03 & 0.87 & 1.00 & 2.01 \\
+1B & 1.89 & 2.09 & 2.09 & 1.88 & 1.89 & 1.89 & 1.95 \\
+1.4B & 2.10 & 2.44 & 2.44 & 2.66 & 2.10 & 2.10 & 1.97 \\
+2.8B & 2.70 & 2.31 & 2.31 & 2.23 & 2.61 & 2.78 & 1.92 \\
+6.9B & 2.67 & 2.75 & 2.75 & 2.39 & 2.63 & 2.72 & 1.94 \\
+12B & 2.68 & 2.33 & 2.33 & 2.54 & 2.73 & 2.62 & 1.91 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Part B, Pythia-1.4B deduplicated across training (exploratory): carry (nats; mean over nouns) by training step and input row.}
+\label{tab:N8}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Row & 1,000 & 2,000 & 4,000 & 8,000 & 16,000 & 32,000 & 64,000 & 143,000 \\
+\midrule
+Original & 0.73 & 1.09 & 0.72 & 1.97 & 1.46 & 1.67 & 2.39 & 2.10 \\
+Atypical\_init & 0.81 & 1.45 & 1.10 & 2.08 & 1.82 & 2.11 & 2.56 & 2.44 \\
+Typical row & 0.72 & 1.06 & 0.60 & 1.64 & 1.17 & 1.70 & 2.70 & 2.66 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

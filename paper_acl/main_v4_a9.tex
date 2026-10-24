@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+%\usepackage{inconsolata} % not installed here; only affects typewriter font
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xltabular}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{placeins}
+\usepackage{enumitem}
+
+\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}\renewcommand{\dbltopfraction}{0.9}\renewcommand{\dblfloatpagefraction}{0.8}
+\newcommand{\nohdpunct}{}
+\newcommand{\appendixsection}[1]{\section{#1}}
+\newenvironment{acknowledgments}{\section*{Acknowledgments}}{}
+
+\title{Familiarity, More Than Stored Knowledge, Decides What\\Small Transformers Take from Context}
+
+\author{Anonymous submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Small transformers trained on text in which nearby sentences describe the same kind learn to carry a feature from one mention of a noun to the next. Probes of this use nonce nouns, but a nonce noun is both unfamiliar and without stored knowledge. We separated the two in a registered experiment. In 90 models (3.4M to 25.6M parameters, ten seeds) trained on an artificial language, 40 nonce nouns appeared 0 to 10,000 times: with one fixed shape, with a new shape every time, or never with any shape. In models trained on grouped text with stable shapes, carry of a shape given in the context fell from 4.5 nats for unseen nouns to under 1 nat by 100 exposures for every kind of noun, including nouns never seen with a shape. Stored knowledge of a fixed shape grew to about 10 nats but did not make carry fall faster; fixed-shape nouns carried only 0.3 to 0.8 nats less than shape-absent nouns at every exposure (exploratory). Familiar shape-absent nouns carried 0.33 nats more than unseen nouns given an embedding typical of trained nouns, a difference within a registered 1-nat equivalence bound. When training kept the context useful for familiar nouns, they kept more carry, and their history mattered more (exploratory). Ablating heads chosen by an induction-head signature did not selectively remove carry.
+\end{abstract}
+
+\section{Introduction}
+A language model can take a word's properties from the text around it or from what it has stored about the word. Which it does depends on its training data. Classes that occur in bursts or rarely favour learning in context, and common classes favour learning stored in the weights \citep{chan2022,chan2025}; in pretrained models, heads that copy from the context compete with recall from memory \citep{yu2023,jin2024}. These results describe populations of items. We ask about a single word: as a model sees a noun more often, when does it stop taking the noun's features from the context, and why?
+
+Two things change as a model sees a word. Its representation becomes like those of other words it knows, and it may store what the word's referents are like. In natural data the two go together, and probes inherit the confound: a nonce word tests generalisation to a new item \citep{thrush2020}, but it is new in representation as well as in knowledge, and conclusions drawn with nonce words can depend on how the new word is represented \citep{kim2022lexical,cacioli2026me}. We met this confound in our own earlier experiments (Section~\ref{sec:background}). Small transformers trained on grouped text carried a shape from one mention of an unseen noun to the next, but most of that carry vanished when the same noun was given an embedding typical of trained nouns (an exploratory rescoring).
+
+We therefore separated familiarity from stored knowledge by design. In every model, nonce nouns appeared a set number of times (0, 10, 100, 1,000 or 10,000) and, independently, either always with one shape, with a new shape every time, or never with any shape. The hypotheses and the analysis were registered before any corpus was built, with details fixed in a dated addendum before any data (Appendix~\ref{app:M}). We find:
+\begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
+\item \textbf{Familiarity did most of the work.} In grouped models with stable shapes, carry fell from 4.5 nats for unseen nouns to under 1 nat by 100 exposures for every kind of noun, including nouns never seen with a shape.
+\item \textbf{Stored knowledge added a little, not a faster fall.} A fixed shape was learned strongly, but carry did not fall faster for it; fixed-shape nouns carried 0.3 to 0.8 nats less than shape-absent nouns throughout. Familiar shape-absent nouns ended close to unseen nouns given a typical embedding.
+\item \textbf{When the context stayed useful, more carry remained and history mattered more.} Where a familiar noun's shape could only come from the context, familiar nouns kept some carry, and less when their history gave a stored or an unpredictable shape (exploratory).
+\item \textbf{We did not find the heads.} Heads chosen by an induction-head signature did not selectively remove carry.
+\end{enumerate}
+Our claims are about transformers trained on an artificial language, not about children or large pretrained models.
+
+\section{Related work}
+\textbf{In-context and in-weights learning.} In-context learning emerges when items occur in bursts, more when their meanings change, and trades off against learning stored in the weights \citep{chan2022}. It favours rare classes and can fade as stored solutions take over \citep{chan2025,singh2023}, and its onset has been traced to induction heads \citep{olsson2022,reddy2024}. Closest to our question, periodically resetting embeddings during training keeps in-context use alive for rare and unseen tokens \citep{anand2025}, and in synthetic biographies the most frequent entities shift from context to stored knowledge \citep{kim2026training}. In both, how familiar an item is goes together with whether a stored answer exists; we manipulate the two separately for single words within one model.
+
+\textbf{Context against memory.} Pretrained models answer from memory more for popular or frequent entities and need retrieval for rare ones \citep{mallen2023,kandpal2023}; real entities are harder to move by context than invented ones \citep{du2024}. Attention heads that copy from the context compete with mechanisms that recall stored facts, and removing a few heads can shift the balance \citep{yu2023,jin2024}. In this work frequency is observed rather than manipulated, and a familiar entity is also one the model knows about.
+
+\textbf{Nonce words and exposure.} Nonce words are the usual test of generalisation to a new item \citep{thrush2020,misra2023}. Lexical exposure can inflate apparent generalisation \citep{kim2022lexical}, and controlling how often an item occurs in training shows how frequency shapes what transformers learn \citep{wei2021}. We control exposure exactly, down to the window in which each occurrence is read.
+
+\textbf{Arrangement and repeated data.} Packing related documents together changes how models use context \citep{shi2024,zhao2024}, and repeated passes over fixed data change what is learned \citep{murty2023,charton2024}. Our earlier experiments vary only arrangement (Section~\ref{sec:background}).
+
+\section{Setting and earlier experiments}\label{sec:background}
+\textbf{Language.} Each corpus describes 32 kinds of object, each named by a nonce noun, with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each a nonce word from a list of ten, and is described in one of five frames, such as \emph{A wug is a zibby lavo shorfi thing} (Appendix~\ref{app:I}). In \textbf{Regular} corpora each kind keeps one shape. In \textbf{Reassigned} corpora a kind gets a new shape in every pass through the corpus and keeps it within the pass, so only the context can tell a familiar noun's current shape. In \textbf{random} order every pass is shuffled; in \textbf{grouped} order sentences about a kind come in runs of four (Figure~\ref{fig:1}). Each pass is arranged afresh and read in non-overlapping 128-token windows, so no text is read twice. Models are decoder-only transformers of 3.4M, 11.0M and 25.6M parameters (4 to 8 layers; Appendix~\ref{app:C}). Every artificial word is one token.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/figure1.png}
+\caption{Random order, the two kinds of run used in earlier experiments, and a test item.}
+\label{fig:1}
+\end{figure}
+
+\textbf{Earlier results.} In registered experiments with 120 models (five seeds), we gave a model one sentence about an object of a new kind and measured how much more it expected the next mention of that noun to keep the shape than the colour (Appendices~\ref{app:A} and~\ref{app:E}). With nouns never seen in training, grouping raised this expectation over random order by 11.08 nats [9.57,~12.59], only when kinds had a fixed feature, and when Reassigned training made the context necessary, trained nouns carried the context's shape only after the same noun (Appendix~\ref{app:L}). The direction of these effects held when the test nouns were given an embedding typical of trained nouns, and for trained nouns, but their size did not (exploratory; Appendix~\ref{app:L}). In grouped Regular models the preference to repeat the context's shape was 6.88 nats for unseen nouns and \textminus{}0.72 for the same nouns with a typical embedding, and it fell steadily as we blended the two embeddings ($-7.8$ nats per unit blend). The unseen nouns' input embeddings had never been trained, because a tie between input and output embeddings was lost on the training hardware. So the earlier probes measured arrangement and the test noun's representation together. Models trained instead on one fixed file, read 160 to 290 times, memorised it, and their effects differed in size (Appendix~\ref{app:C}).
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}p{0.36\columnwidth}ccc@{}}
+\toprule
+Contrast & Unseen & Typical & Trained \\
+\midrule
+Grouped $-$ random & 11.08 & 3.00 & 2.03 \\
+ & {\scriptsize[9.57, 12.59]} & {\scriptsize[1.79, 4.21]} & {\scriptsize[1.68, 2.37]} \\
+Regular $-$ No stable, grouped & 13.50 & 4.98 & 5.76 \\
+ & {\scriptsize[11.48, 15.52]} & {\scriptsize[3.42, 6.53]} & {\scriptsize[4.98, 6.53]} \\
+Different $-$ same object & 1.72 & 0.60 & 0.58 \\
+ & {\scriptsize[0.54, 2.90]} & {\scriptsize[0.26, 0.93]} & {\scriptsize[0.30, 0.86]} \\
+\bottomrule
+\end{tabular}
+\caption{Earlier study (index of shape over colour): seed-level differences in the shape-over-colour index (nats, 95\% intervals over five seeds) for test nouns that were unseen, given a typical embedding, or trained. Registered for unseen nouns; the other columns are exploratory. No stable: no feature fixed within a kind.}
+\label{tab:contrasts}
+\end{table}
+
+\section{The familiarity study}\label{sec:design}
+\textbf{Nouns.} We added 40 nonce nouns to three base corpora (Regular grouped, Regular random and Reassigned grouped). In every model they fill 13 cells: three kinds of history (Table~\ref{tab:design}), each at 10, 100, 1,000 and 10,000 exposures, three nouns per cell, plus four unseen nouns. For comparison, a trained kind appears in about 60,000 sentences. Nouns rotate over cells across seeds. A sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, names no shape; it is the only frame of shape-absent nouns and is also used by the trained kinds once in fifteen sentences, so it is not new.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.27\columnwidth}p{0.68\columnwidth}@{}}
+\toprule
+History & Sentences about the noun in training \\
+\midrule
+Fixed shape & always one shape, its own shape $s^*$ \\
+Uninformative & a new shape every time, drawn from the corpus's shapes \\
+Shape-absent & only the sixth frame, which names no shape \\
+Unseen & none (in the vocabulary only) \\
+\bottomrule
+\end{tabular}
+\caption{Histories of the familiarity nouns. Each exposed history has four exposure levels (10 to 10,000).}
+\label{tab:design}
+\end{table}
+
+\textbf{Exact exposure.} Each corpus holds exactly as many 128-token windows as training reads, and a fixed permutation says when each is read. Each familiarity sentence lies wholly inside one window, at most one per window and in grouped corpora only between runs, and a noun's exposures are evenly spaced from 5\% to 95\% of training. A checker re-read every corpus and verified each exposure, window and frame; the corpora matched checksums recorded before training. We trained 90 models: three sizes, ten seeds, three base corpora, with input and output embeddings untied in code.
+
+\textbf{Measures.} Each item gives one context sentence, \emph{A \textit{noun} is a $s$ \textit{colour} \textit{texture} thing}, then \emph{A \textit{noun} is a}, and reads the log probability $L$ of each of the ten shapes at the next position. \textbf{Carry} is $L(s)$ minus the mean of $L$ over shapes other than $s$ and $s^*$; \textbf{stored preference} is $L(s^*)$ minus the same mean; \textbf{knowledge} is $L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence. The context shape is never $s^*$, and each of the other nine shapes appears four times per noun. Unseen nouns are also scored with an embedding typical of trained nouns, as in the earlier study.
+
+\textbf{Hypotheses and analysis.} In grouped Regular models we predicted that carry would fall faster with exposure for fixed-shape than for shape-absent nouns (H30); tested whether shape-absent nouns at 1,000 and 10,000 exposures differ in carry from unseen nouns with a typical embedding, with an equivalence test against $\pm$1 nat (H31); and predicted that stored preference rises with exposure (H32). A manipulation check (M1) required knowledge of at least 0.2 nats at 1,000 exposures, rising with exposure, in every base corpus. Head hypotheses (H33 to H35) are in Section~\ref{sec:heads}. The seed is the unit of replication: we average cell means over the three sizes within each seed and test over ten seeds, with \citet{holm1979} correction across H30 to H35. A hypothesis is supported only if its direction also holds at two of the three sizes. A one-seed pilot, never used in a test, set the number of nouns per cell; its expected power for a 1-nat difference was 0.57, below the planned 0.8. The addendum fixed how a hypothesis counts as supported, the gate for H35 and how each test is computed (Appendix~\ref{app:M}).
+
+\section{Results}\label{sec:results}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_carry.pdf}
+\caption{Carry of the context's shape by exposure and noun history (nats; means over ten seeds of size-averaged cell means, 95\% intervals). Diamond: unseen nouns. Dashed line: unseen nouns with an embedding typical of trained nouns.}
+\label{fig:carry}
+\end{figure*}
+
+\textbf{The manipulation worked.} Fixed-shape nouns learned their shape: knowledge at 1,000 exposures was 9.53, 8.61 and 8.26 nats in Regular grouped, Regular random and Reassigned grouped models, rising with exposure in all three (M1). In grouped Regular models, nouns with an uninformative or no shape showed no knowledge (within 0.2 nats; Table~\ref{tab:M3}; descriptive).
+
+\textbf{Familiarity did most of the work.} In grouped Regular models, carry was 4.53 nats [3.54,~5.52] for unseen nouns and had largely gone by 100 exposures for every history (Figure~\ref{fig:carry}, left; Table~\ref{tab:M2}). At 10 exposures it was 3.6 to 4.5 nats; at 100, 0.16 to 0.86; from 1,000 on, within 0.4 nats of zero. Grouping created the carry: grouped models carried more than random ones for unseen nouns (4.68 [3.71,~5.65]; R1, replicating the earlier study), and in random order carry was near zero for every noun (exploratory).
+
+\textbf{Stored knowledge did not speed the fall.} H30 predicted that carry would fall faster with exposure for fixed-shape than for shape-absent nouns. The slope difference was 0.16 nats per decade [0.01,~0.30], in the opposite direction at every size, so H30 was not supported. Fixed-shape nouns started lower and stayed lower: they carried 0.77 [0.32,~1.22] nats less than shape-absent nouns at 10 exposures and 0.33 [0.25,~0.41] less at 1,000 and 10,000, where their carry was slightly negative (exploratory). Uninformative nouns carried less than shape-absent ones at 10 and 100 exposures (0.91 and 0.70 nats) but not from 1,000 on. Stored preference rose by 2.97 nats per decade [2.79,~3.16] for fixed-shape nouns (H32, Holm $p<.001$), reaching 10.71 nats at 10,000 exposures. So a stored shape lowered carry by a fraction of a nat, while familiarity lowered it by about four.
+
+\textbf{Familiar nouns came close to a typical embedding.} H31 compared familiar shape-absent nouns (1,000 and 10,000 exposures) with unseen nouns given a typical embedding. The familiar nouns carried 0.33 nats [0.13,~0.52] more (Holm $p=.013$, positive at all three sizes), so H31 was supported as a difference, and the two were also equivalent within the registered 1-nat bound (TOST $p<.001$). Becoming familiar through training thus left a noun close to, but slightly above, where an ordinary-looking embedding puts it.
+
+\textbf{When the context stayed useful (exploratory).} In Reassigned training a trained kind's current shape can come only from the context, and trained kinds carried it strongly (9.98 nats). Here familiarity reduced carry but did not remove it (Figure~\ref{fig:carry}, middle). Shape-absent nouns kept 2.04 and 1.86 nats at 1,000 and 10,000 exposures, not reliably different from unseen nouns with a typical embedding (0.38 [\textminus{}0.44,~1.19]; not shown equivalent). Fixed-shape nouns carried 1.31 nats [0.89,~1.72] less than shape-absent nouns, and uninformative nouns 0.42 [0.36,~0.47] less again (1,000 and 10,000 exposures pooled). History therefore mattered in both corpora, and more where familiarity left more carry to lower. One difference between histories is not about shape: shape-absent nouns never appeared in the test frame, while fixed-shape and uninformative nouns did, so part of the gap may reflect familiarity with the frame.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_a9_formation.pdf}
+\caption{Carry against the exposures each noun had received by each saved checkpoint (exploratory; nats; mean over ten seeds of size-averaged values, 95\% intervals).}
+\label{fig:formation}
+\end{figure}
+
+\textbf{Exposures so far and embedding geometry (exploratory).} Weights saved every 1,000 steps show carry against the exposures a noun had received so far (Figure~\ref{fig:formation}). This fills the gap between the registered levels but confounds exposure with training time. In grouped Regular models carry began to fall after about 10 exposures and was near zero after a few hundred, sooner for nouns seen with shapes (fixed or uninformative) than for shape-absent nouns. For unseen nouns, carry was present by the first saved checkpoint (10 to 20\% of training) and did not disappear. With exposure, a noun's input row moved from 0.79 to about 1.0 times the typical distance from the trained kinds' mean embedding, its cosine with that mean rose from 0.01 to about 0.1, and its predicted probability at the start of a sentence rose from a logit of \textminus{}9.5 to \textminus{}2.2. But within a cell, nouns whose rows had moved further did not reliably carry less (within-cell correlations between \textminus{}0.25 and 0.04 in grouped Regular models). These simple measures therefore do not explain the effect of familiarity.
+
+\subsection{Heads}\label{sec:heads}
+We registered a search for heads that carry the shape. In each model, before any familiarity item was scored, we chose the $k$ heads ($k$ = 2, 4 or 6 by size) with the highest product of a prefix-matching score and a copying score on repeated random sequences of the language's words, the signature of induction heads \citep{olsson2022}, and replaced their output by its mean over ordinary sentences at the position that predicts the shape. H33 predicted that this would remove more than half of the carry of unseen nouns in grouped Regular models, and more than ablating random heads of the same layers; H34 that it would reduce trained kinds' carry in Reassigned models; and H35, given H33, that the heads' attention to the context's shape would fall faster with exposure for fixed-shape nouns.
+
+H33 was not supported. In grouped models the candidates were first-layer heads (all but one of 60 models), and the highest prefix-matching score in any model was 0.043, not clearly above the 0.027 of uniform attention (Table~\ref{tab:M4}), so we describe them as copying heads, not induction heads. Ablating them removed a mean proportion of 0.22 [0.07,~0.36] of unseen carry per model, against the registered 0.5, and not reliably more than random heads did (difference 0.64 [\textminus{}0.43,~1.71]). The proportion varied with size (exploratory): ablation removed all unseen carry in the 3.4M models (8.10 to \textminus{}0.42 nats) but raised it in the 11.0M models (2.98 to 5.80), so the mean of proportions (0.22) is well below the proportion of mean carry removed (0.55). In the 3.4M and 11.0M models the first layer had exactly $k$ non-candidate heads, so every random draw ablated the same set; the comparison with random heads rests mainly on that one set there. H34 was supported: in Reassigned models ablation cut trained kinds' carry by 7.41 nats [6.02,~8.80]. Ablating random heads cut it by 6.91 [5.45,~8.38] (exploratory), so the effect is not specific to the candidates. H35 was not tested. Exploratory measures of the candidates' attention to the context's shape fell with familiarity in grouped Regular models, from 0.155 for unseen nouns to about 0.07 from 1,000 exposures for every history, in parallel with carry (Figure~\ref{fig:heads}; Table~\ref{tab:M5}); in Reassigned models attention and carry did not order the histories the same way. Our registered ablations do not show that any specific heads produce the carry.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_heads.pdf}
+\caption{Left: carry intact, with the candidate heads mean-ablated, and with random heads ablated (nats; mean over ten seeds and three sizes, 95\% intervals over seeds). Right: the candidates' attention from the position that predicts the shape to the context's shape word, grouped Regular models (exploratory).}
+\label{fig:heads}
+\end{figure*}
+
+\section{Discussion}
+In these models a noun took far less of its shape from the context once it was familiar, and familiarity did most of the work: a familiar noun that never appeared with a shape lost about as much carry as one with a fixed shape, and ended close to an unseen noun given an ordinary-looking embedding. A stored shape lowered carry by a further fraction of a nat but did not make it fall faster. One reading is that the large carry measured with unseen nouns in the earlier study was carry for a token unlike any trained noun, and that it ends when the token's representation becomes ordinary, by training or by assignment. Simple measures of the input embedding (its norm, its distance and angle from trained nouns) changed with exposure but did not explain carry within cells, so what makes a representation ordinary in this sense remains open. For single words in our language, this refines the trade-off between in-context and in-weights learning \citep{chan2022,chan2025}: most of the shift away from the context came with familiarity, not with a stored answer competing against the context. It fits the finding that keeping embeddings untrained preserves in-context use for rare and unseen tokens \citep{anand2025}.
+
+Where training kept the context useful for familiar nouns, more carry remained and a noun's history mattered more: a stored shape lowered carry, and so did a shape that had changed in every sentence. The second effect may be a noun-specific lesson about how a feature varies, loosely analogous to what hierarchical models call an overhypothesis \citep{kemp2007}; it is exploratory, and we did not test that account.
+
+For work with nonce words, an unseen token is not a neutral stand-in for a new word: its untrained or unusual representation can carry much of an effect, and effects should be checked with representations that look familiar. For mechanistic work, an induction-head signature did not find components that selectively carry a kind's feature in our models. First-layer attention to the shape word co-varied with carry in grouped Regular models, but a different, causal search would be needed to say what produces it.
+
+\section*{Limitations}
+The language is artificial, with 32 kinds, three dimensions and six frames; the models are small (3.4M to 25.6M parameters) and trained with one recipe. We do not know whether the familiarity effect holds in pretrained models. H30 tested whether stored knowledge speeds the fall in carry; it did not, and the smaller effects of knowledge on the level of carry are exploratory. Registered exposure levels were spaced by factors of ten; the checkpoint trajectories that fill the gap are exploratory and confound exposure with training time. Shape-absent nouns appeared only in a frame that names no shape, so differences between histories may partly reflect familiarity with the test frame. Power for a 1-nat difference was below plan (0.57). Unseen nouns in the earlier study had untrained embeddings because an embedding tie was lost; in the familiarity study embeddings were untied by design. The head search used one registered signature and mean ablation; other methods might find components we missed. The earlier experiments were registered in stages, some after related results were known (Appendix~\ref{app:A}); the familiarity study was registered before any corpus was built, with details fixed in a dated addendum before data and a pilot that set only the number of nouns per cell.
+
+\section*{Ethics statement}
+The corpus analysis in Appendix~\ref{app:J} is a secondary analysis of archived, de-identified transcripts (CHILDES, CABank) used under their terms; no data were collected from people, and no transcript excerpts are reproduced. Code, corpora, results and all trained models will be released; anonymised copies are provided as supplementary material.
+
+\section*{Use of AI assistants}
+An AI assistant (Claude, Anthropic) was used to help design analyses, write code, review code and design, draft and edit text and check citations, and as the second coder in a consistency check of the corpus coding. The authors are responsible for all content, including the accuracy of every citation.
+
+\bibliography{refs}
+
+\appendix
+\onecolumn
+\input{appendix}
+\input{appendix_recut}
+\input{appendix_a9}
+
+\end{document}

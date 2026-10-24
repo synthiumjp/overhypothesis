@@ -37,6 +37,14 @@ old = old.replace(r"\appendixsection{Materials for Studies 2 and 3}",
     "seed-level intervals for every fresh-text condition are produced by \\texttt{scripts/recut\\_noun\\_store\\_check.py}.\n\n"
     r"\FloatBarrier" + "\n" + r"\appendixsection{Materials for Studies 2 and 3}", 1)
 
+A8ROW = "no fresh-text model trained \\\\\n"
+assert A8ROW in old, "Amendment 8 row not found"
+old = old.replace(A8ROW, A8ROW +
+    "Amendment 9 & 23 Oct 2026 & Familiarity study (Appendix~\\ref{app:M}) & All results above; no familiarity corpus built \\\\\n"
+    "Amendment 10 & 24 Oct 2026 & Recurrence, frames, rows and pretrained models (Appendix~\\ref{app:N}) & Amendment 9 results and "
+    "a blind review of them; no Amendment 10 corpus used, model trained or pretrained model run on its items \\\\\n", 1)
+
+
 def hdr(letter, title, label):
     return ("\\FloatBarrier\n\\section{%s}\\label{%s}\n\\setcounter{table}{0}\\renewcommand{\\thetable}{%s\\arabic{table}}\n"
             "\\setcounter{figure}{0}\\renewcommand{\\thefigure}{%s\\arabic{figure}}\n") % (title, label, letter, letter)
@@ -75,5 +83,17 @@ K = hdr("K", "Study 3: pretrained models", "app:K") + fix(L(253, 282))
 out = old + "\n\n" + I + "\n\n" + J + "\n\n" + K + "\n"
 for bad in ["synthiumjp", "osf.io", "huggingface", "github", "Cacioli"]:
     assert bad not in out, bad
+seen = set()
+
+
+def _dedup(m):
+    lab, base, k = m.group(1), m.group(1), 1
+    while lab in seen:
+        lab, k = f"{base}x{k}", k + 1
+    seen.add(lab)
+    return r"\label{" + lab + "}"
+
+
+out = re.sub(r"\\label\{([^}]*)\}", _dedup, out)
 open(sys.argv[2], "w").write(out)
 print("ok", len(out))

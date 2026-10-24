@@ -92,7 +92,7 @@ out += [r"\begin{table}[!htbp]", r"\centering\small",
         r"over ten seeds, sizes averaged within seed; nats, proportions for H33a, attention probability for H35). Holm "
         r"$p$ is adjusted over H30 to H34; H35 was not entered because H33(a) failed. Sizes: number of the three model "
         r"sizes with the registered direction.}",
-        r"\label{tab:M1}", r"\begin{tabular}{@{}lp{0.42\textwidth}rrrcl@{}}", r"\toprule",
+        r"\label{tab:M1}", r"\begin{tabular}{@{}lp{0.29\textwidth}rrrcp{0.17\textwidth}@{}}", r"\toprule",
         r"& Test & Estimate & 95\% CI & Holm $p$ & Sizes & Verdict \\", r"\midrule"]
 for h, lab, _ in rows:
     if h == "M1":

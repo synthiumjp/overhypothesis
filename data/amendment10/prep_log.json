@@ -1,0 +1,1235 @@
+{
+ "tokenizer": "EleutherAI/pythia-1b-deduped",
+ "excluded_colour_or_material": [
+  "apricot",
+  "ash",
+  "bronze",
+  "charcoal",
+  "cherry",
+  "chocolate",
+  "copper",
+  "cream",
+  "gold",
+  "ivory",
+  "lavender",
+  "lime",
+  "mustard",
+  "olive",
+  "orange",
+  "peach",
+  "pearl",
+  "plum",
+  "rust",
+  "silver",
+  "violet"
+ ],
+ "multi_token": [
+  "avocado",
+  "broccoli",
+  "canary",
+  "crayon",
+  "crocodile",
+  "cucumber",
+  "daisy",
+  "denim",
+  "dolphin",
+  "eggplant",
+  "fern",
+  "flamingo",
+  "ketchup",
+  "kite",
+  "octopus",
+  "pea",
+  "raven",
+  "scooter",
+  "strawberry",
+  "sunflower",
+  "swan",
+  "tulip",
+  "yolk"
+ ],
+ "disagreed": 59,
+ "polysemous": [
+  "ball",
+  "book",
+  "cardinal",
+  "chair",
+  "coat",
+  "crow",
+  "dress",
+  "duck",
+  "fish",
+  "flag",
+  "mug",
+  "paint",
+  "paper",
+  "pepper",
+  "toast",
+  "train"
+ ],
+ "count_query_dropped": [],
+ "colours": [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "purple",
+  "pink",
+  "brown",
+  "black",
+  "white",
+  "grey"
+ ],
+ "n_typical_candidates": 42,
+ "n_variable_candidates": 60,
+ "pairs": 22,
+ "counts": {
+  "banana": 788207,
+  "blood": 32805386,
+  "bone": 11120954,
+  "brick": 1867103,
+  "butter": 4872353,
+  "carrot": 470190,
+  "chalk": 666064,
+  "cloud": 6476613,
+  "coal": 5291763,
+  "corn": 3181996,
+  "cotton": 2246143,
+  "dirt": 2297346,
+  "elephant": 899787,
+  "flour": 3970451,
+  "frog": 660080,
+  "garlic": 2259493,
+  "grass": 5028463,
+  "leaf": 4917428,
+  "lemon": 2077784,
+  "lettuce": 538550,
+  "milk": 6811000,
+  "moss": 613456,
+  "mud": 3104702,
+  "ocean": 3711734,
+  "pig": 4372628,
+  "pine": 1789682,
+  "pumpkin": 588178,
+  "rice": 4211223,
+  "salt": 8680911,
+  "sea": 11433263,
+  "shark": 750175,
+  "sheep": 2512768,
+  "skull": 2026627,
+  "sky": 6951879,
+  "snow": 6638602,
+  "soil": 6481846,
+  "soot": 310233,
+  "spinach": 577872,
+  "sugar": 6917564,
+  "tiger": 673437,
+  "tomato": 1421632,
+  "tooth": 3036952,
+  "backpack": 1013099,
+  "bag": 7711322,
+  "balloon": 1426484,
+  "bead": 812453,
+  "bed": 19311060,
+  "bicycle": 1239203,
+  "bike": 3410261,
+  "blanket": 1558343,
+  "boat": 5610027,
+  "bottle": 4103028,
+  "bowl": 4193077,
+  "bucket": 1680308,
+  "building": 22367174,
+  "butterfly": 662977,
+  "button": 10326065,
+  "cap": 12784952,
+  "car": 65250581,
+  "carpet": 1633538,
+  "cat": 9434100,
+  "couch": 1925684,
+  "cup": 9478941,
+  "curtain": 1729756,
+  "dog": 10271378,
+  "doll": 4301744,
+  "door": 24954183,
+  "fence": 2032548,
+  "folder": 4562141,
+  "gate": 7263890,
+  "glove": 690543,
+  "hat": 6521830,
+  "helmet": 1209420,
+  "house": 31974982,
+  "jacket": 2172214,
+  "jar": 1568858,
+  "lamp": 2215633,
+  "marker": 4919059,
+  "notebook": 1399785,
+  "pen": 14251948,
+  "phone": 16896871,
+  "rain": 6157597,
+  "ribbon": 1107449,
+  "roof": 4986385,
+  "rug": 1350462,
+  "scarf": 497968,
+  "shirt": 3206107,
+  "shoe": 1589707,
+  "silk": 1534370,
+  "skirt": 1148492,
+  "sock": 958116,
+  "sofa": 983873,
+  "sweater": 521669,
+  "tent": 3596353,
+  "towel": 1042710,
+  "toy": 1747899,
+  "tractor": 646161,
+  "truck": 7103165,
+  "umbrella": 832101,
+  "van": 18903783,
+  "velvet": 534357,
+  "window": 16689554
+ },
+ "count_queries": {
+  "banana": {
+   "count": 788207,
+   "token_ids": [
+    9892,
+    1648
+   ],
+   "tokens": [
+    "\u2581ban",
+    "ana"
+   ]
+  },
+  "blood": {
+   "count": 32805386,
+   "token_ids": [
+    10416
+   ],
+   "tokens": [
+    "\u2581blood"
+   ]
+  },
+  "bone": {
+   "count": 11120954,
+   "token_ids": [
+    289,
+    650
+   ],
+   "tokens": [
+    "\u2581b",
+    "one"
+   ]
+  },
+  "brick": {
+   "count": 1867103,
+   "token_ids": [
+    28645
+   ],
+   "tokens": [
+    "\u2581brick"
+   ]
+  },
+  "butter": {
+   "count": 4872353,
+   "token_ids": [
+    541,
+    357
+   ],
+   "tokens": [
+    "\u2581but",
+    "ter"
+   ]
+  },
+  "carrot": {
+   "count": 470190,
+   "token_ids": [
+    1559,
+    5450
+   ],
+   "tokens": [
+    "\u2581car",
+    "rot"
+   ]
+  },
+  "chalk": {
+   "count": 666064,
+   "token_ids": [
+    521,
+    2235
+   ],
+   "tokens": [
+    "\u2581ch",
+    "alk"
+   ]
+  },
+  "cloud": {
+   "count": 6476613,
+   "token_ids": [
+    9570
+   ],
+   "tokens": [
+    "\u2581cloud"
+   ]
+  },
+  "coal": {
+   "count": 5291763,
+   "token_ids": [
+    17148
+   ],
+   "tokens": [
+    "\u2581coal"
+   ]
+  },
+  "corn": {
+   "count": 3181996,
+   "token_ids": [
+    26343
+   ],
+   "tokens": [
+    "\u2581corn"
+   ]
+  },
+  "cotton": {
+   "count": 2246143,
+   "token_ids": [
+    20118,
+    880
+   ],
+   "tokens": [
+    "\u2581cot",
+    "ton"
+   ]
+  },
+  "dirt": {
+   "count": 2297346,
+   "token_ids": [
+    270,
+    2728
+   ],
+   "tokens": [
+    "\u2581d",
+    "irt"
+   ]
+  },
+  "elephant": {
+   "count": 899787,
+   "token_ids": [
+    4552,
+    561,
+    424
+   ],
+   "tokens": [
+    "\u2581ele",
+    "ph",
+    "ant"
+   ]
+  },
+  "flour": {
+   "count": 3970451,
+   "token_ids": [
+    1652,
+    473
+   ],
+   "tokens": [
+    "\u2581fl",
+    "our"
+   ]
+  },
+  "frog": {
+   "count": 660080,
+   "token_ids": [
+    285,
+    9102
+   ],
+   "tokens": [
+    "\u2581f",
+    "rog"
+   ]
+  },
+  "garlic": {
+   "count": 2259493,
+   "token_ids": [
+    7171,
+    506
+   ],
+   "tokens": [
+    "\u2581gar",
+    "lic"
+   ]
+  },
+  "grass": {
+   "count": 5028463,
+   "token_ids": [
+    17455
+   ],
+   "tokens": [
+    "\u2581grass"
+   ]
+  },
+  "leaf": {
+   "count": 4917428,
+   "token_ids": [
+    20447
+   ],
+   "tokens": [
+    "\u2581leaf"
+   ]
+  },
+  "lemon": {
+   "count": 2077784,
+   "token_ids": [
+    454,
+    3712
+   ],
+   "tokens": [
+    "\u2581le",
+    "mon"
+   ]
+  },
+  "lettuce": {
+   "count": 538550,
+   "token_ids": [
+    11343,
+    24551
+   ],
+   "tokens": [
+    "\u2581lett",
+    "uce"
+   ]
+  },
+  "milk": {
+   "count": 6811000,
+   "token_ids": [
+    27274
+   ],
+   "tokens": [
+    "\u2581milk"
+   ]
+  },
+  "moss": {
+   "count": 613456,
+   "token_ids": [
+    286,
+    2209
+   ],
+   "tokens": [
+    "\u2581m",
+    "oss"
+   ]
+  },
+  "mud": {
+   "count": 3104702,
+   "token_ids": [
+    17439
+   ],
+   "tokens": [
+    "\u2581mud"
+   ]
+  },
+  "ocean": {
+   "count": 3711734,
+   "token_ids": [
+    23474
+   ],
+   "tokens": [
+    "\u2581ocean"
+   ]
+  },
+  "pig": {
+   "count": 4372628,
+   "token_ids": [
+    282,
+    335
+   ],
+   "tokens": [
+    "\u2581p",
+    "ig"
+   ]
+  },
+  "pine": {
+   "count": 1789682,
+   "token_ids": [
+    282,
+    457
+   ],
+   "tokens": [
+    "\u2581p",
+    "ine"
+   ]
+  },
+  "pumpkin": {
+   "count": 588178,
+   "token_ids": [
+    282,
+    3427,
+    9089
+   ],
+   "tokens": [
+    "\u2581p",
+    "ump",
+    "kin"
+   ]
+  },
+  "rice": {
+   "count": 4211223,
+   "token_ids": [
+    19408
+   ],
+   "tokens": [
+    "\u2581rice"
+   ]
+  },
+  "salt": {
+   "count": 8680911,
+   "token_ids": [
+    15795
+   ],
+   "tokens": [
+    "\u2581salt"
+   ]
+  },
+  "sea": {
+   "count": 11433263,
+   "token_ids": [
+    7205
+   ],
+   "tokens": [
+    "\u2581sea"
+   ]
+  },
+  "shark": {
+   "count": 750175,
+   "token_ids": [
+    528,
+    935
+   ],
+   "tokens": [
+    "\u2581sh",
+    "ark"
+   ]
+  },
+  "sheep": {
+   "count": 2512768,
+   "token_ids": [
+    29735
+   ],
+   "tokens": [
+    "\u2581sheep"
+   ]
+  },
+  "skull": {
+   "count": 2026627,
+   "token_ids": [
+    2071,
+    913
+   ],
+   "tokens": [
+    "\u2581sk",
+    "ull"
+   ]
+  },
+  "sky": {
+   "count": 6951879,
+   "token_ids": [
+    14744
+   ],
+   "tokens": [
+    "\u2581sky"
+   ]
+  },
+  "snow": {
+   "count": 6638602,
+   "token_ids": [
+    15007
+   ],
+   "tokens": [
+    "\u2581snow"
+   ]
+  },
+  "soil": {
+   "count": 6481846,
+   "token_ids": [
+    22473
+   ],
+   "tokens": [
+    "\u2581soil"
+   ]
+  },
+  "soot": {
+   "count": 310233,
+   "token_ids": [
+    577,
+    327
+   ],
+   "tokens": [
+    "\u2581so",
+    "ot"
+   ]
+  },
+  "spinach": {
+   "count": 577872,
+   "token_ids": [
+    10917,
+    496
+   ],
+   "tokens": [
+    "\u2581spin",
+    "ach"
+   ]
+  },
+  "sugar": {
+   "count": 6917564,
+   "token_ids": [
+    26438
+   ],
+   "tokens": [
+    "\u2581sugar"
+   ]
+  },
+  "tiger": {
+   "count": 673437,
+   "token_ids": [
+    260,
+    4087
+   ],
+   "tokens": [
+    "\u2581t",
+    "iger"
+   ]
+  },
+  "tomato": {
+   "count": 1421632,
+   "token_ids": [
+    6454,
+    1219
+   ],
+   "tokens": [
+    "\u2581tom",
+    "ato"
+   ]
+  },
+  "tooth": {
+   "count": 3036952,
+   "token_ids": [
+    304,
+    720
+   ],
+   "tokens": [
+    "\u2581to",
+    "oth"
+   ]
+  },
+  "backpack": {
+   "count": 1013099,
+   "token_ids": [
+    1250,
+    4058
+   ],
+   "tokens": [
+    "\u2581back",
+    "pack"
+   ]
+  },
+  "bag": {
+   "count": 7711322,
+   "token_ids": [
+    19548
+   ],
+   "tokens": [
+    "\u2581bag"
+   ]
+  },
+  "balloon": {
+   "count": 1426484,
+   "token_ids": [
+    6411,
+    417,
+    265
+   ],
+   "tokens": [
+    "\u2581bal",
+    "lo",
+    "on"
+   ]
+  },
+  "bead": {
+   "count": 812453,
+   "token_ids": [
+    367,
+    328
+   ],
+   "tokens": [
+    "\u2581be",
+    "ad"
+   ]
+  },
+  "bed": {
+   "count": 19311060,
+   "token_ids": [
+    6592
+   ],
+   "tokens": [
+    "\u2581bed"
+   ]
+  },
+  "bicycle": {
+   "count": 1239203,
+   "token_ids": [
+    289,
+    4245,
+    2841
+   ],
+   "tokens": [
+    "\u2581b",
+    "icy",
+    "cle"
+   ]
+  },
+  "bike": {
+   "count": 3410261,
+   "token_ids": [
+    4768,
+    446
+   ],
+   "tokens": [
+    "\u2581bi",
+    "ke"
+   ]
+  },
+  "blanket": {
+   "count": 1558343,
+   "token_ids": [
+    9654,
+    300
+   ],
+   "tokens": [
+    "\u2581blank",
+    "et"
+   ]
+  },
+  "boat": {
+   "count": 5610027,
+   "token_ids": [
+    13006
+   ],
+   "tokens": [
+    "\u2581boat"
+   ]
+  },
+  "bottle": {
+   "count": 4103028,
+   "token_ids": [
+    18046,
+    280
+   ],
+   "tokens": [
+    "\u2581bott",
+    "le"
+   ]
+  },
+  "bowl": {
+   "count": 4193077,
+   "token_ids": [
+    12580,
+    29880
+   ],
+   "tokens": [
+    "\u2581bow",
+    "l"
+   ]
+  },
+  "bucket": {
+   "count": 1680308,
+   "token_ids": [
+    20968
+   ],
+   "tokens": [
+    "\u2581bucket"
+   ]
+  },
+  "building": {
+   "count": 22367174,
+   "token_ids": [
+    5214
+   ],
+   "tokens": [
+    "\u2581building"
+   ]
+  },
+  "butterfly": {
+   "count": 662977,
+   "token_ids": [
+    541,
+    357,
+    17652
+   ],
+   "tokens": [
+    "\u2581but",
+    "ter",
+    "fly"
+   ]
+  },
+  "button": {
+   "count": 10326065,
+   "token_ids": [
+    2826
+   ],
+   "tokens": [
+    "\u2581button"
+   ]
+  },
+  "cap": {
+   "count": 12784952,
+   "token_ids": [
+    2117
+   ],
+   "tokens": [
+    "\u2581cap"
+   ]
+  },
+  "car": {
+   "count": 65250581,
+   "token_ids": [
+    1559
+   ],
+   "tokens": [
+    "\u2581car"
+   ]
+  },
+  "carpet": {
+   "count": 1633538,
+   "token_ids": [
+    1559,
+    10963
+   ],
+   "tokens": [
+    "\u2581car",
+    "pet"
+   ]
+  },
+  "cat": {
+   "count": 9434100,
+   "token_ids": [
+    6635
+   ],
+   "tokens": [
+    "\u2581cat"
+   ]
+  },
+  "couch": {
+   "count": 1925684,
+   "token_ids": [
+    274,
+    3222
+   ],
+   "tokens": [
+    "\u2581c",
+    "ouch"
+   ]
+  },
+  "cup": {
+   "count": 9478941,
+   "token_ids": [
+    18002
+   ],
+   "tokens": [
+    "\u2581cup"
+   ]
+  },
+  "curtain": {
+   "count": 1729756,
+   "token_ids": [
+    3151,
+    2408
+   ],
+   "tokens": [
+    "\u2581cur",
+    "tain"
+   ]
+  },
+  "dog": {
+   "count": 10271378,
+   "token_ids": [
+    11203
+   ],
+   "tokens": [
+    "\u2581dog"
+   ]
+  },
+  "doll": {
+   "count": 4301744,
+   "token_ids": [
+    11232
+   ],
+   "tokens": [
+    "\u2581doll"
+   ]
+  },
+  "door": {
+   "count": 24954183,
+   "token_ids": [
+    3050
+   ],
+   "tokens": [
+    "\u2581door"
+   ]
+  },
+  "fence": {
+   "count": 2032548,
+   "token_ids": [
+    285,
+    663
+   ],
+   "tokens": [
+    "\u2581f",
+    "ence"
+   ]
+  },
+  "folder": {
+   "count": 4562141,
+   "token_ids": [
+    4138
+   ],
+   "tokens": [
+    "\u2581folder"
+   ]
+  },
+  "gate": {
+   "count": 7263890,
+   "token_ids": [
+    12417
+   ],
+   "tokens": [
+    "\u2581gate"
+   ]
+  },
+  "glove": {
+   "count": 690543,
+   "token_ids": [
+    15482,
+    345
+   ],
+   "tokens": [
+    "\u2581glo",
+    "ve"
+   ]
+  },
+  "hat": {
+   "count": 6521830,
+   "token_ids": [
+    3056
+   ],
+   "tokens": [
+    "\u2581hat"
+   ]
+  },
+  "helmet": {
+   "count": 1209420,
+   "token_ids": [
+    1081,
+    2527
+   ],
+   "tokens": [
+    "\u2581hel",
+    "met"
+   ]
+  },
+  "house": {
+   "count": 31974982,
+   "token_ids": [
+    3699
+   ],
+   "tokens": [
+    "\u2581house"
+   ]
+  },
+  "jacket": {
+   "count": 2172214,
+   "token_ids": [
+    28015,
+    300
+   ],
+   "tokens": [
+    "\u2581jack",
+    "et"
+   ]
+  },
+  "jar": {
+   "count": 1568858,
+   "token_ids": [
+    14631
+   ],
+   "tokens": [
+    "\u2581jar"
+   ]
+  },
+  "lamp": {
+   "count": 2215633,
+   "token_ids": [
+    28692
+   ],
+   "tokens": [
+    "\u2581lamp"
+   ]
+  },
+  "marker": {
+   "count": 4919059,
+   "token_ids": [
+    17456
+   ],
+   "tokens": [
+    "\u2581marker"
+   ]
+  },
+  "notebook": {
+   "count": 1399785,
+   "token_ids": [
+    451,
+    19273
+   ],
+   "tokens": [
+    "\u2581not",
+    "ebook"
+   ]
+  },
+  "pen": {
+   "count": 14251948,
+   "token_ids": [
+    6584
+   ],
+   "tokens": [
+    "\u2581pen"
+   ]
+  },
+  "phone": {
+   "count": 16896871,
+   "token_ids": [
+    9008
+   ],
+   "tokens": [
+    "\u2581phone"
+   ]
+  },
+  "rain": {
+   "count": 6157597,
+   "token_ids": [
+    17251
+   ],
+   "tokens": [
+    "\u2581rain"
+   ]
+  },
+  "ribbon": {
+   "count": 1107449,
+   "token_ids": [
+    18130,
+    6718
+   ],
+   "tokens": [
+    "\u2581rib",
+    "bon"
+   ]
+  },
+  "roof": {
+   "count": 4986385,
+   "token_ids": [
+    17526
+   ],
+   "tokens": [
+    "\u2581roof"
+   ]
+  },
+  "rug": {
+   "count": 1350462,
+   "token_ids": [
+    29833
+   ],
+   "tokens": [
+    "\u2581rug"
+   ]
+  },
+  "scarf": {
+   "count": 497968,
+   "token_ids": [
+    21990,
+    29888
+   ],
+   "tokens": [
+    "\u2581scar",
+    "f"
+   ]
+  },
+  "shirt": {
+   "count": 3206107,
+   "token_ids": [
+    528,
+    2728
+   ],
+   "tokens": [
+    "\u2581sh",
+    "irt"
+   ]
+  },
+  "shoe": {
+   "count": 1589707,
+   "token_ids": [
+    528,
+    7297
+   ],
+   "tokens": [
+    "\u2581sh",
+    "oe"
+   ]
+  },
+  "silk": {
+   "count": 1534370,
+   "token_ids": [
+    4047,
+    29895
+   ],
+   "tokens": [
+    "\u2581sil",
+    "k"
+   ]
+  },
+  "skirt": {
+   "count": 1148492,
+   "token_ids": [
+    2071,
+    2728
+   ],
+   "tokens": [
+    "\u2581sk",
+    "irt"
+   ]
+  },
+  "sock": {
+   "count": 958116,
+   "token_ids": [
+    577,
+    384
+   ],
+   "tokens": [
+    "\u2581so",
+    "ck"
+   ]
+  },
+  "sofa": {
+   "count": 983873,
+   "token_ids": [
+    577,
+    5444
+   ],
+   "tokens": [
+    "\u2581so",
+    "fa"
+   ]
+  },
+  "sweater": {
+   "count": 521669,
+   "token_ids": [
+    7901,
+    1008
+   ],
+   "tokens": [
+    "\u2581swe",
+    "ater"
+   ]
+  },
+  "tent": {
+   "count": 3596353,
+   "token_ids": [
+    12033
+   ],
+   "tokens": [
+    "\u2581tent"
+   ]
+  },
+  "towel": {
+   "count": 1042710,
+   "token_ids": [
+    304,
+    20466
+   ],
+   "tokens": [
+    "\u2581to",
+    "wel"
+   ]
+  },
+  "toy": {
+   "count": 1747899,
+   "token_ids": [
+    304,
+    29891
+   ],
+   "tokens": [
+    "\u2581to",
+    "y"
+   ]
+  },
+  "tractor": {
+   "count": 646161,
+   "token_ids": [
+    1020,
+    2801
+   ],
+   "tokens": [
+    "\u2581tra",
+    "ctor"
+   ]
+  },
+  "truck": {
+   "count": 7103165,
+   "token_ids": [
+    534,
+    2707
+   ],
+   "tokens": [
+    "\u2581tr",
+    "uck"
+   ]
+  },
+  "umbrella": {
+   "count": 832101,
+   "token_ids": [
+    1922,
+    1030,
+    13520
+   ],
+   "tokens": [
+    "\u2581um",
+    "bre",
+    "lla"
+   ]
+  },
+  "van": {
+   "count": 18903783,
+   "token_ids": [
+    1109
+   ],
+   "tokens": [
+    "\u2581van"
+   ]
+  },
+  "velvet": {
+   "count": 534357,
+   "token_ids": [
+    5343,
+    5990
+   ],
+   "tokens": [
+    "\u2581vel",
+    "vet"
+   ]
+  },
+  "window": {
+   "count": 16689554,
+   "token_ids": [
+    3474
+   ],
+   "tokens": [
+    "\u2581window"
+   ]
+  }
+ }
+}

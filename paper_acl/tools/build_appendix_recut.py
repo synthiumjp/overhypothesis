@@ -26,8 +26,8 @@ def m(c, e, meas, q):
     return s[(s.condition == c) & (s.emb == e) & (s.measure == meas)][q].mean()
 
 out = [r"\FloatBarrier", r"\section{Test-noun representation and changed-word scoring}\label{app:L}",
-       r"\setcounter{table}{0}\renewcommand{\thetable}{L\arabic{table}}",
-       r"\setcounter{figure}{0}\renewcommand{\thefigure}{L\arabic{figure}}",
+       r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
+       r"\setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}",
        "These analyses were added after the registrations and are exploratory. They rescore the 120 fresh-text "
        "models on the one-exemplar items (\\texttt{scripts/recut\\_rescore.py}, \\texttt{scripts/recut\\_rescore\\_analysis.py}). "
        "\\textbf{Typical tokens}: each novel noun's input embedding is replaced by the mean input embedding of the 32 "

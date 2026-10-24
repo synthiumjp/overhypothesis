@@ -51,7 +51,7 @@ def hdr(letter, title, label):
 
 def fix(t):
     t = t.replace("(Figure 1)", r"(Figure~\ref{fig:1})")
-    t = re.sub(r"\(Table 1\)", r"(Table~\ref{tab:1})", t)
+    t = t.replace("(Table 1)", r"(Table~\ref{tab:1})")
     t = t.replace("(Table 1 gives", r"(Table~\ref{tab:1} gives")
     t = t.replace("(Table 3)", r"(Table~\ref{tab:3})")
     t = t.replace("Table 1 shows", r"Table~\ref{tab:1} shows")
@@ -100,7 +100,7 @@ else:
         "models. Studies 2 and 3 do not bear on the claims of this paper; their methods and full results, and further "
         "results of Study 1, are in the long version in the supplementary material. Table A4 reports every registered "
         "hypothesis of all three studies.")
-    I_t = hdr("I", "Language, corpora and earlier measures", "app:I") + fix(
+    I_t = hdr("\\thesection", "Language, corpora and earlier measures", "app:I") + fix(
         "This appendix describes the artificial language and the measures of the earlier experiments.\n\n"
         + L(66, 90) + "\n" + L(91, 113) + "\n\n\\subsection{Models and training}\n" + L(123, 123)
         + "\n\n\\subsection{Measuring the expectation}\n" + L(126, 142)
@@ -115,6 +115,15 @@ else:
         out = re.sub(r"Appendices~\\ref\{app:%s\}(?: and|,)~\\ref\{app:[A-Z]\}" % lab, "the supplementary material", out)
         out = re.sub(r"Appendix~\\ref\{app:%s\}" % lab, "the supplementary material", out)
     out = out.replace(" (Figure~\\ref{fig:1})", "")
+    for old_s, new_s in (("(Appendix D)", "(long version)"),
+                         ("The further controls are reported in Appendix D (Table D1).",
+                          "The further controls are reported in the long version."),
+                         ("Table E1 gives the seed-level results beside them", "the long version gives the seed-level results beside them"),
+                         ("(Table E2)", "(long version)"),
+                         ("(Appendix F)", "(long version)")):
+        assert old_s in out, old_s
+        out = out.replace(old_s, new_s)
+    out = out.replace(" (Table~\\ref{tab:1})", " (long version, Table 1)")
     out = out.replace("as the scale for Figure~\\ref{fig:2} and is reported as exploratory (Table~\\ref{tab:3})",
                       "as the scale for a figure of the long version and is reported there as exploratory")
     out = out.replace("Table~\\ref{tab:1} shows which conditions", "Table 1 of the long version shows which conditions")

@@ -50,7 +50,7 @@ rs = pd.read_csv("results/amendment10/rowswap.csv")
 
 out = [r"\FloatBarrier", r"\section{Recurrence, matched frames, embedding rows and pretrained models (Amendment 10)}"
        r"\label{app:N}",
-       r"\setcounter{table}{0}\renewcommand{\thetable}{N\arabic{table}}",
+       r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
        r"\textbf{Registration.} Amendment 10 has three parts: Part A is Experiment 2, Part B Experiment 3 (pretrained "
        r"models) and Part C the row analysis. It was registered after the Amendment 9 results, after its corpora were "
        r"built and checksummed, and before any of them was used, any of its models was trained, or any pretrained model "

@@ -79,8 +79,9 @@ def main():
     tok = AutoTokenizer.from_pretrained(a.local_tokenizer or a.model, revision=None if a.local_tokenizer else a.revision)
     tok.padding_side = "right"
     if tok.pad_token is None:
-        tok.pad_token = tok.eos_token or tok.unk_token
-    model = AutoModelForCausalLM.from_pretrained(a.model, revision=a.revision, torch_dtype=torch.float32)
+        # any id will do: padded positions are masked and only the last real token is read
+        tok.pad_token = tok.eos_token or tok.unk_token or tok.convert_ids_to_tokens(0)
+    model = AutoModelForCausalLM.from_pretrained(a.model, revision=a.revision, dtype=torch.float32)
     model.eval()
     nouns = list(csv.DictReader(open(a.nouns, encoding="utf-8")))
     colours = [r["colour"] for r in csv.DictReader(open(a.colours, encoding="utf-8"))]

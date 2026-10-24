@@ -80,7 +80,53 @@ I = hdr("I", "Study 1: corpora, training and further results", "app:I") + fix(
     + "\n\n\\subsection{Further results}\n" + L(175, 175) + "\n\n" + L(177, 177) + "\n\n" + L(191, 191) + "\n\n" + L(193, 193)) + FIG2
 J = hdr("J", "Study 2: clustering of natural input", "app:J") + fix(L(208, 250))
 K = hdr("K", "Study 3: pretrained models", "app:K") + fix(L(253, 282))
-out = old + "\n\n" + I + "\n\n" + J + "\n\n" + K + "\n"
+TRIM = len(sys.argv) > 3 and sys.argv[3] == "--trim"
+if not TRIM:
+    out = old + "\n\n" + I + "\n\n" + J + "\n\n" + K + "\n"
+else:
+    # Review version: keep the registration record (A), deviations (B), model settings (C) and the
+    # corpus and measure description (I, without its further results). The earlier study's other
+    # appendices (D-H, J, K) are in the long version supplied as supplementary material.
+    parts = re.split(r"(?=\\FloatBarrier\s*\n\\appendixsection\{)|(?=\\appendixsection\{)", old)
+    keep = [x for x in parts if re.search(r"\\label\{app:[ABC]\}", x) or not re.search(r"\\label\{app:", x)]
+    keep = [x for x in keep if not re.search(r"\\appendixsection\{", x) or re.search(r"\\label\{app:[ABC]\}", x)]
+    old_t = "".join(keep)
+    old_t = old_t.replace(
+        "In the appendices and the registrations, Study 1 is the training experiments (Section~\\ref{sec:background} and "
+        "Appendices~\\ref{app:A} to~\\ref{app:I}), Study 2 the natural corpora (Appendix~\\ref{app:J}) and Study 3 the "
+        "pretrained models (Appendix~\\ref{app:K}).",
+        "In the registrations, Study 1 is the earlier training experiments (Section~\\ref{sec:background}; Appendices~"
+        "\\ref{app:C} and~\\ref{app:I}), Study 2 an analysis of natural corpora and Study 3 an earlier test of pretrained "
+        "models. Studies 2 and 3 do not bear on the claims of this paper; their methods and full results, and further "
+        "results of Study 1, are in the long version in the supplementary material. Table A4 reports every registered "
+        "hypothesis of all three studies.")
+    I_t = hdr("I", "Language, corpora and earlier measures", "app:I") + fix(
+        "This appendix describes the artificial language and the measures of the earlier experiments.\n\n"
+        + L(66, 90) + "\n" + L(91, 113) + "\n\n\\subsection{Models and training}\n" + L(123, 123)
+        + "\n\n\\subsection{Measuring the expectation}\n" + L(126, 142)
+        + "\n\n\\subsection{Statistics}\n" + L(145, 145))
+    DATA = ("\\FloatBarrier\n\\appendixsection{Data and code}\\label{app:H}\n"
+            "All code, corpora, test items, model scores and analysis outputs, and the final weights and training logs of "
+            "every trained model, will be released on publication; anonymised copies of the code and results are in the "
+            "supplementary material. A README gives the command that regenerates each table and figure, with MD5 checksums "
+            "for the fixed inputs. The pretrained models are public at the revisions listed.\n")
+    out = old_t + "\n\n" + DATA + "\n\n" + I_t + "\n"
+    for lab in ("D", "E", "F", "G", "J", "K"):
+        out = re.sub(r"Appendices~\\ref\{app:%s\}(?: and|,)~\\ref\{app:[A-Z]\}" % lab, "the supplementary material", out)
+        out = re.sub(r"Appendix~\\ref\{app:%s\}" % lab, "the supplementary material", out)
+    out = out.replace(" (Figure~\\ref{fig:1})", "")
+    out = out.replace("as the scale for Figure~\\ref{fig:2} and is reported as exploratory (Table~\\ref{tab:3})",
+                      "as the scale for a figure of the long version and is reported there as exploratory")
+    out = out.replace("Table~\\ref{tab:1} shows which conditions", "Table 1 of the long version shows which conditions")
+    out = out.replace("(Table~\\ref{tab:1} gives the models per condition)", "(the long version lists the models per condition)")
+    S5 = "Seeds 42, 123, 456, 789 and 1001 each set the corpus, the initial weights and the batch order."
+    assert S5 in out
+    out = out.replace(S5, S5 + " These five seeds are those of the earlier experiments; Experiments 1 and 2 used ten "
+                      "(adding 2718, 3141, 1618, 1414 and 1732), untied embeddings by design, a tokeniser of 329 entries "
+                      "and weights saved every 1,000 steps. All models are pre-LayerNorm decoders with learned absolute "
+                      "position embeddings, GELU feed-forward layers and a final LayerNorm.", 1)
+    left = set(re.findall(r"\\ref\{((?:fig|tab):[^}]*)\}", out))
+    assert not left, left
 for bad in ["synthiumjp", "osf.io", "huggingface", "github", "Cacioli"]:
     assert bad not in out, bad
 seen = set()

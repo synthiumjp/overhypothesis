@@ -37,7 +37,7 @@ out = [r"\FloatBarrier", r"\section{Test-noun representation and changed-word sc
        "the one word that differs between the continuations, given the identical prefix. With the original embeddings "
        "and whole-continuation $\\Delta$, the rescoring reproduced the reported scores (144,000 item scores; largest "
        "difference $2\\times10^{-5}$ nats). Trained-noun values are from the registered trained-noun items "
-       "(Appendix~\\ref{app:F}; \\texttt{scripts/recut\\_noun\\_store\\_check.py}).", "",
+       "(long version in the supplementary material; \\texttt{scripts/recut\\_noun\\_store\\_check.py}).", "",
        r"\begin{table}[!htbp]", r"\centering\footnotesize\setlength{\tabcolsep}{4pt}",
        r"\caption{Index and noun-specific index under four scorings (nats; mean of seed means). Original: unseen tokens with untrained embeddings, as reported; typical: the same tokens with typical embeddings; full: whole-continuation $\Delta$, as reported; word: changed word only.}",
        r"\label{tab:L1}", r"\begin{tabular}{@{}lrrrrrrrr@{}}", r"\toprule",

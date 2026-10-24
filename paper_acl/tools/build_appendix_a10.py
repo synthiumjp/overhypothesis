@@ -51,9 +51,11 @@ rs = pd.read_csv("results/amendment10/rowswap.csv")
 out = [r"\FloatBarrier", r"\section{Recurrence, matched frames, embedding rows and pretrained models (Amendment 10)}"
        r"\label{app:N}",
        r"\setcounter{table}{0}\renewcommand{\thetable}{N\arabic{table}}",
-       r"\textbf{Registration.} Amendment 10 was registered after the Amendment 9 results and before any of its corpora "
-       r"was used, any of its models was trained, or any pretrained model was run on its items. It answered two "
-       r"confounds raised by a blind review of the Amendment 9 results: familiarity nouns never recurred within a "
+       r"\textbf{Registration.} Amendment 10 has three parts: Part A is Experiment 2, Part B Experiment 3 (pretrained "
+       r"models) and Part C the row analysis. It was registered after the Amendment 9 results, after its corpora were "
+       r"built and checksummed, and before any of them was used, any of its models was trained, or any pretrained model "
+       r"was run on its items. It answered two confounds raised by a blind review of the Amendment 9 results (by an AI "
+       r"assistant given only the write-up of Experiment 1): familiarity nouns never recurred within a "
        r"window, and shape-absent nouns never appeared in a frame with a shape slot after \emph{is a}. The noun lists "
        r"for Part B were fixed, with checksums, before the pilot. A pilot on Pythia-410M (never in a test) gave a mean "
        r"increase of 0.13 nats from the original to the atypical\_init row, so the smallest effect of interest for H48 "
@@ -151,6 +153,97 @@ for h in ("H40", "H41", "H42", "H43"):
                f"{p_fmt(r['p'])} \\\\")
 out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 
+# Extra Part A tables (exploratory): matched contrasts, noun-specific carry, per size
+def seedvals(df, base, typ, e=None, q="carry", emb="original", size=None):
+    d = df[(df.base == base) & (df.type == typ) & (df.emb == emb)]
+    if e is not None:
+        d = d[d.exposures == e]
+    if size is not None:
+        d = d[d["size"] == size]
+    g = d.groupby(["size", "seed"])[q].mean()
+    return g.groupby("seed").mean() if size is None else g.droplevel(0)
+
+
+def cifmt(x, d=2):
+    m, lo, hi = ci(x)
+    return f"{f(m, d)} [{f(lo, d)}, {f(hi, d)}]"
+
+
+def pool(df, base, typ, q="carry"):
+    return sum(seedvals(df, base, typ, e, q) for e in (100, 1000)) / 2
+
+
+out += [r"\begin{table}[!htbp]", r"\centering\small",
+        r"\caption{Matched contrasts in Part A (exploratory; seed-level, nats, 95\% intervals). Rotating minus fixed "
+        r"runs: same frame, presentation and number of occasions; the two differ only in whether the shape changes "
+        r"between runs (and so in whether a shape is stored). Fixed minus rotating singles: same frame, presentation "
+        r"and expectation of a shape at the test position (Table~\ref{tab:N3}); they differ only in whether the noun "
+        r"has one stored shape.}", r"\label{tab:N9}",
+        r"\begin{tabular}{@{}llrrr@{}}", r"\toprule",
+        r"Base & Contrast & Pooled & 100 & 1,000 \\", r"\midrule"]
+for b, lab in (("regular_grouped", "Regular grouped"), ("reassigned_grouped", "Reassigned grouped")):
+    for (a1, a2, cl) in (("rotating_run", "fixed_run", "Rotating runs $-$ fixed runs"),
+                         ("fixed_single", "rotating_single", "Fixed singles $-$ rotating singles"),
+                         ("fixed_run", "fixed_single", "Fixed runs $-$ fixed singles")):
+        vals = [cifmt(pool(s, b, a1) - pool(s, b, a2))] + [cifmt(seedvals(s, b, a1, e) - seedvals(s, b, a2, e))
+                                                           for e in (100, 1000)]
+        out.append(f"{lab if cl.startswith('Rot') else ''} & {cl} & " + " & ".join(vals) + r" \\")
+kn = [cifmt(seedvals(s, "regular_grouped", "fixed_run", e, "know") - seedvals(s, "regular_grouped", "fixed_single", e,
+                                                                               "know")) for e in (100, 1000)]
+out += [r"\bottomrule", r"\end{tabular}",
+        r"\\[2pt]{\footnotesize Knowledge, fixed runs minus fixed singles (Regular grouped): " + kn[0] +
+        r" at 100 exposures, " + kn[1] + r" at 1,000.}", r"\end{table}", ""]
+
+s9 = pd.read_csv("results/amendment9/scores.csv")
+s9 = s9[s9.ckpt.str.endswith("model_final.pt")]
+out += [r"\begin{table}[!htbp]", r"\centering\small",
+        r"\caption{Noun-specific carry (exploratory): carry when the context sentence is about the query noun minus "
+        r"carry when it is about another noun of the same cell, with the same shape (nats; seed-level means). Near "
+        r"zero means the model copies the context's shape whichever noun the context was about.}", r"\label{tab:N10}",
+        r"\begin{tabular}{@{}llrrrr@{}}", r"\toprule",
+        r" & & \multicolumn{2}{c}{Regular grouped} & \multicolumn{2}{c}{Reassigned grouped} \\"
+        r" \cmidrule(lr){3-4}\cmidrule(lr){5-6}",
+        r"Experiment & Noun & 100 & 1,000 & 100 & 1,000 \\", r"\midrule"]
+rows10 = [("unseen", "Unseen")] + [(f"{h}_{p}", f"{n}, {p}s") for h, n in (("fixed", "Fixed"), ("absent", "Shape-absent"),
+                                                                          ("rotating", "Rotating")) for p in ("single", "run")]
+for i, (typ, tl) in enumerate(rows10):
+    cells = []
+    for b in ("regular_grouped", "reassigned_grouped"):
+        if typ == "unseen":
+            v = f(ci(seedvals(s, b, "unseen", q="noun_specific"))[0])
+            cells += [v, ""]
+        else:
+            cells += [f(ci(seedvals(s, b, typ, e, "noun_specific"))[0]) for e in (100, 1000)]
+    out.append(f"{'2' if i == 0 else ''} & {tl} & " + " & ".join(cells) + r" \\")
+out.append(r"\addlinespace")
+for i, (typ, tl) in enumerate((("unseen", "Unseen"), ("consistent", "Fixed shape"), ("uninformative", "Uninformative"),
+                               ("absent", "Shape-absent"))):
+    cells = []
+    for b in ("regular_grouped", "reassigned_grouped"):
+        if typ == "unseen":
+            cells += [f(ci(seedvals(s9, b, "unseen", q="noun_specific"))[0]), ""]
+        else:
+            cells += [f(ci(seedvals(s9, b, typ, e, "noun_specific"))[0]) for e in (100, 1000)]
+    out.append(f"{'1' if i == 0 else ''} & {tl} & " + " & ".join(cells) + r" \\")
+out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
+
+out += [r"\begin{table}[!htbp]", r"\centering\small",
+        r"\caption{Part A by model size (Regular grouped; seed means, 100 and 1,000 exposures pooled; nats).}",
+        r"\label{tab:N11}", r"\begin{tabular}{@{}lrrrrrrrr@{}}", r"\toprule",
+        r"Size & Unseen & Typical row & H40 & H41 & H42 & H43 & H44 & Rot.\ $-$ fixed runs \\", r"\midrule"]
+for z, zl in (("tiny", "3.4M"), ("small", "11.0M"), ("medium", "25.6M")):
+    def c(typ, emb="original"):
+        d = s[(s.base == "regular_grouped") & (s["size"] == z) & (s.type == typ) & (s.emb == emb)]
+        if typ != "unseen":
+            d = d[d.exposures.isin([100, 1000])]
+        return d.groupby(["seed", "exposures"]).carry.mean().groupby("seed").mean()
+    vals = [c("unseen").mean(), c("unseen", "typical").mean(), (c("absent_run") - c("absent_single")).mean(),
+            (c("fixed_run") - c("fixed_single")).mean(), (c("rotating_run") - c("rotating_single")).mean(),
+            (c("fixed_single") - c("absent_single")).mean(), (c("absent_single") - c("unseen", "typical")).mean(),
+            (c("rotating_run") - c("fixed_run")).mean()]
+    out.append(zl + " & " + " & ".join(f(v) for v in vals) + r" \\")
+out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
+
 # Part C
 out += [r"\textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we "
         r"replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the "
@@ -234,6 +327,32 @@ for z in order:
                                        ("original", "atypical_init", "atypical", "typical")) +
                f" & {f(o[o.group == 'typical'].carry.mean())} & {f(o[o.group == 'variable'].carry.mean())} & "
                f"{f(o.prior_entropy.mean())} \\\\")
+out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
+
+# Part B checks (exploratory)
+def tost(d, b=0.3):
+    n = len(d)
+    se = d.std(ddof=1) / np.sqrt(n)
+    m = d.mean()
+    return max(1 - stats.t.cdf((m + b) / se, n - 1), stats.t.cdf((m - b) / se, n - 1))
+
+
+wv = py.pivot_table(index=["m", "noun"], columns="condition", values="carry")
+out += [r"\begin{table}[!htbp]", r"\centering\small",
+        r"\caption{Part B checks (exploratory). Stored colour: with no context, log probability of a colour-typical "
+        r"noun's coded colour minus the mean over the other colours after \emph{The \textit{noun} was} (nats; mean over "
+        r"22 nouns, and the share of nouns above zero). TOST: equivalence of the H45 and H46 differences within "
+        r"$\pm$0.30 nats over nouns. Norm only: atypical minus atypical\_init (same direction, different norm).}",
+        r"\label{tab:N12}", r"\begin{tabular}{@{}lrrrrr@{}}", r"\toprule",
+        r"Model & Stored colour & Share $>0$ & H45 TOST $p$ & H46 TOST $p$ & Norm only \\", r"\midrule"]
+for z in order:
+    d = py[(py.m == z) & (py.condition == "original") & (py.group == "typical")]
+    if d.empty:
+        continue
+    w = wv.loc[z]
+    out.append(f"{z} & {f(d.prior_typical.mean())} & {f((d.prior_typical > 0).mean())} & "
+               f"{p_fmt(tost(w.atypical_init - w.original))} & {p_fmt(tost(w.atypical_init - w.typical))} & "
+               f"{f((w.atypical - w.atypical_init).mean(), 3)} \\\\")
 out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 
 ck["step"] = ck.revision.str.replace("step", "").astype(int)

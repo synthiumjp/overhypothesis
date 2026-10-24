@@ -53,7 +53,8 @@ every 1,000 steps, one machine).
   name the same colour; colour-variable: both rate 3. Excluded: nouns that are also colour terms, nouns both passes flag as
   polysemous, and nouns that are not one token in the Pythia tokenizer. scripts/pythia_prep.py counts each noun in the Pile
   (infini-gram, lower-case singular, the token ids used are logged and checked) and pairs each colour-typical noun with the
-  nearest unused colour-variable noun of the same count/mass type within 0.3 log10 units (at most 40 pairs). Kind
+  nearest unused colour-variable noun of the same count/mass type within 0.3 log10 units (at most 40 pairs). This gave
+  22 pairs (44 nouns) and 11 colour words, fixed on 24 October 2026 before any model was run (data/amendment10/nouns.csv). Kind
   (natural/artifact) is a covariate: colour-typical nouns are mostly natural kinds. The lists (data/amendment10/nouns.csv,
   colours.csv) are fixed, with checksums, before the pilot, and nothing about the items may change after the pilot.
 - Models: Pythia deduplicated, final checkpoint (step 143000): 1B, 1.4B, 2.8B, 6.9B, 12B (primary); 410M is the pilot; 70M and

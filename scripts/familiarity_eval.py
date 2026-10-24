@@ -129,6 +129,7 @@ def typical_rows(E, train_ids, n_new, seed=TYPICAL_SEED):
 def run_items(model, tok, items, ablate=None, want_att=False, batch=256):
     """Log-probabilities of the ten shapes at the last position, per item (and attention)."""
     shape_ids = [token_id(tok, s) for s in cg.SHAPE_TOKENS]
+    colour_ids = [token_id(tok, c) for c in cg.COLOUR_TOKENS]
     by_len = defaultdict(list)
     enc = [tok.encode(it["text"]).ids for it in items]
     for i, e in enumerate(enc):
@@ -142,9 +143,12 @@ def run_items(model, tok, items, ablate=None, want_att=False, batch=256):
                 ids = torch.tensor([enc[i] for i in part])
                 res = forward(model, ids, ablate, want_att)
                 logits, att = res if want_att else (res, None)
-                lp = torch.log_softmax(logits.float(), -1)[:, shape_ids]
+                full = torch.log_softmax(logits.float(), -1)
+                lp = full[:, shape_ids]
+                # 11th value: expectation of a shape rather than a colour at this position
+                slot = torch.logsumexp(lp, -1) - torch.logsumexp(full[:, colour_ids], -1)
                 for r, i in enumerate(part):
-                    L[i] = lp[r].tolist()
+                    L[i] = lp[r].tolist() + [slot[r].item()]
                     if want_att:
                         A[i] = [a[r] for a in att]                         # per layer (H, T)
     return (L, A) if want_att else L
@@ -167,6 +171,8 @@ def measures(items, L):
             rec["carry"] = d[s] - sum(others) / len(others)
             if k == "carry_same":
                 rec["stored"] = d[star] - sum(others) / len(others)
+                if len(lp) > len(S):
+                    rec["slot"] = lp[len(S)]
                 rec["compete"] = d[star] - d[s]
         elif k in ("know", "agree"):
             star = it["s_star"]
@@ -191,6 +197,8 @@ def summarise(meas, items):
             acc[key]["carry"].append(m["carry"])
             acc[key]["stored"].append(m["stored"])
             acc[key]["compete"].append(m["compete"])
+            if "slot" in m:
+                acc[key]["slot"].append(m["slot"])
             if m["item_id"] not in drop:
                 acc[key]["carry_paired"].append(m["carry"])
         elif m["kind"] == "carry_diff" and not m.get("drop"):
@@ -214,7 +222,7 @@ def summarise(meas, items):
 
 
 OUT_FIELDS = ["base", "size", "seed", "ckpt", "label", "emb", "noun", "type", "exposures", "carry", "stored", "compete",
-              "know", "agree", "carry_paired", "carry_diff", "noun_specific", "n_carry", "n_know", "n_carry_diff"]
+              "know", "agree", "carry_paired", "carry_diff", "noun_specific", "slot", "n_carry", "n_know", "n_carry_diff"]
 
 
 def score_model(run, emb_conditions=("original", "typical")):

@@ -16,11 +16,14 @@ colour-typical nouns, the log probability of the coded colour minus the mean ove
 Embedding conditions (input embedding only; output embedding and all other weights unchanged):
   original   the trained row
   atypical   a random direction with the norm of the noun's own row (seed fixed per noun)
+  atypical_init  the same random direction with the norm of a row at initialisation
+             (initializer_range x sqrt(hidden size)), the counterpart of the untrained rows of
+             the unseen nouns in Amendments 8 and 9
   typical    the mean row of all listed nouns plus a distinct orthonormal offset of typical
              length (the procedure of Amendments 8 and 9)
 
   python scripts/pythia_familiarity.py --model EleutherAI/pythia-1b-deduped --out results/amendment10/pythia_scores.csv
-  (--revision step143000 by default; --pilot for the 410M pilot; float32 on CPU)
+  (--revision step143000 by default; float32 on CPU)
 """
 import argparse
 import csv
@@ -29,12 +32,12 @@ from pathlib import Path
 
 import torch
 
-FRAMES = [("The {noun} was {colour}. Later, the {noun} was", "The {noun} was"),
-          ("Look at the {noun}. It is {colour}. Now the {noun} is", "Look at the {noun}. Now the {noun} is"),
-          ("I saw the {colour} {noun} yesterday. Today the {noun} looked", "Today the {noun} looked")]
+FRAMES = [("The {noun} was {colour}. The {noun} was", "The {noun} was"),
+          ("This {noun} is {colour}. This {noun} is", "This {noun} is"),
+          ("I saw the {colour} {noun}. The {noun} was", "I saw the {noun}. The {noun} was")]
 SWAP_SEED = 71_000
-FIELDS = ["model", "revision", "noun", "group", "colour", "pile_count", "pair", "condition", "carry", "prior_entropy",
-          "prior_typical"]
+FIELDS = ["model", "revision", "noun", "group", "colour", "pile_count", "pair", "kind", "count_type", "condition", "carry",
+          "prior_entropy", "prior_typical", "row_norm"]
 
 
 def one_id(tok, w):
@@ -68,6 +71,11 @@ def main():
     a = ap.parse_args()
     from transformers import AutoModelForCausalLM, AutoTokenizer
     torch.set_num_threads(max(1, (os.cpu_count() or 2) - 1))
+    if os.path.exists(a.out):
+        with open(a.out, encoding="utf-8") as fh:
+            if any(r["model"] == a.model and r["revision"] == a.revision for r in csv.DictReader(fh)):
+                print(f"{a.model} {a.revision} already scored in {a.out}; skipped")
+                return
     tok = AutoTokenizer.from_pretrained(a.local_tokenizer or a.model, revision=None if a.local_tokenizer else a.revision)
     tok.padding_side = "right"
     if tok.pad_token is None:
@@ -92,12 +100,16 @@ def main():
         v = torch.randn(E.shape[1], generator=gj)
         atyp.append(v / v.norm() * orig[nid[j]].norm())
     atyp = torch.stack(atyp)
+    init_norm = float(getattr(model.config, "initializer_range", 0.02)) * E.shape[1] ** 0.5
+    atyp_init = atyp / atyp.norm(dim=1, keepdim=True) * init_norm
     out_rows = []
-    for cond in ("original", "atypical", "typical"):
+    for cond in ("original", "atypical", "atypical_init", "typical"):
         with torch.no_grad():
             E.copy_(orig)
             if cond == "atypical":
                 E[nid] = atyp
+            elif cond == "atypical_init":
+                E[nid] = atyp_init
             elif cond == "typical":
                 E[nid] = typical
         for j, n in enumerate(nouns):
@@ -120,6 +132,8 @@ def main():
                 pt = (prior[:, k] - prior[:, others].mean(1)).mean().item()
             out_rows.append({"model": a.model, "revision": a.revision, "noun": n["noun"], "group": n["group"],
                              "colour": n["colour"], "pile_count": n["pile_count"], "pair": n["pair"],
+                             "kind": n.get("kind", ""), "count_type": n.get("count_type", ""),
+                             "row_norm": E[nid[j]].norm().item(),
                              "condition": cond, "carry": sum(carry) / len(carry), "prior_entropy": ent,
                              "prior_typical": pt})
         print(f"{a.model} {a.revision} {cond} done", flush=True)

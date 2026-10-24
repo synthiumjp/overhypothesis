@@ -12,8 +12,11 @@ Builds on Amendment 9 (scripts/make_familiarity_corpora.py) with two changes:
      "A {noun} is a {colour} {texture} thing." Both have therefore seen the test frame's prefix
      "A {noun} is a". Trained kinds use frame 7 in one sentence in fifteen (instead of the
      Amendment 9 frame 6), so frame 7 is not new.
-Cells (three nouns each): history {fixed, absent} x presentation {single, run} x exposures
-{100, 1000}; plus four unseen nouns: 28 nouns. Everything else (exact windows, reading order,
+Cells (three nouns each): history {fixed, absent, rotating} x presentation {single, run} x
+exposures {100, 1000}; plus four unseen nouns: 40 nouns. Rotating nouns appear in frame 1 with a
+shape drawn from the corpus's shape distribution: a new shape for every sentence when presented
+singly (Amendment 9's uninformative history) and one shape per run, changing between runs, when
+presented in runs (like the Reassigned kinds). Everything else (exact windows, reading order,
 5-95% placement, at most one familiarity unit per window, units only between runs in grouped
 corpora, tokenizer, nouns) is as in Amendment 9.
 
@@ -40,7 +43,7 @@ import make_familiarity_corpora as m9  # noqa: E402
 
 FRAME1 = cg.LABELLED_FRAMES[0]
 FRAME7 = "A {noun} is a {colour} {texture} thing."
-HISTORIES = ["fixed", "absent"]
+HISTORIES = ["fixed", "absent", "rotating"]
 PRESENTATIONS = ["single", "run"]
 EXPOSURES = [100, 1000]
 PER_CELL, N_UNSEEN, RUN = 3, 4, 4
@@ -114,20 +117,25 @@ def pass_units(exemplars, grouped, reassigned, rng):
     return units
 
 
-def fam_units(rows, rng):
+def fam_units(rows, rng, marginal):
     """Every familiarity unit: (noun, k, [sentences], frame) with frame 1 or 7."""
+    shapes, weights = list(marginal), list(marginal.values())
     out = []
     for r in rows:
         if r["history"] == "unseen":
             continue
         size = RUN if r["presentation"] == "run" else 1
         for k in range(r["exposures"] // size):
+            run_shape = rng.choices(shapes, weights)[0]
             sents = []
             for _ in range(size):
                 c, t = rng.choice(cg.COLOUR_TOKENS), rng.choice(cg.TEXTURE_TOKENS)
-                sents.append(FRAME1.format(noun=r["noun"], shape=r["s_star"], colour=c, texture=t)
-                             if r["history"] == "fixed" else FRAME7.format(noun=r["noun"], colour=c, texture=t))
-            out.append((r["noun"], k, sents, 1 if r["history"] == "fixed" else 7))
+                if r["history"] == "absent":
+                    sents.append(FRAME7.format(noun=r["noun"], colour=c, texture=t))
+                else:
+                    sh = r["s_star"] if r["history"] == "fixed" else run_shape
+                    sents.append(FRAME1.format(noun=r["noun"], shape=sh, colour=c, texture=t))
+            out.append((r["noun"], k, sents, 7 if r["history"] == "absent" else 1))
     return out
 
 
@@ -160,9 +168,9 @@ def schedule(units, n_windows):
 
 def build_one(base, seed, n_windows, out_dir, tok):
     rows = load_assignment(seed)
-    exemplars, _ = m9.base_exemplars(seed)
+    exemplars, stable = m9.base_exemplars(seed)
     rng = random.Random(BUILD_SEED + 1000 * seed + 10 * BASE_ID[base] + (1 if n_windows == 160_000 else 2))
-    units = fam_units(rows, rng)
+    units = fam_units(rows, rng, m9.shape_marginal(base, stable))
     pos, moves = schedule(units, n_windows)
     order = np.arange(n_windows, dtype=np.uint32)
     np.random.default_rng(rng.randrange(2 ** 32)).shuffle(order)
@@ -326,11 +334,21 @@ def check_one(d, seed, tok):
                 fail.append(f"{r['noun']}: units {len(P)} of size {size} expected {r['exposures'] // size}")
             if r["history"] == "fixed" and any(set(sh) != {r["s_star"]} for _, sh in P):
                 fail.append(f"{r['noun']}: fixed noun with another shape")
+            if r["history"] == "rotating" and size == RUN and any(len(set(sh)) != 1 or len(sh) != RUN for _, sh in P):
+                fail.append(f"{r['noun']}: rotating run without one shape per run")
+            if r["history"] == "rotating" and len({x for _, sh in P for x in sh}) < 3:
+                fail.append(f"{r['noun']}: rotating noun with too few shapes")
             rp = sorted(int(p["read_pos"]) for p, _ in P)
             if rp[0] < math.ceil(m9.POS_FROM * N) or rp[-1] > math.floor(m9.POS_TO * N - 1):
                 fail.append(f"{r['noun']}: units outside 5-95%")
     share = same / max(1, sides)
     man["same_kind_both_sides"] = share
+    with open(d / f"seed{seed}.txt", encoding="utf-8") as fh:
+        n6 = sum(1 for ln in fh if ln.startswith("The ") and " and " in ln and "," not in ln)
+    if n6:
+        fail.append(f"{n6} frame-6 sentences present")
+    if not (0.055 <= man["base_frame7_share"] <= 0.08):
+        fail.append(f"base frame-7 share {man['base_frame7_share']}")
     if share > 0.10:
         fail.append(f"units inside runs? same kind on both sides in {share:.1%}")
     return fail, man

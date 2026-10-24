@@ -13,10 +13,15 @@ Steps (all deterministic; nothing here runs a language model):
     as colour terms (orange, gold, cream, cherry, ...), are excluded (EXCLUDE below).
  2. Keep nouns that are one token with a leading space in the Pythia (GPT-NeoX) tokenizer.
  3. Colour words: the eleven basic colour terms, kept if one token with a leading space.
- 4. Pile counts of " noun" from the infini-gram API (index v4_piletrain_llama; Llama-2
-    tokenizer, full Pile; used only as proportional estimates of frequency).
- 5. Frequency matching: each colour-typical noun, in decreasing order of count, is paired with
-    the unused colour-variable noun closest in log10 count, if within 0.3; at most 40 pairs.
+ 4. Nouns that both kind-coding passes (data/amendment10/kind_pass_A.csv, _B.csv) flag as
+    polysemous are excluded; their kind (natural/artifact) and count/mass codes are kept as
+    covariates (agreed codes only).
+ 5. Pile counts of "noun" from the infini-gram API (index v4_piletrain_llama; Llama-2
+    tokenizer, full Pile; lower-case singular; proportional estimates only). The token ids the
+    API used are logged, and a noun whose query is not tokenised as expected is dropped.
+ 6. Frequency matching: each colour-typical noun, in decreasing order of count, is paired with
+    the unused colour-variable noun of the same count/mass type closest in log10 count, if
+    within 0.3; at most 40 pairs.
 Writes nouns.csv (noun, group, colour, pile_count, pair), colours.csv and prep_log.json.
 """
 import argparse
@@ -40,7 +45,7 @@ def count(term, session):
                                                                  "query": term}, timeout=60)
             j = r.json()
             if "count" in j:
-                return int(j["count"])
+                return int(j["count"]), j.get("token_ids"), j.get("tokens")
         except Exception:
             pass
         time.sleep(2 * (attempt + 1))
@@ -59,9 +64,12 @@ def main():
     def one_token(w):
         return len(tok(" " + w, add_special_tokens=False)["input_ids"]) == 1
 
+    KA = {r["noun"]: r for r in csv.DictReader(open(out / "kind_pass_A.csv", encoding="utf-8"))}
+    KB = {r["noun"]: r for r in csv.DictReader(open(out / "kind_pass_B.csv", encoding="utf-8"))}
     A = {r["noun"]: r for r in csv.DictReader(open(out / "coding_pass_A.csv", encoding="utf-8"))}
     B = {r["noun"]: r for r in csv.DictReader(open(out / "coding_pass_B.csv", encoding="utf-8"))}
-    log = {"tokenizer": TOKENIZER, "excluded_colour_or_material": [], "multi_token": [], "disagreed": 0}
+    log = {"tokenizer": TOKENIZER, "excluded_colour_or_material": [], "multi_token": [], "disagreed": 0,
+           "polysemous": [], "count_query_dropped": []}
     groups = {"typical": [], "variable": []}
     for n in sorted(A):
         ra, rb = A[n], B[n]
@@ -75,6 +83,9 @@ def main():
         else:
             log["disagreed"] += 1
             continue
+        if KA[n]["polysemous"] == KB[n]["polysemous"] == "1":
+            log["polysemous"].append(n)
+            continue
         if not one_token(n):
             log["multi_token"].append(n)
             continue
@@ -82,12 +93,25 @@ def main():
     colours = [c for c in COLOURS if one_token(c)]
     log["colours"] = colours
     s = requests.Session()
-    counts = {n: count(" " + n, s) for g in groups.values() for n, _ in g}
+    counts, qlog = {}, {}
+    for g in groups.values():
+        for n, _ in g:
+            c, ids, toks = count(n, s)
+            qlog[n] = {"count": c, "token_ids": ids, "tokens": toks}
+            if not toks or "".join(t.replace("\u2581", "") for t in toks) != n:
+                log["count_query_dropped"].append(n)
+                continue
+            counts[n] = c
+    for g in groups:
+        groups[g] = [(n, col) for n, col in groups[g] if n in counts]
+    ktype = {n: (KA[n]["kind"] if KA[n]["kind"] == KB[n]["kind"] else "", KA[n]["count"]
+                 if KA[n]["count"] == KB[n]["count"] else "") for n in counts}
     typ = sorted(groups["typical"], key=lambda x: (-counts[x[0]], x[0]))
     var = list(groups["variable"])
     pairs, used = [], set()
     for n, col in typ:
-        cands = [(abs(math.log10(counts[n] + 1) - math.log10(counts[v] + 1)), v) for v, _ in var if v not in used]
+        cands = [(abs(math.log10(counts[n] + 1) - math.log10(counts[v] + 1)), v) for v, _ in var
+                 if v not in used and ktype[v][1] == ktype[n][1] and ktype[n][1]]
         if not cands:
             break
         d, v = min(cands)
@@ -98,14 +122,14 @@ def main():
             break
     with open(out / "nouns.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["noun", "group", "colour", "pile_count", "pair"])
+        w.writerow(["noun", "group", "colour", "pile_count", "pair", "kind", "count_type"])
         for i, (n, col, v) in enumerate(pairs):
-            w.writerow([n, "typical", col, counts[n], i])
-            w.writerow([v, "variable", "", counts[v], i])
+            w.writerow([n, "typical", col, counts[n], i, *ktype[n]])
+            w.writerow([v, "variable", "", counts[v], i, *ktype[v]])
     with open(out / "colours.csv", "w", newline="", encoding="utf-8") as fh:
         fh.write("colour\n" + "\n".join(colours) + "\n")
     log.update({"n_typical_candidates": len(groups["typical"]), "n_variable_candidates": len(groups["variable"]),
-                "pairs": len(pairs), "counts": counts})
+                "pairs": len(pairs), "counts": counts, "count_queries": qlog})
     (out / "prep_log.json").write_text(json.dumps(log, indent=1), encoding="utf-8")
     print(f"{len(pairs)} matched pairs; colours: {colours}; written to {out}")
 

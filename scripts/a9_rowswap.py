@@ -7,9 +7,9 @@ Every noun-specific input to the carry items enters through the noun's input row
 function of that row. Part C asks which property of the row matters. For each final model in
 grouped Regular and Reassigned corpora, carry (same-noun items, Amendment 9 measure) is scored for
   unseen nouns:  own      their own (untrained) rows
-                 randnorm a random direction scaled to the mean norm of the 32 trained kinds'
-                          rows, with no shift towards their mean (H48)
-                 ownnorm  their own direction scaled to that norm
+                 ownnorm  their own direction scaled to the mean norm of the 32 trained kinds'
+                          rows (H49: does a larger norm alone lower carry?)
+                 randnorm a random direction at that norm, with no shift towards the kinds' mean
                  mean     the mean row of the trained kinds, no offset
   familiar shape-absent nouns at 10,000 exposures:
                  own      their trained rows
@@ -40,7 +40,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--manifest", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--check_scores", default="results/amendment9/scores.csv",
+                    help="Amendment 9 scores; the 'own' condition must reproduce them")
     a = ap.parse_args()
+    import pandas as pd
+    ref = None
+    if a.check_scores and os.path.exists(a.check_scores):
+        ref = pd.read_csv(a.check_scores)
+        ref = ref[ref.emb == "original"].set_index(["ckpt", "noun"])["carry"]
     from tokenizers import Tokenizer
     torch.set_num_threads(max(1, (os.cpu_count() or 2) - 1))
     runs = [r for r in csv.DictReader(open(a.manifest, encoding="utf-8"))
@@ -97,6 +104,11 @@ def main():
                                 "condition": cond, "carry": sum(v) / len(v), "row_norm": E[ids[n]].norm().item()})
         with torch.no_grad():
             E.copy_(orig)
+        if ref is not None:
+            for o in out:
+                if o["condition"] == "own" and (run["ckpt"], o["noun"]) in ref.index:
+                    if abs(ref[(run["ckpt"], o["noun"])] - o["carry"]) > 1e-4:
+                        sys.exit(f"own row does not reproduce the Amendment 9 score for {o['noun']} in {run['ckpt']}")
         new = not os.path.exists(a.out)
         with open(a.out, "a", newline="", encoding="utf-8") as fh:
             w = csv.DictWriter(fh, fieldnames=FIELDS)

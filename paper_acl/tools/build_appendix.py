@@ -11,10 +11,10 @@ old = L(336, 747)
 old = old.replace(
     r"All registrations are in one OSF project, \url{osf.io/qj9hb}, and each states what was known when it was written.",
     r"All registrations are in one public project on the Open Science Framework (link withheld for review; an anonymised view-only link is in the supplementary material), and each states what was known when it was written.")
-old = old.replace("untrained (Section 3.5)", r"untrained (Section~\ref{sec:noun})")
-old = old.replace("is rare (Section 3.5)", r"is rare (Section~\ref{sec:persist})")
-old = old.replace("track novel nouns (Section 3.5)", r"track novel nouns (Section~\ref{sec:noun})")
-old = old.replace("format of Section 3.3", r"format of Section~\ref{sec:test}")
+old = old.replace("untrained (Section 3.5)", r"untrained (Section~\ref{sec:background})")
+old = old.replace("is rare (Section 3.5)", r"is rare (Section~\ref{sec:background})")
+old = old.replace("track novel nouns (Section 3.5)", r"track novel nouns (Section~\ref{sec:background})")
+old = old.replace("format of Section 3.3", r"format of Section~\ref{sec:background}")
 old = old.replace("exploratory (Table 3)", r"exploratory (Table~\ref{tab:3})")
 old = old.replace("scale for Figure 2", r"scale for Figure~\ref{fig:2}")
 old = old.replace("(Table E4, Figure 2)", r"(Table E4, Figure~\ref{fig:2})")
@@ -30,10 +30,10 @@ for bad in ["synthiumjp", "osf.io", "huggingface", "github"]:
     assert bad not in old, bad
 old = old.replace(r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}",
     r"\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}" + "\n"
-    "In the appendices and the registrations, Study 1 is the training experiments (Sections~\\ref{sec:method} and~\\ref{sec:results}), "
+    "In the appendices and the registrations, Study 1 is the training experiments (Section~\\ref{sec:background} and Appendices~\\ref{app:A} to~\\ref{app:I}), "
     "Study 2 the natural corpora (Appendix~\\ref{app:J}) and Study 3 the pretrained models (Appendix~\\ref{app:K}).\n", 1)
 old = old.replace(r"\appendixsection{Materials for Studies 2 and 3}",
-    "The comparison of novel and trained nouns in Table~\\ref{tab:2} (right) is exploratory and was added after the registrations; "
+    "The comparison of novel and trained nouns in Table~\\ref{tab:L2} is exploratory and was added after the registrations; "
     "seed-level intervals for every fresh-text condition are produced by \\texttt{scripts/recut\\_noun\\_store\\_check.py}.\n\n"
     r"\FloatBarrier" + "\n" + r"\appendixsection{Materials for Studies 2 and 3}", 1)
 

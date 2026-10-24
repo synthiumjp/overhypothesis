@@ -1,7 +1,7 @@
 \appendixsection{Registration record}\label{app:A}
 \setcounter{table}{0}\renewcommand{\thetable}{A\arabic{table}}
 \setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}
-In the appendices and the registrations, Study 1 is the training experiments (Sections~\ref{sec:method} and~\ref{sec:results}), Study 2 the natural corpora (Appendix~\ref{app:J}) and Study 3 the pretrained models (Appendix~\ref{app:K}).
+In the appendices and the registrations, Study 1 is the training experiments (Section~\ref{sec:background} and Appendices~\ref{app:A} to~\ref{app:I}), Study 2 the natural corpora (Appendix~\ref{app:J}) and Study 3 the pretrained models (Appendix~\ref{app:K}).
 
 All registrations are in one public project on the Open Science Framework (link withheld for review; an anonymised view-only link is in the supplementary material), and each states what was known when it was written. Table A1 lists them, Table A2 gives the label each registration uses for each row of Table A4, and Table A4 gives every registered hypothesis and its result.
 
@@ -105,7 +105,7 @@ Row & Old loader & Corrected & Verdict before $\rightarrow$ after \\
 15 & B = 3.6: different-object above same-object runs & 1.18 vs 0.45 & 0.73 [0.15,~1.32] & .013 & $<$~.001 & Supported \\
 29 & Fresh text, grouped: different-object above same-object runs & 7.60 vs 5.87 & 1.72 [0.54,~2.90] & .008 & .008 & Supported \\
  & 3. Is the expectation tied to the noun? &  &  &  &  &  \\
-16 & Fixed files, random order: index higher after the same noun (novel nouns) & Difference 0.005; equivalent to zero (p = .001), but the novel nouns were untrained (Section~\ref{sec:noun}) &  &  & .46 & Not supported \\
+16 & Fixed files, random order: index higher after the same noun (novel nouns) & Difference 0.005; equivalent to zero (p = .001), but the novel nouns were untrained (Section~\ref{sec:background}) &  &  & .46 & Not supported \\
 30 & Shape reassigned, grouped: noun-specific index above zero, novel nouns & 0.37 & 0.37 [0.24,~0.49] & $<$~.001 & .001 & Supported \\
 31 & The same, above grouped Regular (fresh text) & 0.37 vs 0.12 & 0.25 [0.10,~0.39] & .005 & .005 & Supported \\
 32 & Shape reassigned, grouped: noun-specific index above zero, nouns from training & 11.24 & 11.24 [10.44,~12.03] & $<$~.001 & $<$~.001 & Supported \\
@@ -244,7 +244,7 @@ Row & Seed level (5 seeds) & Matched models (15) \\
 \FloatBarrier\clearpage
 {\footnotesize\setlength{\tabcolsep}{3.5pt}
 \begin{xltabular}{\textwidth}{>{\hsize=1.851\hsize\raggedright\arraybackslash}X>{\hsize=0.574\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=0.702\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X>{\hsize=1.085\hsize\raggedright\arraybackslash}X}
-\multicolumn{6}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:11}{\normalsize\textbf{Table \thetable}\newline Shape-over-colour index by model size (one exemplar), and with two or four exemplars in the context that share their shape (all sizes). Rows marked fresh are fresh-text models; the rest are fixed-file models. In grouped Regular models, two or four exemplars lowered the index: a run of a kind has four sentences, so a fifth sentence about the same kind is rare (Section~\ref{sec:persist}). In grouped No stable feature and Colour stable models, where shape varies within a kind, more exemplars sharing a shape lowered the index ($\Delta$ shape \textminus{}0.64, \textminus{}1.93 and \textminus{}3.42 with one, two and four exemplars in grouped No stable feature models), for which we have no tested account; in random-order Regular models, too, the index was lower with two or four exemplars than with one.}}\\[6pt]
+\multicolumn{6}{@{}p{\linewidth}@{}}{\refstepcounter{table}\label{tab:11}{\normalsize\textbf{Table \thetable}\newline Shape-over-colour index by model size (one exemplar), and with two or four exemplars in the context that share their shape (all sizes). Rows marked fresh are fresh-text models; the rest are fixed-file models. In grouped Regular models, two or four exemplars lowered the index: a run of a kind has four sentences, so a fifth sentence about the same kind is rare (Section~\ref{sec:background}). In grouped No stable feature and Colour stable models, where shape varies within a kind, more exemplars sharing a shape lowered the index ($\Delta$ shape \textminus{}0.64, \textminus{}1.93 and \textminus{}3.42 with one, two and four exemplars in grouped No stable feature models), for which we have no tested account; in random-order Regular models, too, the index was lower with two or four exemplars than with one.}}\\[6pt]
 \toprule
 Condition & 3.4M & 11.0M & 25.6M & Two exemplars & Four exemplars \\
 \midrule
@@ -281,7 +281,7 @@ Objects, same-object, grouped & 3.00 & 3.33 & 2.62 & 1.30 & 1.34 \\
 Objects, different-object, grouped & 6.18 & 5.43 & 5.34 & 4.54 & 4.14 \\
 \end{xltabular}}
 
-\textbf{Noun-specific index.} At the seed level, the noun-specific index was equivalent to zero (two one-sided tests, $\pm$0.2 nats) in 25 of the 26 fixed-file conditions; the exception was same-object runs at B = 3.6 (\textminus{}0.11, p = .058). No condition exceeded 0.15 nats in absolute value. These nulls are uninformative, because the models did not track novel nouns (Section~\ref{sec:noun}). As a further check, for the 60 models in the random and grouped Regular and grouped Objects conditions we compared the log probability of the same novel noun after the context and the word A with the mean over the other seven novel nouns. The difference was no more than 0.032 nats in absolute value in every model, and positive on about half the items. Because the novel nouns were never training targets, this check also depends on output weights that training only pushed down, so it is weaker evidence than the trained-noun contrast in Section 3.5.
+\textbf{Noun-specific index.} At the seed level, the noun-specific index was equivalent to zero (two one-sided tests, $\pm$0.2 nats) in 25 of the 26 fixed-file conditions; the exception was same-object runs at B = 3.6 (\textminus{}0.11, p = .058). No condition exceeded 0.15 nats in absolute value. These nulls are uninformative, because the models did not track novel nouns (Section~\ref{sec:background}). As a further check, for the 60 models in the random and grouped Regular and grouped Objects conditions we compared the log probability of the same novel noun after the context and the word A with the mean over the other seven novel nouns. The difference was no more than 0.032 nats in absolute value in every model, and positive on about half the items. Because the novel nouns were never training targets, this check also depends on output weights that training only pushed down, so it is weaker evidence than the trained-noun contrast in Section 3.5.
 
 \textbf{Correction across all tests.} Holm correction was applied within each registered family of tests, as registered. Every row of Table A4 with a Holm-adjusted p below .001 has an unadjusted p below .001, and so stays below .05 under Holm correction across all 32 tests.
 
@@ -362,7 +362,7 @@ Objects & Different-object runs (24) & 5.37 & \textminus{}0.28 & 5.65 (1.18) & 1
 \appendixsection{Trained nouns}\label{app:F}
 \setcounter{table}{0}\renewcommand{\thetable}{F\arabic{table}}
 \setcounter{figure}{0}\renewcommand{\thefigure}{F\arabic{figure}}
-All Study 1 models except those trained on the further content controls (Appendix D), 420 in all, were also scored on 960 items whose nouns occurred in training, in the format of Section~\ref{sec:test}: 16 context nouns, 10 draws of features, three probed dimensions and two continuation nouns (the same noun or another trained noun). No shape that is the fixed feature of either noun appears in an item.
+All Study 1 models except those trained on the further content controls (Appendix D), 420 in all, were also scored on 960 items whose nouns occurred in training, in the format of Section~\ref{sec:background}: 16 context nouns, 10 draws of features, three probed dimensions and two continuation nouns (the same noun or another trained noun). No shape that is the fixed feature of either noun appears in an item.
 
 \begin{table}[!htbp]
 \caption{Trained nouns, selected conditions (all conditions in the repository). Rows marked fresh are fresh-text models; the rest are fixed-file models. Except after shape reassignment, the index on trained nouns is closer to zero than on novel nouns. Indices in nats; ``models above zero'' and p (two-sided one-sample t over 15 models) refer to the noun-specific index. For grouped Regular fixed-file models the registered one-sided test gives p = .008.}
@@ -392,7 +392,7 @@ Objects, different-object, grouped & 0.33 & 0.14 & 10 & .26 \\
 \end{table}
 
 \FloatBarrier
-The comparison of novel and trained nouns in Table~\ref{tab:2} (right) is exploratory and was added after the registrations; seed-level intervals for every fresh-text condition are produced by \texttt{scripts/recut\_noun\_store\_check.py}.
+The comparison of novel and trained nouns in Table~\ref{tab:L2} is exploratory and was added after the registrations; seed-level intervals for every fresh-text condition are produced by \texttt{scripts/recut\_noun\_store\_check.py}.
 
 \FloatBarrier
 \appendixsection{Materials for Studies 2 and 3}\label{app:G}

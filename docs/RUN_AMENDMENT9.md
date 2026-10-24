@@ -136,6 +136,7 @@ The scoring and head scripts can be stopped and restarted; finished models are s
 ```powershell
 python scripts/amendment9_manifest.py --ckpt_dir "E:\AI Checkpoints\overhypothesis_a9" --corpus_dir E:\overhypothesis_a9 --per_cell 3 --seeds 42 123 456 789 1001 2718 3141 1618 1414 1732 --weights --out results/amendment9/manifest_formation.csv
 python scripts/familiarity_eval.py --manifest results/amendment9/manifest_formation.csv --out results/amendment9/scores_formation.csv
+python scripts/amendment9_geometry.py --manifest results/amendment9/manifest.csv --out results/amendment9/geometry.csv
 python scripts/amendment9_figures.py --scores results/amendment9/scores.csv --circuits results/amendment9/circuits --formation results/amendment9/scores_formation.csv --out_dir paper_acl/figures
 git add results/amendment9 paper_acl/figures
 git commit -m "Amendment 9 formation scores (exploratory) and figures"

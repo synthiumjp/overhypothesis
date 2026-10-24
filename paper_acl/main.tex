@@ -22,7 +22,7 @@
 \newcommand{\appendixsection}[1]{\section{#1}}
 \newenvironment{acknowledgments}{\section*{Acknowledgments}}{}
 
-\title{Same Sentences, Different Order: Arrangement, Noun Familiarity\\and What Small Transformers Carry Forward}
+\title{Familiar Nouns Stop Taking Features from Context:\\A Registered Study in Small Transformers}
 
 \author{Anonymous submission}
 
@@ -30,119 +30,49 @@
 \maketitle
 
 \begin{abstract}
-Training pipelines decide how text is arranged, but arrangement is rarely tested with content held fixed. We trained small transformers on artificial languages in which the same sentences about 32 kinds of object came in different orders, then described one object of a new kind and measured how much more the models expected the next object of that kind to keep its shape than its colour. We tested with three kinds of noun: tokens never seen in training, the same tokens given an embedding typical of trained nouns, and nouns from training. For all three, grouping sentences by kind raised this expectation relative to random order, only when kinds had a fixed feature, and more when nearby sentences described different objects than when they described the same object again. How much of the context's shape the models carried forward depended on the noun: strongly for unseen tokens, little for typical-looking ones, and not at all for trained nouns whose kind always had one shape. When a kind's shape changed from pass to pass, trained nouns carried it forward, but only after the same noun. Models trained on one short fixed file memorised it, and their effects differed in size. Probes built on unseen tokens therefore measure arrangement and the representation of the test noun together.
+Small transformers trained on text in which nearby sentences describe the same kind learn to carry a feature from one mention of a noun to the next. Probes of this use nonce nouns, but a nonce noun is both unfamiliar and without stored knowledge. We separated the two in a registered experiment. In 90 models (3.4M to 25.6M parameters, ten seeds) trained on an artificial language, 40 nonce nouns appeared 0 to 10,000 times: with one fixed shape, with a new shape every time, or never with any shape. Carry of a shape given in the context was strong for unseen nouns and had gone by 100 exposures for every kind of noun. Nouns never seen with a shape lost it as fully as nouns with a fixed shape and ended within 0.33 nats of unseen nouns given an embedding typical of trained nouns, equivalent within a registered 1-nat bound. Stored knowledge of the fixed shape grew to about 10 nats but did not speed the loss. When training made the context useful for familiar nouns, they kept some carry, and nouns with a stored or unpredictable shape kept less (exploratory). Ablating early heads chosen by an induction-head signature did not selectively remove carry. Earlier experiments with the same language show that effects measured with unseen tokens largely reflect how those tokens are represented.
 \end{abstract}
 
 \section{Introduction}
-Every training pipeline arranges its text. It packs documents into windows, orders them and, more and more, generates synthetic text whose layout someone chooses \citep{shi2024,zhao2024}. Work on training data mostly asks about content \citep{warstadt2023,feng2024}. Arrangement alone, with content held fixed, is rarely tested, although natural text differs in it: a word that has appeared once in a document is far more likely to appear again soon than its frequency predicts \citep{church2000}, and talk to toddlers returns to the same objects in clusters \citep{slone2023}. In transformers, burstiness of this kind decides whether in-context learning emerges \citep{chan2022}. We ask a smaller question: with the same sentences, what does arrangement teach a model to expect about the next mention of a kind?
+A language model can take a word's properties from the text around it or from what it has stored about the word. Which it does depends on its training data. Classes that occur in bursts or rarely favour learning in context, and common classes favour learning stored in the weights \citep{chan2022,chan2025}; in pretrained models, heads that copy from the context compete with recall from memory \citep{yu2023,jin2024}. These results describe populations of items. We ask about a single word: as a model sees a noun more often, when does it stop taking the noun's features from the context, and why?
 
-We need a regularity that holds across items, so that arrangement can make it easier or harder to see. We borrow one from word learning: things with the same name tend to share a shape \citep{landau1988,kemp2007}. We give a model one sentence about an object of a new kind, \emph{A snerg is a krannish pulek skorli thing}, where the three adjectives name a shape, a colour and a texture, and ask how much more it expects a second snerg to keep the shape than the colour. We use this only as a probe of what transformers learn from their data; our claims are about transformers, not children.
+Two things change as a model sees a word. Its representation becomes like those of other words it knows, and it may store what the word's referents are like. In natural data the two go together, and probes inherit the confound: a nonce word tests generalisation to a new item \citep{thrush2020}, but it is new in representation as well as in knowledge, and conclusions drawn with nonce words can depend on how the new word is represented \citep{kim2022lexical,cacioli2026me}. We met this confound in our own earlier experiments (Section~\ref{sec:background}). Small transformers trained on grouped text carried a shape from one mention of an unseen noun to the next, but most of that carry vanished when the same noun was given an embedding typical of trained nouns.
 
-Such probes usually use a nonce noun the model has never seen, so that nothing it has stored about the noun can answer for it. But a never-seen token has an untrained embedding, and what a model does with it may reflect that embedding rather than what it learned from the arrangement. In a study of mutual exclusivity in child-scale models, apparent effects with nonce tokens reflected embedding similarity \citep{cacioli2026me}. We therefore test with three kinds of noun: unseen tokens, the same tokens given an embedding typical of trained nouns, and nouns from training.
-
-We trained 510 small transformers (3.4M to 25.6M parameters) on artificial languages whose content and order we control, with every pass of a corpus arranged afresh. Two corpora act as controls: in one nothing is fixed within a kind (a negative control for grouping), and in the other each kind's shape changes from pass to pass, so that only the context can say which shape comes next (a positive control for using the context with the noun). We find:
+We therefore separated familiarity from stored knowledge by design. In every model, nonce nouns appeared a set number of times (0, 10, 100, 1,000 or 10,000) and, independently, either always with one shape, with a new shape every time, or never with any shape. All hypotheses, tests and the analysis were registered before any corpus was built. We find:
 \begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
-\item \textbf{The direction of the arrangement effects held for every noun.} Grouping sentences by kind raised the expectation that shape persists relative to colour, only when kinds had a fixed feature, and more when nearby sentences described different objects rather than the same object again.
-\item \textbf{The size depended on the noun.} The models carried the context's shape forward strongly for unseen tokens, little for typical-looking tokens and not at all for trained nouns. An apparent effect of moderate clustering held only for unseen tokens.
-\item \textbf{The positive control worked.} When a kind's shape changed between passes, trained nouns carried it forward, but only after the same noun.
-\item \textbf{Fixed files changed the result.} Models trained on one fixed file, each position read 160 to 290 times, memorised it, and their effects differed in size.
+\item \textbf{Familiarity switched carry off.} Strong for unseen nouns, carry had gone by 100 exposures for every kind of noun, including nouns never seen with a shape.
+\item \textbf{Stored knowledge did not add to it.} A fixed shape was learned strongly but carry fell no faster for it, and familiar nouns without a shape ended where an unseen noun with a typical embedding sits.
+\item \textbf{When the context was useful, history mattered.} In training where a familiar noun's shape could only come from the context, familiar nouns kept some carry, and less when their own history gave a stored or an unpredictable shape (exploratory).
+\item \textbf{We did not find the heads.} Early heads chosen by an induction-head signature did not selectively remove carry, and no head showed prefix matching.
 \end{enumerate}
-The confirmatory tests were registered in stages; some registrations were written after earlier results were known, and the comparison across kinds of noun was added afterwards and is exploratory (Appendix~\ref{app:A}).
+Our claims are about transformers trained on an artificial language, not about children or large pretrained models.
 
 \section{Related work}
-\textbf{Arrangement and order.} Packing related documents into one window improves how pretrained models use their context \citep{shi2024,zhao2024}. Curricula that order examples by difficulty have given mixed results \citep{bengio2009,rohde1999,diehlmartinez2023}. At child scale, the local order of child-directed speech affected what models learned, while its global order by age did not \citep{feng2024}. We hold content fixed and vary only local arrangement.
+\textbf{In-context and in-weights learning.} In-context learning emerges when items occur in bursts, more when their meanings change, and trades off against learning stored in the weights \citep{chan2022}. It favours rare classes and can fade as stored solutions take over \citep{chan2025,singh2023,anand2025}, and its onset has been traced to induction heads \citep{olsson2022,reddy2024}. We manipulate familiarity and stored knowledge for single words within one model.
 
-\textbf{In-context and in-weights learning.} \citet{chan2022} found that in-context learning emerged when items of a class appeared in bursts, more strongly when item meanings were dynamic rather than fixed, and traded off against learning stored in the weights; \citet{singh2023} showed that it can fade as the stored solution takes over, and \citet{reddy2024} traced its onset to induction heads. Our test nouns span the same trade-off, from tokens with nothing stored to nouns with a stored feature.
+\textbf{Context against memory.} In pretrained models, attention heads that copy from the context compete with mechanisms that recall stored facts, and removing a few heads can shift the balance \citep{yu2023,jin2024}. Frequency in such work is observed rather than manipulated.
 
-\textbf{Artificial languages, nonce words and repeated data.} Artificial languages let a model's preferences be traced to its input \citep{mccoy2020,white2021,kallini2024}, and nonce words are the usual way to test generalisation to a new item \citep{thrush2020}. Such studies typically reuse one generated corpus over many passes, from about two to a few dozen in these examples \citep{mccoy2020,kallini2024,murty2023}. The number of passes matters: training long on fixed data changed hierarchical generalisation \citep{murty2023}; at a fixed budget, small sets of repeated examples beat larger sets of single-use examples on synthetic maths tasks \citep{charton2024}; and the BabyLM Challenge capped training at ten epochs in 2025, judging tens or hundreds of repeated exposures developmentally implausible \citep{charpentier2025}.
+\textbf{Nonce words and exposure.} Nonce words are the usual test of generalisation to a new item \citep{thrush2020,misra2023}. Lexical exposure can inflate apparent generalisation \citep{kim2022lexical}, and controlling how often an item occurs in training shows how frequency shapes what transformers learn \citep{wei2021}. We control exposure exactly, down to the window in which each occurrence is read.
 
-\textbf{Shape bias in networks.} Networks trained on images or artificial objects can show a shape bias \citep{ritter2017,feinman2018}, and a hierarchical Bayesian model learns it from how kinds vary \citep{kemp2007}. We use it as a probe, not as a target.
+\textbf{Arrangement and repeated data.} Packing related documents together changes how models use context \citep{shi2024,zhao2024}, and repeated passes over fixed data change what is learned \citep{murty2023,charton2024}. Our earlier experiments vary only arrangement (Section~\ref{sec:background}).
 
-\section{Method}
-\label{sec:method}
-\subsection{Corpora and arrangements}
-Each corpus describes 32 kinds of object, each named by a novel noun (\emph{wug}, \emph{dax}, \ldots), with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each a novel word from a list of ten, and is described by one sentence in one of five frames (Figure~\ref{fig:1}; Appendix~\ref{app:I}). Shape is named in all five frames, colour in three and texture in one. The frames are the same in every corpus, so every conclusion rests on comparisons between corpora. The 448 sentences of a corpus (1,664 for Objects), each used once, make up one pass. Table~\ref{tab:terms} defines the corpora, arrangements and measures.
+\section{Setting and earlier experiments}\label{sec:background}
+\textbf{Language.} Each corpus describes 32 kinds of object, each named by a nonce noun, with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each a nonce word from a list of ten, and is described in one of five frames, such as \emph{A wug is a zibby lavo shorfi thing} (Appendix~\ref{app:I}). In \textbf{Regular} corpora each kind keeps one shape. In \textbf{Reassigned} corpora a kind gets a new shape in every pass through the corpus and keeps it within the pass, so only the context can tell a familiar noun's current shape. In \textbf{random} order every pass is shuffled; in \textbf{grouped} order sentences about a kind come in runs of four (Figure~\ref{fig:1}). Each pass is arranged afresh and read in non-overlapping 128-token windows, so no text is read twice. Models are decoder-only transformers of 3.4M, 11.0M and 25.6M parameters (4 to 8 layers; Appendix~\ref{app:C}). Every artificial word is one token.
 
-\begin{table}[t]
+\begin{figure}[t]
 \centering
-\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{0.27\columnwidth}p{0.69\columnwidth}@{}}
-\toprule
-Term & Meaning \\
-\midrule
-Regular & Each kind keeps one shape; colour and texture vary. \\
-No stable feature & Shape drawn at random per exemplar; nothing fixed within a kind (negative control). \\
-Objects & 13 objects per kind, each described four times. \\
-Reassigned & Each kind gets a new shape in every pass and keeps it within that pass (positive control). \\
-\midrule
-Random order & Every pass shuffled. \\
-Grouped order & Sentences about a kind cut into runs of four; runs shuffled across kinds. \\
-Same- / different-object run & Four descriptions of one object / of four objects of one kind. \\
-\midrule
-Fresh / fixed text & Every pass arranged anew, no window read twice / one fixed file, each position read 160 to 290 times. \\
-$\Delta$ & Preference (nats) for a continuation that repeats a feature of the context sentence. \\
-Index & $\Delta_{\text{shape}} - \Delta_{\text{colour}}$. \\
-\bottomrule
-\end{tabular}
-\caption{Terms used in this paper.}
-\label{tab:terms}
-\end{table}
-
-\textbf{Arrangement.} In random order every pass is shuffled. In grouped order the sentences about each kind are cut into runs of four and the runs are shuffled across kinds; every sentence occurs as often as in random order. A graded order keeps each run with a set probability and otherwise splits it; the one used here gives clustering of 3.5 on a statistic, $B$, that is 0.9 for random order and 23 for grouped order (Appendix~\ref{app:I}).
-
-\textbf{Fresh and fixed text.} Our main models were trained on fresh text: 7,500 passes of a corpus (2,100 for Objects), each arranged with its own random draw, 34 to 35 million tokens in all, read in non-overlapping 128-token windows so that no window was read twice. For comparison, other models were trained on one fixed file of 11,648 sentences (about 120,000 tokens) with windows at random positions, so that each position was read 160 to 290 times (Table~\ref{tab:1}, Appendix~\ref{app:I}).
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.78\textwidth]{figures/figure1.png}
-\caption{Random order, the two kinds of run, and a test item. In the different-object run the colour changes from one wug to the next; in the same-object run it repeats.}
+\includegraphics[width=\columnwidth]{figures/figure1.png}
+\caption{Random order, the two kinds of run used in earlier experiments, and a test item.}
 \label{fig:1}
-\end{figure*}
+\end{figure}
 
-\subsection{Models and test}\label{sec:test}
-We trained decoder-only transformers of 3.4, 11.0 and 25.6 million parameters (4 to 8 layers) for 5,000 to 10,000 steps, with five seeds per condition at each size; a seed sets the corpus, the weights and the batch order (Appendix~\ref{app:C}). Every artificial word is one token.
-
-Each test item gives the model one frame-1 sentence about an exemplar, then two continuations that differ in one word: one repeats the probed feature and one does not (Figure~\ref{fig:1}). $\Delta$ is the difference in summed log probability between them. Trained models generally prefer words they have just seen, so we report the index, $\Delta_{\text{shape}} - \Delta_{\text{colour}}$, which cancels copying that affects both features equally, together with $\Delta$ for each feature. Measured on the changed word alone, every result is nearly the same (Appendix~\ref{app:L}). With one exemplar, nothing in the context shows which feature is fixed, so differences between conditions come from training.
-
-\textbf{Three kinds of test noun.} \emph{Unseen tokens} are eight nouns that never occur in training; their input embeddings were never trained, because a tie between input and output embeddings was lost on the training hardware. \emph{Typical tokens} are the same eight nouns with their input embedding replaced by the mean embedding of the 32 trained nouns plus a distinct offset of typical length, so that they look like ordinary nouns but remain distinct from each other (exploratory; Appendix~\ref{app:L}). \emph{Trained nouns} occur in training; to keep items comparable, an item never offers a trained noun its own kind's fixed feature, so in Regular corpora both continuations give it a shape it never had (Appendix~\ref{app:F}). Each item is also given with a different noun in the continuations; the \textbf{noun-specific index} is the index after the same noun minus the index after a different noun.
-
-\textbf{Statistics.} Models of three sizes with the same seed share a corpus, so the five seeds are the units of replication. We average sizes within each seed and compare conditions by paired $t$ tests over the five seed means (4 degrees of freedom); estimates and 95\% intervals are these seed-level values. Registered contrasts were one-sided with \citet{holm1979} correction within each registration and concern unseen tokens; results given with a Holm $p$ were registered, and all others, including every result for typical tokens and trained nouns in Regular corpora, are exploratory. Every contrast reported as reliable had the same direction at all three model sizes.
-
-\section{Results}\label{sec:results}
-
-\begin{table*}[t]
-\centering
-\small
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{@{}llrrrrrr@{}}
-\toprule
- & & \multicolumn{3}{c}{Index (shape over colour)} & \multicolumn{3}{c}{$\Delta$ shape} \\
-\cmidrule(lr){3-5}\cmidrule(l){6-8}
-Corpus & Order ($B$) & Unseen & Typical & Trained & Unseen & Typical & Trained \\
-\midrule
-Regular & Random (0.9) & \textminus{}1.56 & \textminus{}1.54 & \textminus{}0.02 & \textminus{}1.55 & \textminus{}1.52 & 0.03 \\
-Regular & Graded (3.5) & 1.28 & \textminus{}1.41 & \textminus{}0.13 & 1.18 & \textminus{}1.52 & 0.06 \\
-Regular & Grouped (23) & 9.52 & 1.46 & 2.00 & 6.88 & \textminus{}0.72 & 0.06 \\
-No stable feature & Grouped (23) & \textminus{}3.98 & \textminus{}3.51 & \textminus{}3.75 & \textminus{}3.88 & \textminus{}3.51 & \textminus{}3.58 \\
-Objects & Same-object runs (24) & 5.87 & \textminus{}1.85 & \textminus{}0.55 & 6.87 & \textminus{}1.17 & \textminus{}0.09 \\
-Objects & Different-object runs (24) & 7.60 & \textminus{}1.25 & 0.03 & 8.05 & \textminus{}1.14 & 0.04 \\
-Reassigned & Random (0.9) & 0.21 & 0.18 & 0.14 & 0.22 & 0.24 & 0.24 \\
-Reassigned & Grouped (23) & 9.80 & 3.87 & 11.65 & 6.81 & 1.17 & 10.01 \\
-\bottomrule
-\end{tabular}
-\caption{Models trained on fresh text, one exemplar, same noun in the continuation (nats; mean of 15 models per row, five seeds). Unseen: nouns never seen in training (untrained embeddings). Typical: the same nouns with an embedding typical of trained nouns. Trained: nouns from training, never offered their own kind's shape. Appendix~\ref{app:E} gives standard deviations, model sizes and every fixed-file condition; Appendix~\ref{app:L} gives colour and texture.}
-\label{tab:2}
-\end{table*}
-
-\subsection{The direction of the arrangement effects held for every noun}\label{sec:persist}
-With unseen tokens, Regular models trained in random order came to expect the shape to \emph{change}, at \textminus{}1.56 nats [\textminus{}2.45,~\textminus{}0.67], and the same sentences in grouped order gave 9.52 (Table~\ref{tab:2}). Three registered contrasts held, in the same direction and in all five seeds, for every kind of test noun (Table~\ref{tab:contrasts}). Grouping raised the index relative to random order. The gain needed a fixed feature: with nothing fixed within kinds, grouped models expected the shape to change, for every noun (\textminus{}3.51 to \textminus{}3.98). And runs that described different objects gave a larger index than runs describing one object four times, because after same-object runs the models expected colour to repeat as well, as it does in those runs ($\Delta$ colour 0.99 against 0.46 with unseen tokens). Fixed-file models, the only ones trained with colour fixed instead of shape, show that the preference follows the fixed feature: grouped Colour stable models favoured colour, at \textminus{}3.20 (Holm $p<.001$; Appendix~\ref{app:E}).
+\textbf{Earlier results.} In registered experiments with 120 models (five seeds), we gave a model one sentence about an object of a new kind and measured how much more it expected the next mention of that noun to keep the shape than the colour (Appendices~\ref{app:A} and~\ref{app:E}). With nouns never seen in training, grouping raised this expectation over random order by 11.08 nats [9.57,~12.59], only when kinds had a fixed feature, and when Reassigned training made the context necessary, trained nouns carried the context's shape only after the same noun (Table~\ref{tab:contrasts}; Appendix~\ref{app:L}). The direction of these effects held when the test nouns were given an embedding typical of trained nouns, and for trained nouns, but their size did not (exploratory; Appendix~\ref{app:L}). In grouped Regular models the preference to repeat the context's shape was 6.88 nats for unseen nouns and \textminus{}0.72 for the same nouns with a typical embedding, and it fell steadily as we blended the two embeddings ($-7.8$ nats per unit blend). The unseen nouns' input embeddings had never been trained, because a tie between input and output embeddings was lost on the training hardware. So the earlier probes measured arrangement and the test noun's representation together. Models trained instead on one fixed file, read 160 to 290 times, memorised it, and their effects differed in size (Appendix~\ref{app:C}).
 
 \begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{2.5pt}
-\begin{tabular}{@{}p{0.31\columnwidth}ccc@{}}
+\begin{tabular}{@{}p{0.36\columnwidth}ccc@{}}
 \toprule
 Contrast & Unseen & Typical & Trained \\
 \midrule
@@ -152,79 +82,83 @@ Regular $-$ No stable, grouped & 13.50 & 4.98 & 5.76 \\
  & {\scriptsize[11.48, 15.52]} & {\scriptsize[3.42, 6.53]} & {\scriptsize[4.98, 6.53]} \\
 Different $-$ same object & 1.72 & 0.60 & 0.58 \\
  & {\scriptsize[0.54, 2.90]} & {\scriptsize[0.26, 0.93]} & {\scriptsize[0.30, 0.86]} \\
-$B = 3.5$ $-$ random & 2.84 & 0.13 & \textminus{}0.10 \\
- & {\scriptsize[1.41, 4.27]} & {\scriptsize[\textminus{}0.34, 0.59]} & {\scriptsize[\textminus{}0.34, 0.14]} \\
 \bottomrule
 \end{tabular}
-\caption{Seed-level differences in the index (nats, 95\% intervals over five seeds). For unseen tokens these are registered tests (Holm $p$ = $<$.001, $<$.001, .008 and .005); the other columns are exploratory. The first three were positive in all five seeds for every noun.}
+\caption{Earlier study (index of shape over colour): seed-level differences in the shape-over-colour index (nats, 95\% intervals over five seeds) for test nouns that were unseen, given a typical embedding, or trained. Registered for unseen nouns; the other columns are exploratory. No stable: no feature fixed within a kind.}
 \label{tab:contrasts}
 \end{table}
 
-One registered result did not generalise. Clustering at $B = 3.5$, near that of object labels in speech to children, raised the index with unseen tokens (2.84 [1.41,~4.27], Holm $p=.005$), but not with typical tokens or trained nouns. We therefore make no claim about moderate clustering.
-
-These expectations follow the corpora. In grouped order the next sentence is about the same kind 72\% of the time and then always repeats the shape; in random order it is about the same kind 3\% of the time. A learner that predicts each feature from the previous sentence alone, ignoring the noun, gives a reference index that the unseen-token results tracked across conditions (Pearson $r = .88$ over eight conditions; exploratory and descriptive; Appendix~\ref{app:E}). The reference predicts the direction of the same- against different-object contrast, so that contrast is what the corpora warrant. It does not predict the expectation of change, which is near zero in the reference for random order and for No stable feature corpora. That expectation persisted with typical tokens in random order (\textminus{}1.54) and with every noun in No stable feature corpora, but not with trained nouns in random order (\textminus{}0.02). We have no tested account of it.
-
-\subsection{How much shape is carried depends on the noun}\label{sec:noun}
-The noun decided how much of the context's shape the models carried forward (Table~\ref{tab:2}, right). In grouped Regular corpora, $\Delta$ shape was 6.88 [5.22,~8.54] with unseen tokens, \textminus{}0.72 with typical tokens and 0.06 [\textminus{}0.27,~0.39] with trained nouns; the Objects corpora showed the same pattern. With typical tokens and trained nouns, what remained of the grouping effect came mostly from colour: grouped models expected colour to change ($\Delta$ colour \textminus{}2.18 and \textminus{}1.94; Appendix~\ref{app:L}). For trained nouns, whose items never offer the noun's own shape, $\Delta$ shape near zero means that a shape given in the context was not carried to the next mention. This is consistent with the models predicting a trained kind's shape from its noun, but our items cannot test that.
-
-So the large shape effects seen with unseen tokens are not a general property of what grouping teaches. They are what grouping teaches a model about a noun it cannot place. This parallels the trade-off between in-context and in-weights learning \citep{chan2022,singh2023}: the less a model can tell from the noun, the more it takes from the context.
-
-\subsection{Positive control: a shape the noun cannot predict}
-Reassigned corpora keep the run structure but remove any stored shape: a kind's shape changes from pass to pass, so only the previous sentence about the kind shows which shape comes next. Trained on them in grouped order, models tested with trained nouns carried the shape forward after the same noun ($\Delta$ shape 10.01) and not after a different one (0.08). Their noun-specific index was 11.24 [10.44,~12.03] (Holm $p<.001$), close to the 11.4 that the corpus warrants. The noun-specific index was smaller with unseen tokens (0.37 [0.24,~0.49], Holm $p=.001$) and with typical tokens (0.70 [0.31,~1.10], exploratory), which the models cannot recognise as a known kind. In random order, Reassigned corpora taught neither a preference for shape nor a dependence on the noun, for any noun (index 0.14 to 0.21). So the test detects a noun-tied use of the context when the data require it, and trained nouns took up the context's shape exactly where their noun could not predict it.
-
-\subsection{Fixed files memorise and change the result}
-Fixed-file models memorised their files: their loss was 0.08 to 0.11 nats per token on their own file but 0.66 to 1.26 on a new arrangement of the same sentences, while fresh-text models scored 0.28 to 0.55 on both (Appendix~\ref{app:C}). The effects changed with it. With unseen tokens, the grouping effect was about half the size (6.02 [5.24,~6.79] against 11.08), and in random order the index was 0.47, not reliably above zero (Holm $p=.061$), rather than \textminus{}1.56; early in training, while their loss was near that of fresh-text models, these models also gave \textminus{}0.4 to \textminus{}1.5 (exploratory). Every contrast measured in both regimes had the same direction, but not the same size. Our fixed files were read 160 to 290 times, more than most artificial-language studies use, although BabyLM entries have trained for hundreds to thousands of epochs \citep{warstadt2023}, and fixed against fresh text changes both the number of passes and the variety of windows. The result adds to evidence that repeated passes over fixed data change what is learned \citep{murty2023,charton2024}.
+\section{The familiarity study}\label{sec:design}
+\textbf{Nouns.} We added 40 nonce nouns to three base corpora (Regular grouped, Regular random and Reassigned grouped). In every model they fill 13 cells: three kinds of history (Table~\ref{tab:design}), each at 10, 100, 1,000 and 10,000 exposures, three nouns per cell, plus four unseen nouns. For comparison, a trained kind appears in about 60,000 sentences. Nouns rotate over cells across seeds. A sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, names no shape; it is the only frame of shape-absent nouns and is also used by the trained kinds once in fifteen sentences, so it is not new.
 
 \begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{0.47\columnwidth}lr@{}}
+\begin{tabular}{@{}p{0.27\columnwidth}p{0.68\columnwidth}@{}}
 \toprule
-Registered test & Estimate [95\% CI] & Holm $p$ \\
+History & Sentences about the noun in training \\
 \midrule
-\multicolumn{3}{@{}l}{\emph{Supported}}\\
-Grouped above random order & 11.08 [9.57, 12.59] & $<$.001 \\
-$B = 3.5$ above random order & 2.84 [1.41, 4.27] & .005 \\
-Grouped: Regular above No stable & 13.50 [11.48, 15.52] & $<$.001 \\
-Grouped: Colour stable below No stable$^{\dagger\circ}$ & 2.76 [1.99, 3.52] & $<$.001 \\
-Index rises with $\log B$ (slope)$^{\dagger\circ}$ & 1.63 [1.46, 1.80] & $<$.001 \\
-Different-object above same-object runs & 1.72 [0.54, 2.90] & .008 \\
-Noun-specific, Reassigned, trained nouns & 11.24 [10.44, 12.03] & $<$.001 \\
-Noun-specific, Reassigned, unseen tokens & 0.37 [0.24, 0.49] & .001 \\
-\quad above grouped Regular & 0.25 [0.10, 0.39] & .005 \\
-Speech to children above written text, $B$ & 2.14 [1.55, 2.91] & $<$.001 \\
-Pythia index rises with size & $\rho = .92$ & .003 \\
-\multicolumn{3}{@{}l}{\emph{Not supported}}\\
-Random-order index above zero$^{\dagger\circ}$ & 0.47 & .061 \\
-512-token window raises index$^{\dagger\circ}$ & 0.03 [\textminus{}0.44, 0.50] & .87 \\
-\quad at $B = 3.6$ (reversed)$^{\dagger\circ}$ & \textminus{}0.63 [\textminus{}0.90, \textminus{}0.37] & 1.00 \\
-Noun-specific, random order, unseen$^{\dagger\circ}$ & 0.005 & .46 \\
-Pythia noun-specific index rises with size$^{\circ}$ & $\rho = $ \textminus{}.42 & 1.00 \\
-Pythia noun-specific index above zero$^{\circ}$ & \textminus{}0.15 & 1.00 \\
-Pythia index rises over training & $\rho = $ \textminus{}.34 & 1.00 \\
-BabyLM baselines above zero & 0.47; 0.37 & .52; .12 \\
+Fixed shape & always one shape, its own shape $s^*$ \\
+Uninformative & a new shape every time, drawn from the corpus's shapes \\
+Shape-absent & only the sixth frame, which names no shape \\
+Unseen & none (in the vocabulary only) \\
 \bottomrule
 \end{tabular}
-\caption{Main registered tests, all with unseen test tokens. Estimates are seed-level differences, or the index itself where no contrast is named; fresh text unless marked $^{\dagger}$ (fixed files). $^{\circ}$: registered after related results were known; the others were registered before the related models were trained or scored, or before the transcripts were read. Holm $p$ is the test named in the registration, corrected within it: the seed-level test for fresh text, a mixed model or Welch test for fixed files, and for pretrained models the tests in Appendix~\ref{app:K}. Before a loader error was corrected, two fixed-file verdicts differed (Appendix~\ref{app:A}). Units are nats except for $B$ and $\rho$. Appendix~\ref{app:A} gives all 32 registered hypotheses.}
-\label{tab:main}
+\caption{Histories of the familiarity nouns. Each exposed history has four exposure levels (10 to 10,000).}
+\label{tab:design}
 \end{table}
 
+\textbf{Exact exposure.} Each corpus holds exactly as many 128-token windows as training reads, and a fixed permutation says when each is read. Each familiarity sentence lies wholly inside one window, at most one per window and only between runs, and a noun's exposures are evenly spaced from 5\% to 95\% of training. A checker re-read every corpus and verified each exposure, window and frame; the corpora matched checksums recorded before training. We trained 90 models: three sizes, ten seeds, three base corpora, with input and output embeddings untied in code.
+
+\textbf{Measures.} Each item gives one context sentence, \emph{A \textit{noun} is a $s$ \textit{colour} \textit{texture} thing}, then \emph{A \textit{noun} is a}, and reads the log probability $L$ of each of the ten shapes at the next position. \textbf{Carry} is $L(s)$ minus the mean of $L$ over shapes other than $s$ and $s^*$; \textbf{stored preference} is $L(s^*)$ minus the same mean; \textbf{knowledge} is $L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence. The context shape is never $s^*$, and each of the other nine shapes appears four times per noun. Unseen nouns are also scored with an embedding typical of trained nouns, as in the earlier study.
+
+\textbf{Hypotheses and analysis.} In grouped Regular models we predicted that carry would fall faster with exposure for fixed-shape than for shape-absent nouns (H30); tested whether shape-absent nouns at 1,000 and 10,000 exposures differ in carry from unseen nouns with a typical embedding, with an equivalence test against $\pm$1 nat (H31); and predicted that stored preference rises with exposure (H32). A manipulation check (M1) required knowledge of at least 0.2 nats at 1,000 exposures. Head hypotheses (H33 to H35) are in Section~\ref{sec:heads}. The seed is the unit of replication: we average cell means over the three sizes within each seed and test over ten seeds, with \citet{holm1979} correction across H30 to H35. A hypothesis is supported only if its direction also holds at two of the three sizes. A one-seed pilot, never used in a test, set the number of nouns per cell; its expected power for a 1-nat difference was 0.57, below the planned 0.8 (Appendix~\ref{app:M}).
+
+\section{Results}\label{sec:results}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_carry.pdf}
+\caption{Carry of the context's shape by exposure and noun history (nats; means over ten seeds of size-averaged cell means, 95\% intervals). Diamond: unseen nouns. Dashed line: unseen nouns with an embedding typical of trained nouns.}
+\label{fig:carry}
+\end{figure*}
+
+\textbf{The manipulation worked.} Fixed-shape nouns learned their shape: knowledge at 1,000 exposures was 9.53, 8.61 and 8.26 nats in Regular grouped, Regular random and Reassigned grouped models, rising with exposure in all three (M1). In grouped Regular models, nouns with an uninformative or no shape learned none (within 0.2 nats; Table~\ref{tab:M3}).
+
+\textbf{Familiarity switched carry off.} In grouped Regular models, carry was 4.53 nats [3.54,~5.52] for unseen nouns and had nearly gone by 100 exposures for every history (Figure~\ref{fig:carry}, left; Table~\ref{tab:M2}). At 10 exposures it was 3.6 to 4.5 nats; at 100, 0.16 to 0.86; from 1,000 on, within 0.4 nats of zero. Grouping, not familiarity, created the carry: in random order carry was near zero for every noun, and grouped models carried more than random ones for unseen nouns (4.68 [3.71,~5.65]; R1, replicating the earlier study).
+
+\textbf{Stored knowledge did not add to it.} Carry did not fall faster for fixed-shape nouns than for shape-absent ones. The slope difference was 0.16 nats per decade [0.01,~0.30], in the opposite direction to H30 at every size, so H30 was not supported. Familiar shape-absent nouns, which never saw a shape, carried 0.33 nats [0.13,~0.52] more than unseen nouns with a typical embedding (H31: Holm $p=.013$, positive at all three sizes), and the two were equivalent within the registered 1-nat bound (TOST $p<.001$). Stored preference rose by 2.97 nats per decade of exposure [2.79,~3.16] for fixed-shape nouns (H32, Holm $p<.001$), reaching 10.71 nats at 10,000 exposures; it changed nothing about carry. In these models, then, a noun stopped taking its shape from the context once it was familiar, whatever it had learned about that shape, and a familiar noun behaved almost exactly like an unseen noun given a typical embedding.
+
+\textbf{When the context was useful, history mattered (exploratory).} In Reassigned training a trained kind's current shape can come only from the context, and trained kinds carried it strongly (9.98 nats). Here familiarity reduced carry but did not switch it off (Figure~\ref{fig:carry}, middle). Shape-absent nouns kept 2.04 and 1.86 nats at 1,000 and 10,000 exposures, again close to unseen nouns with a typical embedding (difference 0.38 [\textminus{}0.44,~1.19]). Nouns whose history said something about shape kept less: fixed-shape nouns carried 1.31 nats [0.89,~1.72] less than shape-absent nouns, and uninformative nouns, whose shape had changed in every sentence, 0.42 [0.36,~0.47] less again (1,000 and 10,000 exposures pooled). So familiarity set a baseline equal to that of a typical embedding, and a noun's own history moved carry below it only when the baseline was above zero. In grouped Regular models the baseline was already near zero, which leaves H30 little room; we return to this in the limitations.
+
+\subsection{Heads}\label{sec:heads}
+We registered a search for heads that carry the shape. In each model, before any familiarity item was scored, we chose the $k$ heads ($k$ = 2, 4 or 6 by size) with the highest product of a prefix-matching score and a copying score on repeated random sequences of the language's words, the signature of induction heads \citep{olsson2022}, and replaced their output by its mean over ordinary sentences at the position that predicts the shape. H33 predicted that this would remove more than half of the carry of unseen nouns in grouped Regular models, and more than ablating random heads of the same layers; H34 that it would reduce trained kinds' carry in Reassigned models; and H35, given H33, that the heads' attention to the context's shape would fall faster with exposure for fixed-shape nouns.
+
+H33 was not supported. Every candidate was in the first layer, and no head in any model showed prefix matching above the level of uniform attention (highest score 0.043 against about 0.027; Table~\ref{tab:M4}), so these are at most copying heads, not induction heads. Ablating them removed 0.22 [0.07,~0.36] of unseen carry, against the registered 0.5, and no more than random heads did (difference 0.64 [\textminus{}0.43,~1.71]). The result varied with size: ablation removed all unseen carry in the 3.4M models (8.10 to \textminus{}0.42 nats, random heads 5.26) but raised it in the 11.0M models (2.98 to 5.80). H34 was supported: in Reassigned models ablation cut trained kinds' carry by 7.41 nats [6.02,~8.80]. But random heads cut it as much (to 2.5 to 3.4 nats from about 10), so the effect is not specific to the candidates. H35 was not tested. The candidates' attention to the context's shape fell with familiarity in the way carry did (Table~\ref{tab:M5}; exploratory): in grouped Regular models from 0.155 for unseen nouns to about 0.07 from 1,000 exposures for every history, and in Reassigned models it stayed highest for shape-absent nouns. First-layer attention to the shape word therefore tracks carry (Figure~\ref{fig:heads}), but our registered ablations do not show that any specific heads produce it.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_heads.pdf}
+\caption{Left: carry intact, with the candidate heads mean-ablated, and with random heads ablated (nats; mean over ten seeds and three sizes, 95\% intervals over seeds). Right: the candidates' attention from the position that predicts the shape to the context's shape word, grouped Regular models (exploratory).}
+\label{fig:heads}
+\end{figure*}
+
 \section{Discussion}
-Arranging the same sentences differently changed what small transformers expected of the next mention of a kind, and the direction of that change held whether the test noun was unseen, typical-looking or trained. Grouping helped only when kinds had a fixed feature, and runs of different objects taught the fixed feature more selectively than the same object described again, as the corpora warrant. How much the models took from the context depended on the noun. They carried the context's shape forward for nouns they could not place, and for trained nouns only where the noun could not predict the shape, and then only after the same noun. We identify the conditions that produce these behaviours, not their mechanism; carrying a word forward is the kind of behaviour attributed to induction heads \citep{olsson2022}, but we did not examine attention. People show related patterns: blocked study helps learners find what members of a category share \citep{carvalho2014}, and varied exemplars taught toddlers more than near-identical ones \citep{perry2010}. We note the parallel without taking our results as evidence about how children learn.
+In these models a noun stopped taking its shape from the context once it was familiar, and what it had stored about that shape did not decide when. A familiar noun that never appeared with a shape behaved like an unseen noun given an ordinary-looking embedding. This locates the large carry measured with unseen nouns in the earlier study: it was carry for a token unlike any trained noun, and it ends when the token's representation becomes ordinary, whether that comes from training on the noun or from giving it a typical embedding. It refines the trade-off between in-context and in-weights learning \citep{chan2022,chan2025}: for single words in our language, what switched in-context use off was familiarity, not a stored answer competing with the context.
 
-Two methodological points follow. First, probes built on unseen tokens measure arrangement and the representation of the test noun together. Here a registered effect of moderate clustering, and most of the size of every effect, depended on the test noun being unlike any trained noun; in a study of mutual exclusivity, nonce-token effects likewise reflected embedding similarity \citep{cacioli2026me}. Studies that use nonce words should vary how they are represented. Second, small-scale experiments on data should report how many passes they make over fixed text; arranging each pass afresh removes memorisation at no cost in content.
+Stored knowledge mattered only when familiarity left room. In Reassigned training, where context was useful for familiar nouns, a familiar noun kept a moderate carry, and its own history lowered it: a stored shape competed with the context, and a shape that had changed in every sentence taught the model not to rely on the context for that noun. That second result is a noun-specific lesson about how a feature varies, a small version of what hierarchical models call an overhypothesis \citep{kemp2007}; we note it as exploratory.
 
-We also measured the same clustering statistic in natural corpora: object labels were more clustered in speech to young children than in adult conversation or written text, though nearly half of the nearby repetitions in speech to children returned to the same object (Appendix~\ref{app:J}). Pythia models gained a shape-over-colour expectation with size, but none preferred shape over texture, and evidence that they tied it to the noun was weak (Appendix~\ref{app:K}). These are descriptive comparisons, not tests.
+For work with nonce words, the lesson is that an unseen token is not a neutral stand-in for a new word. Its untrained or unusual representation can carry much of an effect, and effects should be checked with representations that look familiar. For mechanistic work, an induction-head signature did not find the components that carry a kind's feature in our models; the carry appears to depend on first-layer attention to feature words, but establishing that would need a different, causal search.
 
 \section*{Limitations}
-The artificial language has 32 kinds, three dimensions and five frames that name shape more often than colour or texture; conclusions rest on comparisons between corpora that share the frames. The models are small (3.4M to 25.6M parameters), trained with one recipe and five seeds per condition, and we do not know how the effects scale. Unseen tokens had untrained input embeddings because an intended tie between input and output embeddings was lost; typical tokens are one choice of a familiar-looking embedding, and the comparison across kinds of noun was made after the registrations. Trained-noun items never offer the noun's own shape, so they show that the context's shape was not carried forward, not how the stored shape is used. The expectation that shape changes, in random order and in No stable feature corpora, is unexplained. Colour stable corpora, half of the levels of clustering and several controls exist only as fixed files, which their models memorised; fixed and fresh text differ in both the number of passes and the variety of windows. The registrations were made in stages, several after earlier results were known, and a loader error, corrected before the final analyses, had changed two verdicts. All corpora are English.
+The language is artificial, with 32 kinds, three dimensions and six frames; the models are small (3.4M to 25.6M parameters) and trained with one recipe. We do not know whether the familiarity effect holds in pretrained models. In grouped Regular models carry of familiar nouns was near zero from 100 exposures, so H30 had little room to show an effect of stored knowledge; the evidence that knowledge matters when there is room comes from exploratory Reassigned results. Exposure levels were spaced by factors of ten, and carry fell between 10 and 100 exposures, which we did not sample. Power for a 1-nat difference was below plan (0.57). Unseen nouns in the earlier study had untrained embeddings because an embedding tie was lost; in the familiarity study embeddings were untied by design. The head search used one registered signature and mean ablation; other methods might find components we missed. The earlier experiments were registered in stages, some after related results were known (Appendix~\ref{app:A}); the familiarity study was registered before any corpus was built, with details fixed in a dated addendum before data and a pilot that set only the number of nouns per cell.
 
 \section*{Ethics statement}
 The corpus analysis in Appendix~\ref{app:J} is a secondary analysis of archived, de-identified transcripts (CHILDES, CABank) used under their terms; no data were collected from people, and no transcript excerpts are reproduced. Code, corpora, results and all trained models will be released; anonymised copies are provided as supplementary material.
 
 \section*{Use of AI assistants}
-An AI assistant (Claude, Anthropic) was used to help design analyses, write code, draft and edit text and check citations, and as the second coder in a consistency check of the corpus coding. The authors are responsible for all content, including the accuracy of every citation.
+An AI assistant (Claude, Anthropic) was used to help design analyses, write code, review code and design, draft and edit text and check citations, and as the second coder in a consistency check of the corpus coding. The authors are responsible for all content, including the accuracy of every citation.
 
 \bibliography{refs}
 
@@ -232,5 +166,6 @@ An AI assistant (Claude, Anthropic) was used to help design analyses, write code
 \onecolumn
 \input{appendix}
 \input{appendix_recut}
+\input{appendix_a9}
 
 \end{document}

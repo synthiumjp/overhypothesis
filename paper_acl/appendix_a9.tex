@@ -1,0 +1,115 @@
+\FloatBarrier
+\section{The familiarity study (Amendment 9)}\label{app:M}
+\setcounter{table}{0}\renewcommand{\thetable}{M\arabic{table}}
+\setcounter{figure}{0}\renewcommand{\thefigure}{M\arabic{figure}}
+\textbf{Registration.} The design, hypotheses and analysis were registered before any corpus was built (Amendment 9). An addendum, written the same day before any corpus was built, fixed details the registration left open (36 context draws per noun; uniform frame proportions; exposures placed at evenly spaced read positions from 5\% to 95\% of training, after warm-up for every size; random in-window position; the 40 nonce nouns; how the pilot fixes the number of nouns per cell; how a hypothesis counts as supported; the gate for H35; and that heads without prefix matching are described as copying heads). A pilot (one seed, 3.4M models, never used in a test) set three nouns per cell; with the registered rule the expected power for a 1-nat difference was 0.57, below the planned 0.8, which we report as a shortfall. Corpus checksums were recorded before training and matched on the training machine; a checker verified every exposure, window and frame from the tokens. All models were trained on one machine.
+
+\textbf{Design.} In every model, 40 nonce nouns fill 13 cells (three per cell, four unseen): fixed shape, uninformative shape (a new shape in every sentence, drawn from the corpus's shape distribution) and shape-absent (a sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, also used by trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned grouped; sizes 3.4M, 11.0M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ is the mean over shapes other than $s$ and $s^*$.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Registered tests of the familiarity study (Regular grouped models unless stated; seed-level estimates over ten seeds, sizes averaged within seed; nats, proportions for H33a, attention probability for H35). Holm $p$ is adjusted over H30 to H34; H35 was not entered because H33(a) failed. Sizes: number of the three model sizes with the registered direction.}
+\label{tab:M1}
+\begin{tabular}{@{}lp{0.42\textwidth}rrrcl@{}}
+\toprule
+& Test & Estimate & 95\% CI & Holm $p$ & Sizes & Verdict \\
+\midrule
+M1 & Knowledge at 1,000 exposures, fixed shape (each corpus) & 9.53; 8.61; 8.26 & & & & Passed \\
+H30 & Carry falls faster with exposure for fixed-shape than shape-absent nouns (slope difference) & 0.16 & [0.01, 0.30] & 1.000 & 0 & Not supported \\
+H31 & Shape-absent (1k and 10k) minus unseen with typical embedding (two-sided; TOST $\pm$1) & 0.33 & [0.13, 0.52] & .013 & 3 & Different, and equivalent within 1 nat \\
+H32 & Stored preference rises with exposure, fixed shape (slope) & 2.97 & [2.79, 3.16] & $<$.001 & 3 & Supported \\
+H33a & Ablating candidates removes more than half of unseen carry (proportion) & 0.22 & [0.07, 0.36] & 1.000 & 2 & Not supported \\
+H33b & Random heads minus candidates, unseen carry after ablation & 0.64 & [\textminus{}0.43, 1.71] & 1.000 & 2 & Not supported \\
+H34 & Reassigned: trained-kind carry intact minus candidates ablated & 7.41 & [6.02, 8.80] & $<$.001 & 3 & Supported \\
+H35 & Attention slope difference, fixed shape minus shape-absent & 0.002 & [0.000, 0.005] & -- & 2 & Not tested (gate) \\
+R1 & Replication: grouped minus random Regular, unseen carry & 4.68 & [3.71, 5.65] & $<$.001$^a$ & 3 & Replicated \\
+\bottomrule
+\end{tabular}
+\\[2pt]{\footnotesize $^a$ Outside the Holm family (replication); unadjusted one-sided $p$. M1 values: Regular grouped; Regular random; Reassigned grouped (all with slopes above zero, $p<.001$). H31 TOST $p<.001$.}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Carry (nats) by noun type and exposure, mean of seed values (sizes averaged). Unseen: never in training; typical: the unseen nouns with a typical embedding; trained: the 32 base kinds.}
+\label{tab:M2}
+\begin{tabular}{@{}lrrrlrrrr@{}}
+\toprule
+Corpus & Unseen & Typical & Trained & Familiar nouns & 10 & 100 & 1k & 10k \\
+\midrule
+Regular grouped & 4.53 & \textminus{}0.33 & \textminus{}0.02 & Fixed shape & 3.70 & 0.30 & \textminus{}0.30 & \textminus{}0.37 \\
+ & & & & Uninformative & 3.57 & 0.16 & 0.00 & \textminus{}0.01 \\
+ & & & & Shape-absent & 4.47 & 0.86 & 0.05 & \textminus{}0.05 \\
+\addlinespace
+Reassigned grouped & 6.85 & 1.57 & 9.98 & Fixed shape & 6.40 & 2.13 & 0.70 & 0.60 \\
+ & & & & Uninformative & 6.34 & 2.53 & 0.30 & 0.15 \\
+ & & & & Shape-absent & 6.97 & 4.89 & 2.04 & 1.86 \\
+\addlinespace
+Regular random & \textminus{}0.15 & \textminus{}0.72 & \textminus{}0.10 & Fixed shape & \textminus{}0.13 & \textminus{}0.13 & \textminus{}0.06 & \textminus{}0.05 \\
+ & & & & Uninformative & \textminus{}0.10 & \textminus{}0.03 & \textminus{}0.02 & \textminus{}0.01 \\
+ & & & & Shape-absent & \textminus{}0.19 & \textminus{}0.09 & \textminus{}0.07 & \textminus{}0.05 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Knowledge and stored preference (nats) in Regular grouped models, mean of seed values.}
+\label{tab:M3}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Type & Measure & 10 & 100 & 1k & 10k \\
+\midrule
+Fixed shape & Knowledge & 1.59 & 8.02 & 9.53 & 10.61 \\
+ & Stored & 1.41 & 7.74 & 9.56 & 10.71 \\
+Uninformative & Knowledge & 0.04 & \textminus{}0.03 & 0.00 & 0.03 \\
+ & Stored & 0.01 & \textminus{}0.03 & \textminus{}0.01 & 0.03 \\
+Shape-absent & Knowledge & \textminus{}0.14 & \textminus{}0.17 & 0.12 & 0.08 \\
+ & Stored & 0.11 & \textminus{}0.16 & 0.10 & 0.06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in every model all were in layer 0. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Carry of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen carry predicted by the candidates' direct paths.}
+\label{tab:M4}
+\begin{tabular}{@{}llrrrrrrrrr@{}}
+\toprule
+ & & & & \multicolumn{3}{c}{Unseen carry} & \multicolumn{3}{c}{Trained carry} & \\
+\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Corpus & Size & $k$ & Prefix & Intact & Cand. & Random & Intact & Cand. & Random & DLA \\
+\midrule
+Regular grouped & 3.4M & 2 & 0.028 & 8.10 & \textminus{}0.42 & 5.26 & \textminus{}0.25 & \textminus{}0.85 & \textminus{}0.71 & \textminus{}0.04 \\
+ & 11.0M & 4 & 0.037 & 2.98 & 5.80 & 1.95 & 0.08 & 0.17 & \textminus{}0.40 & \textminus{}0.01 \\
+ & 25.6M & 6 & 0.037 & 2.50 & 0.73 & 0.81 & 0.12 & \textminus{}0.60 & \textminus{}0.18 & \textminus{}0.01 \\
+Reassigned grouped & 3.4M & 2 & 0.029 & 6.48 & 4.22 & 3.27 & 9.59 & 2.83 & 3.37 & \textminus{}0.12 \\
+ & 11.0M & 4 & 0.032 & 7.21 & 6.56 & 4.82 & 10.10 & 5.02 & 2.45 & \textminus{}0.03 \\
+ & 25.6M & 6 & 0.031 & 6.88 & 0.26 & 3.26 & 10.26 & \textminus{}0.11 & 3.39 & \textminus{}0.01 \\
+Regular random & 3.4M & 2 & 0.028 & \textminus{}0.24 & \textminus{}0.09 & \textminus{}0.34 & \textminus{}0.08 & 0.00 & \textminus{}0.11 & \textminus{}0.01 \\
+ & 11.0M & 4 & 0.030 & 0.04 & 0.25 & 0.03 & \textminus{}0.06 & 0.04 & \textminus{}0.11 & \textminus{}0.01 \\
+ & 25.6M & 6 & 0.030 & \textminus{}0.25 & 0.00 & \textminus{}0.37 & \textminus{}0.18 & \textminus{}0.10 & \textminus{}0.27 & \textminus{}0.01 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Attention of the candidate heads from the position that predicts the shape to the context's shape word (mean over candidates; mean of seed values; exploratory).}
+\label{tab:M5}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Corpus & Type & Unseen & 10 & 100 & 1k & 10k \\
+\midrule
+Regular grouped & Fixed shape & 0.155 & 0.144 & 0.082 & 0.071 & 0.071 \\
+ & Uninformative &  & 0.147 & 0.088 & 0.076 & 0.074 \\
+ & Shape-absent &  & 0.154 & 0.097 & 0.077 & 0.075 \\
+Reassigned grouped & Fixed shape & 0.219 & 0.217 & 0.108 & 0.055 & 0.059 \\
+ & Uninformative &  & 0.217 & 0.157 & 0.071 & 0.070 \\
+ & Shape-absent &  & 0.219 & 0.170 & 0.115 & 0.139 \\
+Regular random & Fixed shape & 0.089 & 0.088 & 0.076 & 0.067 & 0.067 \\
+ & Uninformative &  & 0.087 & 0.082 & 0.075 & 0.073 \\
+ & Shape-absent &  & 0.089 & 0.084 & 0.075 & 0.073 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

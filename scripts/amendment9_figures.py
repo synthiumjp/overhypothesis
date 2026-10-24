@@ -168,21 +168,33 @@ def tab_cells(sc_c, sc_s, sc_k, out):
 
 
 def fig_formation(path, out):
+    """Carry against the exposures a noun had received by each saved checkpoint (exploratory).
+    Exposures are spread evenly from 5% to 95% of training, so a noun with E exposures has had
+    about E * (t - 0.05) / 0.9 by fraction t of training."""
     f = pd.read_csv(path)
-    f = f[f.seed.isin(CONF_SEEDS) & (f.emb == "original")].copy()
+    f = f[f.seed.isin(CONF_SEEDS) & (f.emb == "original") & (f.type.isin(["consistent", "uninformative", "absent"]))].copy()
     f["step"] = f.label.str.extract(r"(\d+)").astype(float)
-    f["frac"] = f.groupby("size")["step"].transform(lambda x: x / x.max())
-    fig, axs = plt.subplots(1, 3, figsize=(6.3, 2.0), sharey=True)
-    for ax, (b, lab) in zip(axs, BASES):
-        for typ, c, m in (("unseen", INK, "D"), ("absent", COL["absent"], "^"), ("consistent", COL["consistent"], "o")):
-            d = f[(f.base == b) & (f.type == typ) & ((f.exposures == 10000) | (typ == "unseen"))]
-            g = d.groupby(["seed", "frac"])["carry"].mean().reset_index().groupby("frac")["carry"]
-            ax.plot(g.mean().index, g.mean().values, color=c, marker=m, markersize=3.5,
-                    label={"unseen": "Unseen", "absent": "Shape-absent, 10k", "consistent": "Fixed shape, 10k"}[typ])
+    f["frac"] = f.step / f["size"].map({"tiny": 5000, "small": 8000, "medium": 10000})
+    f["cum"] = f.exposures * np.clip((f.frac - 0.05) / 0.9, 0, 1)
+    edges = [0.5, 3, 10, 30, 100, 300, 1000, 3000, 10001]
+    mids = [np.sqrt(a * b) for a, b in zip(edges[:-1], edges[1:])]
+    f["bin"] = pd.cut(f.cum, edges, labels=range(len(mids)))
+    fig, axs = plt.subplots(1, 2, figsize=(5.2, 2.1), sharey=True)
+    for ax, (b, lab) in zip(axs, BASES[:2]):
+        d = f[f.base == b]
+        for typ in ("consistent", "uninformative", "absent"):
+            g = (d[d.type == typ].groupby(["size", "seed", "bin"], observed=True).carry.mean()
+                   .groupby(["seed", "bin"], observed=True).mean())
+            m = [ci(g.xs(k, level="bin")) if k in g.index.get_level_values("bin") else (np.nan, 0)
+                 for k in range(len(mids))]
+            ax.errorbar(mids, [a for a, _ in m], yerr=[e for _, e in m], color=COL[typ], marker=MARK[typ],
+                        markersize=4, capsize=2, elinewidth=0.8, markeredgecolor="white", markeredgewidth=0.6,
+                        label=NAME[typ])
+        ax.set_xscale("log")
         ax.axhline(0, color=INK2, linewidth=0.5)
-        ax.set_title(lab, fontsize=8, color=INK)
-        ax.set_xlabel("Fraction of training")
         ax.grid(axis="y", color=GRID, linewidth=0.5)
+        ax.set_title(lab, fontsize=8, color=INK)
+        ax.set_xlabel("Exposures so far")
     axs[0].set_ylabel("Carry (nats)")
     h, lab = axs[0].get_legend_handles_labels()
     fig.legend(h, lab, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, -0.06))

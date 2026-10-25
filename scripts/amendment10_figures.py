@@ -129,11 +129,46 @@ def cell_table(sc, out):
     Path(out).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def fig_formation(path, out):
+    """Copy score over training for nouns with 1,000 exposures (exploratory). Exposure and training time move
+    together: such a noun has had about 1,000 x (t - 0.05) / 0.9 sentences by fraction t of training."""
+    f = pd.read_csv(path)
+    f = f[(f.emb == "original") & ((f.exposures == 1000) | (f.type == "unseen"))].copy()
+    f["step"] = f.ckpt.str.extract(r"step(\d+)")[0].astype(int)
+    f["frac"] = f.step / f["size"].map({"tiny": 5000, "small": 8000, "medium": 10000})
+    f["fb"] = (f.frac * 10).round() / 10
+    fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.3), sharey=True)
+    for ax, (base, title) in zip(axs, BASES):
+        d = f[f.base == base]
+        for h in ("fixed", "absent", "rotating"):
+            for pres, ls, fill in (("run", "-", True), ("single", (0, (2, 1.5)), False)):
+                g = (d[d.type == f"{h}_{pres}"].groupby(["size", "seed", "fb"]).carry.mean()
+                     .groupby(["seed", "fb"]).mean())
+                xs = sorted(g.index.get_level_values("fb").unique())
+                m = [ci(g.xs(x, level="fb")) for x in xs]
+                ax.errorbar(xs, [v for v, _ in m], yerr=[e for _, e in m], color=COL[h], marker=MARK[h], ls=ls,
+                            markersize=3.5, capsize=1.5, elinewidth=0.7, mfc=COL[h] if fill else "white", mec=COL[h],
+                            mew=0.8, label=f"{NAME[h]}, {PRES[pres]}")
+        g = d[d.type == "unseen"].groupby(["size", "seed", "fb"]).carry.mean().groupby(["seed", "fb"]).mean()
+        xs = sorted(g.index.get_level_values("fb").unique())
+        ax.plot(xs, [g.xs(x, level="fb").mean() for x in xs], color=INK2, lw=0.9, label="Unseen")
+        ax.set_title(title.split(" (")[0], fontsize=8, color=INK)
+        ax.set_xlabel("Fraction of training")
+        ax.grid(axis="y", color=GRID, linewidth=0.5)
+        ax.set_axisbelow(True)
+    axs[0].set_ylabel("Copy score for shape (nats)")
+    h, l = axs[0].get_legend_handles_labels()
+    fig.legend(h, l, frameon=False, fontsize=6.6, ncol=1, loc="center left", bbox_to_anchor=(0.80, 0.55))
+    fig.tight_layout(rect=(0, 0, 0.80, 1), w_pad=1.5)
+    fig.savefig(out / "fig_a10_formation.pdf", bbox_inches="tight")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--scores_a", default="results/amendment10/scores_a.csv")
     ap.add_argument("--pythia", default="results/amendment10/pythia_scores.csv")
     ap.add_argument("--out_dir", default="paper_acl/figures")
+    ap.add_argument("--formation", default="results/amendment10/scores_formation_a.csv")
     a = ap.parse_args()
     out = Path(a.out_dir)
     s = pd.read_csv(a.scores_a)
@@ -158,6 +193,8 @@ def main():
     fig.tight_layout()
     fig.savefig(out / "fig_pythia.pdf", bbox_inches="tight")
     cell_table(sc, out / "tab_a10_cells.tex")
+    if a.formation and Path(a.formation).exists():
+        fig_formation(a.formation, out)
     print("written", out / "fig_a10.pdf", out / "tab_a10_cells.tex")
 
 

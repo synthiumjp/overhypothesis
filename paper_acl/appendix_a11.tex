@@ -1,0 +1,48 @@
+\FloatBarrier
+\section{Replication, single-history corpora and a larger model (Amendment 11)}\label{app:O}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+\textbf{Registration.} Amendment 11 is Experiment 3. It was registered (osf.io/qj9hb) after all results of Experiment 2 and its exploratory analyses, after its corpora were built and checksummed, and before any of its models was trained, to test the exploratory findings of Experiment 2 on new models. Part A repeated the stable-shape (Regular grouped) design of Experiment 2 with ten new seeds at 3.4M, 10.9M and 25.6M parameters (30 models). Part B trained ten models of 85.6M parameters (12 layers, 12 heads, width 768) on the same corpora as the 25.6M models. Part C trained five seeds at each of the three smaller sizes on corpora in which all 36 familiar nouns had changing shapes (pure\_changing) or all had fixed shapes (pure\_fixed), nine nouns per cell, with the same exposures and share of text as the mixed design (30 models). The assignment of noun forms to cells follows the Experiment 2 rule by seed position; model weights, reading order and placement are new. All 40 corpora passed a checker and matched checksums recorded before training. Registered rules for failed models (non-finite loss, or a final loss more than 0.5 nats above the median of its size and design) and for complete seeds were applied; no model failed. Part A used Holm correction over H50, H51, H52 (difference), H53, H55 and H56, with direction required at two of three sizes; equivalence tests used two one-sided tests against $\pm$0.3 nats. H55 is a seed-level test: within each model, the copy scores of the 18 familiar nouns at 1,000 exposures were regressed on the row's cosine with its initial value, its relative distance from the trained kinds' mean row, its norm and a changing-burst indicator, and the indicator's coefficient was averaged over sizes within seed. There were no deviations.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Registered tests of Experiment 3 (seed-level estimates, nats; sizes averaged within seed; t-based 95\% intervals). Holm $p$: adjusted over the six Part A tests marked $^h$; other $p$ values are unadjusted. Sizes: number of the three sizes with the estimate's direction.}
+\label{tab:O1}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{0.36\textwidth}rlrc>{\raggedright\arraybackslash}p{0.16\textwidth}@{}}
+\toprule
+& Test & Estimate & 95\% CI & $p$ & Sizes & Reading \\
+\midrule
+M3 & Unseen nouns' copy score minus 1 nat (manipulation check; one-sided) & 5.88 & [5.31, 6.45] & $<$.001 &  & Passed \\
+H50$^h$ & At 1,000: changing-shape bursts minus fixed-shape bursts (one-sided; primary) & 3.68 & [2.99, 4.37] & $<$.001 & 3 & Supported \\
+H51$^h$ & Changing shape: bursts minus spaced, pooled (one-sided) & 4.14 & [3.60, 4.69] & $<$.001 & 3 & Supported \\
+H52$^h$ & Spaced: fixed minus changing shape, pooled (two-sided; TOST $\pm$0.3) & \textminus{}0.25 & [\textminus{}0.35, \textminus{}0.15] & $<$.001 & 3 & Different (fixed lower); not equivalent \\
+H53$^h$ & Fixed-shape spaced nouns: $L(s^*) - L(s)$, pooled (one-sided) & 5.84 & [5.57, 6.11] & $<$.001 & 3 & Supported \\
+H54 & At 1,000: noun-specific copy score of changing-shape bursts (TOST $\pm$0.3) & 0.08 & [0.02, 0.14] & .015 &  & Within $\pm$0.3 \\
+H55$^h$ & At 1,000: changing-shape bursts minus row-geometry prediction (one-sided) & 3.67 & [3.03, 4.32] & $<$.001 & 3 & Supported \\
+H56$^h$ & At 1,000: queried-noun minus context-noun effect of changing vs fixed bursts (one-sided) & 1.25 & [0.94, 1.56] & $<$.001 & 3 & Supported \\
+M3B & 85.6M models: unseen copy score minus 1 nat (one-sided) & -- & -- & -- & & Pending \\
+H57 & 85.6M models, at 1,000: changing-shape bursts minus fixed-shape bursts (one-sided) & -- & -- & -- & & Pending \\
+M3C & Changing-only corpora: unseen copy score minus 1 nat & 5.16 & [3.25, 7.08] & $<$.001 &  & Passed \\
+M3C & Fixed-only corpora: unseen copy score minus 1 nat & 3.87 & [2.84, 4.90] & $<$.001 &  & Passed \\
+H58 & At 1,000: changing-shape bursts (changing-only) minus fixed-shape bursts (fixed-only) (one-sided) & 5.51 & [4.24, 6.78] & $<$.001 & 3 & Supported \\
+H59 & At 1,000: changing-shape bursts, changing-only minus mixed corpora (two-sided; TOST $\pm$0.3) & 0.24 & [\textminus{}1.44, 1.92] & .712 &  & Inconclusive \\
+H59 & At 1,000: fixed-shape bursts, fixed-only minus mixed corpora (two-sided; TOST $\pm$0.3) & \textminus{}1.00 & [\textminus{}1.20, \textminus{}0.80] & $<$.001 &  & Lower in fixed-only corpora \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\textwidth}{\footnotesize H52: TOST $p$ = 0.14; 90\% interval [\textminus{}0.33, \textminus{}0.17]. H54: TOST $p$ $<$.001. H55, pooled noun-level regression with size and seed effects and seed-clustered errors: 3.82 [3.18, 4.46]; without no-shape nouns: 3.66 [3.05, 4.28]. By size: 6.36, 2.47, 2.19.}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Experiment 3: copy score by corpus design, history and exposures (means over seeds by size, and seed-level mean with 95\% interval, sizes averaged). Mixed: ten seeds; single-history designs: five seeds.}
+\label{tab:O2}
+\setlength{\tabcolsep}{3pt}
+\input{figures/tab_a11_cells.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Experiment 3, mixed design, 1,000 exposures: copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); means over ten seeds, sizes averaged (24 items per pair and model).}
+\label{tab:O3}
+\input{figures/tab_a11_crossed.tex}
+\end{table}
+

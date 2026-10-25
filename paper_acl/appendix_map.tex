@@ -10,16 +10,19 @@
 \label{tab:terms}
 \begin{tabular}{@{}ll@{}}
 \toprule
-Main text & Registrations and Appendices~\ref{app:M} and~\ref{app:N} \\
+Main text & Registrations and Appendices~\ref{app:M}, \ref{app:N} and~\ref{app:O} \\
 \midrule
 Experiment 1 & Amendment 9 (the familiarity study) \\
 Experiment 2 & Amendment 10, Part A \\
+Experiment 3 & Amendment 11 (Parts A, B and C) \\
+Single-history corpora (changing-only, fixed-only) & pure\_changing, pure\_fixed \\
+Mixed corpora (Experiment 3) & Regular grouped, mixed design \\
 Row analysis (Section~\ref{sec:rows}) & Amendment 10, Part C \\
 Pretrained models (Section~\ref{sec:pythia}) & Amendment 10, Part B \\
 Stable-shape corpora & Regular (grouped) corpora \\
 Shifting-shape corpora & Reassigned (grouped) corpora \\
 Spaced, bursts & singles, runs \\
-Changing shape & uninformative (Experiment 1), rotating (Experiment 2) \\
+Changing shape & uninformative (Experiment 1), rotating (Experiments 2 and 3) \\
 No shape & shape-absent \\
 Copy score & carry \\
 Typical embedding & typical row \\
@@ -28,11 +31,11 @@ Random embedding of untrained scale & atypical\_init \\
 \end{tabular}
 \end{table}
 
-\textbf{Hypotheses.} Table~\ref{tab:hyp} lists every registered hypothesis of Experiments 1 and 2, the row analysis and the pretrained test, the claim of the main text it bears on, and its outcome under the registered decision rules (Holm correction within each experiment; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Amendment 9 (about one seventh of the 7.6-nat fall from unseen to typical embeddings in the earlier experiments); in Amendment 10, $\pm$0.3 nats for H40, H41 and H44 (the smallest history effect seen in Amendment 9), $\pm$1 nat for the check K1, and the larger of 0.3 nats and one fifth of the pilot effect for H48. The hypotheses of the earlier experiments are in Appendix~\ref{app:A}.
+\textbf{Hypotheses.} Table~\ref{tab:hyp} lists every registered hypothesis of Experiments 1, 2 and 3, the row analysis and the pretrained test, the claim of the main text it bears on, and its outcome under the registered decision rules (Holm correction within each experiment; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Amendment 9 (about one seventh of the 7.6-nat fall from unseen to typical embeddings in the earlier experiments); in Amendment 10, $\pm$0.3 nats for H40, H41 and H44 (the smallest history effect seen in Amendment 9), $\pm$1 nat for the check K1, and the larger of 0.3 nats and one fifth of the pilot effect for H48; in Amendment 11, $\pm$0.3 nats for H52, H54 and H59, kept from Amendment 10. The hypotheses of the earlier experiments are in Appendix~\ref{app:A}.
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (row analysis) and \ref{tab:N6} (pretrained models).}
+\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (row analysis), \ref{tab:N6} (pretrained models) and \ref{tab:O1} (Experiment 3).}
 \label{tab:hyp}
 \begin{tabular}{@{}lp{0.50\textwidth}p{0.33\textwidth}@{}}
 \toprule
@@ -56,6 +59,20 @@ H41 & Fixed shape: bursts differ from spaced; equivalence $\pm$0.3 & Bursts high
 H42 & Changing shape: bursts copy more than spaced & Supported \\
 H43 & Spaced: fixed shape copies less than no shape & Supported; confounded by expected word class (Section~\ref{sec:results}) \\
 H44 & Spaced no-shape nouns differ from unseen nouns with a typical embedding; equivalence $\pm$0.3 & Higher; not equivalent \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Experiment 3 (Amendment 11); stable-shape corpora; Holm over H50--H53, H55, H56}} \\
+M3 & Unseen nouns copy more than 1 nat & Passed \\
+H50 & At 1,000: changing-shape bursts copy more than fixed-shape bursts (primary) & Supported (3.68) \\
+H51 & Changing shape: bursts copy more than spaced & Supported (4.14) \\
+H52 & Spaced: fixed differs from changing shape; equivalence $\pm$0.3 & Fixed lower (\textminus{}0.25); not equivalent \\
+H53 & Fixed-shape spaced nouns prefer their own shape to the context's & Supported (5.84) \\
+H54 & Noun-specific copying of changing-shape bursts within $\pm$0.3 & Within $\pm$0.3 (0.08) \\
+H55 & Changing-shape bursts copy more than row geometry predicts & Supported (3.67) \\
+H56 & The queried noun's history matters more than the context noun's & Supported (1.25) \\
+M3B, H57 & 85.6M models: unseen nouns copy; changing-shape bursts copy more than fixed-shape bursts & Pending \\
+M3C & Single-history corpora: unseen nouns copy & Passed \\
+H58 & Changing-shape bursts (changing-only) copy more than fixed-shape bursts (fixed-only) & Supported (5.51) \\
+H59 & Single-history minus mixed corpora, same history; equivalence $\pm$0.3 & Changing bursts inconclusive; fixed bursts lower (\textminus{}1.00) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Row analysis (Amendment 10, Part C); Experiment 1 models}} \\
 H49 & Scaling unseen nouns' rows to the trained kinds' norm lowers copying & Supported (driven by the 3.4M models) \\

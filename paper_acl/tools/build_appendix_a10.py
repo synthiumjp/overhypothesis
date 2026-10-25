@@ -268,6 +268,16 @@ if os.path.exists("paper_acl/figures/tab_a10_reanalysis.tex"):
             r"than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100.}", r"\label{tab:N13}",
             open("paper_acl/figures/tab_a10_reanalysis.tex", encoding="utf-8").read().strip(), r"\end{table}", ""]
 
+if os.path.exists("paper_acl/figures/tab_a10_crossed.tex"):
+    out += [r"\begin{table}[!htbp]", r"\centering\footnotesize\setlength{\tabcolsep}{4pt}",
+            r"\caption{Crossed histories (exploratory), stable-shape corpora, 1,000 exposures (unseen nouns: none): copy "
+            r"score when the context sentence is about a noun of one history (rows) and the query names a different "
+            r"noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar "
+            r"histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with "
+            r"fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. "
+            r"Full results: results/amendment10/CROSSED.md.}", r"\label{tab:N14}",
+            open("paper_acl/figures/tab_a10_crossed.tex", encoding="utf-8").read().strip(), r"\end{table}", ""]
+
 # Part C
 out += [r"\textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we "
         r"replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the "

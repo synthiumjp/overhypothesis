@@ -169,6 +169,25 @@ Changing, bursts & 3.85 & 0.66 & 0.37 & 1.53 & \textminus{}0.12 & 0.849 & 0.168 
 \end{tabular}
 \end{table}
 
+\begin{table}[!htbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Crossed histories (exploratory), stable-shape corpora, 1,000 exposures (unseen nouns: none): copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. Full results: results/amendment10/CROSSED.md.}
+\label{tab:N14}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Context noun $\backslash$ queried noun & Unseen & Fixed, spaced & Fixed, bursts & No shape, spaced & No shape, bursts & Changing, spaced & Changing, bursts \\
+\midrule
+Unseen & 6.34 & 0.60 & 0.73 & 1.16 & 1.01 & 0.42 & 2.61 \\
+Fixed, spaced & 3.67 & 0.62 & 0.75 & 0.94 & 0.93 & 0.44 & 1.73 \\
+Fixed, bursts & 5.14 & 0.68 & 1.01 & 1.07 & 1.27 & 0.53 & 2.45 \\
+No shape, spaced & 4.10 & 0.53 & 0.74 & 1.12 & 1.13 & 0.39 & 1.67 \\
+No shape, bursts & 4.30 & 0.62 & 0.91 & 0.89 & 1.01 & 0.43 & 2.07 \\
+Changing, spaced & 4.03 & 0.59 & 0.91 & 1.26 & 1.12 & 0.50 & 1.86 \\
+Changing, bursts & 6.49 & 0.85 & 1.15 & 1.49 & 1.39 & 0.66 & 3.80 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the Amendment 9 scores. Conditions: own row; own direction scaled to the mean norm of the trained kinds' rows (ownnorm); a random direction at that norm (randnorm); the trained kinds' mean row. Shape-absent nouns at 10,000 exposures were also scored with their own direction scaled to the unseen nouns' mean norm (shrunk).
 
 \begin{table}[!htbp]

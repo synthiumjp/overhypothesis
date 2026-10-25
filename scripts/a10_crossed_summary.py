@@ -62,8 +62,8 @@ def main():
                    f"{ci(c.rotating_run - c.fixed_run)}", ""]
             if base == "regular_grouped" and e == 1000:
                 tex_lines = [r"\begin{tabular}{@{}l" + "r" * len(ORDER) + r"@{}}", r"\toprule",
-                             r"Context noun $\backslash$ queried noun & " + " & ".join(
-                                 l.replace(", ", r",\newline ") if False else l for _, l in ORDER) + r" \\",
+                             r"Context $\backslash$ query & " + " & ".join(
+                                 r"\shortstack{" + l.replace(", ", r"\\ ") + "}" for _, l in ORDER) + r" \\",
                              r"\midrule"]
                 for t, l in ORDER:
                     tex_lines.append(l + " & " + " & ".join(tex(m.loc[t, qq]) for qq, _ in ORDER) + r" \\")

@@ -28,7 +28,7 @@ Random embedding of untrained scale & atypical\_init \\
 \end{tabular}
 \end{table}
 
-\textbf{Hypotheses.} Table~\ref{tab:hyp} lists every registered hypothesis of Experiments 1 and 2, the row analysis and the pretrained test, the claim of the main text it bears on, and its outcome under the registered decision rules (Holm correction within each experiment; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Amendment 9, where the pilot gave seed-level standard deviations near 0.8 nats, and $\pm$0.3 nats in Amendment 10, the smallest history effect seen in Amendment 9. The hypotheses of the earlier experiments are in Appendix~\ref{app:A}.
+\textbf{Hypotheses.} Table~\ref{tab:hyp} lists every registered hypothesis of Experiments 1 and 2, the row analysis and the pretrained test, the claim of the main text it bears on, and its outcome under the registered decision rules (Holm correction within each experiment; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Amendment 9 (about one seventh of the 7.6-nat fall from unseen to typical embeddings in the earlier experiments); in Amendment 10, $\pm$0.3 nats for H40, H41 and H44 (the smallest history effect seen in Amendment 9), $\pm$1 nat for the check K1, and the larger of 0.3 nats and one fifth of the pilot effect for H48. The hypotheses of the earlier experiments are in Appendix~\ref{app:A}.
 
 \begin{table}[!htbp]
 \centering\small
@@ -42,9 +42,9 @@ Label & Prediction (main-text terms) & Outcome \\
 M1 & Fixed-shape nouns store their shape (knowledge $>$ 0.2 nats at 1,000 exposures, rising) & Passed in all three corpora \\
 H30 & Copying falls faster with exposure for fixed-shape than no-shape nouns & Not supported (wrong direction) \\
 H31 & No-shape nouns (1,000 and 10,000) differ from unseen nouns with a typical embedding; equivalence $\pm$1 & Different (0.33) and equivalent \\
-H32 & Fixed-shape nouns' preference for their own shape rises with exposure & Supported \\
+H32 & Fixed-shape nouns' preference for their own shape, measured in the copy items, rises with exposure & Supported \\
 H33 & Ablating candidate heads removes more than half of unseen nouns' copying, more than random heads & Not supported \\
-H34 & Ablating candidate heads lowers trained kinds' copying in shifting-shape corpora & Supported; random heads did the same \\
+H34 & Ablating candidate heads lowers trained kinds' copying in shifting-shape corpora & Supported; random heads cut it nearly as much \\
 H35 & Candidate heads' attention falls faster for fixed-shape nouns & Not tested (required H33) \\
 R1 & Unseen nouns copy more in grouped than random order & Replicated \\
 \addlinespace

@@ -34,7 +34,7 @@ COL = {"consistent": "#2a78d6", "uninformative": "#eb6834", "absent": "#1baf7a"}
 MARK = {"consistent": "o", "uninformative": "s", "absent": "^"}
 NAME = {"consistent": "Fixed shape", "uninformative": "Changing shape", "absent": "No shape"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
-BASES = [("regular_grouped", "Stable shapes, grouped"), ("reassigned_grouped", "Shifting shapes, grouped"),
+BASES = [("regular_grouped", "Stable shapes"), ("reassigned_grouped", "Shifting shapes"),
          ("regular_random", "Stable shapes, random order")]
 EXPO = [10, 100, 1000, 10000]
 
@@ -148,7 +148,7 @@ def fig_heads(hs, pn, out):
     exposure_panel(ax, sc, "attention", "regular_grouped", show_typical=False)
     style(ax, "Attention to context shape")
     ax.set_xlabel("Exposures in training")
-    ax.set_title("Stable shapes, grouped", fontsize=8, color=INK)
+    ax.set_title("Stable shapes", fontsize=8, color=INK)
     fig.tight_layout()
     fig.savefig(out / "fig_a9_heads.pdf", bbox_inches="tight")
     plt.close(fig)

@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import FancyBboxPatch, Rectangle  # noqa: E402
 
 INK, INK2, GRID, BG = "#0b0b0b", "#52514e", "#d9d8d4", "#f3f2ef"
-SHAPE_COL = {"A": "#2a78d6", "B": "#eb6834", "C": "#1baf7a", "D": "#8a5cc2", "-": "white"}
+SHAPE_COL = {"1": "#2a78d6", "2": "#eb6834", "3": "#1baf7a", "4": "#8a5cc2", "-": "white"}
 plt.rcParams.update({"font.family": "serif", "font.size": 7.5, "pdf.fonttype": 42, "mathtext.fontset": "stix"})
 
 
@@ -49,28 +49,30 @@ def main():
     ax.text(0.01, 0.975, "(a) Test item", fontsize=8, fontweight="bold", va="top")
     ax.add_patch(FancyBboxPatch((0.02, 0.775), 0.96, 0.15, boxstyle="round,pad=0.008", fc=BG, ec=INK2, lw=0.5))
     ax.text(0.04, 0.895, "Context:", color=INK2, va="center")
-    ax.text(0.20, 0.895, r"A $\it{dax}$ is a $\bf{zibby}$ lavo shorfi thing.", va="center")
+    ax.text(0.20, 0.895, r"A $\it{klerd}$ is a $\bf{zibby}$ lavo shorfi thing.", va="center")
     ax.text(0.04, 0.848, "Query:", color=INK2, va="center")
-    ax.text(0.20, 0.848, r"A $\it{dax}$ is a  ___", va="center")
+    ax.text(0.20, 0.848, r"A $\it{klerd}$ is a  ___", va="center")
+    ax.text(0.97, 0.848, "zibby: shape, lavo: colour, shorfi: texture", va="center", ha="right", fontsize=5.8,
+            color=INK2)
     ax.text(0.04, 0.800, r"Copy score $= L(\mathrm{zibby})\, -$ mean $L$ of other shapes", va="center",
             fontsize=6.8, color=INK)
-    ax.text(0.02, 0.745, r"Control: the query names another noun (A $\it{blick}$ is a ___).",
+    ax.text(0.02, 0.745, r"Control: the query names another new noun (A $\it{zelp}$ is a ___).",
             fontsize=6.3, color=INK2, va="center")
 
     # (b) histories
     ax.text(0.01, 0.705, "(b) Four training histories of one noun", fontsize=8, fontweight="bold", va="top")
-    rows = [("Fixed shape, spaced", [{2: "A"}, {4: "A"}, {1: "A"}]),
-            ("Changing shape, spaced", [{2: "A"}, {4: "C"}, {1: "B"}]),
-            ("Fixed shape, bursts", [{1: "A", 2: "A", 3: "A", 4: "A"}, {}, {0: "A", 1: "A", 2: "A", 3: "A"}]),
-            ("Changing shape, bursts", [{1: "B", 2: "B", 3: "B", 4: "B"}, {}, {0: "D", 1: "D", 2: "D", 3: "D"}])]
+    rows = [("Fixed shape, spaced", [{2: "1"}, {4: "1"}, {1: "1"}]),
+            ("Changing shape, spaced", [{2: "1"}, {4: "3"}, {1: "2"}]),
+            ("Fixed shape, bursts", [{1: "1", 2: "1", 3: "1", 4: "1"}, {}, {0: "1", 1: "1", 2: "1", 3: "1"}]),
+            ("Changing shape, bursts", [{1: "2", 2: "2", 3: "2", 4: "2"}, {}, {0: "4", 1: "4", 2: "4", 3: "4"}])]
     y0, dy, h = 0.585, 0.128, 0.085
     for k, (lab, wins) in enumerate(rows):
         y = y0 - k * dy
         ax.text(0.02, y + h / 2, lab, va="center", fontsize=6.6)
         for j, cells in enumerate(wins):
             window(ax, 0.405 + j * 0.199, y, 0.183, h, cells)
-    ax.text(0.02, 0.165, "Boxes: successive 128-token windows. Grey: sentences about trained\n"
-            "kinds. Letters: the shape each sentence about the noun names.\n"
+    ax.text(0.02, 0.165, "Boxes: successive 128-token windows. Grey: sentences about the 32\n"
+            "trained kinds. Numbers: which shape a sentence about the noun names.\n"
             "No-shape nouns (not shown) name none.", fontsize=6.2, color=INK2,
             va="top", linespacing=1.3)
     fig.savefig(a.out, bbox_inches="tight", pad_inches=0.02)

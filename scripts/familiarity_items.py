@@ -38,6 +38,9 @@ def make_items(seed, per_cell, design="a9"):
     if design == "a10":
         import make_familiarity_corpora_a10 as m10
         rows = m10.load_assignment(seed)
+    elif design.startswith("a11_"):
+        import make_familiarity_corpora_a11 as m11
+        rows = m11.load_assignment(seed, design[4:])
     else:
         rows = mfc.load_assignment(per_cell, seed)
     exemplars, _ = mfc.base_exemplars(seed)

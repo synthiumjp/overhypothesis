@@ -46,6 +46,8 @@ MODEL_CONFIGS = {
     "tiny":   dict(n_layer=4, n_head=4, d_model=256, d_ff=1024),
     "small":  dict(n_layer=6, n_head=8, d_model=384, d_ff=1536),
     "medium": dict(n_layer=8, n_head=8, d_model=512, d_ff=2048),
+    # Amendment 11, Part B: one larger size, trained on the same windows and steps as medium
+    "large":  dict(n_layer=12, n_head=12, d_model=768, d_ff=3072),
 }
 
 # ── Training hyperparameters ──────────────────────────────────────────────────
@@ -54,6 +56,7 @@ TRAIN_CONFIG = {
     "tiny":   dict(lr=3e-4, batch_size=32,  seq_len=128, max_steps=5000,  warmup=200),
     "small":  dict(lr=2e-4, batch_size=32,  seq_len=128, max_steps=8000,  warmup=400),
     "medium": dict(lr=1e-4, batch_size=16,  seq_len=128, max_steps=10000, warmup=500),
+    "large":  dict(lr=1e-4, batch_size=16,  seq_len=128, max_steps=10000, warmup=1000),
 }
 
 CHECKPOINT_EVERY = 500   # steps
@@ -260,6 +263,8 @@ def get_device():
         return torch_directml.device(), "directml"
     elif torch.cuda.is_available():
         return torch.device("cuda"), "cuda"
+    elif getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
+        return torch.device("mps"), "mps"
     else:
         return torch.device("cpu"), "cpu"
 
@@ -394,7 +399,7 @@ def main():
                                  "feature_swap", "noise_injection",
                                  "frequency_matched"])
     parser.add_argument("--size",      type=str, required=True,
-                        choices=["micro", "tiny", "small", "medium"])
+                        choices=["micro", "tiny", "small", "medium", "large"])
     parser.add_argument("--seed",      type=int, required=True)
     parser.add_argument("--corpus_fraction", type=float, default=1.0,
                         help="Fraction of corpus to use (0.25/0.5/1.0 for dose-response)")

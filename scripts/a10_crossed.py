@@ -52,7 +52,11 @@ def main():
         model, _ = load_model(run["ckpt"], None, "train_model", "OverhypothesisLM")
         model.eval()
         check_forward(model, tok)
-        rows = m10.load_assignment(seed)
+        if run.get("design", "a10").startswith("a11_"):
+            import make_familiarity_corpora_a11 as m11
+            rows = m11.load_assignment(seed, run["design"][4:])
+        else:
+            rows = m10.load_assignment(seed)
         types = sorted({r["type"] for r in rows if r["type"] != "unseen"})
         rng = random.Random(SEED + seed)
         items, keys = [], []

@@ -150,9 +150,13 @@ def main():
         model, _ = load_model(run["ckpt"], None, "train_model", "OverhypothesisLM")
         model.eval()
         check_forward(model, tok)
-        rows = m10.load_assignment(seed)
+        if run.get("design", "a10").startswith("a11_"):
+            import make_familiarity_corpora_a11 as m11
+            rows = m11.load_assignment(seed, run["design"][4:])
+        else:
+            rows = m10.load_assignment(seed)
         info = {r["noun"]: r for r in rows}
-        reg = [it for it in make_items(seed, 3, "a10") if it["kind"] == "carry_same"]
+        reg = [it for it in make_items(seed, 3, run.get("design") or "a10") if it["kind"] == "carry_same"]
         E = model.tok_embed.weight
         orig = E.detach().clone()
         train_ids = [token_id(tok, n) for n in cg.TRAIN_NOUNS]

@@ -71,7 +71,7 @@ out = [r"\FloatBarrier", r"\section{The familiarity study (Amendment 9)}\label{a
        r"trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns "
        r"rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most "
        r"one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned "
-       r"grouped; sizes 3.4M, 11.0M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the "
+       r"grouped; sizes 3.4M, 10.9M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the "
        r"full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is "
        r"a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; "
        r"knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ "
@@ -161,7 +161,7 @@ out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 # Table M4: heads by base and size
 out += [r"\begin{table}[!htbp]", r"\centering\small",
         r"\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the "
-        r"highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M Regular grouped model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 11.0M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest "
+        r"highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M Regular grouped model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest "
         r"prefix-matching score of any head (uniform attention gives about 0.027). Carry of unseen nouns and of "
         r"trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 "
         r"draws). DLA: change in unseen carry predicted by the candidates' direct paths.}",
@@ -177,7 +177,7 @@ for fpath in glob.glob("results/amendment9/circuits/heads_*.json"):
         continue
     mxp.setdefault((S["base"], S["size"]), []).append(max(r["prefix"] for r in j["signature"]))
 for b, lab in bases:
-    for z, zl in (("tiny", "3.4M"), ("small", "11.0M"), ("medium", "25.6M")):
+    for z, zl in (("tiny", "3.4M"), ("small", "10.9M"), ("medium", "25.6M")):
         d = hs[(hs.base == b) & (hs["size"] == z)].mean(numeric_only=True)
         out.append(f"{lab if z == 'tiny' else ''} & {zl} & {int(d['k'])} & {f(np.mean(mxp[(b, z)]), 3)} & "
                    f"{f(d['unseen_carry'])} & {f(d['unseen_carry_ablated'])} & {f(d['unseen_carry_random_mean'])} & "

@@ -332,6 +332,9 @@ def train(args, model, dataloader, device, device_type, output_dir, tokenizer):
 
         loss_val = loss.item()
         step    += 1
+        if not math.isfinite(loss_val):  # Amendment 11: a non-finite loss ends the run; the model counts as failed
+            (output_dir / "FAILED_nonfinite_loss.txt").write_text(f"step {step}: loss {loss_val}\n")
+            raise SystemExit(f"Non-finite loss at step {step}; run stopped (see FAILED_nonfinite_loss.txt)")
 
         if step % LOG_EVERY == 0 or step == 1:
             elapsed = time.time() - t_start

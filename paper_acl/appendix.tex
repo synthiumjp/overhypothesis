@@ -143,12 +143,12 @@ Smaller technical changes (software versions, download addresses, a stale file i
 \setcounter{table}{0}\renewcommand{\thetable}{C\arabic{table}}
 \setcounter{figure}{0}\renewcommand{\thefigure}{C\arabic{figure}}
 \begin{table}[!htbp]
-\caption{AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, dropout 0.1, untied input and output embeddings. Fixed-file models read windows starting at random positions in the corpus; fresh-text models read non-overlapping windows, each at most once, in random order (the 3.4M and 25.6M models used about 60\% of the windows available, the 11.0M models 94 to 96\%). Byte-pair tokeniser with 351 entries for the Regular corpora and 314 to 339 for the other corpus families; every artificial word is one token. Seeds 42, 123, 456, 789 and 1001 each set the corpus, the initial weights and the batch order. These five seeds are those of the earlier experiments; Experiments 1 and 2 used ten (adding 2718, 3141, 1618, 1414 and 1732), untied embeddings by design, a tokeniser of 329 entries and weights saved every 1,000 steps. All models are pre-LayerNorm decoders with learned absolute position embeddings, GELU feed-forward layers and a final LayerNorm. Checkpoints were saved every 500 steps. Training ran on one Windows PC through DirectML.}
+\caption{AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, dropout 0.1, untied input and output embeddings. Fixed-file models read windows starting at random positions in the corpus; fresh-text models read non-overlapping windows, each at most once, in random order (the 3.4M and 25.6M models used about 60\% of the windows available, the 10.9M models 94 to 96\%). Byte-pair tokeniser with 351 entries for the Regular corpora and 314 to 339 for the other corpus families; every artificial word is one token. Seeds 42, 123, 456, 789 and 1001 each set the corpus, the initial weights and the batch order. These five seeds are those of the earlier experiments; Experiments 1 and 2 used ten (adding 2718, 3141, 1618, 1414 and 1732), untied embeddings by design, a tokeniser of 329 entries and weights saved every 1,000 steps. All models are pre-LayerNorm decoders with learned absolute position embeddings, GELU feed-forward layers and a final LayerNorm. Checkpoints were saved every 500 steps. Training ran on one Windows PC through DirectML.}
 \label{tab:8x1}
 \small
 \begin{tabularx}{\textwidth}{>{\hsize=1.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X>{\hsize=0.750\hsize\raggedright\arraybackslash}X}
 \toprule
-Setting & 3.4M & 11.0M & 25.6M \\
+Setting & 3.4M & 10.9M & 25.6M \\
 \midrule
 Layers, heads, width & 4, 4, 256 & 6, 8, 384 & 8, 8, 512 \\
 Feed-forward width & 1,024 & 1,536 & 2,048 \\

@@ -227,6 +227,8 @@ def main():
             for e in (100, 1000):
                 c1 = sorted(n for n in info if info[n]["type"] == t1 and info[n]["exposures"] == e)
                 c2 = sorted(n for n in info if info[n]["type"] == t2 and info[n]["exposures"] == e)
+                if not c1 or not c2:  # single-history designs (Amendment 11 Part C) have no partner cell
+                    continue
                 with torch.no_grad():
                     E.copy_(orig)
                     for x, y in zip(c1, c2):

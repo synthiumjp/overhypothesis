@@ -4,7 +4,7 @@
 \setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}
 \textbf{Registration.} The design, hypotheses and analysis were registered before any corpus was built (Amendment 9). An addendum, written the same day before any corpus was built, fixed details the registration left open (36 context draws per noun; uniform frame proportions; exposures placed at evenly spaced read positions from 5\% to 95\% of training, after warm-up for every size; random in-window position; the 40 nonce nouns; how the pilot fixes the number of nouns per cell; how a hypothesis counts as supported; the gate for H35; and that heads without prefix matching are described as copying heads). A pilot (one seed, 3.4M models, never used in a test) set three nouns per cell; with the registered rule the expected power for a 1-nat difference was 0.57, below the planned 0.8, which we report as a shortfall. Corpus checksums were recorded before training and matched on the training machine; a checker verified every exposure, window and frame from the tokens. All models were trained on one machine.
 
-\textbf{Design.} In every model, 40 nonce nouns fill 13 cells (three per cell, four unseen): fixed shape, uninformative shape (a new shape in every sentence, drawn from the corpus's shape distribution) and shape-absent (a sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, also used by trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned grouped; sizes 3.4M, 11.0M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ is the mean over shapes other than $s$ and $s^*$.
+\textbf{Design.} In every model, 40 nonce nouns fill 13 cells (three per cell, four unseen): fixed shape, uninformative shape (a new shape in every sentence, drawn from the corpus's shape distribution) and shape-absent (a sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, also used by trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned grouped; sizes 3.4M, 10.9M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ is the mean over shapes other than $s$ and $s^*$.
 
 \begin{table}[!htbp]
 \centering\small
@@ -71,7 +71,7 @@ Shape-absent & Knowledge & \textminus{}0.14 & \textminus{}0.17 & 0.12 & 0.08 \\
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M Regular grouped model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 11.0M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Carry of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen carry predicted by the candidates' direct paths.}
+\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M Regular grouped model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Carry of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen carry predicted by the candidates' direct paths.}
 \label{tab:M4}
 \begin{tabular}{@{}llrrrrrrrrr@{}}
 \toprule
@@ -80,13 +80,13 @@ Shape-absent & Knowledge & \textminus{}0.14 & \textminus{}0.17 & 0.12 & 0.08 \\
 Corpus & Size & $k$ & Prefix & Intact & Cand. & Random & Intact & Cand. & Random & DLA \\
 \midrule
 Regular grouped & 3.4M & 2 & 0.028 & 8.10 & \textminus{}0.42 & 5.26 & \textminus{}0.25 & \textminus{}0.85 & \textminus{}0.71 & \textminus{}0.04 \\
- & 11.0M & 4 & 0.037 & 2.98 & 5.80 & 1.95 & 0.08 & 0.17 & \textminus{}0.40 & \textminus{}0.01 \\
+ & 10.9M & 4 & 0.037 & 2.98 & 5.80 & 1.95 & 0.08 & 0.17 & \textminus{}0.40 & \textminus{}0.01 \\
  & 25.6M & 6 & 0.037 & 2.50 & 0.73 & 0.81 & 0.12 & \textminus{}0.60 & \textminus{}0.18 & \textminus{}0.01 \\
 Reassigned grouped & 3.4M & 2 & 0.029 & 6.48 & 4.22 & 3.27 & 9.59 & 2.83 & 3.37 & \textminus{}0.12 \\
- & 11.0M & 4 & 0.032 & 7.21 & 6.56 & 4.82 & 10.10 & 5.02 & 2.45 & \textminus{}0.03 \\
+ & 10.9M & 4 & 0.032 & 7.21 & 6.56 & 4.82 & 10.10 & 5.02 & 2.45 & \textminus{}0.03 \\
  & 25.6M & 6 & 0.031 & 6.88 & 0.26 & 3.26 & 10.26 & \textminus{}0.11 & 3.39 & \textminus{}0.01 \\
 Regular random & 3.4M & 2 & 0.028 & \textminus{}0.24 & \textminus{}0.09 & \textminus{}0.34 & \textminus{}0.08 & 0.00 & \textminus{}0.11 & \textminus{}0.01 \\
- & 11.0M & 4 & 0.030 & 0.04 & 0.25 & 0.03 & \textminus{}0.06 & 0.04 & \textminus{}0.11 & \textminus{}0.01 \\
+ & 10.9M & 4 & 0.030 & 0.04 & 0.25 & 0.03 & \textminus{}0.06 & 0.04 & \textminus{}0.11 & \textminus{}0.01 \\
  & 25.6M & 6 & 0.030 & \textminus{}0.25 & 0.00 & \textminus{}0.37 & \textminus{}0.18 & \textminus{}0.10 & \textminus{}0.27 & \textminus{}0.01 \\
 \bottomrule
 \end{tabular}

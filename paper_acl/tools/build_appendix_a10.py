@@ -231,7 +231,7 @@ out += [r"\begin{table}[!htbp]", r"\centering\small",
         r"\caption{Part A by model size (Regular grouped; seed means, 100 and 1,000 exposures pooled; nats).}",
         r"\label{tab:N11}", r"\begin{tabular}{@{}lrrrrrrrr@{}}", r"\toprule",
         r"Size & Unseen & Typical row & H40 & H41 & H42 & H43 & H44 & Rot.\ $-$ fixed runs \\", r"\midrule"]
-for z, zl in (("tiny", "3.4M"), ("small", "11.0M"), ("medium", "25.6M")):
+for z, zl in (("tiny", "3.4M"), ("small", "10.9M"), ("medium", "25.6M")):
     def c(typ, emb="original"):
         d = s[(s.base == "regular_grouped") & (s["size"] == z) & (s.type == typ) & (s.emb == emb)]
         if typ != "unseen":

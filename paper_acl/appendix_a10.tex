@@ -148,6 +148,27 @@ Size & Unseen & Typical row & H40 & H41 & H42 & H43 & H44 & Rot.\ $-$ fixed runs
 \end{tabular}
 \end{table}
 
+\textbf{Reanalysis of the Experiment 2 models (exploratory, added after the results).} For every familiar noun in the 60 final models we recorded its input row's cosine with its initial row (rebuilt from the seed; the rebuild reproduced the unseen nouns' rows, which receive no gradient, in every model), its distance from the trained kinds' mean row and its norm; the copy score with its own row, with a typical row and with the row of a noun of another history (rows swapped between changing- and fixed-shape bursts and between changing-shape bursts and spaced nouns); the copy score with one sentence about a trained kind between context and query (gap), with the context in the frame \emph{Look at the \textit{noun}. It is \textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A \textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the context's shape, averaged over heads. Full results, including shifting-shape corpora and 100 exposures, are in results/amendment10/REANALYSIS.md.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Experiment 2 reanalysis, stable-shape corpora, 1,000 exposures (unseen nouns: no exposures). Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to the context's shape. Seed-level means. Swapping rows between changing- and fixed-shape bursts moved the copying with the row (2.88 nats [2.01, 3.76] in each direction). In a noun-level regression of the copy score on row geometry (cosine with the initial row, distance from the trained kinds' mean, norm, size and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100.}
+\label{tab:N13}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Noun & Own row & Typical row & Gap & Other frame & Colour & Cos.\ initial & Attention \\
+\midrule
+Unseen & 6.35 &  & 0.16 & 4.38 & \textminus{}0.30 & 1.000 & 0.186 \\
+Fixed, spaced & 0.52 & 0.67 & 0.05 & 0.12 & \textminus{}0.10 & 0.732 & 0.089 \\
+Fixed, bursts & 0.99 & 0.61 & 0.13 & 0.32 & \textminus{}0.12 & 0.778 & 0.099 \\
+No shape, spaced & 0.98 & 0.63 & \textminus{}0.04 & 0.71 & \textminus{}0.22 & 0.793 & 0.102 \\
+No shape, bursts & 1.03 & 0.68 & \textminus{}0.07 & 0.66 & \textminus{}0.34 & 0.806 & 0.097 \\
+Changing, spaced & 0.50 & 0.61 & 0.10 & 0.20 & \textminus{}0.10 & 0.794 & 0.108 \\
+Changing, bursts & 3.85 & 0.66 & 0.37 & 1.53 & \textminus{}0.12 & 0.849 & 0.168 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the Amendment 9 scores. Conditions: own row; own direction scaled to the mean norm of the trained kinds' rows (ownnorm); a random direction at that norm (randnorm); the trained kinds' mean row. Shape-absent nouns at 10,000 exposures were also scored with their own direction scaled to the unseen nouns' mean norm (shrunk).
 
 \begin{table}[!htbp]

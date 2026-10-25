@@ -244,6 +244,30 @@ for z, zl in (("tiny", "3.4M"), ("small", "11.0M"), ("medium", "25.6M")):
     out.append(zl + " & " + " & ".join(f(v) for v in vals) + r" \\")
 out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 
+# Reanalysis of the Experiment 2 models (exploratory; scripts/a10_reanalysis.py, a10_reanalysis_summary.py)
+import os
+if os.path.exists("paper_acl/figures/tab_a10_reanalysis.tex"):
+    out += [r"\textbf{Reanalysis of the Experiment 2 models (exploratory, added after the results).} For every familiar "
+            r"noun in the 60 final models we recorded its input row's cosine with its initial row (rebuilt from the seed; "
+            r"the rebuild reproduced the unseen nouns' rows, which receive no gradient, in every model), its distance "
+            r"from the trained kinds' mean row and its norm; the copy score with its own row, with a typical row and "
+            r"with the row of a noun of another history (rows swapped between changing- and fixed-shape bursts and "
+            r"between changing-shape bursts and spaced nouns); the copy score with one sentence about a trained kind "
+            r"between context and query (gap), with the context in the frame \emph{Look at the \textit{noun}. It is "
+            r"\textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A "
+            r"\textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the "
+            r"context's shape, averaged over heads. Full results, including shifting-shape corpora and 100 exposures, "
+            r"are in results/amendment10/REANALYSIS.md.", "",
+            r"\begin{table}[!htbp]", r"\centering\small",
+            r"\caption{Experiment 2 reanalysis, stable-shape corpora, 1,000 exposures (unseen nouns: no exposures). "
+            r"Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to "
+            r"the context's shape. Seed-level means. Swapping rows between changing- and fixed-shape bursts moved the "
+            r"copying with the row (2.88 nats [2.01, 3.76] in each direction). In a noun-level regression of the copy "
+            r"score on row geometry (cosine with the initial row, distance from the trained kinds' mean, norm, size "
+            r"and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more "
+            r"than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100.}", r"\label{tab:N13}",
+            open("paper_acl/figures/tab_a10_reanalysis.tex", encoding="utf-8").read().strip(), r"\end{table}", ""]
+
 # Part C
 out += [r"\textbf{Part C (embedding rows in the Amendment 9 models).} In the 60 final grouped models of Amendment 9 we "
         r"replaced the input rows of unseen nouns and scored carry again; the unmodified condition reproduced the "

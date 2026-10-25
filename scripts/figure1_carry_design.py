@@ -52,26 +52,26 @@ def main():
     ax.text(0.20, 0.895, r"A $\it{klerd}$ is a $\bf{zibby}$ lavo shorfi thing.", va="center")
     ax.text(0.04, 0.848, "Query:", color=INK2, va="center")
     ax.text(0.20, 0.848, r"A $\it{klerd}$ is a  ___", va="center")
-    ax.text(0.97, 0.848, "zibby: shape, lavo: colour, shorfi: texture", va="center", ha="right", fontsize=5.8,
-            color=INK2)
     ax.text(0.04, 0.800, r"Copy score $= L(\mathrm{zibby})\, -$ mean $L$ of other shapes", va="center",
             fontsize=6.8, color=INK)
-    ax.text(0.02, 0.745, r"Control: the query names another new noun (A $\it{zelp}$ is a ___).",
+    ax.text(0.02, 0.748, "zibby: shape; lavo: colour; shorfi: texture.", fontsize=6.0,
+            color=INK2, va="center")
+    ax.text(0.02, 0.718, r"Control: the query names another new noun (A $\it{zelp}$ is a ___).",
             fontsize=6.3, color=INK2, va="center")
 
     # (b) histories
-    ax.text(0.01, 0.705, "(b) Four training histories of one noun", fontsize=8, fontweight="bold", va="top")
+    ax.text(0.01, 0.692, "(b) Four training histories of one noun", fontsize=8, fontweight="bold", va="top")
     rows = [("Fixed shape, spaced", [{2: "1"}, {4: "1"}, {1: "1"}]),
             ("Changing shape, spaced", [{2: "1"}, {4: "3"}, {1: "2"}]),
             ("Fixed shape, bursts", [{1: "1", 2: "1", 3: "1", 4: "1"}, {}, {0: "1", 1: "1", 2: "1", 3: "1"}]),
             ("Changing shape, bursts", [{1: "2", 2: "2", 3: "2", 4: "2"}, {}, {0: "4", 1: "4", 2: "4", 3: "4"}])]
-    y0, dy, h = 0.585, 0.128, 0.085
+    y0, dy, h = 0.56, 0.122, 0.082
     for k, (lab, wins) in enumerate(rows):
         y = y0 - k * dy
         ax.text(0.02, y + h / 2, lab, va="center", fontsize=6.6)
         for j, cells in enumerate(wins):
             window(ax, 0.405 + j * 0.199, y, 0.183, h, cells)
-    ax.text(0.02, 0.165, "Boxes: successive 128-token windows. Grey: sentences about the 32\n"
+    ax.text(0.02, 0.158, "Boxes: successive 128-token windows. Grey: sentences about the 32\n"
             "trained kinds. Numbers: which shape a sentence about the noun names.\n"
             "No-shape nouns (not shown) name none.", fontsize=6.2, color=INK2,
             va="top", linespacing=1.3)

@@ -257,7 +257,7 @@ if os.path.exists("paper_acl/figures/tab_a10_reanalysis.tex"):
             r"\textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A "
             r"\textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the "
             r"context's shape, averaged over heads. Full results, including shifting-shape corpora and 100 exposures, "
-            r"are in results/amendment10/REANALYSIS.md.", "",
+            r"are in the supplementary material.", "",
             r"\begin{table}[!htbp]", r"\centering\small",
             r"\caption{Experiment 2 reanalysis, stable-shape corpora, 1,000 exposures (unseen nouns: no exposures). "
             r"Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to "
@@ -275,7 +275,7 @@ if os.path.exists("paper_acl/figures/tab_a10_crossed.tex"):
             r"noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar "
             r"histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with "
             r"fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. "
-            r"Full results: results/amendment10/CROSSED.md.}", r"\label{tab:N14}",
+            r"Full results are in the supplementary material.}", r"\label{tab:N14}",
             open("paper_acl/figures/tab_a10_crossed.tex", encoding="utf-8").read().strip(), r"\end{table}", ""]
 
 # Part C

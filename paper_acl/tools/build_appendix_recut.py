@@ -29,7 +29,7 @@ out = [r"\FloatBarrier", r"\section{Test-noun representation and changed-word sc
        r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
        r"\setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}",
        "These analyses were added after the registrations and are exploratory. They rescore the 120 fresh-text "
-       "models on the one-exemplar items (\\texttt{scripts/recut\\_rescore.py}, \\texttt{scripts/recut\\_rescore\\_analysis.py}). "
+       "models on the one-exemplar items. "
        "\\textbf{Typical tokens}: each novel noun's input embedding is replaced by the mean input embedding of the 32 "
        "training nouns plus $r\\,u_j$, where $r$ is the mean distance of the training-noun embeddings from that mean and "
        "the $u_j$ are orthonormal random directions (fixed seed), so the eight tokens look like ordinary nouns but stay "
@@ -37,7 +37,7 @@ out = [r"\FloatBarrier", r"\section{Test-noun representation and changed-word sc
        "the one word that differs between the continuations, given the identical prefix. With the original embeddings "
        "and whole-continuation $\\Delta$, the rescoring reproduced the reported scores (144,000 item scores; largest "
        "difference $2\\times10^{-5}$ nats). Trained-noun values are from the registered trained-noun items "
-       "(long version in the supplementary material; \\texttt{scripts/recut\\_noun\\_store\\_check.py}).", "",
+       "(long version in the supplementary material).", "",
        r"\begin{table}[!htbp]", r"\centering\footnotesize\setlength{\tabcolsep}{4pt}",
        r"\caption{Index and noun-specific index under four scorings (nats; mean of seed means). Original: unseen tokens with untrained embeddings, as reported; typical: the same tokens with typical embeddings; full: whole-continuation $\Delta$, as reported; word: changed word only.}",
        r"\label{tab:L1}", r"\begin{tabular}{@{}lrrrrrrrr@{}}", r"\toprule",

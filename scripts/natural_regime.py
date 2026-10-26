@@ -46,7 +46,16 @@ def main():
     ap.add_argument("--out", default="results/natural_regime.csv")
     ap.add_argument("--md", default="results/NATURAL_REGIME.md")
     ap.add_argument("--window", type=int, default=128)
+    ap.add_argument("--from_csv", action="store_true", help="rebuild the summary from an existing --out file")
     a = ap.parse_args()
+    if a.from_csv:
+        rows = list(csv.DictReader(open(a.out, encoding="utf-8")))
+        for r in rows:
+            for k in r:
+                if k not in ("noun", "group", "top_colour"):
+                    r[k] = float(r[k]) if r[k] not in ("", "nan") else float("nan")
+        summarise(rows, a, None, None)
+        return
     from datasets import load_dataset
     ds = load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="train")
     nouns = list(csv.DictReader(open("data/amendment10/nouns.csv", encoding="utf-8")))
@@ -103,12 +112,20 @@ def main():
         wr.writeheader()
         wr.writerows(rows)
 
+    summarise(rows, a, n_art, total)
+    print("\n".join(md))
+
+
+def summarise(rows, a, n_art, total):
     def med(v):
         v = sorted(x for x in v if x == x)
-        return v[len(v) // 2] if v else float("nan")
+        if not v:
+            return float("nan")
+        k = len(v) // 2
+        return v[k] if len(v) % 2 else (v[k - 1] + v[k]) / 2
 
     md = ["# Natural text: burstiness and colour stability (WikiText-103; exploratory)", "",
-          f"{n_art:,} articles, {total:,} words; window {a.window} words.", ""]
+          (f"{n_art:,} articles, {total:,} words; " if n_art else "") + f"window {a.window} words.", ""]
     for g in ("typical", "variable"):
         r = [x for x in rows if x["group"] == g and x["count"] > 0]
         md.append(f"- {g}: median burstiness {med([x['burstiness'] for x in r]):.1f} (observed recurrence "

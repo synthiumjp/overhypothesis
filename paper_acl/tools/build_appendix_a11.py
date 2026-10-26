@@ -141,7 +141,7 @@ def main():
           r"\begin{table}[!htbp]",
           r"\centering\small",
           r"\caption{Experiment 3, mixed design, 1,000 exposures: copy score when the context sentence is about a noun "
-          r"of one history (rows) and the query names a different noun of another (columns); means over ten seeds, "
+          r"of one history (rows) and the query names a different noun of the same or another history (columns); means over ten seeds, "
           r"sizes averaged (24 items per pair and model).}",
           r"\label{tab:O3}",
           r"\input{figures/tab_a11_crossed.tex}",
@@ -176,8 +176,8 @@ def main():
           r"\textbf{Natural text (exploratory, added after the results).} To ask which regime natural text resembles, "
           r"we counted the 44 nouns of the pretrained test in WikiText-103 (raw training split; 29,433 articles, 83.7 "
           r"million words; scripts/natural\_regime.py). Of a noun's mentions, a median 40\% (colour-typical nouns) and "
-          r"24\% (colour-variable) were followed by another mention within 128 words, against under 1\% expected if "
-          r"mentions were spread evenly (median ratios 133 and 221). We took a basic colour word immediately before the "
+          r"24\% (colour-variable) were followed by another mention within 128 words, against a median 0.3\% and 0.1\% expected if "
+          r"mentions were spread evenly (under 1\% for 42 of the 44 nouns; median ratios 133 and 221). We took a basic colour word immediately before the "
           r"noun as a colour mention (2,341 for colour-typical nouns, 736 for colour-variable). Within an article, two "
           r"colour mentions of the same noun named the same colour with median agreement 0.98 and 0.86 (nouns with at "
           r"least three within-article pairs: 13 and 9); two mentions drawn from the whole corpus agreed with "
@@ -193,8 +193,9 @@ def main():
           r"fixed-shape bursts (6.36); changing-shape bursts copied 2.36 [1.47, 3.25] more than changing-shape spaced "
           r"nouns, pooled (7.09); fixed- minus changing-shape spaced nouns, pooled, was \textminus{}0.01 "
           r"[\textminus{}0.30, 0.28] (\textminus{}0.23); and fixed-shape spaced nouns preferred their own shape to the "
-          r"context's by 4.61 [4.10, 5.11] (6.94). Familiar nouns of every history kept more copying than in untied "
-          r"models (1.4 to 2.9 nats at 1,000 exposures, against 0 to 1 except changing-shape bursts).", ""]
+          r"context's by 4.61 [4.10, 5.11] (6.94). Familiar nouns of the other five histories kept more copying than in untied "
+          r"models (1.4 to 2.9 nats at 1,000 exposures, against 0 to 0.7), while changing-shape bursts kept less "
+          r"(4.29 against 7.05).", ""]
     open(a.out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("written", a.out)
 

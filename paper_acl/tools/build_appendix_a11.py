@@ -183,7 +183,18 @@ def main():
           r"least three within-article pairs: 13 and 9); two mentions drawn from the whole corpus agreed with "
           r"probability 0.46 and 0.37 (medians over nouns). Many colour--noun pairs are parts of names (\emph{Black "
           r"Sea}, \emph{Blue Velvet}), which inflates agreement within articles, so these figures are rough. Per-noun "
-          r"values: results/natural\_regime.csv in the supplementary material.", ""]
+          r"values: results/natural\_regime.csv in the supplementary material.", "",
+          r"\textbf{Tied embeddings (exploratory, added after the results).} Ten 3.4M models were trained on the "
+          r"mixed-design corpora of Part A, with the same seeds and settings but with input and output embeddings tied "
+          r"(Apple M3 Ultra; the tie was verified in every final model). With tied embeddings an unseen noun's row "
+          r"receives gradient as an output. Seed-level values, with the untied 3.4M models of Part A in brackets: unseen "
+          r"nouns copied 3.96 [2.43, 5.49] (8.96), and 0.02 [\textminus{}0.18, 0.21] with a typical row "
+          r"(\textminus{}0.19); at 1,000 exposures changing-shape bursts copied 1.90 [1.20, 2.60] more than "
+          r"fixed-shape bursts (6.36); changing-shape bursts copied 2.36 [1.47, 3.25] more than changing-shape spaced "
+          r"nouns, pooled (7.09); fixed- minus changing-shape spaced nouns, pooled, was \textminus{}0.01 "
+          r"[\textminus{}0.30, 0.28] (\textminus{}0.23); and fixed-shape spaced nouns preferred their own shape to the "
+          r"context's by 4.61 [4.10, 5.11] (6.94). Familiar nouns of every history kept more copying than in untied "
+          r"models (1.4 to 2.9 nats at 1,000 exposures, against 0 to 1 except changing-shape bursts).", ""]
     open(a.out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("written", a.out)
 

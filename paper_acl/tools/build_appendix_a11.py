@@ -83,7 +83,10 @@ def main():
          r"against $\pm$0.3 nats. H55 is a seed-level test: within each model, the copy scores of the 18 familiar nouns "
          r"at 1,000 exposures were regressed on the row's cosine with its initial value, its relative distance from the "
          r"trained kinds' mean row, its norm and a changing-burst indicator, and the indicator's coefficient was averaged "
-         r"over sizes within seed. There were no deviations.",
+         r"over sizes within seed. The 85.6M models were trained on an Apple M3 Ultra (MPS, PyTorch 2.14.1), the others on "
+         r"the machine used for Experiment 2. One deviation: after all 85.6M models had finished, their training loop "
+         r"was started again by mistake and stopped at step 1; only a configuration file was rewritten, with the same "
+         r"content, and no model or score changed.",
          "",
          r"\begin{table}[!htbp]",
          r"\centering\small",
@@ -128,7 +131,9 @@ def main():
           r"\begin{table}[!htbp]",
           r"\centering\small",
           r"\caption{Experiment 3: copy score by corpus design, history and exposures (means over seeds by size, and "
-          r"seed-level mean with 95\% interval, sizes averaged). Mixed: ten seeds; single-history designs: five seeds.}",
+          r"seed-level mean with 95\% interval, sizes averaged). Mixed: ten seeds; single-history designs: five seeds. "
+          r"$^a$Over the three smaller sizes, as in the registered tests; 85.6M models were trained in the mixed design "
+          r"only.}",
           r"\label{tab:O2}",
           r"\setlength{\tabcolsep}{3pt}",
           r"\input{figures/tab_a11_cells.tex}",

@@ -53,7 +53,7 @@ def seed(g):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--scores", default="results/amendment11/scores.csv")
+    ap.add_argument("--scores", default="results/amendment11/scores_all.csv")
     ap.add_argument("--crossed", default="results/amendment11/crossed.csv")
     ap.add_argument("--rows", default="results/amendment11/reanalysis.csv")
     ap.add_argument("--out", default="results/amendment11/SUMMARY.md")
@@ -124,16 +124,17 @@ def main():
                     continue
                 g = d.groupby(["size", "seed"]).carry.mean()
                 by = g.groupby("size").mean()
+                g = g[g.index.get_level_values("size").isin(SIZES)]
                 m, lo, hi = ci(g.groupby("seed").mean())
-                rows.append((blab, l, "--" if e == 0 else f"{e:,}", [by.get(z, np.nan) for z in SIZES], m, lo, hi,
+                rows.append((blab, l, "--" if e == 0 else f"{e:,}", [by.get(z, np.nan) for z in SIZES + ("large",)], m, lo, hi,
                              g.index.get_level_values("seed").nunique()))
-    tl = [r"\begin{tabular}{@{}lllrrrrl@{}}", r"\toprule",
-          r"Corpus & History & Exp. & 3.4M & 10.9M & 25.6M & Mean & 95\% CI \\", r"\midrule"]
+    tl = [r"\begin{tabular}{@{}lllrrrrrl@{}}", r"\toprule",
+          r"Corpus & History & Exp. & 3.4M & 10.9M & 25.6M & 85.6M & Mean$^a$ & 95\% CI$^a$ \\", r"\midrule"]
     last = None
     for blab, l, e, by, m, lo, hi, n in rows:
         if last is not None and blab != last:
             tl.append(r"\midrule")
-        tl.append(f"{blab if blab != last else ''} & {l} & {e} & " + " & ".join(tex(v) for v in by)
+        tl.append(f"{blab if blab != last else ''} & {l} & {e} & " + " & ".join("--" if np.isnan(v) else tex(v) for v in by)
                   + f" & {tex(m)} & [{tex(lo)}, {tex(hi)}] \\\\")
         last = blab
     tl += [r"\bottomrule", r"\end{tabular}"]

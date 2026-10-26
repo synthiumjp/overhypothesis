@@ -172,7 +172,18 @@ def main():
           r"$^a$Direction from 100-exposure bursts. $^b$Direction from 100-exposure bursts subtracted.}",
           r"\label{tab:O4}",
           r"\input{figures/tab_a11_mech.tex}",
-          r"\end{table}", ""]
+          r"\end{table}", "",
+          r"\textbf{Natural text (exploratory, added after the results).} To ask which regime natural text resembles, "
+          r"we counted the 44 nouns of the pretrained test in WikiText-103 (raw training split; 29,433 articles, 83.7 "
+          r"million words; scripts/natural\_regime.py). Of a noun's mentions, a median 40\% (colour-typical nouns) and "
+          r"24\% (colour-variable) were followed by another mention within 128 words, against under 1\% expected if "
+          r"mentions were spread evenly (median ratios 133 and 221). We took a basic colour word immediately before the "
+          r"noun as a colour mention (2,341 for colour-typical nouns, 736 for colour-variable). Within an article, two "
+          r"colour mentions of the same noun named the same colour with median agreement 0.98 and 0.86 (nouns with at "
+          r"least three within-article pairs: 13 and 9); two mentions drawn from the whole corpus agreed with "
+          r"probability 0.46 and 0.37 (medians over nouns). Many colour--noun pairs are parts of names (\emph{Black "
+          r"Sea}, \emph{Blue Velvet}), which inflates agreement within articles, so these figures are rough. Per-noun "
+          r"values: results/natural\_regime.csv in the supplementary material.", ""]
     open(a.out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("written", a.out)
 

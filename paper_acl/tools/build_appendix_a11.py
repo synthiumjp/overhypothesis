@@ -145,6 +145,33 @@ def main():
           r"sizes averaged (24 items per pair and model).}",
           r"\label{tab:O3}",
           r"\input{figures/tab_a11_crossed.tex}",
+          r"\end{table}", "",
+          r"\textbf{Mechanism (exploratory, added after the results).} Three analyses of the 30 mixed-design models "
+          r"(scripts/a11\_mechanism.py). \emph{Steering}: in each model, the direction $v$ is the mean input row of "
+          r"changing-shape bursts minus that of fixed-shape bursts at one exposure level; it is added to the rows of "
+          r"other nouns and the registered items are scored. The direction from 1,000-exposure bursts is applied to "
+          r"spaced and no-shape nouns at 1,000 exposures and to unseen nouns with a typical row; the direction from "
+          r"100-exposure bursts is added to fixed-shape bursts at 1,000 and subtracted from changing-shape bursts at "
+          r"1,000, so the direction never comes from the nouns it is applied to. The control is a random vector of the "
+          r"same length (Table~\ref{tab:O4}). \emph{Activation patching}: for each fixed-shape burst noun F and the "
+          r"changing-shape burst noun R of the same index (1,000 exposures), the residual stream after a given block at "
+          r"the query noun's position, or at the last position, is copied from the item that names R in the query into "
+          r"the item that names F, and the reverse. After the first block, patching the query noun's position carried "
+          r"5 to 58\% of the difference between the two items (by size and direction) and patching the last position 47 "
+          r"to 96\%; after the second block, the noun's position carried none and the last position all of it. "
+          r"\emph{Attention}: first-layer attention from the last position to the context's shape word, mean over "
+          r"heads, was 0.069 [0.048, 0.089] higher for changing- than fixed-shape bursts at 1,000 exposures and tracked "
+          r"the copy score across conditions and models (Spearman 0.73); in later layers it ranged from $-$0.36 to "
+          r"0.23. Full results: results/amendment11/MECHANISM.md in the supplementary material.",
+          "",
+          r"\begin{table}[!htbp]",
+          r"\centering\small",
+          r"\caption{Experiment 3, steering (exploratory): copy score with the noun's own row (baseline; typical row for "
+          r"unseen nouns) and change when the changing-minus-fixed burst direction from other nouns, or a random vector "
+          r"of the same length, is added to the row (nats; ten seeds, sizes averaged). Nouns at 1,000 exposures. "
+          r"$^a$Direction from 100-exposure bursts. $^b$Direction from 100-exposure bursts subtracted.}",
+          r"\label{tab:O4}",
+          r"\input{figures/tab_a11_mech.tex}",
           r"\end{table}", ""]
     open(a.out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("written", a.out)

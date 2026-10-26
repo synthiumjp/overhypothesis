@@ -67,7 +67,7 @@ def main():
     L = [r"\FloatBarrier",
          r"\section{Replication, single-history corpora and a larger model (Amendment 11)}\label{app:O}",
          r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
-         r"\textbf{Registration.} Amendment 11 is Experiment 3. It was registered (osf.io/qj9hb) after all results of "
+         r"\textbf{Registration.} Amendment 11 is Experiment 3. It was registered in the project's public OSF record (link withheld for review) after all results of "
          r"Experiment 2 and its exploratory analyses, after its corpora were built and checksummed, and before any of its "
          r"models was trained (apart from deleted 100-step pipeline checks), to test the exploratory findings of Experiment 2 on new models. Part A repeated the "
          r"stable-shape (Regular grouped) design of Experiment 2 with ten new seeds at 3.4M, 10.9M and 25.6M parameters "

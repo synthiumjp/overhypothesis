@@ -1,0 +1,11 @@
+base,size,seed,ckpt,final_loss,median_same_cell,status
+regular_grouped,large,2029,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed2029/model_final.pt,0.411929,0.377359,pass
+regular_grouped,large,3037,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed3037/model_final.pt,0.380181,0.377359,pass
+regular_grouped,large,4049,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed4049/model_final.pt,0.37195,0.377359,pass
+regular_grouped,large,5051,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed5051/model_final.pt,0.369886,0.377359,pass
+regular_grouped,large,6067,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed6067/model_final.pt,0.375798,0.377359,pass
+regular_grouped,large,7079,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed7079/model_final.pt,0.37807,0.377359,pass
+regular_grouped,large,8081,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed8081/model_final.pt,0.376648,0.377359,pass
+regular_grouped,large,9091,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed9091/model_final.pt,0.409334,0.377359,pass
+regular_grouped,large,10103,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed10103/model_final.pt,0.372858,0.377359,pass
+regular_grouped,large,11117,/Users/chrismarmo/ckpt_a11/regular_grouped/large_seed11117/model_final.pt,0.400208,0.377359,pass

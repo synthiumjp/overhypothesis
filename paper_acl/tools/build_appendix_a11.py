@@ -161,8 +161,9 @@ def main():
           r"to 96\%; after the second block, the noun's position carried none and the last position all of it. "
           r"\emph{Attention}: first-layer attention from the last position to the context's shape word, mean over "
           r"heads, was 0.069 [0.048, 0.089] higher for changing- than fixed-shape bursts at 1,000 exposures and tracked "
-          r"the copy score across conditions and models (Spearman 0.73); in later layers it ranged from $-$0.36 to "
-          r"0.23. Full results: results/amendment11/MECHANISM.md in the supplementary material.",
+          r"the copy score: across the 12 history-by-exposure cells within each model, Spearman correlations averaged "
+          r"0.80 [0.76, 0.85] over seeds (0.91, 0.79 and 0.72 by size); pooled over conditions and models, 0.73, and "
+          r"in later layers $-$0.36 to 0.23. Full results: results/amendment11/MECHANISM.md in the supplementary material.",
           "",
           r"\begin{table}[!htbp]",
           r"\centering\small",
@@ -186,7 +187,7 @@ def main():
           r"values: results/natural\_regime.csv in the supplementary material.", "",
           r"\textbf{Tied embeddings (exploratory, added after the results).} Ten 3.4M models were trained on the "
           r"mixed-design corpora of Part A, with the same seeds and settings but with input and output embeddings tied "
-          r"(Apple M3 Ultra; the tie was verified in every final model). With tied embeddings an unseen noun's row "
+          r"(Apple M3 Ultra; the first model was checked after training and its input and output matrices were identical). With tied embeddings an unseen noun's row "
           r"receives gradient as an output. Seed-level values, with the untied 3.4M models of Part A in brackets: unseen "
           r"nouns copied 3.96 [2.43, 5.49] (8.96), and 0.02 [\textminus{}0.18, 0.21] with a typical row "
           r"(\textminus{}0.19); at 1,000 exposures changing-shape bursts copied 1.90 [1.20, 2.60] more than "

@@ -66,7 +66,7 @@ out = [r"\FloatBarrier", r"\section{Experiment 2, the embedding analysis and the
        r"\emph{fixed}, frame 1 (\emph{A \textit{noun} is a \textit{shape} \textit{colour} \textit{texture} thing}) with "
        r"the noun's own shape; \emph{absent}, frame 7 (\emph{A \textit{noun} is a \textit{colour} \textit{texture} "
        r"thing}), which names no shape; \emph{rotating}, frame 1 with a shape drawn from the corpus's shape "
-       r"distribution, a new one for every sentence when presented singly and one per run, changing between runs, when "
+       r"distribution, a new one for every sentence when presented singly and one per run, redrawn for each run, when "
        r"presented in runs. Presentation: \emph{single}, one sentence per unit; \emph{run}, four consecutive sentences "
        r"about the noun in one window. Exposures (100 or 1,000) count sentences, so runs and singles are matched in "
        r"sentences, not in units or spacing. Trained kinds use frame 7 in one sentence in fifteen, so the frame is not "

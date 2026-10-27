@@ -73,7 +73,7 @@ out = [r"\FloatBarrier", r"\section{Experiment 1 (Amendment 9)}\label{app:M}",
        r"one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned "
        r"grouped; sizes 3.4M, 10.9M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the "
        r"full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is "
-       r"a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; "
+       r"a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; own-shape preference $= L(s^*) - \bar L$; "
        r"knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ "
        r"is the mean over shapes other than $s$ and $s^*$.", ""]
 
@@ -81,7 +81,7 @@ out = [r"\FloatBarrier", r"\section{Experiment 1 (Amendment 9)}\label{app:M}",
 rows = [("M1", "Knowledge at 1,000 exposures, fixed shape (each corpus)", None),
         ("H30", "Carry falls faster with exposure for fixed-shape than shape-absent nouns (slope difference)", "less"),
         ("H31", "Shape-absent (1k and 10k) minus unseen with typical embedding (two-sided; TOST $\\pm$1)", "two"),
-        ("H32", "Stored preference rises with exposure, fixed shape (slope)", "greater"),
+        ("H32", "Own-shape preference rises with exposure, fixed shape (slope)", "greater"),
         ("H33a", "Ablating candidates removes more than half of unseen carry (proportion)", "half"),
         ("H33b", "Random heads minus candidates, unseen carry after ablation", "greater"),
         ("H34", "Reassigned: trained-kind carry intact minus candidates ablated", "greater"),
@@ -149,11 +149,11 @@ out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
 
 # Table M3: knowledge and stored by cell, Regular grouped
 out += [r"\begin{table}[!htbp]", r"\centering\small",
-        r"\caption{Knowledge and stored preference (nats) in Regular grouped models, mean of seed values.}",
+        r"\caption{Knowledge and own-shape preference (nats) in Regular grouped models, mean of seed values.}",
         r"\label{tab:M3}", r"\begin{tabular}{@{}llrrrr@{}}", r"\toprule",
         r"Type & Measure & 10 & 100 & 1k & 10k \\", r"\midrule"]
 for typ, tl in (("consistent", "Fixed shape"), ("uninformative", "Uninformative"), ("absent", "Shape-absent")):
-    for q, ql in (("know", "Knowledge"), ("stored", "Stored")):
+    for q, ql in (("know", "Knowledge"), ("stored", "Own shape")):
         out.append(f"{tl if q == 'know' else ''} & {ql} & " +
                    " & ".join(f(sv('regular_grouped', typ, e, q=q)[0]) for e in (10, 100, 1000, 10000)) + r" \\")
 out += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]

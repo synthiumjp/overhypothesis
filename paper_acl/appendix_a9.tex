@@ -4,7 +4,7 @@
 \setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}
 \textbf{Registration.} The design, hypotheses and analysis were registered before any corpus was built (Amendment 9). An addendum, written the same day before any corpus was built, fixed details the registration left open (36 context draws per noun; uniform frame proportions; exposures placed at evenly spaced read positions from 5\% to 95\% of training, after warm-up for every size; random in-window position; the 40 nonce nouns; how the pilot fixes the number of nouns per cell; how a hypothesis counts as supported; the gate for H35; and that heads without prefix matching are described as copying heads). A pilot (one seed, 3.4M models, never used in a test) set three nouns per cell; with the registered rule the expected power for a 1-nat difference was 0.57, below the planned 0.8, which we report as a shortfall. Corpus checksums were recorded before training and matched on the training machine; a checker verified every exposure, window and frame from the tokens. All models were trained on one machine.
 
-\textbf{Design.} In every model, 40 nonce nouns fill 13 cells (three per cell, four unseen): fixed shape, uninformative shape (a new shape in every sentence, drawn from the corpus's shape distribution) and shape-absent (a sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, also used by trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned grouped; sizes 3.4M, 10.9M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; stored preference $= L(s^*) - \bar L$; knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ is the mean over shapes other than $s$ and $s^*$.
+\textbf{Design.} In every model, 40 nonce nouns fill 13 cells (three per cell, four unseen): fixed shape, uninformative shape (a new shape in every sentence, drawn from the corpus's shape distribution) and shape-absent (a sixth frame, \emph{The \textit{noun} is \textit{colour} and \textit{texture}}, also used by trained kinds in one sentence in fifteen), each at 10, 100, 1,000 and 10,000 exposures, plus unseen. Nouns rotate over cells across ten seeds. Each familiarity sentence lies wholly inside one 128-token window, at most one per window, between runs in grouped corpora. Base corpora: Regular grouped, Regular random, Reassigned grouped; sizes 3.4M, 10.9M and 25.6M; ten seeds; 90 models with untied embeddings. Measures are read from the full log-softmax over the ten shape words at the position that predicts the shape in \emph{A \textit{noun} is a}: carry $= L(s) - \bar L$ after a context sentence with shape $s$; own-shape preference $= L(s^*) - \bar L$; knowledge $= L(s^*)$ minus the mean over the other nine shapes after an unrelated sentence, where $\bar L$ is the mean over shapes other than $s$ and $s^*$.
 
 \begin{table}[!htbp]
 \centering\small
@@ -17,7 +17,7 @@
 M1 & Knowledge at 1,000 exposures, fixed shape (each corpus) & 9.53; 8.61; 8.26 & & & & Passed \\
 H30 & Carry falls faster with exposure for fixed-shape than shape-absent nouns (slope difference) & 0.16 & [0.01, 0.30] & 1.000 & 0 & Not supported \\
 H31 & Shape-absent (1k and 10k) minus unseen with typical embedding (two-sided; TOST $\pm$1) & 0.33 & [0.13, 0.52] & .013 & 3 & Different, and equivalent within 1 nat \\
-H32 & Stored preference rises with exposure, fixed shape (slope) & 2.97 & [2.79, 3.16] & $<$.001 & 3 & Supported \\
+H32 & Own-shape preference rises with exposure, fixed shape (slope) & 2.97 & [2.79, 3.16] & $<$.001 & 3 & Supported \\
 H33a & Ablating candidates removes more than half of unseen carry (proportion) & 0.22 & [0.07, 0.36] & 1.000 & 2 & Not supported \\
 H33b & Random heads minus candidates, unseen carry after ablation & 0.64 & [\textminus{}0.43, 1.71] & 1.000 & 2 & Not supported \\
 H34 & Reassigned: trained-kind carry intact minus candidates ablated & 7.41 & [6.02, 8.80] & $<$.001 & 3 & Supported \\
@@ -53,18 +53,18 @@ Regular random & \textminus{}0.15 & \textminus{}0.72 & \textminus{}0.10 & Fixed 
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Knowledge and stored preference (nats) in Regular grouped models, mean of seed values.}
+\caption{Knowledge and own-shape preference (nats) in Regular grouped models, mean of seed values.}
 \label{tab:M3}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
 Type & Measure & 10 & 100 & 1k & 10k \\
 \midrule
 Fixed shape & Knowledge & 1.59 & 8.02 & 9.53 & 10.61 \\
- & Stored & 1.41 & 7.74 & 9.56 & 10.71 \\
+ & Own shape & 1.41 & 7.74 & 9.56 & 10.71 \\
 Uninformative & Knowledge & 0.04 & \textminus{}0.03 & 0.00 & 0.03 \\
- & Stored & 0.01 & \textminus{}0.03 & \textminus{}0.01 & 0.03 \\
+ & Own shape & 0.01 & \textminus{}0.03 & \textminus{}0.01 & 0.03 \\
 Shape-absent & Knowledge & \textminus{}0.14 & \textminus{}0.17 & 0.12 & 0.08 \\
- & Stored & 0.11 & \textminus{}0.16 & 0.10 & 0.06 \\
+ & Own shape & 0.11 & \textminus{}0.16 & 0.10 & 0.06 \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -1,0 +1,258 @@
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+%\usepackage{inconsolata} % not installed here; only affects typewriter font
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xltabular}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{placeins}
+\usepackage{enumitem}
+
+\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}\renewcommand{\dbltopfraction}{0.9}\renewcommand{\dblfloatpagefraction}{0.8}
+\newcommand{\nohdpunct}{}
+\newcommand{\appendixsection}[1]{\section{#1}}
+\newenvironment{acknowledgments}{\section*{Acknowledgments}}{}
+
+\title{Whether Small Transformers Copy a Feature from Context\\Depends on the Noun's Training History}
+
+\author{Anonymous submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A language model can predict a word's properties by copying them from context or by recalling what it stored. We ask what in a word's own training history decides which. We trained 230 small transformers on an artificial language about objects, controlling how often new nouns occurred, with which shapes, and whether their sentences came one at a time or in bursts. That a model copies where copying pays was expected, and nouns met in bursts whose shape changed between bursts did keep copying. Three findings go further. First, memory and context added up rather than competed: a stored shape barely reduced copying, yet the model still preferred the stored shape. Second, what bursts kept was a tendency, carried by the noun's input embedding, to copy the latest shape, not a link between noun and shape. Third, this tendency spread to other new nouns. In a pre-registered replication with new seeds, after 1,000 sentences such nouns copied 3.7 nats more than nouns in fixed-shape bursts (4.2 nats at 85.6M parameters), and 5.5 nats more when all new nouns shared one history. Never-seen nouns copied mainly because their embeddings were untrained, an effect that did not transfer to Pythia.
+\end{abstract}
+
+\section{Introduction}
+When a language model reads \emph{The car was red. The car was}, it can predict \emph{red} because the context says so, or predict a typical car colour from what it has stored. Which source it relies on matters for how models handle documents that contradict their knowledge \citep{longpre2021,xie2024}, for how they learn new words and tokens, and for how we interpret probes that use invented words. Work on in-context and in-weights learning shows that the balance depends on the training data. Classes that occur in bursts, or whose meaning changes, favour learning from context; common, stable classes favour learning stored in the weights (\citealp{chan2022}; \citealp{chan2025}). Inside pretrained models, mechanisms that copy from the context compete with mechanisms that recall stored facts \citep{yu2023,jin2024,ortu2024}. These results describe populations of items. We ask the same question about a single word: \emph{what in a word's own training history decides whether a model copies its features from the context?}
+
+Three accounts are plausible, and they make different predictions.
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
+\item \textbf{Memory competition.} A model copies until it has stored something about the word; stored knowledge then competes with the context. Words with a stored feature should stop copying sooner than words without one.
+\item \textbf{Representation.} Copying for new words reflects their unusual, untrained embeddings. Once a word's embedding looks like those of familiar words, copying should stop, whatever the word was seen with.
+\item \textbf{Useful context.} A model learns, word by word, whether copying has paid off. A word should keep being copied if, in training, its own earlier mentions predicted its features and memory could not.
+\end{itemize}
+Natural data cannot separate these, because frequent words are both familiar and well known. Invented (nonce) words, the usual probe \citep{thrush2020,misra2023}, are new in both respects at once, and conclusions drawn with them can depend on how the new word is represented \citep{kim2022lexical,cacioli2026me}.
+
+We therefore built the separation into training. Small transformers learned an artificial language describing objects by shape, colour and texture, into which we inserted 40 new nouns. For each noun we set how often it occurred, which shapes it occurred with, and whether its sentences came one at a time or in short bursts (Figure~\ref{fig:1}). We measured how strongly each model copied a shape named in one sentence into the next mention of a noun. A first pre-registered experiment tested the memory and representation accounts. A second let new nouns recur, like the language's own nouns, and tested the useful-context account. A third, registered after the second's results, repeated its key comparisons with new seeds, in a model three times larger, and in corpora where all new nouns share one history. Last, we asked whether the effect of a word's embedding carries over to pretrained models.
+
+In corpora where object kinds keep their shapes, copying starts high because new nouns' embeddings are untrained, and is kept only where the noun's own context was useful. That much is expected: a model should copy where copying lowers its loss. Three findings are less expected. Memory and context added up: a stored shape barely reduced copying, yet the model still preferred the stored shape. What useful bursts kept was a tendency, carried by the noun's embedding, to copy the latest shape, not a link between noun and shape. And this tendency spread to other new nouns. When the corpus as a whole made shapes changeable, bursts of any kind kept copying. Our claims are about small transformers trained on this language; we note parallels with children's word learning in Section~\ref{sec:discussion}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/figure1_carry.pdf}
+\caption{(a) A test item and the copy score, which leaves out the noun's own shape. (b) Four of the training histories, drawn schematically over three training windows; with the same number of sentences, bursts occupy a quarter as many windows as spaced sentences.}
+\label{fig:1}
+\end{figure}
+
+\section{Related work}
+\textbf{In-context and in-weights learning.} In-context learning emerges when items occur in bursts, more when their meanings change, and trades off against learning in the weights \citep{chan2022}; it depends on task diversity \citep{raventos2023}, favours rare classes and can fade as stored solutions take over \citep{chan2025,singh2023}. Its onset has been traced to induction heads \citep{olsson2022,reddy2024}, and in small transformers stored bigram statistics are learned quickly and in-context ones later, through an induction head \citep{bietti2023}. Synthetic languages and Markov chains have been used to trace how in-context learning forms \citep{akyurek2024,edelman2024}. Resetting embeddings during training keeps in-context use alive for rare tokens \citep{anand2025}, and in synthetic biographies frequent entities shift from context to stored knowledge \citep{kim2026training}. We manipulate frequency, stored knowledge and arrangement separately for single words within one model.
+
+\textbf{Copying and recall.} Language models have long gained from copying recent words, through caches and pointers \citep{kuhn1990,grave2017,merity2017}, because words recur in bursts: a word that has occurred once is far more likely to occur again \citep{church1995,church2000}, a regularity that human memory also tracks \citep{anderson1991}. Pretrained models answer from memory more for frequent entities \citep{mallen2023,kandpal2023,razeghi2022} and resist contexts that contradict what they know \citep{longpre2021,xie2024,du2024}; copying and recall compete inside the network \citep{yu2023,jin2024,ortu2024}.
+
+\textbf{New words and new tokens.} Rare and new words have poor representations \citep{schick2020}, and good embeddings for them can be built from a few contexts \citep{herbelot2017,khodak2018}; under-trained tokens behave abnormally \citep{land2024}, new embeddings are often initialised at the mean of existing ones \citep{hewitt2021}, and tying input and output embeddings \citep{press2017,inan2017} gives new tokens trained rows. Lexical exposure can inflate apparent generalisation \citep{kim2022lexical}, and when language models acquire a word depends mainly on its frequency \citep{chang2022}. Children's word learning offers related evidence on shape \citep{landau1988,smith2002}, on expectations about how features vary \citep{kemp2007,dewar2010} and on the timing of exposures \citep{childers2002,schwab2016}, to which we return in Section~\ref{sec:discussion}.
+
+\section{Setup}\label{sec:setup}\label{sec:background}
+\textbf{Language.} Each corpus describes 32 kinds of object, each named by an invented noun (the \emph{trained kinds}), with 14 exemplars per kind. An exemplar has a shape, a colour and a texture, each one of ten invented words, and is described in one of five sentence frames, such as \emph{A wug is a zibby lavo shorfi thing} (shape, colour, texture) or \emph{Look at the wug. It is zibby and lavo} (Appendix~\ref{app:I}). The corpus runs through all exemplars many times, each pass arranged afresh, and a model reads the corpus once. In \textbf{stable-shape} corpora each kind keeps one shape, so a kind's shape can be stored. In \textbf{shifting-shape} corpora a kind gets a new shape in every pass and keeps it within the pass, so its current shape can come only from the context. In both, sentences about a kind come in runs of four; a control corpus uses random order. Every word is one token.
+
+\textbf{Models.} Decoder-only transformers with pre-layer normalisation and learned position embeddings, with 3.4M, 10.9M and 25.6M parameters (4 to 8 layers), and in Experiment~3 also 85.6M (12 layers), read the text once in non-overlapping windows of 128 tokens. Input and output embeddings are untied, so a noun's input embedding (its \emph{row}) carries everything the model has learned about the noun as an input (Appendix~\ref{app:C}).
+
+\textbf{Controlling a noun's history.} We added 40 new nouns to each corpus. Four were never used in training (\emph{unseen}); the others are \emph{familiar} in the sense that they occur in training. Each familiar noun had one history (Table~\ref{tab:design}) at a set number of exposures, counted in sentences, with three nouns per condition, rotated over nouns across seeds. A noun's sentences were spread evenly from 5\% to 95\% of training, and each lay wholly inside one window. Presented \emph{spaced}, a noun has one sentence per window. Presented in \emph{bursts}, it has four consecutive sentences in one window, so the same number of sentences occupies a quarter as many windows.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.27\columnwidth}p{0.68\columnwidth}@{}}
+\toprule
+History & Sentences about the noun in training \\
+\midrule
+Unseen & none: the noun's embedding is untrained \\
+Fixed shape & always the noun's own shape, which it can store \\
+Changing shape & a new shape every sentence (spaced) or every burst (bursts), so nothing can be stored \\
+No shape & no shape at all: the noun is familiar but has no shape to store \\
+\bottomrule
+\end{tabular}
+\caption{Noun histories. In changing-shape bursts the shape is shared within a burst and changes between bursts, so the noun's own earlier sentence is the only source of its current shape.}
+\label{tab:design}
+\end{table}
+
+\textbf{Three experiments.} Experiment~1 (90 models) crossed fixed-, changing- and no-shape nouns, all spaced, with 10 to 10,000 exposures, in stable-shape, shifting-shape and random-order corpora. In it familiar nouns never recurred within a window, unlike the trained kinds, and no-shape nouns never appeared in the frame used for testing. Experiment~2 (60 models) removed both differences. It crossed the three histories with spaced and burst presentation (bursts of four sentences, like the trained kinds' runs) at 100 and 1,000 exposures, where copying had fallen below 1 nat and to near zero in Experiment~1, in stable-shape and shifting-shape corpora. Fixed- and changing-shape nouns appeared only in the test frame, and no-shape nouns in that frame without the shape (\emph{A \textit{noun} is a \textit{colour} \textit{texture} thing}). This frame has a side effect: no-shape nouns learn to expect a colour word, not a shape, after \emph{is a}, by 1 to 5 nats at the test position, whereas every other familiar noun expects a shape (Appendix~\ref{app:N}), so comparisons involving no-shape nouns in Experiments~2 and~3 are confounded with expected word class. Experiment~3 (70 models) repeated the stable-shape design of Experiment~2 with ten new seeds at the three sizes and at 85.6M parameters, and trained five seeds at each of the three sizes on \textbf{single-history} corpora, in which all 36 familiar nouns had changing shapes or all had fixed shapes. New nouns fill about 60\% of training windows in Experiment~1 and 8\% in Experiments~2 and~3 (40\% and 5\% for the 10.9M models, which read more windows), so we compare conditions only within an experiment.
+
+\textbf{Measures.} A test item gives one sentence about a noun naming a shape $s$, then the start of the next mention, \emph{A \textit{noun} is a}, and reads the model's log probability $L$ of each of the ten shape words at the next position (Figure~\ref{fig:1}a). The \textbf{copy score} is $L(s)$ minus the mean of $L$ over the other shapes. The mean leaves out the noun's own shape $s^*$, which the context never names; nouns without a shape get a fixed placebo shape. It is in nats: 0 means the context's shape is no more likely than the others, and 3.4 means it is about 30 times as likely as the (geometric) average other shape. Each noun gets 36 items, four for each shape other than its own, with colours and textures drawn at random. Because the copy score leaves out $s^*$, we also report which shape the model prefers, $L(s^*) - L(s)$. In a \textbf{control}, the query names another new noun with the same history; if copying is tied to the noun, the control should score lower. \textbf{Knowledge} is $L(s^*)$ minus the mean $L$ of the other nine shapes after an unrelated sentence. We also score unseen nouns with a \textbf{typical embedding}: the mean of the trained kinds' rows plus a random offset whose length is the trained rows' average distance from that mean.
+
+\textbf{Predictions.} Table~\ref{tab:pred} gives what each account predicts for the comparisons that separate them. Only the memory account predicts that a stored shape lowers copying. Only the useful-context account predicts that changing-shape bursts copy more than changing-shape spaced nouns, unless bursts leave rows less trained, in which case the representation account predicts it too. Fixed-shape bursts test that: they have as many row updates as changing-shape bursts but a shape that memory can supply.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}p{0.47\columnwidth}cccl@{}}
+\toprule
+Comparison & Mem. & Rep. & Useful & Exp. \\
+\midrule
+Unseen: typical $-$ untrained row & & $<$0 & & -- \\
+Spaced: fixed $-$ changing shape & $<$0 & 0 & 0 & 3 \\
+Changing shape: bursts $-$ spaced & 0 & 0$^b$ & $>$0 & 2, 3 \\
+Bursts: changing $-$ fixed shape & $>$0 & 0 & $>$0 & 3 \\
+\bottomrule
+\end{tabular}
+\caption{Predictions of the memory, representation and useful-context accounts for the copy score. Blank: no prediction. $^b$Or $>$0 if bursts, which update a noun's row in fewer windows, leave it less trained. Exp.: the experiments in which the comparison was a pre-registered test.}
+\label{tab:pred}
+\end{table}
+
+\textbf{Analysis and registration.} The seed is the unit of replication: we average each condition over model sizes within a seed and test across seeds, with Holm correction within each registered family of tests \citep{holm1979}, and count a prediction as supported only if its direction also holds in two of the three sizes. Each experiment was registered before any of its models was trained (Experiment~1 before its corpora were built; Experiment~3 after the results of Experiment~2, to test them on new models). Where Experiment~3 tested a finding of Experiment~2, we report the Experiment~3 value, with Experiment~2 as the discovery sample. Results not marked pre-registered are exploratory; Appendix~\ref{app:map} lists every registered test and its outcome.
+
+\section{Results}\label{sec:results}
+
+\subsection{New nouns copy because their embeddings are untrained}\label{sec:rows}
+In stable-shape models of Experiment~1, unseen nouns had a copy score of 4.53 nats [95\% CI 3.54,~5.52]. Given a typical embedding, the same nouns scored $-$0.33 (Figure~\ref{fig:carry}, left); in Experiment~3 the drop was from 6.88 to 0.79. Earlier experiments with this language showed the same drop with a related measure (Appendix~\ref{app:L}). To see which property of an untrained row matters, we changed only the rows of unseen nouns in the Experiment~1 models. Scaling a row to the trained kinds' average size, keeping its direction, lowered the score only from 4.53 to 4.00 (pre-registered; almost entirely in the smallest models). A random direction of that size kept copying (4.09), whereas the trained kinds' mean row removed it ($-$0.44). What suppresses copying is therefore what a row shares with trained nouns' rows, not its size. With tied input and output embeddings, which train unseen rows as outputs (ten 3.4M models), unseen nouns still copied (3.96 nats), a typical embedding still removed it (0.02), and changing-shape bursts still copied more than fixed-shape bursts at 1,000 exposures (1.90 [1.20,~2.60]), though all effects were smaller (Appendix~\ref{app:O}). In these small models, then, a probe with an unseen word measures the word's row as much as anything learned about context.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_carry.pdf}
+\caption{Experiment 1: copy score by number of exposures and noun history, all spaced, in stable-shape, shifting-shape and random-order corpora (means over ten seeds, sizes averaged; 95\% intervals). Diamond at 0: unseen nouns. Dashed line: unseen nouns with a typical embedding.}
+\label{fig:carry}
+\end{figure*}
+
+\subsection{Nouns met one at a time lose copying}
+Experiment~1 tested the memory and representation accounts. Changing-shape nouns, which never have a shape to store, are the cleanest test of the memory account. In stable-shape models they lost copying almost as quickly as fixed-shape nouns, which did store their shape (Figure~\ref{fig:carry}, left). Fixed-shape nouns learned their shape well, preferring it by 9.5 nats after an unrelated sentence at 1,000 exposures (pre-registered manipulation check), yet their copy score did not fall faster than that of no-shape nouns (pre-registered prediction, not supported). For all three histories, copying fell from 3.6--4.5 nats at 10 exposures to under 1 nat at 100 and to near zero from 1,000 on. No-shape nouns at 1,000 and 10,000 exposures ended 0.33 nats [0.13,~0.52] above unseen nouns with a typical embedding, within the registered 1-nat equivalence bound (pre-registered). In random-order corpora no noun copied, so copying is learned from the runs of sentences about a kind. These results fit the representation account: once a noun was familiar, it lost copying largely whatever it had stored. Experiments~2 and~3 asked whether recurrence, or a context that is useful, keeps copying alive.
+
+\subsection{Bursts with changing shapes keep copying}
+The useful-context account predicts that changing-shape bursts, where a noun's previous sentence gives its current shape and memory cannot, keep copying (Table~\ref{tab:pred}); the other two accounts predict no difference from spaced presentation. Changing-shape bursts scored 4.14 nats [3.60,~4.69] more than changing-shape spaced nouns (pre-registered in Experiment~3; Experiment~2: 3.39; Figure~\ref{fig:a11}a; Table~\ref{tab:key}), as much at 1,000 exposures as at 100. After 1,000 exposures they still scored 4.71 nats, against at most 1.1 for every other familiar history and 0.79 for unseen nouns with a typical embedding. Over training this copying did not fade: in Experiment~2, for nouns with 1,000 exposures, it rose from 0.8--2.6 nats at the first saved weights to 3.85 at the end, while every other history ended near or below 1 (Figure~\ref{fig:a10formation}).
+
+Because bursts occupy fewer windows, a burst noun's row is updated less often, which might leave it closer to an untrained row. Fixed-shape bursts control for this: the same frame, presentation and number of windows, but a shape that never changes, so memory can supply it. At 1,000 exposures changing-shape bursts copied 3.68 nats [2.99,~4.37] more than fixed-shape bursts, at all three sizes (pre-registered in Experiment~3; Experiment~2: 2.86). This comparison separates useful context from the representation account (Table~\ref{tab:pred}).
+
+Recurrence without a useful context helped less and only early. No-shape bursts scored 0.80 nats [0.47,~1.13] more than no-shape spaced nouns in Experiment~2 (pre-registered), but the gain was confined to 100 exposures: at 1,000 it was 0.05 [$-$0.30,~0.40] (Experiment~3: 0.20 [$-$0.10,~0.49]). Fixed-shape bursts also copied more than fixed-shape spaced nouns, but at 100 exposures bursts left the stored shape weaker (knowledge 3.0 against 5.1 to 5.4 nats), so the registered test could not be interpreted; at 1,000, with knowledge equal, bursts added about 0.5 nats, a sixth of the advantage of changing- over fixed-shape bursts.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Exp.~2} & \multicolumn{2}{c}{Exp.~3} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Comparison & Pooled & 1,000 & Pooled & 1,000 \\
+\midrule
+Changing: bursts $-$ spaced & 3.39$^r$ & 3.35 & 4.14$^r$ & 4.15 \\
+Bursts: changing $-$ fixed & 1.73 & 2.86 & 2.52 & 3.68$^r$ \\
+No shape: bursts $-$ spaced & 0.80$^r$ & 0.05 & 0.69 & 0.20 \\
+Spaced: fixed $-$ changing & $-$0.02 & 0.02 & $-$0.25$^r$ & $-$0.10 \\
+Spaced: fixed $-$ no shape$^a$\! & $-$1.02$^r$ & $-$0.46 & $-$1.00 & $-$0.39 \\
+Same noun $-$ other noun & 0.05 & 0.05 & 0.07 & 0.08$^r$ \\
+\bottomrule
+\end{tabular}
+\caption{Key comparisons in stable-shape corpora (copy score, nats; seed-level means; 100 and 1,000 exposures pooled, and 1,000 alone). $^r$Pre-registered test; all other values exploratory. Same noun $-$ other noun: the control, for changing-shape bursts. $^a$Confounded with expected word class.}
+\label{tab:key}
+\end{table}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a11.pdf}
+\caption{Copy score by history (colour) and presentation (solid: bursts; dashed: spaced) at 100 and 1,000 exposures (means over seeds, sizes averaged; 95\% intervals; points offset for legibility). (a) Stable-shape corpora, Experiment~3 (ten new seeds). (b) Single-history corpora, Experiment~3 (five seeds): all familiar nouns have changing shapes (orange) or all have fixed shapes (blue). (c) Shifting-shape corpora, Experiment~2 (exploratory). Solid grey line and band: unseen nouns; dashed line: unseen nouns with a typical embedding. Experiment~2's stable-shape results are in Appendix~\ref{app:N}.}
+\label{fig:a11}
+\end{figure*}
+
+\subsection{A stored shape lowers copying slightly but wins in prediction}
+Fixed- and changing-shape nouns presented spaced share frame, presentation and expected word class, and differ only in whether one shape can be stored. Fixed-shape spaced nouns copied 0.25 nats [0.15,~0.35] less (pre-registered in Experiment~3), mostly at 100 exposures (0.40) rather than at 1,000 (0.10). The difference was reliably above zero, so a stored shape did lower copying, and we could not show it was under 0.3 nats; Experiment~1 gave a similar 0.30 at 1,000 exposures, and Experiment~2 none ($-$0.02, equivalent to zero within $\pm$0.3; TOST \citealp{lakens2017}). Which shape the model finally predicts is another matter. Fixed-shape spaced nouns preferred their own shape to the context's by 5.84 nats [5.57,~6.11] (pre-registered), 4.1 at 100 exposures and 7.6 at 1,000. A stored shape thus barely suppressed the copying itself but outweighed it in prediction. The comparison with no-shape nouns, registered in Experiment~2 and repeated in Experiment~3, suggests a larger effect: fixed-shape spaced nouns scored about 1 nat below no-shape spaced nouns ($-$1.02 and $-$1.00). But no-shape nouns expect a colour where the others expect a shape, so these differences reflect expected word class, not a stored shape.
+
+\subsection{History sets whether the model copies, not what it copies}
+If changing-shape bursts taught the model to bind a noun to its current shape, the control, in which the query names another noun, should score lower. It did not. For changing-shape bursts at 1,000 exposures the context about the queried noun added 0.08 nats [0.02,~0.14] over the control, within $\pm$0.3 (pre-registered), and no stable-shape condition in any experiment exceeded 0.14. The model copied the most recent shape after the queried noun, whichever noun the preceding sentence described. To see whose history matters, we paired a context about a noun of one history with a query naming a noun of another (Table~\ref{tab:O3}). At 1,000 exposures, a queried noun with changing-shape bursts copied 1.72 nats [1.36,~2.08] more than one with fixed-shape bursts, averaged over the context noun's history. The same contrast for the context noun added only 0.47 [0.36,~0.58]. The difference between the two, 1.25 [0.94,~1.56], was pre-registered in Experiment~3 (Experiment~2: 1.35 against 0.39). In training, every sentence of a burst followed one about the same noun, so nothing required the model to check which noun a shape belonged to. A registered search for induction-like heads \citep{olsson2022} in Experiment~1 found none: no head matched prefixes clearly better than uniform attention, and ablating the best candidates removed not reliably more copying than random heads (Appendix~\ref{app:M}). Section~\ref{sec:rowsexp2} locates the effect instead.
+
+\subsection{Copying spreads between nouns}\label{sec:single}
+Because copying is not tied to the noun, what changing-shape bursts teach may reach other nouns in the same corpus. In Experiment~3's single-history corpora no noun of another history was present (Figure~\ref{fig:a11}b). There, changing-shape bursts copied 5.51 nats [4.24,~6.78] more than fixed-shape bursts at 1,000 exposures, at all three sizes (pre-registered), so the main difference does not need nouns of the other history. It was larger than in mixed corpora with the same seeds (4.27), mainly because fixed-shape bursts lost all their copying when no noun of another history shared the corpus: 0.03 nats, against 1.03 in mixed corpora with the same seeds, a difference of 1.00 [0.80,~1.20] (pre-registered). For changing-shape bursts, the corresponding comparison was inconclusive (+0.24 [$-$1.44,~1.92]). Some of the copying that fixed-shape bursts keep in mixed corpora is therefore learned from nouns of other histories.
+
+\subsection{How the row sets copying}\label{sec:rowsexp2}
+A noun enters the model only through its row, so whatever its history taught must be carried there. Could changing-shape bursts simply leave the row less trained? For every familiar noun we measured the row's cosine with its initial value, its distance from the trained kinds' mean row and its norm, and regressed copy scores on them within each model. At 1,000 exposures changing-shape bursts copied 3.67 nats [3.03,~4.32] more than these measures predict (pre-registered in Experiment~3; Experiment~2: 2.84 by the same test), although their rows were only slightly closer to their initial values than those of fixed-shape bursts (cosine 0.85 against 0.78 in both experiments). At 100 exposures geometry still accounted for their copying (0.45 [$-$0.25,~1.15]; Experiment~2: 0.15). Bursts thus first preserve copying by leaving rows near their initial state, and changing-shape bursts then give the row a copying tendency of its own.
+
+That tendency lies along a direction shared by nouns. In the Experiment~3 models we added to a noun's row the difference between the mean rows of changing- and fixed-shape bursts, taken from other nouns (Table~\ref{tab:O4}). At 1,000 exposures this raised copying by 1.51 nats [1.20,~1.82] for fixed-shape spaced nouns, 2.04 for no-shape spaced nouns and 1.99 for unseen nouns with a typical embedding, while a random vector of the same length changed it by at most 0.02. The row is read early. Patching the query noun's internal state from a changing-shape burst noun into a fixed-shape one, or the reverse, moved copying fully if done before the first block and not at all after the second, while patching the prediction position carried all of it from the second block on. And first-layer attention from the prediction position to the context's shape word was higher for changing-shape bursts and tracked copying across conditions (Spearman $\rho$ = 0.73; later layers $-$0.36 to 0.23). In this sense changing-shape bursts move the row along a direction that goes with more first-layer attention to the latest shape and reaches the prediction position within the first two blocks.
+
+This learned copying is narrow (both experiments). With one unrelated sentence between the context and the query, it almost vanished (at most 0.44 nats). With the context in another frame (\emph{Look at the \textit{noun}. It is \textit{shape} and \textit{colour}.}), changing-shape bursts kept 35 to 40\% of it at 1,000 exposures (about 55\% at 100). For colour, which varies freely within every kind, no noun copied.
+
+\subsection{When the whole corpus rewards copying}\label{sec:shifting}
+In Experiment~2's shifting-shape corpora, where the trained kinds' shapes can come only from context, copying behaved differently (Figure~\ref{fig:a11}c). Every burst history kept copying: at 1,000 exposures fixed-shape bursts scored 3.57 nats, no-shape bursts 2.09 and changing-shape bursts 6.82, more than unseen nouns (5.02). Part of the copying was tied to the noun (up to 1.45 nats over the control). When the corpus rewards copying, recurrence alone sustains it.
+
+\subsection{Model size}\label{sec:scale}
+In Experiment~3, the advantage of changing- over fixed-shape bursts at 1,000 exposures was 6.36, 2.44 and 2.24 nats at 3.4M, 10.9M and 25.6M parameters, while unseen nouns with a typical embedding copied more as models grew ($-$0.19, 1.20 and 1.37). The decline did not continue. In ten models of 85.6M parameters the advantage was 4.18 nats [2.95,~5.41] (pre-registered); changing-shape bursts still copied 4.85 nats after 1,000 exposures, against at most 1.2 for every other familiar history, and unseen nouns with a typical embedding copied 0.36. The 85.6M models also had a longer warm-up, so size is not their only difference.
+
+\subsection{Pretrained models}\label{sec:pythia}
+We registered three predictions for Pythia models from 1B to 12B parameters \citep{biderman2023}, using 22 one-token nouns with a typical colour (\emph{sky}) and 22 without (\emph{truck}), matched on frequency in the Pile \citep{gao2020,liu2024infinigram}: replacing a noun's embedding with a random one of untrained scale would raise colour copying, more than a typical embedding would, and colour-typical nouns would copy less. The models had stored typical colours (1.3 to 1.7 nats with no context), and real nouns copied 1.9 to 2.7 nats of colour. None of the predictions held (pre-registered): replacements changed copying by up to 0.6 nats in either direction, inconsistently across models, and the two noun groups did not differ reliably (Appendix~\ref{app:N}, Figure~\ref{fig:pythia}).
+
+\section{Discussion}\label{sec:discussion}
+\textbf{What decides copying.} In stable-shape corpora our results fit a combined account. Whether the model copies the latest shape after a noun depends on the noun's row. The tendency starts high for rows far from the trained nouns' rows, which is why unseen nouns copy and lose it with a typical row. Training removes it, largely whatever is stored, unless the noun's own earlier sentences were the only source of its current shape: changing-shape bursts kept copying where fixed-shape bursts with the same recurrence did not, in new seeds, in models of 85.6M parameters and in corpora without nouns of the other history. The memory account found little support. A stored shape lowered copying by 0 to 0.4 nats across three experiments, about a tenth of the effect of a useful context, and acted mainly by outweighing the copied shape in prediction. Row analyses support the combined account: early on, bursts keep copying by keeping rows near their initial state; later, changing-shape bursts move the row along a direction shared across nouns, read within the first two blocks and associated with first-layer attention to the latest shape.
+
+\textbf{Beyond the expected.} Recurrence alone did not keep copying: no-shape bursts lost their advantage by 1,000 exposures. Memory and context added up, and the stored shape won by outweighing the copied one. And the copying was not bound to the noun and spread to other nouns, as training never required it to be bound. This is the population-level finding of \citet{chan2022}, that bursty items whose meaning changes favour learning in context, acting on single words; when the corpus already rewards copying, recurrence of any kind sustains it.
+
+\textbf{Implications.} In small models trained from scratch, tied or untied, probes with invented words can measure an unseen token's row more than anything learned about context; in Pythia this did not hold. Because copying learned for some words spread to others, a word's tendency to copy depends on the company it keeps in training, not only on its own history. Natural text mixes our two regimes. In WikiText-103 \citep{merity2017}, the 44 nouns of the pretrained test recurred within 128 words after a median 40\% (colour-typical) and 24\% (colour-variable) of their mentions, typically over 100 times more often than if spread evenly. A colour word named before a noun twice in one article was usually the same (median agreement 0.98 and 0.86), whereas two mentions from anywhere agreed less often (0.46 and 0.37; Appendix~\ref{app:O}). Colour-variable nouns thus resemble changing-shape bursts, although many such pairs are names (\emph{Black Sea}).
+
+\textbf{Analogies with children.} Two findings echo children's word learning, as analogies only. Changing-shape bursts resemble the boxes of \citet{dewar2010}, uniform within and varying between; after one draw from a new box, 9-month-olds expected the next to match, an overhypothesis in the sense of \citet{kemp2007}. And spaced nouns first stored their shape better, while bursts kept the context in use; children retain words better from spaced exposures \citep{childers2002,vlach2008} but learn labels repeated in successive sentences \citep{schwab2016}.
+
+\section*{Limitations}
+The language is artificial, with 32 kinds, three features and five sentence frames; the models are small (at most 85.6M parameters) and trained with one recipe, and most effects shrank from 3.4M to 25.6M parameters. Experiments~2 and~3 tested 100 and 1,000 exposures, and over training exposure is confounded with training time. The learned copying almost vanished beyond one sentence, transferred only partly to another frame, and did not apply to colour. No-shape comparisons are confounded with expected word class, and bursts weakened stored shapes at 100 exposures. Single-history corpora used five seeds, and whether other nouns change the copying of changing-shape bursts was inconclusive. The tied-embedding check used one size and was not registered. The mechanism is located only coarsely, as a direction in the row and first-layer attention; the heads involved were not identified, and the registered head search could not test its hypothesis. Planned power for a 1-nat difference in Experiment~1 was 0.57, below the target of 0.8. The pretrained test used one model family, 22 noun pairs, three frames and colour only. Earlier experiments in this language were registered in stages, some after related results were known (Appendix~\ref{app:A}).
+
+\section*{Ethics statement}
+All training data are artificial; the pretrained models are public. No data were collected from people. Code, corpora, results and all trained models will be released; anonymised copies are provided as supplementary material.
+
+\section*{Use of AI assistants}
+An AI assistant (Claude, Anthropic) was used to help design analyses, write code, review code and design, draft and edit text and check citations. It also reviewed the write-up of Experiment~1, which identified the two differences addressed by Experiment~2, and coded the colour typicality of the pretrained-model nouns in two independent passes. The authors are responsible for all content, including the accuracy of every citation.
+
+\bibliography{refs}
+
+\appendix
+\onecolumn
+\input{appendix}
+\input{appendix_recut}
+\input{appendix_map}
+\input{appendix_a9}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a9_heads.pdf}
+\caption{Experiment 1. Left: copy score intact, with the candidate heads mean-ablated, and with random heads ablated (nats; mean over ten seeds and three sizes, 95\% intervals over seeds). Right: the candidates' attention from the position that predicts the shape to the context's shape word, stable-shape models (exploratory).}
+\label{fig:heads}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/fig_a9_formation.pdf}
+\caption{Experiment 1. Copy score against the exposures each noun had received by each saved checkpoint (exploratory; nats; mean over ten seeds of size-averaged values, 95\% intervals). Exposure is confounded with training time.}
+\label{fig:formation}
+\end{figure}
+
+\input{appendix_a10}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a10.pdf}
+\caption{Experiment 2: copy score by history (colour) and presentation (solid: bursts; dashed: spaced) at 100 and 1,000 exposures, in stable-shape (left, pre-registered tests) and shifting-shape (right, exploratory) corpora (means over ten seeds, sizes averaged; 95\% intervals). Solid line and band: unseen nouns; dashed line: unseen nouns with a typical embedding.}
+\label{fig:a10}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/fig_pythia.pdf}
+\caption{Copy score for colour of real nouns in Pythia models, with their own input embeddings or replaced ones (means over 44 nouns, 95\% intervals). The registered tests used the 1B to 12B models; 70M and 160M are descriptive.}
+\label{fig:pythia}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_a10_formation.pdf}
+\caption{Experiment 2. Copy score over training for nouns with 1,000 exposures, by history and presentation, and for unseen nouns (exploratory; saved weights every 1,000 steps; means over ten seeds, sizes averaged; 95\% intervals). A noun with 1,000 exposures has had about 1,000 $\times$ ($t - 0.05$)/0.9 sentences by fraction $t$ of training, so exposure and training time rise together. Small zig-zags arise because the three sizes save weights at different fractions of training.}
+\label{fig:a10formation}
+\end{figure}
+
+\input{appendix_a11}
+
+\end{document}

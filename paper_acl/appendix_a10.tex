@@ -1,5 +1,5 @@
 \FloatBarrier
-\section{Recurrence, matched frames, embedding rows and pretrained models (Amendment 10)}\label{app:N}
+\section{Experiment 2, the embedding analysis and the pretrained test (Amendment 10)}\label{app:N}
 \setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
 \textbf{Registration.} Amendment 10 has three parts: Part A is Experiment 2, Part B the pretrained test and Part C the row analysis. It was registered after the Amendment 9 results, after its corpora were built and checksummed, and before any of them was used, any of its models was trained, or any pretrained model was run on its items. It answered two confounds raised by a blind review of the Amendment 9 results (by an AI assistant given only the write-up of Experiment 1): familiarity nouns never recurred within a window, and shape-absent nouns never appeared in a frame with a shape slot after \emph{is a}. The noun lists for Part B were fixed, with checksums, before the pilot. A pilot on Pythia-410M (never in a test) gave a mean increase of 0.13 nats from the original to the atypical\_init row, so the smallest effect of interest for H48 was 0.30 nats by the registered rule. One deviation: some Pythia tokenizers define no padding token, so the scoring script falls back to token id 0; padded positions are masked and only the last real token is read, and batched and single-item scores agreed exactly. No score had been produced by the affected models.
 
@@ -33,7 +33,7 @@ H44 & Absent singles minus unseen with typical row (two-sided; TOST $\pm$0.3) & 
 \toprule
 Corpora & Noun & 100 exposures & 1,000 exposures \\
 \midrule
-Stable shapes & Fixed shape, spaced & 1.52 {[}1.18, 1.86{]} & 0.52 {[}0.36, 0.69{]} \\
+Stable kinds & Fixed shape, spaced & 1.52 {[}1.18, 1.86{]} & 0.52 {[}0.36, 0.69{]} \\
  & Fixed shape, bursts & 4.43 {[}3.49, 5.36{]} & 0.99 {[}0.68, 1.30{]} \\
  & No shape, spaced & 3.09 {[}2.56, 3.63{]} & 0.98 {[}0.76, 1.20{]} \\
  & No shape, bursts & 4.65 {[}3.94, 5.36{]} & 1.03 {[}0.59, 1.47{]} \\
@@ -42,7 +42,7 @@ Stable shapes & Fixed shape, spaced & 1.52 {[}1.18, 1.86{]} & 0.52 {[}0.36, 0.69
  & Unseen & 6.35 {[}5.59, 7.12{]} &  \\
  & Unseen, typical embedding & 0.61 {[}0.28, 0.95{]} &  \\
 \midrule
-Shifting shapes & Fixed shape, spaced & 2.23 {[}1.92, 2.55{]} & 0.44 {[}0.37, 0.51{]} \\
+Shifting kinds & Fixed shape, spaced & 2.23 {[}1.92, 2.55{]} & 0.44 {[}0.37, 0.51{]} \\
  & Fixed shape, bursts & 5.35 {[}4.88, 5.82{]} & 3.57 {[}3.02, 4.11{]} \\
  & No shape, spaced & 1.83 {[}1.49, 2.17{]} & 0.63 {[}0.53, 0.72{]} \\
  & No shape, bursts & 3.79 {[}3.38, 4.20{]} & 2.09 {[}1.82, 2.35{]} \\
@@ -73,86 +73,15 @@ Rotating shape, runs & 0.14 & 0.06 & 3.74 & 5.24 \\
 \end{tabular}
 \end{table}
 
-\begin{table}[!htbp]
-\centering\small
-\caption{The Part A contrasts in Reassigned grouped models (exploratory; seed-level, unadjusted two-sided $p$).}
-\label{tab:N4}
-\begin{tabular}{@{}lp{0.42\textwidth}rrr@{}}
-\toprule
-& Contrast & Estimate & 95\% CI & $p$ \\
-\midrule
-H40 & Absent runs minus absent singles & 1.71 & [1.36, 2.06] & $<$.001 \\
-H41 & Fixed runs minus fixed singles & 3.12 & [2.71, 3.53] & $<$.001 \\
-H42 & Rotating runs minus rotating singles & 4.67 & [4.28, 5.06] & $<$.001 \\
-H43 & Fixed singles minus absent singles & 0.11 & [\textminus{}0.07, 0.29] & .196 \\
-\bottomrule
-\end{tabular}
-\end{table}
+
+
+
+
+\textbf{Reanalysis of the Experiment 2 models (exploratory, added after the results).} For every familiar noun in the 60 final models we recorded its input row's cosine with its initial row (rebuilt from the seed; the rebuild reproduced the unseen nouns' rows, which receive no gradient, in every model), its distance from the trained kinds' mean row and its norm; the copy score with its own row, with a typical row and with the row of a noun of another history (rows swapped between changing- and fixed-shape bursts and between changing-shape bursts and spaced nouns); the copy score with one sentence about a trained kind between context and query (gap), with the context in the frame \emph{Look at the \textit{noun}. It is \textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A \textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the context's shape, averaged over heads. Full results, including shifting-kind corpora and 100 exposures, are in the supplementary material.
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Matched contrasts in Part A (exploratory; seed-level, nats, 95\% intervals). Rotating minus fixed runs: same frame, presentation and number of occasions; the two differ only in whether the shape changes between runs (and so in whether a shape is stored). Fixed minus rotating singles: same frame, presentation and expectation of a shape at the test position (Table~\ref{tab:N3}); they differ only in whether the noun has one stored shape.}
-\label{tab:N9}
-\begin{tabular}{@{}llrrr@{}}
-\toprule
-Base & Contrast & Pooled & 100 & 1,000 \\
-\midrule
-Regular grouped & Rotating runs $-$ fixed runs & 1.73 [1.25, 2.20] & 0.59 [0.23, 0.95] & 2.86 [1.99, 3.74] \\
- & Fixed singles $-$ rotating singles & \textminus{}0.02 [\textminus{}0.16, 0.11] & \textminus{}0.07 [\textminus{}0.29, 0.15] & 0.02 [\textminus{}0.04, 0.08] \\
- & Fixed runs $-$ fixed singles & 1.69 [1.29, 2.08] & 2.91 [2.21, 3.60] & 0.47 [0.27, 0.66] \\
-Reassigned grouped & Rotating runs $-$ fixed runs & 1.65 [1.35, 1.96] & 0.05 [\textminus{}0.05, 0.16] & 3.26 [2.64, 3.87] \\
- & Fixed singles $-$ rotating singles & \textminus{}0.10 [\textminus{}0.23, 0.02] & \textminus{}0.14 [\textminus{}0.34, 0.06] & \textminus{}0.07 [\textminus{}0.20, 0.05] \\
- & Fixed runs $-$ fixed singles & 3.12 [2.71, 3.53] & 3.12 [2.61, 3.62] & 3.13 [2.59, 3.66] \\
-\bottomrule
-\end{tabular}
-\\[2pt]{\footnotesize Knowledge, fixed runs minus fixed singles (Regular grouped): \textminus{}2.35 [\textminus{}2.82, \textminus{}1.88] at 100 exposures, 0.18 [\textminus{}0.18, 0.54] at 1,000.}
-\end{table}
-
-\begin{table}[!htbp]
-\centering\small
-\caption{Noun-specific carry (exploratory): carry when the context sentence is about the query noun minus carry when it is about another noun of the same cell, with the same shape (nats; seed-level means). Near zero means the model copies the context's shape whichever noun the context was about.}
-\label{tab:N10}
-\begin{tabular}{@{}llrrrr@{}}
-\toprule
- & & \multicolumn{2}{c}{Regular grouped} & \multicolumn{2}{c}{Reassigned grouped} \\ \cmidrule(lr){3-4}\cmidrule(lr){5-6}
-Experiment & Noun & 100 & 1,000 & 100 & 1,000 \\
-\midrule
-2 & Unseen & 0.05 &  & 0.48 &  \\
- & Fixed, singles & 0.01 & \textminus{}0.02 & 0.22 & 0.06 \\
- & Fixed, runs & 0.06 & \textminus{}0.05 & 0.58 & 0.65 \\
- & Shape-absent, singles & 0.07 & 0.05 & 0.25 & 0.05 \\
- & Shape-absent, runs & 0.01 & 0.00 & 0.46 & 0.70 \\
- & Rotating, singles & 0.04 & 0.01 & 0.35 & 0.05 \\
- & Rotating, runs & 0.05 & 0.05 & 0.58 & 1.45 \\
-\addlinespace
-1 & Unseen & 0.14 &  & 0.45 &  \\
- & Fixed shape & \textminus{}0.05 & \textminus{}0.02 & 0.21 & 0.01 \\
- & Uninformative & 0.00 & 0.00 & 0.51 & 0.04 \\
- & Shape-absent & 0.05 & 0.00 & 0.45 & 0.22 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[!htbp]
-\centering\small
-\caption{Part A by model size (Regular grouped; seed means, 100 and 1,000 exposures pooled; nats).}
-\label{tab:N11}
-\begin{tabular}{@{}lrrrrrrrr@{}}
-\toprule
-Size & Unseen & Typical row & H40 & H41 & H42 & H43 & H44 & Rot.\ $-$ fixed runs \\
-\midrule
-3.4M & 7.67 & \textminus{}0.30 & 0.65 & 2.41 & 5.05 & \textminus{}0.84 & 1.67 & 2.94 \\
-10.9M & 5.74 & 0.64 & 1.23 & 1.46 & 2.82 & \textminus{}0.78 & 1.25 & 1.24 \\
-25.6M & 5.65 & 1.51 & 0.53 & 1.20 & 2.29 & \textminus{}1.43 & 1.36 & 1.00 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textbf{Reanalysis of the Experiment 2 models (exploratory, added after the results).} For every familiar noun in the 60 final models we recorded its input row's cosine with its initial row (rebuilt from the seed; the rebuild reproduced the unseen nouns' rows, which receive no gradient, in every model), its distance from the trained kinds' mean row and its norm; the copy score with its own row, with a typical row and with the row of a noun of another history (rows swapped between changing- and fixed-shape bursts and between changing-shape bursts and spaced nouns); the copy score with one sentence about a trained kind between context and query (gap), with the context in the frame \emph{Look at the \textit{noun}. It is \textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A \textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the context's shape, averaged over heads. Full results, including shifting-shape corpora and 100 exposures, are in the supplementary material.
-
-\begin{table}[!htbp]
-\centering\small
-\caption{Experiment 2 reanalysis, stable-shape corpora, 1,000 exposures (unseen nouns: no exposures). Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to the context's shape. Seed-level means. Swapping rows between changing- and fixed-shape bursts moved the copying with the row (2.88 nats [2.01, 3.76] in each direction). In a noun-level regression of the copy score on row geometry (cosine with the initial row, distance from the trained kinds' mean, norm, size and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100.}
+\caption{Experiment 2 reanalysis, stable-kind corpora, 1,000 exposures (unseen nouns: no exposures). Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to the context's shape. Seed-level means. Swapping rows between changing- and fixed-shape bursts moved the copying with the row (2.88 nats [2.01, 3.76] in each direction). In a noun-level regression of the copy score on row geometry (cosine with the initial row, distance from the trained kinds' mean, norm, size and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100.}
 \label{tab:N13}
 \begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
@@ -171,7 +100,7 @@ Changing, bursts & 3.85 & 0.66 & 0.37 & 1.53 & \textminus{}0.12 & 0.849 & 0.168 
 
 \begin{table}[!htbp]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
-\caption{Crossed histories (exploratory), stable-shape corpora, 1,000 exposures (unseen nouns: none): copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. Full results are in the supplementary material.}
+\caption{Crossed histories (exploratory), stable-kind corpora, 1,000 exposures (unseen nouns: none): copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. Full results are in the supplementary material.}
 \label{tab:N14}
 \begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
@@ -264,18 +193,4 @@ Model & Stored colour & Share $>0$ & H45 TOST $p$ & H46 TOST $p$ & Norm only \\
 \end{tabular}
 \end{table}
 
-\begin{table}[!htbp]
-\centering\small
-\caption{Part B, Pythia-1.4B deduplicated across training (exploratory): carry (nats; mean over nouns) by training step and input row.}
-\label{tab:N8}
-\begin{tabular}{@{}lrrrrrrrr@{}}
-\toprule
-Row & 1,000 & 2,000 & 4,000 & 8,000 & 16,000 & 32,000 & 64,000 & 143,000 \\
-\midrule
-Original & 0.73 & 1.09 & 0.72 & 1.97 & 1.46 & 1.67 & 2.39 & 2.10 \\
-Atypical\_init & 0.81 & 1.45 & 1.10 & 2.08 & 1.82 & 2.11 & 2.56 & 2.44 \\
-Typical row & 0.72 & 1.06 & 0.60 & 1.64 & 1.17 & 1.70 & 2.70 & 2.66 \\
-\bottomrule
-\end{tabular}
-\end{table}
 

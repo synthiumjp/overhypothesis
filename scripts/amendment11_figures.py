@@ -54,10 +54,10 @@ def main():
     s10 = s10[s10.ckpt.str.endswith("model_final.pt") & (s10.type != "trained")]
     sc10 = f10.seed_cells(s10, "carry")
     fig, axes = plt.subplots(1, 3, figsize=(6.3, 2.45), sharey=True, gridspec_kw={"width_ratios": [1.2, 1, 1.2]})
-    f10.part_a_panel(axes[0], sc, "regular_grouped", "(a) Stable shapes, Exp. 3", legend=True)
+    f10.part_a_panel(axes[0], sc, "regular_grouped", "(a) Stable kinds, Exp. 3", legend=True)
     pure_panel(axes[1], sc)
     axes[1].set_title("(b) Single history, Exp. 3", fontsize=8, color=f10.INK)
-    f10.part_a_panel(axes[2], sc10, "reassigned_grouped", "(c) Shifting shapes, Exp. 2", legend=False)
+    f10.part_a_panel(axes[2], sc10, "reassigned_grouped", "(c) Shifting kinds, Exp. 2", legend=False)
     for ax in axes:
         for tx in list(ax.texts):
             if tx.get_text() == "unseen, typical embedding":

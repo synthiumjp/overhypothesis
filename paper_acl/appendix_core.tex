@@ -1,0 +1,132 @@
+\FloatBarrier
+\appendixsection{Language and corpora}\label{app:lang}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+\setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}
+\textbf{Language.} Each corpus describes 32 kinds of object, each named by an invented noun, with 14 exemplars per kind. Each exemplar has a shape, a colour and a texture, each an invented word from a list of ten, and is described by one sentence in one of five frames:
+\begin{enumerate}[itemsep=0pt,topsep=2pt]
+\item \emph{A wug is a [shape] [colour] [texture] thing.}
+\item \emph{Look at the wug. It is [shape] and [colour].}
+\item \emph{Here is another wug. This one is [shape].}
+\item \emph{The wug I showed you is [shape], but a different [colour].}
+\item \emph{That is a wug because it is [shape].}
+\end{enumerate}
+Shape is named in all five frames, colour in three and texture in one. The 448 sentences of a corpus make up one pass. Every word is one token of a byte-pair tokeniser with 329 entries, shared by all models.
+
+\textbf{Order and kinds.} Within each pass the sentences about each kind are shuffled, cut into runs of four and the runs shuffled across kinds (grouped order). In stable-kind corpora each kind keeps one shape across its exemplars, while colour and texture vary. In shifting-kind corpora each kind receives a new shape, drawn at random, in every pass and keeps it within the pass. Experiment~1 also used stable-kind corpora in random order, with every pass shuffled.
+
+\textbf{Text read.} Each model read fresh text once, in non-overlapping 128-token windows in a fixed order: 160,000 windows for the 3.4M, 25.6M and 85.6M models and 256,000 for the 10.9M models, which share the rules and nouns of the shorter corpus. Each pass is arranged with its own random draw.
+
+\textbf{New nouns.} Forty new nouns per corpus, three per condition and four unseen, rotated over nouns across seeds. A noun's sentences (its exposures) were placed evenly between 5\% and 95\% of the windows read, at most one unit (a sentence, or a burst of four) per window, between the trained kinds' runs, at a random position in the window. In Experiment~1 fixed- and changing-shape nouns appeared in frames 1 to 5 and no-shape nouns in a sixth frame, \emph{The [noun] is [colour] and [texture]}, which the trained kinds also used in one sentence in fifteen. In Experiments~2 and~3 fixed- and changing-shape nouns appeared only in frame 1 and no-shape nouns only in \emph{A [noun] is a [colour] [texture] thing}, which the trained kinds used in one sentence in fifteen. A checker re-read every corpus and verified exposures, units, frames, shapes within bursts and window placement; all corpora matched checksums recorded before training.
+
+\FloatBarrier
+\appendixsection{Models and training}\label{app:train}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+Decoder-only transformers with pre-layer normalisation, learned position embeddings, GELU feed-forward layers, AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, and dropout 0.1 (Table~\ref{tab:train}). Input and output embeddings are untied: the output layer starts as a copy of the input embedding and is trained separately, and every final model was checked to have different input and output matrices. We chose untied embeddings after finding that models of an earlier study in this language, meant to be tied, had been trained untied because the tie was lost on the graphics hardware used; their results are not reported here. The ten tied-embedding models of Appendix~\ref{app:O} were trained on other hardware, and the tie was verified in every final model. Models of Experiments~1 and~2 and the three smaller sizes of Experiment~3 were trained on one AMD graphics card (DirectML); the 85.6M and tied models on an Apple M3 Ultra.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Model and training settings. Batches are of 128-token windows.}
+\label{tab:train}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Setting & 3.4M & 10.9M & 25.6M & 85.6M \\
+\midrule
+Layers, heads, width & 4, 4, 256 & 6, 8, 384 & 8, 8, 512 & 12, 12, 768 \\
+Feed-forward width & 1,024 & 1,536 & 2,048 & 3,072 \\
+Steps & 5,000 & 8,000 & 10,000 & 10,000 \\
+Batch & 32 & 32 & 16 & 16 \\
+Peak learning rate & $3\times10^{-4}$ & $2\times10^{-4}$ & $1\times10^{-4}$ & $1\times10^{-4}$ \\
+Warm-up steps & 200 & 400 & 500 & 1,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Data and code.} All code, corpora, test items, scores and analysis outputs, and the final weights and training logs of every model, will be released on publication; anonymised copies of the code and results are in the supplementary material, with the command that regenerates each table and figure.
+
+\FloatBarrier
+\appendixsection{Registrations, terms and registered tests}\label{app:reg}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+\textbf{Registrations.} All registrations are in one public project on the Open Science Framework (link withheld for review). The project began with earlier studies of this language (a set of training experiments, an analysis of natural corpora and a test of pretrained models), registered in stages, some after related results were known; they are not reported here. During that work we found that the earlier models' embeddings had not been tied as intended (Appendix~\ref{app:train}) and that a loading error had changed some of their scores; both were corrected and disclosed in the registrations. The three experiments of this paper were registered as amendments. Experiment~1 was registered before its corpora were built. Experiment~2, with the row analysis and the pretrained test, was registered after Experiment~1's results and after its corpora were built, before any of its models was trained or any pretrained model was run on its items. Experiment~3 was registered after all of Experiment~2's results, including the exploratory analyses that it tests, and before any of its models was trained (Appendix~\ref{app:O}). Each registration states what was known when it was written. The registrations use other names for the conditions (Table~\ref{tab:terms}).
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Main-text terms and registration terms, as used in the registrations and in Appendices~\ref{app:M} to~\ref{app:O}.}
+\label{tab:terms}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Main text & Registrations \\
+\midrule
+Experiment 1 & Amendment 9 (the familiarity study) \\
+Experiment 2 & Amendment 10, Part A \\
+Embedding analysis of Experiment 1 (Section~\ref{sec:rows}) & Amendment 10, Part C \\
+Pretrained test (Section~\ref{sec:pythia}) & Amendment 10, Part B \\
+Experiment 3 & Amendment 11 (Parts A, B and C) \\
+Stable-kind corpora & Regular (grouped) corpora \\
+Shifting-kind corpora & Reassigned (grouped) corpora \\
+Single-history corpora (changing-only, fixed-only) & pure\_changing, pure\_fixed \\
+Spaced, bursts & singles, runs \\
+Changing shape & uninformative (Experiment 1), rotating (Experiments 2 and 3) \\
+No shape & shape-absent, absent \\
+Copy score & carry \\
+Stored preference & knowledge \\
+Embedding & row \\
+Typical embedding & typical row \\
+Random embedding of untrained scale & atypical\_init \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Registered tests.} Table~\ref{tab:hyp} lists every registered hypothesis of the three experiments, the embedding analysis and the pretrained test, with its outcome under the registered decision rules (Holm correction within each registered family; direction in at least two of three model sizes; for the pretrained test, Holm within each model and support in at least four of five models). Equivalence bounds were set in each registration: $\pm$1 nat in Experiment~1 (about one seventh of the fall from unseen to typical embeddings in earlier work in this language); in Experiment~2, $\pm$0.3 nats for H40, H41 and H44 (the smallest history effect in Experiment~1), $\pm$1 nat for the check K1, and the larger of 0.3 nats and one fifth of a pilot effect for H48; in Experiment~3, $\pm$0.3 nats for H52, H54 and H59.
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (row analysis), \ref{tab:N6} (pretrained models) and \ref{tab:O1} (Experiment 3).}
+\label{tab:hyp}
+\begin{tabular}{@{}lp{0.50\textwidth}p{0.33\textwidth}@{}}
+\toprule
+Label & Prediction (main-text terms) & Outcome \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Experiment 1 (Amendment 9)}} \\
+M1 & Fixed-shape nouns store their shape (stored preference $>$ 0.2 nats at 1,000 exposures, rising) & Passed in all three corpora \\
+H30 & Copying falls faster with exposure for fixed-shape than no-shape nouns & Not supported (wrong direction) \\
+H31 & No-shape nouns (1,000 and 10,000) differ from unseen nouns with a typical embedding; equivalence $\pm$1 & Different (0.33) and equivalent \\
+H32 & Fixed-shape nouns' preference for their own shape, measured in the copy items, rises with exposure & Supported \\
+H33 & Ablating candidate heads removes more than half of unseen nouns' copying, more than random heads & Not supported \\
+H34 & Ablating candidate heads lowers trained kinds' copying in shifting-kind corpora & Supported; random heads cut it nearly as much \\
+H35 & Candidate heads' attention falls faster for fixed-shape nouns & Not tested (required H33) \\
+R1 & Unseen nouns copy more in grouped than random order & Replicated \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Experiment 2 (Amendment 10, Part A); stable-kind corpora}} \\
+M2 & Unseen nouns copy more than 1 nat & Passed \\
+K1 & Fixed-shape nouns' stored preference equal ($\pm$1) in bursts and spaced & Not equivalent: H41 not interpreted \\
+H40 & No-shape: bursts differ from spaced; equivalence $\pm$0.3 & Bursts higher \\
+H41 & Fixed shape: bursts differ from spaced; equivalence $\pm$0.3 & Bursts higher (not interpreted) \\
+H42 & Changing shape: bursts copy more than spaced & Supported \\
+H43 & Spaced: fixed shape copies less than no shape & Supported; confounded by expected word class \\
+H44 & Spaced no-shape nouns differ from unseen nouns with a typical embedding; equivalence $\pm$0.3 & Higher; not equivalent \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Experiment 3 (Amendment 11); stable-kind corpora; Holm over H50--H53, H55, H56}} \\
+M3 & Unseen nouns copy more than 1 nat & Passed \\
+H50 & At 1,000: changing-shape bursts copy more than fixed-shape bursts (primary) & Supported (3.68) \\
+H51 & Changing shape: bursts copy more than spaced & Supported (4.14) \\
+H52 & Spaced: fixed differs from changing shape; equivalence $\pm$0.3 & Fixed lower (\textminus{}0.25); not equivalent \\
+H53 & Fixed-shape spaced nouns prefer their own shape to the context's & Supported (5.84) \\
+H54 & Noun-specific copying of changing-shape bursts within $\pm$0.3 & Within $\pm$0.3 (0.08) \\
+H55 & Changing-shape bursts copy more than embedding geometry predicts & Supported (3.67) \\
+H56 & The queried noun's history matters more than the context noun's & Supported (1.25) \\
+M3B, H57 & 85.6M models: unseen nouns copy; changing-shape bursts copy more than fixed-shape bursts & Passed; supported (4.18) \\
+M3C & Single-history corpora: unseen nouns copy & Passed \\
+H58 & Changing-shape bursts (changing-only) copy more than fixed-shape bursts (fixed-only) & Supported (5.51) \\
+H59 & Single-history minus mixed corpora, same history; equivalence $\pm$0.3 & Changing bursts inconclusive; fixed bursts lower (\textminus{}1.00) \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Row analysis (Amendment 10, Part C); Experiment 1 models}} \\
+H49 & Scaling unseen nouns' embeddings to the trained kinds' norm lowers copying & Supported (driven by the 3.4M models) \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Pretrained models (Amendment 10, Part B)}} \\
+H45 & A random embedding of untrained scale raises copying over the own embedding & Not supported (2 of 5 models) \\
+H46 & The same embedding raises copying over a typical embedding & Not supported (2 of 5 models) \\
+H47 & Colour-typical nouns copy less than colour-variable nouns & Not supported (0 of 5) \\
+H48 & The H45 increase differs between colour-typical and colour-variable nouns & Inconclusive \\
+\bottomrule
+\end{tabular}
+\end{table}

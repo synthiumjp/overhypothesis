@@ -52,7 +52,7 @@ for i, (h, p) in enumerate(order):
     run = max(run, min(1.0, (len(order) - i) * p))
     adj[h] = run
 
-out = [r"\FloatBarrier", r"\section{The familiarity study (Amendment 9)}\label{app:M}",
+out = [r"\FloatBarrier", r"\section{Experiment 1 (Amendment 9)}\label{app:M}",
        r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
        r"\setcounter{figure}{0}\renewcommand{\thefigure}{\thesection\arabic{figure}}",
        r"\textbf{Registration.} The design, hypotheses and analysis were registered before any corpus was built "

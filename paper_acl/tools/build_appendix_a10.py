@@ -48,7 +48,7 @@ py = pd.read_csv("results/amendment10/pythia_scores.csv")
 ck = pd.read_csv("results/amendment10/pythia_checkpoints.csv")
 rs = pd.read_csv("results/amendment10/rowswap.csv")
 
-out = [r"\FloatBarrier", r"\section{Recurrence, matched frames, embedding rows and pretrained models (Amendment 10)}"
+out = [r"\FloatBarrier", r"\section{Experiment 2, the embedding analysis and the pretrained test (Amendment 10)}"
        r"\label{app:N}",
        r"\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}",
        r"\textbf{Registration.} Amendment 10 has three parts: Part A is Experiment 2, Part B the pretrained "
@@ -256,10 +256,10 @@ if os.path.exists("paper_acl/figures/tab_a10_reanalysis.tex"):
             r"between context and query (gap), with the context in the frame \emph{Look at the \textit{noun}. It is "
             r"\textit{shape} and \textit{colour}.} (other frame), and for the context's colour after \emph{A "
             r"\textit{noun} is a \textit{shape}} (colour); and first-layer attention from the query position to the "
-            r"context's shape, averaged over heads. Full results, including shifting-shape corpora and 100 exposures, "
+            r"context's shape, averaged over heads. Full results, including shifting-kind corpora and 100 exposures, "
             r"are in the supplementary material.", "",
             r"\begin{table}[!htbp]", r"\centering\small",
-            r"\caption{Experiment 2 reanalysis, stable-shape corpora, 1,000 exposures (unseen nouns: no exposures). "
+            r"\caption{Experiment 2 reanalysis, stable-kind corpora, 1,000 exposures (unseen nouns: no exposures). "
             r"Copy scores in nats; cosine of the row with its initial value; first-layer attention from the query to "
             r"the context's shape. Seed-level means. Swapping rows between changing- and fixed-shape bursts moved the "
             r"copying with the row (2.88 nats [2.01, 3.76] in each direction). In a noun-level regression of the copy "
@@ -270,7 +270,7 @@ if os.path.exists("paper_acl/figures/tab_a10_reanalysis.tex"):
 
 if os.path.exists("paper_acl/figures/tab_a10_crossed.tex"):
     out += [r"\begin{table}[!htbp]", r"\centering\footnotesize\setlength{\tabcolsep}{4pt}",
-            r"\caption{Crossed histories (exploratory), stable-shape corpora, 1,000 exposures (unseen nouns: none): copy "
+            r"\caption{Crossed histories (exploratory), stable-kind corpora, 1,000 exposures (unseen nouns: none): copy "
             r"score when the context sentence is about a noun of one history (rows) and the query names a different "
             r"noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar "
             r"histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with "

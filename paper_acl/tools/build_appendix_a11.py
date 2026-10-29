@@ -187,7 +187,7 @@ def main():
           r"values: results/natural\_regime.csv in the supplementary material.", "",
           r"\textbf{Tied embeddings (exploratory, added after the results).} Ten 3.4M models were trained on the "
           r"mixed-design corpora of Part A, with the same seeds and settings but with input and output embeddings tied "
-          r"(Apple M3 Ultra; the first model was checked after training and its input and output matrices were identical). With tied embeddings an unseen noun's row "
+          r"(Apple M3 Ultra; in all ten final models the input and output matrices were identical). With tied embeddings an unseen noun's row "
           r"receives gradient as an output. Seed-level values, with the untied 3.4M models of Part A in brackets: unseen "
           r"nouns copied 3.96 [2.43, 5.49] (8.96), and 0.02 [\textminus{}0.18, 0.21] with a typical row "
           r"(\textminus{}0.19); at 1,000 exposures changing-shape bursts copied 1.90 [1.20, 2.60] more than "

@@ -1,0 +1,1 @@
+Tie check (scripts/check_tied.py ~/ckpt_a11_tied), run on the Mac 29 Oct 2026: 10 of 10 models tied.

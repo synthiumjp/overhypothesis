@@ -36,9 +36,10 @@ PAIRS = [
 
 for path in sys.argv[1:]:
     t = open(path, encoding="utf-8").read()
+    pairs = [(a, b) for a, b in PAIRS if not (path.endswith("appendix_a11.tex") and a.startswith(r"\bPart"))]
     n0 = t
     counts = {}
-    for a, b in PAIRS:
+    for a, b in pairs:
         t, k = re.subn(a, b, t)
         if k:
             counts[a] = k

@@ -3,7 +3,7 @@
 \setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
 \textbf{Registration.} Amendment 10 has three parts: Experiment 2 (Part A), the pretrained test (Part B) and the embedding analysis of the Experiment 1 models (Part C). It was registered after the Amendment 9 results, after its corpora were built and checksummed, and before any of them was used, any of its models was trained, or any pretrained model was run on its items. It answered two confounds raised by a blind review of the Amendment 9 results (by an AI assistant given only the write-up of Experiment 1): new nouns never recurred within a window, and no-shape nouns never appeared in a frame with a shape slot after \emph{is a}. The noun lists for the pretrained test were fixed, with checksums, before the pilot. A pilot on Pythia-410M (never in a test) gave a mean increase of 0.13 nats from the original to the random (untrained norm) embedding, so the smallest effect of interest for H48 was 0.30 nats by the registered rule. One deviation: some Pythia tokenizers define no padding token, so the scoring script falls back to token id 0; padded positions are masked and only the last real token is read, and batched and single-item scores agreed exactly. No score had been produced by the affected models.
 
-\textbf{Experiment 2 design.} Everything not stated is as in Amendment 9 (Appendix~\ref{app:M}). Histories: \emph{fixed}, frame 1 (\emph{A \textit{noun} is a \textit{shape} \textit{colour} \textit{texture} thing}) with the noun's own shape; \emph{absent}, frame 7 (\emph{A \textit{noun} is a \textit{colour} \textit{texture} thing}), which names no shape; \emph{changing-shape}, frame 1 with a shape drawn from the corpus's shape distribution, a new one for every sentence when presented spaced and one per run, redrawn for each run, when presented in bursts. Presentation: \emph{spaced}, one sentence per unit; \emph{bursts}, four consecutive sentences about the noun in one window. Exposures (100 or 1,000) count sentences, so runs and singles are matched in sentences, not in units or spacing. Trained kinds use frame 7 in one sentence in fifteen, so the frame is not new. Three nouns per cell (12 cells) and four unseen nouns; stable-kind (confirmatory) and shifting-kind (exploratory) base corpora; three sizes and ten seeds (60 models). A checker re-read every corpus and verified exposures, units, frames, shapes within runs and window placement; all 40 corpora matched checksums recorded before training.
+\textbf{Experiment 2 design.} Everything not stated is as in Amendment 9 (Appendix~\ref{app:M}). Histories: \emph{fixed shape}, frame 1 (\emph{A \textit{noun} is a \textit{shape} \textit{colour} \textit{texture} thing}) with the noun's own shape; \emph{no shape}, frame 7 (\emph{A \textit{noun} is a \textit{colour} \textit{texture} thing}), which names no shape; \emph{changing-shape}, frame 1 with a shape drawn from the corpus's shape distribution, a new one for every sentence when presented spaced and one per burst, redrawn for each burst, when presented in bursts. Presentation: \emph{spaced}, one sentence per unit; \emph{bursts}, four consecutive sentences about the noun in one window. Exposures (100 or 1,000) count sentences, so bursts and spaced nouns are matched in sentences, not in units or spacing. Trained kinds use frame 7 in one sentence in fifteen, so the frame is not new. Three nouns per cell (12 cells) and four unseen nouns; stable-kind (confirmatory) and shifting-kind (exploratory) base corpora; three sizes and ten seeds (60 models). A checker re-read every corpus and verified exposures, units, frames, shapes within bursts and window placement; all 40 corpora matched checksums recorded before training.
 
 \begin{table}[!htbp]
 \centering\small
@@ -63,12 +63,12 @@ Shifting kinds & Fixed shape, spaced & 2.23 {[}1.92, 2.55{]} & 0.44 {[}0.37, 0.5
  & \multicolumn{2}{c}{Stored preference} & \multicolumn{2}{c}{Slot} \\ \cmidrule(lr){2-3}\cmidrule(lr){4-5}
 Noun & 100 & 1,000 & 100 & 1,000 \\
 \midrule
-Fixed shape, singles & 5.37 & 7.80 & 4.03 & 6.16 \\
-Fixed shape, runs & 3.02 & 7.98 & 3.28 & 6.24 \\
-No shape, singles & 0.00 & \textminus{}0.09 & \textminus{}2.98 & \textminus{}4.93 \\
-No shape, runs & 0.05 & \textminus{}0.25 & \textminus{}1.12 & \textminus{}4.43 \\
-Changing shape shape, singles & \textminus{}0.08 & 0.01 & 5.04 & 5.30 \\
-Changing shape shape, runs & 0.14 & 0.06 & 3.74 & 5.24 \\
+Fixed shape, spaced & 5.37 & 7.80 & 4.03 & 6.16 \\
+Fixed shape, bursts & 3.02 & 7.98 & 3.28 & 6.24 \\
+No shape, spaced & 0.00 & \textminus{}0.09 & \textminus{}2.98 & \textminus{}4.93 \\
+No shape, bursts & 0.05 & \textminus{}0.25 & \textminus{}1.12 & \textminus{}4.43 \\
+Changing shape, spaced & \textminus{}0.08 & 0.01 & 5.04 & 5.30 \\
+Changing shape, bursts & 0.14 & 0.06 & 3.74 & 5.24 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -117,7 +117,7 @@ Changing, bursts & 6.49 & 0.85 & 1.15 & 1.49 & 1.39 & 0.66 & 3.80 \\
 \end{tabular}
 \end{table}
 
-\textbf{The embedding analysis (Experiment 1 models).} In the 60 final grouped models of Amendment 9 we replaced the input embeddings of unseen nouns and scored copy score again; the unmodified condition reproduced the Amendment 9 scores. Conditions: own embedding; own direction scaled to the mean norm of the trained kinds' embeddings (ownnorm); a random direction at that norm (randnorm); the trained kinds' mean embedding. No shape nouns at 10,000 exposures were also scored with their own direction scaled to the unseen nouns' mean norm (shrunk).
+\textbf{The embedding analysis (Experiment 1 models).} In the 60 final grouped models of Amendment 9 we replaced the input embeddings of unseen nouns and computed the copy score again; the unmodified condition reproduced the Amendment 9 scores. Conditions: own embedding; own direction scaled to the mean norm of the trained kinds' embeddings (ownnorm); a random direction at that norm (randnorm); the trained kinds' mean embedding. No-shape nouns at 10,000 exposures were also scored with their own direction scaled to the unseen nouns' mean norm (shrunk).
 
 \begin{table}[!htbp]
 \centering\small
@@ -128,8 +128,8 @@ Changing, bursts & 6.49 & 0.85 & 1.15 & 1.49 & 1.39 & 0.66 & 3.80 \\
  & \multicolumn{4}{c}{Unseen nouns} & \multicolumn{2}{c}{No shape, 10k} \\ \cmidrule(lr){2-5}\cmidrule(lr){6-7}
 Corpus & Own & Ownnorm & Randnorm & Trained mean & Own & Shrunk \\
 \midrule
-stable-kind & 4.53 & 4.00 & 4.09 & \textminus{}0.44 & \textminus{}0.05 & 0.53 \\
-shifting-kind & 6.85 & 7.12 & 7.15 & 1.05 & 1.86 & 4.16 \\
+Stable-kind & 4.53 & 4.00 & 4.09 & \textminus{}0.44 & \textminus{}0.05 & 0.53 \\
+Shifting-kind & 6.85 & 7.12 & 7.15 & 1.05 & 1.86 & 4.16 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -138,7 +138,7 @@ shifting-kind & 6.85 & 7.12 & 7.15 & 1.05 & 1.86 & 4.16 \\
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Registered tests of the pretrained test, by primary model (nouns or pairs as units; Holm within model over H45 to H48). H45: random (untrained norm) minus original; H46: random (untrained norm) minus typical embedding; H47: colour-typical minus colour-variable nouns, original embeddings; H48: difference between groups in the H45 increase (TOST against $\pm$0.30). A hypothesis needed Holm in at least four of the five models. Outcome: H45 and H46 met Holm in two of five models, H47 in none, and H48 was inconclusive (equivalent in one model).}
+\caption{Registered tests in the pretrained models, by primary model (nouns or pairs as units; Holm within model over H45 to H48). H45: random (untrained norm) minus original; H46: random (untrained norm) minus typical embedding; H47: colour-typical minus colour-variable nouns, original embeddings; H48: difference between groups in the H45 increase (TOST against $\pm$0.30). A hypothesis needed Holm in at least four of the five models. Outcome: H45 and H46 met Holm in two of five models, H47 in none, and H48 was inconclusive (equivalent in one model).}
 \label{tab:N6}
 \begin{tabular}{@{}lrrrrrrrr@{}}
 \toprule
@@ -176,7 +176,7 @@ Model & Original & \shortstack{Random,\\untrained norm} & \shortstack{Random,\\o
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Checks of the pretrained test (exploratory). Stored colour: with no context, log probability of a colour-typical noun's coded colour minus the mean over the other colours after \emph{The \textit{noun} was} (nats; mean over 22 nouns, and the share of nouns above zero). TOST: equivalence of the H45 and H46 differences within $\pm$0.30 nats over nouns. Norm only: atypical minus random (untrained norm) (same direction, different norm).}
+\caption{Checks of the pretrained test (exploratory). Stored colour: with no context, log probability of a colour-typical noun's coded colour minus the mean over the other colours after \emph{The \textit{noun} was} (nats; mean over 22 nouns, and the share of nouns above zero). TOST: equivalence of the H45 and H46 differences within $\pm$0.30 nats over nouns. Norm only: random (own norm) minus random (untrained norm) (same direction, different norm).}
 \label{tab:N12}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule

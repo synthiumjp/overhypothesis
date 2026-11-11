@@ -1,0 +1,225 @@
+{
+ "note": "Redrawn-burst control corpora as built, before any model was trained.",
+ "corpora": [
+  {
+   "base": "regular_redrawn",
+   "seed": 2029,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "bce3f045b6c89965e0269055644e4342",
+   "md5_order": "11a2f5c1a18bbed0351b0ef554d866ad",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.0664
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 2029,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "dbc9cbf933b2bf5cc83503cc51522430",
+   "md5_order": "9c06d8350b7c78d1b4523984271211d6",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06669
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 3037,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "aff6e76c628b57af95d353c2d5a838b0",
+   "md5_order": "41310f319384716397d11421c4e4946f",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06661
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 3037,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "c7d372a9b00ea4d9a8d786ef69f2c735",
+   "md5_order": "3f00a974c446e944859baa30dbe21cc6",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06679
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 4049,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "a380f929c71a2c31882ee7a4593896d9",
+   "md5_order": "27634a5dc43151a4a2b36217280e72b0",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06656
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 4049,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "47162ae5bc6dc668bcb0ee61193611d0",
+   "md5_order": "964571dec7d1f06821bfb83bae803d66",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06666
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 5051,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "f18eeee91b81fa7d73d20a5c41e43d61",
+   "md5_order": "9408e401f3e8f6cfeeef11425ace0bbc",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06667
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 5051,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "5f9d02cb2d069e258a90220cede4e58d",
+   "md5_order": "053eb5e181721cb9741e6c9de7af1d92",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06673
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 6067,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "5662aff4e23ba1eb0f72b79846dd8f82",
+   "md5_order": "cefdad88ae028c615ba676e45ca265db",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06661
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 6067,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "efb2e58fac508bd574ba8b4624c9e960",
+   "md5_order": "6838c970598e27661ff812f1d2011122",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06671
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 7079,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "89fe34d2aa182c636e1b9c0bcb0617cf",
+   "md5_order": "b882adfd5bacf82587fdcf3764a2a461",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06656
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 7079,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "55ae50938c0bbbc4dda25e50358bfb96",
+   "md5_order": "6ff5b034ea0084120ac91a9117e24e20",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06665
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 8081,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "6bb93b53905a556860f3e67b014d6723",
+   "md5_order": "578bfe14b563168e0ad959916e37fef0",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06628
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 8081,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "13e77cc74c2176ba9f98247d6fdbb560",
+   "md5_order": "3fed9df466ca864b1cdab1b68b3f759b",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06648
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 9091,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "d5230db698019ea8132ce3ba8d499484",
+   "md5_order": "0d9ab63cda9fc6e68a8bfb45ee5fdad9",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06686
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 9091,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "518b18d93020623ea24659fd15129f1a",
+   "md5_order": "5ee8b069c1e3f4493b26e2397b847e18",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06652
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 10103,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "f4f9fb6a865688b58351a84327bdb83b",
+   "md5_order": "e7d637e8e50593e827d5f546f186963e",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.0665
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 10103,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "b96e4cee39cd0801416bba226b312b4d",
+   "md5_order": "ec4bbf4b94334c64c44db969ade915ca",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06686
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 11117,
+   "windows": 160000,
+   "tokens": 20480001,
+   "md5_text": "ee73c21630923236c96d1116ad2f3ff1",
+   "md5_order": "cd4c0693b5aa87e1a2a22b412edccd73",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.06704
+  },
+  {
+   "base": "regular_redrawn",
+   "seed": 11117,
+   "windows": 256000,
+   "tokens": 32768001,
+   "md5_text": "4264e3ce6ff583036d72e62eec54da7a",
+   "md5_order": "4a1495921ef7017b94030ce4e73ce3a9",
+   "familiarity_units": 9900,
+   "familiarity_sentences": 19800,
+   "base_frame7_share": 0.0665
+  }
+ ]
+}

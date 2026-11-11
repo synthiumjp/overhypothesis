@@ -1,0 +1,17 @@
+\FloatBarrier
+\section{Control: redrawn and half-kept bursts}\label{app:P}
+\setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
+\textbf{Status.} Added in answer to a review, after the results of Experiments 1 to 3. It was not pre-registered. Its design, analysis and predictions were written down and committed to the project repository before any of its models was trained, and its 20 corpora were built and checksummed before training; the training machine rebuilt them and matched every checksum.
+
+\textbf{Design.} As Experiment~3's stable-kind mixed design (same 40 nouns, base text, frames, placement, tokenizer, ten seeds and three sizes; same corpus builder), with six familiar conditions of three nouns each at 100 and 1,000 exposures, plus four unseen nouns: fixed shape spaced and in bursts; changing shape spaced and in bursts; \emph{redrawn-shape bursts}, whose shape is drawn from the corpus's shape distribution for every sentence (the sentences of changing-shape spaced nouns, grouped in fours); and \emph{half-kept bursts}, whose first sentence draws a shape and each later sentence keeps the previous shape with probability 0.5, else draws again. All shapes appear in frame 1. The share of burst sentences whose shape repeats the previous sentence's was 1.00 for changing-shape and fixed-shape bursts, 0.535 to 0.565 for half-kept bursts and 0.091 to 0.113 for redrawn bursts across corpora (chance: 0.102). Thirty models (3.4M, 10.9M, 25.6M; ten seeds) were trained as in Experiment~3 and scored with the same items. All passed the model check (final loss 0.36 to 0.42). One 25.6M model was interrupted by a computer restart and retrained from the start.
+
+\textbf{Analysis.} Primary contrast, fixed in advance: changing-shape minus redrawn-shape bursts at 1,000 exposures, seed-level (sizes averaged within seed), t-based 95\% interval. Useful context predicts a positive difference and redrawn-shape bursts near changing-shape spaced nouns; recurrence predicts no difference.
+
+\textbf{Results.} Table~\ref{tab:P1}. The primary contrast was 3.33 nats [2.74, 3.92], positive in all ten seeds and at every size (5.82, 2.04, 2.14 at 3.4M, 10.9M, 25.6M). Redrawn-shape bursts at 1,000 exposures copied 0.07 [$-$0.01, 0.15] more than changing-shape spaced nouns, and half-kept bursts fell between redrawn and changing-shape bursts at both levels. At 100 exposures redrawn-shape bursts kept some copying (0.96 above spaced). Fixed-shape bursts at 1,000 copied 0.32 [0.18, 0.47] more than redrawn-shape bursts. Unseen nouns copied 4.92 [4.59, 5.25].
+
+\begin{table}[!htbp]
+\centering\small
+\caption{Control: copy score by condition and paired differences (nats; seed-level means over ten seeds, sizes averaged within seed; t-based 95\% intervals).}
+\label{tab:P1}
+\input{figures/tab_control.tex}
+\end{table}

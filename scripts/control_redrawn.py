@@ -278,6 +278,14 @@ CONTRASTS = [("rotating_run", "redrawn_run"), ("rotating_run", "half_run"), ("ha
              ("redrawn_run", "rotating_single"), ("redrawn_run", "fixed_run"), ("rotating_run", "fixed_run")]
 
 
+TEXLAB = {("rotating_run", "redrawn_run"): "Bursts: changing $-$ redrawn",
+          ("rotating_run", "half_run"): "Bursts: changing $-$ half-kept",
+          ("half_run", "redrawn_run"): "Bursts: half-kept $-$ redrawn",
+          ("redrawn_run", "rotating_single"): "Redrawn bursts $-$ changing spaced",
+          ("redrawn_run", "fixed_run"): "Bursts: redrawn $-$ fixed",
+          ("rotating_run", "fixed_run"): "Bursts: changing $-$ fixed"}
+
+
 def cmd_summary(a):
     import numpy as np
     import pandas as pd
@@ -340,8 +348,7 @@ def cmd_summary(a):
             parts.append(f"{e}: {m:.2f} [{lo:.2f}, {hi:.2f}] ({bys})")
             tparts.append(f"{tex(m)} & [{tex(lo)}, {tex(hi)}]")
         md.append(f"- {LAB[x]} minus {LAB[y]}: " + "; ".join(parts))
-        tl.append(f"{LAB[x].split(',')[0]} $-$ {LAB[y].split(',')[0].lower()}"
-                  f"{' bursts' if y.endswith('_run') and x.endswith('_run') else ''} & " + " & ".join(tparts) + r" \\")
+        tl.append(f"{TEXLAB[(x, y)]} & " + " & ".join(tparts) + r" \\")
     # dose-response: copy score at 1,000 against the within-burst repeat rate, per seed
     md += ["", "## Fall from 100 to 1,000 exposures (nats)", ""]
     for t in ORDER:

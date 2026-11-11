@@ -85,3 +85,14 @@ git pull --rebase --autostash origin study1b-1c-evaluation
 git push origin HEAD:study1b-1c-evaluation
 git push origin HEAD:master
 ```
+
+## Run record and results (12 Nov 2026)
+
+- PC rebuilt all 20 corpora and matched every checksum (`20 of 20 corpora passed every check`).
+- A computer restart overnight interrupted the 25.6M model for seed 8081. Its folder was renamed
+  `medium_seed8081_interrupted` and the model was retrained from the start; nothing else changed. All 30 models passed
+  the model check (final loss 0.36 to 0.42).
+- Primary contrast (changing minus redrawn bursts at 1,000): 3.33 nats [2.74, 3.92], positive in all ten seeds and at
+  every size (5.82, 2.04, 2.14). Redrawn bursts minus changing spaced at 1,000: 0.07 [-0.01, 0.15]. Half-kept bursts
+  1.20, between redrawn (0.49) and changing (3.82). The useful-context prediction held; recurrence alone did not keep
+  copying. Full summary: `results/control_redrawn/SUMMARY.md`.

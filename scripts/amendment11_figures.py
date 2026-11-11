@@ -41,10 +41,40 @@ def pure_panel(ax, sc):
     ax.set_axisbelow(True)
 
 
+def control_panel(ax, sc):
+    """Redrawn-burst control: copy score against how often a burst sentence repeats the previous one's shape."""
+    q = 0.102
+    rate = {"redrawn_run": q, "half_run": 0.5 + 0.5 * q, "rotating_run": 1.0}
+    o = sc[sc.emb == "original"]
+    for e, fill, ls in ((100, False, (0, (2, 1.5))), (1000, True, "-")):
+        xs, ms, es = [], [], []
+        for t in ("redrawn_run", "half_run", "rotating_run"):
+            m, h = f10.ci(o[(o.type == t) & (o.exposures == e)].carry)
+            xs.append(rate[t] + (-0.012 if e == 100 else 0.012))
+            ms.append(m)
+            es.append(h)
+        ax.errorbar(xs, ms, yerr=es, color=f10.COL["rotating"], marker="s", ls=ls, markersize=4.5, capsize=2,
+                    elinewidth=0.8, mfc=f10.COL["rotating"] if fill else "white", mec=f10.COL["rotating"], mew=0.9,
+                    zorder=3, label=f"{e:,} exposures")
+    for t, col, lab in (("rotating_single", f10.COL["rotating"], "changing, spaced, 1,000"),
+                        ("fixed_run", f10.COL["fixed"], "fixed, bursts, 1,000")):
+        m, _ = f10.ci(o[(o.type == t) & (o.exposures == 1000)].carry)
+        ax.axhline(m, color=col, lw=0.9, ls=(0, (1, 1.2)), zorder=1, label=lab)
+    ax.set_xticks([q, 0.5 + 0.5 * q, 1.0])
+    ax.set_xticklabels(["redrawn\n0.10", "half-kept\n0.55", "changing\n1.00"])
+    ax.set_xlim(-0.05, 1.12)
+    ax.set_xlabel("Share of burst sentences\nrepeating the last shape")
+    ax.legend(frameon=False, fontsize=5.8, loc="upper left", handletextpad=0.3, handlelength=1.8,
+              borderaxespad=0.2, labelspacing=0.25)
+    ax.grid(axis="y", color=f10.GRID, linewidth=0.5)
+    ax.set_axisbelow(True)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--scores", default="results/amendment11/scores.csv")
     ap.add_argument("--scores_a10", default="results/amendment10/scores_a.csv")
+    ap.add_argument("--scores_ctl", default="results/control_redrawn/scores.csv")
     ap.add_argument("--out", default="paper_acl/figures/fig_a11.pdf")
     a = ap.parse_args()
     s = pd.read_csv(a.scores)
@@ -53,11 +83,17 @@ def main():
     s10 = pd.read_csv(a.scores_a10)
     s10 = s10[s10.ckpt.str.endswith("model_final.pt") & (s10.type != "trained")]
     sc10 = f10.seed_cells(s10, "carry")
-    fig, axes = plt.subplots(1, 3, figsize=(6.3, 2.45), sharey=True, gridspec_kw={"width_ratios": [1.2, 1, 1.2]})
+    sct = pd.read_csv(a.scores_ctl)
+    sct = sct[sct.ckpt.str.endswith("model_final.pt") & (sct.type != "trained")]
+    scc = f10.seed_cells(sct, "carry")
+    fig, axes = plt.subplots(1, 4, figsize=(6.3, 2.5), sharey=True,
+                             gridspec_kw={"width_ratios": [1.15, 1.05, 0.95, 1.15]})
     f10.part_a_panel(axes[0], sc, "regular_grouped", "(a) Stable kinds, Exp. 3", legend=True)
-    pure_panel(axes[1], sc)
-    axes[1].set_title("(b) Single history, Exp. 3", fontsize=8, color=f10.INK)
-    f10.part_a_panel(axes[2], sc10, "reassigned_grouped", "(c) Shifting kinds, Exp. 2", legend=False)
+    control_panel(axes[1], scc)
+    axes[1].set_title("(b) Control", fontsize=8, color=f10.INK)
+    pure_panel(axes[2], sc)
+    axes[2].set_title("(c) Single history", fontsize=8, color=f10.INK)
+    f10.part_a_panel(axes[3], sc10, "reassigned_grouped", "(d) Shifting kinds, Exp. 2", legend=False)
     for ax in axes:
         for tx in list(ax.texts):
             if tx.get_text() == "unseen, typical embedding":
@@ -67,6 +103,9 @@ def main():
     hi = max(ax.get_ylim()[1] for ax in axes)
     for ax in axes:
         ax.set_ylim(min(lo, -0.6), hi)
+    for ax in axes:
+        ax.tick_params(labelsize=6.5)
+        ax.xaxis.label.set_size(7)
     h, lab = axes[0].get_legend_handles_labels()
     fig.legend(h, lab, frameon=False, fontsize=6.5, ncol=3, loc="lower center", bbox_to_anchor=(0.5, -0.02),
                handletextpad=0.3, columnspacing=1.0)

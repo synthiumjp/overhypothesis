@@ -17,7 +17,12 @@ from matplotlib.patches import FancyBboxPatch, Rectangle  # noqa: E402
 
 INK, INK2, GRID, BG = "#0b0b0b", "#52514e", "#d9d8d4", "#f3f2ef"
 SHAPE_COL = {"1": "#2a78d6", "2": "#eb6834", "3": "#1baf7a", "4": "#8a5cc2", "-": "white"}
-plt.rcParams.update({"font.family": "serif", "font.size": 7.5, "pdf.fonttype": 42, "mathtext.fontset": "stix"})
+import matplotlib.font_manager as fm  # noqa: E402
+for _f in fm.findSystemFonts():
+    if "texgyretermes" in _f.lower():
+        fm.fontManager.addfont(_f)
+plt.rcParams.update({"font.family": "serif", "font.serif": ["STIXGeneral", "DejaVu Serif"], "font.size": 8,
+                     "pdf.fonttype": 42, "mathtext.fontset": "stix"})
 
 
 def window(ax, x, y, w, h, cells, ncell=6):
@@ -39,10 +44,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="paper_acl/figures/figure1_carry.pdf")
     a = ap.parse_args()
-    fig = plt.figure(figsize=(3.3, 3.05))
+    fig = plt.figure(figsize=(3.3, 3.45))
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, 1)
-    ax.set_ylim(0.03, 1)
+    ax.set_ylim(-0.09, 1)
     ax.axis("off")
 
     # (a) test item
@@ -53,27 +58,28 @@ def main():
     ax.text(0.04, 0.848, "Query:", color=INK2, va="center")
     ax.text(0.20, 0.848, r"A $\it{klerd}$ is a  ___", va="center")
     ax.text(0.04, 0.800, r"Copy score $= L(\mathrm{zibby})\, -$ mean $L$ of other shapes", va="center",
-            fontsize=6.8, color=INK)
-    ax.text(0.02, 0.748, "zibby: shape; lavo: colour; shorfi: texture.", fontsize=6.0,
+            fontsize=7.4, color=INK)
+    ax.text(0.02, 0.748, "zibby: shape; lavo: colour; shorfi: texture.", fontsize=7.2,
             color=INK2, va="center")
     ax.text(0.02, 0.718, r"Control: the query names another new noun (A $\it{zelp}$ is a ___).",
-            fontsize=6.3, color=INK2, va="center")
+            fontsize=7.2, color=INK2, va="center")
 
     # (b) histories
-    ax.text(0.01, 0.692, "(b) Four training histories of one noun", fontsize=8, fontweight="bold", va="top")
+    ax.text(0.01, 0.692, "(b) Training conditions of one noun", fontsize=8, fontweight="bold", va="top")
     rows = [("Fixed shape, spaced", [{2: "1"}, {4: "1"}, {1: "1"}]),
             ("Changing shape, spaced", [{2: "1"}, {4: "3"}, {1: "2"}]),
             ("Fixed shape, bursts", [{1: "1", 2: "1", 3: "1", 4: "1"}, {}, {0: "1", 1: "1", 2: "1", 3: "1"}]),
-            ("Changing shape, bursts", [{1: "2", 2: "2", 3: "2", 4: "2"}, {}, {0: "4", 1: "4", 2: "4", 3: "4"}])]
+            ("Changing shape, bursts", [{1: "2", 2: "2", 3: "2", 4: "2"}, {}, {0: "4", 1: "4", 2: "4", 3: "4"}]),
+            ("Redrawn shape, bursts", [{1: "2", 2: "1", 3: "4", 4: "3"}, {}, {0: "3", 1: "1", 2: "1", 3: "2"}])]
     y0, dy, h = 0.56, 0.122, 0.082
     for k, (lab, wins) in enumerate(rows):
         y = y0 - k * dy
-        ax.text(0.02, y + h / 2, lab, va="center", fontsize=6.6)
+        ax.text(0.02, y + h / 2, lab, va="center", fontsize=7.4)
         for j, cells in enumerate(wins):
             window(ax, 0.405 + j * 0.199, y, 0.183, h, cells)
-    ax.text(0.02, 0.158, "Boxes: successive 128-token windows. Grey: sentences about the 32\n"
-            "trained kinds. Numbers: which shape a sentence about the noun names.\n"
-            "No-shape nouns (not shown) name none.", fontsize=6.2, color=INK2,
+    ax.text(0.02, 0.036, "Boxes: successive 128-token windows. Grey: sentences about\n"
+            "the 32 trained kinds. Numbers: which shape a sentence about\n"
+            "the noun names. No-shape nouns (not shown) name none.", fontsize=7.2, color=INK2,
             va="top", linespacing=1.3)
     fig.savefig(a.out, bbox_inches="tight", pad_inches=0.02)
     print("written", a.out)

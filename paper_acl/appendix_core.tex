@@ -21,7 +21,7 @@ Shape is named in all five frames, colour in three and texture in one. The 448 s
 \FloatBarrier
 \appendixsection{Models and training}\label{app:train}
 \setcounter{table}{0}\renewcommand{\thetable}{\thesection\arabic{table}}
-Decoder-only transformers with pre-layer normalisation, learned position embeddings, GELU feed-forward layers, AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, and dropout 0.1 (Table~\ref{tab:train}). Input and output embeddings are untied: the output layer starts as a copy of the input embedding and is trained separately, and every final model was checked to have different input and output matrices. We chose untied embeddings after finding that models of an earlier study in this language, meant to be tied, had been trained untied because the tie was lost on the graphics hardware used; their results are not reported here. The ten tied-embedding models of Appendix~\ref{app:O} were trained on other hardware, with input and output embeddings sharing one matrix; all ten final models were checked after training, and in each the two matrices were identical. Models of Experiments~1 and~2 and the three smaller sizes of Experiment~3 were trained on one AMD graphics card (DirectML); the 85.6M and tied models on an Apple M3 Ultra.
+Decoder-only transformers with pre-layer normalisation, learned position embeddings, GELU feed-forward layers, AdamW (betas 0.9 and 0.95, weight decay 0.1), linear warm-up then cosine decay, and dropout 0.1 (Table~\ref{tab:train}). Input and output embeddings are untied: the output layer starts as a copy of the input embedding and is trained separately, and every final model was checked to have different input and output matrices (on why, see Appendix~\ref{app:reg}). Final training loss was similar across sizes: in Experiment~3, 0.40, 0.39, 0.39 and 0.39 nats per token at 3.4M, 10.9M, 25.6M and 85.6M (range over models 0.37 to 0.42). The ten tied-embedding models of Appendix~\ref{app:O} were trained on other hardware, with input and output embeddings sharing one matrix; all ten final models were checked after training, and in each the two matrices were identical. Models of Experiments~1 and~2 and the three smaller sizes of Experiment~3 were trained on one AMD graphics card (DirectML); the 85.6M and tied models on an Apple M3 Ultra.
 
 \begin{table}[!htbp]
 \centering\small
@@ -80,7 +80,7 @@ Random embedding of untrained scale & atypical\_init \\
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (row analysis), \ref{tab:N6} (pretrained models) and \ref{tab:O1} (Experiment 3).}
+\caption{Registered hypotheses and outcomes. Full statistics: Tables~\ref{tab:M1} (Experiment 1), \ref{tab:N1} (Experiment 2), \ref{tab:N5} (embedding analysis), \ref{tab:N6} (pretrained models) and \ref{tab:O1} (Experiment 3). Candidate heads (H33 to H35): in each Experiment~1 model, the heads with the highest product of prefix-matching and copying scores (Table~\ref{tab:M4}).}
 \label{tab:hyp}
 \begin{tabular}{@{}lp{0.50\textwidth}p{0.33\textwidth}@{}}
 \toprule
@@ -113,13 +113,13 @@ H52 & Spaced: fixed differs from changing shape; equivalence $\pm$0.3 & Fixed lo
 H53 & Fixed-shape spaced nouns prefer their own shape to the context's & Supported (5.84) \\
 H54 & Noun-specific copying of changing-shape bursts within $\pm$0.3 & Within $\pm$0.3 (0.08) \\
 H55 & Changing-shape bursts copy more than embedding geometry predicts & Supported (3.67) \\
-H56 & The queried noun's history matters more than the context noun's & Supported (1.25) \\
+H56 & The query noun's history matters more than the context noun's & Supported (1.25) \\
 M3B, H57 & 85.6M models: unseen nouns copy; changing-shape bursts copy more than fixed-shape bursts & Passed; supported (4.18) \\
 M3C & Single-history corpora: unseen nouns copy & Passed \\
 H58 & Changing-shape bursts (changing-only) copy more than fixed-shape bursts (fixed-only) & Supported (5.51) \\
 H59 & Single-history minus mixed corpora, same history; equivalence $\pm$0.3 & Changing bursts inconclusive; fixed bursts lower (\textminus{}1.00) \\
 \addlinespace
-\multicolumn{3}{@{}l}{\emph{Row analysis (Amendment 10, Part C); Experiment 1 models}} \\
+\multicolumn{3}{@{}l}{\emph{Embedding analysis (Amendment 10, Part C); Experiment 1 models}} \\
 H49 & Scaling unseen nouns' embeddings to the trained kinds' norm lowers copying & Supported (driven by the 3.4M models) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Pretrained models (Amendment 10, Part B)}} \\

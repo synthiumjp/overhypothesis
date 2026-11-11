@@ -118,9 +118,9 @@ def fig_knowledge(sk, ss, out):
 def fig_heads(hs, pn, out):
     fig, axs = plt.subplots(1, 2, figsize=(6.3, 2.2), gridspec_kw={"width_ratios": [1.3, 1]})
     ax = axs[0]
-    rows = [("regular_grouped", "unseen", "Regular\nunseen nouns"),
-            ("reassigned_grouped", "unseen", "Reassigned\nunseen nouns"),
-            ("reassigned_grouped", "trained", "Reassigned\ntrained kinds")]
+    rows = [("regular_grouped", "unseen", "Stable-kind\nunseen nouns"),
+            ("reassigned_grouped", "unseen", "Shifting-kind\nunseen nouns"),
+            ("reassigned_grouped", "trained", "Shifting-kind\ntrained kinds")]
     conds = [("carry", "Intact", "#8a8984"), ("carry_ablated", "Candidates ablated", "#2a78d6"),
              ("carry_random_mean", "Random heads ablated", "#eb6834")]
     w = 0.26
@@ -135,7 +135,7 @@ def fig_heads(hs, pn, out):
     ax.set_xticklabels([r[2] for r in rows], fontsize=7)
     ax.axhline(0, color=INK2, linewidth=0.5)
     ax.set_ylabel("Copy score for shape (nats)")
-    ax.set_xlabel("Grouped models")
+    ax.set_xlabel("Corpora with runs")
     ax.grid(axis="y", color=GRID, linewidth=0.5)
     ax.set_axisbelow(True)
     ax.legend(frameon=False, fontsize=7, loc="lower center", ncol=3, bbox_to_anchor=(0.5, 1.0),

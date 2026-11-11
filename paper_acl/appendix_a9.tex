@@ -10,7 +10,7 @@
 \centering\small
 \caption{Registered tests of the familiarity study (stable-kind models unless stated; seed-level estimates over ten seeds, sizes averaged within seed; nats, proportions for H33a, attention probability for H35). Holm $p$ is adjusted over H30 to H34; H35 was not entered because H33(a) failed. Sizes: number of the three model sizes with the registered direction.}
 \label{tab:M1}
-\begin{tabular}{@{}lp{0.29\textwidth}rrrcp{0.17\textwidth}@{}}
+\begin{tabular}{@{}lp{0.27\textwidth}rrrcp{0.17\textwidth}@{}}
 \toprule
 & Test & Estimate & 95\% CI & Holm $p$ & Sizes & Verdict \\
 \midrule
@@ -21,7 +21,7 @@ H32 & Own-shape preference rises with exposure, fixed shape (slope) & 2.97 & [2.
 H33a & Ablating candidates removes more than half of unseen copy score (proportion) & 0.22 & [0.07, 0.36] & 1.000 & 2 & Not supported \\
 H33b & Random heads minus candidates, unseen copy score after ablation & 0.64 & [\textminus{}0.43, 1.71] & 1.000 & 2 & Not supported \\
 H34 & Shifting-kind: trained-kind copy score intact minus candidates ablated & 7.41 & [6.02, 8.80] & $<$.001 & 3 & Supported \\
-H35 & Attention slope difference, fixed shape minus no-shape & 0.002 & [0.000, 0.005] & -- & 2 & Not tested (gate) \\
+H35 & Attention slope, fixed shape minus no shape & 0.002 & [\textminus{}0.000, 0.005] & -- & 2 & Not tested (gate) \\
 R1 & Replication: stable-kind minus random-order corpora, unseen copy score & 4.68 & [3.71, 5.65] & $<$.001$^a$ & 3 & Replicated \\
 \bottomrule
 \end{tabular}
@@ -30,7 +30,7 @@ R1 & Replication: stable-kind minus random-order corpora, unseen copy score & 4.
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Copy score (nats) by noun type and exposure, mean of seed values (sizes averaged). Unseen: never in training; typical: the unseen nouns with a typical embedding; trained: the 32 base kinds.}
+\caption{Copy score (nats) by noun type and exposure, mean of seed values (sizes averaged). Unseen: never in training; typical: the unseen nouns with a typical embedding; trained: the 32 trained kinds.}
 \label{tab:M2}
 \begin{tabular}{@{}lrrrlrrrr@{}}
 \toprule
@@ -71,7 +71,7 @@ No shape & Stored preference & \textminus{}0.14 & \textminus{}0.17 & 0.12 & 0.08
 
 \begin{table}[!htbp]
 \centering\small
-\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M stable-kind model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Copy score of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen copy score predicted by the candidates' direct paths.}
+\caption{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M stable-kind model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Copy score of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen copy score predicted by the candidates' direct paths. In stable-kind 10.9M models, ablating the candidates raised unseen nouns' copying (2.98 to 5.80); we have no explanation for this.}
 \label{tab:M4}
 \begin{tabular}{@{}llrrrrrrrrr@{}}
 \toprule

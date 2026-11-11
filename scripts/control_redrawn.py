@@ -297,7 +297,7 @@ def cmd_summary(a):
     s = s[(s.base == BASE) & (s.emb == "original") & (s.type != "trained")]
     if a.model_check:
         mc = pd.read_csv(a.model_check)
-        bad = mc[mc.status != "ok"]
+        bad = mc[mc.status.str.lower() != "pass"]
         if len(bad):
             print("excluded by the model check:", bad[["size", "seed"]].values.tolist())
         s = s[~s.set_index(["size", "seed"]).index.isin(bad.set_index(["size", "seed"]).index)]

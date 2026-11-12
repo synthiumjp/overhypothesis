@@ -61,7 +61,7 @@ def main():
             fontsize=7.4, color=INK)
     ax.text(0.02, 0.748, "zibby: shape; lavo: colour; shorfi: texture.", fontsize=7.2,
             color=INK2, va="center")
-    ax.text(0.02, 0.718, r"Control: the query names another new noun (A $\it{zelp}$ is a ___).",
+    ax.text(0.02, 0.718, r"Other-noun item: the query names another new noun (A $\it{zelp}$ is a ___).",
             fontsize=7.2, color=INK2, va="center")
 
     # (b) histories

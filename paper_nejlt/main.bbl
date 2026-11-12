@@ -1,0 +1,372 @@
+\begin{thebibliography}{50}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aky{\"u}rek et~al.(2024)Aky{\"u}rek, Wang, Kim, and
+  Andreas}]{akyurek2024}
+Aky{\"u}rek, E., B.~Wang, Y.~Kim, and J.~Andreas. 2024.
+\newblock In-context language learning: Architectures and algorithms.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}, pages 787--812.
+
+\bibitem[{Anand et~al.(2025)Anand, Lepori, Merullo, and Pavlick}]{anand2025}
+Anand, S., M.~A. Lepori, J.~Merullo, and E.~Pavlick. 2025.
+\newblock Dual process learning: Controlling use of in-context vs. in-weights
+  strategies with weight forgetting.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Anderson and Schooler(1991)}]{anderson1991}
+Anderson, J.~R. and L.~J. Schooler. 1991.
+\newblock {Reflections of the environment in memory}.
+\newblock \emph{Psychological Science}, 2(6):396--408.
+\newblock \url{https://doi.org/10.1111/j.1467-9280.1991.tb00174.x}.
+
+\bibitem[{Biderman et~al.(2023)Biderman, Schoelkopf, Anthony, Bradley, O'Brien,
+  Hallahan, Khan, Purohit, Prashanth, Raff, Skowron, Sutawika, and van~der
+  Wal}]{biderman2023}
+Biderman, S., H.~Schoelkopf, Q.~G. Anthony, H.~Bradley, K.~O'Brien,
+  E.~Hallahan, M.~A. Khan, S.~Purohit, U.~S. Prashanth, E.~Raff, A.~Skowron,
+  L.~Sutawika, and O.~van~der Wal. 2023.
+\newblock {Pythia: A suite for analyzing large language models across training
+  and scaling}.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, volume 202 of Proceedings of Machine Learning Research, pages
+  2397--2430.
+
+\bibitem[{Bietti et~al.(2023)Bietti, Cabannes, Bouchacourt, J{\'e}gou, and
+  Bottou}]{bietti2023}
+Bietti, A., V.~Cabannes, D.~Bouchacourt, H.~J{\'e}gou, and L.~Bottou. 2023.
+\newblock {Birth of a transformer: A memory viewpoint}.
+\newblock In \emph{Advances in Neural Information Processing Systems 36}, pages
+  1560--1588.
+\newblock \url{https://doi.org/10.52202/075280-0077}.
+
+\bibitem[{Chan et~al.(2025)Chan, Chen, Gy{\"o}rgy, and Schuurmans}]{chan2025}
+Chan, B., X.~Chen, A.~Gy{\"o}rgy, and D.~Schuurmans. 2025.
+\newblock Toward understanding in-context vs. in-weight learning.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Chan et~al.(2022{\natexlab{a}})Chan, Dasgupta, Kim, Kumaran,
+  Lampinen, and Hill}]{chan2022generalize}
+Chan, S. C.~Y., I.~Dasgupta, J.~Kim, D.~Kumaran, A.~K. Lampinen, and F.~Hill.
+  2022{\natexlab{a}}.
+\newblock Transformers generalize differently from information stored in
+  context vs in weights.
+\newblock \emph{arXiv preprint arXiv:2210.05675}.
+
+\bibitem[{Chan et~al.(2022{\natexlab{b}})Chan, Santoro, Lampinen, Wang, Singh,
+  Richemond, McClelland, and Hill}]{chan2022}
+Chan, S. C.~Y., A.~Santoro, A.~K. Lampinen, J.~X. Wang, A.~K. Singh, P.~H.
+  Richemond, J.~L. McClelland, and F.~Hill. 2022{\natexlab{b}}.
+\newblock {Data distributional properties drive emergent in-context learning in
+  transformers}.
+\newblock In \emph{Advances in Neural Information Processing Systems 35}, pages
+  18878--18891.
+\newblock \url{https://doi.org/10.52202/068431-1371}.
+
+\bibitem[{Chang and Bergen(2022)}]{chang2022}
+Chang, T.~A. and B.~K. Bergen. 2022.
+\newblock {Word acquisition in neural language models}.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  10:1--16.
+\newblock \url{https://doi.org/10.1162/tacl_a_00444}.
+
+\bibitem[{Childers and Tomasello(2002)}]{childers2002}
+Childers, J.~B. and M.~Tomasello. 2002.
+\newblock {Two-year-olds learn novel nouns, verbs, and conventional actions
+  from massed or distributed exposures}.
+\newblock \emph{Developmental Psychology}, 38(6):967--978.
+\newblock \url{https://doi.org/10.1037/0012-1649.38.6.967}.
+
+\bibitem[{Church(2000)}]{church2000}
+Church, K.~W. 2000.
+\newblock {Empirical estimates of adaptation: The chance of two Noriegas is
+  closer to $p/2$ than $p^2$}.
+\newblock In \emph{COLING 2000 Volume 1: The 18th International Conference on
+  Computational Linguistics}.
+\newblock \url{https://aclanthology.org/C00-1027}.
+
+\bibitem[{Church and Gale(1995)}]{church1995}
+Church, K.~W. and W.~A. Gale. 1995.
+\newblock {Poisson mixtures}.
+\newblock \emph{Natural Language Engineering}, 1(2):163--190.
+\newblock \url{https://doi.org/10.1017/S1351324900000139}.
+
+\bibitem[{Dewar and Xu(2010)}]{dewar2010}
+Dewar, K.~M. and F.~Xu. 2010.
+\newblock {Induction, overhypothesis, and the origin of abstract knowledge:
+  Evidence from 9-month-old infants}.
+\newblock \emph{Psychological Science}, 21(12):1871--1877.
+\newblock \url{https://doi.org/10.1177/0956797610388810}.
+
+\bibitem[{Du et~al.(2024)Du, Sn{\ae}bjarnarson, Stoehr, White, Schein, and
+  Cotterell}]{du2024}
+Du, K., V.~Sn{\ae}bjarnarson, N.~Stoehr, J.~White, A.~Schein, and R.~Cotterell.
+  2024.
+\newblock Context versus prior knowledge in language models.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 13211--13235.
+
+\bibitem[{Edelman et~al.(2024)Edelman, Edelman, Goel, Malach, and
+  Tsilivis}]{edelman2024}
+Edelman, B.~L., E.~Edelman, S.~Goel, E.~Malach, and N.~Tsilivis. 2024.
+\newblock The evolution of statistical induction heads: In-context learning
+  {Markov} chains.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37.
+
+\bibitem[{Geva et~al.(2023)Geva, Bastings, Filippova, and Globerson}]{geva2023}
+Geva, M., J.~Bastings, K.~Filippova, and A.~Globerson. 2023.
+\newblock Dissecting recall of factual associations in auto-regressive language
+  models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 12216--12235.
+
+\bibitem[{Grave et~al.(2017)Grave, Joulin, and Usunier}]{grave2017}
+Grave, E., A.~Joulin, and N.~Usunier. 2017.
+\newblock {Improving neural language models with a continuous cache}.
+\newblock In \emph{International Conference on Learning Representations}.
+\newblock \url{https://openreview.net/forum?id=B184E5qee}.
+
+\bibitem[{Herbelot and Baroni(2017)}]{herbelot2017}
+Herbelot, A. and M.~Baroni. 2017.
+\newblock High-risk learning: acquiring new word vectors from tiny data.
+\newblock In \emph{Proceedings of the 2017 Conference on Empirical Methods in
+  Natural Language Processing}, pages 304--309.
+
+\bibitem[{Hewitt(2021)}]{hewitt2021}
+Hewitt, J. 2021.
+\newblock {Initializing new word embeddings for pretrained language models}.
+\newblock Blog post,
+  \url{https://nlp.stanford.edu/~johnhew/vocab-expansion.html}.
+
+\bibitem[{Holm(1979)}]{holm1979}
+Holm, S. 1979.
+\newblock {A simple sequentially rejective multiple test procedure}.
+\newblock \emph{Scandinavian Journal of Statistics}, 6(2):65--70.
+
+\bibitem[{Inan et~al.(2017)Inan, Khosravi, and Socher}]{inan2017}
+Inan, H., K.~Khosravi, and R.~Socher. 2017.
+\newblock Tying word vectors and word classifiers: A loss framework for
+  language modeling.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Jin et~al.(2024)Jin, Cao, Yuan, Chen, Xu, Li, Jiang, Liu, and
+  Zhao}]{jin2024}
+Jin, Z., P.~Cao, H.~Yuan, Y.~Chen, J.~Xu, H.~Li, X.~Jiang, K.~Liu, and J.~Zhao.
+  2024.
+\newblock Cutting off the head ends the conflict: A mechanism for interpreting
+  and mitigating knowledge conflicts in language models.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2024}, pages 1193--1215.
+
+\bibitem[{Kandpal et~al.(2023)Kandpal, Deng, Roberts, Wallace, and
+  Raffel}]{kandpal2023}
+Kandpal, N., H.~Deng, A.~Roberts, E.~Wallace, and C.~Raffel. 2023.
+\newblock Large language models struggle to learn long-tail knowledge.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, pages 15696--15707.
+
+\bibitem[{Kemp et~al.(2007)Kemp, Perfors, and Tenenbaum}]{kemp2007}
+Kemp, C., A.~Perfors, and J.~B. Tenenbaum. 2007.
+\newblock {Learning overhypotheses with hierarchical Bayesian models}.
+\newblock \emph{Developmental Science}, 10(3):307--321.
+\newblock \url{https://doi.org/10.1111/j.1467-7687.2007.00585.x}.
+
+\bibitem[{Khodak et~al.(2018)Khodak, Saunshi, Liang, Ma, Stewart, and
+  Arora}]{khodak2018}
+Khodak, M., N.~Saunshi, Y.~Liang, T.~Ma, B.~Stewart, and S.~Arora. 2018.
+\newblock A la carte embedding: Cheap but effective induction of semantic
+  feature vectors.
+\newblock In \emph{Proceedings of the 56th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 12--22.
+
+\bibitem[{Kim et~al.(2026)Kim, Kim, Kwon, Yang, Jung, and
+  Cha}]{kim2026training}
+Kim, M., D.-K. Kim, J.~Kwon, N.~Yang, K.~Jung, and M.~Cha. 2026.
+\newblock How training data shapes the use of parametric and in-context
+  knowledge in language models.
+\newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 23242--23257.
+
+\bibitem[{Kim et~al.(2022)Kim, Linzen, and Smolensky}]{kim2022lexical}
+Kim, N., T.~Linzen, and P.~Smolensky. 2022.
+\newblock Uncontrolled lexical exposure leads to overestimation of
+  compositional generalization in pretrained models.
+\newblock \emph{arXiv preprint arXiv:2212.10769}.
+
+\bibitem[{Kuhn and {De Mori}(1990)}]{kuhn1990}
+Kuhn, R. and R.~{De Mori}. 1990.
+\newblock {A cache-based natural language model for speech recognition}.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 12(6):570--583.
+\newblock \url{https://doi.org/10.1109/34.56193}.
+
+\bibitem[{Land and Bartolo(2024)}]{land2024}
+Land, S. and M.~Bartolo. 2024.
+\newblock {Fishing for Magikarp: Automatically detecting under-trained tokens
+  in large language models}.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pages 11631--11646.
+\newblock \url{https://doi.org/10.18653/v1/2024.emnlp-main.649}.
+
+\bibitem[{Landau et~al.(1988)Landau, Smith, and Jones}]{landau1988}
+Landau, B., L.~B. Smith, and S.~S. Jones. 1988.
+\newblock {The importance of shape in early lexical learning}.
+\newblock \emph{Cognitive Development}, 3(3):299--321.
+\newblock \url{https://doi.org/10.1016/0885-2014(88)90014-7}.
+
+\bibitem[{Longpre et~al.(2021)Longpre, Perisetla, Chen, Ramesh, DuBois, and
+  Singh}]{longpre2021}
+Longpre, S., K.~Perisetla, A.~Chen, N.~Ramesh, C.~DuBois, and S.~Singh. 2021.
+\newblock {Entity-based knowledge conflicts in question answering}.
+\newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in
+  Natural Language Processing}, pages 7052--7063.
+\newblock \url{https://doi.org/10.18653/v1/2021.emnlp-main.565}.
+
+\bibitem[{Madsen et~al.(2005)Madsen, Kauchak, and Elkan}]{madsen2005}
+Madsen, R.~E., D.~Kauchak, and C.~Elkan. 2005.
+\newblock {Modeling word burstiness using the Dirichlet distribution}.
+\newblock In \emph{Proceedings of the 22nd International Conference on Machine
+  Learning}, pages 545--552.
+\newblock \url{https://doi.org/10.1145/1102351.1102420}.
+
+\bibitem[{Mallen et~al.(2023)Mallen, Asai, Zhong, Das, Khashabi, and
+  Hajishirzi}]{mallen2023}
+Mallen, A., A.~Asai, V.~Zhong, R.~Das, D.~Khashabi, and H.~Hajishirzi. 2023.
+\newblock When not to trust language models: Investigating effectiveness of
+  parametric and non-parametric memories.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 9802--9822.
+
+\bibitem[{Merity et~al.(2017)Merity, Xiong, Bradbury, and Socher}]{merity2017}
+Merity, S., C.~Xiong, J.~Bradbury, and R.~Socher. 2017.
+\newblock {Pointer sentinel mixture models}.
+\newblock In \emph{International Conference on Learning Representations}.
+\newblock \url{https://openreview.net/forum?id=Byj72udxe}.
+
+\bibitem[{Misra et~al.(2023)Misra, Rayz, and Ettinger}]{misra2023}
+Misra, K., J.~Rayz, and A.~Ettinger. 2023.
+\newblock {COMPS: Conceptual minimal pair sentences for testing robust property
+  knowledge and its inheritance in pre-trained language models}.
+\newblock In \emph{Proceedings of the 17th Conference of the European Chapter
+  of the Association for Computational Linguistics}, pages 2928--2949.
+\newblock \url{https://doi.org/10.18653/v1/2023.eacl-main.213}.
+
+\bibitem[{Olsson et~al.(2022)Olsson, Elhage, Nanda, Joseph, DasSarma, Henighan,
+  Mann, Askell, Bai, Chen, Conerly, Drain, Ganguli, Hatfield-Dodds, Hernandez,
+  Johnston, Jones, Kernion, Lovitt, Ndousse, Amodei, Brown, Clark, Kaplan,
+  McCandlish, and Olah}]{olsson2022}
+Olsson, C., N.~Elhage, N.~Nanda, N.~Joseph, N.~DasSarma, T.~Henighan, B.~Mann,
+  A.~Askell, Y.~Bai, A.~Chen, T.~Conerly, D.~Drain, D.~Ganguli,
+  Z.~Hatfield-Dodds, D.~Hernandez, S.~Johnston, A.~Jones, J.~Kernion,
+  L.~Lovitt, K.~Ndousse, D.~Amodei, T.~Brown, J.~Clark, J.~Kaplan,
+  S.~McCandlish, and C.~Olah. 2022.
+\newblock {In-context learning and induction heads}.
+\newblock \emph{arXiv preprint arXiv:2209.11895}.
+
+\bibitem[{Ortu et~al.(2024)Ortu, Jin, Doimo, Sachan, Cazzaniga, and
+  Sch{\"o}lkopf}]{ortu2024}
+Ortu, F., Z.~Jin, D.~Doimo, M.~Sachan, A.~Cazzaniga, and B.~Sch{\"o}lkopf.
+  2024.
+\newblock {Competition of mechanisms: Tracing how language models handle facts
+  and counterfactuals}.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 8420--8436.
+\newblock \url{https://doi.org/10.18653/v1/2024.acl-long.458}.
+
+\bibitem[{Press and Wolf(2017)}]{press2017}
+Press, O. and L.~Wolf. 2017.
+\newblock Using the output embedding to improve language models.
+\newblock In \emph{Proceedings of the 15th Conference of the European Chapter
+  of the Association for Computational Linguistics: Volume 2, Short Papers},
+  pages 157--163.
+
+\bibitem[{Ravent{\'o}s et~al.(2023)Ravent{\'o}s, Paul, Chen, and
+  Ganguli}]{raventos2023}
+Ravent{\'o}s, A., M.~Paul, F.~Chen, and S.~Ganguli. 2023.
+\newblock {Pretraining task diversity and the emergence of non-Bayesian
+  in-context learning for regression}.
+\newblock In \emph{Advances in Neural Information Processing Systems 36}.
+
+\bibitem[{Razeghi et~al.(2022)Razeghi, Logan~IV, Gardner, and
+  Singh}]{razeghi2022}
+Razeghi, Y., R.~L. Logan~IV, M.~Gardner, and S.~Singh. 2022.
+\newblock {Impact of pretraining term frequencies on few-shot numerical
+  reasoning}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2022}, pages 840--854.
+\newblock \url{https://aclanthology.org/2022.findings-emnlp.59}.
+
+\bibitem[{Reddy(2024)}]{reddy2024}
+Reddy, G. 2024.
+\newblock {The mechanistic basis of data dependence and abrupt learning in an
+  in-context classification task}.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations}.
+
+\bibitem[{Schick and Sch{\"u}tze(2020)}]{schick2020}
+Schick, T. and H.~Sch{\"u}tze. 2020.
+\newblock {Rare words: A major problem for contextualized embeddings and how to
+  fix it by attentive mimicking}.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence, 34(05)}, pages 8766--8774.
+\newblock \url{https://doi.org/10.1609/aaai.v34i05.6403}.
+
+\bibitem[{Schwab and Lew-Williams(2016)}]{schwab2016}
+Schwab, J.~F. and C.~Lew-Williams. 2016.
+\newblock {Repetition across successive sentences facilitates young children's
+  word learning}.
+\newblock \emph{Developmental Psychology}, 52(6):879--886.
+\newblock \url{https://doi.org/10.1037/dev0000125}.
+
+\bibitem[{Singh et~al.(2023)Singh, Chan, Moskovitz, Grant, Saxe, and
+  Hill}]{singh2023}
+Singh, A.~K., S.~C.~Y. Chan, T.~Moskovitz, E.~Grant, A.~M. Saxe, and F.~Hill.
+  2023.
+\newblock {The transient nature of emergent in-context learning in
+  transformers}.
+\newblock In \emph{Advances in Neural Information Processing Systems 36}, pages
+  27801--27819.
+
+\bibitem[{Smith et~al.(2002)Smith, Jones, Landau, Gershkoff-Stowe, and
+  Samuelson}]{smith2002}
+Smith, L.~B., S.~S. Jones, B.~Landau, L.~Gershkoff-Stowe, and L.~Samuelson.
+  2002.
+\newblock {Object name learning provides on-the-job training for attention}.
+\newblock \emph{Psychological Science}, 13(1):13--19.
+\newblock \url{https://doi.org/10.1111/1467-9280.00403}.
+
+\bibitem[{Thrush et~al.(2020)Thrush, Wilcox, and Levy}]{thrush2020}
+Thrush, T., E.~Wilcox, and R.~Levy. 2020.
+\newblock {Investigating novel verb learning in BERT: Selectional preference
+  classes and alternation-based syntactic generalization}.
+\newblock In \emph{Proceedings of the Third BlackboxNLP Workshop on Analyzing
+  and Interpreting Neural Networks for NLP}, pages 265--275.
+\newblock \url{https://doi.org/10.18653/v1/2020.blackboxnlp-1.25}.
+
+\bibitem[{Vlach et~al.(2008)Vlach, Sandhofer, and Kornell}]{vlach2008}
+Vlach, H.~A., C.~M. Sandhofer, and N.~Kornell. 2008.
+\newblock {The spacing effect in children's memory and category induction}.
+\newblock \emph{Cognition}, 109(1):163--167.
+\newblock \url{https://doi.org/10.1016/j.cognition.2008.07.013}.
+
+\bibitem[{Xie et~al.(2024)Xie, Zhang, Chen, Lou, and Su}]{xie2024}
+Xie, J., K.~Zhang, J.~Chen, R.~Lou, and Y.~Su. 2024.
+\newblock {Adaptive chameleon or stubborn sloth: Revealing the behavior of
+  large language models in knowledge conflicts}.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations}.
+
+\bibitem[{Yu et~al.(2023)Yu, Merullo, and Pavlick}]{yu2023}
+Yu, Q., J.~Merullo, and E.~Pavlick. 2023.
+\newblock Characterizing mechanisms for factual recall in language models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 9924--9959.
+
+\bibitem[{Zhang and Nanda(2024)}]{zhang2024patching}
+Zhang, F. and N.~Nanda. 2024.
+\newblock Towards best practices of activation patching in language models:
+  Metrics and methods.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\end{thebibliography}

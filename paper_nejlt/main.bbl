@@ -1,4 +1,4 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{51}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Aky{\"u}rek et~al.(2024)Aky{\"u}rek, Wang, Kim, and
@@ -10,8 +10,8 @@ Aky{\"u}rek, E., B.~Wang, Y.~Kim, and J.~Andreas. 2024.
 
 \bibitem[{Anand et~al.(2025)Anand, Lepori, Merullo, and Pavlick}]{anand2025}
 Anand, S., M.~A. Lepori, J.~Merullo, and E.~Pavlick. 2025.
-\newblock Dual process learning: Controlling use of in-context vs. in-weights
-  strategies with weight forgetting.
+\newblock {Dual process learning: Controlling use of in-context vs. in-weights
+  strategies with weight forgetting}.
 \newblock In \emph{International Conference on Learning Representations}.
 
 \bibitem[{Anderson and Schooler(1991)}]{anderson1991}
@@ -200,6 +200,13 @@ Kuhn, R. and R.~{De Mori}. 1990.
 \newblock \emph{IEEE Transactions on Pattern Analysis and Machine
   Intelligence}, 12(6):570--583.
 \newblock \url{https://doi.org/10.1109/34.56193}.
+
+\bibitem[{Lakens(2017)}]{lakens2017}
+Lakens, D. 2017.
+\newblock {Equivalence tests: A practical primer for t tests, correlations, and
+  meta-analyses}.
+\newblock \emph{Social Psychological and Personality Science}, 8(4):355--362.
+\newblock \url{https://doi.org/10.1177/1948550617697177}.
 
 \bibitem[{Land and Bartolo(2024)}]{land2024}
 Land, S. and M.~Bartolo. 2024.

@@ -1,0 +1,230 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{longpre2021,xie2024}
+\citation{chan2022}
+\citation{chan2025}
+\citation{yu2023,jin2024,ortu2024}
+\citation{thrush2020,misra2023}
+\citation{kim2022lexical}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@LN@col{2}
+\citation{chan2022}
+\citation{chan2022generalize}
+\citation{raventos2023}
+\citation{chan2025}
+\citation{singh2023}
+\citation{olsson2022,reddy2024}
+\citation{bietti2023}
+\citation{akyurek2024,edelman2024}
+\citation{anand2025}
+\citation{kim2026training}
+\citation{kuhn1990,grave2017,merity2017}
+\citation{church1995,church2000,madsen2005}
+\citation{anderson1991}
+\citation{mallen2023,kandpal2023}
+\citation{razeghi2022}
+\citation{longpre2021,xie2024,du2024}
+\citation{geva2023}
+\citation{yu2023,jin2024,ortu2024}
+\citation{schick2020}
+\citation{herbelot2017,khodak2018}
+\citation{land2024}
+\citation{hewitt2021}
+\citation{press2017,inan2017}
+\citation{kim2022lexical}
+\citation{chang2022}
+\citation{landau1988,smith2002}
+\citation{kemp2007,dewar2010}
+\citation{childers2002,schwab2016}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces (a) A test item and the copy score, which leaves out the noun's own shape. (b) Training conditions (history and presentation), drawn schematically over three training windows. A burst puts four sentences in one window, so the same number of sentences fills a quarter as many windows. Redrawn-shape bursts are the control (Section~\ref {sec:bursts}); half-kept bursts and no-shape nouns are not shown.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:1}{{1}{2}{(a) A test item and the copy score, which leaves out the noun's own shape. (b) Training conditions (history and presentation), drawn schematically over three training windows. A burst puts four sentences in one window, so the same number of sentences fills a quarter as many windows. Redrawn-shape bursts are the control (Section~\ref {sec:bursts}); half-kept bursts and no-shape nouns are not shown}{figure.1}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@LN@col{1}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Setup}{3}{section.3}\protected@file@percent }
+\newlabel{sec:setup}{{3}{3}{Setup}{section.3}{}}
+\newlabel{sec:background}{{3}{3}{Setup}{section.3}{}}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Noun histories. In changing-shape bursts the shape is shared within a burst and redrawn for each burst, so the noun's own earlier sentence is the only source of its current shape. In redrawn-shape bursts it matches only by chance.}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:design}{{1}{3}{Noun histories. In changing-shape bursts the shape is shared within a burst and redrawn for each burst, so the noun's own earlier sentence is the only source of its current shape. In redrawn-shape bursts it matches only by chance}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experiments. Experiments 1 and 2 used stable-kind and shifting-kind corpora (Experiment 1 also random-order corpora); Experiment 3 and the control (C) used stable-kind corpora only. $^t$Ten 3.4M models with tied embeddings (exploratory). $^p$Pretrained models, inference only (Section~\ref {sec:pythia}).}}{3}{table.2}\protected@file@percent }
+\newlabel{tab:exps}{{2}{3}{Experiments. Experiments 1 and 2 used stable-kind and shifting-kind corpora (Experiment 1 also random-order corpora); Experiment 3 and the control (C) used stable-kind corpora only. $^t$Ten 3.4M models with tied embeddings (exploratory). $^p$Pretrained models, inference only (Section~\ref {sec:pythia})}{table.2}{}}
+\citation{holm1979}
+\@LN@col{1}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Predictions of the memory-competition, representation, useful-context and recurrence accounts for the copy score. Blank: no prediction. $^b$Or $>$0 if an embedding left less trained copies more. $^c$No larger than for spaced nouns. Exp.: experiments in which the comparison was a pre-registered test (C: the control, specified before training but not registered; --: exploratory only).}}{4}{table.3}\protected@file@percent }
+\newlabel{tab:pred}{{3}{4}{Predictions of the memory-competition, representation, useful-context and recurrence accounts for the copy score. Blank: no prediction. $^b$Or $>$0 if an embedding left less trained copies more. $^c$No larger than for spaced nouns. Exp.: experiments in which the comparison was a pre-registered test (C: the control, specified before training but not registered; --: exploratory only)}{table.3}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{4}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}The Baseline: Unseen Nouns Copy, and Spaced Nouns Copy Less with Exposure}{4}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:rows}{{4.1}{4}{The Baseline: Unseen Nouns Copy, and Spaced Nouns Copy Less with Exposure}{subsection.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Experiment 1: copy score by number of exposures and noun history, all spaced, in stable-kind, shifting-kind and random-order corpora (means over ten seeds, sizes averaged; 95\% intervals). Diamond at 0: unseen nouns. Dashed line: unseen nouns with a typical embedding.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:carry}{{2}{5}{Experiment 1: copy score by number of exposures and noun history, all spaced, in stable-kind, shifting-kind and random-order corpora (means over ten seeds, sizes averaged; 95\% intervals). Diamond at 0: unseen nouns. Dashed line: unseen nouns with a typical embedding}{figure.2}{}}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Copying Stays High Only Where the Context Was Needed}{5}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:bursts}{{4.2}{5}{Copying Stays High Only Where the Context Was Needed}{subsection.4.2}{}}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Experiment 3: copy score by corpus design, history and exposures (means over seeds by size, and seed-level mean with 95\% interval, sizes averaged). Mixed: ten seeds; single-history designs: five seeds. $^a$Over the three smaller sizes, as in the registered tests; 85.6M models were trained in the mixed design only.}}{6}{table.4}\protected@file@percent }
+\newlabel{tab:O2}{{4}{6}{Experiment 3: copy score by corpus design, history and exposures (means over seeds by size, and seed-level mean with 95\% interval, sizes averaged). Mixed: ten seeds; single-history designs: five seeds. $^a$Over the three smaller sizes, as in the registered tests; 85.6M models were trained in the mixed design only}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Control: copy score by condition and paired differences (nats; seed-level means over ten seeds, sizes averaged within seed; t-based 95\% intervals).}}{6}{table.5}\protected@file@percent }
+\newlabel{tab:P1}{{5}{6}{Control: copy score by condition and paired differences (nats; seed-level means over ten seeds, sizes averaged within seed; t-based 95\% intervals)}{table.5}{}}
+\@LN@col{1}
+\@LN@col{2}
+\citation{lakens2017}
+\citation{zhang2024patching}
+\@LN@col{1}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Key comparisons in stable-kind corpora (copy score, nats; seed-level means; 100 and 1,000 exposures pooled, and 1,000 alone). $^r$The value that was the pre-registered test (pooled or at 1,000, as registered); all other values exploratory. Intervals for the registered values are in Tables~\ref {tab:N1} and~\ref {tab:O1}. Same noun $-$ other noun: other-noun items, for changing-shape bursts. Beyond geometry: changing-shape bursts relative to the copying predicted from their embeddings' geometry (Section~\ref {sec:kept}). $^a$Confounded with expected word class. Control models: Exp.~3's seeds, new corpora; spaced means changing-shape spaced; specified before training, not registered.}}{7}{table.6}\protected@file@percent }
+\newlabel{tab:key}{{6}{7}{Key comparisons in stable-kind corpora (copy score, nats; seed-level means; 100 and 1,000 exposures pooled, and 1,000 alone). $^r$The value that was the pre-registered test (pooled or at 1,000, as registered); all other values exploratory. Intervals for the registered values are in Tables~\ref {tab:N1} and~\ref {tab:O1}. Same noun $-$ other noun: other-noun items, for changing-shape bursts. Beyond geometry: changing-shape bursts relative to the copying predicted from their embeddings' geometry (Section~\ref {sec:kept}). $^a$Confounded with expected word class. Control models: Exp.~3's seeds, new corpora; spaced means changing-shape spaced; specified before training, not registered}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}A Stored Shape Wins in Prediction but Barely Lowers Copying}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:memory}{{4.3}{7}{A Stored Shape Wins in Prediction but Barely Lowers Copying}{subsection.4.3}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}What Is Kept, and Where}{7}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:kept}{{4.4}{7}{What Is Kept, and Where}{subsection.4.4}{}}
+\citation{biderman2023}
+\citation{merity2017}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Copy score at 100 and 1,000 exposures (means over seeds, sizes averaged; 95\% intervals; points offset for legibility). In (a), (c) and (d), colour shows history and line style presentation (solid: bursts; dashed: spaced). Nouns at 100 and 1,000 exposures are different nouns, all scored at the end of training; lines join conditions, not time points. (a) Stable-kind corpora, Experiment~3 (ten new seeds). (b) Control: copy score of redrawn, half-kept and changing-shape bursts against how often a burst sentence repeats the previous one's shape (dashed: 100 exposures; solid: 1,000), with changing-shape spaced nouns and fixed-shape bursts at 1,000 as dotted reference lines. (c) Single-history corpora, Experiment~3 (five seeds): all familiar nouns have changing shapes (orange) or all have fixed shapes (blue). (d) Shifting-kind corpora, Experiment~2 (exploratory). Solid grey line and band: unseen nouns; dashed line: unseen nouns with a typical embedding. Experiment~2's stable-kind results are in Figure~\ref {fig:a10}.}}{8}{figure.3}\protected@file@percent }
+\newlabel{fig:a11}{{3}{8}{Copy score at 100 and 1,000 exposures (means over seeds, sizes averaged; 95\% intervals; points offset for legibility). In (a), (c) and (d), colour shows history and line style presentation (solid: bursts; dashed: spaced). Nouns at 100 and 1,000 exposures are different nouns, all scored at the end of training; lines join conditions, not time points. (a) Stable-kind corpora, Experiment~3 (ten new seeds). (b) Control: copy score of redrawn, half-kept and changing-shape bursts against how often a burst sentence repeats the previous one's shape (dashed: 100 exposures; solid: 1,000), with changing-shape spaced nouns and fixed-shape bursts at 1,000 as dotted reference lines. (c) Single-history corpora, Experiment~3 (five seeds): all familiar nouns have changing shapes (orange) or all have fixed shapes (blue). (d) Shifting-kind corpora, Experiment~2 (exploratory). Solid grey line and band: unseen nouns; dashed line: unseen nouns with a typical embedding. Experiment~2's stable-kind results are in Figure~\ref {fig:a10}}{figure.3}{}}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}When the Whole Corpus Rewards Copying}{8}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:beyond}{{4.5}{8}{When the Whole Corpus Rewards Copying}{subsection.4.5}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Beyond the Artificial Language}{8}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:pythia}{{4.6}{8}{Beyond the Artificial Language}{subsection.4.6}{}}
+\citation{chan2022}
+\citation{singh2023}
+\citation{anand2025}
+\citation{kim2026training}
+\citation{dewar2010}
+\citation{kemp2007}
+\citation{childers2002,vlach2008}
+\citation{schwab2016}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Experiment 3, steering (exploratory): copy score with the noun's own embedding (baseline; typical embedding for unseen nouns) and change when the changing-minus-fixed burst direction from other nouns, or a random vector of the same length, is added to the embedding (nats; ten seeds, sizes averaged). Nouns at 1,000 exposures. $^a$Direction from 100-exposure bursts. $^b$Direction from 100-exposure bursts subtracted.}}{9}{table.7}\protected@file@percent }
+\newlabel{tab:O4}{{7}{9}{Experiment 3, steering (exploratory): copy score with the noun's own embedding (baseline; typical embedding for unseen nouns) and change when the changing-minus-fixed burst direction from other nouns, or a random vector of the same length, is added to the embedding (nats; ten seeds, sizes averaged). Nouns at 1,000 exposures. $^a$Direction from 100-exposure bursts. $^b$Direction from 100-exposure bursts subtracted}{table.7}{}}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{9}{section.6}\protected@file@percent }
+\bibdata{refs}
+\bibcite{akyurek2024}{{1}{2024}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Wang, Kim, and Andreas}}}
+\bibcite{anand2025}{{2}{2025}{{Anand et~al.}}{{Anand, Lepori, Merullo, and Pavlick}}}
+\bibcite{anderson1991}{{3}{1991}{{Anderson and Schooler}}{{}}}
+\bibcite{biderman2023}{{4}{2023}{{Biderman et~al.}}{{Biderman, Schoelkopf, Anthony, Bradley, O'Brien, Hallahan, Khan, Purohit, Prashanth, Raff, Skowron, Sutawika, and van~der Wal}}}
+\bibcite{bietti2023}{{5}{2023}{{Bietti et~al.}}{{Bietti, Cabannes, Bouchacourt, J{\'e}gou, and Bottou}}}
+\bibcite{chan2025}{{6}{2025}{{Chan et~al.}}{{Chan, Chen, Gy{\"o}rgy, and Schuurmans}}}
+\bibcite{chan2022generalize}{{7}{2022{a}}{{Chan et~al.}}{{Chan, Dasgupta, Kim, Kumaran, Lampinen, and Hill}}}
+\bibcite{chan2022}{{8}{2022{b}}{{Chan et~al.}}{{Chan, Santoro, Lampinen, Wang, Singh, Richemond, McClelland, and Hill}}}
+\bibcite{chang2022}{{9}{2022}{{Chang and Bergen}}{{}}}
+\bibcite{childers2002}{{10}{2002}{{Childers and Tomasello}}{{}}}
+\bibcite{church2000}{{11}{2000}{{Church}}{{}}}
+\bibcite{church1995}{{12}{1995}{{Church and Gale}}{{}}}
+\bibcite{dewar2010}{{13}{2010}{{Dewar and Xu}}{{}}}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Ethics and Use of AI Assistants}{10}{section.7}\protected@file@percent }
+\@LN@col{2}
+\bibcite{du2024}{{14}{2024}{{Du et~al.}}{{Du, Sn{\ae }bjarnarson, Stoehr, White, Schein, and Cotterell}}}
+\bibcite{edelman2024}{{15}{2024}{{Edelman et~al.}}{{Edelman, Edelman, Goel, Malach, and Tsilivis}}}
+\bibcite{geva2023}{{16}{2023}{{Geva et~al.}}{{Geva, Bastings, Filippova, and Globerson}}}
+\bibcite{grave2017}{{17}{2017}{{Grave et~al.}}{{Grave, Joulin, and Usunier}}}
+\bibcite{herbelot2017}{{18}{2017}{{Herbelot and Baroni}}{{}}}
+\bibcite{hewitt2021}{{19}{2021}{{Hewitt}}{{}}}
+\bibcite{holm1979}{{20}{1979}{{Holm}}{{}}}
+\bibcite{inan2017}{{21}{2017}{{Inan et~al.}}{{Inan, Khosravi, and Socher}}}
+\bibcite{jin2024}{{22}{2024}{{Jin et~al.}}{{Jin, Cao, Yuan, Chen, Xu, Li, Jiang, Liu, and Zhao}}}
+\bibcite{kandpal2023}{{23}{2023}{{Kandpal et~al.}}{{Kandpal, Deng, Roberts, Wallace, and Raffel}}}
+\bibcite{kemp2007}{{24}{2007}{{Kemp et~al.}}{{Kemp, Perfors, and Tenenbaum}}}
+\bibcite{khodak2018}{{25}{2018}{{Khodak et~al.}}{{Khodak, Saunshi, Liang, Ma, Stewart, and Arora}}}
+\bibcite{kim2026training}{{26}{2026}{{Kim et~al.}}{{Kim, Kim, Kwon, Yang, Jung, and Cha}}}
+\bibcite{kim2022lexical}{{27}{2022}{{Kim et~al.}}{{Kim, Linzen, and Smolensky}}}
+\bibcite{kuhn1990}{{28}{1990}{{Kuhn and {De Mori}}}{{}}}
+\bibcite{lakens2017}{{29}{2017}{{Lakens}}{{}}}
+\bibcite{land2024}{{30}{2024}{{Land and Bartolo}}{{}}}
+\bibcite{landau1988}{{31}{1988}{{Landau et~al.}}{{Landau, Smith, and Jones}}}
+\bibcite{longpre2021}{{32}{2021}{{Longpre et~al.}}{{Longpre, Perisetla, Chen, Ramesh, DuBois, and Singh}}}
+\bibcite{madsen2005}{{33}{2005}{{Madsen et~al.}}{{Madsen, Kauchak, and Elkan}}}
+\bibcite{mallen2023}{{34}{2023}{{Mallen et~al.}}{{Mallen, Asai, Zhong, Das, Khashabi, and Hajishirzi}}}
+\@LN@col{1}
+\@LN@col{2}
+\bibcite{merity2017}{{35}{2017}{{Merity et~al.}}{{Merity, Xiong, Bradbury, and Socher}}}
+\bibcite{misra2023}{{36}{2023}{{Misra et~al.}}{{Misra, Rayz, and Ettinger}}}
+\bibcite{olsson2022}{{37}{2022}{{Olsson et~al.}}{{Olsson, Elhage, Nanda, Joseph, DasSarma, Henighan, Mann, Askell, Bai, Chen, Conerly, Drain, Ganguli, Hatfield-Dodds, Hernandez, Johnston, Jones, Kernion, Lovitt, Ndousse, Amodei, Brown, Clark, Kaplan, McCandlish, and Olah}}}
+\bibcite{ortu2024}{{38}{2024}{{Ortu et~al.}}{{Ortu, Jin, Doimo, Sachan, Cazzaniga, and Sch{\"o}lkopf}}}
+\bibcite{press2017}{{39}{2017}{{Press and Wolf}}{{}}}
+\bibcite{raventos2023}{{40}{2023}{{Ravent{\'o}s et~al.}}{{Ravent{\'o}s, Paul, Chen, and Ganguli}}}
+\bibcite{razeghi2022}{{41}{2022}{{Razeghi et~al.}}{{Razeghi, Logan~IV, Gardner, and Singh}}}
+\bibcite{reddy2024}{{42}{2024}{{Reddy}}{{}}}
+\bibcite{schick2020}{{43}{2020}{{Schick and Sch{\"u}tze}}{{}}}
+\bibcite{schwab2016}{{44}{2016}{{Schwab and Lew-Williams}}{{}}}
+\bibcite{singh2023}{{45}{2023}{{Singh et~al.}}{{Singh, Chan, Moskovitz, Grant, Saxe, and Hill}}}
+\bibcite{smith2002}{{46}{2002}{{Smith et~al.}}{{Smith, Jones, Landau, Gershkoff-Stowe, and Samuelson}}}
+\bibcite{thrush2020}{{47}{2020}{{Thrush et~al.}}{{Thrush, Wilcox, and Levy}}}
+\bibcite{vlach2008}{{48}{2008}{{Vlach et~al.}}{{Vlach, Sandhofer, and Kornell}}}
+\bibcite{xie2024}{{49}{2024}{{Xie et~al.}}{{Xie, Zhang, Chen, Lou, and Su}}}
+\bibcite{yu2023}{{50}{2023}{{Yu et~al.}}{{Yu, Merullo, and Pavlick}}}
+\bibcite{zhang2024patching}{{51}{2024}{{Zhang and Nanda}}{{}}}
+\bibstyle{nejlt_bib}
+\@LN@col{1}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Language and Corpora}{13}{appendix.A}\protected@file@percent }
+\newlabel{app:lang}{{A}{13}{Language and Corpora}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Models and Training}{14}{appendix.B}\protected@file@percent }
+\newlabel{app:train}{{B}{14}{Models and Training}{appendix.B}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {B1}{\ignorespaces Model and training settings. Batches are of 128-token windows.}}{14}{table.1}\protected@file@percent }
+\newlabel{tab:train}{{B1}{14}{Model and training settings. Batches are of 128-token windows}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Registrations, Terms and Registered Tests}{15}{appendix.C}\protected@file@percent }
+\newlabel{app:reg}{{C}{15}{Registrations, Terms and Registered Tests}{appendix.C}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {C1}{\ignorespaces Main-text terms and the terms used in the registrations.}}{15}{table.1}\protected@file@percent }
+\newlabel{tab:terms}{{C1}{15}{Main-text terms and the terms used in the registrations}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {C2}{\ignorespaces Registered hypotheses and outcomes. Full statistics: Tables~\ref {tab:M1} (Experiment 1), \ref {tab:N1} (Experiment 2), \ref {tab:N5} (embedding analysis), \ref {tab:N6} (pretrained models) and \ref {tab:O1} (Experiment 3). Candidate heads (H33 to H35): in each Experiment~1 model, the heads with the highest product of prefix-matching and copying scores (Table~\ref {tab:M4}).}}{16}{table.2}\protected@file@percent }
+\newlabel{tab:hyp}{{C2}{16}{Registered hypotheses and outcomes. Full statistics: Tables~\ref {tab:M1} (Experiment 1), \ref {tab:N1} (Experiment 2), \ref {tab:N5} (embedding analysis), \ref {tab:N6} (pretrained models) and \ref {tab:O1} (Experiment 3). Candidate heads (H33 to H35): in each Experiment~1 model, the heads with the highest product of prefix-matching and copying scores (Table~\ref {tab:M4})}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Experiment 1 (Amendment 9)}{17}{appendix.D}\protected@file@percent }
+\newlabel{app:M}{{D}{17}{Experiment 1 (Amendment 9)}{appendix.D}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {D1}{\ignorespaces Registered tests of the familiarity study (stable-kind models unless stated; seed-level estimates over ten seeds, sizes averaged within seed; nats, proportions for H33a, attention probability for H35). Holm $p$ is adjusted over H30 to H34; H35 was not entered because H33(a) failed. Sizes: number of the three model sizes with the registered direction.}}{17}{table.1}\protected@file@percent }
+\newlabel{tab:M1}{{D1}{17}{Registered tests of the familiarity study (stable-kind models unless stated; seed-level estimates over ten seeds, sizes averaged within seed; nats, proportions for H33a, attention probability for H35). Holm $p$ is adjusted over H30 to H34; H35 was not entered because H33(a) failed. Sizes: number of the three model sizes with the registered direction}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {D2}{\ignorespaces Copy score (nats) by noun type and exposure, mean of seed values (sizes averaged). Unseen: never in training; typical: the unseen nouns with a typical embedding; trained: the 32 trained kinds.}}{18}{table.2}\protected@file@percent }
+\newlabel{tab:M2}{{D2}{18}{Copy score (nats) by noun type and exposure, mean of seed values (sizes averaged). Unseen: never in training; typical: the unseen nouns with a typical embedding; trained: the 32 trained kinds}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {D3}{\ignorespaces Stored preference and own-shape preference (nats) in stable-kind models, mean of seed values.}}{18}{table.3}\protected@file@percent }
+\newlabel{tab:M3}{{D3}{18}{Stored preference and own-shape preference (nats) in stable-kind models, mean of seed values}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {D4}{\ignorespaces Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M stable-kind model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Copy score of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen copy score predicted by the candidates' direct paths. In stable-kind 10.9M models, ablating the candidates raised unseen nouns' copying (2.98 to 5.80); we have no explanation for this.}}{18}{table.4}\protected@file@percent }
+\newlabel{tab:M4}{{D4}{18}{Head analysis by corpus and size (means over ten seeds). Candidates were the $k$ heads with the highest product of prefix-matching and copying scores; in grouped models they were in layer 0 in all but one model (a 3.4M stable-kind model chose one layer-1 head), and in random-order models a few were in later layers. In the 3.4M and 10.9M models layer 0 has exactly $k$ non-candidate heads, so the random draws repeat one set. Prefix: highest prefix-matching score of any head (uniform attention gives about 0.027). Copy score of unseen nouns and of trained kinds intact, with the candidates mean-ablated, and with random heads ablated (mean of 200 or 20 draws). DLA: change in unseen copy score predicted by the candidates' direct paths. In stable-kind 10.9M models, ablating the candidates raised unseen nouns' copying (2.98 to 5.80); we have no explanation for this}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {D1}{\ignorespaces Experiment 1. Left: copy score intact, with the candidate heads mean-ablated, and with random heads ablated (nats; mean over ten seeds and three sizes, 95\% intervals over seeds). Right: the candidates' attention from the position that predicts the shape to the context's shape word, stable-kind models (exploratory).}}{19}{figure.1}\protected@file@percent }
+\newlabel{fig:heads}{{D1}{19}{Experiment 1. Left: copy score intact, with the candidate heads mean-ablated, and with random heads ablated (nats; mean over ten seeds and three sizes, 95\% intervals over seeds). Right: the candidates' attention from the position that predicts the shape to the context's shape word, stable-kind models (exploratory)}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Experiment 2, the Embedding Analysis and the Pretrained Test (Amendment 10)}{20}{appendix.E}\protected@file@percent }
+\newlabel{app:N}{{E}{20}{Experiment 2, the Embedding Analysis and the Pretrained Test (Amendment 10)}{appendix.E}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E1}{\ignorespaces Registered tests of Experiment 2 (stable-kind models; 100 and 1,000 exposures pooled; seed-level estimates over ten seeds, sizes averaged within seed; nats). Holm $p$ is adjusted over H40 to H44. Sizes: number of the three sizes with the estimate's direction. Readings follow the registered table: ``above'' means the Holm threshold was met and the direction held at two of three sizes; TOST $p$ for H40, H41 and H44 was above .99, so none was equivalent.}}{20}{table.1}\protected@file@percent }
+\newlabel{tab:N1}{{E1}{20}{Registered tests of Experiment 2 (stable-kind models; 100 and 1,000 exposures pooled; seed-level estimates over ten seeds, sizes averaged within seed; nats). Holm $p$ is adjusted over H40 to H44. Sizes: number of the three sizes with the estimate's direction. Readings follow the registered table: ``above'' means the Holm threshold was met and the direction held at two of three sizes; TOST $p$ for H40, H41 and H44 was above .99, so none was equivalent}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E2}{\ignorespaces Copy score (nats) by cell, mean of seed values (sizes averaged) with 95\% intervals over ten seeds. Unseen nouns have no exposures; the typical embedding replaces an unseen noun's input embedding with one typical of trained nouns.}}{21}{table.2}\protected@file@percent }
+\newlabel{tab:N2}{{E2}{21}{Copy score (nats) by cell, mean of seed values (sizes averaged) with 95\% intervals over ten seeds. Unseen nouns have no exposures; the typical embedding replaces an unseen noun's input embedding with one typical of trained nouns}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E3}{\ignorespaces Stored preference of the noun's own shape and expectation of a shape rather than a colour at the query position (slot: log of the summed probability of the ten shapes minus that of the ten colours), stable-kind models, mean of seed values (exploratory). Unseen nouns: stored preference \textminus {}0.04, slot 1.49.}}{21}{table.3}\protected@file@percent }
+\newlabel{tab:N3}{{E3}{21}{Stored preference of the noun's own shape and expectation of a shape rather than a colour at the query position (slot: log of the summed probability of the ten shapes minus that of the ten colours), stable-kind models, mean of seed values (exploratory). Unseen nouns: stored preference \textminus {}0.04, slot 1.49}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E4}{\ignorespaces Experiment 2 embedding geometry, stable-kind corpora, 1,000 exposures (unseen nouns: no exposures). Copy scores in nats; cosine of the embedding with its initial value; first-block attention from the query to the context's shape. Seed-level means. Swapping embeddings between changing- and fixed-shape bursts moved the copying with the embedding (2.88 nats [2.01, 3.76] and 2.88 [1.99, 3.76] in the two directions; since all other weights are shared, this mainly confirms that the difference enters through the embedding). In a noun-level regression of the copy score on embedding geometry (cosine with the initial embedding, distance from the trained kinds' mean, norm, size and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100. With the per-model regression registered for Experiment~3 (coefficient averaged over sizes within seed; Table~\ref {tab:key}), 2.84 [1.97, 3.70] at 1,000 and 0.15 [$-$0.29, 0.58] at 100.}}{21}{table.4}\protected@file@percent }
+\newlabel{tab:N13}{{E4}{21}{Experiment 2 embedding geometry, stable-kind corpora, 1,000 exposures (unseen nouns: no exposures). Copy scores in nats; cosine of the embedding with its initial value; first-block attention from the query to the context's shape. Seed-level means. Swapping embeddings between changing- and fixed-shape bursts moved the copying with the embedding (2.88 nats [2.01, 3.76] and 2.88 [1.99, 3.76] in the two directions; since all other weights are shared, this mainly confirms that the difference enters through the embedding). In a noun-level regression of the copy score on embedding geometry (cosine with the initial embedding, distance from the trained kinds' mean, norm, size and seed; standard errors clustered by seed), changing-shape bursts scored 3.19 nats [2.46, 3.91] more than geometry predicts at 1,000 exposures and $-$0.09 [$-$0.51, 0.33] at 100. With the per-model regression registered for Experiment~3 (coefficient averaged over sizes within seed; Table~\ref {tab:key}), 2.84 [1.97, 3.70] at 1,000 and 0.15 [$-$0.29, 0.58] at 100}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E5}{\ignorespaces Crossed histories (exploratory), stable-kind corpora, 1,000 exposures (unseen nouns: none): copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. Full results are in the supplementary material.}}{22}{table.5}\protected@file@percent }
+\newlabel{tab:N14}{{E5}{22}{Crossed histories (exploratory), stable-kind corpora, 1,000 exposures (unseen nouns: none): copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of another (columns); 24 items per pair and model, seed-level means. Averaged over familiar histories, a queried noun with changing-shape bursts copied 1.35 nats [0.97, 1.74] more than one with fixed-shape bursts, and a context noun with changing-shape bursts raised copying by 0.39 [0.19, 0.58]. Full results are in the supplementary material}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E6}{\ignorespaces The embedding analysis: copy score (nats) by input embedding, mean over seeds (sizes averaged). H49 (registered, stable-kind): own direction at trained norm minus own \textminus {}0.52 [\textminus {}0.85, \textminus {}0.20], one-sided $p$ = .003, direction at 2 of 3 sizes, supported. In shifting-kind models the same contrast went the other way (0.27 [0.12, 0.41]; exploratory). Random minus own direction, both at trained norm: 0.09 (stable-kind), 0.03 (shifting-kind).}}{22}{table.6}\protected@file@percent }
+\newlabel{tab:N5}{{E6}{22}{The embedding analysis: copy score (nats) by input embedding, mean over seeds (sizes averaged). H49 (registered, stable-kind): own direction at trained norm minus own \textminus {}0.52 [\textminus {}0.85, \textminus {}0.20], one-sided $p$ = .003, direction at 2 of 3 sizes, supported. In shifting-kind models the same contrast went the other way (0.27 [0.12, 0.41]; exploratory). Random minus own direction, both at trained norm: 0.09 (stable-kind), 0.03 (shifting-kind)}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E7}{\ignorespaces Registered tests in the pretrained models, by primary model (nouns or pairs as units; Holm within model over H45 to H48). H45: random (untrained scale) minus original; H46: random (untrained scale) minus typical embedding; H47: colour-typical minus colour-variable nouns, original embeddings; H48: difference between groups in the H45 increase (TOST against $\pm $0.30). A hypothesis needed Holm in at least four of the five models. Outcome: H45 and H46 met Holm in two of five models, H47 in none, and H48 was inconclusive (equivalent in one model).}}{23}{table.7}\protected@file@percent }
+\newlabel{tab:N6}{{E7}{23}{Registered tests in the pretrained models, by primary model (nouns or pairs as units; Holm within model over H45 to H48). H45: random (untrained scale) minus original; H46: random (untrained scale) minus typical embedding; H47: colour-typical minus colour-variable nouns, original embeddings; H48: difference between groups in the H45 increase (TOST against $\pm $0.30). A hypothesis needed Holm in at least four of the five models. Outcome: H45 and H46 met Holm in two of five models, H47 in none, and H48 was inconclusive (equivalent in one model)}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E8}{\ignorespaces Pretrained test: copy score of the context's colour (nats; mean over nouns) by model and input embedding, and with original embeddings by group. Random, own scale: the same random direction at the noun's own norm (exploratory). 70M and 160M are descriptive. Prior entropy: entropy of the colour distribution after \emph  {The \textit  {noun} was} with no context (nats; uniform over eleven colours is 2.40).}}{23}{table.8}\protected@file@percent }
+\newlabel{tab:N7}{{E8}{23}{Pretrained test: copy score of the context's colour (nats; mean over nouns) by model and input embedding, and with original embeddings by group. Random, own scale: the same random direction at the noun's own norm (exploratory). 70M and 160M are descriptive. Prior entropy: entropy of the colour distribution after \emph {The \textit {noun} was} with no context (nats; uniform over eleven colours is 2.40)}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {E9}{\ignorespaces Checks of the pretrained test (exploratory). Stored colour: with no context, log probability of a colour-typical noun's coded colour minus the mean over the other colours after \emph  {The \textit  {noun} was} (nats; mean over 22 nouns, and the share of nouns above zero). TOST: equivalence of the H45 and H46 differences within $\pm $0.30 nats over nouns. Norm only: random (own scale) minus random (untrained scale) (same direction, different norm).}}{23}{table.9}\protected@file@percent }
+\newlabel{tab:N12}{{E9}{23}{Checks of the pretrained test (exploratory). Stored colour: with no context, log probability of a colour-typical noun's coded colour minus the mean over the other colours after \emph {The \textit {noun} was} (nats; mean over 22 nouns, and the share of nouns above zero). TOST: equivalence of the H45 and H46 differences within $\pm $0.30 nats over nouns. Norm only: random (own scale) minus random (untrained scale) (same direction, different norm)}{table.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {E1}{\ignorespaces Experiment 2: copy score by history (colour) and presentation (solid: bursts; dashed: spaced) at 100 and 1,000 exposures, in stable-kind (left, pre-registered tests) and shifting-kind (right, exploratory) corpora (means over ten seeds, sizes averaged; 95\% intervals). Solid line and band: unseen nouns; dashed line: unseen nouns with a typical embedding.}}{24}{figure.1}\protected@file@percent }
+\newlabel{fig:a10}{{E1}{24}{Experiment 2: copy score by history (colour) and presentation (solid: bursts; dashed: spaced) at 100 and 1,000 exposures, in stable-kind (left, pre-registered tests) and shifting-kind (right, exploratory) corpora (means over ten seeds, sizes averaged; 95\% intervals). Solid line and band: unseen nouns; dashed line: unseen nouns with a typical embedding}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {E2}{\ignorespaces Copy score for colour of real nouns in Pythia models, with their own input embeddings or replaced ones (means over 44 nouns, 95\% intervals). The registered tests used the 1B to 12B models; 70M and 160M are descriptive.}}{24}{figure.2}\protected@file@percent }
+\newlabel{fig:pythia}{{E2}{24}{Copy score for colour of real nouns in Pythia models, with their own input embeddings or replaced ones (means over 44 nouns, 95\% intervals). The registered tests used the 1B to 12B models; 70M and 160M are descriptive}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {E3}{\ignorespaces Experiment 2. Copy score over training for nouns with 1,000 exposures, by history and presentation, and for unseen nouns (exploratory; saved weights every 1,000 steps; means over ten seeds, sizes averaged; 95\% intervals). A noun with 1,000 exposures has had about 1,000 $\times $ ($t - 0.05$)/0.9 sentences by fraction $t$ of training, so exposure and training time rise together. The unseen-noun line zig-zags by 1 to 2 nats because the three sizes save weights at different fractions of training and differ in level.}}{25}{figure.3}\protected@file@percent }
+\newlabel{fig:a10formation}{{E3}{25}{Experiment 2. Copy score over training for nouns with 1,000 exposures, by history and presentation, and for unseen nouns (exploratory; saved weights every 1,000 steps; means over ten seeds, sizes averaged; 95\% intervals). A noun with 1,000 exposures has had about 1,000 $\times $ ($t - 0.05$)/0.9 sentences by fraction $t$ of training, so exposure and training time rise together. The unseen-noun line zig-zags by 1 to 2 nats because the three sizes save weights at different fractions of training and differ in level}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Experiment 3 (Amendment 11)}{26}{appendix.F}\protected@file@percent }
+\newlabel{app:O}{{F}{26}{Experiment 3 (Amendment 11)}{appendix.F}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {F1}{\ignorespaces Registered tests of Experiment 3 (seed-level estimates, nats; sizes averaged within seed; t-based 95\% intervals). Holm $p$: adjusted over the six Part A tests marked $^h$; other $p$ values are unadjusted. Sizes: number of the three sizes with the estimate's direction.}}{27}{table.1}\protected@file@percent }
+\newlabel{tab:O1}{{F1}{27}{Registered tests of Experiment 3 (seed-level estimates, nats; sizes averaged within seed; t-based 95\% intervals). Holm $p$: adjusted over the six Part A tests marked $^h$; other $p$ values are unadjusted. Sizes: number of the three sizes with the estimate's direction}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {F2}{\ignorespaces Experiment 3, mixed design, 1,000 exposures: copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of the same or another history (columns); means over ten seeds, sizes averaged (24 items per pair and model). Every item names a different noun in the query, so the diagonal is not comparable with the same-noun copy scores of Table~\ref {tab:O2}.}}{27}{table.2}\protected@file@percent }
+\newlabel{tab:O3}{{F2}{27}{Experiment 3, mixed design, 1,000 exposures: copy score when the context sentence is about a noun of one history (rows) and the query names a different noun of the same or another history (columns); means over ten seeds, sizes averaged (24 items per pair and model). Every item names a different noun in the query, so the diagonal is not comparable with the same-noun copy scores of Table~\ref {tab:O2}}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {G}Control: Redrawn and Half-Kept Bursts}{29}{appendix.G}\protected@file@percent }
+\newlabel{app:P}{{G}{29}{Control: Redrawn and Half-Kept Bursts}{appendix.G}{}}
+\gdef \@abspage@last{29}
